@@ -3,16 +3,33 @@ import { Meta, Story } from '@storybook/react';
 import { Button, Props } from '.';
 
 const meta: Meta = {
-  title: 'Button',
+  title: 'Components/Button',
   component: Button,
 };
 
 export default meta;
 
-const Primary: Story<Props> = () => <Button type='primary'>Click Me!</Button>;
+const Template: Story<Props> = ({type, children, size}) => <Button type={type} size={size}>{children}</Button>;
 
-// By passing using the Args format for exported stories, you can control the props for a component for reuse in a test
-// https://storybook.js.org/docs/react/workflows/unit-testing
-export const Default = Primary.bind({});
+export const Default = Template.bind({});
+Default.args = {
+  children: 'Default',
+};
 
-Default.args = {};
+export const Primary = Template.bind({});
+Primary.args = {
+  type: 'primary',
+  children: 'Primary',
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  type: 'secondary',
+  children: 'Secondary',
+};
+
+export const Danger = Template.bind({});
+Danger.args = {
+  type: 'danger',
+  children: 'Danger',
+};
