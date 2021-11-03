@@ -1,14 +1,7 @@
-import React, { HTMLAttributes, useState, useRef, useEffect } from 'react';
-import CSS from 'csstype';
+import React, { useState, useRef, useEffect } from 'react';
 
-export interface Props extends HTMLAttributes<HTMLInputElement> {
-  label?: string;
-  defaultValue?: string | undefined;
-  style?: CSS.Properties;
-  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
-  onFocus?: React.FocusEventHandler<HTMLInputElement> | undefined;
-  onBlur?: React.FocusEventHandler<HTMLInputElement> | undefined;
-}
+import { Props } from './Input.props';
+import { styles } from './Input.styles';
 
 export const Input = ({
   label = '',
@@ -61,19 +54,4 @@ export const Input = ({
       }}
     />
   );
-};
-
-const styles = {
-  input: {
-    height: '36px',
-    fontSize: '15px',
-    outline: 'none',
-    borderRadius: '24px',
-    border: '1px solid #d9d9d9',
-    padding: '0px 12px',
-    // boxSizing: 'border-box',
-  },
-  focusInput: {
-    border: '1px solid #1890ff',
-  },
 };

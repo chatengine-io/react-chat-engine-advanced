@@ -1,6 +1,9 @@
 import React from 'react';
+
 import { Meta, Story } from '@storybook/react';
-import { Input, Props } from '.';
+
+import { Input } from '.';
+import { Props } from './Input.props';
 
 const meta: Meta = {
   title: 'Input',

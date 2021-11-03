@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Props as ButtonProps } from './Button.props';
+import { Props } from './Button.props';
 import { styles } from './Button.styles';
 
 export const Button = ({
@@ -9,7 +9,7 @@ export const Button = ({
   style = {},
   icon = undefined,
   onClick = () => {},
-}: ButtonProps) => {
+}: Props) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
   let typeStyle = {};
