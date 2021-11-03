@@ -1,14 +1,10 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button, Props } from '.';
-import {
-  CheckOutlined,
-  DeleteOutlined,
-  QuestionOutlined,
-} from '@ant-design/icons';
+import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const meta: Meta = {
-  title: 'Components/Button',
+  title: 'Button',
   component: Button,
   argTypes: {
     icon: { control: '' },
@@ -41,10 +37,4 @@ Danger.args = {
   type: 'danger',
   children: 'Danger',
   icon: <DeleteOutlined />,
-};
-
-export const Icon = Template.bind({});
-Icon.args = {
-  children: '',
-  icon: <QuestionOutlined />,
 };
