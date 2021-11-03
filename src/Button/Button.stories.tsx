@@ -1,7 +1,10 @@
 import React from 'react';
+
 import { Meta, Story } from '@storybook/react';
-import { Button, Props } from '.';
 import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
+
+import { Button } from '.';
+import { Props } from './Button.props';
 
 const meta: Meta = {
   title: 'Button',
