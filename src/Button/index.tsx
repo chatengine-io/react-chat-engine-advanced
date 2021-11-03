@@ -1,15 +1,45 @@
-import React, { HTMLAttributes, ReactNode } from "react";
+import React, { useState } from 'react';
 
-export interface Props extends HTMLAttributes<HTMLButtonElement>{
-    children: ReactNode;
+import { Props } from './Button.props';
+import { styles } from './Button.styles';
 
-    type: 'primary' | 'secondary';
-}
+export const Button = ({
+  children = undefined,
+  type = 'default',
+  style = {},
+  icon = undefined,
+  onClick = () => {},
+}: Props) => {
+  const [hovered, setHovered] = useState<boolean>(false);
 
-export const Button = ({children,  type}: Props) => {
-    return (
-        <button className={type}>
-            {children}
-        </button>
-    )
-}
+  let typeStyle = {};
+  switch (type) {
+    case 'primary':
+      typeStyle = styles.primaryButton;
+      break;
+    case 'danger':
+      typeStyle = styles.dangerButton;
+      break;
+  }
+
+  const hoverStyle = hovered ? styles.hoverButton : {};
+
+  return (
+    <button
+      onClick={onClick}
+      className={`ce-${type}-button`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        ...styles.defaultButton,
+        ...typeStyle,
+        ...hoverStyle,
+        ...style,
+      }}
+    >
+      {icon}
+      {icon && ' '}
+      {children}
+    </button>
+  );
+};

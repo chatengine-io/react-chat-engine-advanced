@@ -1,18 +1,43 @@
 import React from 'react';
+
 import { Meta, Story } from '@storybook/react';
-import { Button, Props } from '.';
+import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
+
+import { Button } from '.';
+import { Props } from './Button.props';
 
 const meta: Meta = {
   title: 'Button',
   component: Button,
+  argTypes: {
+    icon: { control: '' },
+    onClick: { control: '' },
+  },
 };
 
 export default meta;
 
-const Primary: Story<Props> = () => <Button type='primary'>Click Me!</Button>;
+const Template: Story<Props> = ({ type, children, style, icon, onClick }) => (
+  <Button type={type} style={style} icon={icon} onClick={onClick}>
+    {children}
+  </Button>
+);
 
-// By passing using the Args format for exported stories, you can control the props for a component for reuse in a test
-// https://storybook.js.org/docs/react/workflows/unit-testing
-export const Default = Primary.bind({});
+export const Default = Template.bind({});
+Default.args = {
+  children: 'Default',
+};
 
-Default.args = {};
+export const Primary = Template.bind({});
+Primary.args = {
+  type: 'primary',
+  children: 'Primary',
+  icon: <CheckOutlined />,
+};
+
+export const Danger = Template.bind({});
+Danger.args = {
+  type: 'danger',
+  children: 'Danger',
+  icon: <DeleteOutlined />,
+};
