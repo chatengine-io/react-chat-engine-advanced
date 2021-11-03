@@ -5,7 +5,7 @@ import { Default as Thing } from './Button.stories';
 describe('Thing', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Thing type='primary'>Hey</Thing>, div);
+    ReactDOM.render(<Thing type="primary">Hey</Thing>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });

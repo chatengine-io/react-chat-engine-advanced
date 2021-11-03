@@ -1,20 +1,28 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button, Props } from '.';
-import { CheckOutlined, DeleteOutlined, QuestionOutlined } from '@ant-design/icons'
+import {
+  CheckOutlined,
+  DeleteOutlined,
+  QuestionOutlined,
+} from '@ant-design/icons';
 
 const meta: Meta = {
   title: 'Components/Button',
   component: Button,
   argTypes: {
     icon: { control: '' },
-    onClick: { control: '' }
-  }
+    onClick: { control: '' },
+  },
 };
 
 export default meta;
 
-const Template: Story<Props> = ({type, children, style, icon, onClick}) => <Button type={type} style={style} icon={icon} onClick={onClick}>{children}</Button>;
+const Template: Story<Props> = ({ type, children, style, icon, onClick }) => (
+  <Button type={type} style={style} icon={icon} onClick={onClick}>
+    {children}
+  </Button>
+);
 
 export const Default = Template.bind({});
 Default.args = {
