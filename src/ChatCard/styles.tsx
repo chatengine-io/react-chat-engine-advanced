@@ -4,8 +4,12 @@ export const styles = {
   chatContainer: {
     fontFamily: 'Avenir',
     padding: '16px',
+    borderRadius: '12px',
     paddingBottom: '12px',
     cursor: 'pointer',
+    transition: 'all .44s ease',
+    WebkitTransition: 'all .44s ease',
+    MozTransition: 'all .44s ease',
   } as Properties,
   titleText: {
     fontWeight: 500,
@@ -24,6 +28,15 @@ export const styles = {
   activeChat: {
     backgroundColor: '#d9d9d9',
     border: '0px solid white',
-    borderRadius: '12px',
+  } as Properties,
+  hoveredChat: {
+    backgroundColor: '#f5f5f5',
+    border: '0px solid white',
+  } as Properties,
+  loadingBar: {
+    borderRadius: '4px',
+    backgroundColor: '#e2e2e2',
+    height: '12px',
+    display: 'inline-block',
   } as Properties,
 };
