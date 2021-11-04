@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import React from 'react';
 
 import { Props } from './props';
@@ -5,6 +6,7 @@ import { styles } from './styles';
 
 export const ChatCard: React.FC<Props> = ({
   isActive = false,
+  isLoading = false,
   hasNotification = false,
   title = '',
   description = '',
@@ -12,13 +14,24 @@ export const ChatCard: React.FC<Props> = ({
   onClick,
   style = {},
 }: Props) => {
-  const titleWidth = hasNotification ? 'calc(100% - 18px)' : '';
+  const [hovered, setHovered] = useState<boolean>(false);
+
+  const titleWidth = hasNotification ? 'calc(100% - 18px)' : '100%';
+  const hoverStyle = hovered && styles.hoveredChat;
+  const activeStyle = isActive && styles.activeChat;
 
   return (
     <div
       onClick={onClick}
-      style={{ ...styles.chatContainer, ...style }}
+      style={{
+        ...styles.chatContainer,
+        ...hoverStyle,
+        ...activeStyle,
+        ...style,
+      }}
       className={`ce-chat-card ${isActive && 'ce-active-chat-card'}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <div
         style={styles.titleText}
@@ -32,7 +45,17 @@ export const ChatCard: React.FC<Props> = ({
             display: 'inline-block',
           }}
         >
-          {title}
+          {!isLoading ? (
+            title
+          ) : (
+            <div
+              className="ce-chat-card-loading-bar"
+              style={{
+                ...styles.loadingBar,
+                ...{ width: '99%' },
+              }}
+            />
+          )}
         </div>
 
         {hasNotification && (
@@ -56,7 +79,17 @@ export const ChatCard: React.FC<Props> = ({
           style={styles.messageText}
           className="ce-chat-subtitle-text ce-chat-subtitle-message"
         >
-          {description}
+          {!isLoading ? (
+            description
+          ) : (
+            <div
+              className="ce-chat-card-loading-bar"
+              style={{
+                ...styles.loadingBar,
+                ...{ width: '45%' },
+              }}
+            />
+          )}
         </div>
 
         <div
@@ -66,7 +99,17 @@ export const ChatCard: React.FC<Props> = ({
             ...{ textAlign: 'right', width: '25%' },
           }}
         >
-          {timeStamp}
+          {!isLoading ? (
+            timeStamp
+          ) : (
+            <div
+              className="ce-chat-card-loading-bar"
+              style={{
+                ...styles.loadingBar,
+                ...{ width: '15%' },
+              }}
+            />
+          )}
         </div>
       </div>
     </div>
