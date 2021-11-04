@@ -31,7 +31,7 @@ export const ChatForm: React.FC<Props> = ({
             label="Chat Title"
             // value={value}
             id="ce-new-chat-title-field"
-            onBlur={() => console.log('okok')}
+            onBlur={() => setSelected(false)}
             style={{ width: '100%' }}
             // handleChange={(e) => handleChange(e)}
           />
@@ -44,7 +44,7 @@ export const ChatForm: React.FC<Props> = ({
               ...titleStyle,
             }}
           >
-            My Chats {selected && 'selected'}
+            My Chats
           </span>
 
           <Button

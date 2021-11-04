@@ -41,13 +41,13 @@ export const Input = ({
       }}
       className="ce-input ce-text-input"
       placeholder={label}
-      onFocus={() => {
+      onFocus={(e) => {
         setFocused(true);
-        onFocus;
+        onFocus && onFocus(e);
       }}
-      onBlur={() => {
+      onBlur={(e) => {
         setFocused(false);
-        onBlur;
+        onBlur && onBlur(e);
       }}
       style={{
         ...styles.input,
