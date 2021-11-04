@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { Props } from './Button.props';
-import { styles } from './Button.styles';
+import { Props } from './props';
+import { styles } from './styles';
 
 export const Button = ({
   children = undefined,

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import { Props } from './Input.props';
-import { styles } from './Input.styles';
+import { Props } from './props';
+import { styles } from './styles';
 
 export const Input = ({
   label = '',
