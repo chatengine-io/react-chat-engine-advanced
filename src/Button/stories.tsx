@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react';
 import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import { Button } from '.';
-import { Props } from './Button.props';
+import { Props } from './props';
 
 const meta: Meta = {
   title: 'Button',
