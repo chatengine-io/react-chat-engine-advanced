@@ -4,6 +4,7 @@ import { Props } from './props';
 import { styles } from './styles';
 
 export const Input = ({
+  autoFocus = false,
   label = '',
   style = {},
   onChange,
@@ -32,6 +33,7 @@ export const Input = ({
 
   return (
     <input
+      autoFocus={autoFocus}
       value={value}
       onChange={(e) => {
         setValue(e.target.value);

@@ -2,6 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import CSS from 'csstype';
 
 export interface Props extends HTMLAttributes<HTMLInputElement> {
+  autoFocus?: boolean;
   label?: string;
   defaultValue?: string | undefined;
   style?: CSS.Properties;

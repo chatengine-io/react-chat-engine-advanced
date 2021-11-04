@@ -4,43 +4,60 @@ import { Props } from './props';
 import { styles } from './styles';
 
 import { Button } from '../Button';
+import { Input } from '../Input';
 
-export const ChatForm: React.FC<Props> = ({ style = {} }) => {
-  const [value, setValue] = useState<string>('');
+export const ChatForm: React.FC<Props> = ({
+  style = {},
+  titleStyle = {},
+  buttonStyle = {},
+}) => {
   const [selected, setSelected] = useState<boolean>(false);
+
+  function handleSubmit() {}
 
   return (
     <div
-      className="ce-chat-form-container"
+      className="ce-chat-form"
       style={{
-        ...styles.newChatContainer,
+        ...styles.chatForm,
         ...style,
         // ...{ marginLeft: props.onClose ? '40px' : '0px' },
       }}
     >
-      <div>
-        <div style={{ height: '0px' }}>
-          <div
+      {selected ? (
+        <form onSubmit={handleSubmit}>
+          <Input
+            autoFocus
+            label="Chat Title"
+            // value={value}
+            id="ce-new-chat-title-field"
+            onBlur={() => console.log('okok')}
+            style={{ width: '100%' }}
+            // handleChange={(e) => handleChange(e)}
+          />
+        </form>
+      ) : (
+        <div>
+          <span
             style={{
-              fontWeight: 600,
-              fontSize: '24px',
-              position: 'relative',
-              top: '4px',
-              width: 'calc(100% - 48px)',
+              ...styles.chatFormTitle,
+              ...titleStyle,
             }}
           >
-            My Chats
-          </div>
-        </div>
+            My Chats {selected && 'selected'}
+          </span>
 
-        <div style={{ width: '100%', textAlign: 'right' }}>
           <Button
-            icon="plus"
+            style={{
+              ...{ float: 'right' },
+              ...buttonStyle,
+            }}
+            icon="+"
             id="new-chat-plus-button"
             onClick={() => setSelected(true)}
           />
         </div>
-      </div>
+      )}
     </div>
   );
 };
