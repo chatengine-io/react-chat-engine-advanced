@@ -3,7 +3,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import { Input } from '.';
-import { Props } from './Input.props';
+import { Props } from './props';
 
 const meta: Meta = {
   title: 'Input',
