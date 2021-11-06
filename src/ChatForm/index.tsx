@@ -9,11 +9,22 @@ import { Input } from '../Input';
 export const ChatForm: React.FC<Props> = ({
   style = {},
   titleStyle = {},
+  inputStyle = {},
   buttonStyle = {},
+  onFormSubmit,
 }) => {
   const [selected, setSelected] = useState<boolean>(false);
+  const [value, setValue] = useState<string>('');
 
-  function handleSubmit() {}
+  function onSubmit(event: React.SyntheticEvent) {
+    event.preventDefault();
+    onFormSubmit && onFormSubmit(value);
+    setValue('');
+  }
+
+  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setValue(event.target.value);
+  }
 
   return (
     <div
@@ -21,19 +32,23 @@ export const ChatForm: React.FC<Props> = ({
       style={{
         ...styles.chatForm,
         ...style,
+        // Not sure why this is here, might need it later
         // ...{ marginLeft: props.onClose ? '40px' : '0px' },
       }}
     >
       {selected ? (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <Input
             autoFocus
+            value={value}
             label="Chat Title"
-            // value={value}
             id="ce-new-chat-title-field"
             onBlur={() => setSelected(false)}
-            style={{ width: '100%' }}
-            // handleChange={(e) => handleChange(e)}
+            style={{
+              ...{ width: '100%' },
+              ...inputStyle,
+            }}
+            onChange={onChange}
           />
         </form>
       ) : (

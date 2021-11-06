@@ -11,9 +11,10 @@ export const Input = ({
   onFocus,
   onBlur,
   defaultValue = undefined,
+  value = undefined,
 }: Props) => {
   const didMountRef = useRef<boolean>(false);
-  const [value, setValue] = useState<string>('');
+  const [currentValue, setCurrentValue] = useState<string>('');
   const [focused, setFocused] = useState<boolean>(false);
 
   useEffect(() => {
@@ -21,10 +22,10 @@ export const Input = ({
       didMountRef.current = true;
       if (defaultValue) {
         const event = {
-          target: { value },
+          target: { value: currentValue },
         } as React.ChangeEvent<HTMLInputElement>;
         onChange && onChange(event);
-        setValue(defaultValue);
+        setCurrentValue(defaultValue);
       }
     }
   });
@@ -34,10 +35,10 @@ export const Input = ({
   return (
     <input
       autoFocus={autoFocus}
-      value={value}
+      value={typeof value === 'string' ? value : currentValue}
       onChange={(e) => {
-        setValue(e.target.value);
-        onChange;
+        setCurrentValue(e.target.value);
+        onChange && onChange(e);
       }}
       className="ce-input ce-text-input"
       placeholder={label}
