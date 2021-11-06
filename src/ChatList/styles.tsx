@@ -8,7 +8,6 @@ export const styles = {
     overflow: 'scroll',
     overflowX: 'hidden',
     borderRight: '1px solid #afafaf',
-    borderRadius: '0px 0px 24px 24px',
     backgroundColor: 'white',
     fontFamily: 'Avenir',
   } as Properties,

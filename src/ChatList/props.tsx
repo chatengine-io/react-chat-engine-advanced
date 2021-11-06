@@ -2,7 +2,26 @@ import { HTMLAttributes } from 'react';
 
 import { Properties } from 'csstype';
 
+export interface MessageProps {
+  id?: number;
+  text: string;
+  sender_username: string;
+  created: string;
+  attachments: Array<object>;
+  custom_json: object | string;
+}
+export interface ChatProps {
+  id: number;
+  title: string;
+  created: string;
+  is_direct_chat: boolean;
+  custom_json: object | string;
+  last_message: null | MessageProps;
+  attachments: Array<object>;
+}
+
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   style?: Properties;
   loading?: boolean;
+  chats: Array<ChatProps>;
 }
