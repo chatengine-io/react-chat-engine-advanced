@@ -89,7 +89,7 @@ export const ChatCard: React.FC<Props> = ({
               className="ce-chat-card-loading-bar"
               style={{
                 ...styles.loadingBar,
-                ...{ width: '45%' },
+                ...{ width: '60%' },
               }}
             />
           )}
@@ -109,7 +109,11 @@ export const ChatCard: React.FC<Props> = ({
               className="ce-chat-card-loading-bar"
               style={{
                 ...styles.loadingBar,
-                ...{ width: '15%' },
+                ...{
+                  width: 'calc(100% - 5px)',
+                  position: 'relative',
+                  right: '5px',
+                },
               }}
             />
           )}

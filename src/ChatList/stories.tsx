@@ -66,13 +66,37 @@ const Template: Story<Props> = (props) => <ChatList {...props}></ChatList>;
 
 export const Default = Template.bind({});
 Default.args = {
-  style: { maxWidth: '400px', boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)' },
+  style: {
+    maxWidth: '400px',
+    boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    maxHeight: '300px',
+  },
   chats: chats,
 };
+
 export const ActiveChat = Template.bind({});
 ActiveChat.args = {
-  style: { maxWidth: '400px', boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)' },
+  style: {
+    maxWidth: '400px',
+    boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    maxHeight: '300px',
+  },
   chats: chats,
-  activeChatID: 203,
+  activeChatID: 202,
+  onChatClick: (chatID) => console.log('Chat Click', chatID),
+  onChatFormSubmit: (title) => console.log('New Chat', title),
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  style: {
+    maxWidth: '400px',
+    boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    maxHeight: '300px',
+  },
+  chats: [],
+  isLoading: true,
+  activeChatID: 202,
+  onChatClick: (chatID) => console.log('Chat Click', chatID),
   onChatFormSubmit: (title) => console.log('New Chat', title),
 };

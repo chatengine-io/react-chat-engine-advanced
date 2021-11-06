@@ -26,5 +26,5 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   activeChatID?: number;
   onChatClick: (chatID: number) => void;
   onChatFormSubmit: (title: string) => void;
-  loading?: boolean;
+  isLoading?: boolean;
 }

@@ -14,9 +14,9 @@ export const ChatList: React.FC<Props> = ({
   activeChatID = -1,
   onChatClick = () => {},
   onChatFormSubmit = () => {},
-  loading = false,
+  isLoading = false,
 }) => {
-  const loadingStyle = loading ? styles.loadingStyle : {};
+  const loadingStyle = isLoading ? styles.loadingStyle : {};
 
   const renderChats = (chats: Array<ChatProps>) => {
     return chats.map((chat, index) => {
@@ -37,6 +37,12 @@ export const ChatList: React.FC<Props> = ({
     });
   };
 
+  const renderLoading = () => {
+    return [...Array(10)].map((_, i) => {
+      return <ChatCard key={`chat_${i}`} isLoading={true} />;
+    });
+  };
+
   return (
     <div
       style={{
@@ -48,7 +54,7 @@ export const ChatList: React.FC<Props> = ({
     >
       <ChatForm onFormSubmit={onChatFormSubmit} />
 
-      {renderChats(chats)}
+      {isLoading ? renderLoading() : renderChats(chats)}
     </div>
   );
 };
