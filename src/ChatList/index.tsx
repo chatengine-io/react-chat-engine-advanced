@@ -15,14 +15,31 @@ export const ChatList: React.FC<Props> = ({
   onChatClick = () => {},
   onChatFormSubmit = () => {},
   isLoading = false,
+  userName,
 }) => {
   const loadingStyle = isLoading ? styles.loadingStyle : {};
 
+  const readLastMessage = (userName: string, chat: ChatProps) => {
+    let hasReadLastMessage = false;
+    chat.people.map((chatPerson) => {
+      if (
+        userName === chatPerson.person.username && // This is your ChatPerson instance
+        chatPerson.last_read === chat.last_message.id // and you read the last message
+      ) {
+        hasReadLastMessage = true;
+      }
+    });
+    return hasReadLastMessage;
+  };
+
   const renderChats = (chats: Array<ChatProps>) => {
     return chats.map((chat, index) => {
-      const timeStamp = getDateTime(chat.created).toString().substr(4, 6);
       const description =
         chat.last_message?.text === '' ? 'Say hello!' : chat.last_message?.text;
+      const timeStamp = getDateTime(chat.created).toString().substr(4, 6);
+      const hasNotification = userName
+        ? !readLastMessage(userName, chat)
+        : false;
 
       return (
         <ChatCard
@@ -31,6 +48,7 @@ export const ChatList: React.FC<Props> = ({
           description={description}
           timeStamp={timeStamp}
           isActive={activeChatID === chat.id}
+          hasNotification={hasNotification}
           onClick={() => onChatClick(chat.id)}
         />
       );
