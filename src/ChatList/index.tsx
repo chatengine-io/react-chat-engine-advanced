@@ -6,8 +6,6 @@ import { styles } from './styles';
 import { ChatForm } from './ChatForm';
 import { ChatCard } from './ChatCard';
 
-// const { htmlToText } = require('html-to-text');
-
 export const ChatList: React.FC<Props> = ({
   style = {},
   loading = false,

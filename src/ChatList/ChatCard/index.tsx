@@ -80,7 +80,10 @@ export const ChatCard: React.FC<Props> = ({
           className="ce-chat-subtitle-text ce-chat-subtitle-message"
         >
           {!isLoading ? (
-            description
+            <div style={{ height: '19px', overflow: 'hidden' }}>
+              <div dangerouslySetInnerHTML={{ __html: description }} />
+              <style>{`p {margin-block-start: 0px; margin-block-end: 0px;}`}</style>
+            </div>
           ) : (
             <div
               className="ce-chat-card-loading-bar"
