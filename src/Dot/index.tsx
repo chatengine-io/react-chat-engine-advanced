@@ -7,7 +7,7 @@ export const Dot = ({
   avatarUrl = undefined,
   username = '',
   style = {},
-  visible = false
+  visible = true
 }: Props) => {
 
   const color = stringToColor(username)

@@ -23,22 +23,12 @@ export const Default = Template.bind({});
 Default.args = {
   avatarUrl: 'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
   username: 'Dylan',
-  style: { float: 'right', marginLeft: '4px' },
-  visible: true
+  style: { float: 'right', marginLeft: '4px' }
 };
 
-export const NoAvatar = Template.bind({});
-NoAvatar.args = {
+export const NoAvatarUrl = Template.bind({});
+NoAvatarUrl.args = {
   avatarUrl: undefined,
   username: 'Dylan',
-  style: { float: 'right', marginLeft: '4px' },
-  visible: true
-};
-
-export const TheirMessage = Template.bind({});
-TheirMessage.args = {
-  avatarUrl: 'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
-  username: 'Adam',
-  style: { float: 'left', marginLeft: '4px' },
-  visible: true
+  style: { float: 'right', marginLeft: '4px' }
 };
