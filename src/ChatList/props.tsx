@@ -1,3 +1,8 @@
 import { HTMLAttributes } from 'react';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {}
+import { Properties } from 'csstype';
+
+export interface Props extends HTMLAttributes<HTMLDivElement> {
+  style?: Properties;
+  loading?: boolean;
+}

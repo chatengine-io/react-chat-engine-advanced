@@ -16,4 +16,6 @@ export default meta;
 const Template: Story<Props> = (props) => <ChatList {...props}></ChatList>;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  style: { maxWidth: '400px', boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)' },
+};

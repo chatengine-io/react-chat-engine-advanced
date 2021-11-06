@@ -3,12 +3,12 @@ export const styles = {
   chatForm: {
     padding: '16px 14px',
     backgroundColor: 'white',
-    width: '100%',
+    width: 'calc(100% - 28px)',
   } as Properties,
   chatFormTitle: {
     fontFamily: 'Avenir',
     fontWeight: 600,
-    fontSize: '24px',
+    fontSize: '26px',
     position: 'relative',
     top: '4px',
   } as Properties,
