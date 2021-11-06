@@ -1,6 +1,6 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src", "types", "src/Button/.test.tsx", "src/ChatCard/.test.tsx", "src/Input/.test.tsx", "src/ChatForm/.test.tsx"],
+  "include": ["src", "types"],
   "compilerOptions": {
     "module": "esnext",
     "lib": ["dom", "esnext"],

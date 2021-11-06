@@ -12,11 +12,4 @@ export const styles = {
     position: 'relative',
     top: '4px',
   } as Properties,
-  // closeIcon: {
-  //   position: 'relative',
-  //   top: '26px',
-  //   left: '18px',
-  //   fontSize: '16px',
-  //   fontFamily: 'Avenir',
-  // } as Properties,
 };
