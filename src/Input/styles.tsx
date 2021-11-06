@@ -2,6 +2,7 @@ import { Properties } from 'csstype';
 
 export const styles = {
   input: {
+    fontFamily: 'Avenir',
     height: '36px',
     fontSize: '15px',
     outline: 'none',

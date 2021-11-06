@@ -17,9 +17,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<Props> = ({ label, style, defaultValue }) => (
-  <Input label={label} style={style} defaultValue={defaultValue} />
-);
+const Template: Story<Props> = (props) => <Input {...props} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -31,4 +29,10 @@ export const DefaultValue = Template.bind({});
 DefaultValue.args = {
   label: 'Default Value',
   defaultValue: 'Default Value',
+};
+
+export const SetValue = Template.bind({});
+SetValue.args = {
+  label: 'Default Value',
+  value: 'Set by props',
 };

@@ -4,15 +4,17 @@ import { Props } from './props';
 import { styles } from './styles';
 
 export const Input = ({
+  autoFocus = false,
   label = '',
   style = {},
   onChange,
   onFocus,
   onBlur,
   defaultValue = undefined,
+  value = undefined,
 }: Props) => {
   const didMountRef = useRef<boolean>(false);
-  const [value, setValue] = useState<string>('');
+  const [currentValue, setCurrentValue] = useState<string>('');
   const [focused, setFocused] = useState<boolean>(false);
 
   useEffect(() => {
@@ -20,10 +22,10 @@ export const Input = ({
       didMountRef.current = true;
       if (defaultValue) {
         const event = {
-          target: { value },
+          target: { value: currentValue },
         } as React.ChangeEvent<HTMLInputElement>;
         onChange && onChange(event);
-        setValue(defaultValue);
+        setCurrentValue(defaultValue);
       }
     }
   });
@@ -32,20 +34,21 @@ export const Input = ({
 
   return (
     <input
-      value={value}
+      autoFocus={autoFocus}
+      value={typeof value === 'string' ? value : currentValue}
       onChange={(e) => {
-        setValue(e.target.value);
-        onChange;
+        setCurrentValue(e.target.value);
+        onChange && onChange(e);
       }}
       className="ce-input ce-text-input"
       placeholder={label}
-      onFocus={() => {
+      onFocus={(e) => {
         setFocused(true);
-        onFocus;
+        onFocus && onFocus(e);
       }}
-      onBlur={() => {
+      onBlur={(e) => {
         setFocused(false);
-        onBlur;
+        onBlur && onBlur(e);
       }}
       style={{
         ...styles.input,
