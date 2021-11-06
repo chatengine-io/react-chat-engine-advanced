@@ -8,8 +8,10 @@ import { ChatCard } from './ChatCard';
 
 export const ChatList: React.FC<Props> = ({
   style = {},
-  loading = false,
   chats = [],
+  activeChatID = -1,
+  onChatClick = () => {},
+  loading = false,
 }) => {
   const loadingStyle = loading ? styles.loadingStyle : {};
 
@@ -43,6 +45,8 @@ export const ChatList: React.FC<Props> = ({
           title={chat.title}
           description={description}
           timeStamp={timeStamp}
+          isActive={activeChatID === chat.id}
+          onClick={() => onChatClick(chat.id)}
         />
       );
     });

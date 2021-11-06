@@ -22,6 +22,8 @@ export interface ChatProps {
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   style?: Properties;
-  loading?: boolean;
   chats: Array<ChatProps>;
+  activeChatID?: number;
+  onChatClick: (chatID: number) => void;
+  loading?: boolean;
 }
