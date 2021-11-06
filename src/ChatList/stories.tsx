@@ -74,4 +74,5 @@ ActiveChat.args = {
   style: { maxWidth: '400px', boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)' },
   chats: chats,
   activeChatID: 203,
+  onChatFormSubmit: (title) => console.log('New Chat', title),
 };

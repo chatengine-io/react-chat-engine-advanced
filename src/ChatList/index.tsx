@@ -13,6 +13,7 @@ export const ChatList: React.FC<Props> = ({
   chats = [],
   activeChatID = -1,
   onChatClick = () => {},
+  onChatFormSubmit = () => {},
   loading = false,
 }) => {
   const loadingStyle = loading ? styles.loadingStyle : {};
@@ -45,7 +46,7 @@ export const ChatList: React.FC<Props> = ({
       }}
       className="ce-chat-list"
     >
-      <ChatForm onFormSubmit={(title) => console.log('New Chat', title)} />
+      <ChatForm onFormSubmit={onChatFormSubmit} />
 
       {renderChats(chats)}
     </div>
