@@ -22,12 +22,12 @@ const colors = [
 const stringToNumber = (str: string) => {
   let sum = 0
   for (var i = 0; i < str.length; i++) {
-    sum = sum + (str.charCodeAt(i) * i) - 97
+    sum += str.charCodeAt(i);
   }
   return sum
 }
 
-export const stringToColor = (str: string) => {
+export const stringToColor = (str: string | undefined) => {
   if (!str) {
     return 'black'
   } else {
