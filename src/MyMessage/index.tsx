@@ -10,13 +10,11 @@ import { Col, setConfiguration } from 'react-grid-system';
 setConfiguration({ maxScreenClass: 'xl' });
 
 export const MyMessage: React.FC<Props> = ({
-  lastMessage,
+  lastMessage = null,
   message,
-  nextMessage,
+  nextMessage = null,
   isSending = false,
 }) => {
-  // const attachments = message && message.attachments && message.attachments;
-
   const topRightRadius =
     !lastMessage || lastMessage.sender_username !== message.sender_username
       ? '1.3em'
@@ -32,11 +30,12 @@ export const MyMessage: React.FC<Props> = ({
       ? '12px'
       : '2px';
 
-  let text = message.text ? message.text : '';
-  text = text.replaceAll('<p>', '<div>').replaceAll('</p>', '</div>');
-  text = text.replaceAll('<a ', `<a style="color: 'white';" `);
+  const text: string =
+    message.text !== null
+      ? message.text.replace(/<a /g, `<a style="color: 'white';" `)
+      : '';
 
-  function renderImages() {
+  const renderImages = () => {
     const attachments =
       message && message.attachments ? message.attachments : [];
 
@@ -52,11 +51,11 @@ export const MyMessage: React.FC<Props> = ({
             onClick={() => window.open(attachment.file)}
           />
         );
-      } else {
-        return <div key={`attachment${index}`} />;
       }
+
+      return <div key={`attachment${index}`} />;
     });
-  }
+  };
 
   return (
     <div
@@ -71,29 +70,30 @@ export const MyMessage: React.FC<Props> = ({
       </div>
 
       <Col xs={12} sm={12} md={12}>
-        {/* {message.text && ( */}
-        <div
-          className={`
+        {message.text !== null && (
+          <div
+            className={`
                   ce-message-bubble 
                   ce-my-message-bubble 
-                  ${isSending && 'ce-my-message-sinding-bubble'}
+                  ${isSending && 'ce-my-message-sending-bubble'}
                 `}
-          style={{
-            ...styles.myMessage,
-            ...{ borderRadius },
-            ...{
-              backgroundColor: isSending ? '#40a9ff' : 'rgb(24, 144, 255)',
-            },
-          }}
-          // onMouseEnter={() => setHovered(true)}
-          // onMouseLeave={() => setHovered(false)}
-        >
-          <div
-            className="ce_message"
-            dangerouslySetInnerHTML={{ __html: text }}
-          />
-        </div>
-        {/* )} */}
+            style={{
+              ...styles.myMessage,
+              ...{ borderRadius },
+              ...{
+                backgroundColor: isSending ? '#40a9ff' : 'rgb(24, 144, 255)',
+              },
+            }}
+            // onMouseEnter={() => setHovered(true)}
+            // onMouseLeave={() => setHovered(false)}
+          >
+            <div
+              className="ce_message"
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
+            <style>{`p {margin-block-start: 0px; margin-block-end: 0px;}`}</style>
+          </div>
+        )}
       </Col>
     </div>
   );

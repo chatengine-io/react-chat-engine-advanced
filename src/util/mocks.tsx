@@ -4,13 +4,37 @@ export const attachment = {
   created: '2021-08-03T00:16:52.633778Z',
 };
 
+export const fileAttachment = {
+  id: 11,
+  file: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
+  created: '2021-08-03T00:16:59.633778Z',
+};
+
 export const message = {
   id: 1000,
   created: '2021-07-14 01:18:24.567443+00:00',
   attachments: [],
   sender_username: 'Adam_La_Morre',
   text: '<p>Hello there world!</p>',
-  custom_json: '{"sender_id":"1626225504264"}',
+  custom_json: '',
+};
+
+export const messagePlusImage = {
+  id: 1000,
+  created: '2021-07-14 01:18:24.567443+00:00',
+  attachments: [attachment],
+  sender_username: 'Adam_La_Morre',
+  text: '<p>This is me in London!</p>',
+  custom_json: '',
+};
+
+export const messagePlusFile = {
+  id: 1000,
+  created: '2021-07-14 01:18:24.567443+00:00',
+  attachments: [fileAttachment],
+  sender_username: 'Adam_La_Morre',
+  text: '<p>Hey check out this audio effect.</p>',
+  custom_json: '',
 };
 
 export const adam = {

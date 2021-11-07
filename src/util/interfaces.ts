@@ -5,7 +5,7 @@ export interface AttachmentProps {
 }
 export interface MessageProps {
   id?: number;
-  text: string;
+  text: string | null;
   sender_username: string;
   created: string;
   attachments: Array<AttachmentProps>;
