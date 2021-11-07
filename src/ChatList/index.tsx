@@ -10,15 +10,15 @@ import { ChatLoader } from './ChatLoader';
 import { getDateTime } from '../util/dateTime';
 
 export const ChatList: React.FC<Props> = ({
-  style = {},
-  chats = [],
+  chats,
+  userName,
   activeChatID = -1,
   onChatClick = () => {},
   onChatFormSubmit = () => {},
   onChatLoaderVisible = () => {},
   isLoading = false,
   hasMoreChats = false,
-  userName,
+  style = {},
 }) => {
   const loadingStyle = isLoading ? styles.loadingStyle : {};
 
