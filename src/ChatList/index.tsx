@@ -23,16 +23,11 @@ export const ChatList: React.FC<Props> = ({
   const loadingStyle = isLoading ? styles.loadingStyle : {};
 
   const readLastMessage = (userName: string, chat: ChatProps) => {
-    let hasReadLastMessage = false;
-    chat.people.map((chatPerson) => {
-      if (
-        userName === chatPerson.person.username && // This is your ChatPerson instance
-        chatPerson.last_read === chat.last_message.id // and you read the last message
-      ) {
-        hasReadLastMessage = true;
-      }
-    });
-    return hasReadLastMessage;
+    return chat.people.some(
+      (chatPerson) =>
+        userName === chatPerson.person.username &&
+        chatPerson.last_read === chat.last_message.id
+    );
   };
 
   const renderChats = (chats: Array<ChatProps>) => {
