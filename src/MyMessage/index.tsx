@@ -57,6 +57,28 @@ export const MyMessage: React.FC<Props> = ({
     });
   };
 
+  const renderFiles = () => {
+    const attachments =
+      message && message.attachments ? message.attachments : [];
+
+    return attachments.map((attachment, index) => {
+      const fileName = getFileName(attachment.file);
+
+      if (!isImage(fileName)) {
+        return (
+          <div
+            style={styles.fileView}
+            onClick={() => window.open(attachment.file)}
+          >
+            {getFileName(attachment.file)}
+          </div>
+        );
+      }
+
+      return <div key={`attachment${index}`} />;
+    });
+  };
+
   return (
     <div
       className="ce-message-row ce-my-message"
@@ -67,6 +89,13 @@ export const MyMessage: React.FC<Props> = ({
         className="ce-my-message-attachments-container ce-my-message-images-container"
       >
         {renderImages()}
+      </div>
+
+      <div
+        style={{ display: 'auto' }}
+        className="ce-my-message-attachments-container ce-my-message-files-container"
+      >
+        {renderFiles()}
       </div>
 
       <Col xs={12} sm={12} md={12}>

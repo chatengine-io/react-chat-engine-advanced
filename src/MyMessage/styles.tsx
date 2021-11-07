@@ -43,4 +43,15 @@ export const styles = {
     minHeight: '100px',
     minWidth: '100px',
   } as Properties,
+  fileView: {
+    fontFamily: 'Avenir',
+    padding: '12px',
+    borderRadius: '14px',
+    display: 'inline-block',
+    marginBottom: '4px',
+    marginRight: '2px',
+    cursor: 'pointer',
+    color: '#434343',
+    border: '1px solid #434343',
+  } as Properties,
 };

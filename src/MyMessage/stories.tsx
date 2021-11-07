@@ -15,7 +15,11 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<Props> = (props) => <MyMessage {...props}></MyMessage>;
+const Template: Story<Props> = (props) => (
+  <div style={{ maxWidth: '400px' }}>
+    <MyMessage {...props} />
+  </div>
+);
 
 export const Default = Template.bind({});
 Default.args = {
