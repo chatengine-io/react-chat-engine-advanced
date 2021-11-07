@@ -11,6 +11,10 @@ export const styles = {
     backgroundPosition: 'center',
     backgroundSize: '48px',
   } as Properties,
+  avatarContainer: {
+    width: '48px',
+    height: '48px'
+  } as Properties,
   avatarText: {
     color: 'white',
     paddingTop: '12px',

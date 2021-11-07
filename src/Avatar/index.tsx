@@ -16,17 +16,18 @@ export const Avatar = ({
   const color = stringToColor(username)
 
   return (
-    <div style={{ width: '48px', height: '48px' }} onClick={onClick}>
+    <div style={styles.avatarContainer}>
       <div style={{ height: '0px' }}>
         <div
           className='ce-avatar'
+          onClick={onClick}
           style={{
             ...styles.avatar,
-            ...style,
             ...{
               backgroundColor: avatarUrl ? '#FFFFFF' : color,
               backgroundImage: avatarUrl && `url(${avatarUrl})`,
-            }
+            },
+            ...style
           }}
         >
           <div
