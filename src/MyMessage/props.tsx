@@ -1,8 +1,8 @@
 import { MessageProps } from '../util/interfaces';
 
 export interface Props {
-  lastMessage: MessageProps;
+  lastMessage: MessageProps | null;
   message: MessageProps;
-  nextMessage: MessageProps;
+  nextMessage: MessageProps | null;
   isSending?: boolean;
 }

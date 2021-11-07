@@ -28,4 +28,19 @@ export const styles = {
     WebkitTransition: 'all .15s ease',
     MozTransition: 'all .15s ease',
   } as Properties,
+  thumbnail: {
+    cursor: 'pointer',
+    textAlign: 'right',
+    display: 'inline',
+    objectFit: 'cover',
+    borderRadius: '0.3em',
+    paddingRight: '2px',
+    // Size
+    height: '30vw',
+    width: '30vw',
+    maxHeight: '200px',
+    maxWidth: '200px',
+    minHeight: '100px',
+    minWidth: '100px',
+  } as Properties,
 };

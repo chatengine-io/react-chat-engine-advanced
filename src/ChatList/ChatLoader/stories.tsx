@@ -26,10 +26,6 @@ Default.args = {
 export const CustomStyles = Template.bind({});
 CustomStyles.args = {
   onVisible: () => console.log('Chat Loader is visible.'),
-  style: { maxWidth: '400px', padding: '0px', backgroundColor: '#4a5162' },
-  children: (
-    <LoadingOutlined
-      style={{ fontSize: '21px', padding: '24px', color: '#f0f0f0' }}
-    />
-  ),
+  style: { maxWidth: '400px', backgroundColor: '#4a5162' },
+  children: <LoadingOutlined style={{ fontSize: '21px', color: '#f0f0f0' }} />,
 };

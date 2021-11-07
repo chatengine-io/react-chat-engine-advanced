@@ -1,9 +1,14 @@
+export interface AttachmentProps {
+  id: number;
+  file: string;
+  created: string;
+}
 export interface MessageProps {
   id?: number;
   text: string;
   sender_username: string;
   created: string;
-  attachments: Array<object>;
+  attachments: Array<AttachmentProps>;
   custom_json: object | string;
 }
 
@@ -28,6 +33,6 @@ export interface ChatProps {
   is_direct_chat: boolean;
   custom_json: object | string;
   last_message: MessageProps;
-  attachments: Array<object>;
+  attachments: Array<AttachmentProps>;
   people: Array<ChatPersonProps>;
 }

@@ -3,17 +3,19 @@ import React from 'react';
 import { Props } from './props';
 import { styles } from './styles';
 
+import { isImage, getFileName } from '../util/file';
+
 import { Col, setConfiguration } from 'react-grid-system';
 
 setConfiguration({ maxScreenClass: 'xl' });
 
-export const Message: React.FC<Props> = ({
+export const MyMessage: React.FC<Props> = ({
   lastMessage,
   message,
   nextMessage,
   isSending = false,
 }) => {
-  const attachments = message && message.attachments && message.attachments;
+  // const attachments = message && message.attachments && message.attachments;
 
   const topRightRadius =
     !lastMessage || lastMessage.sender_username !== message.sender_username
@@ -30,11 +32,44 @@ export const Message: React.FC<Props> = ({
       ? '12px'
       : '2px';
 
+  let text = message.text ? message.text : '';
+  text = text.replaceAll('<p>', '<div>').replaceAll('</p>', '</div>');
+  text = text.replaceAll('<a ', `<a style="color: 'white';" `);
+
+  function renderImages() {
+    const attachments =
+      message && message.attachments ? message.attachments : [];
+
+    return attachments.map((attachment, index) => {
+      const fileName = getFileName(attachment.file);
+
+      if (isImage(fileName)) {
+        return (
+          <img
+            src={attachment.file}
+            alt={'thumb-nail'}
+            style={styles.thumbnail}
+            onClick={() => window.open(attachment.file)}
+          />
+        );
+      } else {
+        return <div key={`attachment${index}`} />;
+      }
+    });
+  }
+
   return (
     <div
       className="ce-message-row ce-my-message"
       style={{ width: '100%', textAlign: 'right', paddingBottom }}
     >
+      <div
+        style={{ display: 'auto' }}
+        className="ce-my-message-attachments-container ce-my-message-images-container"
+      >
+        {renderImages()}
+      </div>
+
       <Col xs={12} sm={12} md={12}>
         {/* {message.text && ( */}
         <div
@@ -53,8 +88,10 @@ export const Message: React.FC<Props> = ({
           // onMouseEnter={() => setHovered(true)}
           // onMouseLeave={() => setHovered(false)}
         >
-          {/* <Body myMessage={true} text={message.text} /> */}
-          Example Text
+          <div
+            className="ce_message"
+            dangerouslySetInnerHTML={{ __html: text }}
+          />
         </div>
         {/* )} */}
       </Col>
