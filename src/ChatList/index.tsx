@@ -5,6 +5,7 @@ import { styles } from './styles';
 
 import { ChatForm } from './ChatForm';
 import { ChatCard } from './ChatCard';
+import { ChatLoader } from './ChatLoader';
 
 import { getDateTime } from '../util/dateTime';
 
@@ -14,7 +15,9 @@ export const ChatList: React.FC<Props> = ({
   activeChatID = -1,
   onChatClick = () => {},
   onChatFormSubmit = () => {},
+  onChatLoaderVisible = () => {},
   isLoading = false,
+  hasMoreChats = false,
   userName,
 }) => {
   const loadingStyle = isLoading ? styles.loadingStyle : {};
@@ -73,6 +76,8 @@ export const ChatList: React.FC<Props> = ({
       <ChatForm onFormSubmit={onChatFormSubmit} />
 
       {isLoading ? renderLoading() : renderChats(chats)}
+
+      {hasMoreChats && <ChatLoader onVisible={onChatLoaderVisible} />}
     </div>
   );
 };

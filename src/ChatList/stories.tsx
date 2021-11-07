@@ -114,6 +114,17 @@ UnreadMessages.args = {
   chats: chats,
 };
 
+export const HasMoreChats = Template.bind({});
+HasMoreChats.args = {
+  style: {
+    maxWidth: '400px',
+    boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+  },
+  chats: chats,
+  hasMoreChats: true,
+  onChatLoaderVisible: () => console.log('Load more chats!'),
+};
+
 export const Loading = Template.bind({});
 Loading.args = {
   style: {
