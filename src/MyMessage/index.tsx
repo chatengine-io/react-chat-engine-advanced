@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Props } from './props';
 import { styles } from './styles';
 
-import { isImage, getFileName } from '../util/file';
+import { Dot } from '../Dot';
 
-import { Col, setConfiguration } from 'react-grid-system';
+import { isImage, getFileName } from '../util/file';
+import { formatTime, getDateTime } from '../util/dateTime';
+
+import { Row, Col, setConfiguration } from 'react-grid-system';
 
 setConfiguration({ maxScreenClass: 'xl' });
 
@@ -13,8 +16,11 @@ export const MyMessage: React.FC<Props> = ({
   lastMessage = null,
   message,
   nextMessage = null,
+  chat = null,
   isSending = false,
 }) => {
+  const [hovered, setHovered] = useState<boolean>(false);
+
   const topRightRadius =
     !lastMessage || lastMessage.sender_username !== message.sender_username
       ? '1.3em'
@@ -79,10 +85,30 @@ export const MyMessage: React.FC<Props> = ({
     });
   };
 
+  const renderReads = () => {
+    const members = chat !== null ? chat.people : [];
+    return members.map((chatPerson, index) => {
+      return (
+        <Dot
+          key={`read_${index}`}
+          avatarUrl={chatPerson.person.avatar}
+          username={chatPerson.person.username}
+          visible={message.id === chatPerson.last_read}
+          style={{ float: 'right', marginLeft: '4px' }}
+        />
+      );
+    });
+  };
+
   return (
     <div
       className="ce-message-row ce-my-message"
-      style={{ width: '100%', textAlign: 'right', paddingBottom }}
+      style={{
+        width: '100%',
+        textAlign: 'right',
+        paddingBottom,
+        // display: 'inline-block',
+      }}
     >
       <div
         style={{ display: 'auto' }}
@@ -98,32 +124,53 @@ export const MyMessage: React.FC<Props> = ({
         {renderFiles()}
       </div>
 
-      <Col xs={12} sm={12} md={12}>
-        {message.text !== null && (
-          <div
-            className={`
+      <Row
+        style={{ paddingRight: '2px' }}
+        className="ce-message-bubble-row ce-my-message-bubble-row"
+      >
+        <Col xs={12} sm={12} md={12} style={{ display: 'inline-block' }}>
+          <span
+            className="ce-message-timestamp ce-my-message-timestamp"
+            style={{
+              ...styles.timeTag,
+              ...{ opacity: hovered ? '1' : '0' },
+            }}
+          >
+            {formatTime(getDateTime(message.created, 0) as Date)}
+          </span>
+
+          {message.text !== null && (
+            <div
+              className={`
                   ce-message-bubble 
                   ce-my-message-bubble 
                   ${isSending && 'ce-my-message-sending-bubble'}
                 `}
-            style={{
-              ...styles.myMessage,
-              ...{ borderRadius },
-              ...{
-                backgroundColor: isSending ? '#40a9ff' : 'rgb(24, 144, 255)',
-              },
-            }}
-            // onMouseEnter={() => setHovered(true)}
-            // onMouseLeave={() => setHovered(false)}
-          >
-            <div
-              className="ce_message"
-              dangerouslySetInnerHTML={{ __html: text }}
-            />
-            <style>{`p {margin-block-start: 0px; margin-block-end: 0px;}`}</style>
-          </div>
-        )}
-      </Col>
+              style={{
+                ...styles.myMessage,
+                ...{ borderRadius },
+                ...{
+                  backgroundColor: isSending ? '#40a9ff' : 'rgb(24, 144, 255)',
+                },
+              }}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+            >
+              <div
+                className="ce_message"
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+              <style>{`p {margin-block-start: 0px; margin-block-end: 0px;}`}</style>
+            </div>
+          )}
+        </Col>
+
+        <Col xs={1} sm={2} md={3} />
+
+        <Col xs={12} className="ce-reads-row ce-my-reads-row">
+          {renderReads()}
+        </Col>
+      </Row>
     </div>
   );
 };

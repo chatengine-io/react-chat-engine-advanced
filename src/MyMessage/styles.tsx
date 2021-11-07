@@ -18,8 +18,9 @@ export const styles = {
     MozTransition: 'all .33s ease',
   } as Properties,
   timeTag: {
+    fontFamily: 'Avenir',
     position: 'relative',
-    top: 'calc(50% - 12px)',
+    top: '12px',
     right: '8px',
     fontSize: '14px',
     color: 'rgb(24, 144, 255)',

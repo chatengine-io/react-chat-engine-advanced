@@ -5,7 +5,7 @@ import { Meta, Story } from '@storybook/react';
 import { MyMessage } from '.';
 import { Props } from './props';
 
-import { message, messagePlusImage, messagePlusFile } from '../util/mocks';
+import { message, messagePlusAttachments } from '../util/mocks';
 
 const meta: Meta = {
   title: 'ChatFeed/MyMessage',
@@ -33,12 +33,7 @@ BetweenMessages.args = {
   nextMessage: message,
 };
 
-export const WithImages = Template.bind({});
-WithImages.args = {
-  message: messagePlusImage,
-};
-
-export const WithFiles = Template.bind({});
-WithFiles.args = {
-  message: messagePlusFile,
+export const WithAttachments = Template.bind({});
+WithAttachments.args = {
+  message: messagePlusAttachments,
 };

@@ -1,4 +1,4 @@
-export const attachment = {
+export const imageAttachment = {
   id: 10,
   file: 'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
   created: '2021-08-03T00:16:52.633778Z',
@@ -19,21 +19,12 @@ export const message = {
   custom_json: '',
 };
 
-export const messagePlusImage = {
+export const messagePlusAttachments = {
   id: 1000,
   created: '2021-07-14 01:18:24.567443+00:00',
-  attachments: [attachment],
+  attachments: [imageAttachment, fileAttachment],
   sender_username: 'Adam_La_Morre',
-  text: '<p>This is me in London!</p>',
-  custom_json: '',
-};
-
-export const messagePlusFile = {
-  id: 1000,
-  created: '2021-07-14 01:18:24.567443+00:00',
-  attachments: [fileAttachment],
-  sender_username: 'Adam_La_Morre',
-  text: '<p>Hey check out this audio effect.</p>',
+  text: '<p>Hey check out this image and MP3 file!</p>',
   custom_json: '',
 };
 
