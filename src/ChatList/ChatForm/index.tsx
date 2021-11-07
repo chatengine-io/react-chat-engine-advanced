@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Props } from './props';
 import { styles } from './styles';
 
-import { Button } from '../Button';
-import { Input } from '../Input';
+import { Button } from '../../Button';
+import { Input } from '../../Input';
 
 export const ChatForm: React.FC<Props> = ({
   style = {},
