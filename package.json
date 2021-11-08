@@ -71,6 +71,6 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "html-to-text": "^8.0.0"
+    "react-grid-system": "^7.3.1"
   }
 }

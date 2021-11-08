@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { Props, ChatProps } from './props';
+import { Props } from './props';
 import { styles } from './styles';
 
 import { ChatForm } from './ChatForm';
 import { ChatCard } from './ChatCard';
 import { ChatLoader } from './ChatLoader';
 
+import { ChatProps } from '../util/interfaces';
 import { getDateTime } from '../util/dateTime';
 
 export const ChatList: React.FC<Props> = ({
@@ -33,7 +34,7 @@ export const ChatList: React.FC<Props> = ({
   const renderChats = (chats: Array<ChatProps>) => {
     return chats.map((chat, index) => {
       const description =
-        chat.last_message?.text === '' ? 'Say hello!' : chat.last_message?.text;
+        chat.last_message.text !== null ? chat.last_message.text : 'Say hello!';
       const timeStamp = getDateTime(chat.created).toString().substr(4, 6);
       const hasNotification = userName
         ? !readLastMessage(userName, chat)

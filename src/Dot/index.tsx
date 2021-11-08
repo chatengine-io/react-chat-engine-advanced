@@ -7,24 +7,23 @@ export const Dot = ({
   avatarUrl = undefined,
   username = '',
   style = {},
-  visible = true
+  visible = true,
 }: Props) => {
-
-  const color = stringToColor(username)
+  const color = stringToColor(username);
 
   return (
     <div
-      className='ce-avatar-dot'
+      className="ce-avatar-dot"
       style={{
         ...styles.default,
         ...style,
         ...{
           backgroundColor: avatarUrl ? 'white' : color,
-          backgroundImage: avatarUrl && `url(${avatarUrl})`,
+          backgroundImage: avatarUrl ? `url(${avatarUrl})` : '',
           width: visible ? '13px' : '0px',
-          height: visible ? '13px' : '0px'
-        }
+          height: visible ? '13px' : '0px',
+        },
       }}
     />
-  )
-}
+  );
+};
