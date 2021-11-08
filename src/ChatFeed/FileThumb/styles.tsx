@@ -16,7 +16,7 @@ export const styles = {
   loadingContainer: {
     fontFamily: 'Avenir',
     color: 'white',
-    padding: '14px',
+    padding: '13px',
     display: 'inline-block',
     borderRadius: '14px',
     marginRight: '2px',
