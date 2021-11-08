@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import { Props } from './props';
 import { styles } from './styles';
 
-import { Dot } from '../Dot';
+import { Dot } from '../../Dot';
 
-import { isImage, getFileName } from '../util/file';
-import { formatTime, getDateTime } from '../util/dateTime';
+import { ImageThumb } from '../ImageThumb';
+
+import { isImage, getFileName } from '../../util/file';
+import { formatTime, getDateTime } from '../../util/dateTime';
 
 import { Row, Col, setConfiguration } from 'react-grid-system';
 
@@ -50,11 +52,9 @@ export const MyMessage: React.FC<Props> = ({
 
       if (isImage(fileName)) {
         return (
-          <img
-            src={attachment.file}
-            alt={'thumb-nail'}
-            style={styles.thumbnail}
-            onClick={() => window.open(attachment.file)}
+          <ImageThumb
+            attachment={attachment}
+            isLoading={attachment.file === null}
           />
         );
       }

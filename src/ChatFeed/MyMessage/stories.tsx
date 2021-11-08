@@ -5,7 +5,7 @@ import { Meta, Story } from '@storybook/react';
 import { MyMessage } from '.';
 import { Props } from './props';
 
-import { message, messagePlusAttachments } from '../util/mocks';
+import { message, messagePlusAttachments } from '../../util/mocks';
 
 const meta: Meta = {
   title: 'ChatFeed/MyMessage',
