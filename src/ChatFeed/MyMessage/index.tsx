@@ -5,6 +5,7 @@ import { styles } from './styles';
 
 import { Dot } from '../../Dot';
 
+import { FileThumb } from '../FileThumb';
 import { ImageThumb } from '../ImageThumb';
 
 import { isImage, getFileName } from '../../util/file';
@@ -72,12 +73,10 @@ export const MyMessage: React.FC<Props> = ({
 
       if (!isImage(fileName)) {
         return (
-          <div
-            style={styles.fileView}
-            onClick={() => window.open(attachment.file)}
-          >
-            {getFileName(attachment.file)}
-          </div>
+          <FileThumb
+            attachment={attachment}
+            isLoading={attachment.file === null}
+          />
         );
       }
 

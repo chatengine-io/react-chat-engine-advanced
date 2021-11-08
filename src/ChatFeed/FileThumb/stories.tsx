@@ -2,25 +2,25 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react';
 
-import { ImageThumb } from '.';
+import { FileThumb } from '.';
 
 import { Props } from './props';
 
-import { imageAttachment } from '../../util/mocks';
+import { fileAttachment } from '../../util/mocks';
 
 const meta: Meta = {
-  title: 'ChatFeed/ImageThumb',
-  component: ImageThumb,
+  title: 'ChatFeed/FileThumb',
+  component: FileThumb,
   argTypes: {},
 };
 
 export default meta;
 
-const Template: Story<Props> = (props) => <ImageThumb {...props}></ImageThumb>;
+const Template: Story<Props> = (props) => <FileThumb {...props}></FileThumb>;
 
 export const Default = Template.bind({});
 Default.args = {
-  attachment: imageAttachment,
+  attachment: fileAttachment,
 };
 
 export const Loading = Template.bind({});
