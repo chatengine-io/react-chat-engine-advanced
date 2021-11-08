@@ -5,7 +5,11 @@ import { Meta, Story } from '@storybook/react';
 import { MyMessage } from '.';
 import { Props } from './props';
 
-import { message, messagePlusAttachments } from '../../util/mocks';
+import {
+  message,
+  messagePlusAttachments,
+  chatReadMessage,
+} from '../../util/mocks';
 
 const meta: Meta = {
   title: 'ChatFeed/MyMessage',
@@ -19,7 +23,7 @@ const Template: Story<Props> = (props) => <MyMessage {...props} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  message: message,
+  message: messagePlusAttachments,
 };
 
 export const BetweenMessages = Template.bind({});
@@ -29,7 +33,14 @@ BetweenMessages.args = {
   nextMessage: message,
 };
 
-export const WithAttachments = Template.bind({});
-WithAttachments.args = {
+export const Sending = Template.bind({});
+Sending.args = {
+  isSending: true,
   message: messagePlusAttachments,
+};
+
+export const ReadMessage = Template.bind({});
+ReadMessage.args = {
+  message: message,
+  chat: chatReadMessage,
 };

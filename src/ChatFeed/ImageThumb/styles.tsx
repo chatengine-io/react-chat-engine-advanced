@@ -27,6 +27,7 @@ export const styles = {
     display: 'inline-block',
     objectFit: 'cover',
     borderRadius: '0.3em',
+    padding: '2px',
     marginRight: '2px',
     marginBottom: '4px',
     height: '30vw',

@@ -55,7 +55,7 @@ export const MyMessage: React.FC<Props> = ({
         return (
           <ImageThumb
             attachment={attachment}
-            isLoading={attachment.file === null}
+            isLoading={isSending || attachment.file === null}
           />
         );
       }
@@ -75,7 +75,7 @@ export const MyMessage: React.FC<Props> = ({
         return (
           <FileThumb
             attachment={attachment}
-            isLoading={attachment.file === null}
+            isLoading={isSending || attachment.file === null}
           />
         );
       }

@@ -32,9 +32,41 @@ export const adam = {
   username: 'adam_lamorre',
   first_name: 'Adam',
   last_name: 'La Morre',
-  avatar: '',
+  avatar:
+    'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
   custom_json: '',
   is_online: true,
+};
+
+export const bob = {
+  username: 'bob_baker',
+  first_name: 'Bob',
+  last_name: 'Baker',
+  avatar: null,
+  custom_json: '',
+  is_online: true,
+};
+
+export const chatReadMessage = {
+  id: 201,
+  title: 'First Chat ☝️',
+  is_direct_chat: false,
+  created: '2021-01-28T02:41:48.826706Z',
+  custom_json: {},
+  attachments: [],
+  people: [
+    {
+      last_read: 1000,
+      person: adam,
+      chat_updated: '',
+    },
+    {
+      last_read: 1000,
+      person: bob,
+      chat_updated: '',
+    },
+  ],
+  last_message: message,
 };
 
 export const chats = [
