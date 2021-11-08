@@ -2,7 +2,7 @@ import React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Default as Thing } from './stories';
 
-import { message } from '../util/mocks';
+import { message } from '../../util/mocks';
 
 describe('Thing', () => {
   it('renders without crashing', () => {
