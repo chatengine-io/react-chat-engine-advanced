@@ -2,12 +2,12 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
 
 import { FileOutlined } from '@ant-design/icons';
 
-import { FileThumb } from '.';
+import { ImageThumb } from '.';
 import { Props } from './props';
 
-import { fileAttachment } from '../../util/mocks';
+import { imageAttachment } from '../../util/mocks';
 
-<Meta title="ChatFeed/FileThumb" component={FileThumb} />
+<Meta title="ChatFeed/ImageThumb" component={ImageThumb} />
 
 export const Template = ({
   children,
@@ -16,29 +16,29 @@ export const Template = ({
   style,
   loadingStyle,
 }) => (
-  <FileThumb
+  <ImageThumb
     attachment={attachment}
     isLoading={isLoading}
     style={style}
     loadingStyle={loadingStyle}
   >
     {children}
-  </FileThumb>
+  </ImageThumb>
 );
 
 # File Thumb
 
-File Thumbs are used to display a file, which isn't an image, and was sent by a user.
+Image Thumbs are used to display an Image, and was sent by a user.
 
-A File Thumb will display the file's name, and will open the file in another tab once clicked.
+An Image Thumb will display a cropped version of the image, and will expand in another tab once clicked.
 
-The component requires an `attachment` prop to display the correct file info.
+The component requires an `attachment` prop to display the correct image / info.
 
 The component takes optional `isLoading`, `children`, `style`, and `loadingStyle` props.
 
 ## Default
 
-<Story name="Default" args={{ attachment: fileAttachment }}>
+<Story name="Default" args={{ attachment: imageAttachment }}>
   {Template.bind({})}
 </Story>
 
@@ -53,7 +53,7 @@ This is used when a message is sending and has not delivered yet.
 <Canvas>
   <Story
     name="Is Loading"
-    args={{ attachment: fileAttachment, isLoading: true }}
+    args={{ attachment: imageAttachment, isLoading: true }}
   >
     {Template.bind({})}
   </Story>
@@ -61,16 +61,17 @@ This is used when a message is sending and has not delivered yet.
 
 ## Children
 
-You can put child props within the `<FileThumb>` component. This lets you customize what is in a file thumb's body.
+You can put child props within the `<ImageThumb>` component. This lets you customize what is in an image thumb's body.
 
 <Canvas>
   <Story
     name="Children"
     args={{
-      attachment: fileAttachment,
+      attachment: imageAttachment,
+      isLoading: true,
       children: (
-        <div>
-          <FileOutlined /> Custom Text and Icon
+        <div style={{ color: 'black', padding: '12px' }}>
+          <FileOutlined /> Custom Text
         </div>
       ),
     }}
@@ -81,17 +82,16 @@ You can put child props within the `<FileThumb>` component. This lets you custom
 
 ## Custom Style
 
-You can customize the CSS style of a file component too.
+You can customize the CSS style of an image thumb component too.
 
 <Canvas>
   <Story
     name="Custom Style"
     args={{
-      attachment: fileAttachment,
+      attachment: imageAttachment,
       style: {
         backgroundColor: 'rgb(74, 81, 98)',
         border: 'none',
-        color: 'white',
       },
       loadingStyle: {
         backgroundColor: 'rgb(74, 81, 98)',
