@@ -3,7 +3,14 @@ import React, { useState } from 'react';
 import { Props } from './props';
 import { styles } from './styles';
 
+import { Dot } from '../../Dot';
 import { Avatar } from '../../Avatar';
+
+import { FileThumb } from '../FileThumb';
+import { ImageThumb } from '../ImageThumb';
+
+import { isImage, getFileName } from '../../util/file';
+import { formatTime, getDateTime } from '../../util/dateTime';
 
 import { Row, Col, setConfiguration } from 'react-grid-system';
 
@@ -13,8 +20,8 @@ export const TheirMessage: React.FC<Props> = ({
   lastMessage = null,
   message,
   nextMessage = null,
-  // chat = null,
-  // isSending = false,
+  chat = null,
+  isSending = false,
 }) => {
   const [hovered, setHovered] = useState<boolean>(false);
   console.log('hovered', hovered);
@@ -38,6 +45,61 @@ export const TheirMessage: React.FC<Props> = ({
     message.text !== null
       ? message.text.replace(/<a /g, `<a style="color: 'white';" `)
       : '';
+
+  const renderImages = () => {
+    const attachments =
+      message && message.attachments ? message.attachments : [];
+
+    return attachments.map((attachment, index) => {
+      const fileName = getFileName(attachment.file);
+
+      if (isImage(fileName)) {
+        return (
+          <ImageThumb
+            attachment={attachment}
+            isLoading={isSending || attachment.file === null}
+          />
+        );
+      }
+
+      return <div key={`attachment${index}`} />;
+    });
+  };
+
+  const renderFiles = () => {
+    const attachments =
+      message && message.attachments ? message.attachments : [];
+
+    return attachments.map((attachment, index) => {
+      const fileName = getFileName(attachment.file);
+
+      if (!isImage(fileName)) {
+        return (
+          <FileThumb
+            attachment={attachment}
+            isLoading={isSending || attachment.file === null}
+          />
+        );
+      }
+
+      return <div key={`attachment${index}`} />;
+    });
+  };
+
+  const renderReads = () => {
+    const members = chat !== null ? chat.people : [];
+    return members.map((chatPerson, index) => {
+      return (
+        <Dot
+          key={`read_${index}`}
+          avatarUrl={chatPerson.person.avatar}
+          username={chatPerson.person.username}
+          visible={message.id === chatPerson.last_read}
+          style={{ float: 'left', marginLeft: '4px' }}
+        />
+      );
+    });
+  };
 
   return (
     <div
@@ -64,6 +126,20 @@ export const TheirMessage: React.FC<Props> = ({
             )}
           </div>
 
+          <div
+            style={{ display: 'auto', paddingLeft: '50px' }}
+            className="ce-their-message-attachments-container ce-their-message-images-container"
+          >
+            {renderImages()}
+          </div>
+
+          <div
+            style={{ display: 'auto', paddingLeft: '50px' }}
+            className="ce-their-message-attachments-container ce-their-message-files-container"
+          >
+            {renderFiles()}
+          </div>
+
           {message.text !== null && (
             <div style={{ paddingLeft: '48px' }}>
               <div
@@ -80,6 +156,25 @@ export const TheirMessage: React.FC<Props> = ({
               </div>
             </div>
           )}
+
+          <span
+            className="ce-message-timestamp ce-their-message-timestamp"
+            style={{
+              ...styles.timeTag,
+              ...{ opacity: hovered ? '1' : '0' },
+            }}
+          >
+            {formatTime(getDateTime(message.created, 0) as Date)}
+          </span>
+        </Col>
+
+        {/* Col is 9 to not slipp into RHS */}
+        <Col
+          xs={9}
+          style={{ marginLeft: '48px' }}
+          className="ce-reads-row ce-their-reads-row"
+        >
+          {renderReads()}
         </Col>
       </Row>
     </div>

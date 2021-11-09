@@ -26,9 +26,10 @@ export const styles = {
   },
   timeTag: {
     position: 'relative',
-    top: 'calc(50% - 12px)',
+    top: '12px',
     left: '8px',
     fontSize: '14px',
+    fontFamily: 'Avenir',
     color: 'rgba(0, 0, 0, 0.4)',
     // CSS Transitions
     transition: 'all .15s ease',
