@@ -7,9 +7,9 @@ export const Input = ({
   autoFocus = false,
   label = '',
   style = {},
-  onChange,
-  onFocus,
-  onBlur,
+  onChange = () => {},
+  onFocus = () => {},
+  onBlur = () => {},
   defaultValue = undefined,
   value = undefined,
 }: Props) => {
