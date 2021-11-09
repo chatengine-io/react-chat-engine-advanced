@@ -1,0 +1,78 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
+
+import { Input } from '.';
+import { Props } from './props';
+
+<Meta title='Input' component={Input} />
+
+export const Template = (args) => (
+  <Input {...args} />
+);
+
+# Input
+
+The `Input` component is where the user can add text to their message.
+
+## Default
+
+<Story name='Default' args={{}}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story='Default' />
+
+## Functions
+
+Pass in an `onChange` function to perform an action whenever the `value` of the component changes.
+
+Use the `onFocus` function to perform an action when the user selects the input bar.
+
+The `onBlur` function is used to perform an action when the user clicks out of the input bar.
+
+## Label
+
+Add a label using the `label` argument.
+
+<Canvas>
+  <Story name='Label' args={{ label: 'Send a message...' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Default Value
+
+Get the user started using the `defaultValue` argument.
+
+<Canvas>
+  <Story name='DefaultValue' args={{ defaultValue: 'Hello, world!' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Set Value
+
+You can also set the `value` by passing it directly into the props.
+
+<Canvas>
+  <Story name='SetValue' args={{ value: 'Set value directly here' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Styling
+
+Pass in a `style` object to make it your own.
+
+<Canvas>
+  <Story name='Styling' args={{ 
+    label: 'Send a message...', style:{
+      borderRadius: '12px',
+      border: '4px solid #3148a3',
+      padding: '18px',
+      fontFamily: 'helvetica',
+      backgroundColor: '#9fe7ed'
+    }}}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

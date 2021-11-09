@@ -7,11 +7,11 @@ export const Input = ({
   autoFocus = false,
   label = '',
   style = {},
-  onChange,
-  onFocus,
-  onBlur,
-  defaultValue = undefined,
-  value = undefined,
+  onChange = () => {},
+  onFocus = () => {},
+  onBlur = () => {},
+  defaultValue,
+  value,
 }: Props) => {
   const didMountRef = useRef<boolean>(false);
   const [currentValue, setCurrentValue] = useState<string>('');
