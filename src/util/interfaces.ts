@@ -19,7 +19,7 @@ export interface MessageProps {
   created: string;
   attachments: Array<AttachmentProps>;
   custom_json: object | string;
-  sender: PersonProps; // TODO make this required
+  sender?: PersonProps; // Empty messages have no sender
 }
 
 export interface ChatPersonProps {
