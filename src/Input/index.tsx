@@ -10,8 +10,8 @@ export const Input = ({
   onChange = () => {},
   onFocus = () => {},
   onBlur = () => {},
-  defaultValue = undefined,
-  value = undefined,
+  defaultValue,
+  value,
 }: Props) => {
   const didMountRef = useRef<boolean>(false);
   const [currentValue, setCurrentValue] = useState<string>('');
