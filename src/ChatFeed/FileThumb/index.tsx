@@ -7,8 +7,8 @@ import { styles } from './styles';
 
 export const FileThumb: React.FC<Props> = ({
   attachment,
+  children,
   isLoading = false,
-  children = 'Loading...',
   style = {},
   loadingStyle = {},
 }) => {
@@ -25,7 +25,7 @@ export const FileThumb: React.FC<Props> = ({
   if (isLoading || !attachment) {
     return (
       <div style={{ ...styles.loadingContainer, ...loadingStyle }}>
-        {children}
+        {children ? children : 'Loading...'}
       </div>
     );
   }
@@ -40,7 +40,7 @@ export const FileThumb: React.FC<Props> = ({
       onMouseLeave={() => setHovered(false)}
       onClick={() => window.open(attachment.file)}
     >
-      {getFileName(attachment.file)}
+      {children ? children : getFileName(attachment.file)}
     </div>
   );
 };

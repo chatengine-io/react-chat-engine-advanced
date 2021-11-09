@@ -5,8 +5,8 @@ import { styles } from './styles';
 
 export const ImageThumb: React.FC<Props> = ({
   attachment,
+  children,
   isLoading = false,
-  children = 'Loading...',
   style = {},
   loadingStyle = {},
 }) => {
@@ -20,7 +20,7 @@ export const ImageThumb: React.FC<Props> = ({
   if (isLoading || !attachment) {
     return (
       <div style={{ ...styles.loadingContainer, ...loadingStyle }}>
-        {children}
+        {children ? children : 'Loading...'}
       </div>
     );
   }
