@@ -1,3 +1,21 @@
+export const adam = {
+  username: 'adam_lamorre',
+  first_name: 'Adam',
+  last_name: 'La Morre',
+  avatar:
+    'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+  custom_json: '',
+  is_online: true,
+};
+
+export const bob = {
+  username: 'bob_baker',
+  first_name: 'Bob',
+  last_name: 'Baker',
+  avatar: null,
+  custom_json: '',
+  is_online: true,
+};
 export const imageAttachment = {
   id: 10,
   file: 'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
@@ -17,6 +35,7 @@ export const message = {
   sender_username: 'Adam_La_Morre',
   text: '<p>Hello there world!</p>',
   custom_json: '',
+  sender: adam,
 };
 
 export const messagePlusAttachments = {
@@ -26,25 +45,7 @@ export const messagePlusAttachments = {
   sender_username: 'Adam_La_Morre',
   text: '<p>Hey check out this image and MP3 file!</p>',
   custom_json: '',
-};
-
-export const adam = {
-  username: 'adam_lamorre',
-  first_name: 'Adam',
-  last_name: 'La Morre',
-  avatar:
-    'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
-  custom_json: '',
-  is_online: true,
-};
-
-export const bob = {
-  username: 'bob_baker',
-  first_name: 'Bob',
-  last_name: 'Baker',
-  avatar: null,
-  custom_json: '',
-  is_online: true,
+  sender: adam,
 };
 
 export const chatReadMessage = {
@@ -67,6 +68,7 @@ export const chatReadMessage = {
     },
   ],
   last_message: message,
+  sender: adam,
 };
 
 export const chats = [
