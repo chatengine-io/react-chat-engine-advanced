@@ -16,13 +16,13 @@ export const Dot = ({
       className="ce-avatar-dot"
       style={{
         ...styles.default,
-        ...style,
         ...{
           backgroundColor: avatarUrl ? 'white' : color,
           backgroundImage: avatarUrl ? `url(${avatarUrl})` : '',
           width: visible ? '13px' : '0px',
           height: visible ? '13px' : '0px',
         },
+        ...style,
       }}
     />
   );
