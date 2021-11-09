@@ -3,14 +3,6 @@ export interface AttachmentProps {
   file: string;
   created: string;
 }
-export interface MessageProps {
-  id?: number;
-  text: string | null;
-  sender_username: string;
-  created: string;
-  attachments: Array<AttachmentProps>;
-  custom_json: object | string;
-}
 
 export interface PersonProps {
   username: string;
@@ -19,6 +11,15 @@ export interface PersonProps {
   avatar: string | null;
   custom_json: string | object | null;
   is_online: boolean;
+}
+export interface MessageProps {
+  id?: number;
+  text: string | null;
+  sender_username: string;
+  created: string;
+  attachments: Array<AttachmentProps>;
+  custom_json: object | string;
+  sender?: PersonProps; // Empty messages have no sender
 }
 
 export interface ChatPersonProps {
