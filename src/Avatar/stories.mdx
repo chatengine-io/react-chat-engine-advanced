@@ -1,0 +1,88 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+
+import { Avatar } from '.';
+import { Props } from './props';
+
+<Meta title="Avatar" component={Avatar} />
+
+export const Template = (args) => <Avatar {...args} />;
+
+# Avatar
+
+The Avatar visually represents a user.
+
+Avatars's can also display a user's online status.
+
+You can customize the look and feel with the `avatarUrl`, `username`, `showOnline`, and `isOnline` props.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    avatarUrl:
+      'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Show Online
+
+When you set `showOnline` to `true`, then you can see the user's online status.
+
+There will be a red dot if the user is offline, and a green dot if the user is online.
+
+<Canvas>
+  <Story
+    name="Is Online"
+    args={{
+      avatarUrl:
+        'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+      showOnline: true,
+      isOnline: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## No Avatar Url
+
+When you do not have an `avatarUrl` value, you can set a `username` value instead.
+
+The component displays the first 2 letters of `username` and assigns a randomly unique colour.
+
+<Canvas>
+  <Story
+    name="No Avatar Url"
+    args={{
+      username: 'Dylan',
+      showOnline: true,
+      isOnline: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+You can also use the `style` component to overlay custom CSS onto the `Avatar` component.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      username: 'Dylan',
+      style: {
+        backgroundImage: 'linear-gradient(#f67a36,#ed008c)',
+        borderRadius: '4px',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
