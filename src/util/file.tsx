@@ -13,3 +13,7 @@ export const getFileName = (fileUrl: string) => {
   const nameAndHash = slashSplit[slashSplit.length - 1];
   return nameAndHash.split('?')[0];
 };
+
+export const isImageFromFilePath = (fileUrl: string) => {
+  return isImage(getFileName(fileUrl));
+};

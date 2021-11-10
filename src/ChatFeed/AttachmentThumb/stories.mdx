@@ -1,0 +1,164 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+
+import { fileAttachment, imageAttachment } from '../../util/mocks';
+
+import { AttachmentThumb } from '.';
+
+<Meta title="ChatFeed/AttachmentThumb" component={AttachmentThumb} />
+
+export const Template = ({
+  children,
+  isLoading,
+  attachment,
+  style,
+  loadingStyle,
+}) => (
+  <AttachmentThumb
+    attachment={attachment}
+    isLoading={isLoading}
+    style={style}
+    loadingStyle={loadingStyle}
+  >
+    {children}
+  </AttachmentThumb>
+);
+
+# AttachmentThumb
+
+This is a generic attachment thumbnail component.
+
+## Default File
+
+<Story name="DefaultFile" args={{ attachment: fileAttachment }}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="DefaultFile" />
+
+## Default Image
+
+<Story name="DefaultImage" args={{ attachment: imageAttachment }}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="DefaultImage" />
+
+## File Is Loading
+
+You can set the `isLoading` prop to `true` and the message will appear to be loading/processing the file.
+
+This is used when a message is sending and has not delivered yet.
+
+<Canvas>
+  <Story
+    name="Is Loading"
+    args={{ attachment: fileAttachment, isLoading: true }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## File Children
+
+You can put child props within the `<FileThumb>` component. This lets you customize what is in a file thumb's body.
+
+<Canvas>
+  <Story
+    name="File Children"
+    args={{
+      attachment: fileAttachment,
+      children: (
+        <div>
+          <FileOutlined /> Custom Text and Icon
+        </div>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## File Custom Style
+
+You can customize the CSS style of a file component too.
+
+<Canvas>
+  <Story
+    name="File Custom Style"
+    args={{
+      attachment: fileAttachment,
+      style: {
+        backgroundColor: 'rgb(74, 81, 98)',
+        border: 'none',
+        color: 'white',
+      },
+      loadingStyle: {
+        backgroundColor: 'rgb(74, 81, 98)',
+        border: 'none',
+        color: 'white',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Image Is Loading
+
+You can set the `isLoading` prop to `true` and the message will appear to be loading/processing the file.
+
+This is used when a message is sending and has not delivered yet.
+
+<Canvas>
+  <Story
+    name="Image Is Loading"
+    args={{ attachment: imageAttachment, isLoading: true }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Image Children
+
+You can put child props within the `<ImageThumb>` component. This lets you customize what is in an image thumb's body.
+
+<Canvas>
+  <Story
+    name="Image Children"
+    args={{
+      attachment: imageAttachment,
+      isLoading: true,
+      children: (
+        <div style={{ color: 'black', padding: '12px' }}>
+          <FileOutlined /> Custom Text
+        </div>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Image Custom Style
+
+You can customize the CSS style of an image thumb component too.
+
+<Canvas>
+  <Story
+    name="Image Custom Style"
+    args={{
+      attachment: imageAttachment,
+      style: {
+        backgroundColor: 'rgb(74, 81, 98)',
+        border: 'none',
+      },
+      loadingStyle: {
+        backgroundColor: 'rgb(74, 81, 98)',
+        border: 'none',
+        color: 'white',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
