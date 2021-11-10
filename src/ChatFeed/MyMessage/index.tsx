@@ -5,8 +5,7 @@ import { styles } from './styles';
 
 import { Dot } from '../../Dot';
 
-import { FileThumb } from '../FileThumb';
-import { ImageThumb } from '../ImageThumb';
+import { Attachment } from '../Attachment';
 
 import { isImage, getFileName } from '../../util/file';
 import { formatTime, getDateTime } from '../../util/dateTime';
@@ -53,7 +52,7 @@ export const MyMessage: React.FC<Props> = ({
 
       if (isImage(fileName)) {
         return (
-          <ImageThumb
+          <Attachment
             attachment={attachment}
             isLoading={isSending || attachment.file === null}
           />
@@ -73,7 +72,7 @@ export const MyMessage: React.FC<Props> = ({
 
       if (!isImage(fileName)) {
         return (
-          <FileThumb
+          <Attachment
             attachment={attachment}
             isLoading={isSending || attachment.file === null}
           />
