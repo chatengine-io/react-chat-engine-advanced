@@ -1,6 +1,4 @@
 export const getDateTime = (date: string, offset = 0) => {
-  if (!date) return '';
-
   date = date.replace(' ', 'T');
   offset = offset ? offset : 0;
 
@@ -19,4 +17,8 @@ export const getDateTime = (date: string, offset = 0) => {
 export function formatTime(dateTime: Date) {
   var time = dateTime.toLocaleString('en-US');
   return time.split(' ')[1].slice(0, -3) + ' ' + time.slice(-2);
+}
+
+export function formatDateTime(dateTime: Date) {
+  return dateTime.toLocaleString('en-US')
 }
