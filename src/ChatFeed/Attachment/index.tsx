@@ -34,14 +34,10 @@ export const Attachment: React.FC<Props> = ({
   }
 
   return (
-    <div
-      onClick={() => window.open(attachment.file)}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <div>
       {isImage
-        ? renderImage(attachment, thumbStyle)
-        : renderFile(attachment, children, thumbStyle)}
+        ? renderImage(attachment, thumbStyle, setHovered)
+        : renderFile(attachment, children, thumbStyle, setHovered)}
     </div>
   );
 };
@@ -49,15 +45,34 @@ export const Attachment: React.FC<Props> = ({
 const renderFile = (
   attachment: AttachmentProps,
   children: ReactNode,
-  style: any
+  style: any,
+  setHovered: (value: React.SetStateAction<boolean>) => void
 ) => {
   return (
-    <div style={style}>
+    <div
+      style={style}
+      onClick={() => window.open(attachment.file)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       {children ? children : getFileName(attachment.file)}
     </div>
   );
 };
 
-const renderImage = (attachment: AttachmentProps, style: any) => {
-  return <img src={attachment.file} alt={'thumb-nail'} style={style} />;
+const renderImage = (
+  attachment: AttachmentProps,
+  style: any,
+  setHovered: (value: React.SetStateAction<boolean>) => void
+) => {
+  return (
+    <img
+      src={attachment.file}
+      alt={'thumb-nail'}
+      style={style}
+      onClick={() => window.open(attachment.file)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    />
+  );
 };

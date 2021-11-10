@@ -7,42 +7,35 @@ export interface AttachmentStyle {
   notHovered: Properties;
 }
 
+const imageBaseStyles = {
+  cursor: 'pointer',
+  height: '30vw',
+  width: '30vw',
+  maxHeight: '200px',
+  maxWidth: '200px',
+  minHeight: '100px',
+  minWidth: '100px',
+  padding: '2px',
+  textAlign: 'right',
+  objectFit: 'cover',
+  borderRadius: '0.3em',
+};
+
 export const imageStyles: AttachmentStyle = {
   thumb: {
-    cursor: 'pointer',
-    textAlign: 'right',
-    display: 'inline',
-    objectFit: 'cover',
-    borderRadius: '0.3em',
-    padding: '2px',
-    // Size
-    height: '30vw',
-    width: '30vw',
-    maxHeight: '200px',
-    maxWidth: '200px',
-    minHeight: '100px',
-    minWidth: '100px',
+    ...imageBaseStyles,
+    display: 'inline',    
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
   } as Properties,
   loading: {
+    ...imageBaseStyles,
     fontFamily: 'Avenir',
     color: 'white',
-    cursor: 'pointer',
-    textAlign: 'right',
     display: 'inline-block',
-    objectFit: 'cover',
-    borderRadius: '0.3em',
-    padding: '2px',
     marginRight: '2px',
     marginBottom: '4px',
-    height: '30vw',
-    width: '30vw',
-    maxHeight: '200px',
-    maxWidth: '200px',
-    minHeight: '100px',
-    minWidth: '100px',
     backgroundColor: '#d9d9d9',
   } as Properties,
   hovered: {
@@ -53,28 +46,27 @@ export const imageStyles: AttachmentStyle = {
   } as Properties
 }
 
+const fileBaseStlyes = {
+  fontFamily: 'Avenir',
+  padding: '12px',
+  borderRadius: '14px',
+  display: 'inline-block',
+  marginRight: '2px',
+  marginBottom: '4px',
+}
+
 export const fileStyles: AttachmentStyle = {
   thumb: {
-    fontFamily: 'Avenir',
-    padding: '12px',
-    borderRadius: '14px',
-    display: 'inline-block',
-    marginBottom: '4px',
-    marginRight: '2px',
+    ...fileBaseStlyes,
     cursor: 'pointer',
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
   } as Properties,
   loading: {
-    fontFamily: 'Avenir',
+    ...fileBaseStlyes,
     color: 'white',
-    padding: '13px',
-    display: 'inline-block',
-    borderRadius: '14px',
-    marginRight: '2px',
     width: '136px',
-    marginBottom: '4px',
     marginLeft: '4px',
     backgroundColor: '#d9d9d9',
   } as Properties,
