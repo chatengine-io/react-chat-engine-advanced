@@ -12,7 +12,7 @@ import {
 } from '../../../../util/mocks';
 
 const meta: Meta = {
-  title: 'ChatFeed/Message/TheirMessage',
+  title: 'ChatFeed/OldMessage/TheirMessage',
   component: TheirMessage,
   argTypes: {},
 };

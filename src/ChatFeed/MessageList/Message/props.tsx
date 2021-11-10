@@ -7,4 +7,5 @@ export interface Props {
   chat?: ChatProps | null;
   isSending?: boolean;
   isMyMessage?: boolean;
+  showDateTime?: boolean;
 }

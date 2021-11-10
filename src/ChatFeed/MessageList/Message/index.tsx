@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Props } from './props';
 
+import { DateTime } from './DateTime';
 import { MyMessage } from './MyMessage';
 import { TheirMessage } from './TheirMessage';
 
@@ -12,9 +13,12 @@ export const Message: React.FC<Props> = ({
   chat = null,
   isSending = false,
   isMyMessage = false,
+  showDateTime = false,
 }) => {
   return (
     <div>
+      {showDateTime && <DateTime created={message.created} />}
+
       {isMyMessage ? (
         <MyMessage
           lastMessage={lastMessage}
