@@ -3,7 +3,7 @@ import React from 'react';
 import { Props } from './props';
 import { styles } from './styles';
 
-import { formatDateTime, getDateTime } from '../../util/dateTime';
+import { formatDateTime, getDateTime } from '../../../util/dateTime';
 
 export const DateTime: React.FC<Props> = ({
   created,

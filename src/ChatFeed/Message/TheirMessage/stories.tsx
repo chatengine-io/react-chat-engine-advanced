@@ -2,24 +2,24 @@ import React from 'react';
 
 import { Meta, Story } from '@storybook/react';
 
-import { MyMessage } from '.';
+import { TheirMessage } from '.';
 import { Props } from './props';
 
 import {
   message,
   messagePlusAttachments,
   chatReadMessage,
-} from '../../util/mocks';
+} from '../../../util/mocks';
 
 const meta: Meta = {
-  title: 'ChatFeed/MyMessage',
-  component: MyMessage,
+  title: 'ChatFeed/Message/TheirMessage',
+  component: TheirMessage,
   argTypes: {},
 };
 
 export default meta;
 
-const Template: Story<Props> = (props) => <MyMessage {...props} />;
+const Template: Story<Props> = (props) => <TheirMessage {...props} />;
 
 export const Default = Template.bind({});
 Default.args = {

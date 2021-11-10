@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 
 import { FileThumb as Thing } from '.';
 
-import { fileAttachment } from '../../util/mocks';
+import { fileAttachment } from '../../../util/mocks';
 
 describe('Thing', () => {
   it('renders without crashing', () => {

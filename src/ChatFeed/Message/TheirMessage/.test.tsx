@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 
 import { TheirMessage as Thing } from '.';
 
-import { message } from '../../util/mocks';
+import { message } from '../../../util/mocks';
 
 describe('Thing', () => {
   it('renders without crashing', () => {

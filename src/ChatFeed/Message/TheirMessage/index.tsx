@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { Props } from './props';
 import { styles } from './styles';
 
-import { Dot } from '../../Dot';
-import { Avatar } from '../../Avatar';
+import { Dot } from '../../../Dot';
+import { Avatar } from '../../../Avatar';
 
 import { FileThumb } from '../FileThumb';
 import { ImageThumb } from '../ImageThumb';
 
-import { isImage, getFileName } from '../../util/file';
-import { formatTime, getDateTime } from '../../util/dateTime';
+import { isImage, getFileName } from '../../../util/file';
+import { formatTime, getDateTime } from '../../../util/dateTime';
 
 import { Row, Col, setConfiguration } from 'react-grid-system';
 

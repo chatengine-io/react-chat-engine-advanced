@@ -1,7 +1,7 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ImageThumb as Thing } from '.';
-import { imageAttachment } from '../../util/mocks';
+import { imageAttachment } from '../../../util/mocks';
 
 describe('Thing', () => {
   it('renders without crashing', () => {
