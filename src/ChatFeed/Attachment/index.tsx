@@ -6,7 +6,7 @@ import { AttachmentProps } from '../../util/interfaces';
 import { Props } from './props';
 import { AttachmentStyle, imageStyles, fileStyles } from './styles';
 
-export const AttachmentThumb: React.FC<Props> = ({
+export const Attachment: React.FC<Props> = ({
   attachment,
   children,
   isLoading = false,

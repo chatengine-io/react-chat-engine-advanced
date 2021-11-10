@@ -2,9 +2,9 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
 
 import { fileAttachment, imageAttachment } from '../../util/mocks';
 
-import { AttachmentThumb } from '.';
+import { Attachment } from '.';
 
-<Meta title="ChatFeed/AttachmentThumb" component={AttachmentThumb} />
+<Meta title="ChatFeed/Attachment" component={Attachment} />
 
 export const Template = ({
   children,
@@ -13,17 +13,17 @@ export const Template = ({
   style,
   loadingStyle,
 }) => (
-  <AttachmentThumb
+  <Attachment
     attachment={attachment}
     isLoading={isLoading}
     style={style}
     loadingStyle={loadingStyle}
   >
     {children}
-  </AttachmentThumb>
+  </Attachment>
 );
 
-# AttachmentThumb
+# Attachment
 
 This is a generic attachment thumbnail component.
 

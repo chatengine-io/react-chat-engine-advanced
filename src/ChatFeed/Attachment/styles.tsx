@@ -47,10 +47,10 @@ export const imageStyles: AttachmentStyle = {
   } as Properties,
   hovered: {
     border: '1px solid #1890ff',
-  },
+  } as Properties,
   notHovered: {
     border: '1px solid #fff',
-  }
+  } as Properties
 }
 
 export const fileStyles: AttachmentStyle = {
@@ -81,9 +81,9 @@ export const fileStyles: AttachmentStyle = {
   hovered: {
     color: '#1890ff',
     border: '1px solid #1890ff',
-  },
+  } as Properties,
   notHovered: {
     color: '#434343',
     border: '1px solid #434343',
-  }
+  } as Properties
 }
