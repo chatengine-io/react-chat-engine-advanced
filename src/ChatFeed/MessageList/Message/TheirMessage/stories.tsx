@@ -9,7 +9,7 @@ import {
   message,
   messagePlusAttachments,
   chatReadMessage,
-} from '../../../util/mocks';
+} from '../../../../util/mocks';
 
 const meta: Meta = {
   title: 'ChatFeed/Message/TheirMessage',

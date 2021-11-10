@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { getFileName } from '../../../util/file';
+import { getFileName } from '../../../../util/file';
 
 import { Props } from './props';
 import { styles } from './styles';
