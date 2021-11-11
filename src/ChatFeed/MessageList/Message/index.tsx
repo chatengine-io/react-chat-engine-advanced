@@ -25,6 +25,7 @@ export const Message: React.FC<Props> = ({
   isSending = false,
   isMyMessage = false,
   showDateTime = false,
+  style = {},
 }) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
@@ -67,6 +68,7 @@ export const Message: React.FC<Props> = ({
           <Attachment
             attachment={attachment}
             isLoading={isSending || attachment.file === null}
+            style={{ ...styles.image, ...style.image }}
           />
         );
       }
@@ -87,6 +89,7 @@ export const Message: React.FC<Props> = ({
           <Attachment
             attachment={attachment}
             isLoading={isSending || attachment.file === null}
+            style={{ ...styles.file, ...style.file }}
           />
         );
       }
@@ -104,11 +107,7 @@ export const Message: React.FC<Props> = ({
           avatarUrl={chatPerson.person.avatar}
           username={chatPerson.person.username}
           visible={message.id === chatPerson.last_read}
-          style={
-            isMyMessage
-              ? { float: 'right', marginLeft: '4px' }
-              : { float: 'left', marginLeft: '4px' }
-          }
+          style={{ ...styles.dot, ...style.dot }}
         />
       );
     });
@@ -116,36 +115,36 @@ export const Message: React.FC<Props> = ({
 
   return (
     <div>
-      {showDateTime && <DateTime created={message.created} />}
+      {showDateTime && (
+        <DateTime
+          created={message.created}
+          style={{ ...styles.dateTime, ...style.dateTime }}
+        />
+      )}
 
       <div
         className={`
           ce-message-row 
           ce-${isMyMessage ? 'my' : 'their'}-message
         `}
-        style={
-          isMyMessage
-            ? {
-                width: '100%',
-                textAlign: 'right',
-                paddingBottom,
-              }
-            : { width: '100%', paddingBottom }
-        }
+        style={{
+          ...styles.row,
+          ...{ paddingBottom },
+          ...style.row,
+        }}
       >
         {/* Username Test When they Send */}
-        {!isMyMessage &&
-          (lastMessage === null ||
-            lastMessage.sender_username !== message.sender_username) && (
-            <div
-              style={theirStyles.nameText}
-              className={`ce-${isMyMessage ? 'my' : 'their'}-message-sender`}
-            >
-              {message.sender_username}
-            </div>
-          )}
+        {(lastMessage === null ||
+          lastMessage.sender_username !== message.sender_username) && (
+          <div
+            style={{ ...styles.senderText, ...style.senderText }}
+            className={`ce-${isMyMessage ? 'my' : 'their'}-message-sender`}
+          >
+            {message.sender_username}
+          </div>
+        )}
 
-        {/* Username Test When they Send */}
+        {/* Bundle this into .ce-message-row ??? */}
         <Row
           style={{ paddingRight: '2px' }}
           className={`
@@ -162,6 +161,7 @@ export const Message: React.FC<Props> = ({
                   <Avatar
                     showOnline={false}
                     username={message.sender_username}
+                    style={{ ...styles.avatar, ...style.avatar }}
                     avatarUrl={
                       message.sender &&
                       message.sender !== null &&
@@ -208,6 +208,7 @@ export const Message: React.FC<Props> = ({
                     ...styles.message,
                     ...{ borderRadius },
                     ...sendingStyle,
+                    ...style.message,
                   }}
                   onMouseEnter={() => setHovered(true)}
                   onMouseLeave={() => setHovered(false)}
@@ -229,6 +230,7 @@ export const Message: React.FC<Props> = ({
               style={{
                 ...styles.timeTag,
                 ...{ opacity: hovered ? '1' : '0' },
+                ...style.timeTag,
               }}
             >
               {formatTime(getDateTime(message.created, 0) as Date)}

@@ -1,5 +1,7 @@
 import { MessageProps, ChatProps } from '../../../util/interfaces';
 
+import { MessageStyle } from './styles';
+
 export interface Props {
   lastMessage?: MessageProps | null;
   message: MessageProps;
@@ -8,4 +10,5 @@ export interface Props {
   isSending?: boolean;
   isMyMessage?: boolean;
   showDateTime?: boolean;
+  style?: MessageStyle;
 }
