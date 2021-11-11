@@ -8,8 +8,7 @@ import { Avatar } from '../../../Avatar';
 
 import { DateTime } from './DateTime';
 
-import { FileThumb } from './FileThumb';
-import { ImageThumb } from './ImageThumb';
+import { Attachment } from './Attachment';
 
 import { isImage, getFileName } from '../../../util/file';
 import { formatTime, getDateTime } from '../../../util/dateTime';
@@ -64,7 +63,7 @@ export const Message: React.FC<Props> = ({
 
       if (isImage(fileName)) {
         return (
-          <ImageThumb
+          <Attachment
             attachment={attachment}
             isLoading={isSending || attachment.file === null}
           />
@@ -84,7 +83,7 @@ export const Message: React.FC<Props> = ({
 
       if (!isImage(fileName)) {
         return (
-          <FileThumb
+          <Attachment
             attachment={attachment}
             isLoading={isSending || attachment.file === null}
           />

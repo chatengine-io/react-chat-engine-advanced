@@ -1,7 +1,7 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { FileThumb as Thing } from '.';
+import { Attachment as Thing } from '.';
 
 import { fileAttachment } from '../../../../util/mocks';
 
