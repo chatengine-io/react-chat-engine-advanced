@@ -5,21 +5,20 @@ import { styles } from './styles';
 
 export const Avatar = ({
   avatarUrl = undefined,
-  username = undefined,
-  isOnline = undefined,
+  username = '',
+  isOnline = false,
   showOnline = false,
   style = {},
-  onClick = () => {}
+  onClick = () => {},
 }: Props) => {
-
-  const text = username ? username.substring(0, 2).toUpperCase() : ''
-  const color = stringToColor(username)
+  const text = username ? username.substring(0, 2).toUpperCase() : '';
+  const color = stringToColor(username);
 
   return (
     <div style={styles.avatarContainer}>
       <div style={{ height: '0px' }}>
         <div
-          className='ce-avatar'
+          className="ce-avatar"
           onClick={onClick}
           style={{
             ...styles.avatar,
@@ -27,28 +26,24 @@ export const Avatar = ({
               backgroundColor: avatarUrl ? '#FFFFFF' : color,
               backgroundImage: avatarUrl && `url(${avatarUrl})`,
             },
-            ...style
+            ...style,
           }}
         >
-          <div
-            className='ce-avatar-text'
-            style={styles.avatarText}
-          >
+          <div className="ce-avatar-text" style={styles.avatarText}>
             {!avatarUrl && text}
           </div>
         </div>
       </div>
 
-      {
-        showOnline &&
+      {showOnline && (
         <div
-          className='ce-avatar-status'
+          className="ce-avatar-status"
           style={{
             ...styles.status,
-            ...{ backgroundColor: isOnline ? '#52c41a' : '#f5222d' }
+            ...{ backgroundColor: isOnline ? '#52c41a' : '#f5222d' },
           }}
         />
-      }
+      )}
     </div>
-  )
+  );
 };

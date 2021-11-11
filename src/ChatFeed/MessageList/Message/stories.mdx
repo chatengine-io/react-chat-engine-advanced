@@ -1,0 +1,154 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
+
+import { Message } from '.';
+import { Props } from './props';
+
+import {
+  message,
+  messagePlusAttachments,
+  chatReadMessage,
+} from '../../../util/mocks';
+
+<Meta title="ChatFeed/MessageList/Message" component={Message} />
+
+export const Template = (args) => <Message {...args} />;
+
+# Message
+
+The message component represents a message sent by a user.
+
+## Default
+
+<Story name="Default" args={{ message: message }}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Is My Message
+
+You can set the `isMyMessage` prop to `true` and the message will appear to be sent by you.
+
+This involves significantly changing the style and position of the message.
+
+<Canvas>
+  <Story name="Is My Message" args={{ message: message, isMyMessage: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Attachments
+
+If the `message` props has files in its `attachments` field, then files and images will be rendered accordingly.
+
+<Canvas>
+  <Story name="With Attachments" args={{ message: messagePlusAttachments }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Show Date Time
+
+You can set the `showDateTime` prop to `true` and the message will appear under the date-time it was created at.
+
+The date-time value pulls from the `message` prop's `created` value.
+
+<Canvas>
+  <Story name="Show Date Time" args={{ message: message, showDateTime: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Is Sending
+
+You can set the `isSending` prop to `true` and the message will appear to be sending.
+
+This is for messages which have not delivered yet.
+
+This should only be set when `isMyMessage` is `true`. This is because non-delivered messages are only visible to you, inherently.
+
+<Canvas>
+  <Story
+    name="Is Sending"
+    args={{
+      message: messagePlusAttachments,
+      isSending: true,
+      isMyMessage: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Between Messages
+
+When you put a message between two others with `lastMessage` and `nextMessage` props, then you get sharper borders on the outside.
+
+<Canvas>
+  <Story
+    name="Between Messages"
+    args={{
+      lastMessage: message,
+      message: message,
+      nextMessage: message,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Read Message
+
+If you pass in the optional `chat` prop and the `people` attribute shows users have read this message, dots will appear accordingly.
+
+<Canvas>
+  <Story
+    name="Read Message"
+    args={{
+      message: message,
+      chat: chatReadMessage,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+You can use the `style` prop, which has a `MessageStyle` interface, to customize every aspect of the message CSS.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      message: messagePlusAttachments,
+      chat: chatReadMessage,
+      style: {
+        avatar: { borderRadius: '4px' },
+        senderText: { color: 'rgb(74, 81, 98)' },
+        dot: { borderRadius: '1px', position: 'relative', top: '3px' },
+        file: {
+          backgroundColor: 'rgb(74, 81, 98)',
+          borderRadius: '4px',
+          color: 'white',
+          border: 'none',
+        },
+        image: {
+          backgroundColor: 'rgb(74, 81, 98)',
+          borderRadius: '4px',
+          color: 'white',
+          border: 'none',
+        },
+        message: {
+          backgroundColor: 'rgb(74, 81, 98)',
+          borderRadius: '4px',
+          color: 'white',
+          border: 'none',
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
