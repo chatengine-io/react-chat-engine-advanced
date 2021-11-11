@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import { Props } from './props';
+
 import { styles } from './styles';
 
-export const ChatLoader: React.FC<Props> = ({
-  onVisible = () => {},
+export const RenderTrigger: React.FC<Props> = ({
+  onShow,
+  onHide,
   style = {},
   children = 'Loading...',
 }) => {
@@ -14,7 +16,9 @@ export const ChatLoader: React.FC<Props> = ({
     const observer = new IntersectionObserver(([entry]) => {
       setIntersecting(entry.isIntersecting);
       if (entry.isIntersecting) {
-        onVisible && onVisible();
+        onShow && onShow();
+      } else {
+        onHide && onHide();
       }
     });
 
@@ -32,7 +36,7 @@ export const ChatLoader: React.FC<Props> = ({
   return (
     <div
       ref={ref}
-      style={{ ...styles.chatLoader, ...style }}
+      style={{ ...styles.renderTrigger, ...style }}
       className="ce-chat-loader"
     >
       {children}

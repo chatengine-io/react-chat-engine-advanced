@@ -5,7 +5,8 @@ import { styles } from './styles';
 
 import { ChatForm } from './ChatForm';
 import { ChatCard } from './ChatCard';
-import { ChatLoader } from './ChatLoader';
+
+import { RenderTrigger } from '../RenderTrigger';
 
 import { ChatProps } from '../util/interfaces';
 import { getDateTime } from '../util/dateTime';
@@ -73,7 +74,9 @@ export const ChatList: React.FC<Props> = ({
 
       {isLoading ? renderLoading() : renderChats(chats)}
 
-      {hasMoreChats && <ChatLoader onVisible={onChatLoaderVisible} />}
+      {hasMoreChats && (
+        <RenderTrigger onShow={onChatLoaderVisible} style={styles.chatLoader} />
+      )}
     </div>
   );
 };
