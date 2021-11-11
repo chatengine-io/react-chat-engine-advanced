@@ -43,16 +43,17 @@ export const Message: React.FC<Props> = ({
     !nextMessage || nextMessage.sender_username !== message.sender_username
       ? '12px'
       : '2px';
-  const text: string =
-    message.text !== null
-      ? message.text.replace(/<a /g, `<a style="color: 'white';" `)
-      : '';
   const styles = isMyMessage ? myStyles : theirStyles;
   const sendingStyle = isSending
     ? {
         backgroundColor: isSending ? '#40a9ff' : 'rgb(24, 144, 255)',
       }
     : {};
+
+  const text: string =
+    message.text !== null
+      ? message.text.replace(/<a /g, `<a style="color: 'white';" `)
+      : '';
 
   const renderImages = () => {
     const attachments =
@@ -118,9 +119,10 @@ export const Message: React.FC<Props> = ({
       {showDateTime && <DateTime created={message.created} />}
 
       <div
-        className={`ce-message-row ${
-          isMyMessage ? 'ce-my-message' : 'ce-their-message'
-        }`}
+        className={`
+          ce-message-row 
+          ce-${isMyMessage ? 'my' : 'their'}-message
+        `}
         style={
           isMyMessage
             ? {
@@ -137,7 +139,7 @@ export const Message: React.FC<Props> = ({
             lastMessage.sender_username !== message.sender_username) && (
             <div
               style={theirStyles.nameText}
-              className="ce-their-message-sender"
+              className={`ce-${isMyMessage ? 'my' : 'their'}-message-sender`}
             >
               {message.sender_username}
             </div>
@@ -146,23 +148,27 @@ export const Message: React.FC<Props> = ({
         {/* Username Test When they Send */}
         <Row
           style={{ paddingRight: '2px' }}
-          className={`ce-message-bubble-row ${
-            isMyMessage ? 'ce-my-message-bubble-row' : 'ce-their-message-row'
-          }`}
+          className={`
+            ce-message-bubble-row 
+            ce-${isMyMessage ? 'my' : 'their'}-message-bubble-row
+          `}
         >
           <Col xs={12} sm={12} md={12} style={{ display: 'inline-block' }}>
             {/* Sender Avatar when They Send */}
             {!isMyMessage && (
-              <div
-                style={{ height: '0px' }}
-                className="ce-their-message-avatar"
-              >
+              <div style={{ height: '0px' }}>
                 {(!nextMessage ||
                   nextMessage.sender_username !== message.sender_username) && (
                   <Avatar
                     showOnline={false}
                     username={message.sender_username}
-                    avatarUrl="https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png"
+                    avatarUrl={
+                      message.sender &&
+                      message.sender !== null &&
+                      message.sender.avatar !== null
+                        ? message.sender.avatar
+                        : undefined
+                    }
                   />
                 )}
               </div>
@@ -171,7 +177,10 @@ export const Message: React.FC<Props> = ({
             {/* Images */}
             <div
               style={{ display: 'auto', paddingLeft: '50px' }}
-              className="ce-their-message-attachments-container ce-their-message-images-container"
+              className={`
+                ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
+                ce-${isMyMessage ? 'my' : 'their'}-message-images
+              `}
             >
               {renderImages()}
             </div>
@@ -179,7 +188,10 @@ export const Message: React.FC<Props> = ({
             {/* Files */}
             <div
               style={{ display: 'auto', paddingLeft: '50px' }}
-              className="ce-their-message-attachments-container ce-their-message-files-container"
+              className={`
+                ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
+                ce-${isMyMessage ? 'my' : 'their'}-message-files
+              `}
             >
               {renderFiles()}
             </div>
@@ -210,7 +222,10 @@ export const Message: React.FC<Props> = ({
             )}
 
             <span
-              className="ce-message-timestamp ce-their-message-timestamp"
+              className={`
+                ce-message-timestamp 
+                ce-${isMyMessage ? 'my' : 'their'}-message-timestamp
+              `}
               style={{
                 ...styles.timeTag,
                 ...{ opacity: hovered ? '1' : '0' },
@@ -223,7 +238,10 @@ export const Message: React.FC<Props> = ({
           <Col
             xs={12}
             style={isMyMessage ? {} : { marginLeft: '48px' }}
-            className="ce-reads-row ce-their-reads-row"
+            className={`
+              ce-reads-row
+              ce-${isMyMessage ? 'my' : 'their'}-reads-row
+            `}
           >
             {renderReads()}
           </Col>
