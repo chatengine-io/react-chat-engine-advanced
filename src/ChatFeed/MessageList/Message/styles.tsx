@@ -53,7 +53,7 @@ export const theirStyles: MessageStyle = {
     WebkitTransition: 'all .15s ease',
     MozTransition: 'all .15s ease',
   } as Properties,
-  dot: { float: 'right', marginLeft: '4px' } as Properties,
+  dot: { float: 'left', marginLeft: '4px' } as Properties,
 };
 
 export const myStyles = {
@@ -98,5 +98,5 @@ export const myStyles = {
     WebkitTransition: 'all .15s ease',
     MozTransition: 'all .15s ease',
   } as Properties,
-  dot: { float: 'left', marginLeft: '4px' } as Properties,
+  dot: { float: 'right', marginLeft: '4px' } as Properties,
 };

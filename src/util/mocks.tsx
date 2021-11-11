@@ -18,7 +18,8 @@ export const bob = {
 };
 export const imageAttachment = {
   id: 10,
-  file: 'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+  file:
+    'https://chat-engine-assets.s3.amazonaws.com/tutorials/nextjs-chat-tutorial/thumb.png',
   created: '2021-08-03T00:16:52.633778Z',
 };
 
