@@ -81,6 +81,23 @@ This should only be set when `isMyMessage` is `true`. This is because non-delive
   </Story>
 </Canvas>
 
+## Between Messages
+
+When you put a message between two others with `lastMessage` and `nextMessage` props, then you get sharper borders on the outside.
+
+<Canvas>
+  <Story
+    name="Between Messages"
+    args={{
+      lastMessage: message,
+      message: message,
+      nextMessage: message,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Read Message
 
 If you pass in the optional `chat` prop and the `people` attribute shows users have read this message, dots will appear accordingly.
