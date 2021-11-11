@@ -45,51 +45,29 @@ export const Message: React.FC<Props> = ({
       ? '12px'
       : '2px';
   const styles = isMyMessage ? myStyles : theirStyles;
-  const sendingStyle = isSending
-    ? {
-        backgroundColor: isSending ? '#40a9ff' : 'rgb(24, 144, 255)',
-      }
-    : {};
+  const sendingStyle = isSending ? { backgroundColor: '#40a9ff' } : {};
 
   const text: string =
     message.text !== null
       ? message.text.replace(/<a /g, `<a style="color: 'white';" `)
       : '';
 
-  const renderImages = () => {
+  const renderAttachments = (renderImage: boolean) => {
     const attachments =
       message && message.attachments ? message.attachments : [];
 
     return attachments.map((attachment, index) => {
       const fileName = getFileName(attachment.file);
 
-      if (isImage(fileName)) {
+      if (
+        (renderImage && isImage(fileName)) ||
+        (!renderImage && !isImage(fileName))
+      ) {
         return (
           <Attachment
             attachment={attachment}
             isLoading={isSending || attachment.file === null}
             style={{ ...styles.image, ...style.image }}
-          />
-        );
-      }
-
-      return <div key={`attachment${index}`} />;
-    });
-  };
-
-  const renderFiles = () => {
-    const attachments =
-      message && message.attachments ? message.attachments : [];
-
-    return attachments.map((attachment, index) => {
-      const fileName = getFileName(attachment.file);
-
-      if (!isImage(fileName)) {
-        return (
-          <Attachment
-            attachment={attachment}
-            isLoading={isSending || attachment.file === null}
-            style={{ ...styles.file, ...style.file }}
           />
         );
       }
@@ -182,7 +160,7 @@ export const Message: React.FC<Props> = ({
                 ce-${isMyMessage ? 'my' : 'their'}-message-images
               `}
             >
-              {renderImages()}
+              {renderAttachments(true)}
             </div>
 
             {/* Files */}
@@ -193,7 +171,7 @@ export const Message: React.FC<Props> = ({
                 ce-${isMyMessage ? 'my' : 'their'}-message-files
               `}
             >
-              {renderFiles()}
+              {renderAttachments(false)}
             </div>
 
             {message.text !== null && (
