@@ -39,6 +39,16 @@ export const message = {
   sender: adam,
 };
 
+export const messageByBob = {
+  id: 1000,
+  created: '2021-07-14 01:18:24.567443+00:00',
+  attachments: [],
+  sender_username: 'bob_baker',
+  text: '<p>Greetings, how are you?</p>',
+  custom_json: '',
+  sender: bob,
+};
+
 export const messagePlusAttachments = {
   id: 1000,
   created: '2021-07-14 01:18:24.567443+00:00',
@@ -49,7 +59,7 @@ export const messagePlusAttachments = {
   sender: adam,
 };
 
-export const chatReadMessage = {
+export const chatWithReads = {
   id: 201,
   title: 'First Chat ☝️',
   is_direct_chat: false,
