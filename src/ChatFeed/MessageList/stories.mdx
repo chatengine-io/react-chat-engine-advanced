@@ -7,6 +7,7 @@ import {
   message,
   messagePlusAttachments,
   messageByBob,
+  messageTwoByBob,
 } from '../../util/mocks';
 
 <Meta title="ChatFeed/MessageList" component={MessageList} />
@@ -26,6 +27,7 @@ The message list component displays all the messages sent into a Chat.
       '2021-07-14 01:18:24.567443+00:00': message,
       '2021-07-14 01:30:24.567443+00:00': messagePlusAttachments,
       '2021-07-14 01:40:24.567443+00:00': messageByBob,
+      '2021-07-14 01:41:24.567443+00:00': messageTwoByBob,
     },
   }}
 >
@@ -33,3 +35,45 @@ The message list component displays all the messages sent into a Chat.
 </Story>
 
 <ArgsTable story="Default" />
+
+## My Username
+
+You can specify your username with `myUsername` prop. Any Message component where `message.sender_username === myUsername` will appear to be sent by you.
+
+This is done by setting the Message component's `isMyMessage` prop to `true`.
+
+<Canvas>
+  <Story
+    name="My Username"
+    args={{
+      messages: {
+        '2021-07-14 01:18:24.567443+00:00': message,
+        '2021-07-14 01:40:24.567443+00:00': messageByBob,
+        '2021-07-14 01:41:24.567443+00:00': messageTwoByBob,
+      },
+      myUsername: 'bob_baker',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Date Time
+
+When a message is sent, if the `lastMessage` is `null` or it was created on another day, the `<DateTime/>` component will become visible.
+
+Here is an example of two messages sent on different days, rendering a `<DateTime/>` each.
+
+<Canvas>
+  <Story
+    name="Date Time"
+    args={{
+      messages: {
+        '2021-07-14 01:18:24.567443+00:00': message,
+        '2021-07-15 01:40:24.567443+00:00': messageByBob,
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

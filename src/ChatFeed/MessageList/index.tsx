@@ -4,7 +4,11 @@ import { Props } from './props';
 
 import { Message } from './Message';
 
-export const MessageList: React.FC<Props> = ({ messages, chat }) => {
+export const MessageList: React.FC<Props> = ({
+  messages,
+  chat,
+  myUsername,
+}) => {
   const keys = Object.keys(messages);
 
   const date = (date: string) => {
@@ -21,6 +25,9 @@ export const MessageList: React.FC<Props> = ({ messages, chat }) => {
       const thisDate = key !== '' ? date(key) : undefined;
 
       const showDateTime: boolean = !lastDate || lastDate !== thisDate;
+      const isMyMessage: boolean =
+        typeof myUsername === 'string' &&
+        myUsername === message.sender_username;
 
       return (
         <div key={`message_${index}`} id={`ce-message-${message.id}`}>
@@ -30,6 +37,7 @@ export const MessageList: React.FC<Props> = ({ messages, chat }) => {
             lastMessage={messages[lastKey]}
             nextMessage={messages[nextKey]}
             showDateTime={showDateTime}
+            isMyMessage={isMyMessage}
           />
         </div>
       );

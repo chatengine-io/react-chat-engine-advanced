@@ -49,6 +49,16 @@ export const messageByBob = {
   sender: bob,
 };
 
+export const messageTwoByBob = {
+  id: 1000,
+  created: '2021-07-14 01:18:24.567443+00:00',
+  attachments: [],
+  sender_username: 'bob_baker',
+  text: '<p>Looks like you are working on NextJS!</p>',
+  custom_json: '',
+  sender: bob,
+};
+
 export const messagePlusAttachments = {
   id: 1000,
   created: '2021-07-14 01:18:24.567443+00:00',
