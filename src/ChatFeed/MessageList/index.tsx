@@ -3,11 +3,16 @@ import React from 'react';
 import { Props } from './props';
 
 import { Message } from './Message';
+import { RenderTrigger } from '../..';
 
 export const MessageList: React.FC<Props> = ({
   messages,
   chat,
   myUsername,
+  onTopMessageShow = () => {},
+  onTopMessageHide = () => {},
+  onBottomMessageShow = () => {},
+  onBottomMessageHide = () => {},
 }) => {
   const keys = Object.keys(messages);
 
@@ -31,6 +36,14 @@ export const MessageList: React.FC<Props> = ({
 
       return (
         <div key={`message_${index}`} id={`ce-message-${message.id}`}>
+          {index === keys.length - 1 && (
+            <RenderTrigger
+              onShow={onBottomMessageShow}
+              onHide={onTopMessageHide}
+              children=""
+            />
+          )}
+
           <Message
             chat={chat}
             message={message}
@@ -39,6 +52,14 @@ export const MessageList: React.FC<Props> = ({
             showDateTime={showDateTime}
             isMyMessage={isMyMessage}
           />
+
+          {index === 0 && (
+            <RenderTrigger
+              onShow={onTopMessageShow}
+              onHide={onBottomMessageHide}
+              children=""
+            />
+          )}
         </div>
       );
     });
