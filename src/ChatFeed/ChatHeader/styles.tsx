@@ -2,7 +2,7 @@ import { Properties } from 'csstype';
 
 export interface ChatHeaderStyles {
   titleSection?: Properties;
-  mobileOptiom?: Properties;
+  mobileOption?: Properties;
   titleContainer?: Properties;
   titleText?: Properties;
   subtitleText?: Properties;
@@ -14,7 +14,7 @@ export const styles = {
     zIndex: 1,
     backgroundColor: 'rgb(256, 256, 256, 0.92)',
   } as Properties,
-  mobileOptiom: {
+  mobileOption: {
     width: '100%',
     top: '32px',
     textAlign: 'center',

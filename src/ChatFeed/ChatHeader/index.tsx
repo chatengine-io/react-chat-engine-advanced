@@ -22,9 +22,9 @@ export const ChatHeader: React.FC<Props> = ({
         xs={2}
         sm={0}
         style={{
-          ...styles.mobileOptiom,
+          ...styles.mobileOption,
           ...{ left: '6px' },
-          ...style.mobileOptiom,
+          ...style.mobileOption,
         }}
         className="ce-chat-list-mobile-option"
       >
@@ -57,9 +57,9 @@ export const ChatHeader: React.FC<Props> = ({
         xs={2}
         sm={0}
         style={{
-          ...styles.mobileOptiom,
+          ...styles.mobileOption,
           ...{ right: '6px' },
-          ...style.mobileOptiom,
+          ...style.mobileOption,
         }}
         className="ce-chat-settings-mobile-option"
       >
