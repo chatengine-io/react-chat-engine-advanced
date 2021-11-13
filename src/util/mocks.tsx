@@ -1,4 +1,11 @@
-export const adam = {
+import {
+  AttachmentProps,
+  ChatProps,
+  MessageProps,
+  PersonProps,
+} from './interfaces';
+
+export const adam: PersonProps = {
   username: 'adam_lamorre',
   first_name: 'Adam',
   last_name: 'La Morre',
@@ -8,7 +15,7 @@ export const adam = {
   is_online: true,
 };
 
-export const bob = {
+export const bob: PersonProps = {
   username: 'bob_baker',
   first_name: 'Bob',
   last_name: 'Baker',
@@ -16,20 +23,31 @@ export const bob = {
   custom_json: '',
   is_online: true,
 };
-export const imageAttachment = {
+
+export const cam: PersonProps = {
+  username: 'cam_newton',
+  first_name: 'Cam',
+  last_name: 'Newton',
+  avatar:
+    'https://static01.nyt.com/images/2020/03/24/sports/24nfl-cam1/24nfl-cam1-mediumSquareAt3X.jpg',
+  custom_json: '',
+  is_online: true,
+};
+
+export const imageAttachment: AttachmentProps = {
   id: 10,
   file:
     'https://chat-engine-assets.s3.amazonaws.com/tutorials/nextjs-chat-tutorial/thumb.png',
   created: '2021-08-03T00:16:52.633778Z',
 };
 
-export const fileAttachment = {
+export const fileAttachment: AttachmentProps = {
   id: 11,
   file: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
   created: '2021-08-03T00:16:59.633778Z',
 };
 
-export const message = {
+export const message: MessageProps = {
   id: 1000,
   created: '2021-07-14 01:18:24.567443+00:00',
   attachments: [],
@@ -39,7 +57,7 @@ export const message = {
   sender: adam,
 };
 
-export const messagePlusAttachments = {
+export const messagePlusAttachments: MessageProps = {
   id: 1000,
   created: '2021-07-14 01:18:24.567443+00:00',
   attachments: [imageAttachment, fileAttachment],
@@ -49,7 +67,24 @@ export const messagePlusAttachments = {
   sender: adam,
 };
 
-export const chatReadMessage = {
+export const onePersonChat: ChatProps = {
+  id: 201,
+  title: 'First Chat ☝️',
+  is_direct_chat: false,
+  created: '2021-01-28T02:41:48.826706Z',
+  custom_json: {},
+  attachments: [],
+  people: [
+    {
+      last_read: 1000,
+      person: adam,
+      chat_updated: '',
+    },
+  ],
+  last_message: message,
+}
+
+export const chatReadMessage: ChatProps = {
   id: 201,
   title: 'First Chat ☝️',
   is_direct_chat: false,
@@ -69,10 +104,64 @@ export const chatReadMessage = {
     },
   ],
   last_message: message,
-  sender: adam,
 };
 
-export const chats = [
+export const threePersonChat: ChatProps = {
+  id: 207,
+  title: 'Friends!',
+  is_direct_chat: false,
+  created: '2021-01-28T02:41:48.826706Z',
+  custom_json: {},
+  attachments: [],
+  people: [
+    {
+      last_read: 1000,
+      person: adam,
+      chat_updated: '',
+    },
+    {
+      last_read: 1000,
+      person: bob,
+      chat_updated: '',
+    },
+    {
+      last_read: 1000,
+      person: cam,
+      chat_updated: '',
+    },
+  ],
+  last_message: message,
+};
+
+export const directMessageChat: ChatProps = {
+  id: 203,
+  title: 'Direct Message w/ Adam',
+  is_direct_chat: true,
+  created: '2021-01-26T02:41:48.826706Z',
+  custom_json: {},
+  attachments: [],
+  people: [
+    {
+      last_read: 1000,
+      person: adam,
+      chat_updated: '',
+    },
+    {
+      last_read: 1000,
+      person: bob,
+      chat_updated: '',
+    }
+  ],
+  last_message: {
+    created: '',
+    attachments: [],
+    sender_username: '',
+    text: 'hello',
+    custom_json: '',
+  },
+};
+
+export const chats: ChatProps[] = [
   {
     id: 201,
     title: 'First Chat ☝️',

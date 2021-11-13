@@ -1,0 +1,87 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+
+import { ChatAvatars } from '.';
+import { Props } from './props';
+import {
+  onePersonChat,
+  chatReadMessage as twoPersonChat,
+  threePersonChat,
+  directMessageChat,
+  adam as currentUser,
+} from '../util/mocks';
+
+<Meta title="Chat Avatars" component={ChatAvatars} />
+
+export const Template = (args) => <ChatAvatars {...args} />;
+
+# Chat Avatars
+
+The `ChatAvatars` component appears at the top of the Settings window.
+
+This is used to display the Avatars of the users in the chat.
+
+Two arguments are required, the chat object,`chat: ChatProps`, and the current user, `currentUser: PersonProps`.
+
+## Direct Message Chat
+
+For direct message chats, only the other person's avatar will display.
+
+<Canvas>
+  <Story
+    name="Direct Message"
+    args={{
+      chat: directMessageChat,
+      currentUser: currentUser,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## One Person Chat
+
+For groups chats containing one person, only their avatar will display.
+
+<Canvas>
+  <Story
+    name="One Person"
+    args={{
+      chat: onePersonChat,
+      currentUser: currentUser,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Two Person Chat
+
+For two person group chats, both avatars will display.
+
+<Canvas>
+  <Story
+    name="Two People"
+    args={{
+      chat: twoPersonChat,
+      currentUser: currentUser,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Three or more Person Chat
+
+For group chats with three or more people, the first three users' avatars will display.
+
+<Canvas>
+  <Story
+    name="Three People"
+    args={{
+      chat: threePersonChat,
+      currentUser: currentUser,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
