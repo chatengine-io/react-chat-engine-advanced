@@ -1,0 +1,52 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+
+import { ChatHeader } from '.';
+
+<Meta title="ChatFeed/ChatHeader" component={ChatHeader} />
+
+export const Template = (args) => <ChatHeader {...args} />;
+
+# Chat Header
+
+The Chat Header lives at the top of the Chat Feed and shows data about the Chat you have opened.
+
+Things such as the chat title, members, and last sent message (or last message datetime) may be present.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    id: 1,
+    title: 'Magic Club',
+    description: 'Where the magic happens...',
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Custom Styles
+
+You can customize the look and feel with the `style` prop which extends the `ChatHeaderStyles` interface.
+
+<Canvas>
+  <Story
+    name="Custom Styles"
+    args={{
+      id: 1,
+      title: 'Magic Club',
+      description: 'Where the magic happens...',
+      style: {
+        titleSection: { border: '3px solid red' },
+        mobileOption: { border: '3px solid blue' },
+        titleContainer: { border: '3px solid green' },
+        titleText: { border: '3px solid yellow' },
+        subtitleText: { border: '3px solid orange' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
