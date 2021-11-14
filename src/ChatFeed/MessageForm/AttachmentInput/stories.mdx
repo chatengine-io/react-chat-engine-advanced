@@ -1,0 +1,25 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { AttachmentInput } from '.';
+import { Props } from './props';
+
+<Meta
+  title="ChatFeed/MessageForm/AttachmentInput"
+  component={AttachmentInput}
+/>
+
+export const Template = (args) => <AttachmentInput {...args} />;
+
+# Attachment Input
+
+Attachment Input is a component which let's you select files for attaching into a message.
+
+This is a simple component and currently not interactive within a Storybook context.
+
+## Default
+
+<Story
+  name="Default"
+  args={{ onSelectFiles: (files) => console.log('Attachments', files) }}
+>
+  {Template.bind({})}
+</Story>

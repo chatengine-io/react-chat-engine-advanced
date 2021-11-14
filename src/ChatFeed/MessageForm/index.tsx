@@ -5,6 +5,8 @@ import { Properties } from 'csstype';
 import { Props } from './props';
 import { styles } from './styles';
 
+import { AttachmentInput } from './AttachmentInput';
+
 export const MessageForm: React.FC<Props> = ({
   label = '',
   style = {},
@@ -68,6 +70,12 @@ export const MessageForm: React.FC<Props> = ({
           placeholder={label}
           onKeyDown={onKeyDown}
           onChange={handleChange}
+        />
+      </span>
+
+      <span>
+        <AttachmentInput
+          onSelectFiles={(files) => console.log('files', files)}
         />
       </span>
 

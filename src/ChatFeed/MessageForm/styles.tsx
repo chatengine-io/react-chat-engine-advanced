@@ -12,7 +12,7 @@ export const styles = {
   } as Properties,
   input: {
     border: '1px solid white',
-    width: 'calc(100% - 24px - 66px)',
+    width: 'calc(100% - 24px - 104px)',
     outline: 'none',
     fontSize: '15px',
     fontFamily: 'Avenir',
