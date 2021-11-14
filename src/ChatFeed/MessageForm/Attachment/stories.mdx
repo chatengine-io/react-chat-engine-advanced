@@ -1,0 +1,64 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Attachment } from '.';
+import { Props } from './props';
+
+<Meta title="ChatFeed/MessageForm/Attachment" component={Attachment} />
+
+export const Template = (args) => <Attachment {...args} />;
+
+# Attachment
+
+This Attachment component represents a file you're attaching in a new message.
+
+This `Attachment` component is slightly different than the sent message Attachment component.
+
+Differences involve the ability to remove the attachment from a message, and sizing.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    file: 'click.mp3',
+    onRemove: () => console.log('Attachment removed...'),
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Image URL
+
+If you want to show an Image Thumbnail type attachment, then pass in a valid Image URL to `imageUrl` for the following style.
+
+<Canvas>
+  <Story
+    name="Image URL"
+    args={{
+      file: 'my-face-min.png',
+      imageUrl:
+        'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+To customize the look and feel, use the `style` prop which has a `AttachmentStyle` interface.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      file: 'mountains.jpg',
+      style: {
+        filePreview: { border: '2px solid green' },
+        imagePreview: { border: '2px solid blue' },
+        closeIcon: { border: '2px solid red' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

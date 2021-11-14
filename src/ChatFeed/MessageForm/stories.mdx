@@ -1,0 +1,15 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { MessageForm } from '.';
+import { Props } from './props';
+
+<Meta title="ChatFeed/MessageForm" component={MessageForm} />
+
+export const Template = (args) => <MessageForm {...args} />;
+
+# MessageForm
+
+## Default
+
+<Story name="Default" args={{}}>
+  {Template.bind({})}
+</Story>
