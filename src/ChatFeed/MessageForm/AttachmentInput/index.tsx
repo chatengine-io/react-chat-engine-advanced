@@ -38,6 +38,7 @@ export const AttachmentInput: React.FC<Props> = ({
             ...hoverStyle,
             ...style.attachmentIcon,
           }}
+          onClick={() => {}} // Prevents redirect in StorybookJS
         >
           📎
         </span>

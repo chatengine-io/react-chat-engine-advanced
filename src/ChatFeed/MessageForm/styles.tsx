@@ -12,7 +12,7 @@ export const styles = {
   } as Properties,
   input: {
     border: '1px solid white',
-    width: 'calc(100% - 24px - 104px)',
+    width: 'calc(100% - 24px - 116px)',
     outline: 'none',
     fontSize: '15px',
     fontFamily: 'Avenir',
@@ -29,7 +29,7 @@ export const styles = {
     fontFamily: 'Avenir',
     display: 'inline-block',
     borderRadius: '8px',
-    padding: '6px',
+    padding: '6px 12px',
     color: 'white',
     // Tweak Position
     position: 'relative',

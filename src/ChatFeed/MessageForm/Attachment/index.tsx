@@ -13,25 +13,18 @@ export const Attachment: React.FC<Props> = ({
   const hoverStyle = { opacity: hovered ? '1' : '0' };
 
   return (
-    <div
+    <span
       className="ce-message-attachment-preview"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      style={{ ...styles.attachmentWrapper, ...style.attachmentWrapper }}
     >
       {imageUrl ? (
-        <div
-          style={{
-            padding: '6px',
-            display: 'inline-block',
-            position: 'relative',
-          }}
-        >
-          <img
-            style={{ ...styles.imagePreview, ...style.imagePreview }}
-            src={imageUrl}
-            alt={file}
-          />
-        </div>
+        <img
+          style={{ ...styles.imagePreview, ...style.imagePreview }}
+          src={imageUrl}
+          alt={file}
+        />
       ) : (
         <div
           style={{
@@ -39,7 +32,7 @@ export const Attachment: React.FC<Props> = ({
             ...style.filePreview,
           }}
         >
-          {file}{' '}
+          📄 {file}{' '}
         </div>
       )}
       <button
@@ -49,6 +42,6 @@ export const Attachment: React.FC<Props> = ({
       >
         X
       </button>
-    </div>
+    </span>
   );
 };

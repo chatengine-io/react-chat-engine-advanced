@@ -5,7 +5,10 @@ import { Properties } from 'csstype';
 import { Props } from './props';
 import { styles } from './styles';
 
+import { Attachment } from './Attachment';
 import { AttachmentInput } from './AttachmentInput';
+
+import { isImage } from '../../util/file';
 
 export const MessageForm: React.FC<Props> = ({
   label = '',
@@ -13,9 +16,11 @@ export const MessageForm: React.FC<Props> = ({
   onChange,
   onSubmit,
 }: Props) => {
+  const [iter, setIter] = useState(0); // Forces attachments update
   const [value, setValue] = useState<string>('');
   const [height, setHeight] = useState<number>(0);
   const [buttonHover, setButtonHover] = useState<boolean>(false);
+  const [attachments, setAttachments] = useState<Array<File>>();
 
   const overflowStyle: Properties = {
     overflowY: height === 150 ? 'scroll' : 'hidden',
@@ -50,12 +55,51 @@ export const MessageForm: React.FC<Props> = ({
     }
   };
 
+  const onRemove = (index: number) => {
+    if (attachments && attachments !== null) {
+      const newAttachments = attachments;
+      newAttachments.splice(index, 1);
+      setAttachments(newAttachments);
+      setIter(iter + 1);
+    }
+  };
+
+  const renderAttachments = (renderImage: boolean) => {
+    if (!attachments || attachments === null) return <div />;
+
+    return Array.from(attachments).map((attachment, index) => {
+      if (
+        (renderImage && isImage(attachment.name)) ||
+        (!renderImage && !isImage(attachment.name))
+      ) {
+        const imageUrl = renderImage
+          ? URL.createObjectURL(attachment)
+          : undefined;
+
+        return (
+          <Attachment
+            key={`attachment_preview_${index}`}
+            file={attachment.name}
+            imageUrl={imageUrl}
+            onRemove={() => onRemove(index)}
+          />
+        );
+      }
+
+      return <div key={`attachment_preview_${index}`} />;
+    });
+  };
+
   return (
     <div
       id="msg-form-container"
       style={{ ...styles.messageForm, ...style.messageForm }}
       className="ce-message-form-container"
     >
+      <div>{renderAttachments(true)}</div>
+
+      <div>{renderAttachments(false)}</div>
+
       <span>
         <textarea
           id="msg-textarea"
@@ -75,7 +119,9 @@ export const MessageForm: React.FC<Props> = ({
 
       <span>
         <AttachmentInput
-          onSelectFiles={(files) => console.log('files', files)}
+          onSelectFiles={(files) => {
+            files !== null && setAttachments(Array.from(files));
+          }}
         />
       </span>
 
