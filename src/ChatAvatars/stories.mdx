@@ -20,7 +20,9 @@ The `ChatAvatars` component appears at the top of the Settings window.
 
 This is used to display the Avatars of the users in the chat.
 
-Two arguments are required, the chat object,`chat: ChatProps`, and the current user, `currentUser: PersonProps`.
+Two arguments are required, the list of users in the chat, `users: PersonProps[]`, and the current user, `currentUser: PersonProps`.
+
+Optionally set `isDirectChat = true` if the chat is a direct message. Otherwise this defaults to `false` and assumes a group chat.
 
 ## Direct Message Chat
 
@@ -30,8 +32,9 @@ For direct message chats, only the other person's avatar will display.
   <Story
     name="Direct Message"
     args={{
-      chat: directMessageChat,
+      users: directMessageChat.people,
       currentUser: currentUser,
+      isDirectChat: true
     }}
   >
     {Template.bind({})}
@@ -46,7 +49,7 @@ For groups chats containing one person, only their avatar will display.
   <Story
     name="One Person"
     args={{
-      chat: onePersonChat,
+      users: onePersonChat.people,
       currentUser: currentUser,
     }}
   >
@@ -62,7 +65,7 @@ For two person group chats, both avatars will display.
   <Story
     name="Two People"
     args={{
-      chat: twoPersonChat,
+      users: twoPersonChat.people,
       currentUser: currentUser,
     }}
   >
@@ -78,7 +81,7 @@ For group chats with three or more people, the first three users' avatars will d
   <Story
     name="Three People"
     args={{
-      chat: threePersonChat,
+      users: threePersonChat.people,
       currentUser: currentUser,
     }}
   >

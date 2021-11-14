@@ -57,7 +57,7 @@ export const message: MessageProps = {
   sender: adam,
 };
 
-export const messageByBob = {
+export const messageByBob: MessageProps = {
   id: 1000,
   created: '2021-07-14 01:18:24.567443+00:00',
   attachments: [],
@@ -67,7 +67,7 @@ export const messageByBob = {
   sender: bob,
 };
 
-export const messageTwoByBob = {
+export const messageTwoByBob: MessageProps = {
   id: 1000,
   created: '2021-07-14 01:18:24.567443+00:00',
   attachments: [],
@@ -96,15 +96,15 @@ export const onePersonChat: ChatProps = {
   attachments: [],
   people: [
     {
+      ...adam,
       last_read: 1000,
-      person: adam,
       chat_updated: '',
     },
   ],
   last_message: message,
 }
 
-export const chatWithReads = {
+export const chatWithReads: ChatProps = {
   id: 201,
   title: 'First Chat ☝️',
   is_direct_chat: false,
@@ -113,13 +113,13 @@ export const chatWithReads = {
   attachments: [],
   people: [
     {
+      ...adam,
       last_read: 1000,
-      person: adam,
       chat_updated: '',
     },
     {
+      ...bob,
       last_read: 1000,
-      person: bob,
       chat_updated: '',
     },
   ],
@@ -135,18 +135,18 @@ export const threePersonChat: ChatProps = {
   attachments: [],
   people: [
     {
+      ...adam,
       last_read: 1000,
-      person: adam,
       chat_updated: '',
     },
     {
+      ...bob,
       last_read: 1000,
-      person: bob,
       chat_updated: '',
     },
     {
+      ...cam,
       last_read: 1000,
-      person: cam,
       chat_updated: '',
     },
   ],
@@ -162,13 +162,13 @@ export const directMessageChat: ChatProps = {
   attachments: [],
   people: [
     {
+      ...adam,
       last_read: 1000,
-      person: adam,
       chat_updated: '',
     },
     {
+      ...bob,
       last_read: 1000,
-      person: bob,
       chat_updated: '',
     }
   ],
@@ -191,8 +191,8 @@ export const chats: ChatProps[] = [
     attachments: [],
     people: [
       {
+        ...adam,
         last_read: 1000,
-        person: adam,
         chat_updated: '',
       },
     ],

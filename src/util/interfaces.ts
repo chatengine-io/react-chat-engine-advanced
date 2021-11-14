@@ -22,8 +22,7 @@ export interface MessageProps {
   sender?: PersonProps; // Empty messages have no sender
 }
 
-export interface ChatPersonProps {
-  person: PersonProps;
+export interface ChatPersonProps extends PersonProps {
   chat_updated: string | null;
   last_read: number | null;
 }

@@ -7,7 +7,7 @@ describe('Thing', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <Thing chat={threePersonChat} currentUser={currentUser} />,
+      <Thing users={threePersonChat.people} currentUser={currentUser} />,
       div
     );
     ReactDOM.unmountComponentAtNode(div);

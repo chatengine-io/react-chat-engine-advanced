@@ -82,8 +82,8 @@ export const Message: React.FC<Props> = ({
       return (
         <Dot
           key={`read_${index}`}
-          avatarUrl={chatPerson.person.avatar}
-          username={chatPerson.person.username}
+          avatarUrl={chatPerson.avatar}
+          username={chatPerson.username}
           visible={message.id === chatPerson.last_read}
           style={{ ...styles.dot, ...style.dot }}
         />
