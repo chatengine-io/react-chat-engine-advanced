@@ -27,7 +27,7 @@ export const ChatList: React.FC<Props> = ({
   const readLastMessage = (userName: string, chat: ChatProps) => {
     return chat.people.some(
       (chatPerson) =>
-        userName === chatPerson.person.username &&
+        userName === chatPerson.username &&
         chatPerson.last_read === chat.last_message.id
     );
   };
