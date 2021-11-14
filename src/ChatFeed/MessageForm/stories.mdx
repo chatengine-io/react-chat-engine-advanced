@@ -8,8 +8,20 @@ export const Template = (args) => <MessageForm {...args} />;
 
 # MessageForm
 
+This message form is for making and sending messages.
+
 ## Default
 
-<Story name="Default" args={{}}>
+<Story
+  name="Default"
+  args={{
+    style: {
+      input: {
+        maxWidth: '600px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    },
+  }}
+>
   {Template.bind({})}
 </Story>
