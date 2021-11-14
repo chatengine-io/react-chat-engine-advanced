@@ -5,5 +5,5 @@ export interface Props {
   label?: string;
   style?: MessageFormStyles;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onSubmit?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
+  onSubmit?: (value: string) => void;
 }

@@ -13,9 +13,13 @@ export const MessageForm: React.FC<Props> = ({
 }: Props) => {
   const [value, setValue] = useState<string>('');
   const [height, setHeight] = useState<number>(0);
+  const [buttonHover, setButtonHover] = useState<boolean>(false);
 
   const overflowStyle: Properties = {
     overflowY: height === 150 ? 'scroll' : 'hidden',
+  };
+  const buttonHoverStyle: Properties = {
+    backgroundColor: buttonHover ? '#40a9ff' : '#1890ff',
   };
 
   const resize = () => {
@@ -39,7 +43,7 @@ export const MessageForm: React.FC<Props> = ({
     if (e.key === 'Enter') {
       e.preventDefault();
       if (value.length > 0) {
-        onSubmit && onSubmit(e);
+        onSubmit && onSubmit(value);
       }
     }
   };
@@ -50,22 +54,38 @@ export const MessageForm: React.FC<Props> = ({
       style={{ ...styles.messageForm, ...style.messageForm }}
       className="ce-message-form-container"
     >
-      <textarea
-        id="msg-textarea"
-        className="ce-input ce-textarea-input"
-        rows={1}
-        style={{
-          ...styles.input,
-          ...overflowStyle,
-          ...style.input,
-        }}
-        value={value}
-        placeholder={label}
-        // onBlur={() => this.setState({ focused: false })}
-        // onFocus={() => this.setState({ focused: true })}
-        onChange={handleChange}
-        onKeyDown={onKeyDown}
-      />
+      <span>
+        <textarea
+          id="msg-textarea"
+          className="ce-input ce-textarea-input"
+          rows={1}
+          style={{
+            ...styles.input,
+            ...overflowStyle,
+            ...style.input,
+          }}
+          value={value}
+          placeholder={label}
+          onKeyDown={onKeyDown}
+          onChange={handleChange}
+        />
+      </span>
+
+      <span>
+        <div
+          id="ce-send-message-button"
+          onMouseEnter={() => setButtonHover(true)}
+          onMouseLeave={() => setButtonHover(false)}
+          onClick={() => onSubmit && onSubmit(value)}
+          style={{
+            ...styles.sendButton,
+            ...buttonHoverStyle,
+            ...style.sendButton,
+          }}
+        >
+          Send
+        </div>
+      </span>
     </div>
   );
 };
