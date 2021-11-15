@@ -79,8 +79,9 @@ export const MessageForm: React.FC<Props> = ({
         return (
           <Attachment
             key={`attachment_preview_${index}`}
-            file={attachment.name}
+            fileName={attachment.name}
             imageUrl={imageUrl}
+            style={style}
             onRemove={() => onRemove(index)}
           />
         );
