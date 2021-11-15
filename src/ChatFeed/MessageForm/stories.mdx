@@ -1,0 +1,54 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { MessageForm } from '.';
+import { Props } from './props';
+
+<Meta title="ChatFeed/MessageForm" component={MessageForm} />
+
+export const Template = (args) => <MessageForm {...args} />;
+
+# MessageForm
+
+This message form is for making and sending messages.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    style: {
+      messageForm: {
+        maxWidth: '600px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Custom Style
+
+To customize the look and feel, use the `style` props which uses the `MessageFormStyles` interface and extends the `AttachmentStyles` and `AttachmentInputStyles` interface.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      style: {
+        messageForm: { border: '2px solid red' },
+        input: { border: '2px solid blue' },
+        sendButton: { border: '2px solid green' },
+        attachmentInput: { border: '2px solid yellow', padding: '6px 8px' },
+        addAttachmentIcon: { border: '2px solid orange' },
+        attachmentWrapper: { border: '2px solid purple' },
+        fileAttachmentPreview: { border: '2px solid brown' },
+        imageAttachmentPreview: { border: '2px solid grey' },
+        removeAttachmentIcon: { border: '2px solid black' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
