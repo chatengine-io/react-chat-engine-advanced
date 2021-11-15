@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Props } from './props';
+import { styles } from './styles';
 
 import { Message } from './Message';
 import { RenderTrigger } from '../..';
@@ -13,6 +14,7 @@ export const MessageList: React.FC<Props> = ({
   onTopMessageHide = () => {},
   onBottomMessageShow = () => {},
   onBottomMessageHide = () => {},
+  customStyle = {},
 }) => {
   const keys = Object.keys(messages);
 
@@ -65,5 +67,9 @@ export const MessageList: React.FC<Props> = ({
     });
   };
 
-  return <div>{renderMessages(keys)}</div>;
+  return (
+    <div style={{ ...styles.messageList, ...customStyle.messageList }}>
+      {renderMessages(keys)}
+    </div>
+  );
 };

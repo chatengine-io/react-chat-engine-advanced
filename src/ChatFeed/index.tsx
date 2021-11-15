@@ -34,21 +34,19 @@ export const ChatFeed: React.FC<Props> = ({
     <div style={{ ...styles.chatFeed, ...customStyle.chatFeed }}>
       <ChatHeader title={chat.title} description={getDescription()} />
 
-      <div
-        id="ce-feed-container"
-        style={{
-          height: 'calc(100% - 128px)',
-          overflowY: 'scroll',
-          overflowX: 'hidden',
+      <MessageList
+        messages={messages}
+        myUsername={myUsername}
+        onTopMessageShow={onTopMessageShow}
+        onBottomMessageShow={onBottomMessageShow}
+        customStyle={{
+          messageList: {
+            height: 'calc(100% - 128px)',
+            overflowY: 'scroll',
+            overflowX: 'hidden',
+          },
         }}
-      >
-        <MessageList
-          messages={messages}
-          myUsername={myUsername}
-          onTopMessageShow={onTopMessageShow}
-          onBottomMessageShow={onBottomMessageShow}
-        />
-      </div>
+      />
 
       <div
         style={{
