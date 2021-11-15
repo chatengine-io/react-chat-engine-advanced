@@ -25,3 +25,30 @@ This message form is for making and sending messages.
 >
   {Template.bind({})}
 </Story>
+
+<ArgsTable story="Default" />
+
+## Custom Style
+
+To customize the look and feel, use the `style` props which uses the `MessageFormStyles` interface and extends the `AttachmentStyles` and `AttachmentInputStyles` interface.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      style: {
+        messageForm: { border: '2px solid red' },
+        input: { border: '2px solid blue' },
+        sendButton: { border: '2px solid green' },
+        attachmentInput: { border: '2px solid yellow', padding: '6px 8px' },
+        addAttachmentIcon: { border: '2px solid orange' },
+        attachmentWrapper: { border: '2px solid purple' },
+        fileAttachmentPreview: { border: '2px solid brown' },
+        imageAttachmentPreview: { border: '2px solid grey' },
+        removeAttachmentIcon: { border: '2px solid black' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

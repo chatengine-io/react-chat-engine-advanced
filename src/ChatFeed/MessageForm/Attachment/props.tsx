@@ -1,7 +1,7 @@
 import { AttachmentStyles } from './styles';
 
 export interface Props {
-  file: string;
+  fileName: string;
   imageUrl?: string;
   onRemove?: () => void;
   style?: AttachmentStyles;

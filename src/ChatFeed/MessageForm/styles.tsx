@@ -1,6 +1,11 @@
 import { Properties } from 'csstype';
 
-export interface MessageFormStyles {
+import { AttachmentStyles } from './Attachment/styles';
+import { AttachmentInputStyles } from './AttachmentInput/styles';
+
+export interface MessageFormStyles
+  extends AttachmentStyles,
+    AttachmentInputStyles {
   messageForm?: Properties;
   input?: Properties;
   sendButton?: Properties;
@@ -31,6 +36,9 @@ export const styles = {
     borderRadius: '8px',
     padding: '6px 12px',
     color: 'white',
+    transition: 'all .33s ease',
+    WebkitTransition: 'all .33s ease',
+    MozTransition: 'all .33s ease',
     // Tweak Position
     position: 'relative',
     bottom: '6px',

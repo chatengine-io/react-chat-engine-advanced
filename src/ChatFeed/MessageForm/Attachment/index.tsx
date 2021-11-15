@@ -4,7 +4,7 @@ import { Props } from './props';
 import { styles } from './styles';
 
 export const Attachment: React.FC<Props> = ({
-  file,
+  fileName,
   imageUrl,
   onRemove = () => {},
   style = {},
@@ -21,23 +21,31 @@ export const Attachment: React.FC<Props> = ({
     >
       {imageUrl ? (
         <img
-          style={{ ...styles.imagePreview, ...style.imagePreview }}
+          style={{
+            ...styles.imageAttachmentPreview,
+            ...style.imageAttachmentPreview,
+          }}
           src={imageUrl}
-          alt={file}
+          alt={fileName}
         />
       ) : (
         <div
           style={{
-            ...styles.filePreview,
-            ...style.filePreview,
+            ...styles.fileAttachmentPreview,
+            ...style.fileAttachmentPreview,
           }}
         >
-          📄 {file}{' '}
+          📄 {fileName}{' '}
         </div>
       )}
+
       <button
         className="ce-message-attachment-remove-btn"
-        style={{ ...styles.closeIcon, ...hoverStyle, ...style.closeIcon }}
+        style={{
+          ...styles.removeAttachmentIcon,
+          ...hoverStyle,
+          ...style.removeAttachmentIcon,
+        }}
         onClick={() => onRemove && onRemove()}
       >
         X

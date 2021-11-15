@@ -119,6 +119,7 @@ export const MessageForm: React.FC<Props> = ({
 
       <span>
         <AttachmentInput
+          style={style}
           onSelectFiles={(files) => {
             files !== null && setAttachments(Array.from(files));
           }}

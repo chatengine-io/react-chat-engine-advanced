@@ -19,12 +19,14 @@ Differences involve the ability to remove the attachment from a message, and siz
 <Story
   name="Default"
   args={{
-    file: 'click.mp3',
+    fileName: 'click.mp3',
     onRemove: () => console.log('Attachment removed...'),
   }}
 >
   {Template.bind({})}
 </Story>
+
+<ArgsTable story="Default" />
 
 ## Image URL
 
@@ -34,7 +36,7 @@ If you want to show an Image Thumbnail type attachment, then pass in a valid Ima
   <Story
     name="Image URL"
     args={{
-      file: 'my-face-min.png',
+      fileName: 'my-face-min.png',
       imageUrl:
         'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
     }}
@@ -51,11 +53,12 @@ To customize the look and feel, use the `style` prop which has a `AttachmentStyl
   <Story
     name="Custom Style"
     args={{
-      file: 'mountains.jpg',
+      fileName: 'mountains.jpg',
       style: {
-        filePreview: { border: '2px solid green' },
-        imagePreview: { border: '2px solid blue' },
-        closeIcon: { border: '2px solid red' },
+        attachmentWrapper: { border: '2px solid red' },
+        fileAttachmentPreview: { border: '2px solid blue' },
+        imageAttachmentPreview: { border: '2px solid yellow' },
+        removeAttachmentIcon: { border: '2px solid green' },
       },
     }}
   >

@@ -34,9 +34,9 @@ export const AttachmentInput: React.FC<Props> = ({
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           style={{
-            ...styles.attachmentIcon,
+            ...styles.addAttachmentIcon,
             ...hoverStyle,
-            ...style.attachmentIcon,
+            ...style.addAttachmentIcon,
           }}
           onClick={() => {}} // Prevents redirect in StorybookJS
         >

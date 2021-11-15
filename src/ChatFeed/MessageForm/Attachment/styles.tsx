@@ -2,9 +2,9 @@ import { Properties } from 'csstype';
 
 export interface AttachmentStyles {
   attachmentWrapper?: Properties;
-  filePreview?: Properties;
-  imagePreview?: Properties;
-  closeIcon?: Properties;
+  fileAttachmentPreview?: Properties;
+  imageAttachmentPreview?: Properties;
+  removeAttachmentIcon?: Properties;
 }
 
 export const styles = {
@@ -13,7 +13,7 @@ export const styles = {
     display: 'inline-block',
     position: 'relative',
   } as Properties,
-  filePreview: {
+  fileAttachmentPreview: {
     fontFamily: 'Avenir',
     padding: '12px',
     display: 'inline-block',
@@ -23,7 +23,7 @@ export const styles = {
     borderRadius: '14px',
     paddingRight: '32px',
   } as Properties,
-  imagePreview: {
+  imageAttachmentPreview: {
     height: '108px',
     width: '108px',
     border: '1px solid #afafaf',
@@ -31,7 +31,7 @@ export const styles = {
     objectFit: 'cover',
     display: 'inline',
   } as Properties,
-  closeIcon: {
+  removeAttachmentIcon: {
     position: 'absolute',
     top: '4px',
     right: '4px',

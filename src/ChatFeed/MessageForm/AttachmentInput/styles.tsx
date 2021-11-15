@@ -2,7 +2,7 @@ import { Properties } from 'csstype';
 
 export interface AttachmentInputStyles {
   attachmentInput?: Properties;
-  attachmentIcon?: Properties;
+  addAttachmentIcon?: Properties;
 }
 
 export const styles = {
@@ -13,7 +13,7 @@ export const styles = {
     position: 'relative',
     bottom: '6px',
   } as Properties,
-  attachmentIcon: {
+  addAttachmentIcon: {
     backgroundColor: 'white',
     border: '1px solid white',
     cursor: 'pointer',
