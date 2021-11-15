@@ -5,7 +5,7 @@ export interface AttachmentInputStyles {
   addAttachmentIcon?: Properties;
 }
 
-export const styles = {
+export const styles: AttachmentInputStyles = {
   attachmentInput: {
     height: '0px',
     display: 'inline',

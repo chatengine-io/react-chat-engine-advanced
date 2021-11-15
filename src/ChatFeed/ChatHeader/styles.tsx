@@ -8,7 +8,7 @@ export interface ChatHeaderStyles {
   subtitleText?: Properties;
 }
 
-export const styles = {
+export const styles: ChatHeaderStyles = {
   titleSection: {
     width: '100%',
     zIndex: 1,

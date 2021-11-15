@@ -11,7 +11,7 @@ export interface MessageFormStyles
   sendButton?: Properties;
 }
 
-export const styles = {
+export const styles: MessageFormStyles = {
   messageForm: {
     paddingTop: '4px',
   } as Properties,
