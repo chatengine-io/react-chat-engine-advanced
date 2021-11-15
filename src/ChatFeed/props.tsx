@@ -1,16 +1,13 @@
-import { ChatProps } from '../util/interfaces';
-
-import { Props as ChatHeaderProps } from './ChatHeader/props';
-import { Props as MessageListProps } from './MessageList/props';
-import { Props as MessageFormProps } from './MessageForm/props';
+import { ChatProps, MessageProps } from '../util/interfaces';
 
 import { ChatFeedStyles } from './styles';
 
-export interface Props
-  extends ChatHeaderProps,
-    MessageListProps,
-    MessageFormProps {
+export interface Props {
   chat: ChatProps;
+  messages: { [created: string]: MessageProps };
+  myUsername?: string;
   isLoading?: boolean;
-  style?: ChatFeedStyles;
+  customStyle?: ChatFeedStyles;
+  onTopMessageShow?: () => void;
+  onBottomMessageShow?: () => void;
 }

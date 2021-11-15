@@ -20,7 +20,7 @@ export const MessageForm: React.FC<Props> = ({
   const [value, setValue] = useState<string>('');
   const [height, setHeight] = useState<number>(0);
   const [buttonHover, setButtonHover] = useState<boolean>(false);
-  const [attachments, setAttachments] = useState<Array<File>>();
+  const [attachments, setAttachments] = useState<Array<File>>([]);
 
   const overflowStyle: Properties = {
     overflowY: height === 150 ? 'scroll' : 'hidden',
@@ -50,7 +50,7 @@ export const MessageForm: React.FC<Props> = ({
     if (e.key === 'Enter') {
       e.preventDefault();
       if (value.length > 0) {
-        onSubmit && onSubmit(value);
+        onSubmit && onSubmit(value, attachments);
       }
     }
   };
@@ -132,7 +132,7 @@ export const MessageForm: React.FC<Props> = ({
           id="ce-send-message-button"
           onMouseEnter={() => setButtonHover(true)}
           onMouseLeave={() => setButtonHover(false)}
-          onClick={() => onSubmit && onSubmit(value)}
+          onClick={() => onSubmit && onSubmit(value, attachments)}
           style={{
             ...styles.sendButton,
             ...buttonHoverStyle,

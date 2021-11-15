@@ -14,7 +14,9 @@ export const ChatFeed: React.FC<Props> = ({
   messages,
   myUsername,
   isLoading = false,
-  style = {},
+  customStyle = {},
+  onTopMessageShow,
+  onBottomMessageShow,
 }: Props) => {
   const getDescription = () => {
     if (chat.last_message.created && chat.last_message.created.length > 0) {
@@ -29,7 +31,7 @@ export const ChatFeed: React.FC<Props> = ({
   };
 
   return (
-    <div style={{ ...styles.chatFeed, ...style.chatFeed }}>
+    <div style={{ ...styles.chatFeed, ...customStyle.chatFeed }}>
       <ChatHeader title={chat.title} description={getDescription()} />
 
       <div
@@ -40,9 +42,12 @@ export const ChatFeed: React.FC<Props> = ({
           overflowX: 'hidden',
         }}
       >
-        <MessageList messages={messages} myUsername={myUsername} />
-
-        <div className="ce-feed-container-bottom" />
+        <MessageList
+          messages={messages}
+          myUsername={myUsername}
+          onTopMessageShow={onTopMessageShow}
+          onBottomMessageShow={onBottomMessageShow}
+        />
       </div>
 
       <div
@@ -52,7 +57,7 @@ export const ChatFeed: React.FC<Props> = ({
           bottom: '0px',
         }}
       >
-        <MessageForm />
+        <MessageForm label="Send a message..." />
       </div>
     </div>
   );
