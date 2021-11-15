@@ -7,7 +7,11 @@ export interface AttachmentStyles {
   removeAttachmentIcon?: Properties;
 }
 
+<<<<<<< HEAD
 export const styles: AttachmentStyles = {
+=======
+export const styles = {
+>>>>>>> main
   attachmentWrapper: {
     padding: '6px',
     display: 'inline-block',
