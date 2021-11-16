@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 
 import { Properties } from 'csstype';
 
-import { ChatProps } from '../util/interfaces';
+import { ChatProps } from '../../util/interfaces';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   style?: Properties;

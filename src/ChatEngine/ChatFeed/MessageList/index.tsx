@@ -4,7 +4,7 @@ import { Props } from './props';
 import { styles } from './styles';
 
 import { Message } from './Message';
-import { RenderTrigger } from '../..';
+import { RenderTrigger } from '../../..';
 
 export const MessageList: React.FC<Props> = ({
   messages,

@@ -8,7 +8,7 @@ import { styles } from './styles';
 import { Attachment } from './Attachment';
 import { AttachmentInput } from './AttachmentInput';
 
-import { isImage } from '../../util/file';
+import { isImage } from '../../../util/file';
 
 export const MessageForm: React.FC<Props> = ({
   label = '',

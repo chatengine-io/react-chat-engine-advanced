@@ -1,14 +1,14 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { Message as Thing } from '.';
+import { Attachment as Thing } from '.';
 
-import { message } from '../../../util/mocks';
+import { fileAttachment } from '../../../../../util/mocks';
 
 describe('Thing', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Thing message={message} />, div);
+    ReactDOM.render(<Thing attachment={fileAttachment} />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });

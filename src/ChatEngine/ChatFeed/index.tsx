@@ -7,7 +7,7 @@ import { ChatHeader } from './ChatHeader';
 import { MessageList } from './MessageList';
 import { MessageForm } from './MessageForm';
 
-import { getDateTime, formatDateTime } from '../util/dateTime';
+import { getDateTime, formatDateTime } from '../../util/dateTime';
 
 export const ChatFeed: React.FC<Props> = ({
   chat,

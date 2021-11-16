@@ -5,7 +5,7 @@ import { Meta, Story } from '@storybook/react';
 import { ChatList } from '.';
 import { Props } from './props';
 
-import { chats } from '../util/mocks';
+import { chats } from '../../util/mocks';
 
 const meta: Meta = {
   title: 'ChatList',

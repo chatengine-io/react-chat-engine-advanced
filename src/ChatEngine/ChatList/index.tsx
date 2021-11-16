@@ -6,10 +6,10 @@ import { styles } from './styles';
 import { ChatForm } from './ChatForm';
 import { ChatCard } from './ChatCard';
 
-import { RenderTrigger } from '../RenderTrigger';
+import { RenderTrigger } from '../../RenderTrigger';
 
-import { ChatProps } from '../util/interfaces';
-import { getDateTime } from '../util/dateTime';
+import { ChatProps } from '../../util/interfaces';
+import { getDateTime } from '../../util/dateTime';
 
 export const ChatList: React.FC<Props> = ({
   chats,
@@ -75,7 +75,11 @@ export const ChatList: React.FC<Props> = ({
       {isLoading ? renderLoading() : renderChats(chats)}
 
       {hasMoreChats && (
-        <RenderTrigger onShow={onChatLoaderVisible} style={styles.chatLoader} />
+        <RenderTrigger
+          onShow={onChatLoaderVisible}
+          style={styles.chatLoader}
+          children={`🖐 Loading...`}
+        />
       )}
     </div>
   );

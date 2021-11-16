@@ -1,8 +1,8 @@
 import React, { useState, ReactNode } from 'react';
 
-import { getFileName, isImageFromFilePath } from '../../../../util/file';
+import { getFileName, isImageFromFilePath } from '../../../../../util/file';
 
-import { AttachmentProps } from '../../../../util/interfaces';
+import { AttachmentProps } from '../../../../../util/interfaces';
 import { Props } from './props';
 import { AttachmentStyle, imageStyles, fileStyles } from './styles';
 

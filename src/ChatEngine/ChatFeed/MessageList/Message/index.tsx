@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 import { Props } from './props';
 import { myStyles, theirStyles } from './styles';
 
-import { Dot } from '../../../Dot';
-import { Avatar } from '../../../Avatar';
+import { Dot } from '../../../../Dot';
+import { Avatar } from '../../../../Avatar';
 
 import { DateTime } from './DateTime';
 
 import { Attachment } from './Attachment';
 
-import { isImage, getFileName } from '../../../util/file';
-import { formatTime, getDateTime } from '../../../util/dateTime';
+import { isImage, getFileName } from '../../../../util/file';
+import { formatTime, getDateTime } from '../../../../util/dateTime';
 
 import { Row, Col, setConfiguration } from 'react-grid-system';
 
