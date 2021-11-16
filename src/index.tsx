@@ -1,5 +1,5 @@
 export * from './Components/Button';
-export * from './Input';
+export * from './Components/Input';
 export * from './Components/Avatar';
 export * from './Dot';
 export * from './ChatAvatars';

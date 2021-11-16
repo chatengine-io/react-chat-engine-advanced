@@ -4,11 +4,9 @@ import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Input } from '.';
 import { Props } from './props';
 
-<Meta title='Input' component={Input} />
+<Meta title="Components/Input" component={Input} />
 
-export const Template = (args) => (
-  <Input {...args} />
-);
+export const Template = (args) => <Input {...args} />;
 
 # Input
 
@@ -16,11 +14,11 @@ The `Input` component is where the user can add text to their message.
 
 ## Default
 
-<Story name='Default' args={{}}>
+<Story name="Default" args={{}}>
   {Template.bind({})}
 </Story>
 
-<ArgsTable story='Default' />
+<ArgsTable story="Default" />
 
 ## Functions
 
@@ -35,7 +33,7 @@ The `onBlur` function is used to perform an action when the user clicks out of t
 Add a label using the `label` argument.
 
 <Canvas>
-  <Story name='Label' args={{ label: 'Send a message...' }}>
+  <Story name="Label" args={{ label: 'Send a message...' }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -45,7 +43,7 @@ Add a label using the `label` argument.
 Get the user started using the `defaultValue` argument.
 
 <Canvas>
-  <Story name='DefaultValue' args={{ defaultValue: 'Hello, world!' }}>
+  <Story name="DefaultValue" args={{ defaultValue: 'Hello, world!' }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -55,7 +53,7 @@ Get the user started using the `defaultValue` argument.
 You can also set the `value` by passing it directly into the props.
 
 <Canvas>
-  <Story name='SetValue' args={{ value: 'Set value directly here' }}>
+  <Story name="SetValue" args={{ value: 'Set value by props' }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -65,14 +63,19 @@ You can also set the `value` by passing it directly into the props.
 Pass in a `style` object to make it your own.
 
 <Canvas>
-  <Story name='Styling' args={{ 
-    label: 'Send a message...', style:{
-      borderRadius: '12px',
-      border: '4px solid #3148a3',
-      padding: '18px',
-      fontFamily: 'helvetica',
-      backgroundColor: '#9fe7ed'
-    }}}>
+  <Story
+    name="Styling"
+    args={{
+      label: 'Send a message...',
+      style: {
+        borderRadius: '12px',
+        border: '4px solid #3148a3',
+        padding: '18px',
+        fontFamily: 'helvetica',
+        backgroundColor: '#9fe7ed',
+      },
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

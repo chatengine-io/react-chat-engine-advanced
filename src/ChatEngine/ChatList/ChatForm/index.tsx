@@ -4,7 +4,7 @@ import { Props } from './props';
 import { styles } from './styles';
 
 import { Button } from '../../../Components/Button';
-import { Input } from '../../../Input';
+import { Input } from '../../../Components/Input';
 
 export const ChatForm: React.FC<Props> = ({
   style = {},
