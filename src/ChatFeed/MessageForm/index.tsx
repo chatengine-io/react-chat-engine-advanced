@@ -12,7 +12,7 @@ import { isImage } from '../../util/file';
 
 export const MessageForm: React.FC<Props> = ({
   label = '',
-  style = {},
+  customStyle = {},
   onChange,
   onSubmit,
 }: Props) => {
@@ -81,7 +81,7 @@ export const MessageForm: React.FC<Props> = ({
             key={`attachment_preview_${index}`}
             fileName={attachment.name}
             imageUrl={imageUrl}
-            style={style}
+            style={customStyle}
             onRemove={() => onRemove(index)}
           />
         );
@@ -94,7 +94,7 @@ export const MessageForm: React.FC<Props> = ({
   return (
     <div
       id="msg-form-container"
-      style={{ ...styles.messageForm, ...style.messageForm }}
+      style={{ ...styles.messageForm, ...customStyle.messageForm }}
       className="ce-message-form-container"
     >
       <div>{renderAttachments(true)}</div>
@@ -109,7 +109,7 @@ export const MessageForm: React.FC<Props> = ({
           style={{
             ...styles.input,
             ...overflowStyle,
-            ...style.input,
+            ...customStyle.input,
           }}
           value={value}
           placeholder={label}
@@ -120,7 +120,7 @@ export const MessageForm: React.FC<Props> = ({
 
       <span>
         <AttachmentInput
-          style={style}
+          style={customStyle}
           onSelectFiles={(files) => {
             files !== null && setAttachments(Array.from(files));
           }}
@@ -136,7 +136,7 @@ export const MessageForm: React.FC<Props> = ({
           style={{
             ...styles.sendButton,
             ...buttonHoverStyle,
-            ...style.sendButton,
+            ...customStyle.sendButton,
           }}
         >
           Send

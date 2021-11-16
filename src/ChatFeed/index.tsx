@@ -48,15 +48,16 @@ export const ChatFeed: React.FC<Props> = ({
         }}
       />
 
-      <div
-        style={{
-          width: '100%',
-          position: 'absolute',
-          bottom: '0px',
+      <MessageForm
+        label="Send a message..."
+        customStyle={{
+          messageForm: {
+            width: '100%',
+            position: 'absolute',
+            bottom: '0px',
+          },
         }}
-      >
-        <MessageForm label="Send a message..." />
-      </div>
+      />
     </div>
   );
 };
