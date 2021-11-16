@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 
+import { Properties } from 'csstype';
+
 import { Props } from './props';
 import { styles } from './styles';
 
 export const Button = ({
   children = undefined,
   type = 'default',
-  style = {},
+  customStyle = {},
   icon = undefined,
   onClick = () => {},
 }: Props) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
-  let typeStyle = {};
-  switch (type) {
-    case 'primary':
-      typeStyle = styles.primaryButton;
-      break;
-    case 'danger':
-      typeStyle = styles.dangerButton;
-      break;
-  }
+  const getTypeStyle = () => {
+    if (type == 'primary') {
+      return { ...styles.primaryButton, ...customStyle.primaryButton };
+    } else if (type === 'danger') {
+      return { ...styles.dangerButton, ...customStyle.dangerButton };
+    } else {
+      return {} as Properties;
+    }
+  };
 
+  const typeStyle = getTypeStyle();
   const hoverStyle = hovered ? styles.hoverButton : {};
 
   return (
@@ -34,7 +37,7 @@ export const Button = ({
         ...styles.defaultButton,
         ...typeStyle,
         ...hoverStyle,
-        ...style,
+        ...customStyle.defaultButton,
       }}
     >
       {icon}

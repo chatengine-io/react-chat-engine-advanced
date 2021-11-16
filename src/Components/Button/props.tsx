@@ -1,10 +1,11 @@
 import { HTMLAttributes, ReactNode } from 'react';
-import CSS from 'csstype';
+
+import { ButtonStyles } from './styles';
 
 export interface Props extends HTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   type?: 'primary' | 'default' | 'danger';
-  style?: CSS.Properties;
+  customStyle?: ButtonStyles;
   icon?: ReactNode;
   onClick?: () => void;
 }
