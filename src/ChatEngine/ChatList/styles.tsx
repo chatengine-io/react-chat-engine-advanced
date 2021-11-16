@@ -1,6 +1,12 @@
 import { Properties } from 'csstype';
 
-export const styles = {
+export interface ChatListStyles {
+  chatListContainer?: Properties;
+  loadingStyle?: Properties;
+  chatLoader?: Properties;
+}
+
+export const styles: ChatListStyles = {
   chatListContainer: {
     width: '100%',
     height: '100%',

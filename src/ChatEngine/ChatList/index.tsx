@@ -20,9 +20,11 @@ export const ChatList: React.FC<Props> = ({
   onChatLoaderVisible = () => {},
   isLoading = false,
   hasMoreChats = false,
-  style = {},
+  customStyle = {},
 }) => {
-  const loadingStyle = isLoading ? styles.loadingStyle : {};
+  const loadingStyle = isLoading
+    ? { ...styles.loadingStyle, ...customStyle.loadingStyle }
+    : {};
 
   const readLastMessage = (userName: string, chat: ChatProps) => {
     return chat.people.some(
@@ -66,7 +68,7 @@ export const ChatList: React.FC<Props> = ({
       style={{
         ...styles.chatListContainer,
         ...loadingStyle,
-        ...style,
+        ...customStyle.chatListContainer,
       }}
       className="ce-chat-list"
     >
@@ -77,7 +79,9 @@ export const ChatList: React.FC<Props> = ({
       {hasMoreChats && (
         <RenderTrigger
           onShow={onChatLoaderVisible}
-          customStyle={{ renderTrigger: styles.chatLoader }}
+          customStyle={{
+            renderTrigger: { ...styles.chatLoader, ...customStyle.chatLoader },
+          }}
           children={`🖐 Loading...`}
         />
       )}
