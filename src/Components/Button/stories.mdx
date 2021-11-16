@@ -4,13 +4,9 @@ import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Button } from '.';
 import { Props } from './props';
 
-<Meta title='Button' component={Button} />
+<Meta title="Components/Button" component={Button} />
 
-export const Template = (args) => (
-  <Button {...args}>
-    {args.children}
-  </Button>
-);
+export const Template = (args) => <Button {...args}>{args.children}</Button>;
 
 # Button
 
@@ -22,22 +18,25 @@ Override the default styling by passing in a `style` object.
 
 ## Default
 
-<Story name='Default' args={{ children: 'Button' }}>
+<Story name="Default" args={{ children: 'Button' }}>
   {Template.bind({})}
 </Story>
 
-<ArgsTable story='Default' />
+<ArgsTable story="Default" />
 
 ## Primary
 
 You can include an icon in the `Button` too, here we are passing the `CheckOutlined` component from [Ant Design](https://ant.design/components/icon/).
 
 <Canvas>
-  <Story name='Primary' args={{ 
-    children: 'Submit', 
-    type: 'primary', 
-    icon: <CheckOutlined /> 
-  }}>
+  <Story
+    name="Primary"
+    args={{
+      children: 'Submit',
+      type: 'primary',
+      icon: <CheckOutlined />,
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -47,11 +46,14 @@ You can include an icon in the `Button` too, here we are passing the `CheckOutli
 Use type `'danger'` when the user needs to be careful.
 
 <Canvas>
-  <Story name='Danger' args={{ 
-    children: 'Danger!', 
-    type: 'danger', 
-    icon: <DeleteOutlined /> 
-  }}>
+  <Story
+    name="Danger"
+    args={{
+      children: 'Danger!',
+      type: 'danger',
+      icon: <DeleteOutlined />,
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>

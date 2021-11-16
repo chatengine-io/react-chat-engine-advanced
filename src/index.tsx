@@ -1,4 +1,4 @@
-export * from './Button';
+export * from './Components/Button';
 export * from './Input';
 export * from './Components/Avatar';
 export * from './Dot';
