@@ -8,7 +8,7 @@ import { RenderTrigger } from '.';
 import { Props } from './props';
 
 const meta: Meta = {
-  title: 'RenderTrigger',
+  title: 'Components/RenderTrigger',
   component: RenderTrigger,
   argTypes: {},
 };

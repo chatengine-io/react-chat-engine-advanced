@@ -6,7 +6,7 @@ import { ChatCard } from '.';
 import { Props } from './props';
 
 const meta: Meta = {
-  title: 'ChatList/ChatCard',
+  title: 'ChatEngine/ChatList/ChatCard',
   component: ChatCard,
   argTypes: {},
 };

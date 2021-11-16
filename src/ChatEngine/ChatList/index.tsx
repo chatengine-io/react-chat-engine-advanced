@@ -6,7 +6,7 @@ import { styles } from './styles';
 import { ChatForm } from './ChatForm';
 import { ChatCard } from './ChatCard';
 
-import { RenderTrigger } from '../../RenderTrigger';
+import { RenderTrigger } from '../../Components/RenderTrigger';
 
 import { ChatProps } from '../../util/interfaces';
 import { getDateTime } from '../../util/dateTime';

@@ -8,7 +8,7 @@ import { Props } from './props';
 import { chats } from '../../util/mocks';
 
 const meta: Meta = {
-  title: 'ChatList',
+  title: 'ChatEngine/ChatList',
   component: ChatList,
   argTypes: {},
 };

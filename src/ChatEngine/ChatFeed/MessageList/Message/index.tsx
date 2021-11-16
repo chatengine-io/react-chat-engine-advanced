@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Props } from './props';
 import { myStyles, theirStyles } from './styles';
 
-import { Dot } from '../../../../Dot';
-import { Avatar } from '../../../../Avatar';
+import { Dot } from '../../../../Components/Dot';
+import { Avatar } from '../../../../Components/Avatar';
 
 import { DateTime } from './DateTime';
 

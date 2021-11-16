@@ -1,7 +1,7 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ChatAvatars as Thing } from './';
-import { threePersonChat, adam as currentUser } from '../util/mocks';
+import { threePersonChat, adam as currentUser } from '../../../util/mocks';
 
 describe('Thing', () => {
   it('renders without crashing', () => {
