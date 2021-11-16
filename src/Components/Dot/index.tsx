@@ -6,7 +6,7 @@ import { styles } from './styles';
 export const Dot = ({
   avatarUrl = undefined,
   username = '',
-  style = {},
+  customStyle = {},
   visible = true,
 }: Props) => {
   const color = stringToColor(username);
@@ -15,14 +15,14 @@ export const Dot = ({
     <div
       className="ce-avatar-dot"
       style={{
-        ...styles.default,
+        ...styles.dot,
         ...{
           backgroundColor: avatarUrl ? 'white' : color,
           backgroundImage: avatarUrl ? `url(${avatarUrl})` : '',
           width: visible ? '13px' : '0px',
           height: visible ? '13px' : '0px',
         },
-        ...style,
+        ...customStyle.dot,
       }}
     />
   );
