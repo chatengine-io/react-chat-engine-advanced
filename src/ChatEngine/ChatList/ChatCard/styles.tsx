@@ -1,7 +1,18 @@
 import { Properties } from 'csstype';
 
-export const styles = {
-  chatContainer: {
+export interface ChatCardStyle {
+  chatCardContainer?: Properties;
+  titleText?: Properties;
+  messageText?: Properties;
+  activeChatDot?: Properties;
+  hoveredChat?: Properties;
+  activeChat?: Properties;
+  loadingBar?: Properties;
+}
+
+export const styles: ChatCardStyle = {
+  chatCardContainer: {
+    position: 'relative',
     fontFamily: 'Avenir',
     padding: '16px',
     borderRadius: '12px',
@@ -25,7 +36,7 @@ export const styles = {
     overflow: 'hidden',
     display: 'inline-block',
   } as Properties,
-  activeChat: {
+  activeChatDot: {
     backgroundColor: '#d9d9d9',
     border: '0px solid white',
   } as Properties,
