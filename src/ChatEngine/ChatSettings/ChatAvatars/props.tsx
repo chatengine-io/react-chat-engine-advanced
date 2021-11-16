@@ -1,4 +1,4 @@
-import { PersonProps } from '../util/interfaces';
+import { PersonProps } from '../../../util/interfaces';
 
 export interface Props {
   users: PersonProps[];
