@@ -79,9 +79,11 @@ You can also use the `style` component to overlay custom CSS onto the `Avatar` c
     name="Custom Style"
     args={{
       username: 'Dylan',
-      style: {
-        backgroundImage: 'linear-gradient(#f67a36,#ed008c)',
-        borderRadius: '4px',
+      customStyle: {
+        avatar: {
+          backgroundImage: 'linear-gradient(#f67a36, #ed008c)',
+          borderRadius: '4px',
+        },
       },
     }}
   >

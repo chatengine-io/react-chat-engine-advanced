@@ -1,10 +1,10 @@
-import CSS from 'csstype';
+import { AvatarStyles } from './styles';
 
 export interface Props {
   avatarUrl?: string;
   username?: string;
   isOnline?: boolean;
   showOnline?: boolean;
-  style?: CSS.Properties;
+  customStyle?: AvatarStyles;
   onClick?: () => void;
 }
