@@ -1,5 +1,5 @@
 import React from 'react';
-import { stringToColor } from '../util/colorMapping';
+import { stringToColor } from '../../util/colorMapping';
 import { Props } from './props';
 import { styles } from './styles';
 
