@@ -7,7 +7,7 @@ import { styles } from './styles';
 export const RenderTrigger: React.FC<Props> = ({
   onShow,
   onHide,
-  style = {},
+  customStyle = {},
   children = 'Loading...',
 }) => {
   const useOnScreen = (ref: React.RefObject<HTMLDivElement>) => {
@@ -36,7 +36,7 @@ export const RenderTrigger: React.FC<Props> = ({
   return (
     <div
       ref={ref}
-      style={{ ...styles.renderTrigger, ...style }}
+      style={{ ...styles.renderTrigger, ...customStyle.renderTrigger }}
       className="ce-chat-loader"
     >
       {children}
