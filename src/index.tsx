@@ -5,4 +5,4 @@ export * from './Components/Dot';
 export * from './ChatEngine/ChatSettings/ChatAvatars';
 export * from './ChatEngine/ChatList/ChatCard';
 export * from './ChatEngine/ChatList/ChatCard';
-export * from './RenderTrigger';
+export * from './Components/RenderTrigger';
