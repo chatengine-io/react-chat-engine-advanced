@@ -55,7 +55,7 @@ const renderFile = (
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {children ? children : getFileName(attachment.file)}
+      {children ? children : `📄 ${getFileName(attachment.file)}`}
     </div>
   );
 };

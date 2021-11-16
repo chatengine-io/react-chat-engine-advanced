@@ -21,14 +21,14 @@ export const AttachmentInput: React.FC<Props> = ({
 
   return (
     <form
-      className="uploader"
+      className="ce-uploader"
       encType="multipart/form-data"
       style={{
         ...styles.attachmentInput,
         ...style.attachmentInput,
       }}
     >
-      <label htmlFor="files" id="upload-document-button">
+      <label htmlFor="files" id="ce-upload-document-button">
         <span
           className="ce-attachment-icon"
           onMouseEnter={() => setHovered(true)}

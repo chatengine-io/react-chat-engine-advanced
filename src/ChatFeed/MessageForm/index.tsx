@@ -12,7 +12,7 @@ import { isImage } from '../../util/file';
 
 export const MessageForm: React.FC<Props> = ({
   label = '',
-  style = {},
+  customStyle = {},
   onChange,
   onSubmit,
 }: Props) => {
@@ -20,7 +20,7 @@ export const MessageForm: React.FC<Props> = ({
   const [value, setValue] = useState<string>('');
   const [height, setHeight] = useState<number>(0);
   const [buttonHover, setButtonHover] = useState<boolean>(false);
-  const [attachments, setAttachments] = useState<Array<File>>();
+  const [attachments, setAttachments] = useState<Array<File>>([]);
 
   const overflowStyle: Properties = {
     overflowY: height === 150 ? 'scroll' : 'hidden',
@@ -50,7 +50,7 @@ export const MessageForm: React.FC<Props> = ({
     if (e.key === 'Enter') {
       e.preventDefault();
       if (value.length > 0) {
-        onSubmit && onSubmit(value);
+        onSubmit && onSubmit(value, attachments);
       }
     }
   };
@@ -81,7 +81,7 @@ export const MessageForm: React.FC<Props> = ({
             key={`attachment_preview_${index}`}
             fileName={attachment.name}
             imageUrl={imageUrl}
-            style={style}
+            style={customStyle}
             onRemove={() => onRemove(index)}
           />
         );
@@ -94,7 +94,7 @@ export const MessageForm: React.FC<Props> = ({
   return (
     <div
       id="msg-form-container"
-      style={{ ...styles.messageForm, ...style.messageForm }}
+      style={{ ...styles.messageForm, ...customStyle.messageForm }}
       className="ce-message-form-container"
     >
       <div>{renderAttachments(true)}</div>
@@ -109,7 +109,7 @@ export const MessageForm: React.FC<Props> = ({
           style={{
             ...styles.input,
             ...overflowStyle,
-            ...style.input,
+            ...customStyle.input,
           }}
           value={value}
           placeholder={label}
@@ -120,7 +120,7 @@ export const MessageForm: React.FC<Props> = ({
 
       <span>
         <AttachmentInput
-          style={style}
+          style={customStyle}
           onSelectFiles={(files) => {
             files !== null && setAttachments(Array.from(files));
           }}
@@ -132,11 +132,11 @@ export const MessageForm: React.FC<Props> = ({
           id="ce-send-message-button"
           onMouseEnter={() => setButtonHover(true)}
           onMouseLeave={() => setButtonHover(false)}
-          onClick={() => onSubmit && onSubmit(value)}
+          onClick={() => onSubmit && onSubmit(value, attachments)}
           style={{
             ...styles.sendButton,
             ...buttonHoverStyle,
-            ...style.sendButton,
+            ...customStyle.sendButton,
           }}
         >
           Send

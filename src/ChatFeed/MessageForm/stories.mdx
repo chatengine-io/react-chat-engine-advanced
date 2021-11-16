@@ -15,7 +15,7 @@ This message form is for making and sending messages.
 <Story
   name="Default"
   args={{
-    style: {
+    customStyle: {
       messageForm: {
         maxWidth: '600px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -30,13 +30,13 @@ This message form is for making and sending messages.
 
 ## Custom Style
 
-To customize the look and feel, use the `style` props which uses the `MessageFormStyles` interface and extends the `AttachmentStyles` and `AttachmentInputStyles` interface.
+To customize the look and feel, use the `customStyle` props which uses the `MessageFormStyles` interface and extends the `AttachmentStyles` and `AttachmentInputStyles` interface.
 
 <Canvas>
   <Story
     name="Custom Style"
     args={{
-      style: {
+      customStyle: {
         messageForm: { border: '2px solid red' },
         input: { border: '2px solid blue' },
         sendButton: { border: '2px solid green' },

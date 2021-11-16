@@ -1,5 +1,6 @@
 import { ChatProps, MessageProps } from '../../util/interfaces';
 
+import { MessageListStyles } from './styles';
 export interface Props {
   messages: { [created: string]: MessageProps };
   chat?: ChatProps;
@@ -8,4 +9,5 @@ export interface Props {
   onTopMessageHide?: () => void;
   onBottomMessageShow?: () => void;
   onBottomMessageHide?: () => void;
+  customStyle?: MessageListStyles;
 }
