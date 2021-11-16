@@ -7,11 +7,8 @@ import { Button } from '../../../Components/Button';
 import { Input } from '../../../Components/Input';
 
 export const ChatForm: React.FC<Props> = ({
-  style = {},
-  titleStyle = {},
-  inputStyle = {},
-  buttonStyle = {},
   onFormSubmit,
+  customStyle = {},
 }) => {
   const [selected, setSelected] = useState<boolean>(false);
   const [value, setValue] = useState<string>('');
@@ -31,12 +28,10 @@ export const ChatForm: React.FC<Props> = ({
       className="ce-chat-form"
       style={{
         ...styles.chatForm,
-        ...style,
-        // Not sure why this is here, might need it later
-        // ...{ marginLeft: props.onClose ? '40px' : '0px' },
+        ...customStyle.chatForm,
       }}
     >
-      {selected ? (
+      {selected && (
         <form onSubmit={onSubmit}>
           <Input
             autoFocus
@@ -45,33 +40,35 @@ export const ChatForm: React.FC<Props> = ({
             id="ce-new-chat-title-field"
             onBlur={() => setSelected(false)}
             style={{
-              ...{ width: '100%' },
-              ...inputStyle,
+              ...styles.chatFormInput,
+              ...customStyle.chatFormInput,
             }}
             onChange={onChange}
           />
         </form>
-      ) : (
-        <div>
-          <span
-            style={{
-              ...styles.chatFormTitle,
-              ...titleStyle,
-            }}
-          >
-            My Chats
-          </span>
+      )}
 
-          <Button
-            style={{
-              ...{ float: 'right' },
-              ...buttonStyle,
-            }}
-            icon="+"
-            id="new-chat-plus-button"
-            onClick={() => setSelected(true)}
-          />
-        </div>
+      {!selected && (
+        <span
+          style={{
+            ...styles.chatFormTitle,
+            ...customStyle.chatFormTitle,
+          }}
+        >
+          My Chats
+        </span>
+      )}
+
+      {!selected && (
+        <Button
+          style={{
+            ...styles.chatFormButton,
+            ...customStyle.chatFormButton,
+          }}
+          icon="+"
+          id="new-chat-plus-button"
+          onClick={() => setSelected(true)}
+        />
       )}
     </div>
   );
