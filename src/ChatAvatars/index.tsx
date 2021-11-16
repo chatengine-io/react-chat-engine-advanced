@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar } from '../Avatar';
+import { Avatar } from '../Components/Avatar';
 import { PersonProps } from '../util/interfaces';
 import { Props } from './props';
 import { styles } from './styles';

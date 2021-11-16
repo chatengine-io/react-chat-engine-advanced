@@ -1,6 +1,6 @@
 export * from './Button';
 export * from './Input';
-export * from './Avatar';
+export * from './Components/Avatar';
 export * from './Dot';
 export * from './ChatAvatars';
 export * from './ChatEngine/ChatList/ChatCard';
