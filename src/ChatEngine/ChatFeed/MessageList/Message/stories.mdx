@@ -4,7 +4,11 @@ import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Message } from '.';
 import { Props } from './props';
 
-import { message, messagePlusAttachments, chatWithReads } from '../../../../';
+import {
+  message,
+  messagePlusAttachments,
+  chatWithReads,
+} from '../../../../util/mocks';
 
 <Meta title="ChatEngine/ChatFeed/MessageList/Message" component={Message} />
 
@@ -112,7 +116,7 @@ If you pass in the optional `chat` prop and the `people` attribute shows users h
 
 ## Custom Style
 
-You can use the `style` prop, which has a `MessageStyle` interface, to customize every aspect of the message CSS.
+You can use the `customStyle` prop, which has a `MessageStyle` interface, to customize every aspect of the message CSS.
 
 <Canvas>
   <Story
@@ -120,28 +124,13 @@ You can use the `style` prop, which has a `MessageStyle` interface, to customize
     args={{
       message: messagePlusAttachments,
       chat: chatWithReads,
-      style: {
-        avatar: { borderRadius: '4px' },
-        senderText: { color: 'rgb(74, 81, 98)' },
-        dot: { borderRadius: '1px', position: 'relative', top: '3px' },
-        file: {
-          backgroundColor: 'rgb(74, 81, 98)',
-          borderRadius: '4px',
-          color: 'white',
-          border: 'none',
-        },
-        image: {
-          backgroundColor: 'rgb(74, 81, 98)',
-          borderRadius: '4px',
-          color: 'white',
-          border: 'none',
-        },
-        message: {
-          backgroundColor: 'rgb(74, 81, 98)',
-          borderRadius: '4px',
-          color: 'white',
-          border: 'none',
-        },
+      customStyle: {
+        avatar: { border: '2px solid red' },
+        senderText: { border: '2px solid blue' },
+        dot: { border: '2px solid cyan' },
+        attachment: { border: '2px solid orange' },
+        message: { border: '2px solid green' },
+        timeTag: { border: '2px solid brown' },
       },
     }}
   >
