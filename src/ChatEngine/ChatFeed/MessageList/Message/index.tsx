@@ -67,7 +67,9 @@ export const Message: React.FC<Props> = ({
           <Attachment
             attachment={attachment}
             isLoading={isSending || attachment.file === null}
-            style={{ ...styles.image, ...style.image }}
+            customStyle={{
+              attachmentThumb: { ...styles.image, ...style.image },
+            }}
           />
         );
       }
