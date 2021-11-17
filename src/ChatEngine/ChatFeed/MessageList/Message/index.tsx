@@ -65,6 +65,7 @@ export const Message: React.FC<Props> = ({
       ) {
         return (
           <Attachment
+            key={`message-attachment-${index}`}
             attachment={attachment}
             isLoading={isSending || attachment.file === null}
             customStyle={{
