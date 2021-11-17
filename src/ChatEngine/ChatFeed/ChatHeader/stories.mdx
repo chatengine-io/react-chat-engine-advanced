@@ -29,7 +29,7 @@ Things such as the chat title, members, and last sent message (or last message d
 
 ## Custom Styles
 
-You can customize the look and feel with the `style` prop which extends the `ChatHeaderStyles` interface.
+You can customize the look and feel with the `customStyle` prop which extends the `ChatHeaderStyles` interface.
 
 <Canvas>
   <Story
@@ -38,8 +38,8 @@ You can customize the look and feel with the `style` prop which extends the `Cha
       id: 1,
       title: 'Magic Club',
       description: 'Where the magic happens...',
-      style: {
-        titleSection: { border: '3px solid red' },
+      customStyle: {
+        chatHeader: { border: '3px solid red' },
         mobileOption: { border: '3px solid blue' },
         titleContainer: { border: '3px solid green' },
         titleText: { border: '3px solid yellow' },

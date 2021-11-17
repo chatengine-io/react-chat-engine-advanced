@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Properties } from 'csstype';
+
 import { Props } from './props';
 import { styles } from './styles';
 
@@ -30,32 +32,43 @@ export const ChatFeed: React.FC<Props> = ({
     }
   };
 
+  const messageListStyle = {
+    messageList: {
+      height: 'calc(100% - 128px)',
+      overflowY: 'scroll',
+      overflowX: 'hidden',
+    } as Properties,
+  };
+
+  const messageFormStyle = {
+    messageForm: {
+      width: '100%',
+      position: 'absolute',
+      bottom: '0px',
+    } as Properties,
+  };
+
   return (
     <div style={{ ...styles.chatFeed, ...customStyle.chatFeed }}>
-      <ChatHeader title={chat.title} description={getDescription()} />
+      <ChatHeader
+        title={chat.title}
+        description={getDescription()}
+        customStyle={customStyle}
+      />
 
       <MessageList
         messages={messages}
         myUsername={myUsername}
         onTopMessageShow={onTopMessageShow}
         onBottomMessageShow={onBottomMessageShow}
-        customStyle={{
-          messageList: {
-            height: 'calc(100% - 128px)',
-            overflowY: 'scroll',
-            overflowX: 'hidden',
-          },
-        }}
+        customStyle={{ ...messageListStyle, ...customStyle }}
       />
 
       <MessageForm
         label="Send a message..."
         customStyle={{
-          messageForm: {
-            width: '100%',
-            position: 'absolute',
-            bottom: '0px',
-          },
+          ...messageFormStyle,
+          ...customStyle,
         }}
       />
     </div>
