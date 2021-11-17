@@ -98,7 +98,9 @@ export const Message: React.FC<Props> = ({
       {showDateTime && (
         <DateTime
           created={message.created}
-          style={{ ...styles.dateTime, ...style.dateTime }}
+          customStyle={{
+            dateTimeText: { ...styles.dateTime, ...style.dateTime },
+          }}
         />
       )}
 
