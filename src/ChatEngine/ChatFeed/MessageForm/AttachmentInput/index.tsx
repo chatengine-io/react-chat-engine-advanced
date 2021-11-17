@@ -7,7 +7,7 @@ import { styles } from './styles';
 
 export const AttachmentInput: React.FC<Props> = ({
   onSelectFiles,
-  style = {},
+  customStyle = {},
 }: Props) => {
   const [hovered, setHovered] = useState<boolean>(false);
   const hoverStyle: Properties = { color: hovered ? '#06c' : '#444' };
@@ -25,7 +25,7 @@ export const AttachmentInput: React.FC<Props> = ({
       encType="multipart/form-data"
       style={{
         ...styles.attachmentInput,
-        ...style.attachmentInput,
+        ...customStyle.attachmentInput,
       }}
     >
       <label htmlFor="files" id="ce-upload-document-button">
@@ -36,7 +36,7 @@ export const AttachmentInput: React.FC<Props> = ({
           style={{
             ...styles.addAttachmentIcon,
             ...hoverStyle,
-            ...style.addAttachmentIcon,
+            ...customStyle.addAttachmentIcon,
           }}
           onClick={() => {}} // Prevents redirect in StorybookJS
         >

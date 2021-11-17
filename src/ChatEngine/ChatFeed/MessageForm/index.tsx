@@ -81,7 +81,7 @@ export const MessageForm: React.FC<Props> = ({
             key={`attachment_preview_${index}`}
             fileName={attachment.name}
             imageUrl={imageUrl}
-            style={customStyle}
+            customStyle={customStyle}
             onRemove={() => onRemove(index)}
           />
         );
@@ -120,7 +120,7 @@ export const MessageForm: React.FC<Props> = ({
 
       <span>
         <AttachmentInput
-          style={customStyle}
+          customStyle={customStyle}
           onSelectFiles={(files) => {
             files !== null && setAttachments(Array.from(files));
           }}
