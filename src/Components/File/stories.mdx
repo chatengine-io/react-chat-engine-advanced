@@ -31,6 +31,20 @@ If you do not set an `url` the image is considered loading. And will show the fo
   {Template.bind({})}
 </Story>
 
+## File Name
+
+If you do not set an `url` the image is considered loading. And will show the following loading `.gif`.
+
+<Story
+  name="File Name"
+  args={{
+    url: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
+    fileName: '🚨 🚨 Secret Codes',
+  }}
+>
+  {Template.bind({})}
+</Story>
+
 ## Custom Style
 
 You can customize the look and feel with the `*Style` props and change the CSS for every Image state.

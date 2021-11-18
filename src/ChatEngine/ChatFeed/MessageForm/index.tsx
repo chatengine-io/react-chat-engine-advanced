@@ -71,7 +71,7 @@ export const MessageForm: React.FC<Props> = ({
 
     return Array.from(attachments).map((attachment, index) => {
       const url = URL.createObjectURL(attachment);
-
+      console.log(attachment.name, url);
       return (
         <span
           key={`draft_attachment_${index}`}
@@ -91,7 +91,9 @@ export const MessageForm: React.FC<Props> = ({
             />
           )}
 
-          {!renderImage && !isImage(attachment.name) && <File url={url} />}
+          {!renderImage && !isImage(attachment.name) && (
+            <File url={url} fileName={`📄 ${attachment.name}`} />
+          )}
 
           {((!renderImage && !isImage(attachment.name)) ||
             (renderImage && isImage(attachment.name))) && (

@@ -7,11 +7,14 @@ import { getFileName } from '../../util/file';
 
 export const File: React.FC<Props> = ({
   url,
+  fileName,
   style = {},
   hoveredStyle = {},
 }: Props) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const fileName: string = url ? getFileName(url) : 'Loading...';
+  const urlOrLoading = () => {
+    return url ? getFileName(url) : 'Loading...';
+  };
 
   return (
     <div
@@ -31,6 +34,8 @@ export const File: React.FC<Props> = ({
         // Docs: No Style prop for isLoading.
         // They can set isLoading and style accordingly.
       }}
-    >{`📄 ${fileName}`}</div>
+    >
+      {fileName ? fileName : `📄 ${urlOrLoading()}`}
+    </div>
   );
 };
