@@ -9,6 +9,8 @@ export interface MessageFormStyles
   messageForm?: Properties;
   input?: Properties;
   sendButton?: Properties;
+  attachmentWrapper?: Properties;
+  removeAttachmentIcon?: Properties;
 }
 
 export const styles: MessageFormStyles = {
@@ -42,5 +44,25 @@ export const styles: MessageFormStyles = {
     // Tweak Position
     position: 'relative',
     bottom: '6px',
+  } as Properties,
+  attachmentWrapper: {
+    padding: '6px',
+    display: 'inline-block',
+    position: 'relative',
+  } as Properties,
+  removeAttachmentIcon: {
+    position: 'absolute',
+    top: '-6px',
+    right: '-6px',
+    width: '30px',
+    height: '30px',
+    color: '#40a9ff',
+    backgroundColor: 'white',
+    border: '1px solid #fff',
+    borderRadius: '50%',
+    cursor: 'pointer',
+    transition: 'all .33s ease',
+    WebkitTransition: 'all .33s ease',
+    MozTransition: 'all .33s ease',
   } as Properties,
 };

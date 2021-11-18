@@ -5,8 +5,10 @@ import { Properties } from 'csstype';
 import { Props } from './props';
 import { styles } from './styles';
 
-import { Attachment } from './Attachment';
 import { AttachmentInput } from './AttachmentInput';
+
+import { File } from '../../../Components/File';
+import { Image } from '../../../Components/Image';
 
 import { isImage } from '../../../util/file';
 
@@ -68,26 +70,44 @@ export const MessageForm: React.FC<Props> = ({
     if (!attachments || attachments === null) return <div />;
 
     return Array.from(attachments).map((attachment, index) => {
-      if (
-        (renderImage && isImage(attachment.name)) ||
-        (!renderImage && !isImage(attachment.name))
-      ) {
-        const imageUrl = renderImage
-          ? URL.createObjectURL(attachment)
-          : undefined;
+      const url = URL.createObjectURL(attachment);
 
-        return (
-          <Attachment
-            key={`attachment_preview_${index}`}
-            fileName={attachment.name}
-            imageUrl={imageUrl}
-            customStyle={customStyle}
-            onRemove={() => onRemove(index)}
-          />
-        );
-      }
+      return (
+        <span
+          key={`draft_attachment_${index}`}
+          style={{
+            ...styles.attachmentWrapper,
+            ...customStyle.attachmentWrapper,
+          }}
+        >
+          {renderImage && isImage(attachment.name) && (
+            <Image
+              url={url}
+              style={{
+                padding: '6px',
+                height: '60px',
+                width: '60px',
+              }}
+            />
+          )}
 
-      return <div key={`attachment_preview_${index}`} />;
+          {!renderImage && !isImage(attachment.name) && <File url={url} />}
+
+          {((!renderImage && !isImage(attachment.name)) ||
+            (renderImage && isImage(attachment.name))) && (
+            <button
+              className="ce-message-attachment-remove-btn"
+              style={{
+                ...styles.removeAttachmentIcon,
+                ...customStyle.removeAttachmentIcon,
+              }}
+              onClick={() => onRemove(index)}
+            >
+              ❌
+            </button>
+          )}
+        </span>
+      );
     });
   };
 
