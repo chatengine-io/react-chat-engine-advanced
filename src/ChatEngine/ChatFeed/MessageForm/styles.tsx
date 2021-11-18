@@ -1,11 +1,8 @@
 import { Properties } from 'csstype';
 
-import { AttachmentStyles } from './Attachment/styles';
 import { AttachmentInputStyles } from './AttachmentInput/styles';
 
-export interface MessageFormStyles
-  extends AttachmentStyles,
-    AttachmentInputStyles {
+export interface MessageFormStyles extends AttachmentInputStyles {
   messageForm?: Properties;
   input?: Properties;
   sendButton?: Properties;
