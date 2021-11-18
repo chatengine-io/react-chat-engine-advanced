@@ -1,12 +1,12 @@
 import { Properties } from 'csstype';
 
 export interface ImageStyles {
-  imageStyle?: Properties;
-  imageHoveredStyle?: Properties;
+  style?: Properties;
+  hoveredStyle?: Properties;
 }
 
 export const styles: ImageStyles = {
-  imageStyle: {
+  style: {
     cursor: 'pointer',
     height: '30vw',
     width: '30vw',
@@ -22,7 +22,7 @@ export const styles: ImageStyles = {
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
   } as Properties,
-  imageHoveredStyle: {
+  hoveredStyle: {
     border: '1px solid #1890ff',
   } as Properties,
 };

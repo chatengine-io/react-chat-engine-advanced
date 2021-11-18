@@ -4,9 +4,9 @@ import { Props } from './props';
 import { styles } from './styles';
 
 export const Image: React.FC<Props> = ({
-  imageUrl,
-  imageStyle = {},
-  imageHoveredStyle = {},
+  url,
+  style = {},
+  hoveredStyle = {},
 }: Props) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const loadingUrl = 'https://chat-engine-assets.s3.amazonaws.com/loading.gif';
@@ -15,21 +15,21 @@ export const Image: React.FC<Props> = ({
     <img
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      src={imageUrl ? imageUrl : loadingUrl}
-      alt={imageUrl ? imageUrl : loadingUrl}
-      onClick={() => imageUrl && window.open(imageUrl)}
+      src={url ? url : loadingUrl}
+      alt={url ? url : loadingUrl}
+      onClick={() => url && window.open(url)}
       style={{
         // Default
-        ...styles.imageStyle,
-        ...(!imageUrl ? { border: '1px solid grey' } : {}),
+        ...styles.style,
+        ...(!url ? { border: '1px solid grey' } : {}),
         // State
-        ...(isHovered ? styles.imageHoveredStyle : {}),
+        ...(isHovered ? styles.hoveredStyle : {}),
         // Props
-        ...imageStyle,
+        ...style,
         // Props + State
-        ...(isHovered ? imageHoveredStyle : {}),
+        ...(isHovered ? hoveredStyle : {}),
         // Docs: No Style prop for isLoading.
-        // They can set isLoading and imageStyle accordingly.
+        // They can set isLoading and style accordingly.
       }}
     />
   );
