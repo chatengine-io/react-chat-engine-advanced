@@ -7,7 +7,8 @@ import { styles } from './styles';
 
 export const AttachmentInput: React.FC<Props> = ({
   onSelectFiles,
-  customStyle = {},
+  attachmentInputStyle = {},
+  attachmentIconStyle = {},
 }: Props) => {
   const [hovered, setHovered] = useState<boolean>(false);
   const hoverStyle: Properties = { color: hovered ? '#06c' : '#444' };
@@ -21,11 +22,11 @@ export const AttachmentInput: React.FC<Props> = ({
 
   return (
     <form
-      className="ce-uploader"
+      className="ce-attachment-input"
       encType="multipart/form-data"
       style={{
-        ...styles.attachmentInput,
-        ...customStyle.attachmentInput,
+        ...styles.attachmentInputStyle,
+        ...attachmentInputStyle,
       }}
     >
       <label htmlFor="files" id="ce-upload-document-button">
@@ -34,9 +35,9 @@ export const AttachmentInput: React.FC<Props> = ({
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           style={{
-            ...styles.addAttachmentIcon,
+            ...styles.attachmentIconStyle,
             ...hoverStyle,
-            ...customStyle.addAttachmentIcon,
+            ...attachmentIconStyle,
           }}
           onClick={() => {}} // Prevents redirect in StorybookJS
         >

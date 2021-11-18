@@ -3,18 +3,18 @@ import { Properties } from 'csstype';
 import { AttachmentInputStyles } from './AttachmentInput/styles';
 
 export interface MessageFormStyles extends AttachmentInputStyles {
-  messageForm?: Properties;
-  input?: Properties;
-  sendButton?: Properties;
-  attachmentWrapper?: Properties;
-  removeAttachmentIcon?: Properties;
+  formStyle?: Properties;
+  messageInputStyle?: Properties;
+  sendButtonStyle?: Properties;
+  draftAttachmentWrapperStyle?: Properties;
+  draftAttachmentRemoveStyle?: Properties;
 }
 
 export const styles: MessageFormStyles = {
-  messageForm: {
+  formStyle: {
     paddingTop: '4px',
   } as Properties,
-  input: {
+  messageInputStyle: {
     border: '1px solid white',
     width: 'calc(100% - 24px - 116px)',
     outline: 'none',
@@ -28,7 +28,7 @@ export const styles: MessageFormStyles = {
     position: 'relative',
     top: '6px',
   } as Properties,
-  sendButton: {
+  sendButtonStyle: {
     cursor: 'pointer',
     fontFamily: 'Avenir',
     display: 'inline-block',
@@ -42,12 +42,12 @@ export const styles: MessageFormStyles = {
     position: 'relative',
     bottom: '6px',
   } as Properties,
-  attachmentWrapper: {
+  draftAttachmentWrapperStyle: {
     padding: '6px',
     display: 'inline-block',
     position: 'relative',
   } as Properties,
-  removeAttachmentIcon: {
+  draftAttachmentRemoveStyle: {
     position: 'absolute',
     top: '-6px',
     right: '-6px',
