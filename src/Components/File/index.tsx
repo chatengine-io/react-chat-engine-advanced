@@ -3,33 +3,34 @@ import React, { useState } from 'react';
 import { Props } from './props';
 import { styles } from './styles';
 
-export const Image: React.FC<Props> = ({
+import { getFileName } from '../../util/file';
+
+export const File: React.FC<Props> = ({
   url,
   style = {},
   hoveredStyle = {},
 }: Props) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const loadingUrl = 'https://chat-engine-assets.s3.amazonaws.com/loading.gif';
+  const fileName: string = url ? getFileName(url) : 'Loading...';
 
   return (
-    <img
+    <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      src={url ? url : loadingUrl}
-      alt={url ? url : loadingUrl}
       onClick={() => url && window.open(url)}
       style={{
         // Default
         ...styles.style,
+        ...(!url ? { border: '1px solid grey' } : {}),
         // State
         ...(isHovered ? styles.hoveredStyle : {}),
         // Props
         ...style,
         // Props + State
         ...(isHovered ? hoveredStyle : {}),
-        // Docs: No loadingStyle prop
-        // They can set isLoading so they can pass loadingStyle with style
+        // Docs: No Style prop for isLoading.
+        // They can set isLoading and style accordingly.
       }}
-    />
+    >{`📄 ${fileName}`}</div>
   );
 };

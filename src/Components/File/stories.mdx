@@ -1,22 +1,21 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
-import { Image } from '.';
+import { File } from '.';
 import { Props } from './props';
 
-<Meta title="Components/Image" component={Image} />
+<Meta title="Components/File" component={File} />
 
-export const Template = (args) => <Image {...args} />;
+export const Template = (args) => <File {...args} />;
 
 # Image
 
-The Image component represents any Message Attachment which can be put into an `<img />` tag.
+The Image component represents any Message Attachment which cannot be put into an `<img />` tag.
 
 ## Default
 
 <Story
   name="Default"
   args={{
-    url:
-      'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+    url: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
   }}
 >
   {Template.bind({})}
@@ -39,8 +38,7 @@ You can customize the look and feel with the `*Style` props and change the CSS f
 <Story
   name="Custom Style"
   args={{
-    url:
-      'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+    url: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
     style: { border: '4px solid red' },
     hoveredStyle: { border: '4px solid green' },
   }}
