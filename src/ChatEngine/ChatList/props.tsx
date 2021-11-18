@@ -1,11 +1,10 @@
 import { HTMLAttributes } from 'react';
 
-import { Properties } from 'csstype';
+import { ChatListStyles } from './styles';
 
 import { ChatProps } from '../../util/interfaces';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  style?: Properties;
   chats: Array<ChatProps>;
   activeChatID?: number;
   onChatClick?: (chatID: number) => void;
@@ -14,4 +13,5 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   isLoading?: boolean;
   hasMoreChats?: boolean;
   userName?: string;
+  customStyle?: ChatListStyles;
 }

@@ -1,7 +1,7 @@
-import { Properties } from 'csstype';
+import { DateTimeStyles } from './styles';
 
 export interface Props {
   created: string;
   offset?: number;
-  style?: Properties;
+  customStyle?: DateTimeStyles;
 }

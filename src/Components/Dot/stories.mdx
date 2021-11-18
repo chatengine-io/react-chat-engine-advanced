@@ -43,7 +43,7 @@ The component displays none of the `username` letters, but assigns a randomly un
 
 ## Custom Style
 
-You can also use the `style` component to overlay custom CSS onto the `Dot` component.
+You can also use the `customStyle` component to overlay custom CSS onto the `Dot` component.
 
 <Canvas>
   <Story
@@ -51,11 +51,13 @@ You can also use the `style` component to overlay custom CSS onto the `Dot` comp
     args={{
       avatarUrl:
         'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
-      style: {
-        width: '24px',
-        height: '24px',
-        backgroundSize: '24px',
-        borderRadius: '4px',
+      customStyle: {
+        dot: {
+          width: '24px',
+          height: '24px',
+          backgroundSize: '24px',
+          borderRadius: '4px',
+        },
       },
     }}
   >

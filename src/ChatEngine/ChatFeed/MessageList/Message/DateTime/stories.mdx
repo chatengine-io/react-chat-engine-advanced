@@ -43,7 +43,7 @@ If you live in an other timezone than GMT, you can set an `offset` prop which ch
 
 ## Custom Style
 
-If you live in an other timezone than GMT, you can set an `offset` prop which changes the timezone, by hours, from GMT.
+You can use the `customStyle` prop to customize the look and feel.
 
 <Canvas>
   <Story
@@ -51,10 +51,11 @@ If you live in an other timezone than GMT, you can set an `offset` prop which ch
     args={{
       created: '2021-09-29T00:30:00.000000Z',
       offset: -1,
-      style: {
-        color: '#1890ff',
-        fontWeight: 600,
-        padding: '12px',
+      customStyle: {
+        dateTimeText: {
+          border: '2px solid red',
+          color: 'blue',
+        },
       },
     }}
   >

@@ -10,5 +10,5 @@ export interface Props {
   isSending?: boolean;
   isMyMessage?: boolean;
   showDateTime?: boolean;
-  style?: MessageStyle;
+  customStyle?: MessageStyle;
 }

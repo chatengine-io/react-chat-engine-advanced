@@ -1,6 +1,13 @@
 import { Properties } from 'csstype';
 
-export const styles = {
+export interface ButtonStyles {
+  defaultButton?: Properties;
+  primaryButton?: Properties;
+  dangerButton?: Properties;
+  hoverButton?: Properties;
+}
+
+export const styles: ButtonStyles = {
   defaultButton: {
     fontFamily: 'Avenir',
     color: '#1890ff',

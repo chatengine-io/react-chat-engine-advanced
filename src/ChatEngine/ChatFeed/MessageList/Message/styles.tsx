@@ -3,8 +3,7 @@ import { Properties } from 'csstype';
 export interface MessageStyle {
   dateTime?: Properties;
   row?: Properties;
-  image?: Properties;
-  file?: Properties;
+  attachment?: Properties;
   avatar?: Properties;
   message?: Properties;
   senderText?: Properties;
@@ -15,8 +14,7 @@ export interface MessageStyle {
 export const theirStyles: MessageStyle = {
   dateTime: {} as Properties,
   row: { width: '100%' } as Properties,
-  image: {} as Properties,
-  file: {} as Properties,
+  attachment: {} as Properties,
   avatar: {} as Properties,
   message: {
     cursor: 'pointer',
@@ -56,14 +54,13 @@ export const theirStyles: MessageStyle = {
   dot: { float: 'left', marginLeft: '4px' } as Properties,
 };
 
-export const myStyles = {
+export const myStyles: MessageStyle = {
   dateTime: {} as Properties,
   row: {
     width: '100%',
     textAlign: 'right',
   } as Properties,
-  image: {} as Properties,
-  file: {} as Properties,
+  attachment: {} as Properties,
   avatar: {} as Properties,
   message: {
     color: 'white',

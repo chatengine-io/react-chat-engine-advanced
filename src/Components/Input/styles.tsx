@@ -1,6 +1,11 @@
 import { Properties } from 'csstype';
 
-export const styles = {
+export interface InputStyles {
+  input?: Properties;
+  focusInput?: Properties;
+}
+
+export const styles: InputStyles = {
   input: {
     fontFamily: 'Avenir',
     height: '36px',

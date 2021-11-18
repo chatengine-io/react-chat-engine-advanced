@@ -20,9 +20,11 @@ Default.args = {
   title: 'Chat Card',
   description: 'This is where the magic happens',
   timeStamp: '4:24 PM',
-  style: {
-    maxWidth: '400px',
-    boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+  customStyle: {
+    chatCardContainer: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
   },
 };
 
@@ -32,7 +34,12 @@ Active.args = {
   description: 'You are in this chat now...',
   timeStamp: '12:59 PM',
   isActive: true,
-  style: { maxWidth: '400px' },
+  customStyle: {
+    chatCardContainer: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  },
 };
 
 export const Notification = Template.bind({});
@@ -41,7 +48,12 @@ Notification.args = {
   description: 'Alert alert!!!',
   timeStamp: 'Tues',
   hasNotification: true,
-  style: { maxWidth: '400px' },
+  customStyle: {
+    chatCardContainer: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  },
 };
 
 export const Loading = Template.bind({});
@@ -50,5 +62,29 @@ Loading.args = {
   description: 'Alert alert!!!',
   timeStamp: 'Tues',
   isLoading: true,
-  style: { maxWidth: '400px' },
+  customStyle: {
+    chatCardContainer: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  },
+};
+
+export const CustomStyle = Template.bind({});
+CustomStyle.args = {
+  title: 'Notification Card',
+  description: 'Alert alert!!!',
+  timeStamp: 'Tues',
+  customStyle: {
+    chatCardContainer: {
+      maxWidth: '400px',
+      border: '2px solid red',
+    },
+    titleText: { border: '2px solid blue' },
+    messageText: { border: '2px solid green', width: 'calc(70%)' },
+    activeChatDot: { border: '2px solid yellow' },
+    hoveredChat: { border: '2px solid orange' },
+    activeChat: { border: '2px solid purple' },
+    loadingBar: { border: '2px solid brown' },
+  },
 };

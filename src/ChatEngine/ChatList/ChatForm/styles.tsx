@@ -1,5 +1,13 @@
 import { Properties } from 'csstype';
-export const styles = {
+
+export interface ChatFormStyles {
+  chatForm?: Properties;
+  chatFormTitle?: Properties;
+  chatFormInput?: Properties;
+  chatFormButton?: Properties;
+}
+
+export const styles: ChatFormStyles = {
   chatForm: {
     padding: '16px 14px',
     backgroundColor: 'white',
@@ -12,4 +20,6 @@ export const styles = {
     position: 'relative',
     top: '4px',
   } as Properties,
+  chatFormInput: { width: '100%' } as Properties,
+  chatFormButton: { float: 'right' } as Properties,
 };

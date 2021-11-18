@@ -14,13 +14,13 @@ export const Template = ({
   children,
   isLoading,
   attachment,
-  style,
+  customStyle,
   loadingStyle,
 }) => (
   <Attachment
     attachment={attachment}
     isLoading={isLoading}
-    style={style}
+    customStyle={customStyle}
     loadingStyle={loadingStyle}
   >
     {children}
@@ -119,15 +119,16 @@ You can customize the CSS style of a file component too.
     name="File Custom Style"
     args={{
       attachment: fileAttachment,
-      style: {
-        backgroundColor: 'rgb(74, 81, 98)',
-        border: 'none',
-        color: 'white',
-      },
-      loadingStyle: {
-        backgroundColor: 'rgb(74, 81, 98)',
-        border: 'none',
-        color: 'white',
+      customStyle: {
+        attachmentThumb: {
+          border: '2px solid red',
+        },
+        attachmentLoading: {
+          border: '2px solid green',
+        },
+        attachmentHovered: {
+          border: '2px solid blue',
+        },
       },
     }}
   >
@@ -140,14 +141,16 @@ You can customize the CSS style of a file component too.
     name="Image Custom Style"
     args={{
       attachment: imageAttachment,
-      style: {
-        backgroundColor: 'rgb(74, 81, 98)',
-        border: 'none',
-      },
-      loadingStyle: {
-        backgroundColor: 'rgb(74, 81, 98)',
-        border: 'none',
-        color: 'white',
+      customStyle: {
+        attachmentThumb: {
+          border: '2px solid red',
+        },
+        attachmentLoading: {
+          border: '2px solid green',
+        },
+        attachmentHovered: {
+          border: '2px solid blue',
+        },
       },
     }}
   >

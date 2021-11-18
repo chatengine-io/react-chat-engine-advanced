@@ -10,24 +10,26 @@ export const Attachment: React.FC<Props> = ({
   attachment,
   children,
   isLoading = false,
-  style = {},
-  loadingStyle = {},
+  customStyle = {},
 }) => {
   const [hovered, setHovered] = useState<boolean>(false);
-
   const isImage: boolean = isImageFromFilePath(attachment.file);
 
   const attachmentStyle: AttachmentStyle = isImage ? imageStyles : fileStyles;
-
   const thumbStyle = {
-    ...attachmentStyle.thumb,
-    ...(hovered ? attachmentStyle.hovered : attachmentStyle.notHovered),
-    ...style,
+    ...attachmentStyle.attachmentThumb,
+    ...(hovered ? attachmentStyle.attachmentHovered : {}),
+    ...customStyle.attachmentThumb,
   };
 
   if (isLoading || !attachment) {
     return (
-      <div style={{ ...attachmentStyle.loading, ...loadingStyle }}>
+      <div
+        style={{
+          ...attachmentStyle.attachmentLoading,
+          ...customStyle.attachmentLoading,
+        }}
+      >
         {children ? children : 'Loading...'}
       </div>
     );
@@ -45,12 +47,12 @@ export const Attachment: React.FC<Props> = ({
 const renderFile = (
   attachment: AttachmentProps,
   children: ReactNode,
-  style: any,
+  fileStyle: any,
   setHovered: (value: React.SetStateAction<boolean>) => void
 ) => {
   return (
     <div
-      style={style}
+      style={fileStyle}
       onClick={() => window.open(attachment.file)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -62,14 +64,14 @@ const renderFile = (
 
 const renderImage = (
   attachment: AttachmentProps,
-  style: any,
+  imageStyle: any,
   setHovered: (value: React.SetStateAction<boolean>) => void
 ) => {
   return (
     <img
       src={attachment.file}
       alt={'thumb-nail'}
-      style={style}
+      style={imageStyle}
       onClick={() => window.open(attachment.file)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

@@ -12,7 +12,7 @@ export const ChatCard: React.FC<Props> = ({
   description = '',
   timeStamp = '',
   onClick,
-  style = {},
+  customStyle = {},
 }: Props) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
@@ -24,17 +24,17 @@ export const ChatCard: React.FC<Props> = ({
     <div
       onClick={onClick}
       style={{
-        ...styles.chatContainer,
+        ...styles.chatCardContainer,
         ...hoverStyle,
         ...activeStyle,
-        ...style,
+        ...customStyle.chatCardContainer,
       }}
       className={`ce-chat-card ${isActive && 'ce-active-chat-card'}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        style={styles.titleText}
+        style={{ ...styles.titleText, ...customStyle.titleText }}
         className="ce-chat-title-text"
         id={`ce-chat-card-title-${title}`}
       >
@@ -53,6 +53,7 @@ export const ChatCard: React.FC<Props> = ({
               style={{
                 ...styles.loadingBar,
                 ...{ width: '99%' },
+                ...customStyle.loadingBar,
               }}
             />
           )}
@@ -76,7 +77,7 @@ export const ChatCard: React.FC<Props> = ({
 
       <div style={{ width: '100%' }} className="ce-chat-subtitle">
         <div
-          style={styles.messageText}
+          style={{ ...styles.messageText, ...customStyle.messageText }}
           className="ce-chat-subtitle-text ce-chat-subtitle-message"
         >
           {!isLoading ? (
@@ -90,6 +91,7 @@ export const ChatCard: React.FC<Props> = ({
               style={{
                 ...styles.loadingBar,
                 ...{ width: '60%' },
+                ...customStyle.loadingBar,
               }}
             />
           )}

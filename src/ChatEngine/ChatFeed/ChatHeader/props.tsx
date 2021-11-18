@@ -4,5 +4,5 @@ export interface Props {
   id?: string | number;
   title?: string;
   description?: string;
-  style?: ChatHeaderStyles;
+  customStyle?: ChatHeaderStyles;
 }

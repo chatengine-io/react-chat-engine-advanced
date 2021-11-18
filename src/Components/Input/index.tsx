@@ -6,7 +6,7 @@ import { styles } from './styles';
 export const Input = ({
   autoFocus = false,
   label = '',
-  style = {},
+  customStyle = {},
   onChange = () => {},
   onFocus = () => {},
   onBlur = () => {},
@@ -30,7 +30,10 @@ export const Input = ({
     }
   });
 
-  const focuseStyle = focused && styles.focusInput;
+  const focuseStyle = focused && {
+    ...styles.focusInput,
+    ...customStyle.focusInput,
+  };
 
   return (
     <input
@@ -53,7 +56,7 @@ export const Input = ({
       style={{
         ...styles.input,
         ...focuseStyle,
-        ...style,
+        ...customStyle.input,
       }}
     />
   );

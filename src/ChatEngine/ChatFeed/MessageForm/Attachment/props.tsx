@@ -4,5 +4,5 @@ export interface Props {
   fileName: string;
   imageUrl?: string;
   onRemove?: () => void;
-  style?: AttachmentStyles;
+  customStyle?: AttachmentStyles;
 }

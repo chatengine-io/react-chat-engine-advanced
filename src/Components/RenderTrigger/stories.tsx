@@ -23,22 +23,24 @@ export const Default = Template.bind({});
 Default.args = {
   onShow: () => console.log('Chat Loader is visible.'),
   onHide: () => console.log('Chat Loader is NOT visible.'),
-  style: { maxWidth: '400px' },
+  customStyle: { renderTrigger: { maxWidth: '400px' } },
 };
 
 export const CustomStyles = Template.bind({});
 CustomStyles.args = {
   onShow: () => console.log('Chat Loader is visible.'),
   onHide: () => console.log('Chat Loader is NOT visible.'),
-  style: {
-    maxWidth: '400px',
-    backgroundColor: '#4a5162',
-    fontFamily: 'Avenir',
-    textAlign: 'center',
-    margin: '4px',
-    paddingTop: '14px',
-    paddingBottom: '14px',
-    borderRadius: '4px',
+  customStyle: {
+    renderTrigger: {
+      maxWidth: '400px',
+      backgroundColor: '#4a5162',
+      fontFamily: 'Avenir',
+      textAlign: 'center',
+      margin: '4px',
+      paddingTop: '14px',
+      paddingBottom: '14px',
+      borderRadius: '4px',
+    },
   },
   children: <LoadingOutlined style={{ fontSize: '21px', color: '#f0f0f0' }} />,
 };
