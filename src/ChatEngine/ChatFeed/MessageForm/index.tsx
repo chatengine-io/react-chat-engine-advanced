@@ -16,13 +16,15 @@ export const MessageForm: React.FC<Props> = ({
   label = '',
   onChange,
   onSubmit,
-  formStyle = {},
+  messageFormStyle = {},
   messageInputStyle = {},
-  sendButtonStyle = {},
+  sendMessageButtonStyle = {},
   draftAttachmentWrapperStyle = {},
   draftAttachmentRemoveStyle = {},
   attachmentInputStyle = {},
   attachmentIconStyle = {},
+  draftImageStyle = {},
+  draftFileStyle = {},
 }: Props) => {
   const [iter, setIter] = useState(0); // Forces attachments update
   const [value, setValue] = useState<string>('');
@@ -90,11 +92,7 @@ export const MessageForm: React.FC<Props> = ({
           {renderImage && isImage(attachment.name) && (
             <Image
               url={url}
-              style={{
-                padding: '6px',
-                height: '60px',
-                width: '60px',
-              }}
+              style={{ ...styles.draftImageStyle, ...draftImageStyle }}
               hoveredStyle={{}}
             />
           )}
@@ -103,7 +101,7 @@ export const MessageForm: React.FC<Props> = ({
             <File
               url={url}
               fileName={`📄 ${attachment.name}`}
-              style={{}}
+              style={{ ...styles.draftFileStyle, ...draftFileStyle }}
               hoveredStyle={{}}
             />
           )}
@@ -129,7 +127,7 @@ export const MessageForm: React.FC<Props> = ({
   return (
     <div
       id="msg-form-container"
-      style={{ ...styles.formStyle, ...formStyle }}
+      style={{ ...styles.messageFormStyle, ...messageFormStyle }}
       className="ce-message-form-container"
     >
       <div>{renderAttachments(true)}</div>
@@ -170,9 +168,9 @@ export const MessageForm: React.FC<Props> = ({
           onMouseLeave={() => setButtonHover(false)}
           onClick={() => onSubmit && onSubmit(value, attachments)}
           style={{
-            ...styles.sendButtonStyle,
+            ...styles.sendMessageButtonStyle,
             ...buttonHoverStyle,
-            ...sendButtonStyle,
+            ...sendMessageButtonStyle,
           }}
         >
           Send

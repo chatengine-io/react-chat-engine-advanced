@@ -40,12 +40,10 @@ export const ChatFeed: React.FC<Props> = ({
     } as Properties,
   };
 
-  const messageFormStyle = {
-    messageForm: {
-      width: '100%',
-      position: 'absolute',
-      bottom: '0px',
-    } as Properties,
+  const messageFormStyle: Properties = {
+    width: '100%',
+    position: 'absolute',
+    bottom: '0px',
   };
 
   return (
@@ -66,10 +64,7 @@ export const ChatFeed: React.FC<Props> = ({
 
       <MessageForm
         label="Send a message..."
-        customStyle={{
-          ...messageFormStyle,
-          ...customStyle,
-        }}
+        messageFormStyle={messageFormStyle}
       />
     </div>
   );
