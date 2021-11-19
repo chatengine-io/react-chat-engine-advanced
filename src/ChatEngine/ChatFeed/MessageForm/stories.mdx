@@ -15,11 +15,9 @@ This message form is for making and sending messages.
 <Story
   name="Default"
   args={{
-    customStyle: {
-      messageForm: {
-        maxWidth: '600px',
-        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-      },
+    messageFormStyle: {
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
   }}
 >
@@ -32,23 +30,24 @@ This message form is for making and sending messages.
 
 To customize the look and feel, use the `customStyle` props which uses the `MessageFormStyles` interface and extends the `AttachmentStyles` and `AttachmentInputStyles` interface.
 
+export const StyleTemplate = (args) => <MessageForm {...args} />;
+
 <Canvas>
   <Story
     name="Custom Style"
     args={{
-      customStyle: {
-        messageForm: { border: '2px solid red' },
-        input: { border: '2px solid blue' },
-        sendButton: { border: '2px solid green' },
-        attachmentInput: { border: '2px solid yellow', padding: '6px 8px' },
-        addAttachmentIcon: { border: '2px solid orange' },
-        attachmentWrapper: { border: '2px solid purple' },
-        fileAttachmentPreview: { border: '2px solid brown' },
-        imageAttachmentPreview: { border: '2px solid grey' },
-        removeAttachmentIcon: { border: '2px solid black' },
+      messageFormStyle: {
+        maxWidth: '600px',
+        border: '2px solid red',
       },
+      messageInputStyle: { border: '2px solid green' },
+      sendMessageButtonStyle: { border: '2px solid blue' },
+      draftAttachmentWrapperStyle: { border: '2px solid orange' },
+      draftAttachmentRemoveStyle: { border: '2px solid purple' },
+      attachmentInputStyle: { border: '2px solid yellow', padding: '6px 8px' },
+      attachmentIconStyle: { border: '2px solid black' },
     }}
   >
-    {Template.bind({})}
+    {StyleTemplate.bind({})}
   </Story>
 </Canvas>

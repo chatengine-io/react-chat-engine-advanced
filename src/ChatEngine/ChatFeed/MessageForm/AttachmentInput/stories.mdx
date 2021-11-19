@@ -25,3 +25,19 @@ This is a simple component and currently not interactive within a Storybook cont
 </Story>
 
 <ArgsTable story="Default" />
+
+## Custom Style
+
+To customize the look and feel, use the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      attachmentInputStyle: { border: '2px solid red' },
+      attachmentIconStyle: { border: '2px solid blue' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

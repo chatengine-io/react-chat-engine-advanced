@@ -16,7 +16,7 @@ Testing: Jest
 
 - No tutorial yet...
 
-# PR Convention 
+# PR Convention
 
 Always squash and merge
 
@@ -48,3 +48,49 @@ feat: add hat wobble
 ```
 
 Reference: https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
+
+## Code Review
+
+`styles.tsx`
+
+- Style names are generic if in Components/\*
+- Style names are specific if in ChatEngine/\*
+- All styles end with `*Style`
+- All styles are camelCase
+- Export Styles interface
+- Apply to `styles` object
+
+`props.tsx`
+
+- The `Props` object extends `Styles` interface
+- Prop names are generic
+  - If in Components/\*
+  - Or are locally scoped
+- Drill up prop names are specific if in ChatEngine/\*
+
+`index.tsx`
+
+- All style props are in ({ props }) object
+- Styles cascaded in this order
+  - Default Style
+  - Stateful Styles
+  - Prop Styles
+  - Props Styles base on State
+- Each </> component has purpose
+
+`stories.tsx`
+
+- Consistent explanation structure
+  - Structure TBD
+- Stories Structure
+  - Default
+  - States
+  - Prop Variations
+  - Custom Styles
+- Custom Styles formal
+  - Border Colors for each customizable component
+  - Unique / bold colors for each
+
+`test.tsx`
+
+- Who cares for now :smile:

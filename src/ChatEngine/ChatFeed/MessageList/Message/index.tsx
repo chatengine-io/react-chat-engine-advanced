@@ -8,7 +8,8 @@ import { Avatar } from '../../../../Components/Avatar';
 
 import { DateTime } from './DateTime';
 
-import { Attachment } from './Attachment';
+import { File } from '../../../../Components/File';
+import { Image } from '../../../../Components/Image';
 
 import { isImage, getFileName } from '../../../../util/file';
 import { formatTime, getDateTime } from '../../../../util/dateTime';
@@ -59,26 +60,23 @@ export const Message: React.FC<Props> = ({
     return attachments.map((attachment, index) => {
       const fileName = getFileName(attachment.file);
 
-      if (
-        (renderImage && isImage(fileName)) ||
-        (!renderImage && !isImage(fileName))
-      ) {
+      if (renderImage && isImage(fileName)) {
         return (
-          <Attachment
-            key={`message-attachment-${index}`}
-            attachment={attachment}
-            isLoading={isSending || attachment.file === null}
-            customStyle={{
-              attachmentThumb: {
-                ...styles.attachment,
-                ...customStyle.attachment,
-              },
-            }}
+          <Image
+            key={`attachment_${index}`}
+            url={attachment.file !== null ? attachment.file : undefined}
           />
         );
+      } else if (!renderImage && !isImage(fileName)) {
+        return (
+          <File
+            key={`attachment_${index}`}
+            url={attachment.file !== null ? attachment.file : undefined}
+          />
+        );
+      } else {
+        return <div key={`attachment_${index}`} />;
       }
-
-      return <div key={`attachment${index}`} />;
     });
   };
 
