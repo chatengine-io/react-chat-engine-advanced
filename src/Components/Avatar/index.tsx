@@ -8,14 +8,14 @@ export const Avatar = ({
   username = '',
   isOnline = false,
   showOnline = false,
-  style = {},
+  customStyle = {},
   onClick = () => {},
 }: Props) => {
   const text = username ? username.substring(0, 2).toUpperCase() : '';
   const color = stringToColor(username);
 
   return (
-    <div style={styles.avatarContainer}>
+    <div style={{ ...styles.avatarContainer, ...customStyle.avatarContainer }}>
       <div style={{ height: '0px' }}>
         <div
           className="ce-avatar"
@@ -26,10 +26,13 @@ export const Avatar = ({
               backgroundColor: avatarUrl ? '#FFFFFF' : color,
               backgroundImage: avatarUrl && `url(${avatarUrl})`,
             },
-            ...style,
+            ...customStyle.avatar,
           }}
         >
-          <div className="ce-avatar-text" style={styles.avatarText}>
+          <div
+            className="ce-avatar-text"
+            style={{ ...styles.avatarText, ...customStyle.avatarText }}
+          >
             {!avatarUrl && text}
           </div>
         </div>
@@ -41,6 +44,7 @@ export const Avatar = ({
           style={{
             ...styles.status,
             ...{ backgroundColor: isOnline ? '#52c41a' : '#f5222d' },
+            ...customStyle.status,
           }}
         />
       )}

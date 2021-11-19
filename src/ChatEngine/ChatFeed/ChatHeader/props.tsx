@@ -12,5 +12,5 @@ export interface Props {
   description?: string;
 
   /** pass in a style object to override the default styles */
-  style?: ChatHeaderStyles;
+  customStyle?: ChatHeaderStyles;
 }

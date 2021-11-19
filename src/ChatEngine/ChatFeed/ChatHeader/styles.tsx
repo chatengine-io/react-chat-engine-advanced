@@ -1,7 +1,7 @@
 import { Properties } from 'csstype';
 
 export interface ChatHeaderStyles {
-  titleSection?: Properties;
+  chatHeader?: Properties;
   mobileOption?: Properties;
   titleContainer?: Properties;
   titleText?: Properties;
@@ -9,7 +9,7 @@ export interface ChatHeaderStyles {
 }
 
 export const styles: ChatHeaderStyles = {
-  titleSection: {
+  chatHeader: {
     width: '100%',
     zIndex: 1,
     backgroundColor: 'rgb(256, 256, 256, 0.92)',

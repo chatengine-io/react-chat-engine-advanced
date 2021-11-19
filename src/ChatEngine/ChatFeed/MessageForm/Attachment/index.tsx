@@ -7,7 +7,7 @@ export const Attachment: React.FC<Props> = ({
   fileName,
   imageUrl,
   onRemove = () => {},
-  style = {},
+  customStyle = {},
 }: Props) => {
   const [hovered, setHovered] = useState(false);
   const hoverStyle = { opacity: hovered ? '1' : '0' };
@@ -17,13 +17,13 @@ export const Attachment: React.FC<Props> = ({
       className="ce-message-attachment-preview"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ ...styles.attachmentWrapper, ...style.attachmentWrapper }}
+      style={{ ...styles.attachmentWrapper, ...customStyle.attachmentWrapper }}
     >
       {imageUrl ? (
         <img
           style={{
             ...styles.imageAttachmentPreview,
-            ...style.imageAttachmentPreview,
+            ...customStyle.imageAttachmentPreview,
           }}
           src={imageUrl}
           alt={fileName}
@@ -32,7 +32,7 @@ export const Attachment: React.FC<Props> = ({
         <div
           style={{
             ...styles.fileAttachmentPreview,
-            ...style.fileAttachmentPreview,
+            ...customStyle.fileAttachmentPreview,
           }}
         >
           📄 {fileName}{' '}
@@ -44,7 +44,7 @@ export const Attachment: React.FC<Props> = ({
         style={{
           ...styles.removeAttachmentIcon,
           ...hoverStyle,
-          ...style.removeAttachmentIcon,
+          ...customStyle.removeAttachmentIcon,
         }}
         onClick={() => onRemove && onRemove()}
       >

@@ -1,8 +1,8 @@
-import CSS from 'csstype';
+import { DotStyles } from './styles';
 
 export interface Props {
   avatarUrl?: string | null;
   username?: string;
-  style?: CSS.Properties;
+  customStyle?: DotStyles;
   visible?: boolean;
 }

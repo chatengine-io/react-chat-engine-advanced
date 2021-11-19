@@ -1,8 +1,9 @@
-import { Properties } from 'csstype';
 import { ReactNode } from 'react';
+
+import { RenderTriggerStyles } from './styles';
 export interface Props {
-  style?: Properties;
   children?: ReactNode;
   onShow?: () => void;
   onHide?: () => void;
+  customStyle?: RenderTriggerStyles;
 }

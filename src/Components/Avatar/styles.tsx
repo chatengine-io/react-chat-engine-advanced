@@ -1,6 +1,17 @@
 import { Properties } from 'csstype';
 
-export const styles = {
+export interface AvatarStyles {
+  avatarContainer?: Properties;
+  avatar?: Properties;
+  avatarText?: Properties;
+  status?: Properties;
+}
+
+export const styles: AvatarStyles = {
+  avatarContainer: {
+    width: '48px',
+    height: '48px',
+  } as Properties,
   avatar: {
     width: '44px',
     height: '44px',
@@ -10,10 +21,6 @@ export const styles = {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: '48px',
-  } as Properties,
-  avatarContainer: {
-    width: '48px',
-    height: '48px'
   } as Properties,
   avatarText: {
     color: 'white',
@@ -27,5 +34,5 @@ export const styles = {
     height: '8px',
     borderRadius: '100%',
     border: '2px solid white',
-  } as Properties
-}
+  } as Properties,
+};
