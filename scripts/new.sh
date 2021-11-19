@@ -16,7 +16,7 @@ echo "};" >> ./src/$1/index.tsx
 echo "export interface Props {}" > ./src/$1/props.tsx
 
 # Stories
-echo "import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';" > ./src/$1/stories.mdx
+echo "import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';" > ./src/$1/stories.mdx
 echo "import { $COMPONENT_NAME } from '.';" >> ./src/$1/stories.mdx
 echo "import { Props } from './props';" >> ./src/$1/stories.mdx
 echo "" >> ./src/$1/stories.mdx
