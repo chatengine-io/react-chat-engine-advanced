@@ -1,50 +1,49 @@
 import React from 'react';
+import { Properties } from 'csstype';
+
 import { stringToColor } from '../../util/colorMapping';
+
 import { Props } from './props';
+
 import { styles } from './styles';
 
 export const Avatar = ({
-  avatarUrl = undefined,
   username = '',
-  isOnline = false,
-  showOnline = false,
-  customStyle = {},
+  avatarUrl = undefined,
+  isOnline,
+  style = {},
+  statusStyle = {},
   onClick = () => {},
 }: Props) => {
   const text = username ? username.substring(0, 2).toUpperCase() : '';
   const color = stringToColor(username);
 
-  return (
-    <div style={{ ...styles.avatarContainer, ...customStyle.avatarContainer }}>
-      <div style={{ height: '0px' }}>
-        <div
-          className="ce-avatar"
-          onClick={onClick}
-          style={{
-            ...styles.avatar,
-            ...{
-              backgroundColor: avatarUrl ? '#FFFFFF' : color,
-              backgroundImage: avatarUrl && `url(${avatarUrl})`,
-            },
-            ...customStyle.avatar,
-          }}
-        >
-          <div
-            className="ce-avatar-text"
-            style={{ ...styles.avatarText, ...customStyle.avatarText }}
-          >
-            {!avatarUrl && text}
-          </div>
-        </div>
-      </div>
+  const avatarUrlStyle = {
+    backgroundColor: avatarUrl ? '#FFFFFF' : color,
+    backgroundImage: avatarUrl && `url(${avatarUrl})`,
+    height: `${avatarUrl ? '44px' : 'auto'}`,
+    padding: `${avatarUrl ? '0px' : 'auto'}`,
+  } as Properties;
 
-      {showOnline && (
+  return (
+    <div
+      className="ce-avatar"
+      onClick={onClick}
+      style={{
+        ...styles.style,
+        ...avatarUrlStyle,
+        ...style,
+      }}
+    >
+      {!avatarUrl && text}
+
+      {isOnline !== undefined && (
         <div
           className="ce-avatar-status"
           style={{
-            ...styles.status,
+            ...styles.statusStyle,
             ...{ backgroundColor: isOnline ? '#52c41a' : '#f5222d' },
-            ...customStyle.status,
+            ...statusStyle,
           }}
         />
       )}
