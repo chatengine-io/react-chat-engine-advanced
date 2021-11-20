@@ -44,16 +44,15 @@ export const ChatForm: React.FC<Props> = ({
 
       {!selected && (
         <Button
-          customStyle={{
-            defaultButton: {
-              ...styles.chatFormButtonStyle,
-              ...customStyle.chatFormButtonStyle,
-            },
+          style={{
+            ...styles.chatFormButtonStyle,
+            ...customStyle.chatFormButtonStyle,
           }}
-          icon="+"
           id="new-chat-plus-button"
           onClick={() => setSelected(true)}
-        />
+        >
+          +
+        </Button>
       )}
 
       {selected && (

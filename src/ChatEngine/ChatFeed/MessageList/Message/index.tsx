@@ -143,10 +143,10 @@ export const Message: React.FC<Props> = ({
                 {(!nextMessage ||
                   nextMessage.sender_username !== message.sender_username) && (
                   <Avatar
-                    showOnline={false}
                     username={message.sender_username}
-                    customStyle={{
-                      avatar: { ...styles.avatar, ...customStyle.avatar },
+                    style={{
+                      ...styles.avatar,
+                      ...customStyle.avatar,
                     }}
                     avatarUrl={
                       message.sender &&
