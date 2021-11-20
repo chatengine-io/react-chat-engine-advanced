@@ -1,25 +1,45 @@
 import { Properties } from 'csstype';
 
 export interface ChatFormStyles {
-  chatForm?: Properties;
-  chatFormTitle?: Properties;
-  chatFormInput?: Properties;
-  chatFormButton?: Properties;
+  chatFormStyle?: Properties;
+  myChatsTitleStyle?: Properties;
+  chatFormInputStyle?: Properties;
+  chatFormButtonStyle?: Properties;
 }
 
 export const styles: ChatFormStyles = {
-  chatForm: {
-    padding: '16px 14px',
+  chatFormStyle: {
+    position: 'relative',
+    height: '64px',
+    width: '100%',
     backgroundColor: 'white',
-    width: 'calc(100% - 28px)',
   } as Properties,
-  chatFormTitle: {
+  myChatsTitleStyle: {
+    // Position
+    position: 'absolute',
+    top: '16px',
+    left: '14px',
+    // Size
+    fontSize: '26px',
+    // Style
     fontFamily: 'Avenir',
     fontWeight: 600,
-    fontSize: '26px',
-    position: 'relative',
-    top: '4px',
   } as Properties,
-  chatFormInput: { width: '100%' } as Properties,
-  chatFormButton: { float: 'right' } as Properties,
+  chatFormInputStyle: {
+    // Position
+    position: 'absolute',
+    top: '16px',
+    left: '14px',
+    // Size
+    width: 'calc(100% - 28px)',
+  } as Properties,
+  chatFormButtonStyle: {
+    // Position
+    position: 'absolute',
+    top: '15px',
+    right: '14px',
+    // Style
+    fontFamily: 'Avenir',
+    fontWeight: 600,
+  } as Properties,
 };

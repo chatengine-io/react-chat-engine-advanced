@@ -1,6 +1,6 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Default as Thing } from './stories';
+import { ChatForm as Thing } from '.';
 
 describe('Thing', () => {
   it('renders without crashing', () => {
