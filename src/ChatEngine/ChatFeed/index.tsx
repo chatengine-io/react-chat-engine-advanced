@@ -51,7 +51,7 @@ export const ChatFeed: React.FC<Props> = ({
       <ChatHeader
         title={chat.title}
         description={getDescription()}
-        customStyle={customStyle}
+        style={customStyle.chatFeed}
       />
 
       <MessageList

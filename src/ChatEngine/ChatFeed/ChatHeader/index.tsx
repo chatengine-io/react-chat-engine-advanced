@@ -11,57 +11,50 @@ export const ChatHeader: React.FC<Props> = ({
   id = '',
   title = '',
   description = '',
-  customStyle = {},
+  style = {},
+  mobileOptionStyle = {},
+  titleStyle = {},
+  subtitleStyle = {},
 }) => {
   return (
-    <Row
-      className="ce-chat-title"
-      style={{ ...styles.chatHeader, ...customStyle.chatHeader }}
-    >
+    <Row className="ce-chat-header" style={{ ...styles.style, ...style }}>
       <Col
         xs={2}
         sm={0}
-        style={{
-          ...styles.mobileOption,
-          ...{ left: '6px' }, // LHS Specific
-          ...customStyle.mobileOption,
-        }}
         className="ce-chat-list-mobile-option"
+        style={{
+          ...styles.mobileOptionStyle,
+          ...{ left: '6px' }, // LHS Specific
+          ...mobileOptionStyle,
+        }}
       >
         {/* <ChatListDrawer /> */}
       </Col>
 
-      <Col
-        xs={8}
-        sm={12}
-        style={{ ...styles.titleContainer, ...customStyle.titleContainer }}
-        className="ce-chat-title-container"
+      <div
+        id={`ce-chat-feed-title-${id}`}
+        className="ce-chat-title"
+        style={{ ...styles.titleStyle, ...titleStyle }}
       >
-        <div
-          style={{ ...styles.titleText, ...customStyle.titleText }}
-          className="ce-chat-title-text"
-          id={`ce-chat-feed-title-${id}`}
-        >
-          {title}
-        </div>
+        {title}
+      </div>
 
-        <div
-          style={{ ...styles.subtitleText, ...customStyle.subtitleText }}
-          className="ce-chat-subtitle-text"
-        >
-          {description}
-        </div>
-      </Col>
+      <div
+        className="ce-chat-subtitle"
+        style={{ ...styles.subtitleStyle, ...subtitleStyle }}
+      >
+        {description}
+      </div>
 
       <Col
         xs={2}
         sm={0}
-        style={{
-          ...styles.mobileOption,
-          ...{ right: '6px' }, // RHS Specific
-          ...customStyle.mobileOption,
-        }}
         className="ce-chat-settings-mobile-option"
+        style={{
+          ...styles.mobileOptionStyle,
+          ...{ right: '6px' }, // RHS Specific
+          ...mobileOptionStyle,
+        }}
       >
         {/* <ChatSettingsDrawer /> */}
       </Col>

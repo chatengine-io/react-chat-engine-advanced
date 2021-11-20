@@ -2,15 +2,15 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 import { ChatHeader } from '.';
 
-<Meta 
-  title="ChatEngine/ChatFeed/ChatHeader" 
-  component={ChatHeader} 
+<Meta
+  title="ChatEngine/ChatFeed/ChatHeader"
+  component={ChatHeader}
   argTypes={{
     customStyle: {
       table: {
-        category: 'styles'
-      }
-    }
+        category: 'styles',
+      },
+    },
   }}
 />
 
@@ -48,13 +48,10 @@ You can customize the look and feel with the `customStyle` prop which extends th
       id: 1,
       title: 'Magic Club',
       description: 'Where the magic happens...',
-      customStyle: {
-        chatHeader: { border: '3px solid red' },
-        mobileOption: { border: '3px solid blue' },
-        titleContainer: { border: '3px solid green' },
-        titleText: { border: '3px solid yellow' },
-        subtitleText: { border: '3px solid orange' },
-      },
+      style: { border: '3px solid red' },
+      titleStyle: { border: '3px solid blue' },
+      subtitleStyle: { border: '3px solid green' },
+      mobileOptionStyle: { border: '3px solid orange' },
     }}
   >
     {Template.bind({})}
