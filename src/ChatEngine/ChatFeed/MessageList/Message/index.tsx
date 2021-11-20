@@ -89,7 +89,7 @@ export const Message: React.FC<Props> = ({
           avatarUrl={chatPerson.avatar}
           username={chatPerson.username}
           visible={message.id === chatPerson.last_read}
-          customStyle={{ dot: { ...styles.dot, ...customStyle.dot } }}
+          style={{ ...styles.dot, ...customStyle.dot }}
         />
       );
     });
