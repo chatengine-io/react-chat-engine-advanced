@@ -3,29 +3,27 @@ import React, { useState } from 'react';
 import { Properties } from 'csstype';
 
 import { Props } from './props';
-import { styles } from './styles';
 
 export const Button = ({
   children = undefined,
   type = 'default',
-  customStyle = {},
-  icon = undefined,
   onClick = () => {},
+  style = {},
 }: Props) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
   const getTypeStyle = () => {
     if (type == 'primary') {
-      return { ...styles.primaryButton, ...customStyle.primaryButton };
+      return primaryStyle;
     } else if (type === 'danger') {
-      return { ...styles.dangerButton, ...customStyle.dangerButton };
+      return dangerStyle;
     } else {
       return {} as Properties;
     }
   };
 
   const typeStyle = getTypeStyle();
-  const hoverStyle = hovered ? styles.hoverButton : {};
+  const hoverStyle = hovered ? { opacity: '0.73' } : {};
 
   return (
     <button
@@ -34,15 +32,44 @@ export const Button = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        ...styles.defaultButton,
+        // Default
+        ...defaultStyle,
         ...typeStyle,
+        // State
         ...hoverStyle,
-        ...customStyle.defaultButton,
+        // Props
+        ...style,
       }}
     >
-      {icon}
-      {icon && ' '}
       {children}
     </button>
   );
 };
+
+const defaultStyle = {
+  fontFamily: 'Avenir',
+  color: '#1890ff',
+  border: '1px solid #1890ff',
+  outline: 'none',
+  height: '36px',
+  fontSize: '15px',
+  cursor: 'pointer',
+  padding: '8px 16px',
+  borderRadius: '33px',
+  backgroundColor: 'white',
+  transition: 'all .44s ease',
+  WebkitTransition: 'all .44s ease',
+  MozTransition: 'all .44s ease',
+} as Properties;
+
+const primaryStyle = {
+  color: 'white',
+  border: 'none',
+  backgroundColor: '#1890ff',
+} as Properties;
+
+const dangerStyle = {
+  color: '#f5222d',
+  backgroundColor: 'white',
+  border: '1px solid #f5222d',
+} as Properties;
