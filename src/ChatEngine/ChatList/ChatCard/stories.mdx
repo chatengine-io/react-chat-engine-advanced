@@ -1,0 +1,126 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
+
+import { ChatCard } from '.';
+import { Props } from './props';
+
+<Meta title="ChatEngine/ChatList/ChatCard" component={ChatCard} />
+
+export const Template = (args) => <ChatCard {...args} />;
+
+# Chat Card
+
+The Chat Card component represents a Chat room to click on.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    title: 'Chat Card',
+    description: 'This is where the magic happens',
+    timeStamp: '4:24 PM',
+    chatCardStyle: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Is Active
+
+By default, the Chat Card component appears darker when `isActive` is `true`.
+
+<Canvas>
+  <Story
+    name="Is Active"
+    args={{
+      title: 'Active Chat Card',
+      description: 'You are in this chat now...',
+      timeStamp: '12:59 PM',
+      isActive: true,
+      chatCardStyle: {
+        maxWidth: '400px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Has Notification
+
+You can see a notification dot if `hasNotification` is `true`.
+
+<Canvas>
+  <Story
+    name="Has Notification"
+    args={{
+      title: 'Notification Card',
+      description: 'Alert alert!!!',
+      timeStamp: 'Tues',
+      hasNotification: true,
+      chatCardStyle: {
+        maxWidth: '400px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Is Loading
+
+You can see data has not appeared yet if `isLoading` is `true`.
+
+<Canvas>
+  <Story
+    name="Is Loading"
+    args={{
+      title: 'Notification Card',
+      description: 'Alert alert!!!',
+      timeStamp: 'Tues',
+      isLoading: true,
+      chatCardStyle: {
+        maxWidth: '400px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+There are a list of `*Style` props which customize various parts of the component.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      title: 'Notification Card',
+      description: 'Alert alert!!!',
+      timeStamp: 'Tues',
+      chatCardStyle: {
+        maxWidth: '400px',
+        border: '2px solid red',
+      },
+      hoveredChatCardStyle: { border: '2px solid lime' },
+      activeChatCardStyle: { border: '2px solid pink' },
+      chatCardTitleStyle: { border: '2px solid blue' },
+      chatCardNotificationStyle: { border: '2px solid yellow' },
+      chatCardSubtitleStyle: { border: '2px solid green' },
+      chatCardTimeStampStyle: { border: '2px solid orange' },
+      chatCardLoadingBarStyle: { border: '2px solid purple' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
