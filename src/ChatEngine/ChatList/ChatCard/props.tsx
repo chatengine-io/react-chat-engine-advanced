@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 
 import { ChatCardStyle } from './styles';
 
-export interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface Props extends HTMLAttributes<HTMLDivElement>, ChatCardStyle {
   title?: string;
   description?: string;
   timeStamp?: string;
@@ -10,5 +10,4 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   isLoading?: boolean;
   hasNotification?: boolean;
   onClick?: () => void;
-  customStyle?: ChatCardStyle;
 }
