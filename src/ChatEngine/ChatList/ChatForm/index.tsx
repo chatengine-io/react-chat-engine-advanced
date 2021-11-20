@@ -13,46 +13,29 @@ export const ChatForm: React.FC<Props> = ({
   const [selected, setSelected] = useState<boolean>(false);
   const [value, setValue] = useState<string>('');
 
-  function onSubmit(event: React.SyntheticEvent) {
+  const onSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
     onFormSubmit && onFormSubmit(value);
     setValue('');
-  }
+  };
 
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
-  }
+  };
 
   return (
     <div
       className="ce-chat-form"
       style={{
-        ...styles.chatForm,
-        ...customStyle.chatForm,
+        ...styles.chatFormStyle,
+        ...customStyle.chatFormStyle,
       }}
     >
-      {selected && (
-        <form onSubmit={onSubmit}>
-          <Input
-            autoFocus
-            value={value}
-            label="Chat Title"
-            id="ce-new-chat-title-field"
-            onBlur={() => setSelected(false)}
-            style={{
-              ...styles.chatFormInput,
-              ...customStyle.chatFormInput,
-            }}
-            onChange={onChange}
-          />
-        </form>
-      )}
-
       {!selected && (
         <span
           style={{
-            ...styles.chatFormTitle,
-            ...customStyle.chatFormTitle,
+            ...styles.myChatsTitleStyle,
+            ...customStyle.myChatsTitleStyle,
           }}
         >
           My Chats
@@ -61,14 +44,35 @@ export const ChatForm: React.FC<Props> = ({
 
       {!selected && (
         <Button
-          style={{
-            ...styles.chatFormButton,
-            ...customStyle.chatFormButton,
+          customStyle={{
+            defaultButton: {
+              ...styles.chatFormButtonStyle,
+              ...customStyle.chatFormButtonStyle,
+            },
           }}
           icon="+"
           id="new-chat-plus-button"
           onClick={() => setSelected(true)}
         />
+      )}
+
+      {selected && (
+        <form onSubmit={onSubmit}>
+          <Input
+            autoFocus
+            value={value}
+            label="Chat Title"
+            id="ce-new-chat-title-field"
+            onBlur={() => setSelected(false)}
+            customStyle={{
+              input: {
+                ...styles.chatFormInputStyle,
+                ...customStyle.chatFormInputStyle,
+              },
+            }}
+            onChange={onChange}
+          />
+        </form>
       )}
     </div>
   );
