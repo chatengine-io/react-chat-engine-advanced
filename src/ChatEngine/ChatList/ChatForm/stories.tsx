@@ -18,7 +18,7 @@ const Template: Story<Props> = (props) => <ChatForm {...props}></ChatForm>;
 export const Default = Template.bind({});
 Default.args = {
   customStyle: {
-    chatForm: {
+    chatFormStyle: {
       maxWidth: '400px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -28,7 +28,7 @@ Default.args = {
 export const OnFormSubmit = Template.bind({});
 OnFormSubmit.args = {
   customStyle: {
-    chatForm: {
+    chatFormStyle: {
       maxWidth: '400px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -39,21 +39,12 @@ OnFormSubmit.args = {
 export const CustomStyle = Template.bind({});
 CustomStyle.args = {
   customStyle: {
-    chatForm: {
+    chatFormStyle: {
       maxWidth: '400px',
-      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-      backgroundColor: '#4a5162',
+      border: '2px solid red',
     },
-    chatFormTitle: { color: '#d3adf7' },
-    chatFormInput: {
-      backgroundColor: '#4a5162',
-      color: '#f0f0f0',
-      border: '1px solid #d3adf7',
-    },
-    chatFormButton: {
-      backgroundColor: '#4a5162',
-      border: '1px solid #d3adf7',
-      color: '#d3adf7',
-    },
+    myChatsTitleStyle: { border: '2px solid blue' },
+    chatFormInputStyle: { border: '2px solid orange' },
+    chatFormButtonStyle: { border: '2px solid green' },
   },
 };
