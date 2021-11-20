@@ -1,14 +1,14 @@
 import { Properties } from 'csstype';
 
 export interface ChatHeaderStyles {
-  style?: Properties;
-  titleStyle?: Properties;
-  subtitleStyle?: Properties;
-  mobileOptionStyle?: Properties;
+  chatHeaderStyle?: Properties;
+  chatHeaderTitleStyle?: Properties;
+  chatHeaderSubtitleStyle?: Properties;
+  chatHeaderMobileOptionStyle?: Properties;
 }
 
 export const styles: ChatHeaderStyles = {
-  style: {
+  chatHeaderStyle: {
     width: '100%',
     zIndex: 1,
     backgroundColor: 'rgb(256, 256, 256, 0.92)',
@@ -17,18 +17,18 @@ export const styles: ChatHeaderStyles = {
     color: 'rgb(24, 144, 255)',
     overflowX: 'hidden',
   } as Properties,
-  titleStyle: {
+  chatHeaderTitleStyle: {
     width: '100%',
     fontFamily: 'Avenir',
     fontSize: '24px',
     fontWeight: 600,
   } as Properties,
-  subtitleStyle: {
+  chatHeaderSubtitleStyle: {
     width: '100%',
     fontFamily: 'Avenir',
     fontSize: '12px',
   } as Properties,
-  mobileOptionStyle: {
+  chatHeaderMobileOptionStyle: {
     width: '100%',
     top: '32px',
     textAlign: 'center',

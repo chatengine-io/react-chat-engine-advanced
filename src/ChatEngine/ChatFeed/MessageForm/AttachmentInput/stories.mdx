@@ -5,6 +5,10 @@ import { Props } from './props';
 <Meta
   title="ChatEngine/ChatFeed/MessageForm/AttachmentInput"
   component={AttachmentInput}
+  argTypes={{
+    attachmentInputStyle: { table: { category: 'styles' } },
+    attachmentInputIconStyle: { table: { category: 'styles' } },
+  }}
 />
 
 export const Template = (args) => <AttachmentInput {...args} />;
@@ -35,7 +39,7 @@ To customize the look and feel, use the `*Style` props.
     name="Custom Style"
     args={{
       attachmentInputStyle: { border: '2px solid red' },
-      attachmentIconStyle: { border: '2px solid blue' },
+      attachmentInputIconStyle: { border: '2px solid blue' },
     }}
   >
     {Template.bind({})}

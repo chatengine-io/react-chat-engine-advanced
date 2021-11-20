@@ -11,21 +11,24 @@ export const ChatHeader: React.FC<Props> = ({
   id = '',
   title = '',
   description = '',
-  style = {},
-  mobileOptionStyle = {},
-  titleStyle = {},
-  subtitleStyle = {},
+  chatHeaderStyle = {},
+  chatHeaderTitleStyle = {},
+  chatHeaderSubtitleStyle = {},
+  chatHeaderMobileOptionStyle = {},
 }) => {
   return (
-    <Row className="ce-chat-header" style={{ ...styles.style, ...style }}>
+    <Row
+      className="ce-chat-header"
+      style={{ ...styles.chatHeaderStyle, ...chatHeaderStyle }}
+    >
       <Col
         xs={2}
         sm={0}
-        className="ce-chat-list-mobile-option"
+        className="ce-chat-header-mobile-option"
         style={{
-          ...styles.mobileOptionStyle,
+          ...styles.chatHeaderMobileOptionStyle,
           ...{ left: '6px' }, // LHS Specific
-          ...mobileOptionStyle,
+          ...chatHeaderMobileOptionStyle,
         }}
       >
         {/* <ChatListDrawer /> */}
@@ -33,15 +36,21 @@ export const ChatHeader: React.FC<Props> = ({
 
       <div
         id={`ce-chat-feed-title-${id}`}
-        className="ce-chat-title"
-        style={{ ...styles.titleStyle, ...titleStyle }}
+        className="ce-chat-header-title"
+        style={{
+          ...styles.chatHeaderTitleStyle,
+          ...chatHeaderTitleStyle,
+        }}
       >
         {title}
       </div>
 
       <div
-        className="ce-chat-subtitle"
-        style={{ ...styles.subtitleStyle, ...subtitleStyle }}
+        className="ce-chat-header-subtitle"
+        style={{
+          ...styles.chatHeaderSubtitleStyle,
+          ...chatHeaderSubtitleStyle,
+        }}
       >
         {description}
       </div>
@@ -49,11 +58,11 @@ export const ChatHeader: React.FC<Props> = ({
       <Col
         xs={2}
         sm={0}
-        className="ce-chat-settings-mobile-option"
+        className="ce-chat-header-mobile-option"
         style={{
-          ...styles.mobileOptionStyle,
+          ...styles.chatHeaderMobileOptionStyle,
           ...{ right: '6px' }, // RHS Specific
-          ...mobileOptionStyle,
+          ...chatHeaderMobileOptionStyle,
         }}
       >
         {/* <ChatSettingsDrawer /> */}

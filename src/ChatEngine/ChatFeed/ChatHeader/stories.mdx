@@ -6,11 +6,10 @@ import { ChatHeader } from '.';
   title="ChatEngine/ChatFeed/ChatHeader"
   component={ChatHeader}
   argTypes={{
-    customStyle: {
-      table: {
-        category: 'styles',
-      },
-    },
+    chatHeaderStyle: { table: { category: 'styles' } },
+    chatHeaderTitleStyle: { table: { category: 'styles' } },
+    chatHeaderSubtitleStyle: { table: { category: 'styles' } },
+    chatHeaderMobileOptionStyle: { table: { category: 'styles' } },
   }}
 />
 
@@ -39,7 +38,7 @@ Things such as the chat title, members, and last sent message (or last message d
 
 ## Custom Styles
 
-You can customize the look and feel with the `customStyle` prop which extends the `ChatHeaderStyles` interface.
+You can customize the look and feel with the `*Style` props.
 
 <Canvas>
   <Story
@@ -48,10 +47,10 @@ You can customize the look and feel with the `customStyle` prop which extends th
       id: 1,
       title: 'Magic Club',
       description: 'Where the magic happens...',
-      style: { border: '3px solid red' },
-      titleStyle: { border: '3px solid blue' },
-      subtitleStyle: { border: '3px solid green' },
-      mobileOptionStyle: { border: '3px solid orange' },
+      chatHeaderStyle: { border: '3px solid red' },
+      chatHeaderTitleStyle: { border: '3px solid blue' },
+      chatHeaderSubtitleStyle: { border: '3px solid green' },
+      chatHeaderMobileOptionStyle: { border: '3px solid orange' },
     }}
   >
     {Template.bind({})}

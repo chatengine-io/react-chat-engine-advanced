@@ -2,7 +2,21 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { MessageForm } from '.';
 import { Props } from './props';
 
-<Meta title="ChatEngine/ChatFeed/MessageForm" component={MessageForm} />
+<Meta
+  title="ChatEngine/ChatFeed/MessageForm"
+  component={MessageForm}
+  argTypes={{
+    messageFormStyle: { table: { category: 'styles' } },
+    messageFormInputStyle: { table: { category: 'styles' } },
+    messageFormSendButtonStyle: { table: { category: 'styles' } },
+    attachmentInputStyle: { table: { category: 'styles' } },
+    attachmentInputIconStyle: { table: { category: 'styles' } },
+    draftAttachmentStyle: { table: { category: 'styles' } },
+    draftAttachmentRemoveStyle: { table: { category: 'styles' } },
+    draftImageStyle: { table: { category: 'styles' } },
+    draftFileStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <MessageForm {...args} />;
 
@@ -40,9 +54,9 @@ export const StyleTemplate = (args) => <MessageForm {...args} />;
         maxWidth: '600px',
         border: '2px solid red',
       },
-      messageInputStyle: { border: '2px solid green' },
-      sendMessageButtonStyle: { border: '2px solid blue' },
-      draftAttachmentWrapperStyle: { border: '2px solid orange' },
+      messageFormInputStyle: { border: '2px solid green' },
+      messageFormSendButtonStyle: { border: '2px solid blue' },
+      draftAttachmentStyle: { border: '2px solid orange' },
       draftAttachmentRemoveStyle: { border: '2px solid purple' },
       attachmentInputStyle: { border: '2px solid yellow', padding: '6px 8px' },
       attachmentIconStyle: { border: '2px solid black' },
