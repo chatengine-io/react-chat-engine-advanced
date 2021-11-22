@@ -10,6 +10,9 @@ import { fileAttachment } from '../../../../../util/mocks';
 <Meta
   title="ChatEngine/ChatFeed/MessageList/Message/DateTime"
   component={DateTime}
+  argTypes={{
+    dateTimeStyle: { table: { category: 'styles' } },
+  }}
 />
 
 export const Template = (args) => <DateTime {...args} />;
@@ -51,11 +54,8 @@ You can use the `customStyle` prop to customize the look and feel.
     args={{
       created: '2021-09-29T00:30:00.000000Z',
       offset: -1,
-      customStyle: {
-        dateTimeText: {
-          border: '2px solid red',
-          color: 'blue',
-        },
+      dateTimeStyle: {
+        border: '2px solid red',
       },
     }}
   >

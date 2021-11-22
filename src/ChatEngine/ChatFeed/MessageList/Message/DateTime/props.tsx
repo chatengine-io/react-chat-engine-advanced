@@ -1,7 +1,6 @@
 import { DateTimeStyles } from './styles';
 
-export interface Props {
+export interface Props extends DateTimeStyles {
   created: string;
   offset?: number;
-  customStyle?: DateTimeStyles;
 }
