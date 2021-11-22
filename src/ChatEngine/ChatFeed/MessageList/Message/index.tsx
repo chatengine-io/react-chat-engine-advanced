@@ -14,10 +14,6 @@ import { Image } from '../../../../Components/Image';
 import { isImage, getFileName } from '../../../../util/file';
 import { formatTime, getDateTime } from '../../../../util/dateTime';
 
-import { Row, Col, setConfiguration } from 'react-grid-system';
-
-setConfiguration({ maxScreenClass: 'xl' });
-
 export const Message: React.FC<Props> = ({
   lastMessage = null,
   message,
@@ -96,7 +92,14 @@ export const Message: React.FC<Props> = ({
   };
 
   return (
-    <div>
+    <div
+      className={`ce-${isMyMessage ? 'my' : 'their'}-message`}
+      style={{
+        ...styles.messageStyle,
+        ...{ paddingBottom },
+        ...customStyle.messageStyle,
+      }}
+    >
       {showDateTime && (
         <DateTime
           created={message.created}
@@ -104,113 +107,57 @@ export const Message: React.FC<Props> = ({
         />
       )}
 
-      <div
-        className={`
-          ce-message-row 
-          ce-${isMyMessage ? 'my' : 'their'}-message
-        `}
-        style={{
-          ...styles.row,
-          ...{ paddingBottom },
-          ...customStyle.row,
-        }}
-      >
-        {/* Username Test When they Send */}
-        {(lastMessage === null ||
-          lastMessage.sender_username !== message.sender_username) && (
-          <div
-            style={{ ...styles.senderText, ...customStyle.senderText }}
-            className={`ce-${isMyMessage ? 'my' : 'their'}-message-sender`}
-          >
-            {message.sender_username}
-          </div>
-        )}
-
-        {/* Bundle this into .ce-message-row ??? */}
-        <Row
-          style={{ paddingRight: '2px' }}
-          className={`
-            ce-message-bubble-row 
-            ce-${isMyMessage ? 'my' : 'their'}-message-bubble-row
-          `}
+      {(lastMessage === null ||
+        lastMessage.sender_username !== message.sender_username) && (
+        <div
+          style={{ ...styles.senderText, ...customStyle.senderText }}
+          className={`ce-${
+            isMyMessage ? 'my' : 'their'
+          }-message-sender-username`}
         >
-          <Col xs={12} sm={12} md={12} style={{ display: 'inline-block' }}>
-            {/* Sender Avatar when They Send */}
-            {!isMyMessage && (
-              <div style={{ height: '0px' }}>
-                {(!nextMessage ||
-                  nextMessage.sender_username !== message.sender_username) && (
-                  <Avatar
-                    username={message.sender_username}
-                    style={{
-                      ...styles.avatar,
-                      ...customStyle.avatar,
-                    }}
-                    avatarUrl={
-                      message.sender &&
-                      message.sender !== null &&
-                      message.sender.avatar !== null
-                        ? message.sender.avatar
-                        : undefined
-                    }
-                  />
-                )}
-              </div>
-            )}
+          {message.sender_username}
+        </div>
+      )}
 
-            {/* Images */}
-            <div
-              style={{ display: 'auto', paddingLeft: '50px' }}
-              className={`
-                ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
-                ce-${isMyMessage ? 'my' : 'their'}-message-images
-              `}
-            >
-              {renderAttachments(true)}
-            </div>
+      <div
+        style={{
+          display: 'auto',
+          paddingLeft: '48px',
+          width: 'calc(100% - 50px)',
+          border: '1px solid blue',
+        }}
+        className={`
+          ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
+          ce-${isMyMessage ? 'my' : 'their'}-message-images
+        `}
+      >
+        {renderAttachments(true)}
+      </div>
 
-            {/* Files */}
-            <div
-              style={{ display: 'auto', paddingLeft: '50px' }}
-              className={`
-                ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
-                ce-${isMyMessage ? 'my' : 'their'}-message-files
-              `}
-            >
-              {renderAttachments(false)}
-            </div>
+      <div
+        style={{
+          display: 'auto',
+          paddingLeft: '48px',
+          width: 'calc(100% - 50px)',
+          border: '1px solid green',
+        }}
+        className={`
+            ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
+            ce-${isMyMessage ? 'my' : 'their'}-message-files
+          `}
+      >
+        {renderAttachments(false)}
+      </div>
 
-            {message.text !== null && (
-              <div style={!isMyMessage ? { paddingLeft: '48px' } : {}}>
-                <div
-                  className={`
-                    ce-message-bubble 
-                    ce-${isMyMessage ? 'my' : 'their'}-message-bubble
-                    ${isSending && 'ce-my-message-sending-bubble'}
-                  `}
-                  style={{
-                    ...styles.message,
-                    ...{ borderRadius },
-                    ...sendingStyle,
-                    ...customStyle.message,
-                  }}
-                  onMouseEnter={() => setHovered(true)}
-                  onMouseLeave={() => setHovered(false)}
-                >
-                  <div
-                    className="ce_message"
-                    dangerouslySetInnerHTML={{ __html: text }}
-                  />
-                  <style>{`p {margin-block-start: 0px; margin-block-end: 0px;}`}</style>
-                </div>
-              </div>
-            )}
-
+      {message.text !== null && (
+        <div
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          style={{ width: 'calc(100% - 2px)', border: '1px solid purple' }}
+        >
+          {isMyMessage && (
             <span
-              className={`
-                ce-message-timestamp 
-                ce-${isMyMessage ? 'my' : 'their'}-message-timestamp
-              `}
+              className="ce-my-message-timestamp"
               style={{
                 ...styles.timeTag,
                 ...{ opacity: hovered ? '1' : '0' },
@@ -219,20 +166,78 @@ export const Message: React.FC<Props> = ({
             >
               {formatTime(getDateTime(message.created, 0) as Date)}
             </span>
-          </Col>
+          )}
 
-          <Col
-            xs={12}
-            style={isMyMessage ? {} : { marginLeft: '48px' }}
+          <div
             className={`
-              ce-reads-row
-              ce-${isMyMessage ? 'my' : 'their'}-reads-row
+              ce-message-body 
+              ce-${isMyMessage ? 'my' : 'their'}-message-body
+              ${isSending && 'ce-my-message-sending-body'}
             `}
-          >
-            {renderReads()}
-          </Col>
-        </Row>
+            style={{
+              ...styles.message,
+              ...{ borderRadius },
+              ...sendingStyle,
+              ...customStyle.message,
+            }}
+            dangerouslySetInnerHTML={{ __html: text }}
+          />
+          <style>{`p {margin-block-start: 0px; margin-block-end: 0px;}`}</style>
+
+          {!isMyMessage && (
+            <span
+              className="ce-their-message-timestamp"
+              style={{
+                ...styles.timeTag,
+                ...{ opacity: hovered ? '1' : '0' },
+                ...customStyle.timeTag,
+              }}
+            >
+              {formatTime(getDateTime(message.created, 0) as Date)}
+            </span>
+          )}
+        </div>
+      )}
+
+      <div
+        style={
+          isMyMessage
+            ? { width: '100%', border: '1px solid lime' }
+            : {
+                marginLeft: '48px',
+                width: 'calc(100% - 50px)',
+                border: '1px solid lime',
+              }
+        }
+        className={`
+          ce-reads-row
+          ce-${isMyMessage ? 'my' : 'their'}-reads-row
+        `}
+      >
+        {renderReads()}
       </div>
+
+      {!isMyMessage && (
+        <div style={{ height: '0px' }}>
+          {(!nextMessage ||
+            nextMessage.sender_username !== message.sender_username) && (
+            <Avatar
+              username={message.sender_username}
+              style={{
+                ...styles.avatar,
+                ...customStyle.avatar,
+              }}
+              avatarUrl={
+                message.sender &&
+                message.sender !== null &&
+                message.sender.avatar !== null
+                  ? message.sender.avatar
+                  : undefined
+              }
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 };

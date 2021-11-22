@@ -2,7 +2,7 @@ import { Properties } from 'csstype';
 
 export interface MessageStyle {
   dateTime?: Properties;
-  row?: Properties;
+  messageStyle?: Properties; // div not messageStyle
   attachment?: Properties;
   avatar?: Properties;
   message?: Properties;
@@ -13,26 +13,32 @@ export interface MessageStyle {
 
 export const theirStyles: MessageStyle = {
   dateTime: {} as Properties,
-  row: { width: '100%' } as Properties,
+  messageStyle: { width: '100%', position: 'relative' } as Properties,
   attachment: {} as Properties,
-  avatar: {} as Properties,
+  avatar: {
+    position: 'absolute',
+    bottom: '15px',
+    left: '3px',
+  } as Properties,
   message: {
     cursor: 'pointer',
+    display: 'inline-block',
     color: 'black',
-    float: 'left',
     padding: '12px',
+    marginLeft: '48px',
     fontSize: '15px',
     fontFamily: 'Avenir',
     whiteSpace: 'pre-line',
     backgroundColor: '#f1f0f0',
     overflowWrap: 'anywhere',
-    maxWidth: 'calc(100% - 100px)',
     // CSS Transitions
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
   } as Properties,
   senderText: {
+    width: 'calc(100% - 64px)',
+    border: '1px solid red',
     fontFamily: 'Avenir',
     paddingLeft: '62px',
     paddingBottom: '2px',
@@ -40,9 +46,6 @@ export const theirStyles: MessageStyle = {
     fontSize: '15px',
   } as Properties,
   timeTag: {
-    position: 'relative',
-    top: '12px',
-    left: '8px',
     fontSize: '14px',
     fontFamily: 'Avenir',
     color: 'rgba(0, 0, 0, 0.4)',
@@ -56,7 +59,7 @@ export const theirStyles: MessageStyle = {
 
 export const myStyles: MessageStyle = {
   dateTime: {} as Properties,
-  row: {
+  messageStyle: {
     width: '100%',
     textAlign: 'right',
   } as Properties,
@@ -64,9 +67,9 @@ export const myStyles: MessageStyle = {
   avatar: {} as Properties,
   message: {
     color: 'white',
+    display: 'inline-block',
     backgroundColor: '#1890ff',
     cursor: 'pointer',
-    float: 'right',
     textAlign: 'left',
     // Stay right but render text
     padding: '12px',
@@ -84,11 +87,8 @@ export const myStyles: MessageStyle = {
     display: 'none',
   } as Properties,
   timeTag: {
-    fontFamily: 'Avenir',
-    position: 'relative',
-    top: '12px',
-    right: '8px',
     fontSize: '14px',
+    fontFamily: 'Avenir',
     color: 'rgb(24, 144, 255)',
     // CSS Transitions
     transition: 'all .15s ease',
