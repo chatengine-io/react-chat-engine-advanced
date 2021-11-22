@@ -1,10 +1,8 @@
 import { AvatarStyles } from './styles';
 
-export interface Props {
+export interface Props extends AvatarStyles {
   avatarUrl?: string;
   username?: string;
-  isOnline?: boolean;
-  showOnline?: boolean;
-  customStyle?: AvatarStyles;
+  isOnline?: boolean | undefined;
   onClick?: () => void;
 }

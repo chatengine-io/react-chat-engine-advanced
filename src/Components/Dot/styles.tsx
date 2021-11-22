@@ -1,11 +1,11 @@
 import { Properties } from 'csstype';
 
 export interface DotStyles {
-  dot?: Properties;
+  style?: Properties;
 }
 
 export const styles: DotStyles = {
-  dot: {
+  style: {
     borderRadius: '13px',
     textAlign: 'center',
     backgroundRepeat: 'no-repeat',

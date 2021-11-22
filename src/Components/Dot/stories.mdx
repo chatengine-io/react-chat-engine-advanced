@@ -20,8 +20,7 @@ You can customize the look and feel with the `avatarUrl`, `username`, `isVisible
 <Story
   name="Default"
   args={{
-    avatarUrl:
-      'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+    username: 'Adam',
   }}
 >
   {Template.bind({})}
@@ -29,21 +28,25 @@ You can customize the look and feel with the `avatarUrl`, `username`, `isVisible
 
 <ArgsTable story="Default" />
 
-## No Avatar Url
+## Avatar Url
 
-When you do not have an `avatarUrl` value, you can set a `username` value instead.
-
-The component displays none of the `username` letters, but assigns a randomly unique colour.
+When you have an `avatarUrl` you set and image instead of `username`
 
 <Canvas>
-  <Story name="No Avatar Url" args={{ username: 'Dylan' }}>
+  <Story
+    name="No Avatar Url"
+    args={{
+      avatarUrl:
+        'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+    }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
 
 ## Custom Style
 
-You can also use the `customStyle` component to overlay custom CSS onto the `Dot` component.
+You can also use the `style` prop to overlay custom CSS onto the `Dot` component.
 
 <Canvas>
   <Story
@@ -51,14 +54,7 @@ You can also use the `customStyle` component to overlay custom CSS onto the `Dot
     args={{
       avatarUrl:
         'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
-      customStyle: {
-        dot: {
-          width: '24px',
-          height: '24px',
-          backgroundSize: '24px',
-          borderRadius: '4px',
-        },
-      },
+      style: { border: '2px solid red' },
     }}
   >
     {Template.bind({})}

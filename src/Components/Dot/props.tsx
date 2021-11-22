@@ -1,8 +1,7 @@
 import { DotStyles } from './styles';
 
-export interface Props {
+export interface Props extends DotStyles {
   avatarUrl?: string | null;
   username?: string;
-  customStyle?: DotStyles;
   visible?: boolean;
 }

@@ -20,7 +20,6 @@ const renderAvatars = (people: PersonProps[], avatarStyles: Properties[]) => {
         return (
           <div style={avatarStyles[i]} key={`avatar_${i}`}>
             <Avatar
-              showOnline={false}
               username={person.username}
               avatarUrl={person.avatar ? person.avatar : undefined}
             />
