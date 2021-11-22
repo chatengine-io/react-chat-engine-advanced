@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Properties } from 'csstype';
 
 import { Props } from './props';
 import { styles } from './styles';
@@ -6,12 +7,13 @@ import { styles } from './styles';
 export const Input = ({
   autoFocus = false,
   label = '',
-  customStyle = {},
+  defaultValue,
+  value,
   onChange = () => {},
   onFocus = () => {},
   onBlur = () => {},
-  defaultValue,
-  value,
+  style = {},
+  focusStyle = {},
 }: Props) => {
   const didMountRef = useRef<boolean>(false);
   const [currentValue, setCurrentValue] = useState<string>('');
@@ -29,11 +31,6 @@ export const Input = ({
       }
     }
   });
-
-  const focuseStyle = focused && {
-    ...styles.focusInput,
-    ...customStyle.focusInput,
-  };
 
   return (
     <input
@@ -54,10 +51,29 @@ export const Input = ({
         onBlur && onBlur(e);
       }}
       style={{
-        ...styles.input,
-        ...focuseStyle,
-        ...customStyle.input,
+        // Default
+        ...defaultStyle,
+        // State
+        ...(focused ? styles.focusStyle : {}),
+        // Props
+        ...style,
+        // Props + State
+        ...(focused ? focusStyle : {}),
       }}
     />
   );
 };
+
+const defaultStyle = {
+  fontFamily: 'Avenir',
+  height: '36px',
+  fontSize: '15px',
+  outline: 'none',
+  borderRadius: '24px',
+  border: '1px solid #d9d9d9',
+  padding: '0px 12px',
+  boxSizing: 'border-box',
+  transition: 'all .33s ease',
+  WebkitTransition: 'all .33s ease',
+  MozTransition: 'all .33s ease',
+} as Properties;

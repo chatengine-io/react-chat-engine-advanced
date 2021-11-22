@@ -44,16 +44,15 @@ export const ChatForm: React.FC<Props> = ({
 
       {!selected && (
         <Button
-          customStyle={{
-            defaultButton: {
-              ...styles.chatFormButtonStyle,
-              ...customStyle.chatFormButtonStyle,
-            },
+          style={{
+            ...styles.chatFormButtonStyle,
+            ...customStyle.chatFormButtonStyle,
           }}
-          icon="+"
           id="new-chat-plus-button"
           onClick={() => setSelected(true)}
-        />
+        >
+          +
+        </Button>
       )}
 
       {selected && (
@@ -64,11 +63,9 @@ export const ChatForm: React.FC<Props> = ({
             label="Chat Title"
             id="ce-new-chat-title-field"
             onBlur={() => setSelected(false)}
-            customStyle={{
-              input: {
-                ...styles.chatFormInputStyle,
-                ...customStyle.chatFormInputStyle,
-              },
+            style={{
+              ...styles.chatFormInputStyle,
+              ...customStyle.chatFormInputStyle,
             }}
             onChange={onChange}
           />

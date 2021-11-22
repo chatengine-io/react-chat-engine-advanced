@@ -79,9 +79,7 @@ export const ChatList: React.FC<Props> = ({
       {hasMoreChats && (
         <RenderTrigger
           onShow={onChatLoaderVisible}
-          customStyle={{
-            renderTrigger: { ...styles.chatLoader, ...customStyle.chatLoader },
-          }}
+          style={{ ...styles.chatLoader, ...customStyle.chatLoader }}
           children={`🖐 Loading...`}
         />
       )}

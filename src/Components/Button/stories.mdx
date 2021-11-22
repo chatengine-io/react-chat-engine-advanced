@@ -14,8 +14,6 @@ There are three types for the `Button` component: `'default'`, `'primary'`, and 
 
 Pass an `onClick` method to perform an action when the button is clicked.
 
-Override the default styling by passing in a `customStyle` object.
-
 ## Default
 
 <Story name="Default" args={{ children: 'Button' }}>
@@ -24,9 +22,28 @@ Override the default styling by passing in a `customStyle` object.
 
 <ArgsTable story="Default" />
 
+## Children
+
+You can put any JSX or TSX inside the `children` of the button.
+
+<Canvas>
+  <Story
+    name="Children"
+    args={{
+      children: (
+        <div>
+          <CheckOutlined /> your code!
+        </div>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Primary
 
-You can include an icon in the `Button` too, here we are passing the `CheckOutlined` component from [Ant Design](https://ant.design/components/icon/).
+The type `'primary'` is blue and grabs attention!
 
 <Canvas>
   <Story
@@ -34,7 +51,6 @@ You can include an icon in the `Button` too, here we are passing the `CheckOutli
     args={{
       children: 'Submit',
       type: 'primary',
-      icon: <CheckOutlined />,
     }}
   >
     {Template.bind({})}
@@ -49,9 +65,28 @@ Use type `'danger'` when the user needs to be careful.
   <Story
     name="Danger"
     args={{
-      children: 'Danger!',
+      children: (
+        <div>
+          <DeleteOutlined /> Danger
+        </div>
+      ),
       type: 'danger',
-      icon: <DeleteOutlined />,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+Customize the look and feel with the `style` prop
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      children: 'Button',
+      style: { border: '2px solid purple', color: 'purple' },
     }}
   >
     {Template.bind({})}
