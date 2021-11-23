@@ -45,14 +45,14 @@ export const ChatAvatars: React.FC<Props> = ({
 
   const renderOnePerson = (people: PersonProps[]) => {
     return renderAvatars(people, [
-      { ...styles.oneAvatarStyle.avatarOne, ...oneAvatarStyle.avatarOne },
+      { ...styles.oneAvatarStyle?.avatarOne, ...oneAvatarStyle.avatarOne },
     ]);
   };
 
   const renderTwoPeople = (people: PersonProps[]) => {
     const avatarStyles = [
-      { ...styles.twoAvatarsStyle.avatarOne, ...twoAvatarsStyle.avatarOne },
-      { ...styles.twoAvatarsStyle.avatarTwo, ...twoAvatarsStyle.avatarTwo },
+      { ...styles.twoAvatarsStyle?.avatarOne, ...twoAvatarsStyle.avatarOne },
+      { ...styles.twoAvatarsStyle?.avatarTwo, ...twoAvatarsStyle.avatarTwo },
     ];
 
     return renderAvatars(people, avatarStyles);
@@ -60,10 +60,16 @@ export const ChatAvatars: React.FC<Props> = ({
 
   const renderThreePeople = (people: PersonProps[]) => {
     const avatarStyles = [
-      { ...styles.threeAvatarsStyle.avatarOne, ...threeAvatarsStyle.avatarOne },
-      { ...styles.threeAvatarsStyle.avatarTwo, ...threeAvatarsStyle.avatarTwo },
       {
-        ...styles.threeAvatarsStyle.avatarThree,
+        ...styles.threeAvatarsStyle?.avatarOne,
+        ...threeAvatarsStyle.avatarOne,
+      },
+      {
+        ...styles.threeAvatarsStyle?.avatarTwo,
+        ...threeAvatarsStyle.avatarTwo,
+      },
+      {
+        ...styles.threeAvatarsStyle?.avatarThree,
         ...threeAvatarsStyle.avatarThree,
       },
     ];
