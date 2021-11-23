@@ -1,13 +1,13 @@
 import { Properties } from 'csstype';
 
 export interface ChatListStyles {
-  chatListContainer?: Properties;
-  loadingStyle?: Properties;
-  chatLoader?: Properties;
+  chatListStyle?: Properties;
+  chatListLoadingStyle?: Properties;
+  chatListLoadTriggerStyle?: Properties;
 }
 
 export const styles: ChatListStyles = {
-  chatListContainer: {
+  chatListStyle: {
     width: '100%',
     height: '100%',
     maxHeight: '100vh',
@@ -17,10 +17,10 @@ export const styles: ChatListStyles = {
     backgroundColor: 'white',
     fontFamily: 'Avenir',
   } as Properties,
-  loadingStyle: {
+  chatListLoadingStyle: {
     overflowY: 'hidden',
   } as Properties,
-  chatLoader: {
+  chatListLoadTriggerStyle: {
     fontFamily: 'Avenir',
     textAlign: 'center',
     backgroundColor: '#e2e2e2',

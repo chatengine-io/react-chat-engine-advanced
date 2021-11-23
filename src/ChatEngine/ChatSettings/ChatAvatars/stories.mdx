@@ -88,3 +88,25 @@ For group chats with three or more people, the first three users' avatars will d
     {Template.bind({})}
   </Story>
 </Canvas>
+
+## Custom Styles
+
+For group chats with three or more people, the first three users' avatars will display.
+
+<Canvas>
+  <Story
+    name="Custom Styles"
+    args={{
+      users: threePersonChat.people,
+      currentUser: currentUser,
+      chatAvatarsStyle: { border: '2px solid orange' },
+      threeAvatarsStyle: {
+        avatarOne: { border: '2px solid red' },
+        avatarTwo: { border: '2px solid blue' },
+        avatarThree: { border: '2px solid green' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
