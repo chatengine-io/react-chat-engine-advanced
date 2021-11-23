@@ -1,15 +1,15 @@
 import { Properties } from 'csstype';
 
 export interface ChatAvatarsStyle {
-  chatAvatarsStyle: Properties;
-  oneAvatarStyle: {
+  chatAvatarsStyle?: Properties;
+  oneAvatarStyle?: {
     avatarOne: Properties;
   };
-  twoAvatarsStyle: {
+  twoAvatarsStyle?: {
     avatarOne: Properties;
     avatarTwo: Properties;
   };
-  threeAvatarsStyle: {
+  threeAvatarsStyle?: {
     avatarOne: Properties;
     avatarTwo: Properties;
     avatarThree: Properties;
