@@ -11,57 +11,59 @@ export const ChatHeader: React.FC<Props> = ({
   id = '',
   title = '',
   description = '',
-  customStyle = {},
+  chatHeaderStyle = {},
+  chatHeaderTitleStyle = {},
+  chatHeaderSubtitleStyle = {},
+  chatHeaderMobileOptionStyle = {},
 }) => {
   return (
     <Row
-      className="ce-chat-title"
-      style={{ ...styles.chatHeader, ...customStyle.chatHeader }}
+      className="ce-chat-header"
+      style={{ ...styles.chatHeaderStyle, ...chatHeaderStyle }}
     >
       <Col
         xs={2}
         sm={0}
+        className="ce-chat-header-mobile-option"
         style={{
-          ...styles.mobileOption,
+          ...styles.chatHeaderMobileOptionStyle,
           ...{ left: '6px' }, // LHS Specific
-          ...customStyle.mobileOption,
+          ...chatHeaderMobileOptionStyle,
         }}
-        className="ce-chat-list-mobile-option"
       >
         {/* <ChatListDrawer /> */}
       </Col>
 
-      <Col
-        xs={8}
-        sm={12}
-        style={{ ...styles.titleContainer, ...customStyle.titleContainer }}
-        className="ce-chat-title-container"
+      <div
+        id={`ce-chat-feed-title-${id}`}
+        className="ce-chat-header-title"
+        style={{
+          ...styles.chatHeaderTitleStyle,
+          ...chatHeaderTitleStyle,
+        }}
       >
-        <div
-          style={{ ...styles.titleText, ...customStyle.titleText }}
-          className="ce-chat-title-text"
-          id={`ce-chat-feed-title-${id}`}
-        >
-          {title}
-        </div>
+        {title}
+      </div>
 
-        <div
-          style={{ ...styles.subtitleText, ...customStyle.subtitleText }}
-          className="ce-chat-subtitle-text"
-        >
-          {description}
-        </div>
-      </Col>
+      <div
+        className="ce-chat-header-subtitle"
+        style={{
+          ...styles.chatHeaderSubtitleStyle,
+          ...chatHeaderSubtitleStyle,
+        }}
+      >
+        {description}
+      </div>
 
       <Col
         xs={2}
         sm={0}
+        className="ce-chat-header-mobile-option"
         style={{
-          ...styles.mobileOption,
+          ...styles.chatHeaderMobileOptionStyle,
           ...{ right: '6px' }, // RHS Specific
-          ...customStyle.mobileOption,
+          ...chatHeaderMobileOptionStyle,
         }}
-        className="ce-chat-settings-mobile-option"
       >
         {/* <ChatSettingsDrawer /> */}
       </Col>

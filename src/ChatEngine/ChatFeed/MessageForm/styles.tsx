@@ -4,9 +4,9 @@ import { AttachmentInputStyles } from './AttachmentInput/styles';
 
 export interface MessageFormStyles extends AttachmentInputStyles {
   messageFormStyle?: Properties;
-  messageInputStyle?: Properties;
-  sendMessageButtonStyle?: Properties;
-  draftAttachmentWrapperStyle?: Properties;
+  messageFormInputStyle?: Properties;
+  messageFormSendButtonStyle?: Properties;
+  draftAttachmentStyle?: Properties;
   draftAttachmentRemoveStyle?: Properties;
   draftImageStyle?: Properties;
   draftFileStyle?: Properties;
@@ -16,7 +16,7 @@ export const styles: MessageFormStyles = {
   messageFormStyle: {
     paddingTop: '4px',
   } as Properties,
-  messageInputStyle: {
+  messageFormInputStyle: {
     border: '1px solid white',
     width: 'calc(100% - 24px - 116px)',
     outline: 'none',
@@ -30,7 +30,7 @@ export const styles: MessageFormStyles = {
     position: 'relative',
     top: '6px',
   } as Properties,
-  sendMessageButtonStyle: {
+  messageFormSendButtonStyle: {
     cursor: 'pointer',
     fontFamily: 'Avenir',
     display: 'inline-block',
@@ -44,7 +44,7 @@ export const styles: MessageFormStyles = {
     position: 'relative',
     bottom: '6px',
   } as Properties,
-  draftAttachmentWrapperStyle: {
+  draftAttachmentStyle: {
     padding: '6px',
     display: 'inline-block',
     position: 'relative',

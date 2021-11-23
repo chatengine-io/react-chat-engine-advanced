@@ -1,48 +1,41 @@
 import { Properties } from 'csstype';
 
 export interface MessageStyle {
-  dateTime?: Properties;
-  row?: Properties;
-  attachment?: Properties;
-  avatar?: Properties;
-  message?: Properties;
-  senderText?: Properties;
-  timeTag?: Properties;
-  dot?: Properties;
+  messageStyle?: Properties;
+  messageDateTimeStyle?: Properties;
+  messageSenderUsernameStyle?: Properties;
+  messageAttachmentsStyle?: Properties;
+  messageAttachmentsImageStyle?: Properties;
+  messageAttachmentsFileStyle?: Properties;
+  messageBodyStyle?: Properties;
+  messageTimeTagStyle?: Properties;
+  messageBubbleStyle?: Properties;
+  messageReadsStyle?: Properties;
+  messageReadStyle?: Properties;
+  messageAvatarStyle?: Properties;
 }
 
 export const theirStyles: MessageStyle = {
-  dateTime: {} as Properties,
-  row: { width: '100%' } as Properties,
-  attachment: {} as Properties,
-  avatar: {} as Properties,
-  message: {
-    cursor: 'pointer',
-    color: 'black',
-    float: 'left',
-    padding: '12px',
-    fontSize: '15px',
-    fontFamily: 'Avenir',
-    whiteSpace: 'pre-line',
-    backgroundColor: '#f1f0f0',
-    overflowWrap: 'anywhere',
-    maxWidth: 'calc(100% - 100px)',
-    // CSS Transitions
-    transition: 'all .33s ease',
-    WebkitTransition: 'all .33s ease',
-    MozTransition: 'all .33s ease',
-  } as Properties,
-  senderText: {
+  messageStyle: { width: '100%', position: 'relative' } as Properties,
+  messageSenderUsernameStyle: {
+    width: 'calc(100% - 64px)',
     fontFamily: 'Avenir',
     paddingLeft: '62px',
     paddingBottom: '2px',
     color: 'rgba(0, 0, 0, .40)',
     fontSize: '15px',
   } as Properties,
-  timeTag: {
+  messageAttachmentsStyle: {
+    display: 'auto',
+    paddingLeft: '48px',
+    width: 'calc(100% - 48px)',
+  } as Properties,
+  messageBodyStyle: {
     position: 'relative',
-    top: '12px',
-    left: '8px',
+    width: 'calc(100% - 2px)',
+  } as Properties,
+  messageTimeTagStyle: {
+    marginLeft: '4px',
     fontSize: '14px',
     fontFamily: 'Avenir',
     color: 'rgba(0, 0, 0, 0.4)',
@@ -51,22 +44,69 @@ export const theirStyles: MessageStyle = {
     WebkitTransition: 'all .15s ease',
     MozTransition: 'all .15s ease',
   } as Properties,
-  dot: { float: 'left', marginLeft: '4px' } as Properties,
+  messageBubbleStyle: {
+    cursor: 'pointer',
+    display: 'inline-block',
+    color: 'black',
+    padding: '12px',
+    marginLeft: '48px',
+    fontSize: '15px',
+    fontFamily: 'Avenir',
+    whiteSpace: 'pre-line',
+    backgroundColor: '#f1f0f0',
+    overflowWrap: 'anywhere',
+    // CSS Transitions
+    transition: 'all .33s ease',
+    WebkitTransition: 'all .33s ease',
+    MozTransition: 'all .33s ease',
+  } as Properties,
+  messageReadsStyle: {
+    marginLeft: '48px',
+    width: 'calc(100% - 50px)',
+  } as Properties,
+  messageReadStyle: {
+    marginLeft: '4px',
+    display: 'inline-block',
+  } as Properties,
+  messageAvatarStyle: {
+    position: 'absolute',
+    bottom: '0px',
+    left: '2px',
+  } as Properties,
 };
 
 export const myStyles: MessageStyle = {
-  dateTime: {} as Properties,
-  row: {
+  messageStyle: {
     width: '100%',
     textAlign: 'right',
   } as Properties,
-  attachment: {} as Properties,
-  avatar: {} as Properties,
-  message: {
+  messageSenderUsernameStyle: {
+    display: 'none',
+  } as Properties,
+  messageAttachmentsStyle: {
+    display: 'auto',
+    paddingLeft: '48px',
+    width: 'calc(100% - 48px)',
+  } as Properties,
+  messageBodyStyle: {
+    position: 'relative',
+    width: 'calc(100% - 2px)',
+  } as Properties,
+  messageTimeTagStyle: {
+    marginRight: '4px',
+    fontSize: '14px',
+    fontFamily: 'Avenir',
+    color: 'rgb(24, 144, 255)',
+    // CSS Transitions
+    transition: 'all .15s ease',
+    WebkitTransition: 'all .15s ease',
+    MozTransition: 'all .15s ease',
+  } as Properties,
+  messageBubbleStyle: {
     color: 'white',
+    display: 'inline-block',
     backgroundColor: '#1890ff',
     cursor: 'pointer',
-    float: 'right',
     textAlign: 'left',
     // Stay right but render text
     padding: '12px',
@@ -80,20 +120,7 @@ export const myStyles: MessageStyle = {
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
   } as Properties,
-  senderText: {
-    display: 'none',
-  } as Properties,
-  timeTag: {
-    fontFamily: 'Avenir',
-    position: 'relative',
-    top: '12px',
-    right: '8px',
-    fontSize: '14px',
-    color: 'rgb(24, 144, 255)',
-    // CSS Transitions
-    transition: 'all .15s ease',
-    WebkitTransition: 'all .15s ease',
-    MozTransition: 'all .15s ease',
-  } as Properties,
-  dot: { float: 'right', marginLeft: '4px' } as Properties,
+  messageReadsStyle: { width: '100%' } as Properties,
+  messageReadStyle: { float: 'right', marginLeft: '4px' } as Properties,
+  messageAvatarStyle: { display: 'none' } as Properties,
 };

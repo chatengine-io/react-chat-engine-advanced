@@ -5,12 +5,29 @@ import { Message } from '.';
 import { Props } from './props';
 
 import {
-  message,
-  messagePlusAttachments,
+  message1001,
+  messagePlusAttachments1004,
   chatWithReads,
 } from '../../../../util/mocks';
 
-<Meta title="ChatEngine/ChatFeed/MessageList/Message" component={Message} />
+<Meta
+  title="ChatEngine/ChatFeed/MessageList/Message"
+  component={Message}
+  argTypes={{
+    messageStyle: { table: { category: 'styles' } },
+    messageDateTimeStyle: { table: { category: 'styles' } },
+    messageSenderUsernameStyle: { table: { category: 'styles' } },
+    messageAttachmentsStyle: { table: { category: 'styles' } },
+    messageAttachmentsImageStyle: { table: { category: 'styles' } },
+    messageAttachmentsFileStyle: { table: { category: 'styles' } },
+    messageBodyStyle: { table: { category: 'styles' } },
+    messageTimeTagStyle: { table: { category: 'styles' } },
+    messageBubbleStyle: { table: { category: 'styles' } },
+    messageReadsStyle: { table: { category: 'styles' } },
+    messageReadStyle: { table: { category: 'styles' } },
+    messageAvatarStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <Message {...args} />;
 
@@ -20,7 +37,7 @@ The message component represents a message sent by a user.
 
 ## Default
 
-<Story name="Default" args={{ message: message }}>
+<Story name="Default" args={{ message: message1001 }}>
   {Template.bind({})}
 </Story>
 
@@ -33,7 +50,10 @@ You can set the `isMyMessage` prop to `true` and the message will appear to be s
 This involves significantly changing the style and position of the message.
 
 <Canvas>
-  <Story name="Is My Message" args={{ message: message, isMyMessage: true }}>
+  <Story
+    name="Is My Message"
+    args={{ message: message1001, isMyMessage: true }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -43,7 +63,7 @@ This involves significantly changing the style and position of the message.
 If the `message` props has files in its `attachments` field, then files and images will be rendered accordingly.
 
 <Canvas>
-  <Story name="With Attachments" args={{ message: messagePlusAttachments }}>
+  <Story name="With Attachments" args={{ message: messagePlusAttachments1004 }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -55,7 +75,10 @@ You can set the `showDateTime` prop to `true` and the message will appear under 
 The date-time value pulls from the `message` prop's `created` value.
 
 <Canvas>
-  <Story name="Show Date Time" args={{ message: message, showDateTime: true }}>
+  <Story
+    name="Show Date Time"
+    args={{ message: message1001, showDateTime: true }}
+  >
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -72,7 +95,7 @@ This should only be set when `isMyMessage` is `true`. This is because non-delive
   <Story
     name="Is Sending"
     args={{
-      message: messagePlusAttachments,
+      message: messagePlusAttachments1004,
       isSending: true,
       isMyMessage: true,
     }}
@@ -89,9 +112,9 @@ When you put a message between two others with `lastMessage` and `nextMessage` p
   <Story
     name="Between Messages"
     args={{
-      lastMessage: message,
-      message: message,
-      nextMessage: message,
+      lastMessage: message1001,
+      message: message1001,
+      nextMessage: message1001,
     }}
   >
     {Template.bind({})}
@@ -106,7 +129,7 @@ If you pass in the optional `chat` prop and the `people` attribute shows users h
   <Story
     name="Read Message"
     args={{
-      message: message,
+      message: message1001,
       chat: chatWithReads,
     }}
   >
@@ -116,22 +139,27 @@ If you pass in the optional `chat` prop and the `people` attribute shows users h
 
 ## Custom Style
 
-You can use the `customStyle` prop, which has a `MessageStyle` interface, to customize every aspect of the message CSS.
+You can use the `*Style` props, to customize every aspect of a Message component.
 
 <Canvas>
   <Story
     name="Custom Style"
     args={{
-      message: messagePlusAttachments,
+      message: messagePlusAttachments1004,
       chat: chatWithReads,
-      customStyle: {
-        avatar: { border: '2px solid red' },
-        senderText: { border: '2px solid blue' },
-        dot: { border: '2px solid cyan' },
-        attachment: { border: '2px solid orange' },
-        message: { border: '2px solid green' },
-        timeTag: { border: '2px solid brown' },
-      },
+      messageStyle: { border: '2px solid red' },
+      messageDateTimeStyle: { border: '2px solid blue' },
+      messageSenderUsernameStyle: { border: '2px solid green' },
+      messageAttachmentsStyle: { border: '2px solid orange' },
+      messageAttachmentsImageStyle: { border: '2px solid gold' },
+      messageAttachmentsFileStyle: { border: '2px solid olive' },
+      messageAttachmentsStyle: { border: '2px solid orange' },
+      messageBodyStyle: { border: '2px solid yellow' },
+      messageTimeTagStyle: { border: '2px solid brown' },
+      messageBubbleStyle: { border: '2px solid lime' },
+      messageReadsStyle: { border: '2px solid grey' },
+      messageReadStyle: { border: '2px solid cyan' },
+      messageAvatarStyle: { border: '2px solid deeppink' },
     }}
   >
     {Template.bind({})}

@@ -3,10 +3,11 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { MessageList } from '.';
 
 import {
-  message,
-  messagePlusAttachments,
-  messageByBob,
-  messageTwoByBob,
+  message1001,
+  messagePlusAttachments1004,
+  messageByBob1002,
+  messageTwoByBob1003,
+  directMessageChat,
 } from '../../../util/mocks';
 
 <Meta title="ChatEngine/ChatFeed/MessageList" component={MessageList} />
@@ -23,10 +24,15 @@ The message list component displays all the messages sent into a Chat.
   name="Default"
   args={{
     messages: {
-      '2021-07-14 01:18:24.567443+00:00': message,
-      '2021-07-14 01:30:24.567443+00:00': messagePlusAttachments,
-      '2021-07-14 01:40:24.567443+00:00': messageByBob,
-      '2021-07-14 01:41:24.567443+00:00': messageTwoByBob,
+      '2021-07-14 01:01:00.000000+00:00': message1001,
+      '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
+      '2021-07-14 01:03:00.000000+00:00': messageTwoByBob1003,
+      '2021-07-14 01:04:00.000000+00:00': messagePlusAttachments1004,
+    },
+    messageListStyle: {
+      maxHeight: '450px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      overflowY: 'scroll',
     },
   }}
 >
@@ -46,11 +52,32 @@ This is done by setting the Message component's `isMyMessage` prop to `true`.
     name="My Username"
     args={{
       messages: {
-        '2021-07-14 01:18:24.567443+00:00': message,
-        '2021-07-14 01:40:24.567443+00:00': messageByBob,
-        '2021-07-14 01:41:24.567443+00:00': messageTwoByBob,
+        '2021-07-14 01:01:00.000000+00:00': message1001,
+        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
+        '2021-07-14 01:03:00.000000+00:00': messageTwoByBob1003,
       },
       myUsername: 'bob_baker',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Chat with Reads
+
+You can pass a `chat` prop which will show Chat Members and their read messages.
+
+<Canvas>
+  <Story
+    name="Chat with Reads"
+    args={{
+      messages: {
+        '2021-07-14 01:01:00.000000+00:00': message1001,
+        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
+        '2021-07-14 01:03:00.000000+00:00': messageTwoByBob1003,
+      },
+      myUsername: 'bob_baker',
+      chat: directMessageChat,
     }}
   >
     {Template.bind({})}
@@ -68,8 +95,8 @@ Here is an example of two messages sent on different days, rendering a `<DateTim
     name="Date Time"
     args={{
       messages: {
-        '2021-07-14 01:18:24.567443+00:00': message,
-        '2021-07-15 01:40:24.567443+00:00': messageByBob,
+        '2021-07-14 01:01:00.000000+00:00': message1001,
+        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
       },
     }}
   >
@@ -92,8 +119,8 @@ Check the console log for this example.
     name="Render Triggers"
     args={{
       messages: {
-        '2021-07-14 01:18:24.567443+00:00': message,
-        '2021-07-15 01:40:24.567443+00:00': messageByBob,
+        '2021-07-14 01:01:00.000000+00:00': message1001,
+        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
       },
       onTopMessageShow: () => console.log('Top message showing'),
       onTopMessageHide: () => console.log('Top message hidden'),
@@ -114,14 +141,11 @@ You can customize the look and feel with the `customStyle` prop.
     name="Custom Style"
     args={{
       messages: {
-        '2021-07-14 01:18:24.567443+00:00': message,
-        '2021-07-15 01:40:24.567443+00:00': messageByBob,
+        '2021-07-14 01:01:00.000000+00:00': message1001,
+        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
       },
-      customStyle: {
-        messageList: {
-          border: '2px solid red',
-        },
-      },
+      messageListStyle: { border: '2px solid red' },
+      messageStyle: { border: '2px solid blue' },
     }}
   >
     {Template.bind({})}
