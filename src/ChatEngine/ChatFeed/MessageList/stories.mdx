@@ -29,6 +29,11 @@ The message list component displays all the messages sent into a Chat.
       '2021-07-14 01:40:24.567443+00:00': messageByBob,
       '2021-07-14 01:41:24.567443+00:00': messageTwoByBob,
     },
+    messageListStyle: {
+      maxHeight: '450px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      overflowY: 'scroll',
+    },
   }}
 >
   {Template.bind({})}
@@ -139,11 +144,8 @@ You can customize the look and feel with the `customStyle` prop.
         '2021-07-14 01:18:24.567443+00:00': message,
         '2021-07-15 01:40:24.567443+00:00': messageByBob,
       },
-      customStyle: {
-        messageList: {
-          border: '2px solid red',
-        },
-      },
+      messageListStyle: { border: '2px solid red' },
+      messageStyle: { border: '2px solid blue' },
     }}
   >
     {Template.bind({})}
