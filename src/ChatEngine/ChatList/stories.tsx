@@ -19,24 +19,20 @@ const Template: Story<Props> = (props) => <ChatList {...props}></ChatList>;
 
 export const Default = Template.bind({});
 Default.args = {
-  customStyle: {
-    chatListStyle: {
-      maxWidth: '400px',
-      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-      maxHeight: '300px',
-    },
+  chatListStyle: {
+    maxWidth: '400px',
+    boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    maxHeight: '300px',
   },
   chats: chats,
 };
 
 export const ActiveChat = Template.bind({});
 ActiveChat.args = {
-  customStyle: {
-    chatListStyle: {
-      maxWidth: '400px',
-      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-      maxHeight: '300px',
-    },
+  chatListStyle: {
+    maxWidth: '400px',
+    boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    maxHeight: '300px',
   },
   chats: chats,
   activeChatID: 202,
@@ -46,12 +42,10 @@ ActiveChat.args = {
 
 export const UnreadMessages = Template.bind({});
 UnreadMessages.args = {
-  customStyle: {
-    chatListStyle: {
-      maxWidth: '400px',
-      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-      maxHeight: '300px',
-    },
+  chatListStyle: {
+    maxWidth: '400px',
+    boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    maxHeight: '300px',
   },
   userName: 'adam_lamorre',
   chats: chats,
@@ -59,12 +53,10 @@ UnreadMessages.args = {
 
 export const HasMoreChats = Template.bind({});
 HasMoreChats.args = {
-  customStyle: {
-    chatListStyle: {
-      maxWidth: '400px',
-      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-      maxHeight: '300px',
-    },
+  chatListStyle: {
+    maxWidth: '400px',
+    boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    maxHeight: '300px',
   },
   chats: chats,
   hasMoreChats: true,
@@ -73,12 +65,10 @@ HasMoreChats.args = {
 
 export const Loading = Template.bind({});
 Loading.args = {
-  customStyle: {
-    chatListStyle: {
-      maxWidth: '400px',
-      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-      maxHeight: '300px',
-    },
+  chatListStyle: {
+    maxWidth: '400px',
+    boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    maxHeight: '300px',
   },
   chats: [],
   isLoading: true,
@@ -89,18 +79,16 @@ Loading.args = {
 
 export const CustomStyle = Template.bind({});
 CustomStyle.args = {
-  customStyle: {
-    chatListStyle: {
-      maxWidth: '400px',
-      border: '2px solid red',
-      maxHeight: '300px',
-    },
-    chatListLoadingStyle: {
-      border: '2px solid blue',
-    },
-    chatListLoadTriggerStyle: {
-      border: '2px solid green',
-    },
+  chatListStyle: {
+    maxWidth: '400px',
+    border: '2px solid red',
+    maxHeight: '300px',
+  },
+  chatListLoadingStyle: {
+    border: '2px solid blue',
+  },
+  chatListLoadTriggerStyle: {
+    border: '2px solid green',
   },
   chats: chats,
   hasMoreChats: true,

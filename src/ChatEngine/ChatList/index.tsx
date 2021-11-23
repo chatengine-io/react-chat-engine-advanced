@@ -20,7 +20,9 @@ export const ChatList: React.FC<Props> = ({
   onChatLoaderVisible = () => {},
   isLoading = false,
   hasMoreChats = false,
-  customStyle = {},
+  chatListStyle = {},
+  chatListLoadingStyle = {},
+  chatListLoadTriggerStyle = {},
 }) => {
   const readLastMessage = (userName: string, chat: ChatProps) => {
     return chat.people.some(
@@ -68,9 +70,9 @@ export const ChatList: React.FC<Props> = ({
         // State
         ...(isLoading ? styles.chatListLoadingStyle : {}),
         // Props
-        ...customStyle.chatListStyle,
+        ...chatListStyle,
         // Props + State
-        ...(isLoading ? customStyle.chatListLoadingStyle : {}),
+        ...(isLoading ? chatListLoadingStyle : {}),
       }}
     >
       <ChatForm onFormSubmit={onChatFormSubmit} />
@@ -82,7 +84,7 @@ export const ChatList: React.FC<Props> = ({
           onShow={onChatLoaderVisible}
           style={{
             ...styles.chatListLoadTriggerStyle,
-            ...customStyle.chatListLoadTriggerStyle,
+            ...chatListLoadTriggerStyle,
           }}
           children={`🖐 Loading...`}
         />
