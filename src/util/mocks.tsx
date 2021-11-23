@@ -47,42 +47,42 @@ export const fileAttachment: AttachmentProps = {
   created: '2021-08-03T00:16:59.633778Z',
 };
 
-export const message: MessageProps = {
-  id: 1000,
-  created: '2021-07-14 01:18:24.567443+00:00',
+export const message1001: MessageProps = {
+  id: 1001,
+  created: '2021-07-14 01:01:00.000000+00:00',
   attachments: [],
   sender_username: 'Adam_La_Morre',
-  text: '<p>Hello there world!</p>',
+  text: '<p>Message 1001</p>',
   custom_json: '',
   sender: adam,
 };
 
-export const messageByBob: MessageProps = {
-  id: 1001,
-  created: '2021-07-14 01:18:24.567443+00:00',
-  attachments: [],
-  sender_username: 'bob_baker',
-  text: '<p>Greetings, how are you?</p>',
-  custom_json: '',
-  sender: bob,
-};
-
-export const messageTwoByBob: MessageProps = {
+export const messageByBob1002: MessageProps = {
   id: 1002,
-  created: '2021-07-14 01:18:24.567443+00:00',
+  created: '2021-07-14 01:02:00.000000+00:00',
   attachments: [],
   sender_username: 'bob_baker',
-  text: '<p>Looks like you are working on NextJS!</p>',
+  text: '<p>Message 1002</p>',
   custom_json: '',
   sender: bob,
 };
 
-export const messagePlusAttachments: MessageProps = {
+export const messageTwoByBob1003: MessageProps = {
   id: 1003,
-  created: '2021-07-14 01:18:24.567443+00:00',
+  created: '2021-07-14 01:03:00.000000+00:00',
+  attachments: [],
+  sender_username: 'bob_baker',
+  text: '<p>Message 1003</p>',
+  custom_json: '',
+  sender: bob,
+};
+
+export const messagePlusAttachments1004: MessageProps = {
+  id: 1004,
+  created: '2021-07-14 01:04:00.000000+00:00',
   attachments: [imageAttachment, fileAttachment],
   sender_username: 'Adam_La_Morre',
-  text: '<p>Hey check out this image and MP3 file!</p>',
+  text: '<p>Message 1004</p>',
   custom_json: '',
   sender: adam,
 };
@@ -97,11 +97,11 @@ export const onePersonChat: ChatProps = {
   people: [
     {
       ...adam,
-      last_read: 1000,
+      last_read: 1001,
       chat_updated: '',
     },
   ],
-  last_message: message,
+  last_message: message1001,
 };
 
 export const chatWithReads: ChatProps = {
@@ -114,16 +114,16 @@ export const chatWithReads: ChatProps = {
   people: [
     {
       ...adam,
-      last_read: 1000,
+      last_read: 1001,
       chat_updated: '',
     },
     {
       ...bob,
-      last_read: 1000,
+      last_read: 1001,
       chat_updated: '',
     },
   ],
-  last_message: message,
+  last_message: message1001,
 };
 
 export const threePersonChat: ChatProps = {
@@ -136,21 +136,21 @@ export const threePersonChat: ChatProps = {
   people: [
     {
       ...adam,
-      last_read: 1000,
+      last_read: 1001,
       chat_updated: '',
     },
     {
       ...bob,
-      last_read: 1000,
+      last_read: 1001,
       chat_updated: '',
     },
     {
       ...cam,
-      last_read: 1000,
+      last_read: 1001,
       chat_updated: '',
     },
   ],
-  last_message: message,
+  last_message: message1001,
 };
 
 export const directMessageChat: ChatProps = {
@@ -163,12 +163,12 @@ export const directMessageChat: ChatProps = {
   people: [
     {
       ...adam,
-      last_read: 1000,
+      last_read: 1001,
       chat_updated: '',
     },
     {
       ...bob,
-      last_read: 1000,
+      last_read: 1001,
       chat_updated: '',
     },
   ],
@@ -192,11 +192,11 @@ export const chats: ChatProps[] = [
     people: [
       {
         ...adam,
-        last_read: 1000,
+        last_read: 1001,
         chat_updated: '',
       },
     ],
-    last_message: message,
+    last_message: message1001,
   },
   {
     id: 202,
