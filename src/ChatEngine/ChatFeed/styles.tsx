@@ -6,7 +6,7 @@ export interface ChatFeedStyles {
 
 export const styles: ChatFeedStyles = {
   chatFeedStyle: {
-    height: '800px',
+    height: '100%',
     position: 'relative',
   } as Properties,
 };

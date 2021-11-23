@@ -13,7 +13,6 @@ export const styles: ChatListStyles = {
     maxHeight: '100vh',
     overflowY: 'scroll',
     overflowX: 'hidden',
-    borderRight: '1px solid #afafaf',
     backgroundColor: 'white',
     fontFamily: 'Avenir',
   } as Properties,
