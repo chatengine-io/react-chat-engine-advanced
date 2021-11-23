@@ -1,9 +1,8 @@
 import { Properties } from 'csstype';
 
-import { MessageStyle } from './Message/styles';
-
-export interface MessageListStyles extends MessageStyle {
+export interface MessageListStyles {
   messageListStyle?: Properties;
+  messageStyle?: Properties;
 }
 
 export const styles: MessageListStyles = {

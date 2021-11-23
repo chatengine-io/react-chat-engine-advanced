@@ -16,9 +16,9 @@ export const ChatFeed: React.FC<Props> = ({
   messages,
   myUsername,
   isLoading = false,
-  customStyle = {},
   onTopMessageShow,
   onBottomMessageShow,
+  chatFeedStyle = {},
 }: Props) => {
   const getDescription = () => {
     if (chat.last_message.created && chat.last_message.created.length > 0) {
@@ -45,7 +45,7 @@ export const ChatFeed: React.FC<Props> = ({
   };
 
   return (
-    <div style={{ ...styles.chatFeed, ...customStyle.chatFeed }}>
+    <div style={{ ...styles.chatFeedStyle, ...chatFeedStyle }}>
       <ChatHeader title={chat.title} description={getDescription()} />
 
       <MessageList
