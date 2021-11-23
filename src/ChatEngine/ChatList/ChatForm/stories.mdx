@@ -17,11 +17,9 @@ The Chat Form component is the form for creating new Chat rooms.
 <Story
   name="Default"
   args={{
-    customStyle: {
-      chatFormStyle: {
-        maxWidth: '400px',
-        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-      },
+    chatFormStyle: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
   }}
 >
@@ -38,11 +36,9 @@ You can trigger code when the form submits with the `onFormSubmit` prop.
   <Story
     name="On Submit"
     args={{
-      customStyle: {
-        chatFormStyle: {
-          maxWidth: '400px',
-          boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-        },
+      chatFormStyle: {
+        maxWidth: '400px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
       onFormSubmit: (value) => console.log('Submitted', value),
     }}
@@ -59,15 +55,13 @@ There are a list of `*Style` props which customize various parts of the componen
   <Story
     name="Custom Style"
     args={{
-      customStyle: {
-        chatFormStyle: {
-          maxWidth: '400px',
-          border: '2px solid red',
-        },
-        myChatsTitleStyle: { border: '2px solid blue' },
-        chatFormInputStyle: { border: '2px solid orange' },
-        chatFormButtonStyle: { border: '2px solid green' },
+      chatFormStyle: {
+        maxWidth: '400px',
+        border: '2px solid red',
       },
+      myChatsTitleStyle: { border: '2px solid blue' },
+      chatFormInputStyle: { border: '2px solid orange' },
+      chatFormButtonStyle: { border: '2px solid green' },
     }}
   >
     {Template.bind({})}

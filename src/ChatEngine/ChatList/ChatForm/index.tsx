@@ -8,7 +8,10 @@ import { Input } from '../../../Components/Input';
 
 export const ChatForm: React.FC<Props> = ({
   onFormSubmit,
-  customStyle = {},
+  chatFormStyle = {},
+  myChatsTitleStyle = {},
+  chatFormInputStyle = {},
+  chatFormButtonStyle = {},
 }) => {
   const [selected, setSelected] = useState<boolean>(false);
   const [value, setValue] = useState<string>('');
@@ -28,14 +31,14 @@ export const ChatForm: React.FC<Props> = ({
       className="ce-chat-form"
       style={{
         ...styles.chatFormStyle,
-        ...customStyle.chatFormStyle,
+        ...chatFormStyle,
       }}
     >
       {!selected && (
         <span
           style={{
             ...styles.myChatsTitleStyle,
-            ...customStyle.myChatsTitleStyle,
+            ...myChatsTitleStyle,
           }}
         >
           My Chats
@@ -46,7 +49,7 @@ export const ChatForm: React.FC<Props> = ({
         <Button
           style={{
             ...styles.chatFormButtonStyle,
-            ...customStyle.chatFormButtonStyle,
+            ...chatFormButtonStyle,
           }}
           id="new-chat-plus-button"
           onClick={() => setSelected(true)}
@@ -65,7 +68,7 @@ export const ChatForm: React.FC<Props> = ({
             onBlur={() => setSelected(false)}
             style={{
               ...styles.chatFormInputStyle,
-              ...customStyle.chatFormInputStyle,
+              ...chatFormInputStyle,
             }}
             onChange={onChange}
           />
