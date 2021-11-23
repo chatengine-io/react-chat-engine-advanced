@@ -14,7 +14,8 @@ export const MessageList: React.FC<Props> = ({
   onTopMessageHide = () => {},
   onBottomMessageShow = () => {},
   onBottomMessageHide = () => {},
-  customStyle = {},
+  messageListStyle = {},
+  messageStyle = {},
 }) => {
   const keys = Object.keys(messages);
 
@@ -53,6 +54,7 @@ export const MessageList: React.FC<Props> = ({
             nextMessage={messages[nextKey]}
             showDateTime={showDateTime}
             isMyMessage={isMyMessage}
+            messageStyle={{ ...styles.messageStyle, ...messageStyle }}
           />
 
           {index === 0 && (
@@ -70,7 +72,7 @@ export const MessageList: React.FC<Props> = ({
   return (
     <div
       className="ce-message-list"
-      style={{ ...styles.messageList, ...customStyle.messageList }}
+      style={{ ...styles.messageListStyle, ...messageListStyle }}
     >
       {renderMessages(keys)}
     </div>
