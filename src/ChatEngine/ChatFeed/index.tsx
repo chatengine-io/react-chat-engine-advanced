@@ -32,12 +32,10 @@ export const ChatFeed: React.FC<Props> = ({
     }
   };
 
-  const messageListStyle = {
-    messageList: {
-      height: 'calc(100% - 128px)',
-      overflowY: 'scroll',
-      overflowX: 'hidden',
-    } as Properties,
+  const messageListStyle: Properties = {
+    height: 'calc(100% - 128px)',
+    overflowY: 'scroll',
+    overflowX: 'hidden',
   };
 
   const messageFormStyle: Properties = {
@@ -48,18 +46,14 @@ export const ChatFeed: React.FC<Props> = ({
 
   return (
     <div style={{ ...styles.chatFeed, ...customStyle.chatFeed }}>
-      <ChatHeader
-        title={chat.title}
-        description={getDescription()}
-        style={customStyle.chatFeed}
-      />
+      <ChatHeader title={chat.title} description={getDescription()} />
 
       <MessageList
         messages={messages}
         myUsername={myUsername}
         onTopMessageShow={onTopMessageShow}
         onBottomMessageShow={onBottomMessageShow}
-        customStyle={{ ...messageListStyle, ...customStyle }}
+        messageListStyle={messageListStyle}
       />
 
       <MessageForm
