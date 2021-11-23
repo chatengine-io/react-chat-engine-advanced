@@ -7,6 +7,7 @@ import {
   messagePlusAttachments,
   messageByBob,
   messageTwoByBob,
+  directMessageChat,
 } from '../../../util/mocks';
 
 <Meta title="ChatEngine/ChatFeed/MessageList" component={MessageList} />
@@ -51,6 +52,27 @@ This is done by setting the Message component's `isMyMessage` prop to `true`.
         '2021-07-14 01:41:24.567443+00:00': messageTwoByBob,
       },
       myUsername: 'bob_baker',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Chat with Reads
+
+You can pass a `chat` prop which will show Chat Members and their read messages.
+
+<Canvas>
+  <Story
+    name="Chat with Reads"
+    args={{
+      messages: {
+        '2021-07-14 01:18:24.567443+00:00': message,
+        '2021-07-14 01:40:24.567443+00:00': messageByBob,
+        '2021-07-14 01:41:24.567443+00:00': messageTwoByBob,
+      },
+      myUsername: 'bob_baker',
+      chat: directMessageChat,
     }}
   >
     {Template.bind({})}

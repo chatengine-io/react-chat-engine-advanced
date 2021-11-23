@@ -58,7 +58,7 @@ export const message: MessageProps = {
 };
 
 export const messageByBob: MessageProps = {
-  id: 1000,
+  id: 1001,
   created: '2021-07-14 01:18:24.567443+00:00',
   attachments: [],
   sender_username: 'bob_baker',
@@ -68,7 +68,7 @@ export const messageByBob: MessageProps = {
 };
 
 export const messageTwoByBob: MessageProps = {
-  id: 1000,
+  id: 1002,
   created: '2021-07-14 01:18:24.567443+00:00',
   attachments: [],
   sender_username: 'bob_baker',
@@ -78,7 +78,7 @@ export const messageTwoByBob: MessageProps = {
 };
 
 export const messagePlusAttachments: MessageProps = {
-  id: 1000,
+  id: 1003,
   created: '2021-07-14 01:18:24.567443+00:00',
   attachments: [imageAttachment, fileAttachment],
   sender_username: 'Adam_La_Morre',
@@ -102,7 +102,7 @@ export const onePersonChat: ChatProps = {
     },
   ],
   last_message: message,
-}
+};
 
 export const chatWithReads: ChatProps = {
   id: 201,
@@ -170,7 +170,7 @@ export const directMessageChat: ChatProps = {
       ...bob,
       last_read: 1000,
       chat_updated: '',
-    }
+    },
   ],
   last_message: {
     created: '',

@@ -54,6 +54,8 @@ export const Message: React.FC<Props> = ({
       : `${topRadius} 1.3em 1.3em ${bottomRadius}`,
   };
   const sendingStyle = isSending ? { backgroundColor: '#40a9ff' } : {};
+  const isLastMessage =
+    !nextMessage || nextMessage.sender_username !== message.sender_username;
 
   const paddingBottom =
     !nextMessage || nextMessage.sender_username !== message.sender_username
@@ -227,6 +229,22 @@ export const Message: React.FC<Props> = ({
               {formatTime(getDateTime(message.created, 0) as Date)}
             </span>
           )}
+
+          <Avatar
+            username={message.sender_username}
+            style={{
+              ...styles.messageAvatarStyle,
+              ...(isLastMessage ? {} : { display: 'none' }),
+              ...messageAvatarStyle,
+            }}
+            avatarUrl={
+              message.sender &&
+              message.sender !== null &&
+              message.sender.avatar !== null
+                ? message.sender.avatar
+                : undefined
+            }
+          />
         </div>
       )}
 
@@ -239,21 +257,6 @@ export const Message: React.FC<Props> = ({
       >
         {renderReads()}
       </div>
-
-      <Avatar
-        username={message.sender_username}
-        style={{
-          ...styles.messageAvatarStyle,
-          ...messageAvatarStyle,
-        }}
-        avatarUrl={
-          message.sender &&
-          message.sender !== null &&
-          message.sender.avatar !== null
-            ? message.sender.avatar
-            : undefined
-        }
-      />
     </div>
   );
 };

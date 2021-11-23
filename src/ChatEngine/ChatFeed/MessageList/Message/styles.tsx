@@ -31,6 +31,7 @@ export const theirStyles: MessageStyle = {
     width: 'calc(100% - 48px)',
   } as Properties,
   messageBodyStyle: {
+    position: 'relative',
     width: 'calc(100% - 2px)',
   } as Properties,
   messageTimeTagStyle: {
@@ -63,10 +64,13 @@ export const theirStyles: MessageStyle = {
     marginLeft: '48px',
     width: 'calc(100% - 50px)',
   } as Properties,
-  messageReadStyle: { float: 'left', marginLeft: '4px' } as Properties,
+  messageReadStyle: {
+    marginLeft: '4px',
+    display: 'inline-block',
+  } as Properties,
   messageAvatarStyle: {
     position: 'absolute',
-    bottom: '12px',
+    bottom: '0px',
     left: '2px',
   } as Properties,
 };
@@ -85,6 +89,7 @@ export const myStyles: MessageStyle = {
     width: 'calc(100% - 48px)',
   } as Properties,
   messageBodyStyle: {
+    position: 'relative',
     width: 'calc(100% - 2px)',
   } as Properties,
   messageTimeTagStyle: {
