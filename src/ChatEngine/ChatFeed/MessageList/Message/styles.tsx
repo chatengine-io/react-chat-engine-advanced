@@ -1,26 +1,48 @@
 import { Properties } from 'csstype';
 
 export interface MessageStyle {
-  dateTime?: Properties;
-  messageStyle?: Properties; // div not messageStyle
-  attachment?: Properties;
-  avatar?: Properties;
-  message?: Properties;
-  senderText?: Properties;
-  timeTag?: Properties;
-  dot?: Properties;
+  messageStyle?: Properties;
+  messageDateTimeStyle?: Properties;
+  messageSenderUsernameStyle?: Properties;
+  messageAttachmentsStyle?: Properties;
+  messageBodyStyle?: Properties;
+  messageTimeTagStyle?: Properties;
+  messageBubbleStyle?: Properties;
+  messageReadsStyle?: Properties;
+  messageReadStyle?: Properties;
+  messageAvatarStyle?: Properties;
 }
 
 export const theirStyles: MessageStyle = {
-  dateTime: {} as Properties,
   messageStyle: { width: '100%', position: 'relative' } as Properties,
-  attachment: {} as Properties,
-  avatar: {
-    position: 'absolute',
-    bottom: '15px',
-    left: '3px',
+  messageDateTimeStyle: {} as Properties,
+  messageSenderUsernameStyle: {
+    width: 'calc(100% - 64px)',
+    fontFamily: 'Avenir',
+    paddingLeft: '62px',
+    paddingBottom: '2px',
+    color: 'rgba(0, 0, 0, .40)',
+    fontSize: '15px',
   } as Properties,
-  message: {
+  messageAttachmentsStyle: {
+    display: 'auto',
+    paddingLeft: '48px',
+    width: 'calc(100% - 48px)',
+  } as Properties,
+  messageBodyStyle: {
+    width: 'calc(100% - 2px)',
+  } as Properties,
+  messageTimeTagStyle: {
+    marginLeft: '4px',
+    fontSize: '14px',
+    fontFamily: 'Avenir',
+    color: 'rgba(0, 0, 0, 0.4)',
+    // CSS Transitions
+    transition: 'all .15s ease',
+    WebkitTransition: 'all .15s ease',
+    MozTransition: 'all .15s ease',
+  } as Properties,
+  messageBubbleStyle: {
     cursor: 'pointer',
     display: 'inline-block',
     color: 'black',
@@ -36,36 +58,46 @@ export const theirStyles: MessageStyle = {
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
   } as Properties,
-  senderText: {
-    width: 'calc(100% - 64px)',
-    border: '1px solid red',
-    fontFamily: 'Avenir',
-    paddingLeft: '62px',
-    paddingBottom: '2px',
-    color: 'rgba(0, 0, 0, .40)',
-    fontSize: '15px',
+  messageReadsStyle: {
+    marginLeft: '48px',
+    width: 'calc(100% - 50px)',
   } as Properties,
-  timeTag: {
+  messageReadStyle: { float: 'left', marginLeft: '4px' } as Properties,
+  messageAvatarStyle: {
+    position: 'absolute',
+    bottom: '12px',
+    left: '2px',
+  } as Properties,
+};
+
+export const myStyles: MessageStyle = {
+  messageStyle: {
+    width: '100%',
+    textAlign: 'right',
+  } as Properties,
+  messageDateTimeStyle: {} as Properties,
+  messageSenderUsernameStyle: {
+    display: 'none',
+  } as Properties,
+  messageAttachmentsStyle: {
+    display: 'auto',
+    paddingLeft: '48px',
+    width: 'calc(100% - 48px)',
+  } as Properties,
+  messageBodyStyle: {
+    width: 'calc(100% - 2px)',
+  } as Properties,
+  messageTimeTagStyle: {
+    marginRight: '4px',
     fontSize: '14px',
     fontFamily: 'Avenir',
-    color: 'rgba(0, 0, 0, 0.4)',
+    color: 'rgb(24, 144, 255)',
     // CSS Transitions
     transition: 'all .15s ease',
     WebkitTransition: 'all .15s ease',
     MozTransition: 'all .15s ease',
   } as Properties,
-  dot: { float: 'left', marginLeft: '4px' } as Properties,
-};
-
-export const myStyles: MessageStyle = {
-  dateTime: {} as Properties,
-  messageStyle: {
-    width: '100%',
-    textAlign: 'right',
-  } as Properties,
-  attachment: {} as Properties,
-  avatar: {} as Properties,
-  message: {
+  messageBubbleStyle: {
     color: 'white',
     display: 'inline-block',
     backgroundColor: '#1890ff',
@@ -83,17 +115,7 @@ export const myStyles: MessageStyle = {
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
   } as Properties,
-  senderText: {
-    display: 'none',
-  } as Properties,
-  timeTag: {
-    fontSize: '14px',
-    fontFamily: 'Avenir',
-    color: 'rgb(24, 144, 255)',
-    // CSS Transitions
-    transition: 'all .15s ease',
-    WebkitTransition: 'all .15s ease',
-    MozTransition: 'all .15s ease',
-  } as Properties,
-  dot: { float: 'right', marginLeft: '4px' } as Properties,
+  messageReadsStyle: { width: '100%' } as Properties,
+  messageReadStyle: { float: 'right', marginLeft: '4px' } as Properties,
+  messageAvatarStyle: { display: 'none' } as Properties,
 };

@@ -26,6 +26,8 @@ export const Message: React.FC<Props> = ({
 }) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
+  const styles = isMyMessage ? myStyles : theirStyles;
+
   const topRadius =
     !lastMessage || lastMessage.sender_username !== message.sender_username
       ? '1.3em'
@@ -34,15 +36,17 @@ export const Message: React.FC<Props> = ({
     !nextMessage || nextMessage.sender_username !== message.sender_username
       ? '1.3em'
       : '0.3em';
-  const borderRadius = isMyMessage
-    ? `1.3em ${topRadius} ${bottomRadius} 1.3em`
-    : `${topRadius} 1.3em 1.3em ${bottomRadius}`;
+  const borderStyle = {
+    borderRadius: isMyMessage
+      ? `1.3em ${topRadius} ${bottomRadius} 1.3em`
+      : `${topRadius} 1.3em 1.3em ${bottomRadius}`,
+  };
+  const sendingStyle = isSending ? { backgroundColor: '#40a9ff' } : {};
+
   const paddingBottom =
     !nextMessage || nextMessage.sender_username !== message.sender_username
       ? '12px'
       : '2px';
-  const styles = isMyMessage ? myStyles : theirStyles;
-  const sendingStyle = isSending ? { backgroundColor: '#40a9ff' } : {};
 
   const text: string =
     message.text !== null
@@ -85,7 +89,10 @@ export const Message: React.FC<Props> = ({
           avatarUrl={chatPerson.avatar}
           username={chatPerson.username}
           visible={message.id === chatPerson.last_read}
-          style={{ ...styles.dot, ...customStyle.dot }}
+          style={{
+            ...styles.messageReadStyle,
+            ...customStyle.messageReadStyle,
+          }}
         />
       );
     });
@@ -103,14 +110,20 @@ export const Message: React.FC<Props> = ({
       {showDateTime && (
         <DateTime
           created={message.created}
-          dateTimeStyle={{ ...styles.dateTime, ...customStyle.dateTime }}
+          dateTimeStyle={{
+            ...styles.messageDateTimeStyle,
+            ...customStyle.messageDateTimeStyle,
+          }}
         />
       )}
 
       {(lastMessage === null ||
         lastMessage.sender_username !== message.sender_username) && (
         <div
-          style={{ ...styles.senderText, ...customStyle.senderText }}
+          style={{
+            ...styles.messageSenderUsernameStyle,
+            ...customStyle.messageSenderUsernameStyle,
+          }}
           className={`ce-${
             isMyMessage ? 'my' : 'their'
           }-message-sender-username`}
@@ -121,10 +134,8 @@ export const Message: React.FC<Props> = ({
 
       <div
         style={{
-          display: 'auto',
-          paddingLeft: '48px',
-          width: 'calc(100% - 50px)',
-          border: '1px solid blue',
+          ...styles.messageAttachmentsStyle,
+          ...customStyle.messageAttachmentsStyle,
         }}
         className={`
           ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
@@ -136,10 +147,8 @@ export const Message: React.FC<Props> = ({
 
       <div
         style={{
-          display: 'auto',
-          paddingLeft: '48px',
-          width: 'calc(100% - 50px)',
-          border: '1px solid green',
+          ...styles.messageAttachmentsStyle,
+          ...customStyle.messageAttachmentsStyle,
         }}
         className={`
             ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
@@ -153,15 +162,18 @@ export const Message: React.FC<Props> = ({
         <div
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          style={{ width: 'calc(100% - 2px)', border: '1px solid purple' }}
+          style={{
+            ...styles.messageBodyStyle,
+            ...customStyle.messageBodyStyle,
+          }}
         >
           {isMyMessage && (
             <span
               className="ce-my-message-timestamp"
               style={{
-                ...styles.timeTag,
+                ...styles.messageTimeTagStyle,
                 ...{ opacity: hovered ? '1' : '0' },
-                ...customStyle.timeTag,
+                ...customStyle.messageTimeTagStyle,
               }}
             >
               {formatTime(getDateTime(message.created, 0) as Date)}
@@ -170,15 +182,14 @@ export const Message: React.FC<Props> = ({
 
           <div
             className={`
-              ce-message-body 
               ce-${isMyMessage ? 'my' : 'their'}-message-body
               ${isSending && 'ce-my-message-sending-body'}
             `}
             style={{
-              ...styles.message,
-              ...{ borderRadius },
+              ...styles.messageBubbleStyle,
+              ...borderStyle,
               ...sendingStyle,
-              ...customStyle.message,
+              ...customStyle.messageBubbleStyle,
             }}
             dangerouslySetInnerHTML={{ __html: text }}
           />
@@ -188,9 +199,9 @@ export const Message: React.FC<Props> = ({
             <span
               className="ce-their-message-timestamp"
               style={{
-                ...styles.timeTag,
+                ...styles.messageTimeTagStyle,
                 ...{ opacity: hovered ? '1' : '0' },
-                ...customStyle.timeTag,
+                ...customStyle.messageTimeTagStyle,
               }}
             >
               {formatTime(getDateTime(message.created, 0) as Date)}
@@ -200,44 +211,29 @@ export const Message: React.FC<Props> = ({
       )}
 
       <div
-        style={
-          isMyMessage
-            ? { width: '100%', border: '1px solid lime' }
-            : {
-                marginLeft: '48px',
-                width: 'calc(100% - 50px)',
-                border: '1px solid lime',
-              }
-        }
-        className={`
-          ce-reads-row
-          ce-${isMyMessage ? 'my' : 'their'}-reads-row
-        `}
+        style={{
+          ...styles.messageReadsStyle,
+          ...customStyle.messageReadsStyle,
+        }}
+        className={`ce-${isMyMessage ? 'my' : 'their'}-reads-row`}
       >
         {renderReads()}
       </div>
 
-      {!isMyMessage && (
-        <div style={{ height: '0px' }}>
-          {(!nextMessage ||
-            nextMessage.sender_username !== message.sender_username) && (
-            <Avatar
-              username={message.sender_username}
-              style={{
-                ...styles.avatar,
-                ...customStyle.avatar,
-              }}
-              avatarUrl={
-                message.sender &&
-                message.sender !== null &&
-                message.sender.avatar !== null
-                  ? message.sender.avatar
-                  : undefined
-              }
-            />
-          )}
-        </div>
-      )}
+      <Avatar
+        username={message.sender_username}
+        style={{
+          ...styles.messageAvatarStyle,
+          ...customStyle.messageAvatarStyle,
+        }}
+        avatarUrl={
+          message.sender &&
+          message.sender !== null &&
+          message.sender.avatar !== null
+            ? message.sender.avatar
+            : undefined
+        }
+      />
     </div>
   );
 };
