@@ -17,7 +17,7 @@ export const MessageList: React.FC<Props> = ({
   messageListStyle = {},
   messageStyle = {},
 }) => {
-  const keys = Object.keys(messages);
+  const keys = Object.keys(messages).sort();
 
   const date = (date: string) => {
     return date ? date.substr(0, 10) : null;
