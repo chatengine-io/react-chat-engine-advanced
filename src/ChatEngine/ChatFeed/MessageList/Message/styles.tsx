@@ -15,7 +15,6 @@ export interface MessageStyle {
 
 export const theirStyles: MessageStyle = {
   messageStyle: { width: '100%', position: 'relative' } as Properties,
-  messageDateTimeStyle: {} as Properties,
   messageSenderUsernameStyle: {
     width: 'calc(100% - 64px)',
     fontFamily: 'Avenir',
@@ -75,7 +74,6 @@ export const myStyles: MessageStyle = {
     width: '100%',
     textAlign: 'right',
   } as Properties,
-  messageDateTimeStyle: {} as Properties,
   messageSenderUsernameStyle: {
     display: 'none',
   } as Properties,

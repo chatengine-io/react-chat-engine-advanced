@@ -22,7 +22,17 @@ export const Message: React.FC<Props> = ({
   isSending = false,
   isMyMessage = false,
   showDateTime = false,
-  customStyle = {},
+  // Styles
+  messageStyle = {},
+  messageDateTimeStyle = {},
+  messageSenderUsernameStyle = {},
+  messageAttachmentsStyle = {},
+  messageBodyStyle = {},
+  messageTimeTagStyle = {},
+  messageBubbleStyle = {},
+  messageReadsStyle = {},
+  messageReadStyle = {},
+  messageAvatarStyle = {},
 }) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
@@ -91,7 +101,7 @@ export const Message: React.FC<Props> = ({
           visible={message.id === chatPerson.last_read}
           style={{
             ...styles.messageReadStyle,
-            ...customStyle.messageReadStyle,
+            ...messageReadStyle,
           }}
         />
       );
@@ -104,7 +114,7 @@ export const Message: React.FC<Props> = ({
       style={{
         ...styles.messageStyle,
         ...{ paddingBottom },
-        ...customStyle.messageStyle,
+        ...messageStyle,
       }}
     >
       {showDateTime && (
@@ -112,7 +122,7 @@ export const Message: React.FC<Props> = ({
           created={message.created}
           dateTimeStyle={{
             ...styles.messageDateTimeStyle,
-            ...customStyle.messageDateTimeStyle,
+            ...messageDateTimeStyle,
           }}
         />
       )}
@@ -122,7 +132,7 @@ export const Message: React.FC<Props> = ({
         <div
           style={{
             ...styles.messageSenderUsernameStyle,
-            ...customStyle.messageSenderUsernameStyle,
+            ...messageSenderUsernameStyle,
           }}
           className={`ce-${
             isMyMessage ? 'my' : 'their'
@@ -135,7 +145,7 @@ export const Message: React.FC<Props> = ({
       <div
         style={{
           ...styles.messageAttachmentsStyle,
-          ...customStyle.messageAttachmentsStyle,
+          ...messageAttachmentsStyle,
         }}
         className={`
           ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
@@ -148,7 +158,7 @@ export const Message: React.FC<Props> = ({
       <div
         style={{
           ...styles.messageAttachmentsStyle,
-          ...customStyle.messageAttachmentsStyle,
+          ...messageAttachmentsStyle,
         }}
         className={`
             ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
@@ -164,7 +174,7 @@ export const Message: React.FC<Props> = ({
           onMouseLeave={() => setHovered(false)}
           style={{
             ...styles.messageBodyStyle,
-            ...customStyle.messageBodyStyle,
+            ...messageBodyStyle,
           }}
         >
           {isMyMessage && (
@@ -173,7 +183,7 @@ export const Message: React.FC<Props> = ({
               style={{
                 ...styles.messageTimeTagStyle,
                 ...{ opacity: hovered ? '1' : '0' },
-                ...customStyle.messageTimeTagStyle,
+                ...messageTimeTagStyle,
               }}
             >
               {formatTime(getDateTime(message.created, 0) as Date)}
@@ -189,7 +199,7 @@ export const Message: React.FC<Props> = ({
               ...styles.messageBubbleStyle,
               ...borderStyle,
               ...sendingStyle,
-              ...customStyle.messageBubbleStyle,
+              ...messageBubbleStyle,
             }}
             dangerouslySetInnerHTML={{ __html: text }}
           />
@@ -201,7 +211,7 @@ export const Message: React.FC<Props> = ({
               style={{
                 ...styles.messageTimeTagStyle,
                 ...{ opacity: hovered ? '1' : '0' },
-                ...customStyle.messageTimeTagStyle,
+                ...messageTimeTagStyle,
               }}
             >
               {formatTime(getDateTime(message.created, 0) as Date)}
@@ -213,7 +223,7 @@ export const Message: React.FC<Props> = ({
       <div
         style={{
           ...styles.messageReadsStyle,
-          ...customStyle.messageReadsStyle,
+          ...messageReadsStyle,
         }}
         className={`ce-${isMyMessage ? 'my' : 'their'}-reads-row`}
       >
@@ -224,7 +234,7 @@ export const Message: React.FC<Props> = ({
         username={message.sender_username}
         style={{
           ...styles.messageAvatarStyle,
-          ...customStyle.messageAvatarStyle,
+          ...messageAvatarStyle,
         }}
         avatarUrl={
           message.sender &&

@@ -68,7 +68,10 @@ export const MessageList: React.FC<Props> = ({
   };
 
   return (
-    <div style={{ ...styles.messageList, ...customStyle.messageList }}>
+    <div
+      className="ce-message-list"
+      style={{ ...styles.messageList, ...customStyle.messageList }}
+    >
       {renderMessages(keys)}
     </div>
   );
