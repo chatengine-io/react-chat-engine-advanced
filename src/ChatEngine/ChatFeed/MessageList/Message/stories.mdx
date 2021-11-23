@@ -18,6 +18,8 @@ import {
     messageDateTimeStyle: { table: { category: 'styles' } },
     messageSenderUsernameStyle: { table: { category: 'styles' } },
     messageAttachmentsStyle: { table: { category: 'styles' } },
+    messageAttachmentsImageStyle: { table: { category: 'styles' } },
+    messageAttachmentsFileStyle: { table: { category: 'styles' } },
     messageBodyStyle: { table: { category: 'styles' } },
     messageTimeTagStyle: { table: { category: 'styles' } },
     messageBubbleStyle: { table: { category: 'styles' } },
@@ -143,12 +145,15 @@ You can use the `*Style` props, to customize every aspect of a Message component
       messageDateTimeStyle: { border: '2px solid blue' },
       messageSenderUsernameStyle: { border: '2px solid green' },
       messageAttachmentsStyle: { border: '2px solid orange' },
+      messageAttachmentsImageStyle: { border: '2px solid gold' },
+      messageAttachmentsFileStyle: { border: '2px solid olive' },
+      messageAttachmentsStyle: { border: '2px solid orange' },
       messageBodyStyle: { border: '2px solid yellow' },
       messageTimeTagStyle: { border: '2px solid brown' },
       messageBubbleStyle: { border: '2px solid lime' },
       messageReadsStyle: { border: '2px solid grey' },
       messageReadStyle: { border: '2px solid cyan' },
-      messageAvatarStyle: { border: '2px solid pink' },
+      messageAvatarStyle: { border: '2px solid deeppink' },
     }}
   >
     {Template.bind({})}

@@ -5,6 +5,8 @@ export interface MessageStyle {
   messageDateTimeStyle?: Properties;
   messageSenderUsernameStyle?: Properties;
   messageAttachmentsStyle?: Properties;
+  messageAttachmentsImageStyle?: Properties;
+  messageAttachmentsFileStyle?: Properties;
   messageBodyStyle?: Properties;
   messageTimeTagStyle?: Properties;
   messageBubbleStyle?: Properties;

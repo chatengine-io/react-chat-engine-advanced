@@ -27,6 +27,8 @@ export const Message: React.FC<Props> = ({
   messageDateTimeStyle = {},
   messageSenderUsernameStyle = {},
   messageAttachmentsStyle = {},
+  messageAttachmentsImageStyle = {},
+  messageAttachmentsFileStyle = {},
   messageBodyStyle = {},
   messageTimeTagStyle = {},
   messageBubbleStyle = {},
@@ -75,6 +77,10 @@ export const Message: React.FC<Props> = ({
           <Image
             key={`attachment_${index}`}
             url={attachment.file !== null ? attachment.file : undefined}
+            style={{
+              ...styles.messageAttachmentsImageStyle,
+              ...messageAttachmentsImageStyle,
+            }}
           />
         );
       } else if (!renderImage && !isImage(fileName)) {
@@ -82,6 +88,10 @@ export const Message: React.FC<Props> = ({
           <File
             key={`attachment_${index}`}
             url={attachment.file !== null ? attachment.file : undefined}
+            style={{
+              ...styles.messageAttachmentsFileStyle,
+              ...messageAttachmentsFileStyle,
+            }}
           />
         );
       } else {
