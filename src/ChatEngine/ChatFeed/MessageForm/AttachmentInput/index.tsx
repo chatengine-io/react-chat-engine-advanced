@@ -8,7 +8,7 @@ import { styles } from './styles';
 export const AttachmentInput: React.FC<Props> = ({
   onSelectFiles,
   attachmentInputStyle = {},
-  attachmentIconStyle = {},
+  attachmentInputIconStyle = {},
 }: Props) => {
   const [hovered, setHovered] = useState<boolean>(false);
   const hoverStyle: Properties = { color: hovered ? '#06c' : '#444' };
@@ -35,9 +35,9 @@ export const AttachmentInput: React.FC<Props> = ({
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           style={{
-            ...styles.attachmentIconStyle,
+            ...styles.attachmentInputIconStyle,
             ...hoverStyle,
-            ...attachmentIconStyle,
+            ...attachmentInputIconStyle,
           }}
           onClick={() => {}} // Prevents redirect in StorybookJS
         >

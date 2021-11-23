@@ -17,12 +17,12 @@ export const MessageForm: React.FC<Props> = ({
   onChange,
   onSubmit,
   messageFormStyle = {},
-  messageInputStyle = {},
-  sendMessageButtonStyle = {},
-  draftAttachmentWrapperStyle = {},
+  messageFormInputStyle = {},
+  messageFormSendButtonStyle = {},
+  draftAttachmentStyle = {},
   draftAttachmentRemoveStyle = {},
   attachmentInputStyle = {},
-  attachmentIconStyle = {},
+  attachmentInputIconStyle = {},
   draftImageStyle = {},
   draftFileStyle = {},
 }: Props) => {
@@ -85,8 +85,8 @@ export const MessageForm: React.FC<Props> = ({
           key={`draft_attachment_${index}`}
           className="ce-draft-attachment-wrapper"
           style={{
-            ...styles.draftAttachmentWrapperStyle,
-            ...draftAttachmentWrapperStyle,
+            ...styles.draftAttachmentStyle,
+            ...draftAttachmentStyle,
           }}
         >
           {renderImage && isImage(attachment.name) && (
@@ -140,9 +140,9 @@ export const MessageForm: React.FC<Props> = ({
           className="ce-input ce-textarea-input"
           rows={1}
           style={{
-            ...styles.messageInputStyle,
+            ...styles.messageFormInputStyle,
             ...overflowStyle,
-            ...messageInputStyle,
+            ...messageFormInputStyle,
           }}
           value={value}
           placeholder={label}
@@ -157,7 +157,7 @@ export const MessageForm: React.FC<Props> = ({
             files !== null && setAttachments(Array.from(files));
           }}
           attachmentInputStyle={attachmentInputStyle}
-          attachmentIconStyle={attachmentIconStyle}
+          attachmentInputIconStyle={attachmentInputIconStyle}
         />
       </span>
 
@@ -168,9 +168,9 @@ export const MessageForm: React.FC<Props> = ({
           onMouseLeave={() => setButtonHover(false)}
           onClick={() => onSubmit && onSubmit(value, attachments)}
           style={{
-            ...styles.sendMessageButtonStyle,
+            ...styles.messageFormSendButtonStyle,
             ...buttonHoverStyle,
-            ...sendMessageButtonStyle,
+            ...messageFormSendButtonStyle,
           }}
         >
           Send

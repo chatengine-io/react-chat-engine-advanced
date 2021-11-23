@@ -8,12 +8,12 @@ import { formatDateTime, getDateTime } from '../../../../../util/dateTime';
 export const DateTime: React.FC<Props> = ({
   created,
   offset = 0,
-  customStyle = {},
+  dateTimeStyle = {},
 }) => {
   return (
     <div
       className="ce-message-date-text"
-      style={{ ...styles.dateTimeText, ...customStyle.dateTimeText }}
+      style={{ ...styles.dateTimeStyle, ...dateTimeStyle }}
     >
       {formatDateTime(getDateTime(created, offset))}
     </div>

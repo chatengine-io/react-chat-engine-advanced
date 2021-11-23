@@ -1,11 +1,11 @@
 import { Properties } from 'csstype';
 
 export interface DateTimeStyles {
-  dateTimeText?: Properties;
+  dateTimeStyle?: Properties;
 }
 
 export const styles: DateTimeStyles = {
-  dateTimeText: {
+  dateTimeStyle: {
     width: '100%',
     fontFamily: 'Avenir',
     textAlign: 'center',
