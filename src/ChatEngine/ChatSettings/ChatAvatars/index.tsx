@@ -10,7 +10,7 @@ import { Properties } from 'csstype';
 
 export const ChatAvatars: React.FC<Props> = ({
   users,
-  currentUser,
+  myUsername,
   isDirectChat = false,
   chatAvatarsStyle = {},
   oneAvatarStyle = { avatarOne: {} },
@@ -18,9 +18,7 @@ export const ChatAvatars: React.FC<Props> = ({
   threeAvatarsStyle = { avatarOne: {}, avatarTwo: {}, avatarThree: {} },
 }: Props) => {
   const topPeople = users.slice(0, 3);
-  const otherPerson = users.find(
-    (person) => person.username !== currentUser.username
-  );
+  const otherPerson = users.find((person) => person.username !== myUsername);
 
   const renderAvatars = (people: PersonProps[], avatarStyles: Properties[]) => {
     if (people.length != avatarStyles.length) {

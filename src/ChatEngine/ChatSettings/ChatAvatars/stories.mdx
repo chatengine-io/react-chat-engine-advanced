@@ -33,7 +33,7 @@ For direct message chats, only the other person's avatar will display.
     name="Direct Message"
     args={{
       users: directMessageChat.people,
-      currentUser: currentUser,
+      myUsername: currentUser.username,
       isDirectChat: true,
     }}
   >
@@ -50,7 +50,7 @@ For groups chats containing one person, only their avatar will display.
     name="One Person"
     args={{
       users: onePersonChat.people,
-      currentUser: currentUser,
+      myUsername: currentUser.username,
     }}
   >
     {Template.bind({})}
@@ -66,7 +66,7 @@ For two person group chats, both avatars will display.
     name="Two People"
     args={{
       users: twoPersonChat.people,
-      currentUser: currentUser,
+      myUsername: currentUser.username,
     }}
   >
     {Template.bind({})}
@@ -82,7 +82,7 @@ For group chats with three or more people, the first three users' avatars will d
     name="Three People"
     args={{
       users: threePersonChat.people,
-      currentUser: currentUser,
+      myUsername: currentUser.username,
     }}
   >
     {Template.bind({})}
@@ -98,7 +98,7 @@ For group chats with three or more people, the first three users' avatars will d
     name="Custom Styles"
     args={{
       users: threePersonChat.people,
-      currentUser: currentUser,
+      myUsername: currentUser.username,
       chatAvatarsStyle: { border: '2px solid orange' },
       threeAvatarsStyle: {
         avatarOne: { border: '2px solid red' },

@@ -4,6 +4,6 @@ import { ChatAvatarsStyle } from './styles';
 
 export interface Props extends ChatAvatarsStyle {
   users: PersonProps[];
-  currentUser: PersonProps;
+  myUsername: string;
   isDirectChat?: boolean;
 }
