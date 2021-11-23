@@ -1,15 +1,15 @@
 import { Properties } from 'csstype';
 
 export interface ChatAvatarsStyle {
-  container: Properties;
-  onePerson: {
+  chatAvatarsStyle: Properties;
+  oneAvatarStyle: {
     avatarOne: Properties;
   };
-  twoPerson: {
+  twoAvatarsStyle: {
     avatarOne: Properties;
     avatarTwo: Properties;
   };
-  threePerson: {
+  threeAvatarsStyle: {
     avatarOne: Properties;
     avatarTwo: Properties;
     avatarThree: Properties;
@@ -17,18 +17,18 @@ export interface ChatAvatarsStyle {
 }
 
 export const styles: ChatAvatarsStyle = {
-  container: {
+  chatAvatarsStyle: {
     width: '100%',
     paddingTop: '14px',
   } as Properties,
-  onePerson: {
+  oneAvatarStyle: {
     avatarOne: {
       float: 'left',
       position: 'relative',
       left: 'calc(50% - 22px)',
     } as Properties,
   },
-  twoPerson: {
+  twoAvatarsStyle: {
     avatarOne: {
       float: 'left',
       position: 'relative',
@@ -40,7 +40,7 @@ export const styles: ChatAvatarsStyle = {
       left: 'calc(50% - 44px - 22px + 15px)',
     } as Properties,
   },
-  threePerson: {
+  threeAvatarsStyle: {
     avatarOne: {
       float: 'left',
       position: 'relative',
