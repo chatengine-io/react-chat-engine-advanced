@@ -13,21 +13,21 @@ import { getDateTime } from '../../util/dateTime';
 
 export const ChatList: React.FC<Props> = ({
   chats,
-  userName,
+  myUsername,
   activeChatID = -1,
+  isLoading = false,
+  hasMoreChats = false,
   onChatClick = () => {},
   onChatFormSubmit = () => {},
   onChatLoaderVisible = () => {},
-  isLoading = false,
-  hasMoreChats = false,
   chatListStyle = {},
   chatListLoadingStyle = {},
   chatListLoadTriggerStyle = {},
 }) => {
-  const readLastMessage = (userName: string, chat: ChatProps) => {
+  const readLastMessage = (myUsername: string, chat: ChatProps) => {
     return chat.people.some(
       (chatPerson) =>
-        userName === chatPerson.username &&
+        myUsername === chatPerson.username &&
         chatPerson.last_read === chat.last_message.id
     );
   };
@@ -37,8 +37,8 @@ export const ChatList: React.FC<Props> = ({
       const description =
         chat.last_message.text !== null ? chat.last_message.text : 'Say hello!';
       const timeStamp = getDateTime(chat.created).toString().substr(4, 6);
-      const hasNotification = userName
-        ? !readLastMessage(userName, chat)
+      const hasNotification = myUsername
+        ? !readLastMessage(myUsername, chat)
         : false;
 
       return (
