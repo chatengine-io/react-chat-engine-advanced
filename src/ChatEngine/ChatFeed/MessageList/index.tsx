@@ -7,7 +7,7 @@ import { Message } from './Message';
 import { RenderTrigger } from '../../..';
 
 export const MessageList: React.FC<Props> = ({
-  messages,
+  messages = {},
   chat,
   myUsername,
   onTopMessageShow = () => {},
