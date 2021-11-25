@@ -13,8 +13,8 @@ import { getDateTime } from '../../util/dateTime';
 
 export const ChatList: React.FC<Props> = ({
   chats,
+  activeChatKey = -1,
   myUsername,
-  activeChatID = -1,
   isLoading = false,
   hasMoreChats = false,
   onChatClick = () => {},
@@ -47,7 +47,7 @@ export const ChatList: React.FC<Props> = ({
           title={chat.title}
           description={description}
           timeStamp={timeStamp}
-          isActive={activeChatID === chat.id}
+          isActive={activeChatKey === chat.id}
           hasNotification={hasNotification}
           onClick={() => onChatClick(chat.id)}
         />
@@ -77,7 +77,7 @@ export const ChatList: React.FC<Props> = ({
     >
       <ChatForm onFormSubmit={onChatFormSubmit} />
 
-      {isLoading ? renderLoading() : renderChats(chats)}
+      {isLoading ? renderLoading() : renderChats(Object.values(chats))}
 
       {hasMoreChats && (
         <RenderTrigger

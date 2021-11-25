@@ -2,7 +2,7 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { ChatEngine } from '.';
 import { Props } from './props';
 
-import { adam, threePersonChat, message1001 } from '../util/mocks';
+import { adam, chats, messages } from '../util/mocks';
 
 <Meta
   title="ChatEngine"
@@ -25,11 +25,9 @@ export const Template = (args) => <ChatEngine {...args} />;
   name="Default"
   args={{
     myUsername: adam.myUsername,
-    chats: [threePersonChat],
-    chat: threePersonChat,
-    messages: {
-      '2021-07-14 01:30:24.567443+00:00': message1001,
-    },
+    chats: chats,
+    activeChatKey: 201,
+    messages: messages,
     chatEngineStyle: {
       height: '550px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -40,3 +38,71 @@ export const Template = (args) => <ChatEngine {...args} />;
 </Story>
 
 <ArgsTable story="Default" />
+
+## Is Loading
+
+You can set the `isChatListLoading`, `isChatFeedLoading` and `isChatSettingsLoading` to `true` for when the data hasn't been fetched yet.
+
+<Story
+  name="Is Loading"
+  args={{
+    myUsername: adam.myUsername,
+    chats: [],
+    isChatListLoading: true,
+    isChatFeedLoading: true,
+    isChatSettingsLoading: true,
+    chatEngineStyle: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Has More Data
+
+You can set the `hasMoreChats`, and `hasMoreMessages` to `true` for when the your chat server has more Chats and Messages to load.
+
+You can see `🖐 Loading...` in the Chat List and the `<Spinner/>` component in the Chat Feed.
+
+<Story
+  name="Has More Data"
+  args={{
+    myUsername: adam.myUsername,
+    chats: chats,
+    messages: messages,
+    activeChatKey: 201,
+    hasMoreChats: true,
+    hasMoreMessages: true,
+    chatEngineStyle: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Story
+  name="Custom Styles"
+  args={{
+    myUsername: adam.myUsername,
+    chats: chats,
+    messages: messages,
+    activeChatKey: 201,
+    chatEngineStyle: {
+      height: '550px',
+      border: '2px solid red',
+    },
+    chatFeedColumnStyle: { border: '2px solid blue' },
+    chatListColumnStyle: { border: '2px solid green' },
+    chatSettingsColumnStyle: { border: '2px solid orange' },
+  }}
+>
+  {Template.bind({})}
+</Story>

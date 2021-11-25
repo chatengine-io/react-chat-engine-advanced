@@ -22,6 +22,10 @@ export interface MessageProps {
   sender?: PersonProps; // Empty messages have no sender
 }
 
+export interface MessagesProps {
+  [created: string]: MessageProps
+}
+
 export interface ChatPersonProps extends PersonProps {
   chat_updated: string | null;
   last_read: number | null;
@@ -35,4 +39,8 @@ export interface ChatProps {
   last_message: MessageProps;
   attachments: Array<AttachmentProps>;
   people: Array<ChatPersonProps>;
+}
+
+export interface ChatsProps {
+  [id: number]: ChatProps
 }

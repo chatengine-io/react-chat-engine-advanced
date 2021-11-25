@@ -40,7 +40,7 @@ The Chat List component is for listing all chats relevant to one user.
 
 ## Active Chat
 
-You can specify the active chat with `activeChatID` and the corresponding ChatCard will be active.
+You can specify the active chat with `activeChatKey` and the corresponding ChatCard will be active.
 
 <Story
   name="Active Chat"
@@ -51,7 +51,7 @@ You can specify the active chat with `activeChatID` and the corresponding ChatCa
       maxHeight: '330px',
     },
     chats: chats,
-    activeChatID: 201,
+    activeChatKey: 201,
   }}
 >
   {Template.bind({})}

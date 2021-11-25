@@ -7,13 +7,18 @@ import { Message } from './Message';
 import { RenderTrigger } from '../../..';
 
 export const MessageList: React.FC<Props> = ({
+  // Data
   messages = {},
   chat,
   myUsername,
+  // State
+  hasMoreMessages = false,
+  // Callbacks
   onTopMessageShow = () => {},
   onTopMessageHide = () => {},
   onBottomMessageShow = () => {},
   onBottomMessageHide = () => {},
+  // Styles
   messageListStyle = {},
   messageStyle = {},
 }) => {
@@ -56,14 +61,6 @@ export const MessageList: React.FC<Props> = ({
             isMyMessage={isMyMessage}
             messageStyle={{ ...styles.messageStyle, ...messageStyle }}
           />
-
-          {index === 0 && (
-            <RenderTrigger
-              onShow={onTopMessageShow}
-              onHide={onBottomMessageHide}
-              children=""
-            />
-          )}
         </div>
       );
     });
@@ -74,6 +71,14 @@ export const MessageList: React.FC<Props> = ({
       className="ce-message-list"
       style={{ ...styles.messageListStyle, ...messageListStyle }}
     >
+      {hasMoreMessages && (
+        <RenderTrigger
+          onShow={onTopMessageShow}
+          onHide={onBottomMessageHide}
+          children="<spinner/>"
+        />
+      )}
+
       {renderMessages(keys)}
     </div>
   );

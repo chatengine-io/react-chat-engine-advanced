@@ -12,15 +12,24 @@ import { setConfiguration } from 'react-grid-system';
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
 export const ChatEngine: React.FC<Props> = ({
-  chats,
-  chat,
-  messages,
+  chats = {},
+  activeChatKey = -1,
+  messages = {},
   myUsername,
+  // State
+  isChatListLoading = false,
+  isChatFeedLoading = false,
+  isChatSettingsLoading = false,
+  hasMoreChats = false,
+  hasMoreMessages = false,
+  // Style
   chatEngineStyle = {},
   chatListColumnStyle = {},
   chatFeedColumnStyle = {},
   chatSettingsColumnStyle = {},
 }: Props) => {
+  const chat = chats[activeChatKey];
+
   return (
     <Row
       className="ce-chat-engine"
@@ -32,7 +41,12 @@ export const ChatEngine: React.FC<Props> = ({
         className="ce-chat-list-column"
         style={{ ...styles.chatListColumnStyle, ...chatListColumnStyle }}
       >
-        <ChatList chats={chats} />
+        <ChatList
+          chats={chats}
+          activeChatKey={activeChatKey}
+          isLoading={isChatListLoading}
+          hasMoreChats={hasMoreChats}
+        />
       </Col>
 
       <Col
@@ -41,7 +55,12 @@ export const ChatEngine: React.FC<Props> = ({
         className="ce-chat-feed-column"
         style={{ ...styles.chatFeedColumnStyle, ...chatFeedColumnStyle }}
       >
-        <ChatFeed chat={chat} messages={messages} />
+        <ChatFeed
+          chat={chat}
+          messages={messages}
+          isLoading={isChatFeedLoading}
+          hasMoreMessages={hasMoreMessages}
+        />
       </Col>
 
       <Col
@@ -53,7 +72,11 @@ export const ChatEngine: React.FC<Props> = ({
           ...chatSettingsColumnStyle,
         }}
       >
-        <ChatSettings chat={chat} myUsername={myUsername} />
+        <ChatSettings
+          chat={chat}
+          myUsername={myUsername}
+          isLoading={isChatSettingsLoading}
+        />
       </Col>
     </Row>
   );

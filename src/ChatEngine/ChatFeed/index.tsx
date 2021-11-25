@@ -10,12 +10,17 @@ import { MessageForm } from './MessageForm';
 import { getDateTime, formatDateTime } from '../../util/dateTime';
 
 export const ChatFeed: React.FC<Props> = ({
+  // Data
   messages,
   chat,
   myUsername,
+  // State
   isLoading = false,
+  hasMoreMessages = false,
+  // Callbacks
   onTopMessageShow,
   onBottomMessageShow,
+  // Style
   chatFeedStyle = {},
   chatHeaderStyle = {},
   messageListStyle = {},
@@ -51,6 +56,7 @@ export const ChatFeed: React.FC<Props> = ({
       <MessageList
         messages={messages}
         myUsername={myUsername}
+        hasMoreMessages={hasMoreMessages}
         onTopMessageShow={onTopMessageShow}
         onBottomMessageShow={onBottomMessageShow}
         messageListStyle={{ ...styles.messageListStyle, ...messageListStyle }}

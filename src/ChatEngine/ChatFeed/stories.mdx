@@ -2,12 +2,7 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { ChatFeed } from '.';
 import { Props } from './props';
 
-import {
-  onePersonChat,
-  messageByBob1002,
-  messageTwoByBob1003,
-  messagePlusAttachments1004,
-} from '../../util/mocks';
+import { onePersonChat, messages } from '../../util/mocks';
 
 <Meta
   title="ChatEngine/ChatFeed"
@@ -33,11 +28,7 @@ It stacks the `<ChatHeader/>`, `<MessageList/>`, and `<MessageForm/>` in an easy
 <Story
   name="Default"
   args={{
-    messages: {
-      '2021-07-14 01:30:24.567443+00:00': messagePlusAttachments1004,
-      '2021-07-14 01:40:24.567443+00:00': messageByBob1002,
-      '2021-07-14 01:41:24.567443+00:00': messageTwoByBob1003,
-    },
+    messages: messages,
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',
@@ -58,11 +49,7 @@ Passing a Chat object into the `chat` prop will allow/set the header values and 
   name="Chat"
   args={{
     chat: onePersonChat,
-    messages: {
-      '2021-07-14 01:30:24.567443+00:00': messagePlusAttachments1004,
-      '2021-07-14 01:40:24.567443+00:00': messageByBob1002,
-      '2021-07-14 01:41:24.567443+00:00': messageTwoByBob1003,
-    },
+    messages: messages,
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',
@@ -82,11 +69,7 @@ You can use the `myUsername` prop to specify which messages were sent by this us
   args={{
     chat: onePersonChat,
     myUsername: 'Adam_La_Morre',
-    messages: {
-      '2021-07-14 01:30:24.567443+00:00': messagePlusAttachments1004,
-      '2021-07-14 01:40:24.567443+00:00': messageByBob1002,
-      '2021-07-14 01:41:24.567443+00:00': messageTwoByBob1003,
-    },
+    messages: messages,
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',
@@ -116,6 +99,28 @@ If the chat is loading initial message, set `isLoading` to `true` for the follow
   {Template.bind({})}
 </Story>
 
+## Has More Messages
+
+If this Chat room has more Messages, set the `hasMoreMessages` prop to `true`.
+
+This is used to load more messages once at the top of the Chat Feed.
+
+<Story
+  name="Has More Messages"
+  args={{
+    chat: onePersonChat,
+    hasMoreMessages: true,
+    messages: messages,
+    chatFeedStyle: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
 ## Custom Style
 
 You can change the look and feel with the `customStyle` prop. It uses the `ChatFeedStyles` interface which inherits from `ChatHeaderStyles`, and `MessageFormStyles`.
@@ -124,11 +129,7 @@ You can change the look and feel with the `customStyle` prop. It uses the `ChatF
   name="Custom Style"
   args={{
     chat: onePersonChat,
-    messages: {
-      '2021-07-14 01:30:24.567443+00:00': messagePlusAttachments1004,
-      '2021-07-14 01:40:24.567443+00:00': messageByBob1002,
-      '2021-07-14 01:41:24.567443+00:00': messageTwoByBob1003,
-    },
+    messages: messages,
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',

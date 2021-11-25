@@ -1,12 +1,13 @@
-import { ChatProps, MessageProps } from '../../util/interfaces';
+import { ChatProps, MessagesProps } from '../../util/interfaces';
 
 import { ChatFeedStyles } from './styles';
 
 export interface Props extends ChatFeedStyles {
-  messages: { [created: string]: MessageProps };
+  messages: MessagesProps;
   chat?: ChatProps;
   myUsername?: string;
   isLoading?: boolean;
+  hasMoreMessages?: boolean;
   onTopMessageShow?: () => void;
   onBottomMessageShow?: () => void;
 }
