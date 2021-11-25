@@ -83,3 +83,26 @@ You can see `🖐 Loading...` in the Chat List and the `<Spinner/>` component in
 >
   {Template.bind({})}
 </Story>
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Story
+  name="Custom Styles"
+  args={{
+    myUsername: adam.myUsername,
+    chats: chats,
+    messages: messages,
+    activeChatKey: 201,
+    chatEngineStyle: {
+      height: '550px',
+      border: '2px solid red',
+    },
+    chatFeedColumnStyle: { border: '2px solid blue' },
+    chatListColumnStyle: { border: '2px solid green' },
+    chatSettingsColumnStyle: { border: '2px solid orange' },
+  }}
+>
+  {Template.bind({})}
+</Story>
