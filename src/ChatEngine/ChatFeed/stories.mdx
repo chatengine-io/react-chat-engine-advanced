@@ -4,6 +4,7 @@ import { Props } from './props';
 
 import {
   onePersonChat,
+  message1001,
   messageByBob1002,
   messageTwoByBob1003,
   messagePlusAttachments1004,
@@ -106,6 +107,33 @@ If the chat is loading initial message, set `isLoading` to `true` for the follow
   args={{
     isLoading: true,
     messages: {},
+    chatFeedStyle: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Has More Messages
+
+If this Chat room has more Messages, set the `hasMoreMessages` prop to `true`.
+
+This is used to load more messages once at the top of the Chat Feed.
+
+<Story
+  name="Has More Messages"
+  args={{
+    chat: onePersonChat,
+    hasMoreMessages: true,
+    messages: {
+      '2021-07-14 01:01:00.000000+00:00': message1001,
+      '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
+      '2021-07-14 01:03:00.000000+00:00': messageTwoByBob1003,
+      '2021-07-14 01:04:00.000000+00:00': messagePlusAttachments1004,
+    },
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',

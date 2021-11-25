@@ -21,7 +21,7 @@ export const ChatEngine: React.FC<Props> = ({
   isChatFeedLoading = false,
   isChatSettingsLoading = false,
   hasMoreChats = false,
-  // hasMoreMessages = false,
+  hasMoreMessages = false,
   // Style
   chatEngineStyle = {},
   chatListColumnStyle = {},
@@ -59,6 +59,7 @@ export const ChatEngine: React.FC<Props> = ({
           chat={chat}
           messages={messages}
           isLoading={isChatFeedLoading}
+          hasMoreMessages={hasMoreMessages}
         />
       </Col>
 
