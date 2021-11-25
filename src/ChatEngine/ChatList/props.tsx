@@ -6,7 +6,7 @@ import { ChatProps } from '../../util/interfaces';
 
 export interface Props extends HTMLAttributes<HTMLDivElement>, ChatListStyles {
   chats: Array<ChatProps>;
-  activeChatID?: number;
+  activeChatKey?: number;
   myUsername?: string;
   isLoading?: boolean;
   hasMoreChats?: boolean;

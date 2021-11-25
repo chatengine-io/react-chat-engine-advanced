@@ -3,7 +3,11 @@ import { ChatEngineStyles } from './styles';
 
 export interface Props extends ChatEngineStyles {
   chats: Array<ChatProps>;
-  chat: ChatProps;
+  activeChatKey: number;
   messages: { [created: string]: MessageProps };
   myUsername: string;
+  isChatListLoading?: boolean;
+  isChatFeedLoading?: boolean;
+  hasMoreChats?: boolean;
+  hasMoreMessages?: boolean;
 }

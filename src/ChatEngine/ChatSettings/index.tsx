@@ -12,7 +12,7 @@ export const ChatSettings: React.FC<Props> = ({
 }: Props) => {
   return (
     <div style={{ ...styles.chatSettingsStyle, ...chatSettingsStyle }}>
-      <ChatAvatars users={chat.people} myUsername={myUsername} />
+      <ChatAvatars users={chat ? chat.people : []} myUsername={myUsername} />
     </div>
   );
 };
