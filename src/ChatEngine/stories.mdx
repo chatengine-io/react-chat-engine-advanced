@@ -40,3 +40,45 @@ export const Template = (args) => <ChatEngine {...args} />;
 </Story>
 
 <ArgsTable story="Default" />
+
+## Is Loading
+
+You can set the `isChatListLoading`, `isChatFeedLoading` and `isChatSettingsLoading` to `true` for when the data hasn't been fetched yet.
+
+<Story
+  name="Is Loading"
+  args={{
+    myUsername: adam.myUsername,
+    chats: [threePersonChat],
+    isChatListLoading: true,
+    isChatFeedLoading: true,
+    isChatSettingsLoading: true,
+    chatEngineStyle: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Has More Data
+
+You can set the `hasMoreChats`, and `hasMoreMessages` to `true` for when the your chat server has more Chats and Messages to load.
+
+You can see `🖐 Loading...` in the chat list and the `<Spinner/>` component in the chat feed.
+
+<Story
+  name="Has More Data"
+  args={{
+    myUsername: adam.myUsername,
+    chats: [threePersonChat],
+    hasMoreChats: true,
+    chatEngineStyle: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>

@@ -9,8 +9,8 @@ import { PersonProps } from '../../../util/interfaces';
 import { Properties } from 'csstype';
 
 export const ChatAvatars: React.FC<Props> = ({
-  users,
-  myUsername,
+  users = [],
+  myUsername = '',
   isDirectChat = false,
   chatAvatarsStyle = {},
   oneAvatarStyle = { avatarOne: {} },

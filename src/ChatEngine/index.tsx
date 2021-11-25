@@ -19,15 +19,16 @@ export const ChatEngine: React.FC<Props> = ({
   // State
   isChatListLoading = false,
   isChatFeedLoading = false,
+  isChatSettingsLoading = false,
   hasMoreChats = false,
-  hasMoreMessages = false,
+  // hasMoreMessages = false,
   // Style
   chatEngineStyle = {},
   chatListColumnStyle = {},
   chatFeedColumnStyle = {},
   chatSettingsColumnStyle = {},
 }: Props) => {
-  const chat = chats[activeChatKey];
+  const chat = activeChatKey ? chats[activeChatKey] : undefined;
 
   return (
     <Row
@@ -69,7 +70,11 @@ export const ChatEngine: React.FC<Props> = ({
           ...chatSettingsColumnStyle,
         }}
       >
-        <ChatSettings chat={chat} myUsername={myUsername} />
+        <ChatSettings
+          chat={chat}
+          myUsername={myUsername}
+          isLoading={isChatSettingsLoading}
+        />
       </Col>
     </Row>
   );
