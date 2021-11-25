@@ -55,7 +55,7 @@ export const message1001: MessageProps = {
   created: message1001Created,
   attachments: [],
   sender_username: 'Adam_La_Morre',
-  text: '<p>Message 1001</p>',
+  text: '<p>First message</p>',
   custom_json: '',
   sender: adam,
 };
@@ -66,7 +66,7 @@ export const messageByBob1002: MessageProps = {
   created: message1002Created,
   attachments: [],
   sender_username: 'bob_baker',
-  text: '<p>Message 1002</p>',
+  text: '<p>Second message</p>',
   custom_json: '',
   sender: bob,
 };
@@ -77,7 +77,7 @@ export const messageTwoByBob1003: MessageProps = {
   created: message1003Created,
   attachments: [],
   sender_username: 'bob_baker',
-  text: '<p>Message 1003</p>',
+  text: '<p>Third message</p>',
   custom_json: '',
   sender: bob,
 };
@@ -88,7 +88,7 @@ export const messagePlusAttachments1004: MessageProps = {
   created: message1004Created,
   attachments: [imageAttachment, fileAttachment],
   sender_username: 'Adam_La_Morre',
-  text: '<p>Message 1004</p>',
+  text: '<p>Fouth and final message</p>',
   custom_json: '',
   sender: adam,
 };
