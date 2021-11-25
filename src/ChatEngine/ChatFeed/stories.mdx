@@ -2,13 +2,7 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { ChatFeed } from '.';
 import { Props } from './props';
 
-import {
-  onePersonChat,
-  message1001,
-  messageByBob1002,
-  messageTwoByBob1003,
-  messagePlusAttachments1004,
-} from '../../util/mocks';
+import { onePersonChat, messages } from '../../util/mocks';
 
 <Meta
   title="ChatEngine/ChatFeed"
@@ -34,11 +28,7 @@ It stacks the `<ChatHeader/>`, `<MessageList/>`, and `<MessageForm/>` in an easy
 <Story
   name="Default"
   args={{
-    messages: {
-      '2021-07-14 01:30:24.567443+00:00': messagePlusAttachments1004,
-      '2021-07-14 01:40:24.567443+00:00': messageByBob1002,
-      '2021-07-14 01:41:24.567443+00:00': messageTwoByBob1003,
-    },
+    messages: messages,
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',
@@ -59,11 +49,7 @@ Passing a Chat object into the `chat` prop will allow/set the header values and 
   name="Chat"
   args={{
     chat: onePersonChat,
-    messages: {
-      '2021-07-14 01:30:24.567443+00:00': messagePlusAttachments1004,
-      '2021-07-14 01:40:24.567443+00:00': messageByBob1002,
-      '2021-07-14 01:41:24.567443+00:00': messageTwoByBob1003,
-    },
+    messages: messages,
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',
@@ -83,11 +69,7 @@ You can use the `myUsername` prop to specify which messages were sent by this us
   args={{
     chat: onePersonChat,
     myUsername: 'Adam_La_Morre',
-    messages: {
-      '2021-07-14 01:30:24.567443+00:00': messagePlusAttachments1004,
-      '2021-07-14 01:40:24.567443+00:00': messageByBob1002,
-      '2021-07-14 01:41:24.567443+00:00': messageTwoByBob1003,
-    },
+    messages: messages,
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',
@@ -128,12 +110,7 @@ This is used to load more messages once at the top of the Chat Feed.
   args={{
     chat: onePersonChat,
     hasMoreMessages: true,
-    messages: {
-      '2021-07-14 01:01:00.000000+00:00': message1001,
-      '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
-      '2021-07-14 01:03:00.000000+00:00': messageTwoByBob1003,
-      '2021-07-14 01:04:00.000000+00:00': messagePlusAttachments1004,
-    },
+    messages: messages,
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',
@@ -152,11 +129,7 @@ You can change the look and feel with the `customStyle` prop. It uses the `ChatF
   name="Custom Style"
   args={{
     chat: onePersonChat,
-    messages: {
-      '2021-07-14 01:30:24.567443+00:00': messagePlusAttachments1004,
-      '2021-07-14 01:40:24.567443+00:00': messageByBob1002,
-      '2021-07-14 01:41:24.567443+00:00': messageTwoByBob1003,
-    },
+    messages: messages,
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',

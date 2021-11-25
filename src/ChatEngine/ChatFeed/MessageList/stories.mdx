@@ -2,13 +2,7 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 import { MessageList } from '.';
 
-import {
-  message1001,
-  messagePlusAttachments1004,
-  messageByBob1002,
-  messageTwoByBob1003,
-  directMessageChat,
-} from '../../../util/mocks';
+import { messages, directMessageChat } from '../../../util/mocks';
 
 <Meta title="ChatEngine/ChatFeed/MessageList" component={MessageList} />
 
@@ -23,12 +17,7 @@ The message list component displays all the messages sent into a Chat.
 <Story
   name="Default"
   args={{
-    messages: {
-      '2021-07-14 01:01:00.000000+00:00': message1001,
-      '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
-      '2021-07-14 01:03:00.000000+00:00': messageTwoByBob1003,
-      '2021-07-14 01:04:00.000000+00:00': messagePlusAttachments1004,
-    },
+    messages: messages,
     messageListStyle: {
       maxHeight: '450px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -55,11 +44,7 @@ This is done by setting the Message component's `isMyMessage` prop to `true`.
   <Story
     name="My Username"
     args={{
-      messages: {
-        '2021-07-14 01:01:00.000000+00:00': message1001,
-        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
-        '2021-07-14 01:03:00.000000+00:00': messageTwoByBob1003,
-      },
+      messages: messages,
       myUsername: 'bob_baker',
       messageListStyle: {
         maxWidth: '500px',
@@ -79,11 +64,7 @@ You can pass a `chat` prop which will show Chat Members and their read messages.
   <Story
     name="Chat with Reads"
     args={{
-      messages: {
-        '2021-07-14 01:01:00.000000+00:00': message1001,
-        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
-        '2021-07-14 01:03:00.000000+00:00': messageTwoByBob1003,
-      },
+      messages: messages,
       myUsername: 'bob_baker',
       chat: directMessageChat,
       messageListStyle: {
@@ -106,10 +87,7 @@ Here is an example of two messages sent on different days, rendering a `<DateTim
   <Story
     name="Date Time"
     args={{
-      messages: {
-        '2021-07-14 01:01:00.000000+00:00': message1001,
-        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
-      },
+      messages: messages,
       messageListStyle: {
         maxWidth: '500px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -130,10 +108,7 @@ This will put a `<Spinner/>` component at the top of the chat feed which is used
   <Story
     name="Has More Messages"
     args={{
-      messages: {
-        '2021-07-14 01:01:00.000000+00:00': message1001,
-        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
-      },
+      messages: messages,
       hasMoreMessages: true,
       messageListStyle: {
         maxWidth: '500px',
@@ -159,10 +134,7 @@ Check the console log for this example.
   <Story
     name="Render Triggers"
     args={{
-      messages: {
-        '2021-07-14 01:01:00.000000+00:00': message1001,
-        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
-      },
+      messages: messages,
       onTopMessageShow: () => console.log('Top message showing'),
       onTopMessageHide: () => console.log('Top message hidden'),
       onBottomMessageShow: () => console.log('Bottom message showing'),
@@ -185,10 +157,7 @@ You can customize the look and feel with the `customStyle` prop.
   <Story
     name="Custom Style"
     args={{
-      messages: {
-        '2021-07-14 01:01:00.000000+00:00': message1001,
-        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
-      },
+      messages: messages,
       messageListStyle: {
         maxWidth: '500px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',

@@ -3,6 +3,7 @@ import {
   ChatProps,
   ChatsProps,
   MessageProps,
+  MessagesProps,
   PersonProps,
 } from './interfaces';
 
@@ -48,9 +49,10 @@ export const fileAttachment: AttachmentProps = {
   created: '2021-08-03T00:16:59.633778Z',
 };
 
+const message1001Created = '2021-07-14 01:01:00.000000+00:00';
 export const message1001: MessageProps = {
   id: 1001,
-  created: '2021-07-14 01:01:00.000000+00:00',
+  created: message1001Created,
   attachments: [],
   sender_username: 'Adam_La_Morre',
   text: '<p>Message 1001</p>',
@@ -58,9 +60,10 @@ export const message1001: MessageProps = {
   sender: adam,
 };
 
+const message1002Created = '2021-07-14 01:02:00.000000+00:00';
 export const messageByBob1002: MessageProps = {
   id: 1002,
-  created: '2021-07-14 01:02:00.000000+00:00',
+  created: message1002Created,
   attachments: [],
   sender_username: 'bob_baker',
   text: '<p>Message 1002</p>',
@@ -68,9 +71,10 @@ export const messageByBob1002: MessageProps = {
   sender: bob,
 };
 
+const message1003Created = '2021-07-14 01:03:00.000000+00:00';
 export const messageTwoByBob1003: MessageProps = {
   id: 1003,
-  created: '2021-07-14 01:03:00.000000+00:00',
+  created: message1003Created,
   attachments: [],
   sender_username: 'bob_baker',
   text: '<p>Message 1003</p>',
@@ -78,9 +82,10 @@ export const messageTwoByBob1003: MessageProps = {
   sender: bob,
 };
 
+const message1004Created = '2021-07-14 01:04:00.000000+00:00';
 export const messagePlusAttachments1004: MessageProps = {
   id: 1004,
-  created: '2021-07-14 01:04:00.000000+00:00',
+  created: message1004Created,
   attachments: [imageAttachment, fileAttachment],
   sender_username: 'Adam_La_Morre',
   text: '<p>Message 1004</p>',
@@ -180,6 +185,13 @@ export const directMessageChat: ChatProps = {
     text: 'hello',
     custom_json: '',
   },
+};
+
+export const messages: MessagesProps = {
+  message1001Created: message1001,
+  message1002Created: messageByBob1002,
+  message1003Created: messageTwoByBob1003,
+  message1004Created: messagePlusAttachments1004,
 };
 
 export const chats: ChatsProps = {
