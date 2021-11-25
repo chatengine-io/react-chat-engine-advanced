@@ -34,6 +34,10 @@ The message list component displays all the messages sent into a Chat.
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       overflowY: 'scroll',
     },
+    messageListStyle: {
+      maxWidth: '500px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
   }}
 >
   {Template.bind({})}
@@ -57,6 +61,10 @@ This is done by setting the Message component's `isMyMessage` prop to `true`.
         '2021-07-14 01:03:00.000000+00:00': messageTwoByBob1003,
       },
       myUsername: 'bob_baker',
+      messageListStyle: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
     }}
   >
     {Template.bind({})}
@@ -78,6 +86,10 @@ You can pass a `chat` prop which will show Chat Members and their read messages.
       },
       myUsername: 'bob_baker',
       chat: directMessageChat,
+      messageListStyle: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
     }}
   >
     {Template.bind({})}
@@ -97,6 +109,35 @@ Here is an example of two messages sent on different days, rendering a `<DateTim
       messages: {
         '2021-07-14 01:01:00.000000+00:00': message1001,
         '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
+      },
+      messageListStyle: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Has More Messages
+
+If your Chat room has a longer Message history, you can set `hasMoreMessages` to `true`.
+
+This will put a `<Spinner/>` component at the top of the chat feed which is used to load more messages.
+
+<Canvas>
+  <Story
+    name="Has More Messages"
+    args={{
+      messages: {
+        '2021-07-14 01:01:00.000000+00:00': message1001,
+        '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
+      },
+      hasMoreMessages: true,
+      messageListStyle: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
     }}
   >
@@ -126,6 +167,10 @@ Check the console log for this example.
       onTopMessageHide: () => console.log('Top message hidden'),
       onBottomMessageShow: () => console.log('Bottom message showing'),
       onBottomMessageHide: () => console.log('Bottom message hidden'),
+      messageListStyle: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
     }}
   >
     {Template.bind({})}
@@ -144,7 +189,11 @@ You can customize the look and feel with the `customStyle` prop.
         '2021-07-14 01:01:00.000000+00:00': message1001,
         '2021-07-14 01:02:00.000000+00:00': messageByBob1002,
       },
-      messageListStyle: { border: '2px solid red' },
+      messageListStyle: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+        border: '2px solid red',
+      },
       messageStyle: { border: '2px solid blue' },
     }}
   >

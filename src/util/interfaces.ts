@@ -23,7 +23,7 @@ export interface MessageProps {
 }
 
 export interface MessagesProps {
-  [created: number]: MessageProps
+  [created: string]: MessageProps
 }
 
 export interface ChatPersonProps extends PersonProps {
