@@ -2,10 +2,10 @@ import { HTMLAttributes } from 'react';
 
 import { ChatListStyles } from './styles';
 
-import { ChatProps } from '../../util/interfaces';
+import { ChatsProps } from '../../util/interfaces';
 
 export interface Props extends HTMLAttributes<HTMLDivElement>, ChatListStyles {
-  chats: Array<ChatProps>;
+  chats: ChatsProps;
   activeChatKey?: number;
   myUsername?: string;
   isLoading?: boolean;

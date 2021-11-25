@@ -12,9 +12,9 @@ import { setConfiguration } from 'react-grid-system';
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
 export const ChatEngine: React.FC<Props> = ({
-  chats,
-  activeChatKey,
-  messages,
+  chats = {},
+  activeChatKey = -1,
+  messages = {},
   myUsername,
   // State
   isChatListLoading = false,
@@ -28,7 +28,7 @@ export const ChatEngine: React.FC<Props> = ({
   chatFeedColumnStyle = {},
   chatSettingsColumnStyle = {},
 }: Props) => {
-  const chat = activeChatKey ? chats[activeChatKey] : undefined;
+  const chat = chats[activeChatKey];
 
   return (
     <Row
@@ -43,6 +43,7 @@ export const ChatEngine: React.FC<Props> = ({
       >
         <ChatList
           chats={chats}
+          activeChatKey={activeChatKey}
           isLoading={isChatListLoading}
           hasMoreChats={hasMoreChats}
         />

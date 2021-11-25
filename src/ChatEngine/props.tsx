@@ -1,11 +1,11 @@
-import { ChatProps, MessageProps } from '../util/interfaces';
+import { ChatsProps, MessagesProps } from '../util/interfaces';
 import { ChatEngineStyles } from './styles';
 
 export interface Props extends ChatEngineStyles {
-  chats: Array<ChatProps>;
+  chats?: ChatsProps;
   activeChatKey?: number;
-  messages: { [created: string]: MessageProps };
-  myUsername: string;
+  messages?: MessagesProps;
+  myUsername?: string;
   isChatListLoading?: boolean;
   isChatFeedLoading?: boolean;
   isChatSettingsLoading?: boolean;

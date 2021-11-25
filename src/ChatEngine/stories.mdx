@@ -2,7 +2,7 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { ChatEngine } from '.';
 import { Props } from './props';
 
-import { adam, threePersonChat, message1001 } from '../util/mocks';
+import { adam, chats, message1001 } from '../util/mocks';
 
 <Meta
   title="ChatEngine"
@@ -25,8 +25,8 @@ export const Template = (args) => <ChatEngine {...args} />;
   name="Default"
   args={{
     myUsername: adam.myUsername,
-    chats: [threePersonChat],
-    activeChatKey: 207,
+    chats: chats,
+    activeChatKey: 201,
     messages: {
       '2021-07-14 01:30:24.567443+00:00': message1001,
     },
@@ -72,8 +72,8 @@ You can see `🖐 Loading...` in the chat list and the `<Spinner/>` component in
   name="Has More Data"
   args={{
     myUsername: adam.myUsername,
-    chats: [threePersonChat],
-    activeChatKey: 207,
+    chats: chats,
+    activeChatKey: 201,
     hasMoreChats: true,
     chatEngineStyle: {
       height: '550px',

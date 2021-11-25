@@ -1,6 +1,7 @@
 import {
   AttachmentProps,
   ChatProps,
+  ChatsProps,
   MessageProps,
   PersonProps,
 } from './interfaces';
@@ -181,8 +182,8 @@ export const directMessageChat: ChatProps = {
   },
 };
 
-export const chats: ChatProps[] = [
-  {
+export const chats: ChatsProps = {
+  201: {
     id: 201,
     title: 'First Chat ☝️',
     is_direct_chat: false,
@@ -198,7 +199,7 @@ export const chats: ChatProps[] = [
     ],
     last_message: message1001,
   },
-  {
+  202: {
     id: 202,
     title: 'Chat Two ✌️ ',
     is_direct_chat: false,
@@ -214,7 +215,7 @@ export const chats: ChatProps[] = [
       custom_json: '',
     },
   },
-  {
+  204: {
     id: 203,
     title: 'Direct Message w/ Adam',
     is_direct_chat: true,
@@ -230,4 +231,4 @@ export const chats: ChatProps[] = [
       custom_json: '',
     },
   },
-];
+};
