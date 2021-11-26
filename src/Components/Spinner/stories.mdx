@@ -1,0 +1,17 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Spinner } from '.';
+import { Props } from './props';
+
+<Meta title="Components/Spinner" component={Spinner} />
+
+export const Template = (args) => <Spinner {...args} />;
+
+# Spinner
+
+## Default
+
+<Story name="Default" args={{}}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />

@@ -20,7 +20,7 @@ echo "import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/bloc
 echo "import { $COMPONENT_NAME } from '.';" >> ./src/$1/stories.mdx
 echo "import { Props } from './props';" >> ./src/$1/stories.mdx
 echo "" >> ./src/$1/stories.mdx
-echo "<Meta title=\"$COMPONENT_NAME\" component={$COMPONENT_NAME} />" >> ./src/$1/stories.mdx
+echo "<Meta title=\"$1\" component={$COMPONENT_NAME} />" >> ./src/$1/stories.mdx
 echo "" >> ./src/$1/stories.mdx
 echo "export const Template = (args) => <$COMPONENT_NAME {...args} />;" >> ./src/$1/stories.mdx
 echo "" >> ./src/$1/stories.mdx
@@ -31,6 +31,8 @@ echo "" >> ./src/$1/stories.mdx
 echo "<Story name='Default' args={{}}>" >> ./src/$1/stories.mdx
 echo "  {Template.bind({})}" >> ./src/$1/stories.mdx
 echo "</Story>" >> ./src/$1/stories.mdx
+echo "" >> ./src/$1/stories.mdx
+echo "<ArgsTable story='Default' />" >> ./src/$1/stories.mdx
 
 # Style
 echo "import { Properties } from 'csstype';" > ./src/$1/styles.tsx
