@@ -8,6 +8,17 @@ import { adam, chats, messages } from '../util/mocks';
   title="ChatEngine"
   component={ChatEngine}
   argTypes={{
+    isChatListLoading: { table: { category: 'state' } },
+    isChatFeedLoading: { table: { category: 'state' } },
+    isChatSettingsLoading: { table: { category: 'state' } },
+    hasMoreChats: { table: { category: 'state' } },
+    hasMoreMessages: { table: { category: 'state' } },
+    onChatFormSubmit: { table: { category: 'hooks' } },
+    onChatCardClick: { table: { category: 'hooks' } },
+    onChatLoaderVisible: { table: { category: 'hooks' } },
+    onTopMessageShow: { table: { category: 'hooks' } },
+    onBottomMessageShow: { table: { category: 'hooks' } },
+    onMessageSend: { table: { category: 'hooks' } },
     chatEngineStyle: { table: { category: 'styles' } },
     chatListColumnStyle: { table: { category: 'styles' } },
     chatFeedColumnStyle: { table: { category: 'styles' } },
@@ -75,6 +86,33 @@ You can see `🖐 Loading...` in the Chat List and the `<Spinner/>` component in
     activeChatKey: 201,
     hasMoreChats: true,
     hasMoreMessages: true,
+    chatEngineStyle: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Event Hooks
+
+You can trigger code on significant event with the `on*` props.
+
+<Story
+  name="Event Hooks"
+  args={{
+    chats: chats,
+    messages: messages,
+    activeChatKey: 201,
+    hasMoreChats: true,
+    hasMoreMessages: true,
+    onChatFormSubmit: () => console.log('onChatFormSubmit'),
+    onChatCardClick: () => console.log('onChatCardClick'),
+    onChatLoaderVisible: () => console.log('onChatLoaderVisible'),
+    onTopMessageShow: () => console.log('onTopMessageShow'),
+    onBottomMessageShow: () => console.log('onBottomMessageShow'),
+    onMessageSend: () => console.log('onMessageSend'),
     chatEngineStyle: {
       height: '550px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',

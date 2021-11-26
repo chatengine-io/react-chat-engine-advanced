@@ -22,6 +22,13 @@ export const ChatEngine: React.FC<Props> = ({
   isChatSettingsLoading = false,
   hasMoreChats = false,
   hasMoreMessages = false,
+  // Hooks
+  onChatFormSubmit = () => {},
+  onChatCardClick = () => {},
+  onChatLoaderVisible = () => {},
+  onTopMessageShow = () => {},
+  onBottomMessageShow = () => {},
+  onMessageSend = () => {},
   // Style
   chatEngineStyle = {},
   chatListColumnStyle = {},
@@ -46,6 +53,10 @@ export const ChatEngine: React.FC<Props> = ({
           activeChatKey={activeChatKey}
           isLoading={isChatListLoading}
           hasMoreChats={hasMoreChats}
+          // Hooks
+          onChatFormSubmit={onChatFormSubmit}
+          onChatCardClick={onChatCardClick}
+          onChatLoaderVisible={onChatLoaderVisible}
         />
       </Col>
 
@@ -60,6 +71,10 @@ export const ChatEngine: React.FC<Props> = ({
           messages={messages}
           isLoading={isChatFeedLoading}
           hasMoreMessages={hasMoreMessages}
+          // Hooks
+          onTopMessageShow={onTopMessageShow}
+          onBottomMessageShow={onBottomMessageShow}
+          onMessageSend={onMessageSend}
         />
       </Col>
 

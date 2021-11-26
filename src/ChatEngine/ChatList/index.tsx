@@ -17,7 +17,7 @@ export const ChatList: React.FC<Props> = ({
   myUsername,
   isLoading = false,
   hasMoreChats = false,
-  onChatClick = () => {},
+  onChatCardClick = () => {},
   onChatFormSubmit = () => {},
   onChatLoaderVisible = () => {},
   chatListStyle = {},
@@ -49,7 +49,7 @@ export const ChatList: React.FC<Props> = ({
           timeStamp={timeStamp}
           isActive={activeChatKey === chat.id}
           hasNotification={hasNotification}
-          onClick={() => onChatClick(chat.id)}
+          onClick={() => onChatCardClick(chat.id)}
         />
       );
     });
