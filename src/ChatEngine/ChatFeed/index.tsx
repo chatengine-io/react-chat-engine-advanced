@@ -20,6 +20,7 @@ export const ChatFeed: React.FC<Props> = ({
   // Callbacks
   onTopMessageShow,
   onBottomMessageShow,
+  onMessageSend,
   // Style
   chatFeedStyle = {},
   chatHeaderStyle = {},
@@ -65,6 +66,7 @@ export const ChatFeed: React.FC<Props> = ({
       <MessageForm
         label="Send a message..."
         messageFormStyle={{ ...styles.messageFormStyle, ...messageFormStyle }}
+        onSubmit={onMessageSend}
       />
     </div>
   );

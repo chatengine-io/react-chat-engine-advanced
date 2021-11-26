@@ -10,4 +10,5 @@ export interface Props extends ChatFeedStyles {
   hasMoreMessages?: boolean;
   onTopMessageShow?: () => void;
   onBottomMessageShow?: () => void;
+  onMessageSend?: (value: string, attachments: Array<File>) => void;
 }

@@ -10,7 +10,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement>, ChatListStyles {
   myUsername?: string;
   isLoading?: boolean;
   hasMoreChats?: boolean;
-  onChatClick?: (chatID: number) => void;
+  onChatCardClick?: (chatId: number) => void;
   onChatFormSubmit?: (title: string) => void;
   onChatLoaderVisible?: () => void;
 }
