@@ -41,7 +41,7 @@ echo "export interface $COMPONENT_NAME""Styles {" >> ./src/$1/styles.tsx
 echo "  style?: Properties;" >> ./src/$1/styles.tsx
 echo "}" >> ./src/$1/styles.tsx
 echo "" >> ./src/$1/styles.tsx
-echo "export const styles = {" >> ./src/$1/styles.tsx
+echo "export const styles: $COMPONENT_NAME""Styles = {" >> ./src/$1/styles.tsx
 echo "  style: {} as Properties," >> ./src/$1/styles.tsx
 echo "};" >> ./src/$1/styles.tsx
 
