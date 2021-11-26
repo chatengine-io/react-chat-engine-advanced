@@ -8,6 +8,8 @@ export const Template = (args) => <Spinner {...args} />;
 
 # Spinner
 
+The Spinner component is used to display when data is loading.
+
 ## Default
 
 <Story name="Default" args={{}}>
@@ -15,3 +17,18 @@ export const Template = (args) => <Spinner {...args} />;
 </Story>
 
 <ArgsTable story="Default" />
+
+## Custom Style
+
+Pass in a `style` prop to change the CSS.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      style: { border: '2px solid red' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

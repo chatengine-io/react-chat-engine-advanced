@@ -37,8 +37,12 @@ echo "<ArgsTable story='Default' />" >> ./src/$1/stories.mdx
 # Style
 echo "import { Properties } from 'csstype';" > ./src/$1/styles.tsx
 echo "" >> ./src/$1/styles.tsx
+echo "export interface $COMPONENT_NAME""Styles {" >> ./src/$1/styles.tsx
+echo "  style?: Properties;" >> ./src/$1/styles.tsx
+echo "}" >> ./src/$1/styles.tsx
+echo "" >> ./src/$1/styles.tsx
 echo "export const styles = {" >> ./src/$1/styles.tsx
-echo "  example: {} as Properties," >> ./src/$1/styles.tsx
+echo "  style: {} as Properties," >> ./src/$1/styles.tsx
 echo "};" >> ./src/$1/styles.tsx
 
 # Test
