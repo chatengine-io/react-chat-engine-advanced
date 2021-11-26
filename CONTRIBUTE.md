@@ -94,3 +94,61 @@ Reference: https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 `test.tsx`
 
 - Who cares for now :smile:
+
+## Props Heirarchy
+
+Right now there is a props heirarchy for the order you put prop types in:
+
+`Data`
+
+- Prop values that will be displayed in the component.
+- Examples: Usernames, Datetimes, Chat Objects
+
+`State`
+
+- Props that change the state or parts of the component, typically a `boolean`
+- Usually following the `<is,has><Component><State>` naming convention
+- Examples: `isComponentLoading`, `isComponentActive`, `hasMoreMessages`
+
+`Hooks`
+
+- These are functions that trigger when event happens to the component.
+- Usually following the `<on><Component><Event>` naming convention
+- Examples: `onComponentClick`, `onFormSubmit`, `onComponentIsVisible`
+
+`Styles`
+
+- These are CSS Objects for the look and component styling
+- Their type is `import { Properties } from 'csstype';`
+- They follow a `<component><subcomponent><Style>` naming convention
+- Examples: `chatFeedStyle`, `messageAttachmentStyle`, `chatFormInputStyle`
+
+An example of this is the ChatEngine component props:
+
+```
+{
+  // Data
+  chats = {},
+  activeChatKey = -1,
+  messages = {},
+  myUsername,
+  // State
+  isChatListLoading = false,
+  isChatFeedLoading = false,
+  isChatSettingsLoading = false,
+  hasMoreChats = false,
+  hasMoreMessages = false,
+  // Hooks
+  onChatFormSubmit = () => {},
+  onChatCardClick = () => {},
+  onChatLoaderVisible = () => {},
+  onTopMessageShow = () => {},
+  onBottomMessageShow = () => {},
+  onMessageSend = () => {},
+  // Style
+  chatEngineStyle = {},
+  chatListColumnStyle = {},
+  chatFeedColumnStyle = {},
+  chatSettingsColumnStyle = {},
+}
+```
