@@ -5,7 +5,7 @@ import { styles } from './styles';
 
 export const Spinner: React.FC<Props> = ({ style = {} }: Props) => {
   return (
-    <div>
+    <span>
       <svg
         viewBox="0 0 1024 1024"
         focusable="false"
@@ -28,6 +28,6 @@ export const Spinner: React.FC<Props> = ({ style = {} }: Props) => {
         to { transform:rotate(360deg); }
       }
       `}</style>
-    </div>
+    </span>
   );
 };

@@ -11,6 +11,8 @@ import { RenderTrigger } from '../../Components/RenderTrigger';
 import { ChatProps } from '../../util/interfaces';
 import { getDateTime } from '../../util/dateTime';
 
+import { Spinner } from '../../Components/Spinner';
+
 export const ChatList: React.FC<Props> = ({
   chats,
   activeChatKey = -1,
@@ -86,7 +88,7 @@ export const ChatList: React.FC<Props> = ({
             ...styles.chatListLoadTriggerStyle,
             ...chatListLoadTriggerStyle,
           }}
-          children={`🖐 Loading...`}
+          children={<Spinner />}
         />
       )}
     </div>

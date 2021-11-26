@@ -6,6 +6,8 @@ import { styles } from './styles';
 import { Message } from './Message';
 import { RenderTrigger } from '../../..';
 
+import { Spinner } from '../../../Components/Spinner';
+
 export const MessageList: React.FC<Props> = ({
   // Data
   messages = {},
@@ -75,7 +77,17 @@ export const MessageList: React.FC<Props> = ({
         <RenderTrigger
           onShow={onTopMessageShow}
           onHide={onBottomMessageHide}
-          children="<spinner/>"
+          children={
+            <Spinner
+              style={{
+                position: 'relative',
+                left: 'calc(50% - 0.625em)',
+                width: '1.25em',
+                height: '1.25em',
+                font: 'red',
+              }}
+            />
+          }
         />
       )}
 
