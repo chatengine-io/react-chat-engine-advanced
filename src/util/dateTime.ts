@@ -1,5 +1,5 @@
 export const getDateTime = (date: string, offset = 0) => {
-  date = date.replace(' ', 'T');
+  date = date.replace(/ /g, 'T');
   offset = offset ? offset : 0;
 
   const year = date.substr(0, 4);
