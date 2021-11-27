@@ -137,6 +137,25 @@ If you pass in the optional `chat` prop and the `people` attribute shows users h
   </Story>
 </Canvas>
 
+## Render Functions
+
+You can replace the message with your own code using our `render*` function props.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      message: message1001,
+      chat: chatWithReads,
+      renderMessage: (props) => (
+        <div>Your Message code here: {props.message.text}</div>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Custom Style
 
 You can use the `*Style` props, to customize every aspect of a Message component.
