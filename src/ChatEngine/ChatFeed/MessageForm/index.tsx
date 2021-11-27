@@ -12,20 +12,9 @@ import { Image } from '../../../Components/Image';
 
 import { isImage } from '../../../util/file';
 
-export const MessageForm: React.FC<Props> = ({
-  label = '',
-  onChange,
-  onSubmit,
-  messageFormStyle = {},
-  messageFormInputStyle = {},
-  messageFormSendButtonStyle = {},
-  draftAttachmentStyle = {},
-  draftAttachmentRemoveStyle = {},
-  attachmentInputStyle = {},
-  attachmentInputIconStyle = {},
-  draftImageStyle = {},
-  draftFileStyle = {},
-}: Props) => {
+export const MessageForm: React.FC<Props> = (props: Props) => {
+  const { label = '', onChange, onSubmit } = props;
+
   const [iter, setIter] = useState(0); // Forces attachments update
   const [value, setValue] = useState<string>('');
   const [height, setHeight] = useState<number>(0);
@@ -86,13 +75,13 @@ export const MessageForm: React.FC<Props> = ({
           className="ce-draft-attachment-wrapper"
           style={{
             ...styles.draftAttachmentStyle,
-            ...draftAttachmentStyle,
+            ...props.draftAttachmentStyle,
           }}
         >
           {renderImage && isImage(attachment.name) && (
             <Image
               url={url}
-              style={{ ...styles.draftImageStyle, ...draftImageStyle }}
+              style={{ ...styles.draftImageStyle, ...props.draftImageStyle }}
               hoveredStyle={{}}
             />
           )}
@@ -101,7 +90,7 @@ export const MessageForm: React.FC<Props> = ({
             <File
               url={url}
               fileName={`📄 ${attachment.name}`}
-              style={{ ...styles.draftFileStyle, ...draftFileStyle }}
+              style={{ ...styles.draftFileStyle, ...props.draftFileStyle }}
               hoveredStyle={{}}
             />
           )}
@@ -112,7 +101,7 @@ export const MessageForm: React.FC<Props> = ({
               className="ce-message-attachment-remove-btn"
               style={{
                 ...styles.draftAttachmentRemoveStyle,
-                ...draftAttachmentRemoveStyle,
+                ...props.draftAttachmentRemoveStyle,
               }}
               onClick={() => onRemove(index)}
             >
@@ -124,10 +113,14 @@ export const MessageForm: React.FC<Props> = ({
     });
   };
 
+  if (props.renderMessageForm) {
+    return <>{props.renderMessageForm(props)}</>;
+  }
+
   return (
     <div
       id="msg-form-container"
-      style={{ ...styles.messageFormStyle, ...messageFormStyle }}
+      style={{ ...styles.messageFormStyle, ...props.messageFormStyle }}
       className="ce-message-form-container"
     >
       <div>{renderAttachments(true)}</div>
@@ -142,7 +135,7 @@ export const MessageForm: React.FC<Props> = ({
           style={{
             ...styles.messageFormInputStyle,
             ...overflowStyle,
-            ...messageFormInputStyle,
+            ...props.messageFormInputStyle,
           }}
           value={value}
           placeholder={label}
@@ -156,8 +149,8 @@ export const MessageForm: React.FC<Props> = ({
           onSelectFiles={(files) => {
             files !== null && setAttachments(Array.from(files));
           }}
-          attachmentInputStyle={attachmentInputStyle}
-          attachmentInputIconStyle={attachmentInputIconStyle}
+          attachmentInputStyle={props.attachmentInputStyle}
+          attachmentInputIconStyle={props.attachmentInputIconStyle}
         />
       </span>
 
@@ -170,7 +163,7 @@ export const MessageForm: React.FC<Props> = ({
           style={{
             ...styles.messageFormSendButtonStyle,
             ...buttonHoverStyle,
-            ...messageFormSendButtonStyle,
+            ...props.messageFormSendButtonStyle,
           }}
         >
           Send

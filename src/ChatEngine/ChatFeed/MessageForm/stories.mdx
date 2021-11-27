@@ -40,6 +40,29 @@ This message form is for making and sending messages.
 
 <ArgsTable story="Default" />
 
+## Render Function
+
+You can render you own code instead of this componentn with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Function"
+    args={{
+      messageFormStyle: {
+        maxWidth: '600px',
+        border: '2px solid red',
+      },
+      renderMessageForm: () => (
+        <div>
+          Your code here: <input />
+        </div>
+      ),
+    }}
+  >
+    {StyleTemplate.bind({})}
+  </Story>
+</Canvas>
+
 ## Custom Style
 
 To customize the look and feel, use the `customStyle` props which uses the `MessageFormStyles` interface and extends the `AttachmentStyles` and `AttachmentInputStyles` interface.
