@@ -8,22 +8,9 @@ import { RenderTrigger } from '../../..';
 
 import { Spinner } from '../../../Components/Spinner';
 
-export const MessageList: React.FC<Props> = ({
-  // Data
-  messages = {},
-  chat,
-  myUsername,
-  // State
-  hasMoreMessages = false,
-  // Callbacks
-  onTopMessageShow = () => {},
-  onTopMessageHide = () => {},
-  onBottomMessageShow = () => {},
-  onBottomMessageHide = () => {},
-  // Styles
-  messageListStyle = {},
-  messageStyle = {},
-}) => {
+export const MessageList: React.FC<Props> = (props: Props) => {
+  const { messages = {} } = props;
+
   const keys = Object.keys(messages).sort();
 
   const date = (date: string) => {
@@ -41,42 +28,47 @@ export const MessageList: React.FC<Props> = ({
 
       const showDateTime: boolean = !lastDate || lastDate !== thisDate;
       const isMyMessage: boolean =
-        typeof myUsername === 'string' &&
-        myUsername === message.sender_username;
+        typeof props.myUsername === 'string' &&
+        props.myUsername === message.sender_username;
 
       return (
         <div key={`message_${index}`} id={`ce-message-${message.id}`}>
           {index === keys.length - 1 && (
             <RenderTrigger
-              onShow={onBottomMessageShow}
-              onHide={onTopMessageHide}
+              onShow={props.onBottomMessageShow}
+              onHide={props.onTopMessageHide}
               children=""
             />
           )}
 
           <Message
-            chat={chat}
+            chat={props.chat}
             message={message}
             lastMessage={messages[lastKey]}
             nextMessage={messages[nextKey]}
             showDateTime={showDateTime}
             isMyMessage={isMyMessage}
-            messageStyle={{ ...styles.messageStyle, ...messageStyle }}
+            renderMessage={props.renderMessage}
+            messageStyle={{ ...styles.messageStyle, ...props.messageStyle }}
           />
         </div>
       );
     });
   };
 
+  if (props.renderMessageList) {
+    return <>{props.renderMessageList(props)}</>;
+  }
+
   return (
     <div
       className="ce-message-list"
-      style={{ ...styles.messageListStyle, ...messageListStyle }}
+      style={{ ...styles.messageListStyle, ...props.messageListStyle }}
     >
-      {hasMoreMessages && (
+      {props.hasMoreMessages && (
         <RenderTrigger
-          onShow={onTopMessageShow}
-          onHide={onBottomMessageHide}
+          onShow={props.onTopMessageShow}
+          onHide={props.onBottomMessageHide}
           children={
             <Spinner
               style={{
