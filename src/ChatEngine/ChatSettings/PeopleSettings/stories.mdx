@@ -1,0 +1,17 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { PeopleSettings } from '.';
+import { Props } from './props';
+
+<Meta title="ChatEngine/ChatSettings/PeopleSettings" component={PeopleSettings} />
+
+export const Template = (args) => <PeopleSettings {...args} />;
+
+# PeopleSettings
+
+## Default
+
+<Story name='Default' args={{}}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story='Default' />

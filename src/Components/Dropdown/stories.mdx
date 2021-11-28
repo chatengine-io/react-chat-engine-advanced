@@ -1,0 +1,69 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Dropdown } from '.';
+import { Props } from './props';
+
+<Meta
+  title="Components/Dropdown"
+  component={Dropdown}
+  argTypes={{
+    style: { table: { category: 'styles' } },
+    barStyle: { table: { category: 'styles' } },
+    hoveredStyle: { table: { category: 'styles' } },
+    iconStyle: { table: { category: 'styles' } },
+    bodyStyle: { table: { category: 'styles' } },
+    selectedStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <Dropdown {...args} />;
+
+# Dropdown
+
+Dropdown is used in settings to display aspects of chat rooms.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    className: 'example-dropdown',
+    id: 'example-dropdown',
+    label: 'Example Dropdown',
+    children: <div>your data here</div>,
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Story
+  name="Custom Styles"
+  args={{
+    className: 'example-dropdown',
+    id: 'example-dropdown',
+    label: 'Example Dropdown',
+    children: <div>your data here</div>,
+    style: {
+      maxWidth: '400px',
+      border: '2px solid red',
+    },
+    barStyle: { border: '2px solid blue' },
+    hoveredStyle: { border: '2px solid lime' },
+    labelStyle: { border: '2px solid green' },
+    bodyStyle: { border: '2px solid orange' },
+    selectedStyle: { border: '2px solid black' },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
