@@ -31,10 +31,10 @@ export interface Props extends ChatEngineStyles {
   onBottomMessageShow?: () => void;
   onMessageSend?: (value: string, attachments: Array<File>) => void;
   // Render Functions
-  renderChatList: (props: ChatListProps) => React.FC<ChatListProps>;
-  renderChatForm: (props: ChatFromProps) => React.FC<ChatFromProps>;
-  renderChatCard: (props: ChatCardProps) => React.FC<ChatCardProps>;
-  renderChatFeed: (props: ChatFeedProps) => React.FC<ChatFeedProps>;
+  renderChatList?: (props: ChatListProps) => React.FC<ChatListProps>;
+  renderChatForm?: (props: ChatFromProps) => React.FC<ChatFromProps>;
+  renderChatCard?: (props: ChatCardProps) => React.FC<ChatCardProps>;
+  renderChatFeed?: (props: ChatFeedProps) => React.FC<ChatFeedProps>;
   renderChatHeader?: (props: ChatHeaderProps) => React.FC<ChatHeaderProps>;
   renderMessageList?: (props: MessageListProps) => React.FC<MessageListProps>;
   renderMessageForm?: (props: MessageFormProps) => React.FC<MessageFormProps>;
