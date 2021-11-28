@@ -7,19 +7,17 @@ import { Row, Col, setConfiguration } from 'react-grid-system';
 
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
-export const ChatHeader: React.FC<Props> = ({
-  id = '',
-  title = '',
-  description = '',
-  chatHeaderStyle = {},
-  chatHeaderTitleStyle = {},
-  chatHeaderSubtitleStyle = {},
-  chatHeaderMobileOptionStyle = {},
-}) => {
+export const ChatHeader: React.FC<Props> = (props: Props) => {
+  const { id = '', title = '', description = '' } = props;
+
+  if (props.renderChatHeader) {
+    return <>{props.renderChatHeader(props)}</>;
+  }
+
   return (
     <Row
       className="ce-chat-header"
-      style={{ ...styles.chatHeaderStyle, ...chatHeaderStyle }}
+      style={{ ...styles.chatHeaderStyle, ...props.chatHeaderStyle }}
     >
       <Col
         xs={2}
@@ -28,7 +26,7 @@ export const ChatHeader: React.FC<Props> = ({
         style={{
           ...styles.chatHeaderMobileOptionStyle,
           ...{ left: '6px' }, // LHS Specific
-          ...chatHeaderMobileOptionStyle,
+          ...props.chatHeaderMobileOptionStyle,
         }}
       >
         {/* <ChatListDrawer /> */}
@@ -39,7 +37,7 @@ export const ChatHeader: React.FC<Props> = ({
         className="ce-chat-header-title"
         style={{
           ...styles.chatHeaderTitleStyle,
-          ...chatHeaderTitleStyle,
+          ...props.chatHeaderTitleStyle,
         }}
       >
         {title}
@@ -49,7 +47,7 @@ export const ChatHeader: React.FC<Props> = ({
         className="ce-chat-header-subtitle"
         style={{
           ...styles.chatHeaderSubtitleStyle,
-          ...chatHeaderSubtitleStyle,
+          ...props.chatHeaderSubtitleStyle,
         }}
       >
         {description}
@@ -62,7 +60,7 @@ export const ChatHeader: React.FC<Props> = ({
         style={{
           ...styles.chatHeaderMobileOptionStyle,
           ...{ right: '6px' }, // RHS Specific
-          ...chatHeaderMobileOptionStyle,
+          ...props.chatHeaderMobileOptionStyle,
         }}
       >
         {/* <ChatSettingsDrawer /> */}
