@@ -138,6 +138,38 @@ They let you run you own code when they occur / trigger.
   {Template.bind({})}
 </Story>
 
+## Render Functions
+
+You can render you own code instead of this componentn with the `render*` functions.
+
+<Story
+  name="Render Functions"
+  args={{
+    chats: chats,
+    renderChatList: () => <>Your code here!</>,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+You can render you own code for sub-components withing Chat Feed.
+
+<Story
+  name="Render Functions 2"
+  args={{
+    chats: chats,
+    renderChatForm: () => <div>Your Chat Form code here!</div>,
+    renderChatCard: () => <div>Your Chat Card code here!</div>,
+    chatListStyle: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      maxHeight: '330px',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
 ## Custom Styles
 
 Customize the look and feel with the `*Style` props.
