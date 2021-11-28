@@ -19,6 +19,13 @@ import { adam, chats, messages } from '../util/mocks';
     onTopMessageShow: { table: { category: 'hooks' } },
     onBottomMessageShow: { table: { category: 'hooks' } },
     onMessageSend: { table: { category: 'hooks' } },
+    renderChatList: { table: { category: 'render functions' } },
+    renderChatForm: { table: { category: 'render functions' } },
+    renderChatCard: { table: { category: 'render functions' } },
+    renderChatFeed: { table: { category: 'render functions' } },
+    renderChatHeader: { table: { category: 'render functions' } },
+    renderMessageList: { table: { category: 'render functions' } },
+    renderMessageForm: { table: { category: 'render functions' } },
     chatEngineStyle: { table: { category: 'styles' } },
     chatListColumnStyle: { table: { category: 'styles' } },
     chatFeedColumnStyle: { table: { category: 'styles' } },
@@ -113,6 +120,29 @@ You can trigger code on significant event with the `on*` props.
     onTopMessageShow: () => console.log('onTopMessageShow'),
     onBottomMessageShow: () => console.log('onBottomMessageShow'),
     onMessageSend: () => console.log('onMessageSend'),
+    chatEngineStyle: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Render Functions
+
+You can render you own code for sub-components within Chat Engine using the `render*` function props.
+
+<Story
+  name="Render Functions"
+  args={{
+    chats: chats,
+    messages: messages,
+    renderChatForm: () => <div>Chat Form Code</div>,
+    renderChatCard: () => <div>Chat Card Code</div>,
+    renderChatHeader: () => <div>Chat Header Code</div>,
+    renderMessageList: () => <div>Message List Code</div>,
+    renderMessageForm: () => <div>Message Form Code</div>,
     chatEngineStyle: {
       height: '550px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
