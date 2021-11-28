@@ -13,34 +13,30 @@ import { getDateTime } from '../../util/dateTime';
 
 import { Spinner } from '../../Components/Spinner';
 
-export const ChatList: React.FC<Props> = ({
-  chats,
-  activeChatKey = -1,
-  myUsername,
-  isLoading = false,
-  hasMoreChats = false,
-  onChatCardClick = () => {},
-  onChatFormSubmit = () => {},
-  onChatLoaderVisible = () => {},
-  chatListStyle = {},
-  chatListLoadingStyle = {},
-  chatListLoadTriggerStyle = {},
-}) => {
-  const readLastMessage = (myUsername: string, chat: ChatProps) => {
-    return chat.people.some(
-      (chatPerson) =>
-        myUsername === chatPerson.username &&
-        chatPerson.last_read === chat.last_message.id
-    );
-  };
+const readLastMessage = (myUsername: string, chat: ChatProps) => {
+  return chat.people.some(
+    (chatPerson) =>
+      myUsername === chatPerson.username &&
+      chatPerson.last_read === chat.last_message.id
+  );
+};
+
+const renderLoading = () => {
+  return [...Array(10)].map((_, i) => {
+    return <ChatCard key={`chat_${i}`} isLoading={true} />;
+  });
+};
+
+export const ChatList: React.FC<Props> = (props: Props) => {
+  const { activeChatKey = -1, isLoading } = props;
 
   const renderChats = (chats: Array<ChatProps>) => {
     return chats.map((chat, index) => {
       const description =
         chat.last_message.text !== null ? chat.last_message.text : 'Say hello!';
       const timeStamp = getDateTime(chat.created).toString().substr(4, 6);
-      const hasNotification = myUsername
-        ? !readLastMessage(myUsername, chat)
+      const hasNotification = props.myUsername
+        ? !readLastMessage(props.myUsername, chat)
         : false;
 
       return (
@@ -51,42 +47,46 @@ export const ChatList: React.FC<Props> = ({
           timeStamp={timeStamp}
           isActive={activeChatKey === chat.id}
           hasNotification={hasNotification}
-          onClick={() => onChatCardClick(chat.id)}
+          onClick={() =>
+            props.onChatCardClick && props.onChatCardClick(chat.id)
+          }
+          renderChatCard={props.renderChatCard}
         />
       );
     });
   };
 
-  const renderLoading = () => {
-    return [...Array(10)].map((_, i) => {
-      return <ChatCard key={`chat_${i}`} isLoading={true} />;
-    });
-  };
+  if (props.renderChatList) {
+    return <>{props.renderChatList(props)}</>;
+  }
 
   return (
     <div
-      className="ce-chat-feed"
+      className="ce-chat-list"
       style={{
         // Default
         ...styles.chatListStyle,
         // State
         ...(isLoading ? styles.chatListLoadingStyle : {}),
         // Props
-        ...chatListStyle,
+        ...props.chatListStyle,
         // Props + State
-        ...(isLoading ? chatListLoadingStyle : {}),
+        ...(isLoading ? props.chatListLoadingStyle : {}),
       }}
     >
-      <ChatForm onFormSubmit={onChatFormSubmit} />
+      <ChatForm
+        onFormSubmit={props.onChatFormSubmit}
+        renderChatForm={props.renderChatForm}
+      />
 
-      {isLoading ? renderLoading() : renderChats(Object.values(chats))}
+      {isLoading ? renderLoading() : renderChats(Object.values(props.chats))}
 
-      {hasMoreChats && (
+      {props.hasMoreChats && (
         <RenderTrigger
-          onShow={onChatLoaderVisible}
+          onShow={props.onChatLoaderVisible}
           style={{
             ...styles.chatListLoadTriggerStyle,
-            ...chatListLoadTriggerStyle,
+            ...props.chatListLoadTriggerStyle,
           }}
           children={<Spinner />}
         />

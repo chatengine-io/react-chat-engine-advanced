@@ -1,12 +1,11 @@
+import { ReactNode } from 'react';
 import { ChatHeaderStyles } from './styles';
 
 export interface Props extends ChatHeaderStyles {
-  /** id of the chat */
+  // Data
   id?: string | number;
-
-  /** title of the chat */
-  title?: string;
-
-  /** description to be displayed as a subtitle */
+  title?: string | ReactNode;
   description?: string;
+  // Render Function
+  renderChatHeader?: (props: Props) => React.FC<Props>;
 }

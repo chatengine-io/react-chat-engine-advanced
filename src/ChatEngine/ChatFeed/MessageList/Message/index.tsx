@@ -14,28 +14,17 @@ import { Image } from '../../../../Components/Image';
 import { isImage, getFileName } from '../../../../util/file';
 import { formatTime, getDateTime } from '../../../../util/dateTime';
 
-export const Message: React.FC<Props> = ({
-  lastMessage = null,
-  message,
-  nextMessage = null,
-  chat = null,
-  isSending = false,
-  isMyMessage = false,
-  showDateTime = false,
-  // Styles
-  messageStyle = {},
-  messageDateTimeStyle = {},
-  messageSenderUsernameStyle = {},
-  messageAttachmentsStyle = {},
-  messageAttachmentsImageStyle = {},
-  messageAttachmentsFileStyle = {},
-  messageBodyStyle = {},
-  messageTimeTagStyle = {},
-  messageBubbleStyle = {},
-  messageReadsStyle = {},
-  messageReadStyle = {},
-  messageAvatarStyle = {},
-}) => {
+export const Message: React.FC<Props> = (props: Props) => {
+  const {
+    lastMessage = null,
+    message,
+    nextMessage = null,
+    chat = null,
+    isSending = false,
+    isMyMessage = false,
+    showDateTime = false,
+  } = props;
+
   const [hovered, setHovered] = useState<boolean>(false);
 
   const styles = isMyMessage ? myStyles : theirStyles;
@@ -81,7 +70,7 @@ export const Message: React.FC<Props> = ({
             url={attachment.file !== null ? attachment.file : undefined}
             style={{
               ...styles.messageAttachmentsImageStyle,
-              ...messageAttachmentsImageStyle,
+              ...props.messageAttachmentsImageStyle,
             }}
           />
         );
@@ -92,7 +81,7 @@ export const Message: React.FC<Props> = ({
             url={attachment.file !== null ? attachment.file : undefined}
             style={{
               ...styles.messageAttachmentsFileStyle,
-              ...messageAttachmentsFileStyle,
+              ...props.messageAttachmentsFileStyle,
             }}
           />
         );
@@ -113,12 +102,16 @@ export const Message: React.FC<Props> = ({
           visible={message.id === chatPerson.last_read}
           style={{
             ...styles.messageReadStyle,
-            ...messageReadStyle,
+            ...props.messageReadStyle,
           }}
         />
       );
     });
   };
+
+  if (props.renderMessage) {
+    return <>{props.renderMessage(props)}</>;
+  }
 
   return (
     <div
@@ -126,7 +119,7 @@ export const Message: React.FC<Props> = ({
       style={{
         ...styles.messageStyle,
         ...{ paddingBottom },
-        ...messageStyle,
+        ...props.messageStyle,
       }}
     >
       {showDateTime && (
@@ -134,7 +127,7 @@ export const Message: React.FC<Props> = ({
           created={message.created}
           dateTimeStyle={{
             ...styles.messageDateTimeStyle,
-            ...messageDateTimeStyle,
+            ...props.messageDateTimeStyle,
           }}
         />
       )}
@@ -144,7 +137,7 @@ export const Message: React.FC<Props> = ({
         <div
           style={{
             ...styles.messageSenderUsernameStyle,
-            ...messageSenderUsernameStyle,
+            ...props.messageSenderUsernameStyle,
           }}
           className={`ce-${
             isMyMessage ? 'my' : 'their'
@@ -157,7 +150,7 @@ export const Message: React.FC<Props> = ({
       <div
         style={{
           ...styles.messageAttachmentsStyle,
-          ...messageAttachmentsStyle,
+          ...props.messageAttachmentsStyle,
         }}
         className={`
           ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
@@ -170,7 +163,7 @@ export const Message: React.FC<Props> = ({
       <div
         style={{
           ...styles.messageAttachmentsStyle,
-          ...messageAttachmentsStyle,
+          ...props.messageAttachmentsStyle,
         }}
         className={`
             ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
@@ -186,7 +179,7 @@ export const Message: React.FC<Props> = ({
           onMouseLeave={() => setHovered(false)}
           style={{
             ...styles.messageBodyStyle,
-            ...messageBodyStyle,
+            ...props.messageBodyStyle,
           }}
         >
           {isMyMessage && (
@@ -195,7 +188,7 @@ export const Message: React.FC<Props> = ({
               style={{
                 ...styles.messageTimeTagStyle,
                 ...{ opacity: hovered ? '1' : '0' },
-                ...messageTimeTagStyle,
+                ...props.messageTimeTagStyle,
               }}
             >
               {formatTime(getDateTime(message.created, 0) as Date)}
@@ -211,7 +204,7 @@ export const Message: React.FC<Props> = ({
               ...styles.messageBubbleStyle,
               ...borderStyle,
               ...sendingStyle,
-              ...messageBubbleStyle,
+              ...props.messageBubbleStyle,
             }}
             dangerouslySetInnerHTML={{ __html: text }}
           />
@@ -223,7 +216,7 @@ export const Message: React.FC<Props> = ({
               style={{
                 ...styles.messageTimeTagStyle,
                 ...{ opacity: hovered ? '1' : '0' },
-                ...messageTimeTagStyle,
+                ...props.messageTimeTagStyle,
               }}
             >
               {formatTime(getDateTime(message.created, 0) as Date)}
@@ -235,7 +228,7 @@ export const Message: React.FC<Props> = ({
             style={{
               ...styles.messageAvatarStyle,
               ...(isLastMessage ? {} : { display: 'none' }),
-              ...messageAvatarStyle,
+              ...props.messageAvatarStyle,
             }}
             avatarUrl={
               message.sender &&
@@ -251,7 +244,7 @@ export const Message: React.FC<Props> = ({
       <div
         style={{
           ...styles.messageReadsStyle,
-          ...messageReadsStyle,
+          ...props.messageReadsStyle,
         }}
         className={`ce-${isMyMessage ? 'my' : 'their'}-reads-row`}
       >

@@ -11,52 +11,33 @@ import { setConfiguration } from 'react-grid-system';
 
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
-export const ChatEngine: React.FC<Props> = ({
-  chats = {},
-  activeChatKey = -1,
-  messages = {},
-  myUsername,
-  // State
-  isChatListLoading = false,
-  isChatFeedLoading = false,
-  isChatSettingsLoading = false,
-  hasMoreChats = false,
-  hasMoreMessages = false,
-  // Hooks
-  onChatFormSubmit = () => {},
-  onChatCardClick = () => {},
-  onChatLoaderVisible = () => {},
-  onTopMessageShow = () => {},
-  onBottomMessageShow = () => {},
-  onMessageSend = () => {},
-  // Style
-  chatEngineStyle = {},
-  chatListColumnStyle = {},
-  chatFeedColumnStyle = {},
-  chatSettingsColumnStyle = {},
-}: Props) => {
+export const ChatEngine: React.FC<Props> = (props: Props) => {
+  const { chats = {}, activeChatKey = -1, messages = {} } = props;
+
   const chat = chats[activeChatKey];
 
   return (
     <Row
       className="ce-chat-engine"
-      style={{ ...styles.chatEngineStyle, ...chatEngineStyle }}
+      style={{ ...styles.chatEngineStyle, ...props.chatEngineStyle }}
     >
       <Col
         xs={0}
         sm={3}
         className="ce-chat-list-column"
-        style={{ ...styles.chatListColumnStyle, ...chatListColumnStyle }}
+        style={{ ...styles.chatListColumnStyle, ...props.chatListColumnStyle }}
       >
         <ChatList
           chats={chats}
           activeChatKey={activeChatKey}
-          isLoading={isChatListLoading}
-          hasMoreChats={hasMoreChats}
-          // Hooks
-          onChatFormSubmit={onChatFormSubmit}
-          onChatCardClick={onChatCardClick}
-          onChatLoaderVisible={onChatLoaderVisible}
+          isLoading={props.isChatListLoading}
+          hasMoreChats={props.hasMoreChats}
+          onChatFormSubmit={props.onChatFormSubmit}
+          onChatCardClick={props.onChatCardClick}
+          onChatLoaderVisible={props.onChatLoaderVisible}
+          renderChatList={props.renderChatList}
+          renderChatForm={props.renderChatForm}
+          renderChatCard={props.renderChatCard}
         />
       </Col>
 
@@ -64,17 +45,20 @@ export const ChatEngine: React.FC<Props> = ({
         xs={12}
         sm={6}
         className="ce-chat-feed-column"
-        style={{ ...styles.chatFeedColumnStyle, ...chatFeedColumnStyle }}
+        style={{ ...styles.chatFeedColumnStyle, ...props.chatFeedColumnStyle }}
       >
         <ChatFeed
           chat={chat}
           messages={messages}
-          isLoading={isChatFeedLoading}
-          hasMoreMessages={hasMoreMessages}
-          // Hooks
-          onTopMessageShow={onTopMessageShow}
-          onBottomMessageShow={onBottomMessageShow}
-          onMessageSend={onMessageSend}
+          isLoading={props.isChatFeedLoading}
+          hasMoreMessages={props.hasMoreMessages}
+          onTopMessageShow={props.onTopMessageShow}
+          onBottomMessageShow={props.onBottomMessageShow}
+          onMessageSend={props.onMessageSend}
+          renderChatFeed={props.renderChatFeed}
+          renderChatHeader={props.renderChatHeader}
+          renderMessageList={props.renderMessageList}
+          renderMessageForm={props.renderMessageForm}
         />
       </Col>
 
@@ -84,13 +68,13 @@ export const ChatEngine: React.FC<Props> = ({
         className="ce-chat-settings-column"
         style={{
           ...styles.chatSettingsColumnStyle,
-          ...chatSettingsColumnStyle,
+          ...props.chatSettingsColumnStyle,
         }}
       >
         <ChatSettings
           chat={chat}
-          myUsername={myUsername}
-          isLoading={isChatSettingsLoading}
+          myUsername={props.myUsername}
+          isLoading={props.isChatSettingsLoading}
         />
       </Col>
     </Row>

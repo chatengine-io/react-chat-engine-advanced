@@ -1,6 +1,16 @@
 import { ChatsProps, MessagesProps } from '../util/interfaces';
 import { ChatEngineStyles } from './styles';
 
+import { Props as ChatListProps } from './ChatList/props';
+import { Props as ChatFromProps } from './ChatList/ChatForm/props';
+import { Props as ChatCardProps } from './ChatList/ChatCard/props';
+
+import { Props as ChatFeedProps } from './ChatFeed/props';
+import { Props as ChatHeaderProps } from './ChatFeed/ChatHeader/props';
+import { Props as MessageListProps } from './ChatFeed/MessageList/props';
+import { Props as MessageFormProps } from './ChatFeed/MessageForm/props';
+// TODO: Render Message in here
+
 export interface Props extends ChatEngineStyles {
   // Data
   chats?: ChatsProps;
@@ -20,4 +30,12 @@ export interface Props extends ChatEngineStyles {
   onTopMessageShow?: () => void;
   onBottomMessageShow?: () => void;
   onMessageSend?: (value: string, attachments: Array<File>) => void;
+  // Render Functions
+  renderChatList?: (props: ChatListProps) => React.FC<ChatListProps>;
+  renderChatForm?: (props: ChatFromProps) => React.FC<ChatFromProps>;
+  renderChatCard?: (props: ChatCardProps) => React.FC<ChatCardProps>;
+  renderChatFeed?: (props: ChatFeedProps) => React.FC<ChatFeedProps>;
+  renderChatHeader?: (props: ChatHeaderProps) => React.FC<ChatHeaderProps>;
+  renderMessageList?: (props: MessageListProps) => React.FC<MessageListProps>;
+  renderMessageForm?: (props: MessageFormProps) => React.FC<MessageFormProps>;
 }

@@ -4,7 +4,21 @@ import { MessageList } from '.';
 
 import { messages, directMessageChat } from '../../../util/mocks';
 
-<Meta title="ChatEngine/ChatFeed/MessageList" component={MessageList} />
+<Meta
+  title="ChatEngine/ChatFeed/MessageList"
+  component={MessageList}
+  argTypes={{
+    hasMoreMessages: { table: { category: 'state' } },
+    onTopMessageShow: { table: { category: 'hooks' } },
+    onTopMessageHide: { table: { category: 'hooks' } },
+    onBottomMessageShow: { table: { category: 'hooks' } },
+    onBottomMessageHide: { table: { category: 'hooks' } },
+    renderMessageList: { table: { category: 'render functions' } },
+    renderMessage: { table: { category: 'render functions' } },
+    messageListStyle: { table: { category: 'styles' } },
+    messageStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <MessageList {...args} />;
 
@@ -143,6 +157,22 @@ Check the console log for this example.
         maxWidth: '500px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Functions
+
+You can replace the component with your own code using the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      messages: messages,
+      renderMessageList: () => <>Your code here!</>,
     }}
   >
     {Template.bind({})}

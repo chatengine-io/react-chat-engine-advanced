@@ -5,35 +5,26 @@ import { Properties } from 'csstype';
 import { Props } from './props';
 import { styles } from './styles';
 
-export const ChatCard: React.FC<Props> = ({
-  isActive = false,
-  isLoading = false,
-  hasNotification = false,
-  title = '',
-  description = '',
-  timeStamp = '',
-  onClick,
-  chatCardStyle = {},
-  hoveredChatCardStyle = {},
-  activeChatCardStyle = {},
-  chatCardTitleStyle = {},
-  chatCardNotificationStyle = {},
-  chatCardSubtitleStyle = {},
-  chatCardTimeStampStyle = {},
-  chatCardLoadingBarStyle = {},
-}: Props) => {
+export const ChatCard: React.FC<Props> = (props: Props) => {
+  const { title = '', description = '', timeStamp = '' } = props;
+
   const [hovered, setHovered] = useState<boolean>(false);
 
-  const loadingBarStyle: Properties = isLoading
-    ? { ...styles.chatCardLoadingBarStyle, ...chatCardLoadingBarStyle }
+  const loadingBarStyle: Properties = props.isLoading
+    ? { ...styles.chatCardLoadingBarStyle, ...props.chatCardLoadingBarStyle }
     : {};
-  const hasNotificationStyle: Properties = hasNotification
+
+  const hasNotificationStyle: Properties = props.hasNotification
     ? {}
     : { display: 'none' };
 
+  if (props.renderChatCard) {
+    return <>{props.renderChatCard(props)}</>;
+  }
+
   return (
     <div
-      onClick={onClick}
+      onClick={props.onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -41,16 +32,16 @@ export const ChatCard: React.FC<Props> = ({
         ...styles.chatCardStyle,
         // State
         ...(hovered ? styles.hoveredChatCardStyle : {}),
-        ...(isActive ? styles.activeChatCardStyle : {}),
+        ...(props.isActive ? styles.activeChatCardStyle : {}),
         // Props
-        ...chatCardStyle,
+        ...props.chatCardStyle,
         // Props + State
-        ...(hovered ? hoveredChatCardStyle : {}),
-        ...(isActive ? activeChatCardStyle : {}),
+        ...(hovered ? props.hoveredChatCardStyle : {}),
+        ...(props.isActive ? props.activeChatCardStyle : {}),
       }}
       className={`
         ce-chat-card 
-        ${isActive && 'ce-active-chat-card'} 
+        ${props.isActive && 'ce-active-chat-card'} 
         ${hovered && 'ce-hovered-chat-card'}
       `}
     >
@@ -59,11 +50,11 @@ export const ChatCard: React.FC<Props> = ({
         style={{
           ...styles.chatCardTitleStyle,
           ...loadingBarStyle,
-          ...chatCardTitleStyle,
+          ...props.chatCardTitleStyle,
         }}
         id={`ce-chat-card-title-${title}`}
       >
-        {isLoading ? '.' : title}
+        {props.isLoading ? '.' : title}
       </div>
 
       <div
@@ -72,7 +63,7 @@ export const ChatCard: React.FC<Props> = ({
           ...styles.chatCardNotificationStyle,
           ...hasNotificationStyle,
           ...loadingBarStyle,
-          ...chatCardNotificationStyle,
+          ...props.chatCardNotificationStyle,
         }}
       />
 
@@ -81,12 +72,12 @@ export const ChatCard: React.FC<Props> = ({
         style={{
           ...styles.chatCardSubtitleStyle,
           ...loadingBarStyle,
-          ...chatCardSubtitleStyle,
+          ...props.chatCardSubtitleStyle,
         }}
       >
         <div
           dangerouslySetInnerHTML={{
-            __html: isLoading ? '.' : description,
+            __html: props.isLoading ? '.' : description,
           }}
         />
         <style>{`p {margin-block-start: 0px; margin-block-end: 0px;}`}</style>
@@ -97,10 +88,10 @@ export const ChatCard: React.FC<Props> = ({
         style={{
           ...styles.chatCardTimeStampStyle,
           ...loadingBarStyle,
-          ...chatCardTimeStampStyle,
+          ...props.chatCardTimeStampStyle,
         }}
       >
-        {isLoading ? '.' : timeStamp}
+        {props.isLoading ? '.' : timeStamp}
       </div>
     </div>
   );

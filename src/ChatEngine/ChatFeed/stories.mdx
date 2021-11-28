@@ -8,6 +8,15 @@ import { onePersonChat, messages } from '../../util/mocks';
   title="ChatEngine/ChatFeed"
   component={ChatFeed}
   argTypes={{
+    isLoading: { table: { category: 'state' } },
+    hasMoreMessages: { table: { category: 'state' } },
+    onTopMessageShow: { table: { category: 'hooks' } },
+    onBottomMessageShow: { table: { category: 'hooks' } },
+    onMessageSend: { table: { category: 'hooks' } },
+    renderChatFeed: { table: { category: 'render functions' } },
+    renderChatHeader: { table: { category: 'render functions' } },
+    renderMessageList: { table: { category: 'render functions' } },
+    renderMessageForm: { table: { category: 'render functions' } },
     chatFeedStyle: { table: { category: 'styles' } },
     chatHeaderStyle: { table: { category: 'styles' } },
     messageListStyle: { table: { category: 'styles' } },
@@ -29,6 +38,7 @@ It stacks the `<ChatHeader/>`, `<MessageList/>`, and `<MessageForm/>` in an easy
   name="Default"
   args={{
     messages: messages,
+    chat: onePersonChat,
     chatFeedStyle: {
       height: '500px',
       maxWidth: '600px',
@@ -121,6 +131,41 @@ This is used to load more messages once at the top of the Chat Feed.
   {Template.bind({})}
 </Story>
 
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Story
+  name="Render Functions"
+  args={{
+    chat: onePersonChat,
+    messages: messages,
+    renderChatFeed: () => <>Your Chat Feed code here!</>,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+You can render you own code for sub-components within Chat Feed.
+
+<Story
+  name="Render Functions 2"
+  args={{
+    chat: onePersonChat,
+    messages: messages,
+    renderChatHeader: () => <div>Your Chat Header code here!</div>,
+    renderMessageList: () => <div>Your Message List code here!</div>,
+    renderMessageForm: () => <div>Your Message Form code here!</div>,
+    chatFeedStyle: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
 ## Custom Style
 
 You can change the look and feel with the `customStyle` prop. It uses the `ChatFeedStyles` interface which inherits from `ChatHeaderStyles`, and `MessageFormStyles`.
@@ -135,6 +180,9 @@ You can change the look and feel with the `customStyle` prop. It uses the `ChatF
       maxWidth: '600px',
       border: '2px solid red',
     },
+    chatHeaderStyle: { border: '2px solid blue' },
+    messageListStyle: { border: '2px solid green' },
+    messageFormStyle: { border: '2px solid orange' },
   }}
 >
   {Template.bind({})}

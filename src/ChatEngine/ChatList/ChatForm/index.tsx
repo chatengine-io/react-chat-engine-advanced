@@ -6,19 +6,13 @@ import { styles } from './styles';
 import { Button } from '../../../Components/Button';
 import { Input } from '../../../Components/Input';
 
-export const ChatForm: React.FC<Props> = ({
-  onFormSubmit,
-  chatFormStyle = {},
-  myChatsTitleStyle = {},
-  chatFormInputStyle = {},
-  chatFormButtonStyle = {},
-}) => {
+export const ChatForm: React.FC<Props> = (props: Props) => {
   const [selected, setSelected] = useState<boolean>(false);
   const [value, setValue] = useState<string>('');
 
   const onSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    onFormSubmit && onFormSubmit(value);
+    props.onFormSubmit && props.onFormSubmit(value);
     setValue('');
   };
 
@@ -26,19 +20,23 @@ export const ChatForm: React.FC<Props> = ({
     setValue(event.target.value);
   };
 
+  if (props.renderChatForm) {
+    return <>{props.renderChatForm(props)}</>;
+  }
+
   return (
     <div
       className="ce-chat-form"
       style={{
         ...styles.chatFormStyle,
-        ...chatFormStyle,
+        ...props.chatFormStyle,
       }}
     >
       {!selected && (
         <span
           style={{
             ...styles.myChatsTitleStyle,
-            ...myChatsTitleStyle,
+            ...props.myChatsTitleStyle,
           }}
         >
           My Chats
@@ -49,7 +47,7 @@ export const ChatForm: React.FC<Props> = ({
         <Button
           style={{
             ...styles.chatFormButtonStyle,
-            ...chatFormButtonStyle,
+            ...props.chatFormButtonStyle,
           }}
           id="new-chat-plus-button"
           onClick={() => setSelected(true)}
@@ -68,7 +66,7 @@ export const ChatForm: React.FC<Props> = ({
             onBlur={() => setSelected(false)}
             style={{
               ...styles.chatFormInputStyle,
-              ...chatFormInputStyle,
+              ...props.chatFormInputStyle,
             }}
             onChange={onChange}
           />

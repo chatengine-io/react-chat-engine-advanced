@@ -8,6 +8,8 @@ import { Props } from './props';
   title="ChatEngine/ChatList/ChatForm"
   component={ChatForm}
   argTypes={{
+    onFormSubmit: { table: { category: 'hooks' } },
+    renderChatForm: { table: { category: 'render functions' } },
     chatFormStyle: { table: { category: 'styles' } },
     myChatsTitleStyle: { table: { category: 'styles' } },
     chatFormInputStyle: { table: { category: 'styles' } },
@@ -50,6 +52,21 @@ You can trigger code when the form submits with the `onFormSubmit` prop.
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
       onFormSubmit: (value) => console.log('Submitted', value),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      renderChatForm: () => <>Your code here!</>,
     }}
   >
     {Template.bind({})}

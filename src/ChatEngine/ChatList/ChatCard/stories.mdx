@@ -4,7 +4,25 @@ import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 import { ChatCard } from '.';
 import { Props } from './props';
 
-<Meta title="ChatEngine/ChatList/ChatCard" component={ChatCard} />
+<Meta
+  title="ChatEngine/ChatList/ChatCard"
+  component={ChatCard}
+  argTypes={{
+    hasNotification: { table: { category: 'state' } },
+    isActive: { table: { category: 'state' } },
+    isLoading: { table: { category: 'state' } },
+    onClick: { table: { category: 'hooks' } },
+    renderChatCard: { table: { category: 'render functions' } },
+    chatCardStyle: { table: { category: 'styles' } },
+    hoveredChatCardStyle: { table: { category: 'styles' } },
+    activeChatCardStyle: { table: { category: 'styles' } },
+    chatCardTitleStyle: { table: { category: 'styles' } },
+    chatCardNotificationStyle: { table: { category: 'styles' } },
+    chatCardSubtitleStyle: { table: { category: 'styles' } },
+    chatCardTimeStampStyle: { table: { category: 'styles' } },
+    chatCardLoadingBarStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <ChatCard {...args} />;
 
@@ -31,28 +49,6 @@ The Chat Card component represents a Chat room to click on.
 
 <ArgsTable story="Default" />
 
-## Is Active
-
-By default, the Chat Card component appears darker when `isActive` is `true`.
-
-<Canvas>
-  <Story
-    name="Is Active"
-    args={{
-      title: 'Active Chat Card',
-      description: 'You are in this chat now...',
-      timeStamp: '12:59 PM',
-      isActive: true,
-      chatCardStyle: {
-        maxWidth: '400px',
-        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-      },
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
 ## Has Notification
 
 You can see a notification dot if `hasNotification` is `true`.
@@ -68,6 +64,27 @@ You can see a notification dot if `hasNotification` is `true`.
       chatCardStyle: {
         maxWidth: '400px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Is Active
+
+By default, the Chat Card component appears darker when `isActive` is `true`.
+
+<Canvas>
+  <Story
+    name="Is Active"
+    args={{
+      title: 'Active Chat Card',
+      description: 'You are in this chat now...',
+      timeStamp: '12:59 PM',
+      isActive: true,
+      chatCardStyle: {
+        maxWidth: '400px',
       },
     }}
   >
@@ -91,6 +108,24 @@ You can see data has not appeared yet if `isLoading` is `true`.
         maxWidth: '400px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      title: 'Notification Card',
+      description: 'Alert alert!!!',
+      timeStamp: 'Tues',
+      renderChatCard: () => <>Your code here!</>,
     }}
   >
     {Template.bind({})}

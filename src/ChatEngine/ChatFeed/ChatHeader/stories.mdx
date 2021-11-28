@@ -36,6 +36,22 @@ Things such as the chat title, members, and last sent message (or last message d
 
 <ArgsTable story="Default" />
 
+## Render Functions
+
+You can replace the component with your own code using the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      title: 'Chat Title',
+      renderChatHeader: (props) => <div>Your code here: {props.title}</div>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Custom Styles
 
 You can customize the look and feel with the `*Style` props.
