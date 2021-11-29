@@ -9,6 +9,7 @@ import { threePersonChat } from '../../../util/mocks';
   component={PeopleSettings}
   argTypes={{
     canDelete: { table: { category: 'state' } },
+    onPersonAdd: { table: { category: 'hooks' } },
     style: { table: { category: 'styles' } },
     avatarStyle: { table: { category: 'styles' } },
     usernameStyle: { table: { category: 'styles' } },
@@ -19,6 +20,8 @@ import { threePersonChat } from '../../../util/mocks';
 export const Template = (args) => <PeopleSettings {...args} />;
 
 # PeopleSettings
+
+People Settings component shows you the users of a chatroom and the ability to edit the member info.
 
 ## Default
 
@@ -47,6 +50,27 @@ You'll see a delete button for users when the `canDelete` props is `true`.
     args={{
       chat: threePersonChat,
       canDelete: true,
+      style: {
+        maxWidth: '400px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## On Person Add
+
+When a user is clicked (i.e. added) you can run code with the `onPersonAdd` and `onPersonDelete` hook.
+
+<Canvas>
+  <Story
+    name="On Person Add"
+    args={{
+      chat: threePersonChat,
+      onPersonAdd: (person) => console.log('Add:', person),
+      onPersonDelete: (person) => console.log('Delete:', person),
       style: {
         maxWidth: '400px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',

@@ -5,6 +5,7 @@ export interface PeopleSettingsStyles {
   avatarStyle?: Properties;
   usernameStyle?: Properties;
   deleteButtonStyle?: Properties;
+  optionStyle?: Properties;
 }
 
 export const styles: PeopleSettingsStyles = {
@@ -18,4 +19,5 @@ export const styles: PeopleSettingsStyles = {
     width: 'calc(100% - 84px - 52px - 12px)',
   },
   deleteButtonStyle: { position: 'absolute', right: '12px', top: '8px' },
+  optionStyle: { fontFamily: 'Avenir', padding: '8px 12px', cursor: 'pointer' },
 };

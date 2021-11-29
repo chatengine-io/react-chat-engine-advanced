@@ -4,6 +4,7 @@ import { Props } from './props';
 import { styles } from './styles';
 
 import { Avatar } from '../../../Components/Avatar';
+import { Autocomplete } from '../../../Components/Autocomplete';
 import { Button } from '../../../Components/Button';
 import { Dropdown } from '../../../Components/Dropdown';
 
@@ -11,26 +12,30 @@ import { PersonProps } from '../../../util/interfaces';
 
 export const PeopleSettings: React.FC<Props> = (props: Props) => {
   const renderChatPeople = (people: Array<PersonProps>) => {
-    return people.map((chatPerson, index) => {
+    return people.map((person, index) => {
       return (
         <div
           key={`member-${index}`}
           style={{ height: '52px', position: 'relative' }}
         >
           <Avatar
-            username={chatPerson.username}
-            avatarUrl={chatPerson.avatar}
-            isOnline={chatPerson.is_online}
+            username={person.username}
+            avatarUrl={person.avatar}
+            isOnline={person.is_online}
             style={{ ...styles.avatarStyle, ...props.avatarStyle }}
           />
 
           <div style={{ ...styles.usernameStyle, ...props.usernameStyle }}>
-            {chatPerson.username}
+            {person.username}
           </div>
 
           {props.canDelete && (
             <Button
               type="danger"
+              className="ce-member-delete-button"
+              onClick={() =>
+                props.onPersonDelete && props.onPersonDelete(person)
+              }
               style={{
                 ...styles.deleteButtonStyle,
                 ...props.deleteButtonStyle,
@@ -54,13 +59,28 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
     });
   };
 
+  const renderChatPeopleOption = (option: object) => {
+    const person = option as PersonProps;
+    return (
+      <div
+        className="ce-add-member-option"
+        style={{ ...styles.optionStyle, ...props.optionStyle }}
+        onClick={() => props.onPersonAdd && props.onPersonAdd(person)}
+      >
+        {person.username}
+      </div>
+    );
+  };
+
   return (
     <Dropdown label="Members" style={{ ...styles.style, ...props.style }}>
       {renderChatPeople(props.chat.people)}
-      {/* 
-        {conn && chat && conn.userName === chat.admin.username && (
-          <PersonForm  />
-        )} */}
+
+      <Autocomplete
+        label="Add Member"
+        options={props.chat.people}
+        renderOption={renderChatPeopleOption}
+      />
     </Dropdown>
   );
 };
