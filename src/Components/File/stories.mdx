@@ -1,10 +1,17 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
 import { File } from '.';
 import { Props } from './props';
+import ThemeProvider, { defaultTheme } from '../ThemeProvider';
 
 <Meta title="Components/File" component={File} />
 
 export const Template = (args) => <File {...args} />;
+
+export const ThemedTemplate = (args) => (
+  <ThemeProvider theme={defaultTheme}>
+    <File {...args} />
+  </ThemeProvider>
+);
 
 # File
 
@@ -59,3 +66,16 @@ You can customize the look and feel with the `*Style` props and change the CSS f
 >
   {Template.bind({})}
 </Story>
+
+## Themed Style
+
+With Theme
+
+<Story
+  name="Themed Style"
+  args={{
+    url: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3'
+  }}
+>
+  {ThemedTemplate.bind({})}
+</Story> 

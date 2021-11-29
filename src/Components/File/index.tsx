@@ -1,11 +1,43 @@
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
+import { ThemeContext } from '../ThemeProvider';
 import { Props } from './props';
-import { styles } from './styles';
+import { styles, FileStyles } from './styles';
 
 import { getFileName } from '../../util/file';
+import { Theme } from '../ThemeProvider/props';
 
-export const File: React.FC<Props> = ({
+export const File: React.FC<Props> = (props: Props) => {
+  const themeOrNull: Theme | null = useContext(ThemeContext);
+
+  if (themeOrNull == null) {
+    return <ThemedFile {...props} />;
+  }
+
+  const theme: Theme = themeOrNull as Theme;
+
+  // map theme to file styles
+  const fileStyles: FileStyles = {
+    ...styles,
+    style: {
+      ...styles.style,
+      color: theme.palette.primary.main,
+    },
+    hoveredStyle: {
+      ...styles.style,
+      color: theme.palette.error.main,
+    },
+  };
+
+  return (
+    <ThemedFile
+      {...props}
+      style={fileStyles.style}
+      hoveredStyle={fileStyles.hoveredStyle}
+    />
+  );
+};
+
+const ThemedFile: React.FC<Props> = ({
   url,
   fileName,
   style = {},
