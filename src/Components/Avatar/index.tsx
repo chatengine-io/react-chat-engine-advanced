@@ -9,7 +9,7 @@ import { styles } from './styles';
 
 export const Avatar = ({
   username = '',
-  avatarUrl = undefined,
+  avatarUrl,
   isOnline,
   style = {},
   statusStyle = {},
@@ -18,11 +18,15 @@ export const Avatar = ({
   const text = username ? username.substring(0, 2).toUpperCase() : '';
   const color = stringToColor(username);
 
+  const isString = (avatarUrl: string | null | undefined) => {
+    return typeof avatarUrl === 'string';
+  };
+
   const avatarUrlStyle = {
-    backgroundColor: avatarUrl ? '#FFFFFF' : color,
-    backgroundImage: avatarUrl && `url(${avatarUrl})`,
-    height: `${avatarUrl ? '44px' : 'auto'}`,
-    padding: `${avatarUrl ? '0px' : 'auto'}`,
+    backgroundColor: isString(avatarUrl) ? '#FFFFFF' : color,
+    backgroundImage: isString(avatarUrl) && `url(${avatarUrl})`,
+    height: `${isString(avatarUrl) ? '44px' : 'auto'}`,
+    padding: `${isString(avatarUrl) ? '0px' : 'auto'}`,
   } as Properties;
 
   return (

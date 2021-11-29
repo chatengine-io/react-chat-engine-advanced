@@ -2,7 +2,19 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { PeopleSettings } from '.';
 import { Props } from './props';
 
-<Meta title="ChatEngine/ChatSettings/PeopleSettings" component={PeopleSettings} />
+import { threePersonChat } from '../../../util/mocks';
+
+<Meta
+  title="ChatEngine/ChatSettings/PeopleSettings"
+  component={PeopleSettings}
+  argTypes={{
+    canDelete: { table: { category: 'state' } },
+    style: { table: { category: 'styles' } },
+    avatarStyle: { table: { category: 'styles' } },
+    usernameStyle: { table: { category: 'styles' } },
+    deleteButtonStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <PeopleSettings {...args} />;
 
@@ -10,8 +22,60 @@ export const Template = (args) => <PeopleSettings {...args} />;
 
 ## Default
 
-<Story name='Default' args={{}}>
+<Story
+  name="Default"
+  args={{
+    chat: threePersonChat,
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
   {Template.bind({})}
 </Story>
 
-<ArgsTable story='Default' />
+<ArgsTable story="Default" />
+
+## Can Delete
+
+You'll see a delete button for users when the `canDelete` props is `true`.
+
+<Canvas>
+  <Story
+    name="Can Delete"
+    args={{
+      chat: threePersonChat,
+      canDelete: true,
+      style: {
+        maxWidth: '400px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Styles"
+    args={{
+      chat: threePersonChat,
+      canDelete: true,
+      style: {
+        maxWidth: '400px',
+        border: '2px solid red',
+      },
+      avatarStyle: { border: '2px solid blue' },
+      usernameStyle: { border: '2px solid green' },
+      deleteButtonStyle: { border: '2px solid orange' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
