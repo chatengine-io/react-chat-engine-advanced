@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { styles } from './styles';
 import { Props } from './props';
 
+const emptyEvent = {
+  target: { value: '' },
+} as React.ChangeEvent<HTMLInputElement>;
+
 export const Autocomplete: React.FC<Props> = (props: Props) => {
   const [value, setValue] = useState<string>('');
   const [showOptions, setShowOptions] = useState<boolean>(false);
@@ -51,29 +55,17 @@ export const Autocomplete: React.FC<Props> = (props: Props) => {
 
       <div
         style={{
-          ...styles.optionStyle,
+          ...styles.optionsStyle,
           ...{ height: showOptions ? 'auto' : '0px' },
-          ...props.optionStyle,
+          ...props.optionsStyle,
         }}
       >
         {renderOptions(value)}
 
         <div
           className="ce-autocomplete-close"
-          onClick={() =>
-            onChange(
-              { target: { value: '' } } as React.ChangeEvent<HTMLInputElement>,
-              false
-            )
-          }
-          style={{
-            cursor: 'pointer',
-            textAlign: 'center',
-            padding: '8px 12px',
-            fontSize: '15px',
-            borderRadius: '24px',
-            fontFamily: 'Avenir',
-          }}
+          onClick={() => onChange(emptyEvent, false)}
+          style={{ ...styles.closeStyle, ...props.closeStyle }}
         >
           ❌
         </div>

@@ -2,7 +2,8 @@ import { Properties } from 'csstype';
 
 export interface AutocompleteStyles {
   inputStyle?: Properties;
-  optionStyle?: Properties;
+  optionsStyle?: Properties;
+  closeStyle?: Properties;
 }
 
 export const styles: AutocompleteStyles = {
@@ -16,5 +17,13 @@ export const styles: AutocompleteStyles = {
     outline: 'none',
     borderRadius: '24px',
   },
-  optionStyle: { overflow: 'hidden' },
+  optionsStyle: { overflow: 'hidden' },
+  closeStyle: {
+    cursor: 'pointer',
+    textAlign: 'center',
+    padding: '8px 12px',
+    fontSize: '15px',
+    borderRadius: '24px',
+    fontFamily: 'Avenir',
+  },
 };
