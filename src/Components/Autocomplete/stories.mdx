@@ -1,0 +1,24 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Autocomplete } from '.';
+import { Props } from './props';
+
+<Meta title="Components/Autocomplete" component={Autocomplete} />
+
+export const Template = (args) => <Autocomplete {...args} />;
+
+# Autocomplete
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    options: ['one', 'two', 'three'],
+    style: { maxWidth: '400px' },
+    renderOption: (option) => <div>{option}</div>,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
