@@ -49,6 +49,12 @@ export const fileAttachment: AttachmentProps = {
   created: '2021-08-03T00:16:59.633778Z',
 };
 
+export const imageAttachment2: AttachmentProps = {
+  id: 12,
+  file: 'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+  created: '2021-08-03T00:16:59.633778Z',
+};
+
 const message1001Created = '2021-07-14 01:01:00.000000+00:00';
 export const message1001: MessageProps = {
   id: 1001,
@@ -138,7 +144,12 @@ export const threePersonChat: ChatProps = {
   is_direct_chat: false,
   created: '2021-01-28T02:41:48.826706Z',
   custom_json: {},
-  attachments: [],
+  attachments: [
+    imageAttachment,
+    imageAttachment,
+    imageAttachment2,
+    fileAttachment,
+  ],
   people: [
     {
       ...adam,

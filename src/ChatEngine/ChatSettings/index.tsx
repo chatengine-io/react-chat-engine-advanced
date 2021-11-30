@@ -5,6 +5,7 @@ import { styles } from './styles';
 
 import { ChatAvatars } from './ChatAvatars';
 import { PeopleSettings } from './PeopleSettings';
+import { PhotosSettings } from './PhotosSettings';
 
 export const ChatSettings: React.FC<Props> = ({
   chat,
@@ -17,6 +18,8 @@ export const ChatSettings: React.FC<Props> = ({
       <ChatAvatars users={chat ? chat.people : []} myUsername={myUsername} />
 
       <PeopleSettings chat={chat} />
+
+      <PhotosSettings chat={chat} />
 
       {isLoading && <div>Loading...</div>}
     </div>
