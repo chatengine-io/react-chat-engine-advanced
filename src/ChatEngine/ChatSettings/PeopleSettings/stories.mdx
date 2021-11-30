@@ -2,7 +2,7 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { PeopleSettings } from '.';
 import { Props } from './props';
 
-import { threePersonChat } from '../../../util/mocks';
+import { threePersonChat, adam } from '../../../util/mocks';
 
 <Meta
   title="ChatEngine/ChatSettings/PeopleSettings"
@@ -29,6 +29,7 @@ People Settings component shows you the users of a chatroom and the ability to e
   name="Default"
   args={{
     chat: threePersonChat,
+    otherPeople: [adam],
     style: {
       maxWidth: '400px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -49,6 +50,7 @@ You'll see a delete button for users when the `canDelete` props is `true`.
     name="Can Delete"
     args={{
       chat: threePersonChat,
+      otherPeople: [adam],
       canDelete: true,
       style: {
         maxWidth: '400px',
@@ -69,6 +71,7 @@ When a user is clicked (i.e. added) you can run code with the `onPersonAdd` and 
     name="On Person Add"
     args={{
       chat: threePersonChat,
+      otherPeople: [adam],
       onPersonAdd: (person) => console.log('Add:', person),
       onPersonDelete: (person) => console.log('Delete:', person),
       style: {
@@ -90,6 +93,7 @@ You can customize the look and feel with the `*Style` props.
     name="Custom Styles"
     args={{
       chat: threePersonChat,
+      otherPeople: [adam],
       canDelete: true,
       style: {
         maxWidth: '400px',

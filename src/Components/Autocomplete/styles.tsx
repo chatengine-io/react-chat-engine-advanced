@@ -20,10 +20,8 @@ export const styles: AutocompleteStyles = {
   optionsStyle: { overflow: 'hidden' },
   closeStyle: {
     cursor: 'pointer',
-    textAlign: 'center',
-    padding: '8px 12px',
-    fontSize: '15px',
-    borderRadius: '24px',
-    fontFamily: 'Avenir',
+    position: 'absolute',
+    top: '5px',
+    right: '12px',
   },
 };

@@ -36,7 +36,10 @@ export const Autocomplete: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <div className="ce-autocomplete" style={{ ...props.style }}>
+    <div
+      className="ce-autocomplete"
+      style={{ ...{ position: 'relative' }, ...props.style }}
+    >
       <input
         className="ce-autocomplete-input"
         value={value}
@@ -54,6 +57,18 @@ export const Autocomplete: React.FC<Props> = (props: Props) => {
       />
 
       <div
+        className="ce-autocomplete-close"
+        onClick={() => onChange(emptyEvent, true)}
+        style={{
+          ...styles.closeStyle,
+          ...{ display: value.length > 0 ? 'inline-block' : 'none' },
+          ...props.closeStyle,
+        }}
+      >
+        ❌
+      </div>
+
+      <div
         style={{
           ...styles.optionsStyle,
           ...{ height: showOptions ? 'auto' : '0px' },
@@ -61,14 +76,6 @@ export const Autocomplete: React.FC<Props> = (props: Props) => {
         }}
       >
         {renderOptions(value)}
-
-        <div
-          className="ce-autocomplete-close"
-          onClick={() => onChange(emptyEvent, false)}
-          style={{ ...styles.closeStyle, ...props.closeStyle }}
-        >
-          ❌
-        </div>
       </div>
     </div>
   );

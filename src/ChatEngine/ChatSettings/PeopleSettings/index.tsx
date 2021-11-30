@@ -11,6 +11,8 @@ import { Dropdown } from '../../../Components/Dropdown';
 import { PersonProps } from '../../../util/interfaces';
 
 export const PeopleSettings: React.FC<Props> = (props: Props) => {
+  const { chat = { people: [] }, otherPeople = [] } = props;
+
   const renderChatPeople = (people: Array<PersonProps>) => {
     return people.map((person, index) => {
       return (
@@ -74,12 +76,18 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
 
   return (
     <Dropdown label="Members" style={{ ...styles.style, ...props.style }}>
-      {renderChatPeople(props.chat ? props.chat.people : [])}
+      {renderChatPeople(chat.people)}
 
       <Autocomplete
         label="Add Member"
-        options={props.chat ? props.chat.people : []}
+        options={otherPeople}
         renderOption={renderChatPeopleOption}
+        style={{
+          width: 'calc(100% - 12px - 12px)',
+          position: 'relative',
+          left: '12px',
+        }}
+        inputStyle={{ border: '1px solid rgb(24, 144, 255)' }}
       />
     </Dropdown>
   );

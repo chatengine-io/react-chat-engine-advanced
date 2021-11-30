@@ -27,6 +27,7 @@ export const Template = (args) => <Autocomplete {...args} />;
 <Story
   name="Default"
   args={{
+    label: 'Example Label',
     options: ['one', 'two', 'three'],
     style: { maxWidth: '400px' },
     renderOption: (option) => <div>{option}</div>,
@@ -44,6 +45,7 @@ You can customize the look and feel with the `*Style` props.
 <Story
   name="Custom Styles"
   args={{
+    label: 'Example Label',
     options: ['one', 'two', 'three'],
     renderOption: (option) => <div>{option}</div>,
     style: { maxWidth: '400px', border: '2px solid red' },
