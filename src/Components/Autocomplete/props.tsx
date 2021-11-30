@@ -7,6 +7,7 @@ export interface Props
     AutocompleteStyles {
   options: Array<Object>;
   label?: string;
+  // State
   maxVisibleOptions?: number;
   // Hooks
   onBlur?: React.FocusEventHandler<HTMLInputElement> | undefined;

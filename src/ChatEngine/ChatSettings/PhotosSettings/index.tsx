@@ -19,7 +19,12 @@ export const PhotosSettings: React.FC<Props> = (props: Props) => {
             key={`photo-${index}`}
             style={{ ...styles.imageWrapperStyle, ...props.imageWrapperStyle }}
           >
-            <div style={{ paddingTop: '100%' }} />
+            <div
+              style={{
+                ...styles.imagePaddingStyle,
+                ...props.imagePaddingStyle,
+              }}
+            />
 
             <Image
               key={`attachment_${index}`}

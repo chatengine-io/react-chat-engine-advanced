@@ -11,13 +11,12 @@ export const Autocomplete: React.FC<Props> = (props: Props) => {
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
   const getOptions = (value: string) => {
-    let count = 0;
     const max = props.maxVisibleOptions ? props.maxVisibleOptions : 3;
-    return props.options.filter(
+    const options = props.options.filter(
       (option) =>
-        JSON.stringify(option).toLowerCase().indexOf(value.toLowerCase()) !==
-          -1 && count < max
+        JSON.stringify(option).toLowerCase().indexOf(value.toLowerCase()) !== -1
     );
+    return options.slice(0, max);
   };
 
   const onChange = (

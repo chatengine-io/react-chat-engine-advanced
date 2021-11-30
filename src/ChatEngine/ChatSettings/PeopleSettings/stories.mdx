@@ -15,6 +15,8 @@ import { threePersonChat, adam } from '../../../util/mocks';
     avatarStyle: { table: { category: 'styles' } },
     usernameStyle: { table: { category: 'styles' } },
     deleteButtonStyle: { table: { category: 'styles' } },
+    addMemberStyle: { table: { category: 'styles' } },
+    addMemberInputStyle: { table: { category: 'styles' } },
   }}
 />
 
@@ -63,13 +65,13 @@ You'll see a delete button for users when the `canDelete` props is `true`.
   </Story>
 </Canvas>
 
-## On Person Add
+## Hooks
 
-When a user is clicked (i.e. added) you can run code with the `onPersonAdd` and `onPersonDelete` hook.
+When a user is added or removed, you can run code with the `onPersonAdd` and `onPersonDelete` hooks.
 
 <Canvas>
   <Story
-    name="On Person Add"
+    name="Hooks"
     args={{
       chat: threePersonChat,
       otherPeople: [adam],

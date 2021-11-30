@@ -86,12 +86,11 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
         label="Add Member"
         options={otherPeople}
         renderOption={renderChatPeopleOption}
-        style={{
-          width: 'calc(100% - 12px - 12px)',
-          position: 'relative',
-          left: '12px',
+        style={{ ...styles.addMemberStyle, ...props.addMemberStyle }}
+        inputStyle={{
+          ...styles.addMemberInputStyle,
+          ...props.addMemberInputStyle,
         }}
-        inputStyle={{ border: '1px solid rgb(24, 144, 255)' }}
       />
     </Dropdown>
   );
