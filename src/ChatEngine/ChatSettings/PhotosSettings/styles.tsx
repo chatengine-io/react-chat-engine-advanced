@@ -21,5 +21,6 @@ export const styles: PhotosSettingsStyles = {
     position: 'absolute',
     objectFit: 'cover',
     padding: '0px',
+    borderRadius: '0px',
   },
 };

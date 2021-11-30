@@ -1,0 +1,28 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { OptionsSettings } from '.';
+import { Props } from './props';
+
+<Meta
+  title="ChatEngine/ChatSettings/OptionsSettings"
+  component={OptionsSettings}
+/>
+
+export const Template = (args) => <OptionsSettings {...args} />;
+
+# OptionsSettings
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />

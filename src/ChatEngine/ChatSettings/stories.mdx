@@ -2,9 +2,20 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { ChatSettings } from '.';
 import { Props } from './props';
 
-import { threePersonChat, adam as currentUser } from '../../util/mocks';
+import { threePersonChat, adam as currentUser, bob } from '../../util/mocks';
 
-<Meta title="ChatEngine/ChatSettings" component={ChatSettings} />
+<Meta
+  title="ChatEngine/ChatSettings"
+  component={ChatSettings}
+  argTypes={{
+    isLoading: { table: { category: 'state' } },
+    chatSettingsStyle: { table: { category: 'styles' } },
+    chatTitleStyle: { table: { category: 'styles' } },
+    peopleSettingsStyle: { table: { category: 'styles' } },
+    photosSettingsStyle: { table: { category: 'styles' } },
+    optionsSettingsStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <ChatSettings {...args} />;
 
@@ -18,6 +29,7 @@ The `<ChatSettings />` component represent aspects fo the `chat` object which yo
   name="Default"
   args={{
     chat: threePersonChat,
+    otherPeople: [bob],
     myUsername: currentUser.username,
     chatSettingsStyle: {
       maxWidth: '400px',
@@ -27,3 +39,28 @@ The `<ChatSettings />` component represent aspects fo the `chat` object which yo
 >
   {Template.bind({})}
 </Story>
+
+<ArgsTable story="Default" />
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Styles"
+    args={{
+      chat: threePersonChat,
+      chatSettingsStyle: {
+        maxWidth: '400px',
+        border: '2px solid red',
+      },
+      chatTitleStyle: { border: '2px solid blue' },
+      peopleSettingsStyle: { border: '2px solid green' },
+      photosSettingsStyle: { border: '2px solid orange' },
+      optionsSettingsStyle: { border: '2px solid violet' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

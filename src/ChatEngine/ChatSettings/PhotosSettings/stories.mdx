@@ -2,7 +2,7 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { PhotosSettings } from '.';
 import { Props } from './props';
 
-import { threePersonChat, adam } from '../../../util/mocks';
+import { threePersonChat } from '../../../util/mocks';
 
 <Meta
   title="ChatEngine/ChatSettings/PhotosSettings"
@@ -46,8 +46,6 @@ You can customize the look and feel with the `*Style` props.
     name="Custom Styles"
     args={{
       chat: threePersonChat,
-      otherPeople: [adam],
-      canDelete: true,
       style: {
         maxWidth: '400px',
         border: '2px solid red',
