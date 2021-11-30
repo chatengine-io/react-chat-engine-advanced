@@ -22,6 +22,8 @@ export const Template = (args) => <Autocomplete {...args} />;
 
 # Autocomplete
 
+Autocomplete component is an input component which renders and helps you pick an option.
+
 ## Default
 
 <Story
@@ -37,6 +39,23 @@ export const Template = (args) => <Autocomplete {...args} />;
 </Story>
 
 <ArgsTable story="Default" />
+
+## Max Visible Options
+
+You can limit the number of options in the list by setting the `maxVisibleOptions` prop which defaults to`3`.
+
+<Story
+  name="Max Visible Options"
+  args={{
+    label: 'Example Label',
+    options: ['one', 'two', 'three'],
+    renderOption: (option) => <div>{option}</div>,
+    style: { maxWidth: '400px' },
+    maxVisibleOptions: 1,
+  }}
+>
+  {Template.bind({})}
+</Story>
 
 ## Custom Styles
 

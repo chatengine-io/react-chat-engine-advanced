@@ -3,6 +3,7 @@ import { Properties } from 'csstype';
 export interface PhotosSettingsStyles {
   style?: Properties;
   imageWrapperStyle?: Properties;
+  imagePaddingStyle?: Properties;
   imageStyle?: Properties;
 }
 
@@ -14,6 +15,7 @@ export const styles: PhotosSettingsStyles = {
     display: 'inline-block',
     cursor: 'pointer',
   },
+  imagePaddingStyle: { paddingTop: '100%' },
   imageStyle: {
     top: '0px',
     width: '100%',
