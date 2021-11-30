@@ -10,6 +10,10 @@ import { Props as ChatHeaderProps } from './ChatFeed/ChatHeader/props';
 import { Props as MessageListProps } from './ChatFeed/MessageList/props';
 import { Props as MessageFormProps } from './ChatFeed/MessageForm/props';
 // TODO: Render Message in here
+import { Props as ChatSettingsProps } from './ChatSettings/props';
+import { Props as PeopleSettingsProps } from './ChatSettings/PeopleSettings/props';
+import { Props as PhotosSettingsProps } from './ChatSettings/PhotosSettings/props';
+import { Props as OptionsSettingsProps } from './ChatSettings/OptionsSettings/props';
 
 export interface Props extends ChatEngineStyles {
   // Data
@@ -38,4 +42,16 @@ export interface Props extends ChatEngineStyles {
   renderChatHeader?: (props: ChatHeaderProps) => React.FC<ChatHeaderProps>;
   renderMessageList?: (props: MessageListProps) => React.FC<MessageListProps>;
   renderMessageForm?: (props: MessageFormProps) => React.FC<MessageFormProps>;
+  renderChatSettings?: (
+    props: ChatSettingsProps
+  ) => React.FC<ChatSettingsProps>;
+  renderPeopleSettings?: (
+    props: PeopleSettingsProps
+  ) => React.FC<PeopleSettingsProps>;
+  renderPhotosSettings?: (
+    props: PhotosSettingsProps
+  ) => React.FC<PhotosSettingsProps>;
+  renderOptionsSettings?: (
+    props: OptionsSettingsProps
+  ) => React.FC<OptionsSettingsProps>;
 }

@@ -10,6 +10,7 @@ import { threePersonChat, adam } from '../../../util/mocks';
   argTypes={{
     canDelete: { table: { category: 'state' } },
     onPersonAdd: { table: { category: 'hooks' } },
+    renderPeopleSettings: { table: { category: 'render functions' } },
     style: { table: { category: 'styles' } },
     avatarStyle: { table: { category: 'styles' } },
     usernameStyle: { table: { category: 'styles' } },
@@ -19,7 +20,7 @@ import { threePersonChat, adam } from '../../../util/mocks';
 
 export const Template = (args) => <PeopleSettings {...args} />;
 
-# PeopleSettings
+# People Settings
 
 People Settings component shows you the users of a chatroom and the ability to edit the member info.
 
@@ -78,6 +79,22 @@ When a user is clicked (i.e. added) you can run code with the `onPersonAdd` and 
         maxWidth: '400px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      chat: threePersonChat,
+      renderPeopleSettings: () => <div>Your code here!</div>,
     }}
   >
     {Template.bind({})}

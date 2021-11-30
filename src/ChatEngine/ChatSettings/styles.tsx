@@ -13,8 +13,6 @@ export const styles: ChatSettingsStyles = {
   chatTitleStyle: {
     width: '100%',
     textAlign: 'center',
-    paddingTop: '2px',
-    paddingBottom: '8px',
     fontFamily: 'Avenir',
     fontSize: '18px',
     fontWeight: 600,

@@ -8,6 +8,7 @@ import { threePersonChat } from '../../../util/mocks';
   title="ChatEngine/ChatSettings/PhotosSettings"
   component={PhotosSettings}
   argTypes={{
+    renderPhotosSettings: { table: { category: 'render functions' } },
     style: { table: { category: 'styles' } },
     imageWrapperStyle: { table: { category: 'styles' } },
     imageStyle: { table: { category: 'styles' } },
@@ -36,6 +37,22 @@ Photos Settings component shows you the photos in the chatroom history.
 </Story>
 
 <ArgsTable story="Default" />
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      chat: threePersonChat,
+      renderPhotosSettings: () => <div>Your code here!</div>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
 
 ## Custom Styles
 

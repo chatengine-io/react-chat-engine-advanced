@@ -6,6 +6,10 @@ import { Button } from '../../../Components/Button';
 import { Dropdown } from '../../../Components/Dropdown';
 
 export const OptionsSettings: React.FC<Props> = (props: Props) => {
+  if (props.renderOptionsSettings) {
+    return <>{props.renderOptionsSettings(props)}</>;
+  }
+
   return (
     <Dropdown label="Options" style={{ ...styles.style, ...props.style }}>
       <Button

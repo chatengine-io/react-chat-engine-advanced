@@ -74,6 +74,10 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
     );
   };
 
+  if (props.renderPeopleSettings) {
+    return <>{props.renderPeopleSettings(props)}</>;
+  }
+
   return (
     <Dropdown label="Members" style={{ ...styles.style, ...props.style }}>
       {renderChatPeople(chat.people)}

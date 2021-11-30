@@ -9,6 +9,10 @@ import { threePersonChat, adam as currentUser, bob } from '../../util/mocks';
   component={ChatSettings}
   argTypes={{
     isLoading: { table: { category: 'state' } },
+    renderChatSettings: { table: { category: 'render functions' } },
+    renderPeopleSettings: { table: { category: 'render functions' } },
+    renderPhotosSettings: { table: { category: 'render functions' } },
+    renderOptionsSettings: { table: { category: 'render functions' } },
     chatSettingsStyle: { table: { category: 'styles' } },
     chatTitleStyle: { table: { category: 'styles' } },
     peopleSettingsStyle: { table: { category: 'styles' } },
@@ -41,6 +45,36 @@ The `<ChatSettings />` component represent aspects fo the `chat` object which yo
 </Story>
 
 <ArgsTable story="Default" />
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      chat: threePersonChat,
+      renderChatSettings: () => <>Your code here!</>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Render Functions 2"
+    args={{
+      chat: threePersonChat,
+      renderPeopleSettings: () => <div>Your People code here!</div>,
+      renderPhotosSettings: () => <div>Your Photos code here!</div>,
+      renderOptionsSettings: () => <div>Your Options code here!</div>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
 
 ## Custom Styles
 
