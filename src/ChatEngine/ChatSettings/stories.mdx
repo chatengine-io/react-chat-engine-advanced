@@ -46,6 +46,21 @@ The `<ChatSettings />` component represent aspects fo the `chat` object which yo
 
 <ArgsTable story="Default" />
 
+## Is Loading
+
+You can make the settings page load without a `chat` prop by setting `isLoading` to `true`.
+
+<Canvas>
+  <Story
+    name="Is Loading"
+    args={{
+      isLoading: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Render Functions
 
 You can render you own code instead of this component with the `render*` functions.
