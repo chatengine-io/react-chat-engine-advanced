@@ -75,6 +75,10 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
           chat={chat}
           myUsername={props.myUsername}
           isLoading={props.isChatSettingsLoading}
+          renderChatSettings={props.renderChatSettings}
+          renderPeopleSettings={props.renderPeopleSettings}
+          renderPhotosSettings={props.renderPhotosSettings}
+          renderOptionsSettings={props.renderOptionsSettings}
         />
       </Col>
     </Row>

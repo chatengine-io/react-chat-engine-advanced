@@ -19,7 +19,8 @@ export interface ChatAvatarsStyle {
 export const styles: ChatAvatarsStyle = {
   chatAvatarsStyle: {
     width: '100%',
-    paddingTop: '14px',
+    paddingTop: '12px',
+    height: 'calc(44px + 14px)',
   } as Properties,
   oneAvatarStyle: {
     avatarOne: {

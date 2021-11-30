@@ -1,0 +1,58 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Autocomplete } from '.';
+import { Props } from './props';
+
+<Meta
+  title="Components/Autocomplete"
+  component={Autocomplete}
+  argTypes={{
+    maxVisibleOptions: { table: { category: 'state' } },
+    onBlur: { table: { category: 'hooks' } },
+    onChange: { table: { category: 'hooks' } },
+    onFocus: { table: { category: 'hooks' } },
+    renderOption: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    inputStyle: { table: { category: 'styles' } },
+    optionsStyle: { table: { category: 'styles' } },
+    closeStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <Autocomplete {...args} />;
+
+# Autocomplete
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    label: 'Example Label',
+    options: ['one', 'two', 'three'],
+    style: { maxWidth: '400px' },
+    renderOption: (option) => <div>{option}</div>,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Story
+  name="Custom Styles"
+  args={{
+    label: 'Example Label',
+    options: ['one', 'two', 'three'],
+    renderOption: (option) => <div>{option}</div>,
+    style: { maxWidth: '400px', border: '2px solid red' },
+    inputStyle: { border: '2px solid blue' },
+    optionsStyle: { border: '2px solid green' },
+    closeStyle: { border: '2px solid orange' },
+  }}
+>
+  {Template.bind({})}
+</Story>

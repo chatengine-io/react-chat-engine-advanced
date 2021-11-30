@@ -2,9 +2,24 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { ChatSettings } from '.';
 import { Props } from './props';
 
-import { threePersonChat, adam as currentUser } from '../../util/mocks';
+import { threePersonChat, adam as currentUser, bob } from '../../util/mocks';
 
-<Meta title="ChatEngine/ChatSettings" component={ChatSettings} />
+<Meta
+  title="ChatEngine/ChatSettings"
+  component={ChatSettings}
+  argTypes={{
+    isLoading: { table: { category: 'state' } },
+    renderChatSettings: { table: { category: 'render functions' } },
+    renderPeopleSettings: { table: { category: 'render functions' } },
+    renderPhotosSettings: { table: { category: 'render functions' } },
+    renderOptionsSettings: { table: { category: 'render functions' } },
+    chatSettingsStyle: { table: { category: 'styles' } },
+    chatTitleStyle: { table: { category: 'styles' } },
+    peopleSettingsStyle: { table: { category: 'styles' } },
+    photosSettingsStyle: { table: { category: 'styles' } },
+    optionsSettingsStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <ChatSettings {...args} />;
 
@@ -18,8 +33,68 @@ The `<ChatSettings />` component represent aspects fo the `chat` object which yo
   name="Default"
   args={{
     chat: threePersonChat,
+    otherPeople: [bob],
     myUsername: currentUser.username,
+    chatSettingsStyle: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
   }}
 >
   {Template.bind({})}
 </Story>
+
+<ArgsTable story="Default" />
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      chat: threePersonChat,
+      renderChatSettings: () => <>Your code here!</>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Render Functions 2"
+    args={{
+      chat: threePersonChat,
+      renderPeopleSettings: () => <div>Your People code here!</div>,
+      renderPhotosSettings: () => <div>Your Photos code here!</div>,
+      renderOptionsSettings: () => <div>Your Options code here!</div>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Styles"
+    args={{
+      chat: threePersonChat,
+      chatSettingsStyle: {
+        maxWidth: '400px',
+        border: '2px solid red',
+      },
+      chatTitleStyle: { border: '2px solid blue' },
+      peopleSettingsStyle: { border: '2px solid green' },
+      photosSettingsStyle: { border: '2px solid orange' },
+      optionsSettingsStyle: { border: '2px solid violet' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
