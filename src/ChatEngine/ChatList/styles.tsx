@@ -11,7 +11,6 @@ export const styles: ChatListStyles = {
     overflowY: 'scroll',
     overflowX: 'hidden',
     backgroundColor: 'white',
-    fontFamily: 'Avenir',
   },
   loadingMoreChatsStyle: {
     fontFamily: 'Avenir',

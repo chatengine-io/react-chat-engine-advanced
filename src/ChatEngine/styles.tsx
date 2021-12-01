@@ -1,12 +1,12 @@
 export interface ChatEngineStyles {
-  chatEngineStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
   chatListColumnStyle?: React.CSSProperties;
   chatFeedColumnStyle?: React.CSSProperties;
   chatSettingsColumnStyle?: React.CSSProperties;
 }
 
 export const styles: ChatEngineStyles = {
-  chatEngineStyle: { position: 'relative' },
+  style: { position: 'relative' },
   chatListColumnStyle: {
     height: '100%',
     borderRight: '1px solid #afafaf',

@@ -17,10 +17,7 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
   const chat = chats[activeChatKey];
 
   return (
-    <Row
-      className="ce-chat-engine"
-      style={{ ...styles.chatEngineStyle, ...props.chatEngineStyle }}
-    >
+    <Row className="ce-chat-engine" style={{ ...styles.style, ...props.style }}>
       <Col
         xs={0}
         sm={3}
@@ -58,6 +55,7 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
           renderChatFeed={props.renderChatFeed}
           renderChatHeader={props.renderChatHeader}
           renderMessageList={props.renderMessageList}
+          renderMessage={props.renderMessage}
           renderMessageForm={props.renderMessageForm}
         />
       </Col>
