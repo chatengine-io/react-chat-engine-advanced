@@ -1,9 +1,7 @@
-import { Properties } from 'csstype';
-
 export interface AutocompleteStyles {
-  inputStyle?: Properties;
-  optionsStyle?: Properties;
-  closeStyle?: Properties;
+  inputStyle?: React.CSSProperties;
+  optionsStyle?: React.CSSProperties;
+  closeStyle?: React.CSSProperties;
 }
 
 export const styles: AutocompleteStyles = {

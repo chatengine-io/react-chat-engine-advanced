@@ -1,14 +1,12 @@
-import { Properties } from 'csstype';
-
 export interface ChatCardStyle {
-  chatCardStyle?: Properties;
-  hoveredChatCardStyle?: Properties;
-  activeChatCardStyle?: Properties;
-  chatCardTitleStyle?: Properties;
-  chatCardNotificationStyle?: Properties;
-  chatCardSubtitleStyle?: Properties;
-  chatCardTimeStampStyle?: Properties;
-  chatCardLoadingBarStyle?: Properties;
+  chatCardStyle?: React.CSSProperties;
+  hoveredChatCardStyle?: React.CSSProperties;
+  activeChatCardStyle?: React.CSSProperties;
+  chatCardTitleStyle?: React.CSSProperties;
+  chatCardNotificationStyle?: React.CSSProperties;
+  chatCardSubtitleStyle?: React.CSSProperties;
+  chatCardTimeStampStyle?: React.CSSProperties;
+  chatCardLoadingBarStyle?: React.CSSProperties;
 }
 
 export const styles: ChatCardStyle = {
@@ -21,15 +19,15 @@ export const styles: ChatCardStyle = {
     transition: 'all .44s ease',
     WebkitTransition: 'all .44s ease',
     MozTransition: 'all .44s ease',
-  } as Properties,
+  },
   hoveredChatCardStyle: {
     backgroundColor: '#f5f5f5',
     border: '0px solid white',
-  } as Properties,
+  },
   activeChatCardStyle: {
     backgroundColor: '#d9d9d9',
     border: '0px solid white',
-  } as Properties,
+  },
   chatCardTitleStyle: {
     // Position
     position: 'absolute',
@@ -42,7 +40,7 @@ export const styles: ChatCardStyle = {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     fontFamily: 'Avenir',
-  } as Properties,
+  },
   chatCardNotificationStyle: {
     // Position
     position: 'absolute',
@@ -54,7 +52,7 @@ export const styles: ChatCardStyle = {
     borderRadius: '6px',
     backgroundColor: '#1890ff',
     float: 'right',
-  } as Properties,
+  },
   chatCardSubtitleStyle: {
     // Position
     position: 'absolute',
@@ -68,7 +66,7 @@ export const styles: ChatCardStyle = {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     fontFamily: 'Avenir',
-  } as Properties,
+  },
   chatCardTimeStampStyle: {
     // Position
     position: 'absolute',
@@ -83,10 +81,10 @@ export const styles: ChatCardStyle = {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     fontFamily: 'Avenir',
-  } as Properties,
+  },
   chatCardLoadingBarStyle: {
     borderRadius: '4px',
     backgroundColor: '#e2e2e2',
     color: '#e2e2e2',
-  } as Properties,
+  },
 };

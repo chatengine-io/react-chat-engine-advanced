@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { Properties } from 'csstype';
-
 import { Props } from './props';
 import { styles } from './styles';
 

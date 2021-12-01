@@ -1,11 +1,9 @@
-import { Properties } from 'csstype';
-
 export interface ChatSettingsStyles {
-  chatSettingsStyle?: Properties;
-  chatTitleStyle?: Properties;
-  peopleSettingsStyle?: Properties;
-  photosSettingsStyle?: Properties;
-  optionsSettingsStyle?: Properties;
+  chatSettingsStyle?: React.CSSProperties;
+  chatTitleStyle?: React.CSSProperties;
+  peopleSettingsStyle?: React.CSSProperties;
+  photosSettingsStyle?: React.CSSProperties;
+  optionsSettingsStyle?: React.CSSProperties;
 }
 
 export const styles: ChatSettingsStyles = {

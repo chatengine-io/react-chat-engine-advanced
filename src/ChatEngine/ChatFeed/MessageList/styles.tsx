@@ -1,11 +1,9 @@
-import { Properties } from 'csstype';
-
 export interface MessageListStyles {
-  messageListStyle?: Properties;
-  messageStyle?: Properties;
+  messageListStyle?: React.CSSProperties;
+  messageStyle?: React.CSSProperties;
 }
 
 export const styles: MessageListStyles = {
-  messageListStyle: {} as Properties,
-  messageStyle: {} as Properties,
+  messageListStyle: {},
+  messageStyle: {},
 };

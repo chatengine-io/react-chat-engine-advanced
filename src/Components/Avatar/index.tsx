@@ -1,5 +1,4 @@
 import React from 'react';
-import { Properties } from 'csstype';
 
 import { stringToColor } from '../../util/colorMapping';
 
@@ -27,7 +26,7 @@ export const Avatar = ({
     backgroundImage: isString(avatarUrl) && `url(${avatarUrl})`,
     height: `${isString(avatarUrl) ? '44px' : 'auto'}`,
     padding: `${isString(avatarUrl) ? '0px' : 'auto'}`,
-  } as Properties;
+  } as React.CSSProperties;
 
   return (
     <div

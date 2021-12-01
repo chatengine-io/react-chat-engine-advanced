@@ -1,9 +1,7 @@
-import { Properties } from 'csstype';
-
 export interface ChatListStyles {
-  chatListStyle?: Properties;
-  chatListLoadingStyle?: Properties;
-  chatListLoadTriggerStyle?: Properties;
+  chatListStyle?: React.CSSProperties;
+  chatListLoadingStyle?: React.CSSProperties;
+  chatListLoadTriggerStyle?: React.CSSProperties;
 }
 
 export const styles: ChatListStyles = {
@@ -15,10 +13,10 @@ export const styles: ChatListStyles = {
     overflowX: 'hidden',
     backgroundColor: 'white',
     fontFamily: 'Avenir',
-  } as Properties,
+  },
   chatListLoadingStyle: {
     overflowY: 'hidden',
-  } as Properties,
+  },
   chatListLoadTriggerStyle: {
     fontFamily: 'Avenir',
     textAlign: 'center',
@@ -27,5 +25,5 @@ export const styles: ChatListStyles = {
     paddingTop: '14px',
     paddingBottom: '14px',
     borderRadius: '4px',
-  } as Properties,
+  },
 };

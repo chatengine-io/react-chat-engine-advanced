@@ -6,8 +6,6 @@ import { styles } from './styles';
 import { Avatar } from '../../../Components/Avatar';
 import { PersonProps } from '../../../util/interfaces';
 
-import { Properties } from 'csstype';
-
 export const ChatAvatars: React.FC<Props> = ({
   users = [],
   myUsername = '',
@@ -20,7 +18,10 @@ export const ChatAvatars: React.FC<Props> = ({
   const topPeople = users.slice(0, 3);
   const otherPerson = users.find((person) => person.username !== myUsername);
 
-  const renderAvatars = (people: PersonProps[], avatarStyles: Properties[]) => {
+  const renderAvatars = (
+    people: PersonProps[],
+    avatarStyles: React.CSSProperties[]
+  ) => {
     if (people.length != avatarStyles.length) {
       return <div />;
     }

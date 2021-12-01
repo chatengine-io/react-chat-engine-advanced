@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Properties } from 'csstype';
 
 import { Props } from './props';
 import { styles } from './styles';
@@ -76,4 +75,4 @@ const defaultStyle = {
   transition: 'all .33s ease',
   WebkitTransition: 'all .33s ease',
   MozTransition: 'all .33s ease',
-} as Properties;
+} as React.CSSProperties;

@@ -1,10 +1,8 @@
-import { Properties } from 'csstype';
-
 export interface ChatHeaderStyles {
-  chatHeaderStyle?: Properties;
-  chatHeaderTitleStyle?: Properties;
-  chatHeaderSubtitleStyle?: Properties;
-  chatHeaderMobileOptionStyle?: Properties;
+  chatHeaderStyle?: React.CSSProperties;
+  chatHeaderTitleStyle?: React.CSSProperties;
+  chatHeaderSubtitleStyle?: React.CSSProperties;
+  chatHeaderMobileOptionStyle?: React.CSSProperties;
 }
 
 export const styles: ChatHeaderStyles = {
@@ -16,23 +14,23 @@ export const styles: ChatHeaderStyles = {
     textAlign: 'center',
     color: 'rgb(24, 144, 255)',
     overflowX: 'hidden',
-  } as Properties,
+  },
   chatHeaderTitleStyle: {
     width: '100%',
     fontFamily: 'Avenir',
     fontSize: '24px',
     fontWeight: 600,
-  } as Properties,
+  },
   chatHeaderSubtitleStyle: {
     width: '100%',
     fontFamily: 'Avenir',
     fontSize: '12px',
-  } as Properties,
+  },
   chatHeaderMobileOptionStyle: {
     width: '100%',
     top: '32px',
     textAlign: 'center',
     color: 'rgb(24, 144, 255)',
     overflow: 'hidden',
-  } as Properties,
+  },
 };

@@ -1,7 +1,5 @@
-import { Properties } from 'csstype';
-
 export interface DateTimeStyles {
-  dateTimeStyle?: Properties;
+  dateTimeStyle?: React.CSSProperties;
 }
 
 export const styles: DateTimeStyles = {
@@ -13,5 +11,5 @@ export const styles: DateTimeStyles = {
     paddingBottom: '10px',
     fontSize: '15px',
     color: 'rgba(0, 0, 0, .40)',
-  } as Properties,
+  },
 };

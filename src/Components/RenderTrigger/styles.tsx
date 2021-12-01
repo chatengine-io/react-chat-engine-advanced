@@ -1,11 +1,9 @@
-import { Properties } from 'csstype';
-
 export interface RenderTriggerStyles {
-  style?: Properties;
+  style?: React.CSSProperties;
 }
 
 export const styles: RenderTriggerStyles = {
   style: {
     fontFamily: 'Avenir',
-  } as Properties,
+  },
 };

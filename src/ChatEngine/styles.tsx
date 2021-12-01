@@ -1,21 +1,19 @@
-import { Properties } from 'csstype';
-
 export interface ChatEngineStyles {
-  chatEngineStyle?: Properties;
-  chatListColumnStyle?: Properties;
-  chatFeedColumnStyle?: Properties;
-  chatSettingsColumnStyle?: Properties;
+  chatEngineStyle?: React.CSSProperties;
+  chatListColumnStyle?: React.CSSProperties;
+  chatFeedColumnStyle?: React.CSSProperties;
+  chatSettingsColumnStyle?: React.CSSProperties;
 }
 
 export const styles: ChatEngineStyles = {
-  chatEngineStyle: { position: 'relative' } as Properties,
+  chatEngineStyle: { position: 'relative' },
   chatListColumnStyle: {
     height: '100%',
     borderRight: '1px solid #afafaf',
-  } as Properties,
-  chatFeedColumnStyle: { height: '100%' } as Properties,
+  },
+  chatFeedColumnStyle: { height: '100%' },
   chatSettingsColumnStyle: {
     height: '100%',
     borderLeft: '1px solid #afafaf',
-  } as Properties,
+  },
 };

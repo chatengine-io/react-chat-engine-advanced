@@ -1,22 +1,20 @@
-import { Properties } from 'csstype';
-
 export interface MessageStyle {
-  messageStyle?: Properties;
-  messageDateTimeStyle?: Properties;
-  messageSenderUsernameStyle?: Properties;
-  messageAttachmentsStyle?: Properties;
-  messageAttachmentsImageStyle?: Properties;
-  messageAttachmentsFileStyle?: Properties;
-  messageBodyStyle?: Properties;
-  messageTimeTagStyle?: Properties;
-  messageBubbleStyle?: Properties;
-  messageReadsStyle?: Properties;
-  messageReadStyle?: Properties;
-  messageAvatarStyle?: Properties;
+  messageStyle?: React.CSSProperties;
+  messageDateTimeStyle?: React.CSSProperties;
+  messageSenderUsernameStyle?: React.CSSProperties;
+  messageAttachmentsStyle?: React.CSSProperties;
+  messageAttachmentsImageStyle?: React.CSSProperties;
+  messageAttachmentsFileStyle?: React.CSSProperties;
+  messageBodyStyle?: React.CSSProperties;
+  messageTimeTagStyle?: React.CSSProperties;
+  messageBubbleStyle?: React.CSSProperties;
+  messageReadsStyle?: React.CSSProperties;
+  messageReadStyle?: React.CSSProperties;
+  messageAvatarStyle?: React.CSSProperties;
 }
 
 export const theirStyles: MessageStyle = {
-  messageStyle: { width: '100%', position: 'relative' } as Properties,
+  messageStyle: { width: '100%', position: 'relative' },
   messageSenderUsernameStyle: {
     width: 'calc(100% - 64px)',
     fontFamily: 'Avenir',
@@ -24,16 +22,16 @@ export const theirStyles: MessageStyle = {
     paddingBottom: '2px',
     color: 'rgba(0, 0, 0, .40)',
     fontSize: '15px',
-  } as Properties,
+  },
   messageAttachmentsStyle: {
     display: 'auto',
     paddingLeft: '48px',
     width: 'calc(100% - 48px)',
-  } as Properties,
+  },
   messageBodyStyle: {
     position: 'relative',
     width: 'calc(100% - 2px)',
-  } as Properties,
+  },
   messageTimeTagStyle: {
     marginLeft: '4px',
     fontSize: '14px',
@@ -43,7 +41,7 @@ export const theirStyles: MessageStyle = {
     transition: 'all .15s ease',
     WebkitTransition: 'all .15s ease',
     MozTransition: 'all .15s ease',
-  } as Properties,
+  },
   messageBubbleStyle: {
     cursor: 'pointer',
     display: 'inline-block',
@@ -59,39 +57,39 @@ export const theirStyles: MessageStyle = {
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
-  } as Properties,
+  },
   messageReadsStyle: {
     marginLeft: '48px',
     width: 'calc(100% - 50px)',
-  } as Properties,
+  },
   messageReadStyle: {
     marginLeft: '4px',
     display: 'inline-block',
-  } as Properties,
+  },
   messageAvatarStyle: {
     position: 'absolute',
     bottom: '0px',
     left: '2px',
-  } as Properties,
+  },
 };
 
 export const myStyles: MessageStyle = {
   messageStyle: {
     width: '100%',
     textAlign: 'right',
-  } as Properties,
+  },
   messageSenderUsernameStyle: {
     display: 'none',
-  } as Properties,
+  },
   messageAttachmentsStyle: {
     display: 'auto',
     paddingLeft: '48px',
     width: 'calc(100% - 48px)',
-  } as Properties,
+  },
   messageBodyStyle: {
     position: 'relative',
     width: 'calc(100% - 2px)',
-  } as Properties,
+  },
   messageTimeTagStyle: {
     marginRight: '4px',
     fontSize: '14px',
@@ -101,7 +99,7 @@ export const myStyles: MessageStyle = {
     transition: 'all .15s ease',
     WebkitTransition: 'all .15s ease',
     MozTransition: 'all .15s ease',
-  } as Properties,
+  },
   messageBubbleStyle: {
     color: 'white',
     display: 'inline-block',
@@ -119,8 +117,8 @@ export const myStyles: MessageStyle = {
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
-  } as Properties,
-  messageReadsStyle: { width: '100%' } as Properties,
-  messageReadStyle: { float: 'right', marginLeft: '4px' } as Properties,
-  messageAvatarStyle: { display: 'none' } as Properties,
+  },
+  messageReadsStyle: { width: '100%' },
+  messageReadStyle: { float: 'right', marginLeft: '4px' },
+  messageAvatarStyle: { display: 'none' },
 };

@@ -1,8 +1,6 @@
-import { Properties } from 'csstype';
-
 export interface AvatarStyles {
-  style?: Properties;
-  statusStyle?: Properties;
+  style?: React.CSSProperties;
+  statusStyle?: React.CSSProperties;
 }
 
 export const styles: AvatarStyles = {
@@ -24,7 +22,7 @@ export const styles: AvatarStyles = {
     fontFamily: 'Avenir',
     fontSize: '15px',
     fontWeight: 600,
-  } as Properties,
+  },
   statusStyle: {
     // Position
     position: 'absolute',
@@ -35,5 +33,5 @@ export const styles: AvatarStyles = {
     height: '8px',
     borderRadius: '100%',
     border: '2px solid white',
-  } as Properties,
+  },
 };

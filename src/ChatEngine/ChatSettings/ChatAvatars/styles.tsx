@@ -1,18 +1,16 @@
-import { Properties } from 'csstype';
-
 export interface ChatAvatarsStyle {
-  chatAvatarsStyle?: Properties;
+  chatAvatarsStyle?: React.CSSProperties;
   oneAvatarStyle?: {
-    avatarOne: Properties;
+    avatarOne: React.CSSProperties;
   };
   twoAvatarsStyle?: {
-    avatarOne: Properties;
-    avatarTwo: Properties;
+    avatarOne: React.CSSProperties;
+    avatarTwo: React.CSSProperties;
   };
   threeAvatarsStyle?: {
-    avatarOne: Properties;
-    avatarTwo: Properties;
-    avatarThree: Properties;
+    avatarOne: React.CSSProperties;
+    avatarTwo: React.CSSProperties;
+    avatarThree: React.CSSProperties;
   };
 }
 
@@ -21,41 +19,41 @@ export const styles: ChatAvatarsStyle = {
     width: '100%',
     paddingTop: '12px',
     height: 'calc(44px + 14px)',
-  } as Properties,
+  },
   oneAvatarStyle: {
     avatarOne: {
       float: 'left',
       position: 'relative',
       left: 'calc(50% - 22px)',
-    } as Properties,
+    },
   },
   twoAvatarsStyle: {
     avatarOne: {
       float: 'left',
       position: 'relative',
       left: 'calc(50% - 22px - 15px)',
-    } as Properties,
+    },
     avatarTwo: {
       float: 'left',
       position: 'relative',
       left: 'calc(50% - 44px - 22px + 15px)',
-    } as Properties,
+    },
   },
   threeAvatarsStyle: {
     avatarOne: {
       float: 'left',
       position: 'relative',
       left: 'calc(50% - 22px - 24px)',
-    } as Properties,
+    },
     avatarTwo: {
       float: 'left',
       position: 'relative',
       left: 'calc(50% - 24px - 44px)',
-    } as Properties,
+    },
     avatarThree: {
       float: 'left',
       position: 'relative',
       left: 'calc(50% - 22px - 44px - 44px + 24px)',
-    } as Properties,
+    },
   },
 };

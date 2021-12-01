@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { Properties } from 'csstype';
-
 import { Props } from './props';
 
 export const Button = ({
@@ -18,7 +16,7 @@ export const Button = ({
     } else if (type === 'danger') {
       return dangerStyle;
     } else {
-      return {} as Properties;
+      return {} as React.CSSProperties;
     }
   };
 
@@ -60,16 +58,16 @@ const defaultStyle = {
   transition: 'all .44s ease',
   WebkitTransition: 'all .44s ease',
   MozTransition: 'all .44s ease',
-} as Properties;
+} as React.CSSProperties;
 
 const primaryStyle = {
   color: 'white',
   border: 'none',
   backgroundColor: '#1890ff',
-} as Properties;
+} as React.CSSProperties;
 
 const dangerStyle = {
   color: '#f5222d',
   backgroundColor: 'white',
   border: '1px solid #f5222d',
-} as Properties;
+} as React.CSSProperties;

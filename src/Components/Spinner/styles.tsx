@@ -1,7 +1,5 @@
-import { Properties } from 'csstype';
-
 export interface SpinnerStyles {
-  style?: Properties;
+  style?: React.CSSProperties;
 }
 
 export const styles: SpinnerStyles = {

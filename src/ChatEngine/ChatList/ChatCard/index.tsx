@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { Properties } from 'csstype';
-
 import { Props } from './props';
 import { styles } from './styles';
 
@@ -10,11 +8,11 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
 
   const [hovered, setHovered] = useState<boolean>(false);
 
-  const loadingBarStyle: Properties = props.isLoading
+  const loadingBarStyle: React.CSSProperties = props.isLoading
     ? { ...styles.chatCardLoadingBarStyle, ...props.chatCardLoadingBarStyle }
     : {};
 
-  const hasNotificationStyle: Properties = props.hasNotification
+  const hasNotificationStyle: React.CSSProperties = props.hasNotification
     ? {}
     : { display: 'none' };
 

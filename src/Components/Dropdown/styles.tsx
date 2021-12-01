@@ -1,12 +1,10 @@
-import { Properties } from 'csstype';
-
 export interface DropdownStyles {
-  style?: Properties;
-  barStyle?: Properties;
-  hoveredStyle?: Properties;
-  iconStyle?: Properties;
-  bodyStyle?: Properties;
-  selectedStyle?: Properties;
+  style?: React.CSSProperties;
+  barStyle?: React.CSSProperties;
+  hoveredStyle?: React.CSSProperties;
+  iconStyle?: React.CSSProperties;
+  bodyStyle?: React.CSSProperties;
+  selectedStyle?: React.CSSProperties;
 }
 
 export const styles: DropdownStyles = {

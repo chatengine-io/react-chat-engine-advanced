@@ -1,8 +1,6 @@
-import { Properties } from 'csstype';
-
 export interface ImageStyles {
-  style?: Properties;
-  hoveredStyle?: Properties;
+  style?: React.CSSProperties;
+  hoveredStyle?: React.CSSProperties;
 }
 
 export const styles: ImageStyles = {
@@ -21,6 +19,6 @@ export const styles: ImageStyles = {
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
-  } as Properties,
-  hoveredStyle: { border: '1px solid #1890ff' } as Properties,
+  },
+  hoveredStyle: { border: '1px solid #1890ff' },
 };
