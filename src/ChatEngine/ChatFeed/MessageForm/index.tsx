@@ -19,10 +19,10 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
   const [buttonHover, setButtonHover] = useState<boolean>(false);
   const [attachments, setAttachments] = useState<Array<File>>([]);
 
-  const overflowStyle: Properties = {
+  const overflowStyle: React.CSSProperties = {
     overflowY: height === 150 ? 'scroll' : 'hidden',
   };
-  const buttonHoverStyle: Properties = {
+  const buttonHoverStyle: React.CSSProperties = {
     backgroundColor: buttonHover ? '#40a9ff' : '#1890ff',
   };
 
@@ -117,9 +117,9 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
 
   return (
     <div
-      id="msg-form-container"
-      style={{ ...styles.messageFormStyle, ...props.messageFormStyle }}
-      className="ce-message-form-container"
+      id="ce-message-form"
+      style={{ ...styles.style, ...props.style }}
+      className="ce-message-form"
     >
       <div>{renderAttachments(true)}</div>
 
@@ -128,12 +128,12 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
       <span>
         <textarea
           id="msg-textarea"
-          className="ce-input ce-textarea-input"
+          className="ce-message-form-input"
           rows={1}
           style={{
-            ...styles.messageFormInputStyle,
+            ...styles.inputStyle,
             ...overflowStyle,
-            ...props.messageFormInputStyle,
+            ...props.inputStyle,
           }}
           value={value}
           placeholder={label}
@@ -147,8 +147,8 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
           onSelectFiles={(files) => {
             files !== null && setAttachments(Array.from(files));
           }}
-          attachmentInputStyle={props.attachmentInputStyle}
-          attachmentInputIconStyle={props.attachmentInputIconStyle}
+          style={props.attachmentInputStyle}
+          iconStyle={props.attachmentInputIconStyle}
         />
       </span>
 
@@ -159,9 +159,9 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
           onMouseLeave={() => setButtonHover(false)}
           onClick={() => onSubmit && onSubmit(value, attachments)}
           style={{
-            ...styles.messageFormSendButtonStyle,
+            ...styles.sendButtonStyle,
             ...buttonHoverStyle,
-            ...props.messageFormSendButtonStyle,
+            ...props.sendButtonStyle,
           }}
         >
           Send

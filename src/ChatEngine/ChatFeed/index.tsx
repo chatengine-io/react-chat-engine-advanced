@@ -66,7 +66,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
         label="Send a message..."
         onSubmit={props.onMessageSend}
         renderMessageForm={props.renderMessageForm}
-        messageFormStyle={{
+        style={{
           ...styles.messageFormStyle,
           ...props.messageFormStyle,
         }}

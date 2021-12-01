@@ -6,8 +6,8 @@ import { Props } from './props';
   title="ChatEngine/ChatFeed/MessageForm/AttachmentInput"
   component={AttachmentInput}
   argTypes={{
-    attachmentInputStyle: { table: { category: 'styles' } },
-    attachmentInputIconStyle: { table: { category: 'styles' } },
+    style: { table: { category: 'styles' } },
+    iconStyle: { table: { category: 'styles' } },
   }}
 />
 
@@ -38,8 +38,8 @@ To customize the look and feel, use the `*Style` props.
   <Story
     name="Custom Style"
     args={{
-      attachmentInputStyle: { border: '2px solid red' },
-      attachmentInputIconStyle: { border: '2px solid blue' },
+      style: { border: '2px solid red' },
+      iconStyle: { border: '2px solid blue' },
     }}
   >
     {Template.bind({})}

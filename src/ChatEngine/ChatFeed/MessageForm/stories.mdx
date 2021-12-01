@@ -6,9 +6,9 @@ import { Props } from './props';
   title="ChatEngine/ChatFeed/MessageForm"
   component={MessageForm}
   argTypes={{
-    messageFormStyle: { table: { category: 'styles' } },
-    messageFormInputStyle: { table: { category: 'styles' } },
-    messageFormSendButtonStyle: { table: { category: 'styles' } },
+    style: { table: { category: 'styles' } },
+    inputStyle: { table: { category: 'styles' } },
+    sendButtonStyle: { table: { category: 'styles' } },
     attachmentInputStyle: { table: { category: 'styles' } },
     attachmentInputIconStyle: { table: { category: 'styles' } },
     draftAttachmentStyle: { table: { category: 'styles' } },
@@ -29,7 +29,7 @@ This message form is for making and sending messages.
 <Story
   name="Default"
   args={{
-    messageFormStyle: {
+    style: {
       maxWidth: '600px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -48,7 +48,7 @@ You can render you own code instead of this component with the `render*` functio
   <Story
     name="Render Function"
     args={{
-      messageFormStyle: {
+      style: {
         maxWidth: '600px',
         border: '2px solid red',
       },
@@ -73,12 +73,12 @@ export const StyleTemplate = (args) => <MessageForm {...args} />;
   <Story
     name="Custom Style"
     args={{
-      messageFormStyle: {
+      style: {
         maxWidth: '600px',
         border: '2px solid red',
       },
-      messageFormInputStyle: { border: '2px solid green' },
-      messageFormSendButtonStyle: { border: '2px solid blue' },
+      inputStyle: { border: '2px solid green' },
+      sendButtonStyle: { border: '2px solid blue' },
       draftAttachmentStyle: { border: '2px solid orange' },
       draftAttachmentRemoveStyle: { border: '2px solid purple' },
       attachmentInputStyle: { border: '2px solid yellow', padding: '6px 8px' },

@@ -1,9 +1,9 @@
-import { AttachmentInputStyles } from './AttachmentInput/styles';
-
-export interface MessageFormStyles extends AttachmentInputStyles {
-  messageFormStyle?: React.CSSProperties;
-  messageFormInputStyle?: React.CSSProperties;
-  messageFormSendButtonStyle?: React.CSSProperties;
+export interface MessageFormStyles {
+  style?: React.CSSProperties;
+  inputStyle?: React.CSSProperties;
+  sendButtonStyle?: React.CSSProperties;
+  attachmentInputStyle?: React.CSSProperties;
+  attachmentInputIconStyle?: React.CSSProperties;
   draftAttachmentStyle?: React.CSSProperties;
   draftAttachmentRemoveStyle?: React.CSSProperties;
   draftImageStyle?: React.CSSProperties;
@@ -11,10 +11,10 @@ export interface MessageFormStyles extends AttachmentInputStyles {
 }
 
 export const styles: MessageFormStyles = {
-  messageFormStyle: {
+  style: {
     paddingTop: '4px',
   },
-  messageFormInputStyle: {
+  inputStyle: {
     border: '1px solid white',
     width: 'calc(100% - 24px - 116px)',
     outline: 'none',
@@ -28,7 +28,7 @@ export const styles: MessageFormStyles = {
     position: 'relative',
     top: '6px',
   },
-  messageFormSendButtonStyle: {
+  sendButtonStyle: {
     cursor: 'pointer',
     fontFamily: 'Avenir',
     display: 'inline-block',
