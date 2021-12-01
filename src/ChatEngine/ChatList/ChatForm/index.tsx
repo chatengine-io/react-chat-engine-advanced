@@ -28,15 +28,15 @@ export const ChatForm: React.FC<Props> = (props: Props) => {
     <div
       className="ce-chat-form"
       style={{
-        ...styles.chatFormStyle,
-        ...props.chatFormStyle,
+        ...styles.style,
+        ...props.style,
       }}
     >
       {!selected && (
         <span
           style={{
-            ...styles.myChatsTitleStyle,
-            ...props.myChatsTitleStyle,
+            ...styles.titleStyle,
+            ...props.titleStyle,
           }}
         >
           My Chats
@@ -46,8 +46,8 @@ export const ChatForm: React.FC<Props> = (props: Props) => {
       {!selected && (
         <Button
           style={{
-            ...styles.chatFormButtonStyle,
-            ...props.chatFormButtonStyle,
+            ...styles.buttonStyle,
+            ...props.buttonStyle,
           }}
           id="new-chat-plus-button"
           onClick={() => setSelected(true)}
@@ -65,8 +65,8 @@ export const ChatForm: React.FC<Props> = (props: Props) => {
             id="ce-new-chat-title-field"
             onBlur={() => setSelected(false)}
             style={{
-              ...styles.chatFormInputStyle,
-              ...props.chatFormInputStyle,
+              ...styles.inputStyle,
+              ...props.inputStyle,
             }}
             onChange={onChange}
           />

@@ -28,7 +28,7 @@ const renderLoading = () => {
 };
 
 export const ChatList: React.FC<Props> = (props: Props) => {
-  const { activeChatKey = -1, isLoading } = props;
+  const { activeChatKey = -1 } = props;
 
   const renderChats = (chats: Array<ChatProps>) => {
     return chats.map((chat, index) => {
@@ -65,13 +65,11 @@ export const ChatList: React.FC<Props> = (props: Props) => {
       className="ce-chat-list"
       style={{
         // Default
-        ...styles.chatListStyle,
+        ...styles.style,
         // State
-        ...(isLoading ? styles.chatListLoadingStyle : {}),
+        ...(props.isLoading ? { overflowY: 'hidden' } : {}),
         // Props
-        ...props.chatListStyle,
-        // Props + State
-        ...(isLoading ? props.chatListLoadingStyle : {}),
+        ...props.style,
       }}
     >
       <ChatForm
@@ -79,14 +77,16 @@ export const ChatList: React.FC<Props> = (props: Props) => {
         renderChatForm={props.renderChatForm}
       />
 
-      {isLoading ? renderLoading() : renderChats(Object.values(props.chats))}
+      {props.isLoading
+        ? renderLoading()
+        : renderChats(Object.values(props.chats))}
 
       {props.hasMoreChats && (
         <RenderTrigger
           onShow={props.onChatLoaderVisible}
           style={{
-            ...styles.chatListLoadTriggerStyle,
-            ...props.chatListLoadTriggerStyle,
+            ...styles.loadingMoreChatsStyle,
+            ...props.loadingMoreChatsStyle,
           }}
           children={<Spinner />}
         />

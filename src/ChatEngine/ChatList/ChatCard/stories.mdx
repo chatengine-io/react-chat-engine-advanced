@@ -13,14 +13,14 @@ import { Props } from './props';
     isLoading: { table: { category: 'state' } },
     onClick: { table: { category: 'hooks' } },
     renderChatCard: { table: { category: 'render functions' } },
-    chatCardStyle: { table: { category: 'styles' } },
-    hoveredChatCardStyle: { table: { category: 'styles' } },
-    activeChatCardStyle: { table: { category: 'styles' } },
-    chatCardTitleStyle: { table: { category: 'styles' } },
-    chatCardNotificationStyle: { table: { category: 'styles' } },
-    chatCardSubtitleStyle: { table: { category: 'styles' } },
-    chatCardTimeStampStyle: { table: { category: 'styles' } },
-    chatCardLoadingBarStyle: { table: { category: 'styles' } },
+    style: { table: { category: 'styles' } },
+    hoveredStyle: { table: { category: 'styles' } },
+    activeStyle: { table: { category: 'styles' } },
+    titleStyle: { table: { category: 'styles' } },
+    notificationStyle: { table: { category: 'styles' } },
+    subtitleStyle: { table: { category: 'styles' } },
+    timeStampStyle: { table: { category: 'styles' } },
+    loadingBarStyle: { table: { category: 'styles' } },
   }}
 />
 
@@ -38,7 +38,7 @@ The Chat Card component represents a Chat room to click on.
     title: 'Chat Card',
     description: 'This is where the magic happens',
     timeStamp: '4:24 PM',
-    chatCardStyle: {
+    style: {
       maxWidth: '400px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -61,7 +61,7 @@ You can see a notification dot if `hasNotification` is `true`.
       description: 'Alert alert!!!',
       timeStamp: 'Tues',
       hasNotification: true,
-      chatCardStyle: {
+      style: {
         maxWidth: '400px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
@@ -83,7 +83,7 @@ By default, the Chat Card component appears darker when `isActive` is `true`.
       description: 'You are in this chat now...',
       timeStamp: '12:59 PM',
       isActive: true,
-      chatCardStyle: {
+      style: {
         maxWidth: '400px',
       },
     }}
@@ -104,7 +104,7 @@ You can see data has not appeared yet if `isLoading` is `true`.
       description: 'Alert alert!!!',
       timeStamp: 'Tues',
       isLoading: true,
-      chatCardStyle: {
+      style: {
         maxWidth: '400px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
@@ -144,17 +144,17 @@ There are a list of `*Style` props which customize various parts of the componen
       description: 'Alert alert!!!',
       timeStamp: 'Tues',
       hasNotification: true,
-      chatCardStyle: {
+      style: {
         maxWidth: '400px',
         border: '2px solid red',
       },
-      hoveredChatCardStyle: { border: '2px solid lime' },
-      activeChatCardStyle: { border: '2px solid pink' },
-      chatCardTitleStyle: { border: '2px solid blue' },
-      chatCardNotificationStyle: { border: '2px solid deeppink' },
-      chatCardSubtitleStyle: { border: '2px solid green' },
-      chatCardTimeStampStyle: { border: '2px solid orange' },
-      chatCardLoadingBarStyle: { border: '2px solid purple' },
+      hoveredStyle: { border: '2px solid lime' },
+      activeStyle: { border: '2px solid pink' },
+      titleStyle: { border: '2px solid blue' },
+      notificationStyle: { border: '2px solid deeppink' },
+      subtitleStyle: { border: '2px solid green' },
+      timeStampStyle: { border: '2px solid orange' },
+      loadingBarStyle: { border: '2px solid purple' },
     }}
   >
     {Template.bind({})}

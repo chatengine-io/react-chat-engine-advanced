@@ -9,7 +9,7 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
   const loadingBarStyle: React.CSSProperties = props.isLoading
-    ? { ...styles.chatCardLoadingBarStyle, ...props.chatCardLoadingBarStyle }
+    ? { ...styles.loadingBarStyle, ...props.loadingBarStyle }
     : {};
 
   const hasNotificationStyle: React.CSSProperties = props.hasNotification
@@ -27,15 +27,15 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
       onMouseLeave={() => setHovered(false)}
       style={{
         // Default
-        ...styles.chatCardStyle,
+        ...styles.style,
         // State
-        ...(hovered ? styles.hoveredChatCardStyle : {}),
-        ...(props.isActive ? styles.activeChatCardStyle : {}),
+        ...(hovered ? styles.hoveredStyle : {}),
+        ...(props.isActive ? styles.activeStyle : {}),
         // Props
-        ...props.chatCardStyle,
+        ...props.style,
         // Props + State
-        ...(hovered ? props.hoveredChatCardStyle : {}),
-        ...(props.isActive ? props.activeChatCardStyle : {}),
+        ...(hovered ? props.hoveredStyle : {}),
+        ...(props.isActive ? props.activeStyle : {}),
       }}
       className={`
         ce-chat-card 
@@ -46,9 +46,9 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
       <div
         className="ce-chat-card-title"
         style={{
-          ...styles.chatCardTitleStyle,
+          ...styles.titleStyle,
           ...loadingBarStyle,
-          ...props.chatCardTitleStyle,
+          ...props.titleStyle,
         }}
         id={`ce-chat-card-title-${title}`}
       >
@@ -58,19 +58,19 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
       <div
         className="ce-chat-card-unread"
         style={{
-          ...styles.chatCardNotificationStyle,
+          ...styles.notificationStyle,
           ...hasNotificationStyle,
           ...loadingBarStyle,
-          ...props.chatCardNotificationStyle,
+          ...props.notificationStyle,
         }}
       />
 
       <div
         className="ce-chat-card-subtitle"
         style={{
-          ...styles.chatCardSubtitleStyle,
+          ...styles.subtitleStyle,
           ...loadingBarStyle,
-          ...props.chatCardSubtitleStyle,
+          ...props.subtitleStyle,
         }}
       >
         <div
@@ -84,9 +84,9 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
       <div
         className="ce-chat-card-time-stamp"
         style={{
-          ...styles.chatCardTimeStampStyle,
+          ...styles.timeStampStyle,
           ...loadingBarStyle,
-          ...props.chatCardTimeStampStyle,
+          ...props.timeStampStyle,
         }}
       >
         {props.isLoading ? '.' : timeStamp}

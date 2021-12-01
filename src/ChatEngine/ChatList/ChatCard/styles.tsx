@@ -1,16 +1,16 @@
 export interface ChatCardStyle {
-  chatCardStyle?: React.CSSProperties;
-  hoveredChatCardStyle?: React.CSSProperties;
-  activeChatCardStyle?: React.CSSProperties;
-  chatCardTitleStyle?: React.CSSProperties;
-  chatCardNotificationStyle?: React.CSSProperties;
-  chatCardSubtitleStyle?: React.CSSProperties;
-  chatCardTimeStampStyle?: React.CSSProperties;
-  chatCardLoadingBarStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
+  hoveredStyle?: React.CSSProperties;
+  activeStyle?: React.CSSProperties;
+  titleStyle?: React.CSSProperties;
+  notificationStyle?: React.CSSProperties;
+  subtitleStyle?: React.CSSProperties;
+  timeStampStyle?: React.CSSProperties;
+  loadingBarStyle?: React.CSSProperties;
 }
 
 export const styles: ChatCardStyle = {
-  chatCardStyle: {
+  style: {
     position: 'relative',
     height: '64px',
     borderRadius: '12px',
@@ -20,15 +20,15 @@ export const styles: ChatCardStyle = {
     WebkitTransition: 'all .44s ease',
     MozTransition: 'all .44s ease',
   },
-  hoveredChatCardStyle: {
+  hoveredStyle: {
     backgroundColor: '#f5f5f5',
     border: '0px solid white',
   },
-  activeChatCardStyle: {
+  activeStyle: {
     backgroundColor: '#d9d9d9',
     border: '0px solid white',
   },
-  chatCardTitleStyle: {
+  titleStyle: {
     // Position
     position: 'absolute',
     top: '12px',
@@ -41,7 +41,7 @@ export const styles: ChatCardStyle = {
     overflow: 'hidden',
     fontFamily: 'Avenir',
   },
-  chatCardNotificationStyle: {
+  notificationStyle: {
     // Position
     position: 'absolute',
     top: 'calc(12px + 6px)',
@@ -53,7 +53,7 @@ export const styles: ChatCardStyle = {
     backgroundColor: '#1890ff',
     float: 'right',
   },
-  chatCardSubtitleStyle: {
+  subtitleStyle: {
     // Position
     position: 'absolute',
     bottom: '12px',
@@ -67,7 +67,7 @@ export const styles: ChatCardStyle = {
     overflow: 'hidden',
     fontFamily: 'Avenir',
   },
-  chatCardTimeStampStyle: {
+  timeStampStyle: {
     // Position
     position: 'absolute',
     bottom: '12px',
@@ -82,7 +82,7 @@ export const styles: ChatCardStyle = {
     overflow: 'hidden',
     fontFamily: 'Avenir',
   },
-  chatCardLoadingBarStyle: {
+  loadingBarStyle: {
     borderRadius: '4px',
     backgroundColor: '#e2e2e2',
     color: '#e2e2e2',
