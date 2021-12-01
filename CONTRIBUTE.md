@@ -53,12 +53,13 @@ Reference: https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 
 `styles.tsx`
 
-- Style names are generic if in Components/\*
-- Style names are specific if in ChatEngine/\*
-- All styles end with `*Style`
+- Style name for top-level style is `style `
+- Style names for a piece of the component is `[piece]Style`
+- Style names for entire child-components is `[childComponent]?[Piece]Style`
+- Transitive child-components are linked `[childComponent][ChildChildComponent][...]`
 - All styles are camelCase
-- Export Styles interface
-- Apply to `styles` object
+- Export the Styles interface
+- Apply the Styles interface to `styles` object
 
 `props.tsx`
 
