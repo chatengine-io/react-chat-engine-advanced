@@ -3,11 +3,8 @@ import React, { useState } from 'react';
 import { Props } from './props';
 import { styles } from './styles';
 
-export const Image: React.FC<Props> = ({
-  url,
-  style = {},
-  hoveredStyle = {},
-}: Props) => {
+export const Image: React.FC<Props> = (props: Props) => {
+  const { url } = props;
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const loadingUrl = 'https://chat-engine-assets.s3.amazonaws.com/loading.gif';
 
@@ -24,11 +21,9 @@ export const Image: React.FC<Props> = ({
         // State
         ...(isHovered ? styles.hoveredStyle : {}),
         // Props
-        ...style,
+        ...props.style,
         // Props + State
-        ...(isHovered ? hoveredStyle : {}),
-        // Docs: No loadingStyle prop
-        // They can set isLoading so they can pass loadingStyle with style
+        ...(isHovered ? props.hoveredStyle : {}),
       }}
     />
   );

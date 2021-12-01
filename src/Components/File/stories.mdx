@@ -2,7 +2,14 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
 import { File } from '.';
 import { Props } from './props';
 
-<Meta title="Components/File" component={File} />
+<Meta
+  title="Components/File"
+  component={File}
+  argTypes={{
+    style: { table: { category: 'styles' } },
+    hoveredStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <File {...args} />;
 
@@ -25,7 +32,7 @@ The File component represents any Message Attachment which cannot be put into an
 
 ## Is Loading
 
-If you do not set an `url` the image is considered loading. And will show the following loading `.gif`.
+If you do not set an `url` the image is considered loading. And will show the following loading text + emoji.
 
 <Story name="Is Loading" args={{}}>
   {Template.bind({})}
@@ -33,7 +40,7 @@ If you do not set an `url` the image is considered loading. And will show the fo
 
 ## File Name
 
-If you do not set an `url` the image is considered loading. And will show the following loading `.gif`.
+You can also specify the file name with the `fileName` prop and render your own content.
 
 <Story
   name="File Name"
@@ -53,8 +60,8 @@ You can customize the look and feel with the `*Style` props and change the CSS f
   name="Custom Style"
   args={{
     url: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
-    style: { border: '4px solid red' },
-    hoveredStyle: { border: '4px solid green' },
+    style: { border: '2px solid red' },
+    hoveredStyle: { border: '2px solid blue' },
   }}
 >
   {Template.bind({})}
