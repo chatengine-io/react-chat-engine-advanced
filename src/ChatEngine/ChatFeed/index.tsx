@@ -43,7 +43,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
         title={chat ? chat.title : <Spinner />}
         description={getDescription()}
         renderChatHeader={props.renderChatHeader}
-        chatHeaderStyle={{
+        style={{
           ...styles.chatHeaderStyle,
           ...props.chatHeaderStyle,
         }}

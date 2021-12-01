@@ -1,12 +1,12 @@
 export interface ChatHeaderStyles {
-  chatHeaderStyle?: React.CSSProperties;
-  chatHeaderTitleStyle?: React.CSSProperties;
-  chatHeaderSubtitleStyle?: React.CSSProperties;
-  chatHeaderMobileOptionStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
+  titleStyle?: React.CSSProperties;
+  subtitleStyle?: React.CSSProperties;
+  mobileOptionStyle?: React.CSSProperties;
 }
 
 export const styles: ChatHeaderStyles = {
-  chatHeaderStyle: {
+  style: {
     width: '100%',
     zIndex: 1,
     backgroundColor: 'rgb(256, 256, 256, 0.92)',
@@ -15,18 +15,18 @@ export const styles: ChatHeaderStyles = {
     color: 'rgb(24, 144, 255)',
     overflowX: 'hidden',
   },
-  chatHeaderTitleStyle: {
+  titleStyle: {
     width: '100%',
     fontFamily: 'Avenir',
     fontSize: '24px',
     fontWeight: 600,
   },
-  chatHeaderSubtitleStyle: {
+  subtitleStyle: {
     width: '100%',
     fontFamily: 'Avenir',
     fontSize: '12px',
   },
-  chatHeaderMobileOptionStyle: {
+  mobileOptionStyle: {
     width: '100%',
     top: '32px',
     textAlign: 'center',

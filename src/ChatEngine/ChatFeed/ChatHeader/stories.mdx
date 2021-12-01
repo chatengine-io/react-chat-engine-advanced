@@ -6,10 +6,10 @@ import { ChatHeader } from '.';
   title="ChatEngine/ChatFeed/ChatHeader"
   component={ChatHeader}
   argTypes={{
-    chatHeaderStyle: { table: { category: 'styles' } },
-    chatHeaderTitleStyle: { table: { category: 'styles' } },
-    chatHeaderSubtitleStyle: { table: { category: 'styles' } },
-    chatHeaderMobileOptionStyle: { table: { category: 'styles' } },
+    style: { table: { category: 'styles' } },
+    titleStyle: { table: { category: 'styles' } },
+    subtitleStyle: { table: { category: 'styles' } },
+    mobileOptionStyle: { table: { category: 'styles' } },
   }}
 />
 
@@ -63,10 +63,10 @@ You can customize the look and feel with the `*Style` props.
       id: 1,
       title: 'Magic Club',
       description: 'Where the magic happens...',
-      chatHeaderStyle: { border: '3px solid red' },
-      chatHeaderTitleStyle: { border: '3px solid blue' },
-      chatHeaderSubtitleStyle: { border: '3px solid green' },
-      chatHeaderMobileOptionStyle: { border: '3px solid orange' },
+      style: { border: '3px solid red' },
+      titleStyle: { border: '3px solid blue' },
+      subtitleStyle: { border: '3px solid green' },
+      mobileOptionStyle: { border: '3px solid orange' },
     }}
   >
     {Template.bind({})}
