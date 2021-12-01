@@ -49,7 +49,7 @@ export const MessageList: React.FC<Props> = (props: Props) => {
             showDateTime={showDateTime}
             isMyMessage={isMyMessage}
             renderMessage={props.renderMessage}
-            messageStyle={{ ...styles.messageStyle, ...props.messageStyle }}
+            style={{ ...styles.messageStyle, ...props.messageStyle }}
           />
         </div>
       );

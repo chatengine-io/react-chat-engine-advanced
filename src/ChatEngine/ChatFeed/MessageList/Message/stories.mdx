@@ -14,18 +14,18 @@ import {
   title="ChatEngine/ChatFeed/MessageList/Message"
   component={Message}
   argTypes={{
-    messageStyle: { table: { category: 'styles' } },
-    messageDateTimeStyle: { table: { category: 'styles' } },
-    messageSenderUsernameStyle: { table: { category: 'styles' } },
-    messageAttachmentsStyle: { table: { category: 'styles' } },
-    messageAttachmentsImageStyle: { table: { category: 'styles' } },
-    messageAttachmentsFileStyle: { table: { category: 'styles' } },
-    messageBodyStyle: { table: { category: 'styles' } },
-    messageTimeTagStyle: { table: { category: 'styles' } },
-    messageBubbleStyle: { table: { category: 'styles' } },
-    messageReadsStyle: { table: { category: 'styles' } },
-    messageReadStyle: { table: { category: 'styles' } },
-    messageAvatarStyle: { table: { category: 'styles' } },
+    style: { table: { category: 'styles' } },
+    dateTimeStyle: { table: { category: 'styles' } },
+    senderUsernameStyle: { table: { category: 'styles' } },
+    attachmentsStyle: { table: { category: 'styles' } },
+    attachmentsImageStyle: { table: { category: 'styles' } },
+    attachmentsFileStyle: { table: { category: 'styles' } },
+    bodyStyle: { table: { category: 'styles' } },
+    timeTagStyle: { table: { category: 'styles' } },
+    bubbleStyle: { table: { category: 'styles' } },
+    readsStyle: { table: { category: 'styles' } },
+    readStyle: { table: { category: 'styles' } },
+    avatarStyle: { table: { category: 'styles' } },
   }}
 />
 
@@ -166,19 +166,19 @@ You can use the `*Style` props, to customize every aspect of a Message component
     args={{
       message: messagePlusAttachments1004,
       chat: chatWithReads,
-      messageStyle: { border: '2px solid red' },
-      messageDateTimeStyle: { border: '2px solid blue' },
-      messageSenderUsernameStyle: { border: '2px solid green' },
-      messageAttachmentsStyle: { border: '2px solid orange' },
-      messageAttachmentsImageStyle: { border: '2px solid gold' },
-      messageAttachmentsFileStyle: { border: '2px solid olive' },
-      messageAttachmentsStyle: { border: '2px solid orange' },
-      messageBodyStyle: { border: '2px solid yellow' },
-      messageTimeTagStyle: { border: '2px solid brown' },
-      messageBubbleStyle: { border: '2px solid lime' },
-      messageReadsStyle: { border: '2px solid grey' },
-      messageReadStyle: { border: '2px solid cyan' },
-      messageAvatarStyle: { border: '2px solid deeppink' },
+      style: { border: '2px solid red' },
+      dateTimeStyle: { border: '2px solid blue' },
+      senderUsernameStyle: { border: '2px solid green' },
+      attachmentsStyle: { border: '2px solid orange' },
+      attachmentsImageStyle: { border: '2px solid gold' },
+      attachmentsFileStyle: { border: '2px solid olive' },
+      attachmentsStyle: { border: '2px solid orange' },
+      bodyStyle: { border: '2px solid yellow' },
+      timeTagStyle: { border: '2px solid brown' },
+      bubbleStyle: { border: '2px solid lime' },
+      readsStyle: { border: '2px solid grey' },
+      readStyle: { border: '2px solid cyan' },
+      avatarStyle: { border: '2px solid deeppink' },
     }}
   >
     {Template.bind({})}

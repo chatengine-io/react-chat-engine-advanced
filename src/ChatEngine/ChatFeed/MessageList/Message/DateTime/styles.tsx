@@ -1,9 +1,9 @@
 export interface DateTimeStyles {
-  dateTimeStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
 }
 
 export const styles: DateTimeStyles = {
-  dateTimeStyle: {
+  style: {
     width: '100%',
     fontFamily: 'Avenir',
     textAlign: 'center',
