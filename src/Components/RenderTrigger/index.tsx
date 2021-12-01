@@ -4,21 +4,18 @@ import { Props } from './props';
 
 import { styles } from './styles';
 
-export const RenderTrigger: React.FC<Props> = ({
-  onShow,
-  onHide,
-  style = {},
-  children = 'Loading...',
-}) => {
+export const RenderTrigger: React.FC<Props> = (props: Props) => {
+  const { children = 'Loading...' } = props;
+
   const useOnScreen = (ref: React.RefObject<HTMLDivElement>) => {
     const [isIntersecting, setIntersecting] = useState(false);
 
     const observer = new IntersectionObserver(([entry]) => {
       setIntersecting(entry.isIntersecting);
       if (entry.isIntersecting) {
-        onShow && onShow();
+        props.onShow && props.onShow();
       } else {
-        onHide && onHide();
+        props.onHide && props.onHide();
       }
     });
 
@@ -36,7 +33,7 @@ export const RenderTrigger: React.FC<Props> = ({
   return (
     <div
       ref={ref}
-      style={{ ...styles.style, ...style }}
+      style={{ ...styles.style, ...props.style }}
       className="ce-chat-loader"
     >
       {children}

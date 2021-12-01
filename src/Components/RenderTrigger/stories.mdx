@@ -4,7 +4,16 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { RenderTrigger } from '.';
 import { Props } from './props';
 
-<Meta title="Components/RenderTrigger" component={RenderTrigger} />
+<Meta
+  title="Components/RenderTrigger"
+  component={RenderTrigger}
+  argTypes={{
+    children,
+    onHide: { table: { category: 'hooks' } },
+    onShow: { table: { category: 'hooks' } },
+    style: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <RenderTrigger {...args} />;
 
