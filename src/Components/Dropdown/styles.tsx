@@ -1,10 +1,10 @@
 export interface DropdownStyles {
   style?: React.CSSProperties;
   barStyle?: React.CSSProperties;
-  hoveredStyle?: React.CSSProperties;
+  barHoveredStyle?: React.CSSProperties;
   iconStyle?: React.CSSProperties;
   bodyStyle?: React.CSSProperties;
-  selectedStyle?: React.CSSProperties;
+  bodyExpandedStyle?: React.CSSProperties;
 }
 
 export const styles: DropdownStyles = {
@@ -21,7 +21,7 @@ export const styles: DropdownStyles = {
     padding: '12px',
     fontWeight: 600,
   },
-  hoveredStyle: {
+  barHoveredStyle: {
     backgroundColor: '#f0f0f0',
   },
   iconStyle: {
@@ -39,5 +39,5 @@ export const styles: DropdownStyles = {
     WebkitTransition: 'all 1.33s ease',
     MozTransition: 'all 1.33s ease',
   },
-  selectedStyle: { height: 'auto' },
+  bodyExpandedStyle: { height: 'auto' },
 };

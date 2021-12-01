@@ -4,7 +4,7 @@ import { Props } from './props';
 
 export const Dropdown: React.FC<Props> = (props: Props) => {
   const [hovered, setHovered] = useState<boolean>(false);
-  const [selected, setSelected] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   return (
     <div style={{ ...styles.style, ...props.style }}>
@@ -13,12 +13,12 @@ export const Dropdown: React.FC<Props> = (props: Props) => {
         className={props.className}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        onClick={() => setSelected(!selected)}
+        onClick={() => setExpanded(!expanded)}
         style={{
           ...styles.barStyle,
-          ...(hovered && styles.hoveredStyle),
+          ...(hovered && styles.barHoveredStyle),
           ...props.barStyle,
-          ...(hovered && props.hoveredStyle),
+          ...(hovered && props.barHoveredStyle),
         }}
       >
         {props.label}
@@ -26,7 +26,7 @@ export const Dropdown: React.FC<Props> = (props: Props) => {
         <svg
           style={{
             ...styles.iconStyle,
-            ...(selected
+            ...(expanded
               ? { transform: `rotate(-90deg)` }
               : { transform: `rotate(0deg)` }),
             ...props.iconStyle,
@@ -44,9 +44,9 @@ export const Dropdown: React.FC<Props> = (props: Props) => {
       <div
         style={{
           ...styles.bodyStyle,
-          ...(selected && styles.selectedStyle),
+          ...(expanded && styles.bodyExpandedStyle),
           ...props.bodyStyle,
-          ...(selected && props.selectedStyle),
+          ...(expanded && props.bodyExpandedStyle),
         }}
       >
         {props.children}
