@@ -3,7 +3,14 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { Dot } from '.';
 import { Props } from './props';
 
-<Meta title="Components/Dot" component={Dot} />
+<Meta
+  title="Components/Dot"
+  component={Dot}
+  argTypes={{
+    isVisible: { table: { category: 'state' } },
+    style: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <Dot {...args} />;
 
@@ -38,6 +45,23 @@ When you have an `avatarUrl` you set and image instead of `username`
     args={{
       avatarUrl:
         'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Is Not Visible
+
+If you need to perform an animated hide, get the `isVisible` prop to `false`.
+
+<Canvas>
+  <Story
+    name="Is Not Visible"
+    args={{
+      avatarUrl:
+        'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+      isVisible: false,
     }}
   >
     {Template.bind({})}

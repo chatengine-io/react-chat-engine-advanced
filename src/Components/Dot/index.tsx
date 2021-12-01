@@ -3,12 +3,9 @@ import { stringToColor } from '../../util/colorMapping';
 import { Props } from './props';
 import { styles } from './styles';
 
-export const Dot = ({
-  avatarUrl = undefined,
-  username = '',
-  style = {},
-  visible = true,
-}: Props) => {
+export const Dot = (props: Props) => {
+  const { username = '', isVisible = true } = props;
+
   const color = stringToColor(username);
 
   return (
@@ -17,12 +14,12 @@ export const Dot = ({
       style={{
         ...styles.style,
         ...{
-          backgroundColor: avatarUrl ? 'white' : color,
-          backgroundImage: avatarUrl ? `url(${avatarUrl})` : '',
-          width: visible ? '13px' : '0px',
-          height: visible ? '13px' : '0px',
+          backgroundColor: props.avatarUrl ? 'white' : color,
+          backgroundImage: props.avatarUrl ? `url(${props.avatarUrl})` : '',
+          width: isVisible ? '13px' : '0px',
+          height: isVisible ? '13px' : '0px',
         },
-        ...style,
+        ...props.style,
       }}
     />
   );
