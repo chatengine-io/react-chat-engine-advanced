@@ -3,7 +3,16 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { Avatar } from '.';
 import { Props } from './props';
 
-<Meta title="Components/Avatar" component={Avatar} />
+<Meta
+  title="Components/Avatar"
+  component={Avatar}
+  argTypes={{
+    isOnline: { table: { category: 'state' } },
+    onClick: { table: { category: 'hooks' } },
+    style: { table: { category: 'styles' } },
+    statusStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <Avatar {...args} />;
 
