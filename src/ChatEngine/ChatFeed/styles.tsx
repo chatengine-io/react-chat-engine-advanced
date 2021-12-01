@@ -1,12 +1,12 @@
 export interface ChatFeedStyles {
-  chatFeedStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
   chatHeaderStyle?: React.CSSProperties;
   messageListStyle?: React.CSSProperties;
   messageFormStyle?: React.CSSProperties;
 }
 
 export const styles: ChatFeedStyles = {
-  chatFeedStyle: {
+  style: {
     height: '100%',
     position: 'relative',
     backgroundColor: 'white',

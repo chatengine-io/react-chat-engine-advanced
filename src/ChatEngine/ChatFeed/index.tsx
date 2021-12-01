@@ -10,38 +10,34 @@ import { MessageForm } from './MessageForm';
 import { getDateTime, formatDateTime } from '../../util/dateTime';
 
 import { Spinner } from '../../Components/Spinner';
+import { ChatProps } from '../../util/interfaces';
+
+const getDescription = (chat: ChatProps | undefined) => {
+  if (
+    chat &&
+    chat.last_message.created &&
+    chat.last_message.created.length > 0
+  ) {
+    const dateTime = getDateTime(chat.last_message.created, 0);
+    const formattedDateTime = formatDateTime(dateTime);
+    return `Active ${formattedDateTime}`;
+  } else {
+    return 'Say hello!';
+  }
+};
 
 export const ChatFeed: React.FC<Props> = (props: Props) => {
   const { chat } = props;
-
-  const getDescription = () => {
-    if (
-      chat &&
-      chat.last_message.created &&
-      chat.last_message.created.length > 0
-    ) {
-      const dateTime = getDateTime(chat.last_message.created, 0);
-      const formattedDateTime = formatDateTime(dateTime);
-      return `Active ${formattedDateTime}`;
-    } else if (props.isLoading) {
-      return 'Loading...';
-    } else {
-      return 'Say hello!';
-    }
-  };
 
   if (props.renderChatFeed) {
     return <>{props.renderChatFeed(props)}</>;
   }
 
   return (
-    <div
-      className="ch-chat-feed"
-      style={{ ...styles.chatFeedStyle, ...props.chatFeedStyle }}
-    >
+    <div className="ch-chat-feed" style={{ ...styles.style, ...props.style }}>
       <ChatHeader
         title={chat ? chat.title : <Spinner />}
-        description={getDescription()}
+        description={props.isLoading ? 'Loading...' : getDescription(chat)}
         renderChatHeader={props.renderChatHeader}
         style={{
           ...styles.chatHeaderStyle,
