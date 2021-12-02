@@ -32,7 +32,7 @@ The File component represents any Message Attachment which cannot be put into an
 
 ## Is Loading
 
-If you do not set an `url` the image is considered loading. And will show the following loading text + emoji.
+If you do not set a `url` prop, the image is considered loading. And will show the following loading text + emoji.
 
 <Story name="Is Loading" args={{}}>
   {Template.bind({})}
@@ -46,7 +46,7 @@ You can also specify the file name with the `fileName` prop and render your own 
   name="File Name"
   args={{
     url: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
-    fileName: '🚨 🚨 Secret Codes',
+    fileName: '🚨 🚨 Secret Recording',
   }}
 >
   {Template.bind({})}

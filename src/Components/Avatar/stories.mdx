@@ -22,8 +22,6 @@ The Avatar visually represents a user.
 
 Avatars's can also display a user's online status.
 
-You can customize the look and feel with the `avatarUrl`, `username`, `showOnline`, `isOnline`, and `style` props.
-
 ## Default
 
 <Story
@@ -37,25 +35,6 @@ You can customize the look and feel with the `avatarUrl`, `username`, `showOnlin
 
 <ArgsTable story="Default" />
 
-## Is Online
-
-When you set `showOnline` to `true`, then you can see the user's online status.
-
-There will be a red dot if `isOnline` is `false`, and a green dot if `isOnline` is `true`.
-
-<Canvas>
-  <Story
-    name="Is Online"
-    args={{
-      username: 'Adam',
-      showOnline: true,
-      isOnline: true,
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
 ## Avatar Url
 
 When you set the `avatarUrl` value, you can use a picture instead of `username`.
@@ -66,6 +45,23 @@ When you set the `avatarUrl` value, you can use a picture instead of `username`.
     args={{
       avatarUrl:
         'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Is Online
+
+When you set `isOnline` to `true` or `false` there will be a green or red dot, respectively.
+
+<Canvas>
+  <Story
+    name="Is Online"
+    args={{
+      username: 'Adam',
+      showOnline: true,
+      isOnline: true,
     }}
   >
     {Template.bind({})}
