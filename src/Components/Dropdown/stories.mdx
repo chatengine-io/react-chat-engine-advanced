@@ -8,10 +8,10 @@ import { Props } from './props';
   argTypes={{
     style: { table: { category: 'styles' } },
     barStyle: { table: { category: 'styles' } },
-    hoveredStyle: { table: { category: 'styles' } },
+    barHoveredStyle: { table: { category: 'styles' } },
     iconStyle: { table: { category: 'styles' } },
     bodyStyle: { table: { category: 'styles' } },
-    selectedStyle: { table: { category: 'styles' } },
+    bodyExpandedStyle: { table: { category: 'styles' } },
   }}
 />
 
@@ -19,7 +19,7 @@ export const Template = (args) => <Dropdown {...args} />;
 
 # Dropdown
 
-Dropdown is used in settings to display aspects of chat rooms.
+Dropdown is used in settings to display information under a toggle bar.
 
 ## Default
 
@@ -57,13 +57,11 @@ You can customize the look and feel with the `*Style` props.
       border: '2px solid red',
     },
     barStyle: { border: '2px solid blue' },
-    hoveredStyle: { border: '2px solid lime' },
-    labelStyle: { border: '2px solid green' },
+    barHoveredStyle: { border: '2px solid yellow' },
+    iconStyle: { border: '2px solid green' },
     bodyStyle: { border: '2px solid orange' },
-    selectedStyle: { border: '2px solid black' },
+    bodyExpandedStyle: { border: '2px solid black' },
   }}
 >
   {Template.bind({})}
 </Story>
-
-<ArgsTable story="Default" />

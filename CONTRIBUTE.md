@@ -53,12 +53,13 @@ Reference: https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 
 `styles.tsx`
 
-- Style names are generic if in Components/\*
-- Style names are specific if in ChatEngine/\*
-- All styles end with `*Style`
+- Style name for top-level style is `style `
+- Style names for entire child-components is `[childComponent]Style`
+- Transitive child-components are linked `[childComponent][ChildChildComponent][...]`
+  - Subject to debate for now
 - All styles are camelCase
-- Export Styles interface
-- Apply to `styles` object
+- Export the Styles interface
+- Apply the Styles interface to `styles` object
 
 `props.tsx`
 
@@ -119,7 +120,7 @@ Right now there is a props heirarchy for the order you put prop types in:
 `Styles`
 
 - These are CSS Objects for the look and component styling
-- Their type is `import { Properties } from 'csstype';`
+- Their type is `React.CSSProperties`
 - They follow a `<component><subcomponent><Style>` naming convention
 - Examples: `chatFeedStyle`, `messageAttachmentStyle`, `chatFormInputStyle`
 

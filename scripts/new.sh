@@ -35,14 +35,12 @@ echo "" >> ./src/$1/stories.mdx
 echo "<ArgsTable story='Default' />" >> ./src/$1/stories.mdx
 
 # Style
-echo "import { Properties } from 'csstype';" > ./src/$1/styles.tsx
-echo "" >> ./src/$1/styles.tsx
 echo "export interface $COMPONENT_NAME""Styles {" >> ./src/$1/styles.tsx
-echo "  style?: Properties;" >> ./src/$1/styles.tsx
+echo "  style?: React.CSSProperties;" >> ./src/$1/styles.tsx
 echo "}" >> ./src/$1/styles.tsx
 echo "" >> ./src/$1/styles.tsx
 echo "export const styles: $COMPONENT_NAME""Styles = {" >> ./src/$1/styles.tsx
-echo "  style: {} as Properties," >> ./src/$1/styles.tsx
+echo "  style: {}," >> ./src/$1/styles.tsx
 echo "};" >> ./src/$1/styles.tsx
 
 # Test

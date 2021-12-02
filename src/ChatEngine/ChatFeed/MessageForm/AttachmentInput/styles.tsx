@@ -1,21 +1,19 @@
-import { Properties } from 'csstype';
-
 export interface AttachmentInputStyles {
-  attachmentInputStyle?: Properties;
-  attachmentInputIconStyle?: Properties;
+  style?: React.CSSProperties;
+  iconStyle?: React.CSSProperties;
 }
 
 export const styles: AttachmentInputStyles = {
-  attachmentInputStyle: {
+  style: {
     height: '0px',
     display: 'inline',
     padding: '6px 12px',
     position: 'relative',
     bottom: '6px',
-  } as Properties,
-  attachmentInputIconStyle: {
+  },
+  iconStyle: {
     backgroundColor: 'white',
     border: '1px solid white',
     cursor: 'pointer',
-  } as Properties,
+  },
 };

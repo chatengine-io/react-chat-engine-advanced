@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { Properties } from 'csstype';
-
 import { Props } from './props';
 import { styles } from './styles';
 
@@ -21,10 +19,10 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
   const [buttonHover, setButtonHover] = useState<boolean>(false);
   const [attachments, setAttachments] = useState<Array<File>>([]);
 
-  const overflowStyle: Properties = {
+  const overflowStyle: React.CSSProperties = {
     overflowY: height === 150 ? 'scroll' : 'hidden',
   };
-  const buttonHoverStyle: Properties = {
+  const buttonHoverStyle: React.CSSProperties = {
     backgroundColor: buttonHover ? '#40a9ff' : '#1890ff',
   };
 
@@ -71,7 +69,7 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
 
       return (
         <span
-          key={`draft_attachment_${index}`}
+          key={`draft-${index}`}
           className="ce-draft-attachment-wrapper"
           style={{
             ...styles.draftAttachmentStyle,
@@ -82,7 +80,6 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
             <Image
               url={url}
               style={{ ...styles.draftImageStyle, ...props.draftImageStyle }}
-              hoveredStyle={{}}
             />
           )}
 
@@ -91,7 +88,6 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
               url={url}
               fileName={`📄 ${attachment.name}`}
               style={{ ...styles.draftFileStyle, ...props.draftFileStyle }}
-              hoveredStyle={{}}
             />
           )}
 
@@ -99,11 +95,11 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
             (renderImage && isImage(attachment.name))) && (
             <button
               className="ce-message-attachment-remove-btn"
+              onClick={() => onRemove(index)}
               style={{
                 ...styles.draftAttachmentRemoveStyle,
                 ...props.draftAttachmentRemoveStyle,
               }}
-              onClick={() => onRemove(index)}
             >
               ❌
             </button>
@@ -119,56 +115,60 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
 
   return (
     <div
-      id="msg-form-container"
-      style={{ ...styles.messageFormStyle, ...props.messageFormStyle }}
-      className="ce-message-form-container"
+      id="ce-message-form"
+      style={{ ...styles.style, ...props.style }}
+      className="ce-message-form"
     >
-      <div>{renderAttachments(true)}</div>
+      <div className="ce-message-form-attachments-row">
+        {renderAttachments(true)}
+      </div>
 
-      <div>{renderAttachments(false)}</div>
+      <div className="ce-message-form-attachments-row">
+        {renderAttachments(false)}
+      </div>
 
-      <span>
-        <textarea
-          id="msg-textarea"
-          className="ce-input ce-textarea-input"
-          rows={1}
-          style={{
-            ...styles.messageFormInputStyle,
-            ...overflowStyle,
-            ...props.messageFormInputStyle,
-          }}
-          value={value}
-          placeholder={label}
-          onKeyDown={onKeyDown}
-          onChange={handleChange}
-        />
-      </span>
+      <textarea
+        id="msg-textarea"
+        className="ce-message-form-input"
+        value={value}
+        placeholder={label}
+        rows={1}
+        onKeyDown={onKeyDown}
+        onChange={handleChange}
+        style={{
+          ...styles.inputStyle,
+          ...overflowStyle,
+          ...props.inputStyle,
+        }}
+      />
 
-      <span>
-        <AttachmentInput
-          onSelectFiles={(files) => {
-            files !== null && setAttachments(Array.from(files));
-          }}
-          attachmentInputStyle={props.attachmentInputStyle}
-          attachmentInputIconStyle={props.attachmentInputIconStyle}
-        />
-      </span>
+      <AttachmentInput
+        onSelectFiles={(files) => {
+          files !== null && setAttachments(Array.from(files));
+        }}
+        style={{
+          ...styles.attachmentInputStyle,
+          ...props.attachmentInputStyle,
+        }}
+        iconStyle={{
+          ...styles.attachmentInputIconStyle,
+          ...props.attachmentInputIconStyle,
+        }}
+      />
 
-      <span>
-        <div
-          id="ce-send-message-button"
-          onMouseEnter={() => setButtonHover(true)}
-          onMouseLeave={() => setButtonHover(false)}
-          onClick={() => onSubmit && onSubmit(value, attachments)}
-          style={{
-            ...styles.messageFormSendButtonStyle,
-            ...buttonHoverStyle,
-            ...props.messageFormSendButtonStyle,
-          }}
-        >
-          Send
-        </div>
-      </span>
+      <div
+        id="ce-send-message-button"
+        onMouseEnter={() => setButtonHover(true)}
+        onMouseLeave={() => setButtonHover(false)}
+        onClick={() => onSubmit && onSubmit(value, attachments)}
+        style={{
+          ...styles.sendButtonStyle,
+          ...buttonHoverStyle,
+          ...props.sendButtonStyle,
+        }}
+      >
+        Send
+      </div>
     </div>
   );
 };

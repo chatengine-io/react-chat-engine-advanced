@@ -1,13 +1,11 @@
-import { Properties } from 'csstype';
-
 export interface PeopleSettingsStyles {
-  style?: Properties;
-  avatarStyle?: Properties;
-  usernameStyle?: Properties;
-  deleteButtonStyle?: Properties;
-  optionStyle?: Properties;
-  addMemberStyle?: Properties;
-  addMemberInputStyle?: Properties;
+  style?: React.CSSProperties;
+  avatarStyle?: React.CSSProperties;
+  usernameStyle?: React.CSSProperties;
+  deleteButtonStyle?: React.CSSProperties;
+  optionStyle?: React.CSSProperties;
+  addMemberStyle?: React.CSSProperties;
+  addMemberInputStyle?: React.CSSProperties;
 }
 
 export const styles: PeopleSettingsStyles = {

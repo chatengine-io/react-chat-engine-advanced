@@ -4,7 +4,15 @@ import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Button } from '.';
 import { Props } from './props';
 
-<Meta title="Components/Button" component={Button} />
+<Meta
+  title="Components/Button"
+  component={Button}
+  argTypes={{
+    onClick: { table: { category: 'hooks' } },
+    style: { table: { category: 'styles' } },
+    hoveredStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <Button {...args}>{args.children}</Button>;
 
@@ -24,7 +32,7 @@ Pass an `onClick` method to perform an action when the button is clicked.
 
 ## Children
 
-You can put any JSX or TSX inside the `children` of the button.
+You can put any JSX or TSX inside the `children` of a button.
 
 <Canvas>
   <Story
@@ -79,14 +87,15 @@ Use type `'danger'` when the user needs to be careful.
 
 ## Custom Style
 
-Customize the look and feel with the `style` prop
+Customize the look and feel with the `*Style` props.
 
 <Canvas>
   <Story
     name="Custom Style"
     args={{
-      children: 'Button',
-      style: { border: '2px solid purple', color: 'purple' },
+      children: 'Custom Style',
+      style: { border: '1px solid red' },
+      hoveredStyle: { border: '1px solid blue' },
     }}
   >
     {Template.bind({})}

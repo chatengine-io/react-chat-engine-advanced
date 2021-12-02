@@ -4,7 +4,15 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { RenderTrigger } from '.';
 import { Props } from './props';
 
-<Meta title="Components/RenderTrigger" component={RenderTrigger} />
+<Meta
+  title="Components/RenderTrigger"
+  component={RenderTrigger}
+  argTypes={{
+    onHide: { table: { category: 'hooks' } },
+    onShow: { table: { category: 'hooks' } },
+    style: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <RenderTrigger {...args} />;
 
@@ -20,22 +28,6 @@ The `RenderTrigger` component triggers custom code when it renders or hides.
 
 <ArgsTable story="Default" />
 
-## Functions
-
-The `onShow` and `onHide` callbacks let you trigger custom events and code.
-
-<Canvas>
-  <Story
-    name="Functions"
-    args={{
-      onShow: () => console.log('Chat Loader is visible.'),
-      onHide: () => console.log('Chat Loader is NOT visible.'),
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
 ## Children
 
 You can embed child components to make it your own.
@@ -49,6 +41,22 @@ You can embed child components to make it your own.
           <LoadingOutlined /> Your code here
         </div>
       ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Functions
+
+The `onShow` and `onHide` callbacks let you trigger custom events and code.
+
+<Canvas>
+  <Story
+    name="Functions"
+    args={{
+      onShow: () => console.log('Chat Loader is visible.'),
+      onHide: () => console.log('Chat Loader is NOT visible.'),
     }}
   >
     {Template.bind({})}

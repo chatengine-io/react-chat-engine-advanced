@@ -1,20 +1,18 @@
-import { Properties } from 'csstype';
-
 export interface ChatFormStyles {
-  chatFormStyle?: Properties;
-  myChatsTitleStyle?: Properties;
-  chatFormInputStyle?: Properties;
-  chatFormButtonStyle?: Properties;
+  style?: React.CSSProperties;
+  titleStyle?: React.CSSProperties;
+  inputStyle?: React.CSSProperties;
+  buttonStyle?: React.CSSProperties;
 }
 
 export const styles: ChatFormStyles = {
-  chatFormStyle: {
+  style: {
     position: 'relative',
     height: '64px',
     width: '100%',
     backgroundColor: 'white',
-  } as Properties,
-  myChatsTitleStyle: {
+  },
+  titleStyle: {
     // Position
     position: 'absolute',
     top: '16px',
@@ -24,16 +22,16 @@ export const styles: ChatFormStyles = {
     // Style
     fontFamily: 'Avenir',
     fontWeight: 600,
-  } as Properties,
-  chatFormInputStyle: {
+  },
+  inputStyle: {
     // Position
     position: 'absolute',
     top: '16px',
     left: '14px',
     // Size
     width: 'calc(100% - 28px)',
-  } as Properties,
-  chatFormButtonStyle: {
+  },
+  buttonStyle: {
     // Position
     position: 'absolute',
     top: '15px',
@@ -41,5 +39,5 @@ export const styles: ChatFormStyles = {
     // Style
     fontFamily: 'Avenir',
     fontWeight: 600,
-  } as Properties,
+  },
 };

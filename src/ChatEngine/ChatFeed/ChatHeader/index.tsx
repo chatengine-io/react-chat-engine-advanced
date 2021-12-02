@@ -15,29 +15,24 @@ export const ChatHeader: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <Row
-      className="ce-chat-header"
-      style={{ ...styles.chatHeaderStyle, ...props.chatHeaderStyle }}
-    >
+    <Row className="ce-chat-header" style={{ ...styles.style, ...props.style }}>
       <Col
         xs={2}
         sm={0}
         className="ce-chat-header-mobile-option"
         style={{
-          ...styles.chatHeaderMobileOptionStyle,
-          ...{ left: '6px' }, // LHS Specific
-          ...props.chatHeaderMobileOptionStyle,
+          ...styles.mobileOptionStyle,
+          ...{ left: '6px' },
+          ...props.mobileOptionStyle,
         }}
-      >
-        {/* <ChatListDrawer /> */}
-      </Col>
+      ></Col>
 
       <div
         id={`ce-chat-feed-title-${id}`}
         className="ce-chat-header-title"
         style={{
-          ...styles.chatHeaderTitleStyle,
-          ...props.chatHeaderTitleStyle,
+          ...styles.titleStyle,
+          ...props.titleStyle,
         }}
       >
         {title}
@@ -46,8 +41,8 @@ export const ChatHeader: React.FC<Props> = (props: Props) => {
       <div
         className="ce-chat-header-subtitle"
         style={{
-          ...styles.chatHeaderSubtitleStyle,
-          ...props.chatHeaderSubtitleStyle,
+          ...styles.subtitleStyle,
+          ...props.subtitleStyle,
         }}
       >
         {description}
@@ -58,13 +53,11 @@ export const ChatHeader: React.FC<Props> = (props: Props) => {
         sm={0}
         className="ce-chat-header-mobile-option"
         style={{
-          ...styles.chatHeaderMobileOptionStyle,
-          ...{ right: '6px' }, // RHS Specific
-          ...props.chatHeaderMobileOptionStyle,
+          ...styles.mobileOptionStyle,
+          ...{ right: '6px' },
+          ...props.mobileOptionStyle,
         }}
-      >
-        {/* <ChatSettingsDrawer /> */}
-      </Col>
+      ></Col>
     </Row>
   );
 };

@@ -17,7 +17,7 @@ import { onePersonChat, messages } from '../../util/mocks';
     renderChatHeader: { table: { category: 'render functions' } },
     renderMessageList: { table: { category: 'render functions' } },
     renderMessageForm: { table: { category: 'render functions' } },
-    chatFeedStyle: { table: { category: 'styles' } },
+    style: { table: { category: 'styles' } },
     chatHeaderStyle: { table: { category: 'styles' } },
     messageListStyle: { table: { category: 'styles' } },
     messageFormStyle: { table: { category: 'styles' } },
@@ -39,7 +39,7 @@ It stacks the `<ChatHeader/>`, `<MessageList/>`, and `<MessageForm/>` in an easy
   args={{
     messages: messages,
     chat: onePersonChat,
-    chatFeedStyle: {
+    style: {
       height: '500px',
       maxWidth: '600px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -60,7 +60,7 @@ Passing a Chat object into the `chat` prop will allow/set the header values and 
   args={{
     chat: onePersonChat,
     messages: messages,
-    chatFeedStyle: {
+    style: {
       height: '500px',
       maxWidth: '600px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -80,7 +80,7 @@ You can use the `myUsername` prop to specify which messages were sent by this us
     chat: onePersonChat,
     myUsername: 'Adam_La_Morre',
     messages: messages,
-    chatFeedStyle: {
+    style: {
       height: '500px',
       maxWidth: '600px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -99,7 +99,7 @@ If the chat is loading initial message, set `isLoading` to `true` for the follow
   args={{
     isLoading: true,
     messages: {},
-    chatFeedStyle: {
+    style: {
       height: '500px',
       maxWidth: '600px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -121,7 +121,7 @@ This is used to load more messages once at the top of the Chat Feed.
     chat: onePersonChat,
     hasMoreMessages: true,
     messages: messages,
-    chatFeedStyle: {
+    style: {
       height: '500px',
       maxWidth: '600px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -156,7 +156,7 @@ You can render you own code for sub-components within Chat Feed.
     renderChatHeader: () => <div>Your Chat Header code here!</div>,
     renderMessageList: () => <div>Your Message List code here!</div>,
     renderMessageForm: () => <div>Your Message Form code here!</div>,
-    chatFeedStyle: {
+    style: {
       height: '500px',
       maxWidth: '600px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -168,14 +168,14 @@ You can render you own code for sub-components within Chat Feed.
 
 ## Custom Style
 
-You can change the look and feel with the `customStyle` prop. It uses the `ChatFeedStyles` interface which inherits from `ChatHeaderStyles`, and `MessageFormStyles`.
+You can change the look and feel with the `*Style` props.
 
 <Story
   name="Custom Style"
   args={{
     chat: onePersonChat,
     messages: messages,
-    chatFeedStyle: {
+    style: {
       height: '500px',
       maxWidth: '600px',
       border: '2px solid red',

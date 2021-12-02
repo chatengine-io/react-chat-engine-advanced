@@ -49,7 +49,7 @@ export const MessageList: React.FC<Props> = (props: Props) => {
             showDateTime={showDateTime}
             isMyMessage={isMyMessage}
             renderMessage={props.renderMessage}
-            messageStyle={{ ...styles.messageStyle, ...props.messageStyle }}
+            style={{ ...styles.messageStyle, ...props.messageStyle }}
           />
         </div>
       );
@@ -63,7 +63,7 @@ export const MessageList: React.FC<Props> = (props: Props) => {
   return (
     <div
       className="ce-message-list"
-      style={{ ...styles.messageListStyle, ...props.messageListStyle }}
+      style={{ ...styles.style, ...props.style }}
     >
       {props.hasMoreMessages && (
         <RenderTrigger

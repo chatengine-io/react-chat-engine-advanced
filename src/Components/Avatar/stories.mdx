@@ -3,7 +3,16 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { Avatar } from '.';
 import { Props } from './props';
 
-<Meta title="Components/Avatar" component={Avatar} />
+<Meta
+  title="Components/Avatar"
+  component={Avatar}
+  argTypes={{
+    isOnline: { table: { category: 'state' } },
+    onClick: { table: { category: 'hooks' } },
+    style: { table: { category: 'styles' } },
+    statusStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <Avatar {...args} />;
 
@@ -12,8 +21,6 @@ export const Template = (args) => <Avatar {...args} />;
 The Avatar visually represents a user.
 
 Avatars's can also display a user's online status.
-
-You can customize the look and feel with the `avatarUrl`, `username`, `showOnline`, `isOnline`, and `style` props.
 
 ## Default
 
@@ -27,25 +34,6 @@ You can customize the look and feel with the `avatarUrl`, `username`, `showOnlin
 </Story>
 
 <ArgsTable story="Default" />
-
-## Is Online
-
-When you set `showOnline` to `true`, then you can see the user's online status.
-
-There will be a red dot if `isOnline` is `false`, and a green dot if `isOnline` is `true`.
-
-<Canvas>
-  <Story
-    name="Is Online"
-    args={{
-      username: 'Adam',
-      showOnline: true,
-      isOnline: true,
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
 
 ## Avatar Url
 
@@ -63,9 +51,26 @@ When you set the `avatarUrl` value, you can use a picture instead of `username`.
   </Story>
 </Canvas>
 
+## Is Online
+
+When you set `isOnline` to `true` or `false` there will be a green or red dot, respectively.
+
+<Canvas>
+  <Story
+    name="Is Online"
+    args={{
+      username: 'Adam',
+      showOnline: true,
+      isOnline: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Custom Style
 
-You can also use the `customStyle` component to overlay custom CSS onto the `Avatar` component.
+You can also use the `*Style` props to customize the look and feel.
 
 <Canvas>
   <Story

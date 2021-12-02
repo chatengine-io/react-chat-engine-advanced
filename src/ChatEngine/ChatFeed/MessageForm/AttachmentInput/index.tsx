@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 
-import { Properties } from 'csstype';
-
 import { Props } from './props';
 import { styles } from './styles';
 
-export const AttachmentInput: React.FC<Props> = ({
-  onSelectFiles,
-  attachmentInputStyle = {},
-  attachmentInputIconStyle = {},
-}: Props) => {
+export const AttachmentInput: React.FC<Props> = (props: Props) => {
   const [hovered, setHovered] = useState<boolean>(false);
-  const hoverStyle: Properties = { color: hovered ? '#06c' : '#444' };
+  const hoverStyle: React.CSSProperties = { color: hovered ? '#06c' : '#444' };
 
   const onSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const target = e.target as HTMLInputElement;
     const files = target.files;
-    onSelectFiles && onSelectFiles(files);
+    props.onSelectFiles && props.onSelectFiles(files);
   };
 
   return (
@@ -25,8 +19,8 @@ export const AttachmentInput: React.FC<Props> = ({
       className="ce-attachment-input"
       encType="multipart/form-data"
       style={{
-        ...styles.attachmentInputStyle,
-        ...attachmentInputStyle,
+        ...styles.style,
+        ...props.style,
       }}
     >
       <label htmlFor="files" id="ce-upload-document-button">
@@ -35,9 +29,9 @@ export const AttachmentInput: React.FC<Props> = ({
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           style={{
-            ...styles.attachmentInputIconStyle,
+            ...styles.iconStyle,
             ...hoverStyle,
-            ...attachmentInputIconStyle,
+            ...props.iconStyle,
           }}
           onClick={() => {}} // Prevents redirect in StorybookJS
         >

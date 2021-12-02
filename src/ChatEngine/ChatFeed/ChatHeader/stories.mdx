@@ -6,10 +6,11 @@ import { ChatHeader } from '.';
   title="ChatEngine/ChatFeed/ChatHeader"
   component={ChatHeader}
   argTypes={{
-    chatHeaderStyle: { table: { category: 'styles' } },
-    chatHeaderTitleStyle: { table: { category: 'styles' } },
-    chatHeaderSubtitleStyle: { table: { category: 'styles' } },
-    chatHeaderMobileOptionStyle: { table: { category: 'styles' } },
+    renderChatHeader: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    titleStyle: { table: { category: 'styles' } },
+    subtitleStyle: { table: { category: 'styles' } },
+    mobileOptionStyle: { table: { category: 'styles' } },
   }}
 />
 
@@ -17,9 +18,9 @@ export const Template = (args) => <ChatHeader {...args} />;
 
 # Chat Header
 
-The Chat Header lives at the top of the Chat Feed and shows data about the Chat you have opened.
+The Chat Header shows data about the Chat you have opened.
 
-Things such as the chat title, members, and last sent message (or last message datetime) may be present.
+Things such as the chat title, members, and last sent message are present.
 
 ## Default
 
@@ -29,6 +30,10 @@ Things such as the chat title, members, and last sent message (or last message d
     id: 1,
     title: 'Magic Club',
     description: 'Where the magic happens...',
+    style: {
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
   }}
 >
   {Template.bind({})}
@@ -63,10 +68,10 @@ You can customize the look and feel with the `*Style` props.
       id: 1,
       title: 'Magic Club',
       description: 'Where the magic happens...',
-      chatHeaderStyle: { border: '3px solid red' },
-      chatHeaderTitleStyle: { border: '3px solid blue' },
-      chatHeaderSubtitleStyle: { border: '3px solid green' },
-      chatHeaderMobileOptionStyle: { border: '3px solid orange' },
+      style: { maxWidth: '600px', border: '3px solid red' },
+      titleStyle: { border: '3px solid blue' },
+      subtitleStyle: { border: '3px solid green' },
+      mobileOptionStyle: { border: '3px solid orange' },
     }}
   >
     {Template.bind({})}

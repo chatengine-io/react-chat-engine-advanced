@@ -1,27 +1,25 @@
-import { Properties } from 'csstype';
-
 export interface ChatFeedStyles {
-  chatFeedStyle?: Properties;
-  chatHeaderStyle?: Properties;
-  messageListStyle?: Properties;
-  messageFormStyle?: Properties;
+  style?: React.CSSProperties;
+  chatHeaderStyle?: React.CSSProperties;
+  messageListStyle?: React.CSSProperties;
+  messageFormStyle?: React.CSSProperties;
 }
 
 export const styles: ChatFeedStyles = {
-  chatFeedStyle: {
+  style: {
     height: '100%',
     position: 'relative',
     backgroundColor: 'white',
-  } as Properties,
-  chatHeaderStyle: {} as Properties,
+  },
+  chatHeaderStyle: {},
   messageListStyle: {
     height: 'calc(100% - 85px - 48px)',
     overflowY: 'scroll',
     overflowX: 'hidden',
     position: 'relative',
     backgroundColor: 'white',
-  } as Properties,
+  },
   messageFormStyle: {
     width: '100%',
-  } as Properties,
+  },
 };

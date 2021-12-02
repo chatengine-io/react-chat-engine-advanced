@@ -1,10 +1,8 @@
-import { Properties } from 'csstype';
-
 export interface PhotosSettingsStyles {
-  style?: Properties;
-  imageWrapperStyle?: Properties;
-  imagePaddingStyle?: Properties;
-  imageStyle?: Properties;
+  style?: React.CSSProperties;
+  imageWrapperStyle?: React.CSSProperties;
+  imagePaddingStyle?: React.CSSProperties;
+  imageStyle?: React.CSSProperties;
 }
 
 export const styles: PhotosSettingsStyles = {

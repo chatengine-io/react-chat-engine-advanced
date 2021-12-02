@@ -1,25 +1,18 @@
-import { Properties } from 'csstype';
-
 export interface ChatListStyles {
-  chatListStyle?: Properties;
-  chatListLoadingStyle?: Properties;
-  chatListLoadTriggerStyle?: Properties;
+  style?: React.CSSProperties;
+  loadingMoreChatsStyle?: React.CSSProperties;
 }
 
 export const styles: ChatListStyles = {
-  chatListStyle: {
+  style: {
     width: '100%',
     height: '100%',
     maxHeight: '100vh',
     overflowY: 'scroll',
     overflowX: 'hidden',
     backgroundColor: 'white',
-    fontFamily: 'Avenir',
-  } as Properties,
-  chatListLoadingStyle: {
-    overflowY: 'hidden',
-  } as Properties,
-  chatListLoadTriggerStyle: {
+  },
+  loadingMoreChatsStyle: {
     fontFamily: 'Avenir',
     textAlign: 'center',
     backgroundColor: '#e2e2e2',
@@ -27,5 +20,5 @@ export const styles: ChatListStyles = {
     paddingTop: '14px',
     paddingBottom: '14px',
     borderRadius: '4px',
-  } as Properties,
+  },
 };

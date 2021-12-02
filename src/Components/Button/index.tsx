@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 
-import { Properties } from 'csstype';
-
 import { Props } from './props';
+import { styles } from './styles';
 
-export const Button = ({
-  children = undefined,
-  type = 'default',
-  onClick = () => {},
-  style = {},
-}: Props) => {
+export const Button = (props: Props) => {
+  const { type = 'default' } = props;
+
   const [hovered, setHovered] = useState<boolean>(false);
 
   const getTypeStyle = () => {
@@ -18,58 +14,43 @@ export const Button = ({
     } else if (type === 'danger') {
       return dangerStyle;
     } else {
-      return {} as Properties;
+      return {} as React.CSSProperties;
     }
   };
 
   const typeStyle = getTypeStyle();
-  const hoverStyle = hovered ? { opacity: '0.73' } : {};
 
   return (
     <button
-      onClick={onClick}
+      onClick={props.onClick}
       className={`ce-${type}-button`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         // Default
-        ...defaultStyle,
+        ...styles.style,
         ...typeStyle,
         // State
-        ...hoverStyle,
+        ...(hovered ? styles.hoveredStyle : {}),
         // Props
-        ...style,
+        ...props.style,
+        // Props + State
+        ...(hovered ? props.hoveredStyle : {}),
       }}
     >
-      {children}
+      {props.children}
     </button>
   );
 };
-
-const defaultStyle = {
-  fontFamily: 'Avenir',
-  color: '#1890ff',
-  border: '1px solid #1890ff',
-  outline: 'none',
-  height: '36px',
-  fontSize: '15px',
-  cursor: 'pointer',
-  padding: '8px 16px',
-  borderRadius: '33px',
-  backgroundColor: 'white',
-  transition: 'all .44s ease',
-  WebkitTransition: 'all .44s ease',
-  MozTransition: 'all .44s ease',
-} as Properties;
 
 const primaryStyle = {
   color: 'white',
   border: 'none',
   backgroundColor: '#1890ff',
-} as Properties;
+} as React.CSSProperties;
 
 const dangerStyle = {
   color: '#f5222d',
   backgroundColor: 'white',
   border: '1px solid #f5222d',
-} as Properties;
+} as React.CSSProperties;

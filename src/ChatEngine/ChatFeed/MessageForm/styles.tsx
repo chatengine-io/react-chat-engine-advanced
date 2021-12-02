@@ -1,22 +1,20 @@
-import { Properties } from 'csstype';
-
-import { AttachmentInputStyles } from './AttachmentInput/styles';
-
-export interface MessageFormStyles extends AttachmentInputStyles {
-  messageFormStyle?: Properties;
-  messageFormInputStyle?: Properties;
-  messageFormSendButtonStyle?: Properties;
-  draftAttachmentStyle?: Properties;
-  draftAttachmentRemoveStyle?: Properties;
-  draftImageStyle?: Properties;
-  draftFileStyle?: Properties;
+export interface MessageFormStyles {
+  style?: React.CSSProperties;
+  inputStyle?: React.CSSProperties;
+  sendButtonStyle?: React.CSSProperties;
+  attachmentInputStyle?: React.CSSProperties;
+  attachmentInputIconStyle?: React.CSSProperties;
+  draftAttachmentStyle?: React.CSSProperties;
+  draftAttachmentRemoveStyle?: React.CSSProperties;
+  draftImageStyle?: React.CSSProperties;
+  draftFileStyle?: React.CSSProperties;
 }
 
 export const styles: MessageFormStyles = {
-  messageFormStyle: {
+  style: {
     paddingTop: '4px',
-  } as Properties,
-  messageFormInputStyle: {
+  },
+  inputStyle: {
     border: '1px solid white',
     width: 'calc(100% - 24px - 116px)',
     outline: 'none',
@@ -29,8 +27,8 @@ export const styles: MessageFormStyles = {
     // Tweak Position
     position: 'relative',
     top: '6px',
-  } as Properties,
-  messageFormSendButtonStyle: {
+  },
+  sendButtonStyle: {
     cursor: 'pointer',
     fontFamily: 'Avenir',
     display: 'inline-block',
@@ -43,12 +41,12 @@ export const styles: MessageFormStyles = {
     // Tweak Position
     position: 'relative',
     bottom: '6px',
-  } as Properties,
+  },
   draftAttachmentStyle: {
     padding: '6px',
     display: 'inline-block',
     position: 'relative',
-  } as Properties,
+  },
   draftAttachmentRemoveStyle: {
     position: 'absolute',
     top: '-6px',
@@ -63,11 +61,11 @@ export const styles: MessageFormStyles = {
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
-  } as Properties,
+  },
   draftImageStyle: {
     padding: '6px',
     height: '60px',
     width: '60px',
-  } as Properties,
-  draftFileStyle: {} as Properties,
+  },
+  draftFileStyle: {},
 };

@@ -15,7 +15,7 @@ import { messages, directMessageChat } from '../../../util/mocks';
     onBottomMessageHide: { table: { category: 'hooks' } },
     renderMessageList: { table: { category: 'render functions' } },
     renderMessage: { table: { category: 'render functions' } },
-    messageListStyle: { table: { category: 'styles' } },
+    style: { table: { category: 'styles' } },
     messageStyle: { table: { category: 'styles' } },
   }}
 />
@@ -32,12 +32,7 @@ The message list component displays all the messages sent into a Chat.
   name="Default"
   args={{
     messages: messages,
-    messageListStyle: {
-      maxHeight: '450px',
-      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
-      overflowY: 'scroll',
-    },
-    messageListStyle: {
+    style: {
       maxWidth: '500px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -60,7 +55,7 @@ This is done by setting the Message component's `isMyMessage` prop to `true`.
     args={{
       messages: messages,
       myUsername: 'bob_baker',
-      messageListStyle: {
+      style: {
         maxWidth: '500px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
@@ -81,7 +76,7 @@ You can pass a `chat` prop which will show Chat Members and their read messages.
       messages: messages,
       myUsername: 'bob_baker',
       chat: directMessageChat,
-      messageListStyle: {
+      style: {
         maxWidth: '500px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
@@ -102,7 +97,7 @@ Here is an example of two messages sent on different days, rendering a `<DateTim
     name="Date Time"
     args={{
       messages: messages,
-      messageListStyle: {
+      style: {
         maxWidth: '500px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
@@ -124,7 +119,7 @@ This will put a `<Spinner/>` component at the top of the chat feed which is used
     args={{
       messages: messages,
       hasMoreMessages: true,
-      messageListStyle: {
+      style: {
         maxWidth: '500px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
@@ -153,7 +148,7 @@ Check the console log for this example.
       onTopMessageHide: () => console.log('Top message hidden'),
       onBottomMessageShow: () => console.log('Bottom message showing'),
       onBottomMessageHide: () => console.log('Bottom message hidden'),
-      messageListStyle: {
+      style: {
         maxWidth: '500px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
       },
@@ -179,16 +174,34 @@ You can replace the component with your own code using the `render*` functions.
   </Story>
 </Canvas>
 
+You can use to to replace sub-components too!
+
+<Canvas>
+  <Story
+    name="Render Functions 2"
+    args={{
+      messages: messages,
+      renderMessage: (props) => <>Your Message code: {props.message.text}</>,
+      style: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Custom Style
 
-You can customize the look and feel with the `customStyle` prop.
+You can customize the look and feel with the `*Style` props.
 
 <Canvas>
   <Story
     name="Custom Style"
     args={{
       messages: messages,
-      messageListStyle: {
+      style: {
         maxWidth: '500px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
         border: '2px solid red',

@@ -11,7 +11,7 @@ import { fileAttachment } from '../../../../../util/mocks';
   title="ChatEngine/ChatFeed/MessageList/Message/DateTime"
   component={DateTime}
   argTypes={{
-    dateTimeStyle: { table: { category: 'styles' } },
+    style: { table: { category: 'styles' } },
   }}
 />
 
@@ -46,7 +46,7 @@ If you live in an other timezone than GMT, you can set an `offset` prop which ch
 
 ## Custom Style
 
-You can use the `customStyle` prop to customize the look and feel.
+You can use the `*Style` props to customize the look and feel.
 
 <Canvas>
   <Story
@@ -54,7 +54,7 @@ You can use the `customStyle` prop to customize the look and feel.
     args={{
       created: '2021-09-29T00:30:00.000000Z',
       offset: -1,
-      dateTimeStyle: {
+      style: {
         border: '2px solid red',
       },
     }}

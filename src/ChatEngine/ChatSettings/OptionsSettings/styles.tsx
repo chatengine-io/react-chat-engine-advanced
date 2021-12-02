@@ -1,8 +1,6 @@
-import { Properties } from 'csstype';
-
 export interface OptionsSettingsStyles {
-  style?: Properties;
-  deleteChatButtonStyle?: Properties;
+  style?: React.CSSProperties;
+  deleteChatButtonStyle?: React.CSSProperties;
 }
 
 export const styles: OptionsSettingsStyles = {

@@ -4,46 +4,39 @@ import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Input } from '.';
 import { Props } from './props';
 
-<Meta title="Components/Input" component={Input} />
+<Meta
+  title="Components/Input"
+  component={Input}
+  argTypes={{
+    autoFocus: { table: { category: 'state' } },
+    onBlur: { table: { category: 'hooks' } },
+    onChange: { table: { category: 'hooks' } },
+    onFocus: { table: { category: 'hooks' } },
+    style: { table: { category: 'styles' } },
+    focusStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <Input {...args} />;
 
 # Input
 
-The `Input` component is where the user can add text to their message.
+The `Input` component is where the user can add text in their form.
 
 ## Default
 
-<Story name="Default" args={{}}>
+<Story name="Default" args={{ label: 'Input label' }}>
   {Template.bind({})}
 </Story>
 
 <ArgsTable story="Default" />
-
-## Functions
-
-Pass in an `onChange` function to perform an action whenever the `value` of the component changes.
-
-Use the `onFocus` function to perform an action when the user selects the input bar.
-
-The `onBlur` function is used to perform an action when the user clicks out of the input bar.
-
-## Label
-
-Add a label using the `label` argument.
-
-<Canvas>
-  <Story name="Label" args={{ label: 'Send a message...' }}>
-    {Template.bind({})}
-  </Story>
-</Canvas>
 
 ## Default Value
 
 Get the user started using the `defaultValue` argument.
 
 <Canvas>
-  <Story name="DefaultValue" args={{ defaultValue: 'Hello, world!' }}>
+  <Story name="DefaultValue" args={{ defaultValue: 'Default value!' }}>
     {Template.bind({})}
   </Story>
 </Canvas>
@@ -54,6 +47,16 @@ You can also set the `value` by passing it directly into the props.
 
 <Canvas>
   <Story name="Value" args={{ value: 'Hardcode value' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Auto Focus
+
+You can also set the `value` by passing it directly into the props.
+
+<Canvas>
+  <Story name="Auto Focus" args={{ autoFocus: true }}>
     {Template.bind({})}
   </Story>
 </Canvas>

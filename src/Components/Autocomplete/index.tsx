@@ -6,18 +6,22 @@ const emptyEvent = {
   target: { value: '' },
 } as React.ChangeEvent<HTMLInputElement>;
 
+const getOptions = (
+  value: string,
+  options: Array<Object>,
+  maxVisibleOptions: number
+) => {
+  return options
+    .filter(
+      (option) =>
+        JSON.stringify(option).toLowerCase().indexOf(value.toLowerCase()) !== -1
+    )
+    .slice(0, maxVisibleOptions);
+};
+
 export const Autocomplete: React.FC<Props> = (props: Props) => {
   const [value, setValue] = useState<string>('');
   const [showOptions, setShowOptions] = useState<boolean>(false);
-
-  const getOptions = (value: string) => {
-    const max = props.maxVisibleOptions ? props.maxVisibleOptions : 3;
-    const options = props.options.filter(
-      (option) =>
-        JSON.stringify(option).toLowerCase().indexOf(value.toLowerCase()) !== -1
-    );
-    return options.slice(0, max);
-  };
 
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -29,15 +33,20 @@ export const Autocomplete: React.FC<Props> = (props: Props) => {
   };
 
   const renderOptions = (value: string) => {
-    return getOptions(value).map((option, index) => {
-      return <div key={`option-${index}`}>{props.renderOption(option)}</div>;
+    const max = props.maxVisibleOptions ? props.maxVisibleOptions : 3;
+    return getOptions(value, props.options, max).map((option, index) => {
+      return (
+        <div key={`option-${index}`}>
+          {props.renderOption ? props.renderOption(option) : option.toString()}
+        </div>
+      );
     });
   };
 
   return (
     <div
       className="ce-autocomplete"
-      style={{ ...{ position: 'relative' }, ...props.style }}
+      style={{ ...styles.style, ...props.style }}
     >
       <input
         className="ce-autocomplete-input"

@@ -22,7 +22,7 @@ export const Template = (args) => <Autocomplete {...args} />;
 
 # Autocomplete
 
-Autocomplete component is an input component which renders and helps you pick an option.
+Autocomplete component is an input component which makes you pick from a set of options.
 
 ## Default
 
@@ -32,7 +32,6 @@ Autocomplete component is an input component which renders and helps you pick an
     label: 'Example Label',
     options: ['one', 'two', 'three'],
     style: { maxWidth: '400px' },
-    renderOption: (option) => <div>{option}</div>,
   }}
 >
   {Template.bind({})}
@@ -57,6 +56,24 @@ You can limit the number of options in the list by setting the `maxVisibleOption
   {Template.bind({})}
 </Story>
 
+## Render Option
+
+You can render your own option JSX (as you should) with the `renderOption` prop.
+
+<Story
+  name="Render Option"
+  args={{
+    label: 'Example Label',
+    options: ['one', 'two', 'three'],
+    renderOption: (option) => (
+      <div style={{ border: '1px solid red' }}>{option}</div>
+    ),
+    style: { maxWidth: '400px' },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
 ## Custom Styles
 
 You can customize the look and feel with the `*Style` props.
@@ -66,11 +83,13 @@ You can customize the look and feel with the `*Style` props.
   args={{
     label: 'Example Label',
     options: ['one', 'two', 'three'],
-    renderOption: (option) => <div>{option}</div>,
+    renderOption: (option) => (
+      <div style={{ border: '2px solid orange' }}>{option}</div>
+    ),
     style: { maxWidth: '400px', border: '2px solid red' },
     inputStyle: { border: '2px solid blue' },
     optionsStyle: { border: '2px solid green' },
-    closeStyle: { border: '2px solid orange' },
+    closeStyle: { border: '2px solid deeppink' },
   }}
 >
   {Template.bind({})}

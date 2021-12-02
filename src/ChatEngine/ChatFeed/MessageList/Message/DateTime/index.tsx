@@ -5,17 +5,15 @@ import { styles } from './styles';
 
 import { formatDateTime, getDateTime } from '../../../../../util/dateTime';
 
-export const DateTime: React.FC<Props> = ({
-  created,
-  offset = 0,
-  dateTimeStyle = {},
-}) => {
+export const DateTime: React.FC<Props> = (props: Props) => {
+  const { offset = 0 } = props;
+
   return (
     <div
       className="ce-message-date-text"
-      style={{ ...styles.dateTimeStyle, ...dateTimeStyle }}
+      style={{ ...styles.style, ...props.style }}
     >
-      {formatDateTime(getDateTime(created, offset))}
+      {formatDateTime(getDateTime(props.created, offset))}
     </div>
   );
 };

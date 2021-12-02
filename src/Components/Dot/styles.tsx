@@ -1,7 +1,5 @@
-import { Properties } from 'csstype';
-
 export interface DotStyles {
-  style?: Properties;
+  style?: React.CSSProperties;
 }
 
 export const styles: DotStyles = {
@@ -15,5 +13,5 @@ export const styles: DotStyles = {
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',
     MozTransition: 'all .33s ease',
-  } as Properties,
+  },
 };

@@ -67,10 +67,14 @@ export const Message: React.FC<Props> = (props: Props) => {
         return (
           <Image
             key={`attachment_${index}`}
-            url={attachment.file !== null ? attachment.file : undefined}
+            url={
+              attachment.file !== null && !props.isSending
+                ? attachment.file
+                : undefined
+            }
             style={{
-              ...styles.messageAttachmentsImageStyle,
-              ...props.messageAttachmentsImageStyle,
+              ...styles.attachmentsImageStyle,
+              ...props.attachmentsImageStyle,
             }}
           />
         );
@@ -78,10 +82,14 @@ export const Message: React.FC<Props> = (props: Props) => {
         return (
           <File
             key={`attachment_${index}`}
-            url={attachment.file !== null ? attachment.file : undefined}
+            url={
+              attachment.file !== null && !props.isSending
+                ? attachment.file
+                : undefined
+            }
             style={{
-              ...styles.messageAttachmentsFileStyle,
-              ...props.messageAttachmentsFileStyle,
+              ...styles.attachmentsFileStyle,
+              ...props.attachmentsFileStyle,
             }}
           />
         );
@@ -99,10 +107,10 @@ export const Message: React.FC<Props> = (props: Props) => {
           key={`read_${index}`}
           avatarUrl={chatPerson.avatar}
           username={chatPerson.username}
-          visible={message.id === chatPerson.last_read}
+          isVisible={message.id === chatPerson.last_read}
           style={{
-            ...styles.messageReadStyle,
-            ...props.messageReadStyle,
+            ...styles.readStyle,
+            ...props.readStyle,
           }}
         />
       );
@@ -117,17 +125,17 @@ export const Message: React.FC<Props> = (props: Props) => {
     <div
       className={`ce-${isMyMessage ? 'my' : 'their'}-message`}
       style={{
-        ...styles.messageStyle,
+        ...styles.style,
         ...{ paddingBottom },
-        ...props.messageStyle,
+        ...props.style,
       }}
     >
       {showDateTime && (
         <DateTime
           created={message.created}
-          dateTimeStyle={{
-            ...styles.messageDateTimeStyle,
-            ...props.messageDateTimeStyle,
+          style={{
+            ...styles.dateTimeStyle,
+            ...props.dateTimeStyle,
           }}
         />
       )}
@@ -136,8 +144,8 @@ export const Message: React.FC<Props> = (props: Props) => {
         lastMessage.sender_username !== message.sender_username) && (
         <div
           style={{
-            ...styles.messageSenderUsernameStyle,
-            ...props.messageSenderUsernameStyle,
+            ...styles.senderUsernameStyle,
+            ...props.senderUsernameStyle,
           }}
           className={`ce-${
             isMyMessage ? 'my' : 'their'
@@ -149,8 +157,8 @@ export const Message: React.FC<Props> = (props: Props) => {
 
       <div
         style={{
-          ...styles.messageAttachmentsStyle,
-          ...props.messageAttachmentsStyle,
+          ...styles.attachmentsStyle,
+          ...props.attachmentsStyle,
         }}
         className={`
           ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
@@ -162,8 +170,8 @@ export const Message: React.FC<Props> = (props: Props) => {
 
       <div
         style={{
-          ...styles.messageAttachmentsStyle,
-          ...props.messageAttachmentsStyle,
+          ...styles.attachmentsStyle,
+          ...props.attachmentsStyle,
         }}
         className={`
             ce-${isMyMessage ? 'my' : 'their'}-message-attachments 
@@ -178,17 +186,17 @@ export const Message: React.FC<Props> = (props: Props) => {
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           style={{
-            ...styles.messageBodyStyle,
-            ...props.messageBodyStyle,
+            ...styles.bodyStyle,
+            ...props.bodyStyle,
           }}
         >
           {isMyMessage && (
             <span
               className="ce-my-message-timestamp"
               style={{
-                ...styles.messageTimeTagStyle,
+                ...styles.timeTagStyle,
                 ...{ opacity: hovered ? '1' : '0' },
-                ...props.messageTimeTagStyle,
+                ...props.timeTagStyle,
               }}
             >
               {formatTime(getDateTime(message.created, 0) as Date)}
@@ -201,10 +209,10 @@ export const Message: React.FC<Props> = (props: Props) => {
               ${isSending && 'ce-my-message-sending-body'}
             `}
             style={{
-              ...styles.messageBubbleStyle,
+              ...styles.bubbleStyle,
               ...borderStyle,
               ...sendingStyle,
-              ...props.messageBubbleStyle,
+              ...props.bubbleStyle,
             }}
             dangerouslySetInnerHTML={{ __html: text }}
           />
@@ -214,9 +222,9 @@ export const Message: React.FC<Props> = (props: Props) => {
             <span
               className="ce-their-message-timestamp"
               style={{
-                ...styles.messageTimeTagStyle,
+                ...styles.timeTagStyle,
                 ...{ opacity: hovered ? '1' : '0' },
-                ...props.messageTimeTagStyle,
+                ...props.timeTagStyle,
               }}
             >
               {formatTime(getDateTime(message.created, 0) as Date)}
@@ -226,9 +234,9 @@ export const Message: React.FC<Props> = (props: Props) => {
           <Avatar
             username={message.sender_username}
             style={{
-              ...styles.messageAvatarStyle,
+              ...styles.avatarStyle,
               ...(isLastMessage ? {} : { display: 'none' }),
-              ...props.messageAvatarStyle,
+              ...props.avatarStyle,
             }}
             avatarUrl={
               message.sender &&
@@ -243,8 +251,8 @@ export const Message: React.FC<Props> = (props: Props) => {
 
       <div
         style={{
-          ...styles.messageReadsStyle,
-          ...props.messageReadsStyle,
+          ...styles.readsStyle,
+          ...props.readsStyle,
         }}
         className={`ce-${isMyMessage ? 'my' : 'their'}-reads-row`}
       >

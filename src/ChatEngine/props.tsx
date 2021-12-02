@@ -8,8 +8,8 @@ import { Props as ChatCardProps } from './ChatList/ChatCard/props';
 import { Props as ChatFeedProps } from './ChatFeed/props';
 import { Props as ChatHeaderProps } from './ChatFeed/ChatHeader/props';
 import { Props as MessageListProps } from './ChatFeed/MessageList/props';
+import { Props as MessageProps } from './ChatFeed/MessageList/Message/props';
 import { Props as MessageFormProps } from './ChatFeed/MessageForm/props';
-// TODO: Render Message in here
 import { Props as ChatSettingsProps } from './ChatSettings/props';
 import { Props as PeopleSettingsProps } from './ChatSettings/PeopleSettings/props';
 import { Props as PhotosSettingsProps } from './ChatSettings/PhotosSettings/props';
@@ -41,6 +41,7 @@ export interface Props extends ChatEngineStyles {
   renderChatFeed?: (props: ChatFeedProps) => React.FC<ChatFeedProps>;
   renderChatHeader?: (props: ChatHeaderProps) => React.FC<ChatHeaderProps>;
   renderMessageList?: (props: MessageListProps) => React.FC<MessageListProps>;
+  renderMessage?: (props: MessageProps) => React.FC<MessageProps>;
   renderMessageForm?: (props: MessageFormProps) => React.FC<MessageFormProps>;
   renderChatSettings?: (
     props: ChatSettingsProps

@@ -25,12 +25,13 @@ import { adam, chats, messages } from '../util/mocks';
     renderChatFeed: { table: { category: 'render functions' } },
     renderChatHeader: { table: { category: 'render functions' } },
     renderMessageList: { table: { category: 'render functions' } },
+    renderMessage: { table: { category: 'render functions' } },
     renderMessageForm: { table: { category: 'render functions' } },
     renderChatSettings: { table: { category: 'render functions' } },
     renderPeopleSettings: { table: { category: 'render functions' } },
     renderPhotosSettings: { table: { category: 'render functions' } },
     renderOptionsSettings: { table: { category: 'render functions' } },
-    chatEngineStyle: { table: { category: 'styles' } },
+    style: { table: { category: 'styles' } },
     chatListColumnStyle: { table: { category: 'styles' } },
     chatFeedColumnStyle: { table: { category: 'styles' } },
     chatSettingsColumnStyle: { table: { category: 'styles' } },
@@ -50,7 +51,7 @@ export const Template = (args) => <ChatEngine {...args} />;
     chats: chats,
     activeChatKey: 201,
     messages: messages,
-    chatEngineStyle: {
+    style: {
       height: '550px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -73,7 +74,7 @@ You can set the `isChatListLoading`, `isChatFeedLoading` and `isChatSettingsLoad
     isChatListLoading: true,
     isChatFeedLoading: true,
     isChatSettingsLoading: true,
-    chatEngineStyle: {
+    style: {
       height: '550px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -97,7 +98,7 @@ You can see the `<Spinner/>` in the Chat List and Chat Feed components.
     activeChatKey: 201,
     hasMoreChats: true,
     hasMoreMessages: true,
-    chatEngineStyle: {
+    style: {
       height: '550px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -124,7 +125,7 @@ You can trigger code on significant event with the `on*` props.
     onTopMessageShow: () => console.log('onTopMessageShow'),
     onBottomMessageShow: () => console.log('onBottomMessageShow'),
     onMessageSend: () => console.log('onMessageSend'),
-    chatEngineStyle: {
+    style: {
       height: '550px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -150,7 +151,7 @@ You can render you own code for sub-components within Chat Engine using the `ren
     renderPeopleSettings: () => <div>People Settings Code</div>,
     renderPhotosSettings: () => <div>Photos Settings Code</div>,
     renderOptionsSettings: () => <div>Options Settings Code</div>,
-    chatEngineStyle: {
+    style: {
       height: '550px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -170,7 +171,7 @@ You can customize the look and feel with the `*Style` props.
     chats: chats,
     messages: messages,
     activeChatKey: 201,
-    chatEngineStyle: {
+    style: {
       height: '550px',
       border: '2px solid red',
     },
