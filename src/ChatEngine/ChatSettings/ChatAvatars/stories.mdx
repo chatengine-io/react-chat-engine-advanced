@@ -10,7 +10,17 @@ import {
   adam as currentUser,
 } from '../../../util/mocks';
 
-<Meta title="ChatEngine/ChatSettings/Chat Avatars" component={ChatAvatars} />
+<Meta
+  title="ChatEngine/ChatSettings/Chat Avatars"
+  component={ChatAvatars}
+  argTypes={{
+    isDirectChat: { table: { category: 'state' } },
+    style: { table: { category: 'styles' } },
+    oneAvatarStyle: { table: { category: 'styles' } },
+    twoAvatarsStyle: { table: { category: 'styles' } },
+    threeAvatarsStyle: { table: { category: 'styles' } },
+  }}
+/>
 
 export const Template = (args) => <ChatAvatars {...args} />;
 
@@ -24,13 +34,26 @@ Two arguments are required, the list of users in the chat, `users: PersonProps[]
 
 Optionally set `isDirectChat = true` if the chat is a direct message. Otherwise this defaults to `false` and assumes a group chat.
 
-## Direct Message Chat
+## Default
 
-For direct message chats, only the other person's avatar will display.
+<Story
+  name="Default"
+  args={{
+    users: directMessageChat.people,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Is Direct Chat
+
+For direct message chats, set `isDirectChat` to `true` and only the other person's avatar will display.
 
 <Canvas>
   <Story
-    name="Direct Message"
+    name="Is Direct Chat"
     args={{
       users: directMessageChat.people,
       myUsername: currentUser.username,
@@ -99,7 +122,7 @@ For group chats with three or more people, the first three users' avatars will d
     args={{
       users: threePersonChat.people,
       myUsername: currentUser.username,
-      chatAvatarsStyle: { border: '2px solid orange' },
+      style: { border: '2px solid orange' },
       threeAvatarsStyle: {
         avatarOne: { border: '2px solid red' },
         avatarTwo: { border: '2px solid blue' },

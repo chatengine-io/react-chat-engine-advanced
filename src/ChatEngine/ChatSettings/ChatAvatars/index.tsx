@@ -6,17 +6,18 @@ import { styles } from './styles';
 import { Avatar } from '../../../Components/Avatar';
 import { PersonProps } from '../../../util/interfaces';
 
-export const ChatAvatars: React.FC<Props> = ({
-  users = [],
-  myUsername = '',
-  isDirectChat = false,
-  chatAvatarsStyle = {},
-  oneAvatarStyle = { avatarOne: {} },
-  twoAvatarsStyle = { avatarOne: {}, avatarTwo: {} },
-  threeAvatarsStyle = { avatarOne: {}, avatarTwo: {}, avatarThree: {} },
-}: Props) => {
+export const ChatAvatars: React.FC<Props> = (props: Props) => {
+  const {
+    users = [],
+    oneAvatarStyle = { avatarOne: {} },
+    twoAvatarsStyle = { avatarOne: {}, avatarTwo: {} },
+    threeAvatarsStyle = { avatarOne: {}, avatarTwo: {}, avatarThree: {} },
+  } = props;
+
   const topPeople = users.slice(0, 3);
-  const otherPerson = users.find((person) => person.username !== myUsername);
+  const otherPerson = users.find(
+    (person) => person.username !== props.myUsername
+  );
 
   const renderAvatars = (
     people: PersonProps[],
@@ -27,7 +28,7 @@ export const ChatAvatars: React.FC<Props> = ({
     }
 
     return (
-      <div style={{ ...styles.chatAvatarsStyle, ...chatAvatarsStyle }}>
+      <div style={{ ...styles.style, ...props.style }}>
         {people.map((person, i) => {
           return (
             <div style={avatarStyles[i]} key={`avatar_${i}`}>
@@ -81,14 +82,14 @@ export const ChatAvatars: React.FC<Props> = ({
       <div className="ce-chat-avatars-row">
         {topPeople.length === 1 && renderOnePerson(topPeople)}
 
-        {isDirectChat && otherPerson && renderOnePerson([otherPerson])}
+        {props.isDirectChat && otherPerson && renderOnePerson([otherPerson])}
 
-        {!isDirectChat &&
+        {!props.isDirectChat &&
           otherPerson &&
           topPeople.length === 2 &&
           renderTwoPeople(topPeople)}
 
-        {!isDirectChat &&
+        {!props.isDirectChat &&
           otherPerson &&
           topPeople.length === 3 &&
           renderThreePeople(topPeople)}

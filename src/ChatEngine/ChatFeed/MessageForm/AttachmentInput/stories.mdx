@@ -6,6 +6,7 @@ import { Props } from './props';
   title="ChatEngine/ChatFeed/MessageForm/AttachmentInput"
   component={AttachmentInput}
   argTypes={{
+    onSelectFiles: { table: { category: 'hooks' } },
     style: { table: { category: 'styles' } },
     iconStyle: { table: { category: 'styles' } },
   }}
@@ -15,9 +16,9 @@ export const Template = (args) => <AttachmentInput {...args} />;
 
 # Attachment Input
 
-Attachment Input is a component which let's you select files for attaching into a message.
+Attachment Input is a component which let's you select files in a form.
 
-This is a simple component and currently not interactive within a Storybook context.
+This is a simple component and currently not interactive in a Storybook context.
 
 ## Default
 

@@ -32,7 +32,7 @@ The message list component displays all the messages sent into a Chat.
   name="Default"
   args={{
     messages: messages,
-    messageListStyle: {
+    style: {
       maxWidth: '500px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -181,7 +181,7 @@ You can use to to replace sub-components too!
     name="Render Functions 2"
     args={{
       messages: messages,
-      renderMessage: () => <>Your Message code here!</>,
+      renderMessage: (props) => <>Your Message code: {props.message.text}</>,
       style: {
         maxWidth: '500px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -194,7 +194,7 @@ You can use to to replace sub-components too!
 
 ## Custom Style
 
-You can customize the look and feel with the `customStyle` prop.
+You can customize the look and feel with the `*Style` props.
 
 <Canvas>
   <Story

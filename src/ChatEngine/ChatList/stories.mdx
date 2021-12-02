@@ -19,6 +19,8 @@ export const Template = (args) => <ChatList {...args} />;
 
 The Chat List component is for listing all chats relevant to one user.
 
+It stacks the `<ChatForm />`, `<ChatCard />` and `<ChatsLoader />` components in a convenient way.
+
 ## Default
 
 <Story
@@ -58,7 +60,7 @@ You can specify the active chat with `activeChatKey` and the corresponding ChatC
 
 ## My Username
 
-If you specify the user with `myUsername` prop then you can see which chats this user has notifications for.
+If you set the `myUsername` prop, you can see which chats this User has notifications for.
 
 <Story
   name="My Username"
@@ -96,7 +98,7 @@ If the chats are not present yet, you can set `isLoading` to true and the chats 
 
 ## Has More Chats
 
-If this user has more chats, and you want a loader to fetch more, set `hasMoreChats` prop to `true`. Then there will be a Chat Loader component at the bottom of the list.
+If this User has more chats, set `hasMoreChats` prop to `true`. Then there will be a Chat Loader component at the bottom of the list.
 
 <Story
   name="Has More Chats"
@@ -157,8 +159,8 @@ You can render you own code for sub-components within Chat List.
   name="Render Functions 2"
   args={{
     chats: chats,
-    renderChatForm: () => <div>Your Chat Form code here!</div>,
-    renderChatCard: () => <div>Your Chat Card code here!</div>,
+    renderChatForm: (props) => <div>Chat Form: {props.title}</div>,
+    renderChatCard: (props) => <div>Chat Card: {props.title}</div>,
     style: {
       maxWidth: '400px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',

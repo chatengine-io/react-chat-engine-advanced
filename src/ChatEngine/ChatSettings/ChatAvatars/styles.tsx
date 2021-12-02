@@ -1,5 +1,5 @@
 export interface ChatAvatarsStyle {
-  chatAvatarsStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
   oneAvatarStyle?: {
     avatarOne: React.CSSProperties;
   };
@@ -15,7 +15,7 @@ export interface ChatAvatarsStyle {
 }
 
 export const styles: ChatAvatarsStyle = {
-  chatAvatarsStyle: {
+  style: {
     width: '100%',
     paddingTop: '12px',
     height: 'calc(44px + 14px)',

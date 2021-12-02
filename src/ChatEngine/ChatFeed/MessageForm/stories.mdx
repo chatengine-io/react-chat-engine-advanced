@@ -6,6 +6,9 @@ import { Props } from './props';
   title="ChatEngine/ChatFeed/MessageForm"
   component={MessageForm}
   argTypes={{
+    onChange: { table: { category: 'hooks' } },
+    onSubmit: { table: { category: 'hooks' } },
+    renderMessageForm: { table: { category: 'render functions' } },
     style: { table: { category: 'styles' } },
     inputStyle: { table: { category: 'styles' } },
     sendButtonStyle: { table: { category: 'styles' } },
@@ -22,7 +25,7 @@ export const Template = (args) => <MessageForm {...args} />;
 
 # MessageForm
 
-This message form is for making and sending messages.
+This message form is for making and sending Messages.
 
 ## Default
 
@@ -65,7 +68,7 @@ You can render you own code instead of this component with the `render*` functio
 
 ## Custom Style
 
-To customize the look and feel, use the `customStyle` props which uses the `MessageFormStyles` interface and extends the `AttachmentStyles` and `AttachmentInputStyles` interface.
+To customize the look and feel, use the `*Style` props.
 
 export const StyleTemplate = (args) => <MessageForm {...args} />;
 

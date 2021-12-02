@@ -14,6 +14,10 @@ import {
   title="ChatEngine/ChatFeed/MessageList/Message"
   component={Message}
   argTypes={{
+    isMyMessage: { table: { category: 'state' } },
+    isSending: { table: { category: 'state' } },
+    showDateTime: { table: { category: 'state' } },
+    renderMessage: { table: { category: 'render functions' } },
     style: { table: { category: 'styles' } },
     dateTimeStyle: { table: { category: 'styles' } },
     senderUsernameStyle: { table: { category: 'styles' } },
@@ -33,7 +37,7 @@ export const Template = (args) => <Message {...args} />;
 
 # Message
 
-The message component represents a message sent by a user.
+The message component represents a Message sent by a User.
 
 ## Default
 
@@ -47,7 +51,7 @@ The message component represents a message sent by a user.
 
 You can set the `isMyMessage` prop to `true` and the message will appear to be sent by you.
 
-This involves significantly changing the style and position of the message.
+This involves changing the style and position of the message.
 
 <Canvas>
   <Story

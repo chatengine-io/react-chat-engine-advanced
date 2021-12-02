@@ -125,7 +125,7 @@ You can render you own code instead of this component with the `render*` functio
       title: 'Notification Card',
       description: 'Alert alert!!!',
       timeStamp: 'Tues',
-      renderChatCard: () => <>Your code here!</>,
+      renderChatCard: (props) => <>Your code here: {props.title}</>,
     }}
   >
     {Template.bind({})}

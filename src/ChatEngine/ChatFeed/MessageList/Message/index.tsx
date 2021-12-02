@@ -67,7 +67,11 @@ export const Message: React.FC<Props> = (props: Props) => {
         return (
           <Image
             key={`attachment_${index}`}
-            url={attachment.file !== null ? attachment.file : undefined}
+            url={
+              attachment.file !== null && !props.isSending
+                ? attachment.file
+                : undefined
+            }
             style={{
               ...styles.attachmentsImageStyle,
               ...props.attachmentsImageStyle,
@@ -78,7 +82,11 @@ export const Message: React.FC<Props> = (props: Props) => {
         return (
           <File
             key={`attachment_${index}`}
-            url={attachment.file !== null ? attachment.file : undefined}
+            url={
+              attachment.file !== null && !props.isSending
+                ? attachment.file
+                : undefined
+            }
             style={{
               ...styles.attachmentsFileStyle,
               ...props.attachmentsFileStyle,
