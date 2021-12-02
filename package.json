@@ -20,6 +20,7 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages",
     "new": "chmod +x ./scripts/new.sh; ./scripts/new.sh"
   },
   "peerDependencies": {
@@ -38,6 +39,7 @@
   },
   "name": "react-chat-engine-components",
   "author": "Adam La Morre",
+  "repository": "chatengine-io/react-chat-engine-components",
   "module": "dist/react-chat-engine-components.esm.js",
   "size-limit": [
     {
@@ -58,6 +60,7 @@
     "@storybook/addon-links": "^6.3.12",
     "@storybook/addons": "^6.3.12",
     "@storybook/react": "^6.3.12",
+    "@storybook/storybook-deployer": "^2.8.10",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "babel-loader": "^8.2.3",
