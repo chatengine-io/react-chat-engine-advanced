@@ -1,7 +1,7 @@
 module.exports = {
   stories: [
-    '../src/ChatEngine/stories.mdx', // Default Story
-    '../src/**/stories.@(ts|tsx|js|jsx|mdx)',
+    '../src/components/ChatEngine/stories.mdx', // Default Story
+    '../src/components/**/stories.@(ts|tsx|js|jsx|mdx)',
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
