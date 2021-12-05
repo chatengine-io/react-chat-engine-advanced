@@ -1,3 +1,4 @@
 export * from './components';
 export * from './experiences';
-export * from './sockets';
+
+export { Socket } from './sockets';

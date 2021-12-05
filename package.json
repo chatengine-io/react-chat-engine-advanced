@@ -75,6 +75,7 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "nextjs-websocket": "^1.0.7",
     "react-grid-system": "^7.3.1"
   }
