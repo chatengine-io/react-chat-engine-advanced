@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { ChatEngine } from 'react-chat-engine-components';
+import { ChatEngine, Socket } from 'react-chat-engine-components';
 
 const App: React.FC = () => {
   return (
     <div>
       <ChatEngine style={{ height: '80vh' }} />
+
+      <Socket />
     </div>
   );
 };
