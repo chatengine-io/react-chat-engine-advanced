@@ -20,19 +20,15 @@ const getSessionToken = (
         'User-Secret': mySecret,
       },
     })
-
     .then((response) => {
       callback(response.data.token);
     })
-
     .catch((error) => {
-      console.log('Get or Create Session Error', error);
+      console.log('Get Session Error', error);
     });
 };
 
 export const Socket: React.FC<Props> = (props: Props) => {
-  const { projectId, myUsername, mySecret } = props;
-
   const didMountRef = useRef(false);
   const [isHidden, setIsHidden] = useState(false);
   const [sessionToken, setToken] = useState<string | undefined>(undefined);
@@ -40,31 +36,39 @@ export const Socket: React.FC<Props> = (props: Props) => {
   useEffect(() => {
     if (!didMountRef.current) {
       didMountRef.current = true;
-      getSessionToken(projectId, myUsername, mySecret, (token) =>
-        setToken(token)
+      getSessionToken(
+        props.projectId,
+        props.myUsername,
+        props.mySecret,
+        (token) => setToken(token)
       );
     }
   }, []);
 
   function reRender() {
     setIsHidden(true);
-    console.log('Refreshing');
-
-    setTimeout(() => {
-      setIsHidden(false);
-      console.log('Refresh completed');
-    }, 100);
+    setTimeout(() => setIsHidden(false), 100);
   }
 
   if (isHidden && sessionToken) return <div />;
 
   return (
     <ChildSocket
-      projectId={projectId}
-      myUsername={myUsername}
-      mySecret={mySecret}
+      projectId={props.projectId}
+      myUsername={props.myUsername}
+      mySecret={props.mySecret}
       sessionToken={sessionToken}
       onRefresh={reRender}
+      onConnect={props.onConnect}
+      onError={props.onError}
+      onClose={props.onClose}
+      onNewChat={props.onNewChat}
+      onEditChat={props.onEditChat}
+      onDeleteChat={props.onDeleteChat}
+      onNewMessage={props.onNewMessage}
+      onEditMessage={props.onEditMessage}
+      onDeleteMessage={props.onDeleteMessage}
+      onIsTyping={props.onIsTyping}
     />
   );
 };
