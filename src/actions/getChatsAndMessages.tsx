@@ -109,6 +109,7 @@ export const getChatsAndMessages: Fetch = (
     let currentChat = activeChatKey;
     if (!activeChatKey && chats.length > 0) {
       onGetActiveChat(chats[0].id);
+      currentChat = chats[0].id;
     }
 
     // Get messages

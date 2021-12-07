@@ -4,7 +4,7 @@ import { Props } from './props';
 import { styles } from './styles';
 
 import { Avatar } from '../../../Components/Avatar';
-import { PersonProps } from '../../../util/interfaces';
+import { PersonProps } from '../../../../interfaces';
 
 export const ChatAvatars: React.FC<Props> = (props: Props) => {
   const {

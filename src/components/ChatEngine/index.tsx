@@ -47,6 +47,7 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
         <ChatFeed
           chat={chat}
           messages={messages}
+          myUsername={props.myUsername}
           isLoading={props.isChatFeedLoading}
           hasMoreMessages={props.hasMoreMessages}
           onTopMessageShow={props.onTopMessageShow}
