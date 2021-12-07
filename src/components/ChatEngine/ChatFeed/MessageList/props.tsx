@@ -1,4 +1,4 @@
-import { ChatProps, MessagesProps } from '../../../util/interfaces';
+import { ChatProps, MessagesProps } from '../../../../interfaces';
 
 import { MessageListStyles } from './styles';
 

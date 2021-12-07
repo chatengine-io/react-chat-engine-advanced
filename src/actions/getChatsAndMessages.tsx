@@ -6,7 +6,7 @@ import {
   ChatsProps,
   MessageProps,
   MessagesProps,
-} from '../components/util/interfaces';
+} from '../interfaces';
 
 type GetChats = (
   projectId: string,

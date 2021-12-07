@@ -5,7 +5,7 @@ import {
   MessageProps,
   MessagesProps,
   PersonProps,
-} from './interfaces';
+} from '../../interfaces';
 
 export const adam: PersonProps = {
   username: 'adam_lamorre',
@@ -108,7 +108,7 @@ export const onePersonChat: ChatProps = {
   attachments: [],
   people: [
     {
-      ...adam,
+      person: adam,
       last_read: 1001,
       chat_updated: '',
     },
@@ -125,12 +125,12 @@ export const chatWithReads: ChatProps = {
   attachments: [],
   people: [
     {
-      ...adam,
+      person: adam,
       last_read: 1001,
       chat_updated: '',
     },
     {
-      ...bob,
+      person: bob,
       last_read: 1001,
       chat_updated: '',
     },
@@ -152,17 +152,17 @@ export const threePersonChat: ChatProps = {
   ],
   people: [
     {
-      ...adam,
+      person: adam,
       last_read: 1001,
       chat_updated: '',
     },
     {
-      ...bob,
+      person: bob,
       last_read: 1001,
       chat_updated: '',
     },
     {
-      ...cam,
+      person: cam,
       last_read: 1001,
       chat_updated: '',
     },
@@ -179,12 +179,12 @@ export const directMessageChat: ChatProps = {
   attachments: [],
   people: [
     {
-      ...adam,
+      person: adam,
       last_read: 1001,
       chat_updated: '',
     },
     {
-      ...bob,
+      person: bob,
       last_read: 1001,
       chat_updated: '',
     },
@@ -215,7 +215,7 @@ export const chats: ChatsProps = {
     attachments: [],
     people: [
       {
-        ...adam,
+        person: adam,
         last_read: 1001,
         chat_updated: '',
       },

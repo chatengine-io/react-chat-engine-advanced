@@ -100,13 +100,13 @@ export const Message: React.FC<Props> = (props: Props) => {
   };
 
   const renderReads = () => {
-    const members = chat !== null ? chat.people : [];
-    return members.map((chatPerson, index) => {
+    const chatPeople = chat !== null ? chat.people : [];
+    return chatPeople.map((chatPerson, index) => {
       return (
         <Dot
           key={`read_${index}`}
-          avatarUrl={chatPerson.avatar}
-          username={chatPerson.username}
+          avatarUrl={chatPerson.person.avatar}
+          username={chatPerson.person.username}
           isVisible={message.id === chatPerson.last_read}
           style={{
             ...styles.readStyle,

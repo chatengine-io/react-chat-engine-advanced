@@ -15,12 +15,11 @@ export const ChatSettings: React.FC<Props> = (props: Props) => {
     return <>{props.renderChatSettings(props)}</>;
   }
 
+  const people = chat ? chat.people.map((chatPerson) => chatPerson.person) : [];
+
   return (
     <div style={{ ...styles.chatSettingsStyle, ...props.chatSettingsStyle }}>
-      <ChatAvatars
-        users={chat ? chat.people : []}
-        myUsername={props.myUsername}
-      />
+      <ChatAvatars users={people} myUsername={props.myUsername} />
 
       <div style={{ ...styles.chatTitleStyle, ...props.chatTitleStyle }}>
         {!props.isLoading && chat && chat.title}
