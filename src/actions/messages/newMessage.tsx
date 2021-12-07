@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import axios from 'axios';
 
-import { MessageProps } from '../../components/util/interfaces';
+import { MessageProps } from '../../interfaces';
 
 type NewMessage = (
   projectId: string,

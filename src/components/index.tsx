@@ -25,5 +25,3 @@ export * from './Components/Image';
 export * from './Components/Input';
 export * from './Components/RenderTrigger';
 export * from './Components/Spinner';
-
-export * from './util/interfaces';

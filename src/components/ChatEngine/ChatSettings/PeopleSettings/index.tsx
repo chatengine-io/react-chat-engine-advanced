@@ -8,13 +8,15 @@ import { Autocomplete } from '../../../Components/Autocomplete';
 import { Button } from '../../../Components/Button';
 import { Dropdown } from '../../../Components/Dropdown';
 
-import { PersonProps } from '../../../util/interfaces';
+import { PersonProps, ChatPersonProps } from '../../../../interfaces';
 
 export const PeopleSettings: React.FC<Props> = (props: Props) => {
   const { chat = { people: [] }, otherPeople = [] } = props;
 
-  const renderChatPeople = (people: Array<PersonProps>) => {
-    return people.map((person, index) => {
+  const renderChatPeople = (chatPeople: Array<ChatPersonProps>) => {
+    return chatPeople.map((chatPerson, index) => {
+      const { person } = chatPerson;
+
       return (
         <div
           key={`member-${index}`}

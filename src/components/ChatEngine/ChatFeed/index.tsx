@@ -10,7 +10,7 @@ import { MessageForm } from './MessageForm';
 import { getDateTime, formatDateTime } from '../../util/dateTime';
 
 import { Spinner } from '../../Components/Spinner';
-import { ChatProps } from '../../util/interfaces';
+import { ChatProps } from '../../../interfaces';
 
 const getDescription = (chat: ChatProps | undefined) => {
   if (

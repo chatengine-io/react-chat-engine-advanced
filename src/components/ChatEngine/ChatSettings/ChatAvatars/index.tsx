@@ -4,7 +4,7 @@ import { Props } from './props';
 import { styles } from './styles';
 
 import { Avatar } from '../../../Components/Avatar';
-import { PersonProps } from '../../../util/interfaces';
+import { PersonProps } from '../../../../interfaces';
 
 export const ChatAvatars: React.FC<Props> = (props: Props) => {
   const {
@@ -31,12 +31,12 @@ export const ChatAvatars: React.FC<Props> = (props: Props) => {
       <div style={{ ...styles.style, ...props.style }}>
         {people.map((person, i) => {
           return (
-            <div style={avatarStyles[i]} key={`avatar_${i}`}>
-              <Avatar
-                username={person.username}
-                avatarUrl={person.avatar ? person.avatar : undefined}
-              />
-            </div>
+            <Avatar
+              key={`avatar_${i}`}
+              style={avatarStyles[i]}
+              username={person.username}
+              avatarUrl={person.avatar ? person.avatar : undefined}
+            />
           );
         })}
       </div>

@@ -1,4 +1,4 @@
-import { PersonProps } from '../../../util/interfaces';
+import { PersonProps } from '../../../../interfaces';
 
 import { ChatAvatarsStyle } from './styles';
 

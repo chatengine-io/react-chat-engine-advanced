@@ -5,7 +5,7 @@ import { styles } from './styles';
 
 import { Image } from '../../../Components/Image';
 import { Dropdown } from '../../../Components/Dropdown';
-import { AttachmentProps } from '../../../util/interfaces';
+import { AttachmentProps } from '../../../../interfaces';
 import { isImage, getFileName } from '../../../util/file';
 
 export const PhotosSettings: React.FC<Props> = (props: Props) => {

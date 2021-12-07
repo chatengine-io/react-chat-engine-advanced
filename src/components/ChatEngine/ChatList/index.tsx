@@ -8,7 +8,7 @@ import { ChatCard } from './ChatCard';
 
 import { RenderTrigger } from '../../Components/RenderTrigger';
 
-import { ChatProps } from '../../util/interfaces';
+import { ChatProps } from '../../../interfaces';
 import { getDateTime } from '../../util/dateTime';
 
 import { Spinner } from '../../Components/Spinner';
@@ -16,7 +16,7 @@ import { Spinner } from '../../Components/Spinner';
 const readLastMessage = (myUsername: string, chat: ChatProps) => {
   return chat.people.some(
     (chatPerson) =>
-      myUsername === chatPerson.username &&
+      chatPerson.person.username === myUsername &&
       chatPerson.last_read === chat.last_message.id
   );
 };

@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 
 import { ChatListStyles } from './styles';
 
-import { ChatsProps } from '../../util/interfaces';
+import { ChatsProps } from '../../../interfaces';
 
 import { Props as ChatFormProps } from './ChatForm/props';
 import { Props as ChatCardProps } from './ChatCard/props';

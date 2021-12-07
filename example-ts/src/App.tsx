@@ -55,6 +55,7 @@ const App: React.FC = () => {
         chats={chats}
         activeChatKey={activeChatKey}
         messages={messages}
+        myUsername={myUsername}
         onMessageSend={onMessageSend}
         style={{ height: '80vh' }}
       />

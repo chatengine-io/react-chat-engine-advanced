@@ -4,7 +4,7 @@ import { Props as PeopleSettingsProps } from './PeopleSettings/props';
 import { Props as PhotosSettingsProps } from './PhotosSettings/props';
 import { Props as OptionsSettingsProps } from './OptionsSettings/props';
 
-import { ChatProps, PersonProps } from '../../util/interfaces';
+import { ChatProps, PersonProps } from '../../../interfaces';
 
 export interface Props extends ChatSettingsStyles {
   chat?: ChatProps;
