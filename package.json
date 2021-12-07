@@ -44,7 +44,7 @@
   "size-limit": [
     {
       "path": "dist/react-chat-engine-components.cjs.production.min.js",
-      "limit": "15 KB"
+      "limit": "50 KB"
     },
     {
       "path": "dist/react-chat-engine-components.esm.js",
@@ -78,6 +78,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "nextjs-websocket": "^1.0.7",
     "react-grid-system": "^7.3.1"
   }
