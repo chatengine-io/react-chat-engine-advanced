@@ -15,6 +15,7 @@ import {
   getMessages,
   getChatsAndMessages,
   getPeopleToInvite,
+  invitePerson,
   // Utilities
   getDateTime,
   PersonProps,
@@ -39,8 +40,8 @@ const App: React.FC = () => {
   const [chatCount, setChatCount] = useState<number>(chatCountIterator);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
 
-  const onGetChats = (chats: ChatProps[] = []) => {
-    const sortedChats = chats.sort((a: ChatProps, b: ChatProps) => {
+  const sortChats = (chats: ChatProps[] = []) => {
+    return chats.sort((a: ChatProps, b: ChatProps) => {
       const aDate =
         a.last_message && a.last_message.created
           ? getDateTime(a.last_message.created, 0)
@@ -51,6 +52,10 @@ const App: React.FC = () => {
           : getDateTime(b.created, 0);
       return new Date(bDate).getTime() - new Date(aDate).getTime();
     });
+  };
+
+  const onGetChats = (chats: ChatProps[] = []) => {
+    const sortedChats = sortChats(chats);
     setChats(sortedChats);
     setHasMoreChats(Object.keys(chats).length === chatCount);
     setChatCount(Object.keys(chats).length);
@@ -150,6 +155,27 @@ const App: React.FC = () => {
     deleteChat(projectId, myUsername, mySecret, chat.id, onDeleteChat);
   };
 
+  const onInvitePersonClick = (person: PersonProps) => {
+    activeChatKey &&
+      invitePerson(
+        projectId,
+        myUsername,
+        mySecret,
+        activeChatKey,
+        person.username,
+        () => onChatCardClick(activeChatKey)
+      );
+  };
+
+  const onEditChat = (newChat: ChatProps) => {
+    const otherChats = chats
+      ? chats.filter((chat) => chat.id !== newChat.id)
+      : [];
+    const newChats = [newChat].concat(otherChats);
+    const sortedChats = sortChats(newChats);
+    setChats(sortedChats);
+  };
+
   return (
     <div>
       <ChatEngine
@@ -165,6 +191,7 @@ const App: React.FC = () => {
         onChatCardClick={onChatCardClick}
         onChatLoaderVisible={onChatLoaderVisible}
         onMessageSend={onMessageSend}
+        onInvitePersonClick={onInvitePersonClick}
         onDeleteChatClick={onDeleteChatClick}
         style={{ height: '80vh' }}
       />
@@ -176,6 +203,7 @@ const App: React.FC = () => {
         onConnect={onConnect}
         // Hooks
         onNewChat={onNewChat}
+        onEditChat={onEditChat}
         onDeleteChat={onDeleteChat}
       />
     </div>

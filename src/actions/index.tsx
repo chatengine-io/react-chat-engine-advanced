@@ -9,3 +9,4 @@ export * from './chats/newChat';
 export * from './getChatsAndMessages';
 
 export * from './people/getPeopleToInvite';
+export * from './people/invitePerson';

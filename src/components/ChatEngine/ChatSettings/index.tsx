@@ -28,6 +28,7 @@ export const ChatSettings: React.FC<Props> = (props: Props) => {
       <PeopleSettings
         chat={chat}
         peopleToInvite={props.peopleToInvite}
+        onInvitePersonClick={props.onInvitePersonClick}
         renderPeopleSettings={props.renderPeopleSettings}
         style={{ ...styles.peopleSettingsStyle, ...props.peopleSettingsStyle }}
       />

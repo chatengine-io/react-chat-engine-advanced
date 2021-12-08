@@ -65,11 +65,12 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
 
   const renderChatPeopleOption = (option: object) => {
     const person = option as PersonProps;
+    const { onInvitePersonClick } = props;
     return (
       <div
         className="ce-add-member-option"
         style={{ ...styles.optionStyle, ...props.optionStyle }}
-        onClick={() => props.onPersonAdd && props.onPersonAdd(person)}
+        onClick={() => onInvitePersonClick && onInvitePersonClick(person)}
       >
         {person.username}
       </div>
