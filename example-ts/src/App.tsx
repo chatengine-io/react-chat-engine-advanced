@@ -20,9 +20,12 @@ const chatCount = 20;
 const messageCount = 50;
 
 const App: React.FC = () => {
+  // Data
   const [activeChatKey, setActiveChatKey] = useState<number | undefined>();
   const [chats, setChats] = useState<ChatsProps | undefined>();
   const [messages, setMessages] = useState<MessagesProps | undefined>();
+  // State
+  const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
 
   const onConnect = () => {
     getChatsAndMessages(
@@ -32,7 +35,14 @@ const App: React.FC = () => {
       undefined,
       chatCount,
       messageCount,
-      (chats: ChatsProps) => setChats(chats),
+      (chats: ChatsProps) => {
+        if (Object.keys(chats).length === chatCount) {
+          setHasMoreChats(true);
+        }
+        console.log(Object.keys(chats).length);
+        console.log(chatCount);
+        setChats(chats);
+      },
       (activeChatKey: number) => setActiveChatKey(activeChatKey),
       (messages: MessagesProps) => setMessages(messages)
     );
@@ -82,6 +92,9 @@ const App: React.FC = () => {
         activeChatKey={activeChatKey}
         messages={messages}
         myUsername={myUsername}
+        // State
+        hasMoreChats={hasMoreChats}
+        // Hooks
         onChatFormSubmit={onChatFormSubmit}
         onChatCardClick={onChatCardClick}
         onMessageSend={onMessageSend}
