@@ -1,12 +1,9 @@
 import _ from 'lodash';
 import axios from 'axios';
 
-import {
-  ChatProps,
-  ChatsProps,
-  MessageProps,
-  MessagesProps,
-} from '../interfaces';
+import { ChatProps, ChatsProps, MessagesProps } from '../interfaces';
+
+import { getMessages } from './messages/getMessages';
 
 type GetChats = (
   projectId: string,
@@ -41,44 +38,7 @@ const getLatestChats: GetChats = (
     });
 };
 
-type GetMessages = (
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
-  chatId: number,
-  messageCount: number,
-  callback: (chatId: number, messages: Array<MessageProps>) => void
-) => void;
-
-const getLatestMessages: GetMessages = (
-  projectId,
-  myUsername,
-  mySecret,
-  chatId,
-  messageCount,
-  callback
-) => {
-  axios
-    .get(
-      `http://127.0.0.1:8000/chats/${chatId}/messages/latest/${messageCount}/`,
-      {
-        headers: {
-          'Public-Key': projectId,
-          'User-Name': myUsername,
-          'User-Secret': mySecret,
-        },
-      }
-    )
-    .then((response) => {
-      // props.onGetMessages && props.onGetMessages(chatId, response.data)
-      callback(chatId, response.data);
-    })
-    .catch((error) => {
-      console.log('Fetch Latest Messages Error', error);
-    });
-};
-
-type Fetch = (
+type GetChatsAndMessages = (
   projectId: string,
   myUsername: string,
   mySecret: string,
@@ -90,7 +50,7 @@ type Fetch = (
   onGetMessages: (chats: MessagesProps) => void
 ) => void;
 
-export const getChatsAndMessages: Fetch = (
+export const getChatsAndMessages: GetChatsAndMessages = (
   projectId,
   myUsername,
   mySecret,
@@ -114,7 +74,7 @@ export const getChatsAndMessages: Fetch = (
 
     // Get messages
     currentChat && // Only get if there is a chat
-      getLatestMessages(
+      getMessages(
         projectId,
         myUsername,
         mySecret,

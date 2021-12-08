@@ -7,6 +7,7 @@ import {
   Socket,
   // Actions
   newMessage,
+  getMessages,
   getChatsAndMessages,
 } from 'react-chat-engine-components';
 
@@ -49,6 +50,25 @@ const App: React.FC = () => {
     );
   };
 
+  const onChatCardClick = (chatId: number) => {
+    setActiveChatKey(chatId);
+    getMessages(
+      projectId,
+      myUsername,
+      mySecret,
+      chatId,
+      messageCount,
+      (chatId, messages) => {
+        void chatId;
+        setMessages(messages);
+      }
+    );
+  };
+
+  const onChatFormSubmit = (title: string) => {
+    console.log('title', title);
+  };
+
   return (
     <div>
       <ChatEngine
@@ -56,6 +76,8 @@ const App: React.FC = () => {
         activeChatKey={activeChatKey}
         messages={messages}
         myUsername={myUsername}
+        onChatFormSubmit={onChatFormSubmit}
+        onChatCardClick={onChatCardClick}
         onMessageSend={onMessageSend}
         style={{ height: '80vh' }}
       />
