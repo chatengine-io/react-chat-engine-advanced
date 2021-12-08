@@ -1,4 +1,4 @@
-import { ChatsProps, MessagesProps } from '../../interfaces';
+import { ChatProps, MessagesProps } from '../../interfaces';
 import { ChatEngineStyles } from './styles';
 
 import { Props as ChatListProps } from './ChatList/props';
@@ -17,7 +17,7 @@ import { Props as OptionsSettingsProps } from './ChatSettings/OptionsSettings/pr
 
 export interface Props extends ChatEngineStyles {
   // Data
-  chats?: ChatsProps;
+  chats?: ChatProps[];
   activeChatKey?: number;
   messages?: MessagesProps;
   myUsername?: string;

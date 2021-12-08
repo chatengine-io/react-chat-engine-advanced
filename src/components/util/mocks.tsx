@@ -205,8 +205,8 @@ export const messages: MessagesProps = {
   message1004Created: messagePlusAttachments1004,
 };
 
-export const chats: ChatsProps = {
-  201: {
+export const chats: ChatsProps = [
+  {
     id: 201,
     title: 'First Chat ☝️',
     is_direct_chat: false,
@@ -222,7 +222,7 @@ export const chats: ChatsProps = {
     ],
     last_message: message1001,
   },
-  202: {
+  {
     id: 202,
     title: 'Chat Two ✌️ ',
     is_direct_chat: false,
@@ -238,7 +238,7 @@ export const chats: ChatsProps = {
       custom_json: '',
     },
   },
-  204: {
+  {
     id: 203,
     title: 'Direct Message w/ Adam',
     is_direct_chat: true,
@@ -254,4 +254,4 @@ export const chats: ChatsProps = {
       custom_json: '',
     },
   },
-};
+];

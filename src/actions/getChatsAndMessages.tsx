@@ -1,96 +1,23 @@
 import _ from 'lodash';
-import axios from 'axios';
 
-import {
-  ChatProps,
-  ChatsProps,
-  MessageProps,
-  MessagesProps,
-} from '../interfaces';
+import { ChatProps, MessagesProps } from '../interfaces';
 
-type GetChats = (
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
-  chatCount: number,
-  callback: (chats: Array<ChatProps>) => void
-) => void;
+import { getChatsBefore } from './chats/getChatsBefore';
+import { getMessages } from './messages/getMessages';
 
-const getLatestChats: GetChats = (
-  projectId,
-  myUsername,
-  mySecret,
-  chatCount,
-  callback
-) => {
-  axios
-    .get(`http://127.0.0.1:8000/chats/latest/${chatCount}/`, {
-      headers: {
-        'Public-Key': projectId,
-        'User-Name': myUsername,
-        'User-Secret': mySecret,
-      },
-    })
-    .then((response) => {
-      // props.onGetChats && props.onGetChats(response.data);
-      callback(response.data);
-    })
-
-    .catch((error) => {
-      console.log('Fetch Chats Error', error);
-    });
-};
-
-type GetMessages = (
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
-  chatId: number,
-  messageCount: number,
-  callback: (chatId: number, messages: Array<MessageProps>) => void
-) => void;
-
-const getLatestMessages: GetMessages = (
-  projectId,
-  myUsername,
-  mySecret,
-  chatId,
-  messageCount,
-  callback
-) => {
-  axios
-    .get(
-      `http://127.0.0.1:8000/chats/${chatId}/messages/latest/${messageCount}/`,
-      {
-        headers: {
-          'Public-Key': projectId,
-          'User-Name': myUsername,
-          'User-Secret': mySecret,
-        },
-      }
-    )
-    .then((response) => {
-      // props.onGetMessages && props.onGetMessages(chatId, response.data)
-      callback(chatId, response.data);
-    })
-    .catch((error) => {
-      console.log('Fetch Latest Messages Error', error);
-    });
-};
-
-type Fetch = (
+type GetChatsAndMessages = (
   projectId: string,
   myUsername: string,
   mySecret: string,
   activeChatKey: number | undefined,
   chatCount: number,
   messageCount: number,
-  onGetChats: (chats: ChatsProps) => void,
+  onGetChats: (chats: ChatProps[]) => void,
   onGetActiveChat: (activeChatKey: number) => void,
   onGetMessages: (chats: MessagesProps) => void
 ) => void;
 
-export const getChatsAndMessages: Fetch = (
+export const getChatsAndMessages: GetChatsAndMessages = (
   projectId,
   myUsername,
   mySecret,
@@ -101,9 +28,14 @@ export const getChatsAndMessages: Fetch = (
   onGetActiveChat,
   onGetMessages
 ) => {
+  const now = new Date()
+    .toISOString()
+    .replace('T', ' ')
+    .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+
   // Get chats
-  getLatestChats(projectId, myUsername, mySecret, chatCount, (chats) => {
-    onGetChats(_.mapKeys(chats, 'id'));
+  getChatsBefore(projectId, myUsername, mySecret, now, chatCount, (chats) => {
+    onGetChats(chats);
 
     // Get active chat
     let currentChat = activeChatKey;
@@ -114,7 +46,7 @@ export const getChatsAndMessages: Fetch = (
 
     // Get messages
     currentChat && // Only get if there is a chat
-      getLatestMessages(
+      getMessages(
         projectId,
         myUsername,
         mySecret,

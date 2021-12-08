@@ -12,9 +12,9 @@ import { setConfiguration } from 'react-grid-system';
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
 export const ChatEngine: React.FC<Props> = (props: Props) => {
-  const { chats = {}, activeChatKey = -1, messages = {} } = props;
+  const { chats = [], activeChatKey = -1, messages = {} } = props;
 
-  const chat = chats[activeChatKey];
+  const chat = chats.find((chat) => chat.id === activeChatKey);
 
   return (
     <Row className="ce-chat-engine" style={{ ...styles.style, ...props.style }}>
