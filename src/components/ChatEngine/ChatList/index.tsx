@@ -77,9 +77,7 @@ export const ChatList: React.FC<Props> = (props: Props) => {
         renderChatForm={props.renderChatForm}
       />
 
-      {props.isLoading
-        ? renderLoading()
-        : renderChats(Object.values(props.chats))}
+      {props.isLoading ? renderLoading() : renderChats(props.chats)}
 
       {props.hasMoreChats && (
         <RenderTrigger

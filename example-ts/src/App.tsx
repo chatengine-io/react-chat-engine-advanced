@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import {
   ChatEngine,
   ChatProps,
-  ChatsProps,
   MessagesProps,
   Socket,
   // Actions
@@ -16,8 +15,6 @@ import {
   getDateTime,
 } from 'react-chat-engine-components';
 
-import _ from 'lodash';
-
 const projectId = '1ed59673-1fd6-46ed-9eb9-56239a6a4f82';
 const myUsername = 'Adam_La_Morre';
 const mySecret = 'pass1234';
@@ -28,7 +25,7 @@ const messageCountIterator = 50;
 const App: React.FC = () => {
   // Data
   const [activeChatKey, setActiveChatKey] = useState<number | undefined>();
-  const [chats, setChats] = useState<ChatsProps | undefined>();
+  const [chats, setChats] = useState<ChatProps[] | undefined>();
   const [messages, setMessages] = useState<MessagesProps | undefined>();
   // State
   const [chatCount, setChatCount] = useState<number>(chatCountIterator);
@@ -46,7 +43,7 @@ const App: React.FC = () => {
           : getDateTime(b.created, 0);
       return new Date(bDate).getTime() - new Date(aDate).getTime();
     });
-    setChats(_.mapKeys(sortedChats, 'id'));
+    setChats(sortedChats);
     setHasMoreChats(Object.keys(chats).length === chatCount);
     setChatCount(Object.keys(chats).length);
   };
@@ -94,9 +91,9 @@ const App: React.FC = () => {
 
   const onChatFormSubmit = (title: string) => {
     newChat(projectId, myUsername, mySecret, title, (chat) => {
-      const newChats = { ...chats };
-      newChats[chat.id] = chat;
+      const newChats = [chat].concat(chats ? chats : []);
       setChats(newChats);
+      setChatCount(newChats.length);
       setActiveChatKey(chat.id);
     });
   };
