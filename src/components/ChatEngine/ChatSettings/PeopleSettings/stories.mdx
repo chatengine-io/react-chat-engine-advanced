@@ -34,7 +34,7 @@ People Settings component shows you the users of a chatroom and the ability to e
   name="Default"
   args={{
     chat: threePersonChat,
-    otherPeople: [adam],
+    peopleToInvite: [adam],
     style: {
       maxWidth: '400px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -55,7 +55,7 @@ You'll see a delete button for users when the `canDelete` props is `true`.
     name="Can Delete"
     args={{
       chat: threePersonChat,
-      otherPeople: [adam],
+      peopleToInvite: [adam],
       canDelete: true,
       style: {
         maxWidth: '400px',
@@ -76,7 +76,7 @@ When a user is added or removed, you can run code with the `onPersonAdd` and `on
     name="Hooks"
     args={{
       chat: threePersonChat,
-      otherPeople: [adam],
+      peopleToInvite: [adam],
       onPersonAdd: (person) => console.log('Add:', person),
       onPersonDelete: (person) => console.log('Delete:', person),
       style: {
@@ -114,7 +114,7 @@ You can customize the look and feel with the `*Style` props.
     name="Custom Styles"
     args={{
       chat: threePersonChat,
-      otherPeople: [adam],
+      peopleToInvite: [adam],
       canDelete: true,
       style: {
         maxWidth: '400px',

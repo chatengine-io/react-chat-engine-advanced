@@ -4,7 +4,7 @@ import { ChatProps, PersonProps } from '../../../../interfaces';
 
 export interface Props extends PeopleSettingsStyles {
   chat?: ChatProps;
-  otherPeople?: Array<PersonProps>;
+  peopleToInvite?: Array<PersonProps>;
   // State
   canDelete?: boolean;
   // Hooks

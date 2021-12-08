@@ -1,4 +1,4 @@
-import { ChatProps, MessageProps } from '../../interfaces';
+import { ChatProps, MessageProps, PersonProps } from '../../interfaces';
 import { ChatEngineStyles } from './styles';
 
 import { Props as ChatListProps } from './ChatList/props';
@@ -21,6 +21,7 @@ export interface Props extends ChatEngineStyles {
   activeChatKey?: number;
   messages?: MessageProps[];
   myUsername?: string;
+  peopleToInvite?: PersonProps[];
   // State
   isChatListLoading?: boolean;
   isChatFeedLoading?: boolean;
@@ -34,6 +35,7 @@ export interface Props extends ChatEngineStyles {
   onTopMessageShow?: () => void;
   onBottomMessageShow?: () => void;
   onMessageSend?: (value: string, attachments: Array<File>) => void;
+  onDeleteChatClick?: (chat: ChatProps) => void;
   // Render Functions
   renderChatList?: (props: ChatListProps) => React.FC<ChatListProps>;
   renderChatForm?: (props: ChatFromProps) => React.FC<ChatFromProps>;

@@ -8,13 +8,16 @@ import {
   // Sockets
   Socket,
   // Actions
+  deleteChat,
   getChatsBefore,
   newChat,
   newMessage,
   getMessages,
   getChatsAndMessages,
+  getPeopleToInvite,
   // Utilities
   getDateTime,
+  PersonProps,
 } from 'react-chat-engine-components';
 
 const projectId = '1ed59673-1fd6-46ed-9eb9-56239a6a4f82';
@@ -29,6 +32,9 @@ const App: React.FC = () => {
   const [activeChatKey, setActiveChatKey] = useState<number | undefined>();
   const [chats, setChats] = useState<ChatProps[] | undefined>();
   const [messages, setMessages] = useState<MessageProps[] | undefined>();
+  const [peopleToInvite, setPeopleToInvite] = useState<
+    PersonProps[] | undefined
+  >();
   // State
   const [chatCount, setChatCount] = useState<number>(chatCountIterator);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
@@ -64,7 +70,7 @@ const App: React.FC = () => {
       chatCount,
       messageCountIterator,
       onGetChats,
-      (activeChatKey: number) => setActiveChatKey(activeChatKey),
+      onChatCardClick,
       onGetMessages
     );
   };
@@ -91,14 +97,25 @@ const App: React.FC = () => {
       messageCountIterator,
       onGetMessages
     );
+    getPeopleToInvite(
+      projectId,
+      myUsername,
+      mySecret,
+      chatId,
+      setPeopleToInvite
+    );
+  };
+
+  const onNewChat = (chat: ChatProps) => {
+    const newChats = [chat].concat(chats ? chats : []);
+    setChats(newChats);
+    setChatCount(newChats.length);
   };
 
   const onChatFormSubmit = (title: string) => {
     newChat(projectId, myUsername, mySecret, title, (chat) => {
-      const newChats = [chat].concat(chats ? chats : []);
-      setChats(newChats);
-      setChatCount(newChats.length);
-      setActiveChatKey(chat.id);
+      onNewChat(chat);
+      onChatCardClick(chat.id);
     });
   };
 
@@ -119,6 +136,20 @@ const App: React.FC = () => {
     );
   };
 
+  const onDeleteChat = (oldChat: ChatProps) => {
+    const newChats = chats
+      ? chats.filter((chat) => chat.id !== oldChat.id)
+      : [];
+    setChats(newChats);
+    setChatCount(newChats.length);
+    if (newChats.length > 0 && activeChatKey === oldChat.id)
+      onChatCardClick(newChats[0].id);
+  };
+
+  const onDeleteChatClick = (chat: ChatProps) => {
+    deleteChat(projectId, myUsername, mySecret, chat.id, onDeleteChat);
+  };
+
   return (
     <div>
       <ChatEngine
@@ -126,6 +157,7 @@ const App: React.FC = () => {
         activeChatKey={activeChatKey}
         messages={messages}
         myUsername={myUsername}
+        peopleToInvite={peopleToInvite}
         // State
         hasMoreChats={hasMoreChats}
         // Hooks
@@ -133,6 +165,7 @@ const App: React.FC = () => {
         onChatCardClick={onChatCardClick}
         onChatLoaderVisible={onChatLoaderVisible}
         onMessageSend={onMessageSend}
+        onDeleteChatClick={onDeleteChatClick}
         style={{ height: '80vh' }}
       />
 
@@ -141,6 +174,9 @@ const App: React.FC = () => {
         myUsername={myUsername}
         mySecret={mySecret}
         onConnect={onConnect}
+        // Hooks
+        onNewChat={onNewChat}
+        onDeleteChat={onDeleteChat}
       />
     </div>
   );

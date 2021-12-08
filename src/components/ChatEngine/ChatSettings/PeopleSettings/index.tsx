@@ -11,7 +11,7 @@ import { Dropdown } from '../../../Components/Dropdown';
 import { PersonProps, ChatPersonProps } from '../../../../interfaces';
 
 export const PeopleSettings: React.FC<Props> = (props: Props) => {
-  const { chat = { people: [] }, otherPeople = [] } = props;
+  const { chat = { people: [] }, peopleToInvite = [] } = props;
 
   const renderChatPeople = (chatPeople: Array<ChatPersonProps>) => {
     return chatPeople.map((chatPerson, index) => {
@@ -86,7 +86,7 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
 
       <Autocomplete
         label="Add Member"
-        options={otherPeople}
+        options={peopleToInvite}
         renderOption={renderChatPeopleOption}
         style={{ ...styles.addMemberStyle, ...props.addMemberStyle }}
         inputStyle={{
