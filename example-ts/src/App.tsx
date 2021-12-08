@@ -12,6 +12,8 @@ import {
   newMessage,
   getMessages,
   getChatsAndMessages,
+  // Utilities
+  getDateTime,
 } from 'react-chat-engine-components';
 
 import _ from 'lodash';
@@ -21,7 +23,7 @@ const myUsername = 'Adam_La_Morre';
 const mySecret = 'pass1234';
 
 const chatCountIterator = 20;
-const messageCount = 50;
+const messageCountIterator = 50;
 
 const App: React.FC = () => {
   // Data
@@ -32,6 +34,23 @@ const App: React.FC = () => {
   const [chatCount, setChatCount] = useState<number>(chatCountIterator);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
 
+  const onGetChats = (chatCount: number, chats: ChatProps[] = []) => {
+    const sortedChats = chats.sort((a: ChatProps, b: ChatProps) => {
+      const aDate =
+        a.last_message && a.last_message.created
+          ? getDateTime(a.last_message.created, 0)
+          : getDateTime(a.created, 0);
+      const bDate =
+        b.last_message && b.last_message.created
+          ? getDateTime(b.last_message.created, 0)
+          : getDateTime(b.created, 0);
+      return new Date(bDate).getTime() - new Date(aDate).getTime();
+    });
+    setChats(_.mapKeys(sortedChats, 'id'));
+    setHasMoreChats(Object.keys(chats).length === chatCount);
+    setChatCount(Object.keys(chats).length);
+  };
+
   const onConnect = () => {
     getChatsAndMessages(
       projectId,
@@ -39,21 +58,14 @@ const App: React.FC = () => {
       mySecret,
       undefined,
       chatCount,
-      messageCount,
-      (chats: ChatsProps) => {
-        if (Object.keys(chats).length === chatCount) {
-          setHasMoreChats(true);
-        }
-        setChats(chats);
-        setChatCount(Object.keys(chats).length);
-      },
+      messageCountIterator,
+      (chats: ChatProps[]) => onGetChats(chatCount, chats),
       (activeChatKey: number) => setActiveChatKey(activeChatKey),
       (messages: MessagesProps) => setMessages(messages)
     );
   };
 
   const onMessageSend = (value: string, attachments: File[]) => {
-    console.log(value, attachments);
     newMessage(
       projectId,
       myUsername,
@@ -72,7 +84,7 @@ const App: React.FC = () => {
       myUsername,
       mySecret,
       chatId,
-      messageCount,
+      messageCountIterator,
       (chatId, messages) => {
         void chatId;
         setMessages(messages);
@@ -95,21 +107,16 @@ const App: React.FC = () => {
       .replace('T', ' ')
       .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
     const newChatCount = chatCount + chatCountIterator;
+
     getChatsBefore(
       projectId,
       myUsername,
       mySecret,
       now,
       newChatCount,
-      (chats: ChatProps[]) => {
-        setChats(_.mapKeys(chats, 'created'));
-        if (chats.length < newChatCount) setHasMoreChats(false);
-        setChatCount(chats.length);
-      }
+      (chats: ChatProps[]) => onGetChats(newChatCount, chats)
     );
   };
-
-  console.log(chats ? Object.keys(chats).length : 0);
 
   return (
     <div>
