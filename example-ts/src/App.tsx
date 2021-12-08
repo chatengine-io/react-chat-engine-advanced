@@ -6,6 +6,7 @@ import {
   MessagesProps,
   Socket,
   // Actions
+  newChat,
   newMessage,
   getMessages,
   getChatsAndMessages,
@@ -66,7 +67,12 @@ const App: React.FC = () => {
   };
 
   const onChatFormSubmit = (title: string) => {
-    console.log('title', title);
+    newChat(projectId, myUsername, mySecret, title, (chat) => {
+      const newChats = { ...chats };
+      newChats[chat.id] = chat;
+      setChats(newChats);
+      setActiveChatKey(chat.id);
+    });
   };
 
   return (
