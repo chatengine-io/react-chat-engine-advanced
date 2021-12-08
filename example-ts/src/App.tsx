@@ -2,21 +2,25 @@ import React, { useState } from 'react';
 
 import {
   ChatEngine,
+  ChatProps,
   ChatsProps,
   MessagesProps,
   Socket,
   // Actions
+  getChatsBefore,
   newChat,
   newMessage,
   getMessages,
   getChatsAndMessages,
 } from 'react-chat-engine-components';
 
+import _ from 'lodash';
+
 const projectId = '1ed59673-1fd6-46ed-9eb9-56239a6a4f82';
 const myUsername = 'Adam_La_Morre';
 const mySecret = 'pass1234';
 
-const chatCount = 20;
+const chatCountIterator = 20;
 const messageCount = 50;
 
 const App: React.FC = () => {
@@ -25,6 +29,7 @@ const App: React.FC = () => {
   const [chats, setChats] = useState<ChatsProps | undefined>();
   const [messages, setMessages] = useState<MessagesProps | undefined>();
   // State
+  const [chatCount, setChatCount] = useState<number>(chatCountIterator);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
 
   const onConnect = () => {
@@ -39,9 +44,8 @@ const App: React.FC = () => {
         if (Object.keys(chats).length === chatCount) {
           setHasMoreChats(true);
         }
-        console.log(Object.keys(chats).length);
-        console.log(chatCount);
         setChats(chats);
+        setChatCount(Object.keys(chats).length);
       },
       (activeChatKey: number) => setActiveChatKey(activeChatKey),
       (messages: MessagesProps) => setMessages(messages)
@@ -85,6 +89,28 @@ const App: React.FC = () => {
     });
   };
 
+  const onChatLoaderVisible = () => {
+    const now = new Date()
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+    const newChatCount = chatCount + chatCountIterator;
+    getChatsBefore(
+      projectId,
+      myUsername,
+      mySecret,
+      now,
+      newChatCount,
+      (chats: ChatProps[]) => {
+        setChats(_.mapKeys(chats, 'created'));
+        if (chats.length < newChatCount) setHasMoreChats(false);
+        setChatCount(chats.length);
+      }
+    );
+  };
+
+  console.log(chats ? Object.keys(chats).length : 0);
+
   return (
     <div>
       <ChatEngine
@@ -97,6 +123,7 @@ const App: React.FC = () => {
         // Hooks
         onChatFormSubmit={onChatFormSubmit}
         onChatCardClick={onChatCardClick}
+        onChatLoaderVisible={onChatLoaderVisible}
         onMessageSend={onMessageSend}
         style={{ height: '80vh' }}
       />

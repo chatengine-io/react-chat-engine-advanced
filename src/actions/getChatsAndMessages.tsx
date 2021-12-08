@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import { ChatsProps, MessagesProps } from '../interfaces';
 
-import { getChats } from './chats/getChats';
+import { getChatsBefore } from './chats/getChatsBefore';
 import { getMessages } from './messages/getMessages';
 
 type GetChatsAndMessages = (
@@ -28,8 +28,13 @@ export const getChatsAndMessages: GetChatsAndMessages = (
   onGetActiveChat,
   onGetMessages
 ) => {
+  const now = new Date()
+    .toISOString()
+    .replace('T', ' ')
+    .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+
   // Get chats
-  getChats(projectId, myUsername, mySecret, chatCount, (chats) => {
+  getChatsBefore(projectId, myUsername, mySecret, now, chatCount, (chats) => {
     onGetChats(_.mapKeys(chats, 'id'));
 
     // Get active chat
