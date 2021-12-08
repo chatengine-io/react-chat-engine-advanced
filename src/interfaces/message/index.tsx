@@ -10,7 +10,3 @@ export interface MessageProps {
   custom_json: object | string;
   sender?: PersonProps; // Empty messages have no sender
 }
-
-export interface MessagesProps {
-  [created: string]: MessageProps;
-}

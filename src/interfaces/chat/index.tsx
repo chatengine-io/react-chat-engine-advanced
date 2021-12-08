@@ -12,7 +12,3 @@ export interface ChatProps {
   attachments: Array<AttachmentProps>;
   people: Array<ChatPersonProps>;
 }
-
-export interface ChatsProps {
-  [id: number]: ChatProps;
-}

@@ -1,9 +1,7 @@
 import {
   AttachmentProps,
   ChatProps,
-  ChatsProps,
   MessageProps,
-  MessagesProps,
   PersonProps,
 } from '../../interfaces';
 
@@ -198,14 +196,14 @@ export const directMessageChat: ChatProps = {
   },
 };
 
-export const messages: MessagesProps = {
-  message1001Created: message1001,
-  message1002Created: messageByBob1002,
-  message1003Created: messageTwoByBob1003,
-  message1004Created: messagePlusAttachments1004,
-};
+export const messages: MessageProps[] = [
+  message1001,
+  messageByBob1002,
+  messageTwoByBob1003,
+  messagePlusAttachments1004,
+];
 
-export const chats: ChatsProps = [
+export const chats: ChatProps[] = [
   {
     id: 201,
     title: 'First Chat ☝️',

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 
 import {
   ChatEngine,
+  // Interfaces
   ChatProps,
-  MessagesProps,
+  MessageProps,
+  // Sockets
   Socket,
   // Actions
   getChatsBefore,
@@ -26,12 +28,12 @@ const App: React.FC = () => {
   // Data
   const [activeChatKey, setActiveChatKey] = useState<number | undefined>();
   const [chats, setChats] = useState<ChatProps[] | undefined>();
-  const [messages, setMessages] = useState<MessagesProps | undefined>();
+  const [messages, setMessages] = useState<MessageProps[] | undefined>();
   // State
   const [chatCount, setChatCount] = useState<number>(chatCountIterator);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
 
-  const onGetChats = (chatCount: number, chats: ChatProps[] = []) => {
+  const onGetChats = (chats: ChatProps[] = []) => {
     const sortedChats = chats.sort((a: ChatProps, b: ChatProps) => {
       const aDate =
         a.last_message && a.last_message.created
@@ -48,6 +50,11 @@ const App: React.FC = () => {
     setChatCount(Object.keys(chats).length);
   };
 
+  const onGetMessages = (chatId: number, messages: MessageProps[]) => {
+    void chatId;
+    setMessages(messages);
+  };
+
   const onConnect = () => {
     getChatsAndMessages(
       projectId,
@@ -56,9 +63,9 @@ const App: React.FC = () => {
       undefined,
       chatCount,
       messageCountIterator,
-      (chats: ChatProps[]) => onGetChats(chatCount, chats),
+      onGetChats,
       (activeChatKey: number) => setActiveChatKey(activeChatKey),
-      (messages: MessagesProps) => setMessages(messages)
+      onGetMessages
     );
   };
 
@@ -82,10 +89,7 @@ const App: React.FC = () => {
       mySecret,
       chatId,
       messageCountIterator,
-      (chatId, messages) => {
-        void chatId;
-        setMessages(messages);
-      }
+      onGetMessages
     );
   };
 
@@ -111,7 +115,7 @@ const App: React.FC = () => {
       mySecret,
       now,
       newChatCount,
-      (chats: ChatProps[]) => onGetChats(newChatCount, chats)
+      onGetChats
     );
   };
 

@@ -8,10 +8,13 @@ import { Message } from './Message';
 import { RenderTrigger } from '../../../Components/RenderTrigger';
 import { Spinner } from '../../../Components/Spinner';
 
-export const MessageList: React.FC<Props> = (props: Props) => {
-  const { messages = {} } = props;
+import _ from 'lodash';
 
-  const keys = Object.keys(messages).sort();
+export const MessageList: React.FC<Props> = (props: Props) => {
+  const { messages = [] } = props;
+
+  const messagesObject = _.mapKeys(messages, 'created');
+  const keys = Object.keys(messagesObject).sort();
 
   const date = (date: string) => {
     return date ? date.substr(0, 10) : null;
@@ -19,7 +22,7 @@ export const MessageList: React.FC<Props> = (props: Props) => {
 
   const renderMessages = (keys: Array<string>) => {
     return keys.map((key, index) => {
-      const message = messages[key];
+      const message = messagesObject[key];
       const lastKey = index === 0 ? '' : keys[index - 1];
       const nextKey: string = index === keys.length - 1 ? '' : keys[index + 1];
 
@@ -44,8 +47,8 @@ export const MessageList: React.FC<Props> = (props: Props) => {
           <Message
             chat={props.chat}
             message={message}
-            lastMessage={messages[lastKey]}
-            nextMessage={messages[nextKey]}
+            lastMessage={messagesObject[lastKey]}
+            nextMessage={messagesObject[nextKey]}
             showDateTime={showDateTime}
             isMyMessage={isMyMessage}
             renderMessage={props.renderMessage}

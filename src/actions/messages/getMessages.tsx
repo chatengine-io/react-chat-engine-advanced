@@ -1,7 +1,6 @@
-import { MessagesProps } from '../../interfaces';
+import { MessageProps } from '../../interfaces';
 
 import axios from 'axios';
-import _ from 'lodash';
 
 type GetMessages = (
   projectId: string,
@@ -9,7 +8,7 @@ type GetMessages = (
   mySecret: string,
   chatId: number,
   messageCount: number,
-  callback: (chatId: number, messages: MessagesProps) => void
+  callback: (chatId: number, messages: MessageProps[]) => void
 ) => void;
 
 export const getMessages: GetMessages = (
@@ -33,7 +32,7 @@ export const getMessages: GetMessages = (
     )
     .then((response) => {
       // props.onGetMessages && props.onGetMessages(chatId, response.data)
-      callback(chatId, _.mapKeys(response.data, 'created'));
+      callback(chatId, response.data);
     })
     .catch((error) => {
       console.log('Fetch Latest Messages Error', error);

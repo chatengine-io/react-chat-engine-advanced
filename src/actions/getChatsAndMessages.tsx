@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { ChatProps, MessagesProps } from '../interfaces';
+import { ChatProps, MessageProps } from '../interfaces';
 
 import { getChatsBefore } from './chats/getChatsBefore';
 import { getMessages } from './messages/getMessages';
@@ -14,7 +14,7 @@ type GetChatsAndMessages = (
   messageCount: number,
   onGetChats: (chats: ChatProps[]) => void,
   onGetActiveChat: (activeChatKey: number) => void,
-  onGetMessages: (chats: MessagesProps) => void
+  onGetMessages: (chatId: number, chats: MessageProps[]) => void
 ) => void;
 
 export const getChatsAndMessages: GetChatsAndMessages = (
@@ -52,10 +52,7 @@ export const getChatsAndMessages: GetChatsAndMessages = (
         mySecret,
         currentChat,
         messageCount,
-        (chatId, messages) => {
-          void chatId;
-          onGetMessages(_.mapKeys(messages, 'created'));
-        }
+        onGetMessages
       );
   });
 };
