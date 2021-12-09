@@ -6,7 +6,7 @@ import { chatWithReads } from '../../util/mocks';
 describe('Thing', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Thing chat={chatWithReads} messages={{}} />, div);
+    ReactDOM.render(<Thing chat={chatWithReads} messages={[]} />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });
