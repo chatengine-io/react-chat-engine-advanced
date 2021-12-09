@@ -11,7 +11,7 @@ import { Dropdown } from '../../../Components/Dropdown';
 import { PersonProps, ChatPersonProps } from '../../../../interfaces';
 
 export const PeopleSettings: React.FC<Props> = (props: Props) => {
-  const { chat = { people: [] }, otherPeople = [] } = props;
+  const { chat = { people: [] }, peopleToInvite = [] } = props;
 
   const renderChatPeople = (chatPeople: Array<ChatPersonProps>) => {
     return chatPeople.map((chatPerson, index) => {
@@ -38,7 +38,7 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
               type="danger"
               className="ce-member-delete-button"
               onClick={() =>
-                props.onPersonDelete && props.onPersonDelete(person)
+                props.onRemovePersonClick && props.onRemovePersonClick(person)
               }
               style={{
                 ...styles.deleteButtonStyle,
@@ -65,11 +65,12 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
 
   const renderChatPeopleOption = (option: object) => {
     const person = option as PersonProps;
+    const { onInvitePersonClick } = props;
     return (
       <div
         className="ce-add-member-option"
         style={{ ...styles.optionStyle, ...props.optionStyle }}
-        onClick={() => props.onPersonAdd && props.onPersonAdd(person)}
+        onClick={() => onInvitePersonClick && onInvitePersonClick(person)}
       >
         {person.username}
       </div>
@@ -86,7 +87,7 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
 
       <Autocomplete
         label="Add Member"
-        options={otherPeople}
+        options={peopleToInvite}
         renderOption={renderChatPeopleOption}
         style={{ ...styles.addMemberStyle, ...props.addMemberStyle }}
         inputStyle={{

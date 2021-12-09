@@ -27,7 +27,10 @@ export const ChatSettings: React.FC<Props> = (props: Props) => {
 
       <PeopleSettings
         chat={chat}
-        otherPeople={props.otherPeople}
+        peopleToInvite={props.peopleToInvite}
+        canDelete={chat && props.myUsername === chat.admin.username}
+        onInvitePersonClick={props.onInvitePersonClick}
+        onRemovePersonClick={props.onRemovePersonClick}
         renderPeopleSettings={props.renderPeopleSettings}
         style={{ ...styles.peopleSettingsStyle, ...props.peopleSettingsStyle }}
       />
@@ -40,6 +43,7 @@ export const ChatSettings: React.FC<Props> = (props: Props) => {
 
       <OptionsSettings
         chat={chat}
+        onDeleteChatClick={props.onDeleteChatClick}
         renderOptionsSettings={props.renderOptionsSettings}
         style={{
           ...styles.optionsSettingsStyle,

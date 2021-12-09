@@ -15,7 +15,9 @@ export const OptionsSettings: React.FC<Props> = (props: Props) => {
       <Button
         type="danger"
         onClick={() =>
-          props.onDeleteChat && props.chat && props.onDeleteChat(props.chat)
+          props.onDeleteChatClick &&
+          props.chat &&
+          props.onDeleteChatClick(props.chat)
         }
         style={{
           ...styles.deleteChatButtonStyle,

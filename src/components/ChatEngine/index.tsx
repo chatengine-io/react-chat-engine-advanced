@@ -73,7 +73,11 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
         <ChatSettings
           chat={chat}
           myUsername={props.myUsername}
+          peopleToInvite={props.peopleToInvite}
           isLoading={props.isChatSettingsLoading}
+          onInvitePersonClick={props.onInvitePersonClick}
+          onRemovePersonClick={props.onRemovePersonClick}
+          onDeleteChatClick={props.onDeleteChatClick}
           renderChatSettings={props.renderChatSettings}
           renderPeopleSettings={props.renderPeopleSettings}
           renderPhotosSettings={props.renderPhotosSettings}

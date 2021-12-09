@@ -8,7 +8,7 @@ import { threePersonChat, adam } from '../../../util/mocks';
   title="ChatEngine/ChatSettings/OptionsSettings"
   component={OptionsSettings}
   argTypes={{
-    onDeleteChat: { table: { category: 'hooks' } },
+    onDeleteChatClick: { table: { category: 'hooks' } },
     renderOptionsSettings: { table: { category: 'render functions' } },
     style: { table: { category: 'styles' } },
     deleteChatButtonStyle: { table: { category: 'styles' } },
@@ -39,14 +39,14 @@ Options Settings render everything you can do to the overall chatroom.
 
 ## On Delete Chat
 
-When the user click on Delete Chat button, you can run your code on the `onDeleteChat` hook.
+When the user click on Delete Chat button, you can run your code on the `onDeleteChatClick` hook.
 
 <Canvas>
   <Story
     name="On Delete Chat"
     args={{
       chat: threePersonChat,
-      onDeleteChat: (chat) => console.log('Delete chat', chat),
+      onDeleteChatClick: (chat) => console.log('Delete chat', chat),
       style: {
         maxWidth: '400px',
         boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -82,7 +82,7 @@ You can customize the look and feel with the `*Style` props.
     name="Custom Styles"
     args={{
       chat: threePersonChat,
-      otherPeople: [adam],
+      peopleToInvite: [adam],
       canDelete: true,
       style: {
         maxWidth: '400px',

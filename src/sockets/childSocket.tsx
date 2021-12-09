@@ -48,7 +48,6 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
     const eventJSON = JSON.parse(event);
 
     if (eventJSON.action === 'pong') {
-      console.log('pong');
       setShouldPongBy(Date.now() + minLag);
     } else if (eventJSON.action === 'new_chat') {
       props.onNewChat && props.onNewChat(eventJSON.data);

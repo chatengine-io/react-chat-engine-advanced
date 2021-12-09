@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { styles } from './styles';
 import { Props } from './props';
 
@@ -20,8 +20,29 @@ const getOptions = (
 };
 
 export const Autocomplete: React.FC<Props> = (props: Props) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const didMountRef = useRef(false);
   const [value, setValue] = useState<string>('');
   const [showOptions, setShowOptions] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      event.target !== null &&
+      ref &&
+      ref.current !== null &&
+      !ref.current.contains(event.target as Node)
+    ) {
+      setShowOptions(false);
+    }
+  };
 
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -45,6 +66,7 @@ export const Autocomplete: React.FC<Props> = (props: Props) => {
 
   return (
     <div
+      ref={ref}
       className="ce-autocomplete"
       style={{ ...styles.style, ...props.style }}
     >
@@ -53,10 +75,6 @@ export const Autocomplete: React.FC<Props> = (props: Props) => {
         value={value}
         placeholder={props.label}
         style={{ ...styles.inputStyle, ...props.inputStyle }}
-        onBlur={(e) => {
-          setShowOptions(false);
-          props.onBlur && props.onBlur(e);
-        }}
         onChange={(e) => onChange(e, true)}
         onFocus={(e) => {
           setShowOptions(true);
