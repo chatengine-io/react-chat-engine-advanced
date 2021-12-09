@@ -38,7 +38,7 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
               type="danger"
               className="ce-member-delete-button"
               onClick={() =>
-                props.onPersonDelete && props.onPersonDelete(person)
+                props.onRemovePersonClick && props.onRemovePersonClick(person)
               }
               style={{
                 ...styles.deleteButtonStyle,

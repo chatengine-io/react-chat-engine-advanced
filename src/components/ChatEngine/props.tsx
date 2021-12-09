@@ -36,6 +36,7 @@ export interface Props extends ChatEngineStyles {
   onBottomMessageShow?: () => void;
   onMessageSend?: (value: string, attachments: Array<File>) => void;
   onInvitePersonClick?: (person: PersonProps) => void;
+  onRemovePersonClick?: (person: PersonProps) => void;
   onDeleteChatClick?: (chat: ChatProps) => void;
   // Render Functions
   renderChatList?: (props: ChatListProps) => React.FC<ChatListProps>;

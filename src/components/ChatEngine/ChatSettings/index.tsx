@@ -28,7 +28,9 @@ export const ChatSettings: React.FC<Props> = (props: Props) => {
       <PeopleSettings
         chat={chat}
         peopleToInvite={props.peopleToInvite}
+        canDelete={chat && props.myUsername === chat.admin.username}
         onInvitePersonClick={props.onInvitePersonClick}
+        onRemovePersonClick={props.onRemovePersonClick}
         renderPeopleSettings={props.renderPeopleSettings}
         style={{ ...styles.peopleSettingsStyle, ...props.peopleSettingsStyle }}
       />

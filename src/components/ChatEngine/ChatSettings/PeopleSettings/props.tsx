@@ -9,7 +9,7 @@ export interface Props extends PeopleSettingsStyles {
   canDelete?: boolean;
   // Hooks
   onInvitePersonClick?: (person: PersonProps) => void;
-  onPersonDelete?: (person: PersonProps) => void;
+  onRemovePersonClick?: (person: PersonProps) => void;
   // Render Functions
   renderPeopleSettings?: (props: Props) => React.FC<Props>;
 }

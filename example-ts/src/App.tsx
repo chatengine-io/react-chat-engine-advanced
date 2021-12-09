@@ -16,6 +16,7 @@ import {
   getChatsAndMessages,
   getPeopleToInvite,
   invitePerson,
+  removePerson,
   // Utilities
   getDateTime,
   PersonProps,
@@ -167,6 +168,18 @@ const App: React.FC = () => {
       );
   };
 
+  const onRemovePersonClick = (person: PersonProps) => {
+    activeChatKey &&
+      removePerson(
+        projectId,
+        myUsername,
+        mySecret,
+        activeChatKey,
+        person.username,
+        () => onChatCardClick(activeChatKey)
+      );
+  };
+
   const onEditChat = (newChat: ChatProps) => {
     const otherChats = chats
       ? chats.filter((chat) => chat.id !== newChat.id)
@@ -192,6 +205,7 @@ const App: React.FC = () => {
         onChatLoaderVisible={onChatLoaderVisible}
         onMessageSend={onMessageSend}
         onInvitePersonClick={onInvitePersonClick}
+        onRemovePersonClick={onRemovePersonClick}
         onDeleteChatClick={onDeleteChatClick}
         style={{ height: '80vh' }}
       />

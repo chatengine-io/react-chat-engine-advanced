@@ -112,6 +112,7 @@ export const onePersonChat: ChatProps = {
     },
   ],
   last_message: message1001,
+  admin: adam,
 };
 
 export const chatWithReads: ChatProps = {
@@ -134,6 +135,7 @@ export const chatWithReads: ChatProps = {
     },
   ],
   last_message: message1001,
+  admin: adam,
 };
 
 export const threePersonChat: ChatProps = {
@@ -166,6 +168,7 @@ export const threePersonChat: ChatProps = {
     },
   ],
   last_message: message1001,
+  admin: adam,
 };
 
 export const directMessageChat: ChatProps = {
@@ -194,6 +197,7 @@ export const directMessageChat: ChatProps = {
     text: 'hello',
     custom_json: '',
   },
+  admin: adam,
 };
 
 export const messages: MessageProps[] = [
@@ -219,6 +223,7 @@ export const chats: ChatProps[] = [
       },
     ],
     last_message: message1001,
+    admin: adam,
   },
   {
     id: 202,
@@ -235,6 +240,7 @@ export const chats: ChatProps[] = [
       text: '',
       custom_json: '',
     },
+    admin: adam,
   },
   {
     id: 203,
@@ -251,5 +257,6 @@ export const chats: ChatProps[] = [
       text: '',
       custom_json: '',
     },
+    admin: adam,
   },
 ];

@@ -15,6 +15,7 @@ export interface Props extends ChatSettingsStyles {
   // Hooks
   onDeleteChatClick?: (chat: ChatProps) => void;
   onInvitePersonClick?: (person: PersonProps) => void;
+  onRemovePersonClick?: (person: PersonProps) => void;
   // Render Functions
   renderChatSettings?: (props: Props) => React.FC<Props>;
   renderPeopleSettings?: (
