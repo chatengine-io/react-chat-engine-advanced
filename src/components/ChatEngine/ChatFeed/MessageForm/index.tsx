@@ -9,7 +9,7 @@ import { File } from '../../../Components/File';
 import { Image } from '../../../Components/Image';
 
 import { isImage } from '../../../util/file';
-import { MessageProps } from '../../../..';
+import { MessageProps, AttachmentProps } from '../../../../interfaces';
 
 export const MessageForm: React.FC<Props> = (props: Props) => {
   const { label = '' } = props;
@@ -42,9 +42,19 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
       .toISOString()
       .replace('T', ' ')
       .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+    const localAttachments: AttachmentProps[] = attachments.map(
+      (attachment) => {
+        return {
+          id: -1,
+          created: new Date().toString(),
+          file: attachment.name,
+          blob: attachment,
+        };
+      }
+    );
 
     const message: MessageProps = {
-      attachments: [],
+      attachments: localAttachments,
       text: value,
       sender_username: props.myUsername,
       custom_json: {},

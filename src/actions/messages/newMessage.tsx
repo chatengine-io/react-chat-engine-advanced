@@ -23,15 +23,15 @@ export const newMessage: NewMessage = (
   if (!chatId) return;
 
   const formdata = new FormData();
-  // if (message.attachments.length > 0) {
-  //   for (let i = 0; i < message.attachments.length; i++) {
-  //     formdata.append(
-  //       'attachments',
-  //       message.attachments[i] as Blob,
-  //       message.attachments[i].name as string
-  //     );
-  //   }
-  // }
+  if (message.attachments.length > 0) {
+    for (let i = 0; i < message.attachments.length; i++) {
+      formdata.append(
+        'attachments',
+        message.attachments[i].blob as Blob,
+        message.attachments[i].file as string
+      );
+    }
+  }
   message.text !== null && formdata.append('text', message.text);
   formdata.append('created', message.created);
   formdata.append('sender_username', message.sender_username);
