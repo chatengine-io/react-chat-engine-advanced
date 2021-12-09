@@ -13,6 +13,7 @@ export const styles: FileStyles = {
     marginRight: '2px',
     marginBottom: '4px',
     color: '#434343',
+    backgroundColor: 'white',
     border: '1px solid #434343',
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',

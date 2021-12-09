@@ -81,15 +81,14 @@ const App: React.FC = () => {
     );
   };
 
-  const onMessageSend = (value: string, attachments: File[]) => {
+  const onMessageSend = (message: MessageProps) => {
     newMessage(
       projectId,
       myUsername,
       mySecret,
       activeChatKey,
-      value,
-      attachments,
-      () => console.log('sent')
+      message,
+      () => {}
     );
   };
 
@@ -189,6 +188,13 @@ const App: React.FC = () => {
     setChats(sortedChats);
   };
 
+  const onNewMessage = (chatId: number, message: MessageProps) => {
+    if (activeChatKey === chatId) {
+      const newMessages = messages?.concat(message);
+      setMessages(newMessages);
+    }
+  };
+
   return (
     <div>
       <ChatEngine
@@ -219,6 +225,7 @@ const App: React.FC = () => {
         onNewChat={onNewChat}
         onEditChat={onEditChat}
         onDeleteChat={onDeleteChat}
+        onNewMessage={onNewMessage}
       />
     </div>
   );

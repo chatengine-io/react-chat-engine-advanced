@@ -115,6 +115,7 @@ You can trigger code on significant event with the `on*` props.
 <Story
   name="Event Hooks"
   args={{
+    myUsername: adam.myUsername,
     chats: chats,
     messages: messages,
     activeChatKey: 201,
@@ -142,6 +143,7 @@ You can render you own code for sub-components within Chat Engine using the `ren
 <Story
   name="Render Functions"
   args={{
+    myUsername: adam.myUsername,
     chats: chats,
     messages: messages,
     renderChatForm: () => <div>Chat Form Code</div>,

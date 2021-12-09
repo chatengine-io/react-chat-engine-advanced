@@ -8,8 +8,7 @@ type NewMessage = (
   myUsername: string,
   mySecret: string,
   chatId: number | undefined,
-  text: string,
-  attachments: File[],
+  message: MessageProps,
   callback: (message: MessageProps) => void
 ) => void;
 
@@ -18,19 +17,25 @@ export const newMessage: NewMessage = (
   myUsername,
   mySecret,
   chatId,
-  text,
-  attachments,
+  message,
   callback
 ) => {
   if (!chatId) return;
 
   const formdata = new FormData();
-  formdata.append('text', text);
-  if (attachments.length > 0) {
-    for (let i = 0; i < attachments.length; i++) {
-      formdata.append('attachments', attachments[i], attachments[i].name);
-    }
-  }
+  // if (message.attachments.length > 0) {
+  //   for (let i = 0; i < message.attachments.length; i++) {
+  //     formdata.append(
+  //       'attachments',
+  //       message.attachments[i] as Blob,
+  //       message.attachments[i].name as string
+  //     );
+  //   }
+  // }
+  message.text !== null && formdata.append('text', message.text);
+  formdata.append('created', message.created);
+  formdata.append('sender_username', message.sender_username);
+  formdata.append('custom_json', JSON.stringify({}));
 
   axios
     .post(`http://127.0.0.1:8000/chats/${chatId}/messages/`, formdata, {

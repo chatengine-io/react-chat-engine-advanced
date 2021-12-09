@@ -55,7 +55,7 @@ export const styles: MessageFormStyles = {
     height: '30px',
     color: '#40a9ff',
     backgroundColor: 'white',
-    border: '1px solid #fff',
+    border: '1px solid rgb(67, 67, 67)',
     borderRadius: '50%',
     cursor: 'pointer',
     transition: 'all .33s ease',

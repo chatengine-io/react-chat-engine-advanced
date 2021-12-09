@@ -10,15 +10,15 @@ import { Props as MessageFormProps } from './MessageForm/props';
 export interface Props extends ChatFeedStyles {
   // Data
   messages: MessageProps[];
+  myUsername: string;
   chat?: ChatProps;
-  myUsername?: string;
   // State
   isLoading?: boolean;
   hasMoreMessages?: boolean;
   // Hooks
   onTopMessageShow?: () => void;
   onBottomMessageShow?: () => void;
-  onMessageSend?: (value: string, attachments: Array<File>) => void;
+  onMessageSend?: (message: MessageProps) => void;
   // Render Functions
   renderChatFeed?: (props: Props) => React.FC<Props>;
   renderChatHeader?: (props: ChatHeaderProps) => React.FC<ChatHeaderProps>;
