@@ -15,6 +15,7 @@ export const styles: ImageStyles = {
     padding: '2px',
     objectFit: 'cover',
     borderRadius: '0.3em',
+    backgroundColor: 'white',
     border: '1px solid #434343',
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',

@@ -17,10 +17,10 @@ import { Props as OptionsSettingsProps } from './ChatSettings/OptionsSettings/pr
 
 export interface Props extends ChatEngineStyles {
   // Data
+  myUsername: string;
   chats?: ChatProps[];
   activeChatKey?: number;
   messages?: MessageProps[];
-  myUsername?: string;
   peopleToInvite?: PersonProps[];
   // State
   isChatListLoading?: boolean;
@@ -34,7 +34,7 @@ export interface Props extends ChatEngineStyles {
   onChatLoaderVisible?: () => void;
   onTopMessageShow?: () => void;
   onBottomMessageShow?: () => void;
-  onMessageSend?: (value: string, attachments: Array<File>) => void;
+  onMessageSend?: (message: MessageProps) => void;
   onInvitePersonClick?: (person: PersonProps) => void;
   onRemovePersonClick?: (person: PersonProps) => void;
   onDeleteChatClick?: (chat: ChatProps) => void;

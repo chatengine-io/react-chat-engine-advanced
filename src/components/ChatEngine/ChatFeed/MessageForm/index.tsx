@@ -9,9 +9,10 @@ import { File } from '../../../Components/File';
 import { Image } from '../../../Components/Image';
 
 import { isImage } from '../../../util/file';
+import { MessageProps, AttachmentProps } from '../../../../interfaces';
 
 export const MessageForm: React.FC<Props> = (props: Props) => {
-  const { label = '', onChange, onSubmit } = props;
+  const { label = '' } = props;
 
   const [iter, setIter] = useState(0); // Forces attachments update
   const [value, setValue] = useState<string>('');
@@ -19,12 +20,7 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
   const [buttonHover, setButtonHover] = useState<boolean>(false);
   const [attachments, setAttachments] = useState<Array<File>>([]);
 
-  const overflowStyle: React.CSSProperties = {
-    overflowY: height === 150 ? 'scroll' : 'hidden',
-  };
-  const buttonHoverStyle: React.CSSProperties = {
-    backgroundColor: buttonHover ? '#40a9ff' : '#1890ff',
-  };
+  useEffect(() => resize(), []);
 
   const resize = () => {
     var textarea = document.getElementById('msg-textarea');
@@ -35,11 +31,40 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
     }
   };
 
-  useEffect(() => resize(), []);
-
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
-    onChange && onChange(e);
+    props.onChange && props.onChange(e);
+    resize();
+  };
+
+  const onSubmit = () => {
+    const created = new Date()
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+    const localAttachments: AttachmentProps[] = attachments.map(
+      (attachment) => {
+        return {
+          id: -1,
+          created: new Date().toString(),
+          file: attachment.name,
+          blob: attachment,
+        };
+      }
+    );
+
+    const message: MessageProps = {
+      attachments: localAttachments,
+      text: value,
+      sender_username: props.myUsername,
+      custom_json: {},
+      created,
+    };
+
+    props.onSubmit && props.onSubmit(message);
+
+    setValue('');
+    setAttachments([]);
     resize();
   };
 
@@ -47,7 +72,7 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       if (value.length > 0) {
-        onSubmit && onSubmit(value, attachments);
+        onSubmit();
       }
     }
   };
@@ -134,10 +159,10 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
         placeholder={label}
         rows={1}
         onKeyDown={onKeyDown}
-        onChange={handleChange}
+        onChange={onChange}
         style={{
           ...styles.inputStyle,
-          ...overflowStyle,
+          ...{ overflowY: height === 150 ? 'scroll' : 'hidden' },
           ...props.inputStyle,
         }}
       />
@@ -160,10 +185,10 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
         id="ce-send-message-button"
         onMouseEnter={() => setButtonHover(true)}
         onMouseLeave={() => setButtonHover(false)}
-        onClick={() => onSubmit && onSubmit(value, attachments)}
+        onClick={onSubmit}
         style={{
           ...styles.sendButtonStyle,
-          ...buttonHoverStyle,
+          ...{ backgroundColor: buttonHover ? '#40a9ff' : '#1890ff' },
           ...props.sendButtonStyle,
         }}
       >

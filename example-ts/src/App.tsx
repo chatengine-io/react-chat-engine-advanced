@@ -41,7 +41,7 @@ const App: React.FC = () => {
   const [chatCount, setChatCount] = useState<number>(chatCountIterator);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
 
-  const sortChats = (chats: ChatProps[] = []) => {
+  const sortChats = (chats: ChatProps[]) => {
     return chats.sort((a: ChatProps, b: ChatProps) => {
       const aDate =
         a.last_message && a.last_message.created
@@ -52,6 +52,12 @@ const App: React.FC = () => {
           ? getDateTime(b.last_message.created, 0)
           : getDateTime(b.created, 0);
       return new Date(bDate).getTime() - new Date(aDate).getTime();
+    });
+  };
+
+  const sortMessages = (messages: MessageProps[]) => {
+    return messages.sort((a: MessageProps, b: MessageProps) => {
+      return new Date(b.created).getTime() - new Date(a.created).getTime();
     });
   };
 
@@ -81,15 +87,17 @@ const App: React.FC = () => {
     );
   };
 
-  const onMessageSend = (value: string, attachments: File[]) => {
+  const onMessageSend = (message: MessageProps) => {
+    const newMessages = messages?.concat(message);
+    setMessages(newMessages);
+
     newMessage(
       projectId,
       myUsername,
       mySecret,
       activeChatKey,
-      value,
-      attachments,
-      () => console.log('sent')
+      message,
+      () => {}
     );
   };
 
@@ -189,6 +197,17 @@ const App: React.FC = () => {
     setChats(sortedChats);
   };
 
+  const onNewMessage = (chatId: number, newMessage: MessageProps) => {
+    if (activeChatKey === chatId) {
+      const otherMessages = messages
+        ? messages.filter((message) => message.created !== newMessage.created)
+        : [];
+      const newMessages = otherMessages.concat(newMessage);
+      const sortedMessages = sortMessages(newMessages);
+      setMessages(sortedMessages);
+    }
+  };
+
   return (
     <div>
       <ChatEngine
@@ -219,6 +238,7 @@ const App: React.FC = () => {
         onNewChat={onNewChat}
         onEditChat={onEditChat}
         onDeleteChat={onDeleteChat}
+        onNewMessage={onNewMessage}
       />
     </div>
   );
