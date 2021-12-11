@@ -19,12 +19,14 @@ const App: React.FC = () => {
     messages,
     // State
     hasMoreChats,
-    // Simple Events
+    // Simple Data Events
     onNewChat,
     onEditChat,
     onDeleteChat,
     onNewMessage,
-    // Large Events
+    onEditMessage,
+    onDeleteMessage,
+    // Large Data Events
     onConnect,
     onChatFormSubmit,
     onChatCardClick,
@@ -33,6 +35,9 @@ const App: React.FC = () => {
     onInvitePersonClick,
     onRemovePersonClick,
     onDeleteChatClick,
+    // State Events
+    onBottomMessageShow,
+    onBottomMessageHide,
   } = useChatEngine(projectId, myUsername, mySecret);
 
   return (
@@ -47,8 +52,8 @@ const App: React.FC = () => {
         onEditChat={onEditChat}
         onDeleteChat={onDeleteChat}
         onNewMessage={onNewMessage}
-        onEditMessage={() => {}}
-        onDeleteMessage={() => {}}
+        onEditMessage={onEditMessage}
+        onDeleteMessage={onDeleteMessage}
       />
 
       <ChatEngine
@@ -67,6 +72,8 @@ const App: React.FC = () => {
         onInvitePersonClick={onInvitePersonClick}
         onRemovePersonClick={onRemovePersonClick}
         onDeleteChatClick={onDeleteChatClick}
+        onBottomMessageShow={onBottomMessageShow}
+        onBottomMessageHide={onBottomMessageHide}
         style={{ height: '90vh' }}
       />
     </div>

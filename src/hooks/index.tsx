@@ -15,6 +15,8 @@ import {
   getChatsAndMessages,
 } from '../actions';
 
+import { animateScroll } from 'react-scroll';
+
 const chatCountIterator = 20;
 const messageCountIterator = 50;
 
@@ -52,6 +54,7 @@ export const useChatEngine = (
   // State
   const [chatCount, setChatCount] = useState<number>(chatCountIterator);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
+  const [isAtChatFeedBottom, setIsAtChatFeedBottom] = useState<boolean>(false);
 
   const onGetChats = (chats: ChatProps[] = []) => {
     const sortedChats = sortChats(chats);
@@ -99,6 +102,32 @@ export const useChatEngine = (
       const newMessages = otherMessages.concat(newMessage);
       const sortedMessages = sortMessages(newMessages);
       setMessages(sortedMessages);
+      if (isAtChatFeedBottom) {
+        animateScroll.scrollToBottom({
+          duration: 333,
+          containerId: `ce-message-list-${activeChatId}`,
+        });
+      }
+    }
+  };
+
+  const onEditMessage = (chatId: number, newMessage: MessageProps) => {
+    if (chatId === activeChatId) {
+      const otherMessages = messages
+        ? messages.filter((message) => message.id !== newMessage.id)
+        : [];
+      const newMessages = [newMessage].concat(otherMessages);
+      const sortedMessages = sortMessages(newMessages);
+      setMessages(sortedMessages);
+    }
+  };
+
+  const onDeleteMessage = (chatId: number, oldMessage: MessageProps) => {
+    if (chatId === activeChatId) {
+      const newMessages = messages
+        ? messages.filter((message) => message.id !== oldMessage.id)
+        : [];
+      setMessages(newMessages);
     }
   };
 
@@ -131,7 +160,13 @@ export const useChatEngine = (
       mySecret,
       activeChatId,
       messageCountIterator,
-      onGetMessages
+      (chatId, messages) => {
+        onGetMessages(chatId, messages);
+        animateScroll.scrollToBottom({
+          duration: 0,
+          containerId: `ce-message-list-${activeChatId}`,
+        });
+      }
     );
     getPeopleToInvite(
       projectId,
@@ -201,6 +236,14 @@ export const useChatEngine = (
     deleteChat(projectId, myUsername, mySecret, chat.id, onDeleteChat);
   };
 
+  const onBottomMessageShow = () => {
+    setIsAtChatFeedBottom(true);
+  };
+
+  const onBottomMessageHide = () => {
+    setIsAtChatFeedBottom(false);
+  };
+
   return {
     // Data
     chats,
@@ -216,14 +259,18 @@ export const useChatEngine = (
     setChatCount,
     hasMoreChats,
     setHasMoreChats,
-    // Simple Events
+    isAtChatFeedBottom,
+    setIsAtChatFeedBottom,
+    // Simple Data Events
     onGetChats,
     onNewChat,
     onEditChat,
     onDeleteChat,
     onGetMessages,
     onNewMessage,
-    // Larger Events
+    onEditMessage,
+    onDeleteMessage,
+    // Larger Data Events
     onConnect,
     onChatFormSubmit,
     onChatCardClick,
@@ -232,5 +279,8 @@ export const useChatEngine = (
     onInvitePersonClick,
     onRemovePersonClick,
     onDeleteChatClick,
+    // State Events
+    onBottomMessageShow,
+    onBottomMessageHide,
   };
 };

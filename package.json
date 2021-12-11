@@ -44,11 +44,11 @@
   "size-limit": [
     {
       "path": "dist/react-chat-engine-components.cjs.production.min.js",
-      "limit": "50 KB"
+      "limit": "100 KB"
     },
     {
       "path": "dist/react-chat-engine-components.esm.js",
-      "limit": "15 KB"
+      "limit": "100 KB"
     }
   ],
   "devDependencies": {
@@ -76,10 +76,12 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "@types/react-scroll": "^1.8.3",
     "axios": "^0.24.0",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "nextjs-websocket": "^1.0.7",
-    "react-grid-system": "^7.3.2"
+    "react-grid-system": "^7.3.2",
+    "react-scroll": "^1.8.4"
   }
 }
