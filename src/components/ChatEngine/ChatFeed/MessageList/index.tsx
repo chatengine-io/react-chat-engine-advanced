@@ -37,7 +37,7 @@ export const MessageList: React.FC<Props> = (props: Props) => {
           {index === keys.length - 1 && (
             <RenderTrigger
               onShow={props.onBottomMessageShow}
-              onHide={props.onTopMessageHide}
+              onHide={props.onBottomMessageHide}
               children=""
             />
           )}
@@ -71,7 +71,7 @@ export const MessageList: React.FC<Props> = (props: Props) => {
       {props.hasMoreMessages && (
         <RenderTrigger
           onShow={props.onTopMessageShow}
-          onHide={props.onBottomMessageHide}
+          onHide={props.onTopMessageHide}
           children={
             <Spinner
               style={{

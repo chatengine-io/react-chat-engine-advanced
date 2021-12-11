@@ -52,6 +52,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
         hasMoreMessages={props.hasMoreMessages}
         onTopMessageShow={props.onTopMessageShow}
         onBottomMessageShow={props.onBottomMessageShow}
+        onBottomMessageHide={props.onBottomMessageHide}
         renderMessageList={props.renderMessageList}
         renderMessage={props.renderMessage}
         style={{

@@ -18,6 +18,7 @@ export interface Props extends ChatFeedStyles {
   // Hooks
   onTopMessageShow?: () => void;
   onBottomMessageShow?: () => void;
+  onBottomMessageHide?: () => void;
   onMessageSend?: (message: MessageProps) => void;
   // Render Functions
   renderChatFeed?: (props: Props) => React.FC<Props>;

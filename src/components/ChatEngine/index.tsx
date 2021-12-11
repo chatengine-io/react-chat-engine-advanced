@@ -52,6 +52,7 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
           hasMoreMessages={props.hasMoreMessages}
           onTopMessageShow={props.onTopMessageShow}
           onBottomMessageShow={props.onBottomMessageShow}
+          onBottomMessageHide={props.onBottomMessageHide}
           onMessageSend={props.onMessageSend}
           renderChatFeed={props.renderChatFeed}
           renderChatHeader={props.renderChatHeader}
