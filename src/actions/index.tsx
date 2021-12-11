@@ -1,5 +1,6 @@
 export * from './messages/getMessages';
 export * from './messages/newMessage';
+export * from './messages/readMessage';
 
 export * from './chats/deleteChat';
 export * from './chats/getChats';

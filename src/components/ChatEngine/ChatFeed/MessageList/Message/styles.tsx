@@ -53,6 +53,7 @@ export const theirStyles: MessageStyle = {
     whiteSpace: 'pre-line',
     backgroundColor: '#f1f0f0',
     overflowWrap: 'anywhere',
+    maxWidth: 'calc(100% - 100px - 48px)',
     // CSS Transitions
     transition: 'all .33s ease',
     WebkitTransition: 'all .33s ease',
@@ -64,7 +65,7 @@ export const theirStyles: MessageStyle = {
   },
   readStyle: {
     marginLeft: '4px',
-    display: 'inline-block',
+    float: 'left',
   },
   avatarStyle: {
     position: 'absolute',
