@@ -3,7 +3,20 @@ import { useState } from 'react';
 import { ChatProps, MessageProps, PersonProps } from '../interfaces';
 import { getDateTime } from '../components/util/dateTime';
 
+import {
+  getChatsBefore,
+  newChat,
+  deleteChat,
+  getPeopleToInvite,
+  invitePerson,
+  removePerson,
+  getMessages,
+  newMessage,
+  getChatsAndMessages,
+} from '../actions';
+
 const chatCountIterator = 20;
+const messageCountIterator = 50;
 
 export const sortChats = (chats: ChatProps[]) => {
   return chats.sort((a: ChatProps, b: ChatProps) => {
@@ -25,12 +38,17 @@ export const sortMessages = (messages: MessageProps[]) => {
   });
 };
 
-export const useChatEngine = () => {
+export const useChatEngine = (
+  projectId: string,
+  myUsername: string,
+  mySecret: string
+) => {
   // Data
   const [activeChatId, setActiveChatId] = useState<number | undefined>();
   const [chats, setChats] = useState<ChatProps[]>([]);
   const [messages, setMessages] = useState<MessageProps[]>([]);
   const [peopleToInvite, setPeopleToInvite] = useState<PersonProps[]>([]);
+
   // State
   const [chatCount, setChatCount] = useState<number>(chatCountIterator);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
@@ -68,25 +86,6 @@ export const useChatEngine = () => {
       onChatCardClick(newChats[0].id);
   };
 
-  const onChatCardClick = (activeChatId: number) => {
-    setActiveChatId(activeChatId);
-    // getMessages(
-    //   projectId,
-    //   myUsername,
-    //   mySecret,
-    //   chatId,
-    //   messageCountIterator,
-    //   onGetMessages
-    // );
-    // getPeopleToInvite(
-    //   projectId,
-    //   myUsername,
-    //   mySecret,
-    //   chatId,
-    //   setPeopleToInvite
-    // );
-  };
-
   const onGetMessages = (chatId: number, messages: MessageProps[]) => {
     void chatId;
     setMessages(messages);
@@ -101,6 +100,105 @@ export const useChatEngine = () => {
       const sortedMessages = sortMessages(newMessages);
       setMessages(sortedMessages);
     }
+  };
+
+  const onConnect = () => {
+    getChatsAndMessages(
+      projectId,
+      myUsername,
+      mySecret,
+      undefined,
+      chatCount,
+      messageCountIterator,
+      onGetChats,
+      onChatCardClick,
+      onGetMessages
+    );
+  };
+
+  const onChatFormSubmit = (title: string) => {
+    newChat(projectId, myUsername, mySecret, title, (chat) => {
+      onNewChat(chat);
+      onChatCardClick(chat.id);
+    });
+  };
+
+  const onChatCardClick = (activeChatId: number) => {
+    setActiveChatId(activeChatId);
+    getMessages(
+      projectId,
+      myUsername,
+      mySecret,
+      activeChatId,
+      messageCountIterator,
+      onGetMessages
+    );
+    getPeopleToInvite(
+      projectId,
+      myUsername,
+      mySecret,
+      activeChatId,
+      setPeopleToInvite
+    );
+  };
+
+  const onChatLoaderVisible = () => {
+    const now = new Date()
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', `0000+00:00`);
+    const newChatCount = chatCount + chatCountIterator;
+    // TODO: Edge case at 20 on the dot
+    getChatsBefore(
+      projectId,
+      myUsername,
+      mySecret,
+      now,
+      newChatCount,
+      onGetChats
+    );
+  };
+
+  const onMessageSend = (message: MessageProps) => {
+    const newMessages = messages?.concat(message);
+    setMessages(newMessages);
+
+    newMessage(
+      projectId,
+      myUsername,
+      mySecret,
+      activeChatId,
+      message,
+      () => {}
+    );
+  };
+
+  const onInvitePersonClick = (person: PersonProps) => {
+    activeChatId &&
+      invitePerson(
+        projectId,
+        myUsername,
+        mySecret,
+        activeChatId,
+        person.username,
+        () => onChatCardClick(activeChatId)
+      );
+  };
+
+  const onRemovePersonClick = (person: PersonProps) => {
+    activeChatId &&
+      removePerson(
+        projectId,
+        myUsername,
+        mySecret,
+        activeChatId,
+        person.username,
+        () => onChatCardClick(activeChatId)
+      );
+  };
+
+  const onDeleteChatClick = (chat: ChatProps) => {
+    deleteChat(projectId, myUsername, mySecret, chat.id, onDeleteChat);
   };
 
   return {
@@ -118,13 +216,21 @@ export const useChatEngine = () => {
     setChatCount,
     hasMoreChats,
     setHasMoreChats,
-    // Events
+    // Simple Events
     onGetChats,
     onNewChat,
     onEditChat,
     onDeleteChat,
-    onChatCardClick,
     onGetMessages,
     onNewMessage,
+    // Larger Events
+    onConnect,
+    onChatFormSubmit,
+    onChatCardClick,
+    onChatLoaderVisible,
+    onMessageSend,
+    onInvitePersonClick,
+    onRemovePersonClick,
+    onDeleteChatClick,
   };
 };
