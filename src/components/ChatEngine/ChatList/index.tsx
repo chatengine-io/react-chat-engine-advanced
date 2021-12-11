@@ -32,6 +32,17 @@ export const ChatList: React.FC<Props> = (props: Props) => {
 
   const renderChats = (chats: Array<ChatProps>) => {
     return chats.map((chat, index) => {
+      const otherPerson =
+        chat &&
+        chat.people.find(
+          (person) => person.person.username !== props.myUsername
+        );
+      const title = !chat
+        ? ''
+        : chat.is_direct_chat && otherPerson
+        ? otherPerson.person.username
+        : chat.title;
+
       const description =
         chat.last_message.text !== null ? chat.last_message.text : 'Say hello!';
       const timeStamp = getDateTime(chat.created).toString().substr(4, 6);
@@ -42,7 +53,7 @@ export const ChatList: React.FC<Props> = (props: Props) => {
       return (
         <ChatCard
           key={`chat_${index}`}
-          title={chat.title}
+          title={title}
           description={description}
           timeStamp={timeStamp}
           isActive={activeChatKey === chat.id}

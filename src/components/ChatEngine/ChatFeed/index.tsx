@@ -29,6 +29,19 @@ const getDescription = (chat: ChatProps | undefined) => {
 export const ChatFeed: React.FC<Props> = (props: Props) => {
   const { chat } = props;
 
+  const otherPerson =
+    chat &&
+    chat.people.find((person) => person.person.username !== props.myUsername);
+
+  const title =
+    !chat || props.isLoading ? (
+      <Spinner />
+    ) : chat.is_direct_chat && otherPerson ? (
+      otherPerson.person.username
+    ) : (
+      chat.title
+    );
+
   if (props.renderChatFeed) {
     return <>{props.renderChatFeed(props)}</>;
   }
@@ -36,7 +49,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
   return (
     <div className="ch-chat-feed" style={{ ...styles.style, ...props.style }}>
       <ChatHeader
-        title={chat ? chat.title : <Spinner />}
+        title={title}
         description={props.isLoading ? 'Loading...' : getDescription(chat)}
         renderChatHeader={props.renderChatHeader}
         style={{
