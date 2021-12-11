@@ -46,6 +46,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
       />
 
       <MessageList
+        chat={chat}
         messages={props.messages}
         myUsername={props.myUsername}
         hasMoreMessages={props.hasMoreMessages}

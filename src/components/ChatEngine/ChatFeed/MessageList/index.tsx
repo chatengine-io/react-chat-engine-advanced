@@ -65,6 +65,7 @@ export const MessageList: React.FC<Props> = (props: Props) => {
   return (
     <div
       className="ce-message-list"
+      id={`ce-message-list-${props.chat ? props.chat.id : 0}`}
       style={{ ...styles.style, ...props.style }}
     >
       {props.hasMoreMessages && (

@@ -15,6 +15,8 @@ import {
   getChatsAndMessages,
 } from '../actions';
 
+import { animateScroll } from 'react-scroll';
+
 const chatCountIterator = 20;
 const messageCountIterator = 50;
 
@@ -151,7 +153,13 @@ export const useChatEngine = (
       mySecret,
       activeChatId,
       messageCountIterator,
-      onGetMessages
+      (chatId, messages) => {
+        onGetMessages(chatId, messages);
+        animateScroll.scrollToBottom({
+          duration: 0,
+          containerId: `ce-message-list-${activeChatId}`,
+        });
+      }
     );
     getPeopleToInvite(
       projectId,
@@ -160,6 +168,7 @@ export const useChatEngine = (
       activeChatId,
       setPeopleToInvite
     );
+    // Scroll to bottom
   };
 
   const onChatLoaderVisible = () => {
