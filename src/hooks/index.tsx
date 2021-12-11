@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { ChatProps, MessageProps, PersonProps } from '../interfaces';
 import { getDateTime } from '../components/util/dateTime';
@@ -12,6 +12,7 @@ import {
   removePerson,
   getMessages,
   newMessage,
+  readMessage,
   getChatsAndMessages,
 } from '../actions';
 
@@ -55,6 +56,28 @@ export const useChatEngine = (
   const [chatCount, setChatCount] = useState<number>(chatCountIterator);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
   const [isAtChatFeedBottom, setIsAtChatFeedBottom] = useState<boolean>(false);
+
+  useEffect(() => {
+    const chat = chats.find((chat) => chat.id === activeChatId);
+    const chatPerson = chat?.people.find(
+      (chatPerson) => chatPerson.person.username === myUsername
+    );
+    if (
+      activeChatId &&
+      chat?.last_message.id && // If there is a message
+      chat.last_message.id !== chatPerson?.last_read &&
+      isAtChatFeedBottom
+    ) {
+      readMessage(
+        projectId,
+        myUsername,
+        mySecret,
+        activeChatId,
+        chat.last_message.id,
+        () => {}
+      );
+    }
+  }, [chats, activeChatId, isAtChatFeedBottom]);
 
   const onGetChats = (chats: ChatProps[] = []) => {
     const sortedChats = sortChats(chats);
