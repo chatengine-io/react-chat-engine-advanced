@@ -102,6 +102,26 @@ export const useChatEngine = (
     }
   };
 
+  const onEditMessage = (chatId: number, newMessage: MessageProps) => {
+    if (chatId === activeChatId) {
+      const otherMessages = messages
+        ? messages.filter((message) => message.id !== newMessage.id)
+        : [];
+      const newMessages = [newMessage].concat(otherMessages);
+      const sortedMessages = sortMessages(newMessages);
+      setMessages(sortedMessages);
+    }
+  };
+
+  const onDeleteMessage = (chatId: number, oldMessage: MessageProps) => {
+    if (chatId === activeChatId) {
+      const newMessages = messages
+        ? messages.filter((message) => message.id !== oldMessage.id)
+        : [];
+      setMessages(newMessages);
+    }
+  };
+
   const onConnect = () => {
     getChatsAndMessages(
       projectId,
@@ -223,6 +243,8 @@ export const useChatEngine = (
     onDeleteChat,
     onGetMessages,
     onNewMessage,
+    onEditMessage,
+    onDeleteMessage,
     // Larger Events
     onConnect,
     onChatFormSubmit,

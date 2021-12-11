@@ -24,6 +24,8 @@ const App: React.FC = () => {
     onEditChat,
     onDeleteChat,
     onNewMessage,
+    onEditMessage,
+    onDeleteMessage,
     // Large Events
     onConnect,
     onChatFormSubmit,
@@ -47,8 +49,8 @@ const App: React.FC = () => {
         onEditChat={onEditChat}
         onDeleteChat={onDeleteChat}
         onNewMessage={onNewMessage}
-        onEditMessage={() => {}}
-        onDeleteMessage={() => {}}
+        onEditMessage={onEditMessage}
+        onDeleteMessage={onDeleteMessage}
       />
 
       <ChatEngine
