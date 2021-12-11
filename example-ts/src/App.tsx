@@ -12,17 +12,12 @@ import {
   getChatsBefore,
   newChat,
   newMessage,
-  getMessages,
   getChatsAndMessages,
-  getPeopleToInvite,
   invitePerson,
   removePerson,
   // Utilities
-  getDateTime,
   PersonProps,
   // Hooks
-  sortChats,
-  sortMessages,
   useChatEngine,
   // Context
 } from 'react-chat-engine-components';
@@ -39,28 +34,20 @@ const App: React.FC = () => {
   const {
     // Data
     chats,
-    setChats,
     activeChatId,
-    setActiveChatId,
     peopleToInvite,
-    setPeopleToInvite,
     // State
     chatCount,
-    setChatCount,
     hasMoreChats,
-    setHasMoreChats,
     // Events
     onGetChats,
     onNewChat,
     onEditChat,
     onDeleteChat,
     onChatCardClick,
+    onGetMessages,
+    onNewMessage,
   } = useChatEngine();
-
-  const onGetMessages = (chatId: number, messages: MessageProps[]) => {
-    void chatId;
-    setMessages(messages);
-  };
 
   const onConnect = () => {
     getChatsAndMessages(
@@ -140,17 +127,6 @@ const App: React.FC = () => {
         person.username,
         () => onChatCardClick(activeChatId)
       );
-  };
-
-  const onNewMessage = (chatId: number, newMessage: MessageProps) => {
-    if (activeChatId === chatId) {
-      const otherMessages = messages
-        ? messages.filter((message) => message.created !== newMessage.created)
-        : [];
-      const newMessages = otherMessages.concat(newMessage);
-      const sortedMessages = sortMessages(newMessages);
-      setMessages(sortedMessages);
-    }
   };
 
   return (

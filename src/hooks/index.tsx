@@ -87,6 +87,22 @@ export const useChatEngine = () => {
     // );
   };
 
+  const onGetMessages = (chatId: number, messages: MessageProps[]) => {
+    void chatId;
+    setMessages(messages);
+  };
+
+  const onNewMessage = (chatId: number, newMessage: MessageProps) => {
+    if (activeChatId === chatId) {
+      const otherMessages = messages
+        ? messages.filter((message) => message.created !== newMessage.created)
+        : [];
+      const newMessages = otherMessages.concat(newMessage);
+      const sortedMessages = sortMessages(newMessages);
+      setMessages(sortedMessages);
+    }
+  };
+
   return {
     // Data
     chats,
@@ -108,5 +124,7 @@ export const useChatEngine = () => {
     onEditChat,
     onDeleteChat,
     onChatCardClick,
+    onGetMessages,
+    onNewMessage,
   };
 };
