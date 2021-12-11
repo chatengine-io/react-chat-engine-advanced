@@ -17,12 +17,22 @@ export const ChatSettings: React.FC<Props> = (props: Props) => {
 
   const people = chat ? chat.people.map((chatPerson) => chatPerson.person) : [];
 
+  const otherPerson =
+    chat &&
+    chat.people.find((person) => person.person.username !== props.myUsername);
+  const title =
+    props.isLoading || !chat
+      ? ''
+      : chat.is_direct_chat && otherPerson
+      ? otherPerson.person.username
+      : chat.title;
+
   return (
     <div style={{ ...styles.chatSettingsStyle, ...props.chatSettingsStyle }}>
       <ChatAvatars users={people} myUsername={props.myUsername} />
 
       <div style={{ ...styles.chatTitleStyle, ...props.chatTitleStyle }}>
-        {!props.isLoading && chat && chat.title}
+        {title}
       </div>
 
       <PeopleSettings
