@@ -44,11 +44,11 @@
   "size-limit": [
     {
       "path": "dist/react-chat-engine-components.cjs.production.min.js",
-      "limit": "50 KB"
+      "limit": "100 KB"
     },
     {
       "path": "dist/react-chat-engine-components.esm.js",
-      "limit": "15 KB"
+      "limit": "100 KB"
     }
   ],
   "devDependencies": {
