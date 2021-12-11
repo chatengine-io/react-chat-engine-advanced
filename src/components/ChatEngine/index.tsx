@@ -27,6 +27,7 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
         <ChatList
           chats={chats}
           activeChatKey={activeChatKey}
+          myUsername={props.myUsername}
           isLoading={props.isChatListLoading}
           hasMoreChats={props.hasMoreChats}
           onChatFormSubmit={props.onChatFormSubmit}
