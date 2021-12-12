@@ -1,0 +1,187 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { ChatEngine } from '.';
+import { Props } from './props';
+
+import { adam, chats, messages } from '../util/mocks';
+
+<Meta
+  title="ChatEngine"
+  component={ChatEngine}
+  argTypes={{
+    isChatListLoading: { table: { category: 'state' } },
+    isChatFeedLoading: { table: { category: 'state' } },
+    isChatSettingsLoading: { table: { category: 'state' } },
+    hasMoreChats: { table: { category: 'state' } },
+    hasMoreMessages: { table: { category: 'state' } },
+    onChatFormSubmit: { table: { category: 'hooks' } },
+    onChatCardClick: { table: { category: 'hooks' } },
+    onChatLoaderVisible: { table: { category: 'hooks' } },
+    onTopMessageShow: { table: { category: 'hooks' } },
+    onBottomMessageShow: { table: { category: 'hooks' } },
+    onMessageSend: { table: { category: 'hooks' } },
+    onDeleteChatClick: { table: { category: 'hooks' } },
+    renderChatList: { table: { category: 'render functions' } },
+    renderChatForm: { table: { category: 'render functions' } },
+    renderChatCard: { table: { category: 'render functions' } },
+    renderChatFeed: { table: { category: 'render functions' } },
+    renderChatHeader: { table: { category: 'render functions' } },
+    renderMessageList: { table: { category: 'render functions' } },
+    renderMessage: { table: { category: 'render functions' } },
+    renderMessageForm: { table: { category: 'render functions' } },
+    renderChatSettings: { table: { category: 'render functions' } },
+    renderPeopleSettings: { table: { category: 'render functions' } },
+    renderPhotosSettings: { table: { category: 'render functions' } },
+    renderOptionsSettings: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    chatListColumnStyle: { table: { category: 'styles' } },
+    chatFeedColumnStyle: { table: { category: 'styles' } },
+    chatSettingsColumnStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <ChatEngine {...args} />;
+
+# Chat Engine
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    myUsername: adam.myUsername,
+    chats: chats,
+    activeChatKey: 201,
+    messages: messages,
+    style: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Is Loading
+
+You can set the `isChatListLoading`, `isChatFeedLoading` and `isChatSettingsLoading` to `true` for when the data hasn't been fetched yet.
+
+<Story
+  name="Is Loading"
+  args={{
+    myUsername: adam.myUsername,
+    chats: [],
+    isChatListLoading: true,
+    isChatFeedLoading: true,
+    isChatSettingsLoading: true,
+    style: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Has More Data
+
+You can set the `hasMoreChats`, and `hasMoreMessages` to `true` for when the your chat server has more Chats and Messages to load.
+
+You can see the `<Spinner/>` in the Chat List and Chat Feed components.
+
+<Story
+  name="Has More Data"
+  args={{
+    myUsername: adam.myUsername,
+    chats: chats,
+    messages: messages,
+    activeChatKey: 201,
+    hasMoreChats: true,
+    hasMoreMessages: true,
+    style: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Event Hooks
+
+You can trigger code on significant event with the `on*` props.
+
+<Story
+  name="Event Hooks"
+  args={{
+    myUsername: adam.myUsername,
+    chats: chats,
+    messages: messages,
+    activeChatKey: 201,
+    hasMoreChats: true,
+    hasMoreMessages: true,
+    onChatFormSubmit: () => console.log('onChatFormSubmit'),
+    onChatCardClick: () => console.log('onChatCardClick'),
+    onChatLoaderVisible: () => console.log('onChatLoaderVisible'),
+    onTopMessageShow: () => console.log('onTopMessageShow'),
+    onBottomMessageShow: () => console.log('onBottomMessageShow'),
+    onMessageSend: () => console.log('onMessageSend'),
+    style: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Render Functions
+
+You can render you own code for sub-components within Chat Engine using the `render*` function props.
+
+<Story
+  name="Render Functions"
+  args={{
+    myUsername: adam.myUsername,
+    chats: chats,
+    messages: messages,
+    renderChatForm: () => <div>Chat Form Code</div>,
+    renderChatCard: () => <div>Chat Card Code</div>,
+    renderChatHeader: () => <div>Chat Header Code</div>,
+    renderMessageList: () => <div>Message List Code</div>,
+    renderMessageForm: () => <div>Message Form Code</div>,
+    renderPeopleSettings: () => <div>People Settings Code</div>,
+    renderPhotosSettings: () => <div>Photos Settings Code</div>,
+    renderOptionsSettings: () => <div>Options Settings Code</div>,
+    style: {
+      height: '550px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Story
+  name="Custom Styles"
+  args={{
+    myUsername: adam.myUsername,
+    chats: chats,
+    messages: messages,
+    activeChatKey: 201,
+    style: {
+      height: '550px',
+      border: '2px solid red',
+    },
+    chatFeedColumnStyle: { border: '2px solid blue' },
+    chatListColumnStyle: { border: '2px solid green' },
+    chatSettingsColumnStyle: { border: '2px solid orange' },
+  }}
+>
+  {Template.bind({})}
+</Story>

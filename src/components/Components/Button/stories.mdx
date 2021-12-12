@@ -1,0 +1,103 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
+
+import { Button } from '.';
+import { Props } from './props';
+
+<Meta
+  title="Components/Button"
+  component={Button}
+  argTypes={{
+    onClick: { table: { category: 'hooks' } },
+    style: { table: { category: 'styles' } },
+    hoveredStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <Button {...args}>{args.children}</Button>;
+
+# Button
+
+There are three types for the `Button` component: `'default'`, `'primary'`, and `'danger'`.
+
+Pass an `onClick` method to perform an action when the button is clicked.
+
+## Default
+
+<Story name="Default" args={{ children: 'Button' }}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Children
+
+You can put any JSX or TSX inside the `children` of a button.
+
+<Canvas>
+  <Story
+    name="Children"
+    args={{
+      children: (
+        <div>
+          <CheckOutlined /> your code!
+        </div>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Primary
+
+The type `'primary'` is blue and grabs attention!
+
+<Canvas>
+  <Story
+    name="Primary"
+    args={{
+      children: 'Submit',
+      type: 'primary',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Danger
+
+Use type `'danger'` when the user needs to be careful.
+
+<Canvas>
+  <Story
+    name="Danger"
+    args={{
+      children: (
+        <div>
+          <DeleteOutlined /> Danger
+        </div>
+      ),
+      type: 'danger',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+Customize the look and feel with the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      children: 'Custom Style',
+      style: { border: '1px solid red' },
+      hoveredStyle: { border: '1px solid blue' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

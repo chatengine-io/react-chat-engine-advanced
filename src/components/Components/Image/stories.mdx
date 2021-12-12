@@ -1,0 +1,56 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { Image } from '.';
+import { Props } from './props';
+
+<Meta
+  title="Components/Image"
+  component={Image}
+  argTypes={{
+    style: { table: { category: 'styles' } },
+    hoveredStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <Image {...args} />;
+
+# Image
+
+The Image component represents any Message Attachment which can be put into an `<img />` tag.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    url:
+      'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Is Loading
+
+If you do not set a `url` prop, the image is considered loading. And will show the following loading `.gif`.
+
+<Story name="Is Loading" args={{}}>
+  {Template.bind({})}
+</Story>
+
+## Custom Style
+
+You can customize the look and feel with the `*Style` props and change the CSS for every Image state.
+
+<Story
+  name="Custom Style"
+  args={{
+    url:
+      'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+    style: { border: '2px solid red' },
+    hoveredStyle: { border: '2px solid blue' },
+  }}
+>
+  {Template.bind({})}
+</Story>

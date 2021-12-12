@@ -1,0 +1,26 @@
+name: Deploy Storybook
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Deploy Storybook to GH Pages
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: NPM Install
+        run: npm install
+
+      - name: Deploy storybook to Github Pages
+        run: npm run deploy-storybook -- --ci
+        env:
+          GH_TOKEN: alamorre:${{ secrets.GH_TOKEN }}

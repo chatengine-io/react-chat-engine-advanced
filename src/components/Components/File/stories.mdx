@@ -1,0 +1,88 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs';
+import { File } from '.';
+import { Props } from './props';
+import ThemeProvider, { defaultTheme } from '../ThemeProvider';
+
+<Meta
+  title="Components/File"
+  component={File}
+  argTypes={{
+    style: { table: { category: 'styles' } },
+    hoveredStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <File {...args} />;
+
+export const ThemedTemplate = (args) => (
+  <ThemeProvider theme={defaultTheme}>
+    <File {...args} />
+  </ThemeProvider>
+);
+
+# File
+
+The File component represents any Message Attachment which cannot be put into an `<img />` tag.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    url: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Is Loading
+
+If you do not set a `url` prop, the image is considered loading. And will show the following loading text + emoji.
+
+<Story name="Is Loading" args={{}}>
+  {Template.bind({})}
+</Story>
+
+## File Name
+
+You can also specify the file name with the `fileName` prop and render your own content.
+
+<Story
+  name="File Name"
+  args={{
+    url: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
+    fileName: '🚨 🚨 Secret Recording',
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Custom Style
+
+You can customize the look and feel with the `*Style` props and change the CSS for every Image state.
+
+<Story
+  name="Custom Style"
+  args={{
+    url: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
+    style: { border: '2px solid red' },
+    hoveredStyle: { border: '2px solid blue' },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Themed Style
+
+With Theme
+
+<Story
+  name="Themed Style"
+  args={{
+    url: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3'
+  }}
+>
+  {ThemedTemplate.bind({})}
+</Story> 

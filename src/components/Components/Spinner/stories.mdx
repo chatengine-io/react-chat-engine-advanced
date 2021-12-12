@@ -1,0 +1,34 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { Spinner } from '.';
+import { Props } from './props';
+
+<Meta title="Components/Spinner" component={Spinner} />
+
+export const Template = (args) => <Spinner {...args} />;
+
+# Spinner
+
+The Spinner component is used to display when data is loading.
+
+## Default
+
+<Story name="Default" args={{}}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Custom Style
+
+Pass in a `style` prop to change the CSS.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      style: { border: '2px solid red' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

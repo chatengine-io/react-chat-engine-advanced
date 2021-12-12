@@ -1,0 +1,79 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
+
+import { Input } from '.';
+import { Props } from './props';
+
+<Meta
+  title="Components/Input"
+  component={Input}
+  argTypes={{
+    autoFocus: { table: { category: 'state' } },
+    onBlur: { table: { category: 'hooks' } },
+    onChange: { table: { category: 'hooks' } },
+    onFocus: { table: { category: 'hooks' } },
+    style: { table: { category: 'styles' } },
+    focusStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <Input {...args} />;
+
+# Input
+
+The `Input` component is where the user can add text in their form.
+
+## Default
+
+<Story name="Default" args={{ label: 'Input label' }}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Default Value
+
+Get the user started using the `defaultValue` argument.
+
+<Canvas>
+  <Story name="DefaultValue" args={{ defaultValue: 'Default value!' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Value
+
+You can also set the `value` by passing it directly into the props.
+
+<Canvas>
+  <Story name="Value" args={{ value: 'Hardcode value' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Auto Focus
+
+You can also set the `value` by passing it directly into the props.
+
+<Canvas>
+  <Story name="Auto Focus" args={{ autoFocus: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+Pass in a `style` and `focusStyle` props change the CSS.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      label: 'Send a message...',
+      style: { border: '2px solid red' },
+      focusStyle: { border: '2px solid blue' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

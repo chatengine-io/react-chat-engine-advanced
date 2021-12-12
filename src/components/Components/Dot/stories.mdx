@@ -1,0 +1,84 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Dot } from '.';
+import { Props } from './props';
+
+<Meta
+  title="Components/Dot"
+  component={Dot}
+  argTypes={{
+    isVisible: { table: { category: 'state' } },
+    style: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <Dot {...args} />;
+
+# Dot
+
+The Dot visually represents a user, compactly.
+
+Dots are typically used in small spaces, like under messages.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    username: 'Adam',
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Avatar Url
+
+When you have an `avatarUrl` you set and image instead of `username`
+
+<Canvas>
+  <Story
+    name="No Avatar Url"
+    args={{
+      avatarUrl:
+        'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Is Not Visible
+
+If you need to perform an animated hide, get the `isVisible` prop to `false`.
+
+<Canvas>
+  <Story
+    name="Is Not Visible"
+    args={{
+      avatarUrl:
+        'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+      isVisible: false,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+You can also use the `style` prop to overlay custom CSS onto the `Dot` component.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      avatarUrl:
+        'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
+      style: { border: '2px solid red' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

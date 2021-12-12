@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -20,6 +20,7 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages",
     "new": "chmod +x ./scripts/new.sh; ./scripts/new.sh"
   },
   "peerDependencies": {
@@ -38,15 +39,16 @@
   },
   "name": "react-chat-engine-components",
   "author": "Adam La Morre",
+  "repository": "chatengine-io/react-chat-engine-components",
   "module": "dist/react-chat-engine-components.esm.js",
   "size-limit": [
     {
       "path": "dist/react-chat-engine-components.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "100 KB"
     },
     {
       "path": "dist/react-chat-engine-components.esm.js",
-      "limit": "10 KB"
+      "limit": "100 KB"
     }
   ],
   "devDependencies": {
@@ -58,7 +60,9 @@
     "@storybook/addon-links": "^6.3.12",
     "@storybook/addons": "^6.3.12",
     "@storybook/react": "^6.3.12",
-    "@types/react": "^17.0.33",
+    "@storybook/storybook-deployer": "^2.8.10",
+    "@types/lodash": "^4.14.177",
+    "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.10",
     "babel-loader": "^8.2.3",
     "husky": "^7.0.4",
@@ -72,6 +76,12 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "react-grid-system": "^7.3.1"
+    "@types/react-scroll": "^1.8.3",
+    "axios": "^0.24.0",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "nextjs-websocket": "^1.0.7",
+    "react-grid-system": "^7.3.2",
+    "react-scroll": "^1.8.4"
   }
 }
