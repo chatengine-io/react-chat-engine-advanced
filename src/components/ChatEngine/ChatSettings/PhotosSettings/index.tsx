@@ -34,7 +34,7 @@ export const PhotosSettings: React.FC<Props> = (props: Props) => {
           </div>
         );
       }
-      return <div key={`photo-${index}`} />;
+      return <span key={`photo-${index}`} />;
     });
   };
 
