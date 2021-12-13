@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { ChatProps, MessageProps, PersonProps } from '../interfaces';
 import { getDateTime } from '../components/util/dateTime';
@@ -53,9 +53,12 @@ export const useChatEngine = (
   const [peopleToInvite, setPeopleToInvite] = useState<PersonProps[]>([]);
 
   // State
-  const [chatCount, setChatCount] = useState<number>(chatCountIterator);
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
   const [isAtChatFeedBottom, setIsAtChatFeedBottom] = useState<boolean>(false);
+
+  // Subscribe to Chat Count
+  const chatCountRef = useRef<number>(0);
+  chatCountRef.current = chats.length;
 
   useEffect(() => {
     const chat = chats.find((chat) => chat.id === activeChatId);
@@ -80,16 +83,14 @@ export const useChatEngine = (
   }, [chats, activeChatId, isAtChatFeedBottom]);
 
   const onGetChats = (chats: ChatProps[] = []) => {
+    setHasMoreChats(chats.length >= chatCountRef.current + chatCountIterator);
     const sortedChats = sortChats(chats);
     setChats(sortedChats);
-    setHasMoreChats(Object.keys(chats).length === chatCount);
-    setChatCount(Object.keys(chats).length);
   };
 
   const onNewChat = (chat: ChatProps) => {
     const newChats = [chat].concat(chats ? chats : []);
     setChats(newChats);
-    setChatCount(newChats.length);
   };
 
   const onEditChat = (newChat: ChatProps) => {
@@ -99,7 +100,6 @@ export const useChatEngine = (
     const newChats = [newChat].concat(otherChats);
     const sortedChats = sortChats(newChats);
     setChats(sortedChats);
-    setChatCount(sortedChats.length);
   };
 
   const onDeleteChat = (oldChat: ChatProps) => {
@@ -107,7 +107,6 @@ export const useChatEngine = (
       ? chats.filter((chat) => chat.id !== oldChat.id)
       : [];
     setChats(newChats);
-    setChatCount(newChats.length);
     if (newChats.length > 0 && activeChatId === oldChat.id)
       onChatCardClick(newChats[0].id);
   };
@@ -160,8 +159,8 @@ export const useChatEngine = (
       myUsername,
       mySecret,
       undefined,
-      chatCount,
-      messageCountIterator,
+      chatCountRef.current > 0 ? chatCountRef.current : chatCountIterator,
+      messages.length > 0 ? messages.length : messageCountIterator,
       onGetChats,
       onChatCardClick,
       onGetMessages
@@ -205,14 +204,12 @@ export const useChatEngine = (
       .toISOString()
       .replace('T', ' ')
       .replace('Z', `0000+00:00`);
-    const newChatCount = chatCount + chatCountIterator;
-    // TODO: Edge case at 20 on the dot
     getChatsBefore(
       projectId,
       myUsername,
       mySecret,
       now,
-      newChatCount,
+      chatCountRef.current + chatCountIterator,
       onGetChats
     );
   };
@@ -278,8 +275,6 @@ export const useChatEngine = (
     peopleToInvite,
     setPeopleToInvite,
     // State
-    chatCount,
-    setChatCount,
     hasMoreChats,
     setHasMoreChats,
     isAtChatFeedBottom,
