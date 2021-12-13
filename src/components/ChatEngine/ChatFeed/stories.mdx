@@ -111,6 +111,25 @@ If the chat is loading initial message, set `isLoading` to `true` for the follow
   {Template.bind({})}
 </Story>
 
+## New Chat
+
+For a new chat (with no messages) you get this `<WelcomeGif />` component to fill some space!
+
+<Story
+  name="New Chat"
+  args={{
+    chat: onePersonChat,
+    messages: [],
+    style: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
 ## Has More Messages
 
 If this Chat room has more Messages, set the `hasMoreMessages` prop to `true`.
