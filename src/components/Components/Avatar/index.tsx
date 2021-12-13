@@ -19,7 +19,7 @@ export const Avatar = (props: Props) => {
   const avatarUrlStyle = {
     backgroundColor: isString(avatarUrl) ? '#FFFFFF' : color,
     backgroundImage: isString(avatarUrl) && `url(${avatarUrl})`,
-    height: `${isString(avatarUrl) ? '44px' : 'auto'}`,
+    // height: `${isString(avatarUrl) ? '44px' : 'auto'}`,
     padding: `${isString(avatarUrl) ? '0px' : 'auto'}`,
   } as React.CSSProperties;
 

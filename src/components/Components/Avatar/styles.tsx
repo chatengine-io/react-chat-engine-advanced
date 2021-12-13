@@ -9,8 +9,7 @@ export const styles: AvatarStyles = {
     position: 'relative',
     // Size
     width: '44px',
-    paddingTop: '12px',
-    paddingBottom: '12px',
+    height: '44px',
     // Style
     borderRadius: '50%',
     backgroundRepeat: 'no-repeat',
@@ -21,6 +20,7 @@ export const styles: AvatarStyles = {
     textAlign: 'center',
     fontFamily: 'Avenir',
     fontSize: '15px',
+    lineHeight: '44px',
     fontWeight: 600,
   },
   statusStyle: {
