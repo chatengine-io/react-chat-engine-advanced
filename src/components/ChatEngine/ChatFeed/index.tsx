@@ -6,6 +6,7 @@ import { styles } from './styles';
 import { ChatHeader } from './ChatHeader';
 import { MessageList } from './MessageList';
 import { MessageForm } from './MessageForm';
+import { WelcomeGif } from './WelcomeGif';
 
 import { getDateTime, formatDateTime } from '../../util/dateTime';
 
@@ -73,6 +74,15 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
           ...props.messageListStyle,
         }}
       />
+
+      {props.messages.length === 0 && !props.isLoading && (
+        <WelcomeGif
+          style={{
+            position: 'absolute',
+            top: 'calc(50% - 112px)',
+          }}
+        />
+      )}
 
       <MessageForm
         label="Send a message..."

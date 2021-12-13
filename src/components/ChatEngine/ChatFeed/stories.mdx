@@ -16,6 +16,8 @@ import { onePersonChat, messages } from '../../util/mocks';
     renderChatFeed: { table: { category: 'render functions' } },
     renderChatHeader: { table: { category: 'render functions' } },
     renderMessageList: { table: { category: 'render functions' } },
+    renderMessage: { table: { category: 'render functions' } },
+    renderWelcomeGif: { table: { category: 'render functions' } },
     renderMessageForm: { table: { category: 'render functions' } },
     style: { table: { category: 'styles' } },
     chatHeaderStyle: { table: { category: 'styles' } },
@@ -99,6 +101,25 @@ If the chat is loading initial message, set `isLoading` to `true` for the follow
   args={{
     isLoading: true,
     messages: {},
+    style: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## New Chat
+
+For a new chat (with no messages) you get this `<WelcomeGif />` component to fill some space!
+
+<Story
+  name="New Chat"
+  args={{
+    chat: onePersonChat,
+    messages: [],
     style: {
       height: '500px',
       maxWidth: '600px',

@@ -59,6 +59,7 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
           renderChatHeader={props.renderChatHeader}
           renderMessageList={props.renderMessageList}
           renderMessage={props.renderMessage}
+          renderWelcomeGif={props.renderWelcomeGif}
           renderMessageForm={props.renderMessageForm}
         />
       </Col>
