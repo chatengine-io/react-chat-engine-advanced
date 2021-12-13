@@ -27,6 +27,16 @@ const renderLoading = () => {
   });
 };
 
+const getDescription = (chat: ChatProps): string => {
+  if (!chat.last_message.id) {
+    return 'Say hello!';
+  }
+  if (chat.last_message.text === null) {
+    return `${chat.last_message.attachments.length} attachments`;
+  }
+  return chat.last_message.text;
+};
+
 export const ChatList: React.FC<Props> = (props: Props) => {
   const { activeChatKey = -1 } = props;
 
@@ -42,9 +52,6 @@ export const ChatList: React.FC<Props> = (props: Props) => {
         : chat.is_direct_chat && otherPerson
         ? otherPerson.person.username
         : chat.title;
-
-      const description =
-        chat.last_message.text !== null ? chat.last_message.text : 'Say hello!';
       const timeStamp = getDateTime(chat.created).toString().substr(4, 6);
       const hasNotification = props.myUsername
         ? !readLastMessage(props.myUsername, chat)
@@ -54,7 +61,7 @@ export const ChatList: React.FC<Props> = (props: Props) => {
         <ChatCard
           key={`chat_${index}`}
           title={title}
-          description={description}
+          description={getDescription(chat)}
           timeStamp={timeStamp}
           isActive={activeChatKey === chat.id}
           hasNotification={hasNotification}
