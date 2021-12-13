@@ -5,6 +5,7 @@ import { ChatFeedStyles } from './styles';
 import { Props as ChatHeaderProps } from './ChatHeader/props';
 import { Props as MessageListProps } from './MessageList/props';
 import { Props as MessageBubbleProps } from './MessageList/Message/props';
+import { Props as WelcomeGifProps } from './WelcomeGif/props';
 import { Props as MessageFormProps } from './MessageForm/props';
 
 export interface Props extends ChatFeedStyles {
@@ -25,5 +26,6 @@ export interface Props extends ChatFeedStyles {
   renderChatHeader?: (props: ChatHeaderProps) => React.FC<ChatHeaderProps>;
   renderMessageList?: (props: MessageListProps) => React.FC<MessageListProps>;
   renderMessage?: (props: MessageBubbleProps) => React.FC<MessageBubbleProps>;
+  renderWelcomeGif?: (props: WelcomeGifProps) => React.FC<WelcomeGifProps>;
   renderMessageForm?: (props: MessageFormProps) => React.FC<MessageFormProps>;
 }
