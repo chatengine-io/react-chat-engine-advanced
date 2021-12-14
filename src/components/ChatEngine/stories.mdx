@@ -16,7 +16,7 @@ import { adam, chats, messages } from '../util/mocks';
     onChatFormSubmit: { table: { category: 'hooks' } },
     onChatCardClick: { table: { category: 'hooks' } },
     onChatLoaderVisible: { table: { category: 'hooks' } },
-    onTopMessageShow: { table: { category: 'hooks' } },
+    onMessageLoaderShow: { table: { category: 'hooks' } },
     onBottomMessageShow: { table: { category: 'hooks' } },
     onBottomMessageHide: { table: { category: 'hooks' } },
     onMessageSend: { table: { category: 'hooks' } },
@@ -128,7 +128,7 @@ You can trigger code on significant event with the `on*` props.
     onChatFormSubmit: () => console.log('onChatFormSubmit'),
     onChatCardClick: () => console.log('onChatCardClick'),
     onChatLoaderVisible: () => console.log('onChatLoaderVisible'),
-    onTopMessageShow: () => console.log('onTopMessageShow'),
+    onMessageLoaderShow: () => console.log('onMessageLoaderShow'),
     onBottomMessageShow: () => console.log('onBottomMessageShow'),
     onMessageSend: () => console.log('onMessageSend'),
     style: {

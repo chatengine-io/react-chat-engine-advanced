@@ -13,13 +13,12 @@ import {
   getMessages,
   newMessage,
   readMessage,
-  getChatsAndMessages,
 } from '../actions';
 
 import { animateScroll } from 'react-scroll';
 
 const chatCountIterator = 20;
-const messageCountIterator = 50;
+const messageCountIterator = 20;
 
 export const sortChats = (chats: ChatProps[]) => {
   return chats.sort((a: ChatProps, b: ChatProps) => {
@@ -56,6 +55,7 @@ export const useChatEngine = (
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
   const [hasMoreMessages, setHasMoreMessages] = useState<boolean>(false);
   const [isChatFeedAtBottom, setIsChatFeedAtBottom] = useState<boolean>(false);
+  const [isChatFeedAtTop, setIsChatFeedAtTop] = useState<boolean>(false);
 
   // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
@@ -160,16 +160,26 @@ export const useChatEngine = (
   };
 
   const onConnect = () => {
-    getChatsAndMessages(
+    const now = new Date()
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+
+    getChatsBefore(
       projectId,
       myUsername,
       mySecret,
-      undefined,
+      now,
       chatCountRef.current > 0 ? chatCountRef.current : chatCountIterator,
-      messages.length > 0 ? messages.length : messageCountIterator,
-      onGetChats,
-      onChatCardClick,
-      onGetMessages
+      (chats) => {
+        onGetChats(chats);
+
+        let currentChat = activeChatId;
+        if (!activeChatId && chats.length > 0) {
+          currentChat = chats[0].id;
+        }
+        currentChat && onChatCardClick(currentChat);
+      }
     );
   };
 
@@ -270,6 +280,26 @@ export const useChatEngine = (
     setIsChatFeedAtBottom(false);
   };
 
+  // Why do we need to export this logic?
+  const onMessageLoaderShow = () => {
+    activeChatId &&
+      getMessages(
+        projectId,
+        myUsername,
+        mySecret,
+        activeChatId,
+        messageCountRef.current + messageCountIterator,
+        (chatId, messages) => {
+          onGetMessages(chatId, messages);
+          console.log('do scrolling stuff');
+          // animateScroll.scrollToBottom({
+          //   duration: 0,
+          //   containerId: `ce-message-list-${activeChatId}`,
+          // });
+        }
+      );
+  };
+
   return {
     // Data
     chats,
@@ -285,6 +315,8 @@ export const useChatEngine = (
     setHasMoreChats,
     hasMoreMessages,
     setHasMoreMessages,
+    isChatFeedAtTop,
+    setIsChatFeedAtTop,
     isChatFeedAtBottom,
     setIsChatFeedAtBottom,
     // Simple Data Events
@@ -306,6 +338,7 @@ export const useChatEngine = (
     onRemovePersonClick,
     onDeleteChatClick,
     // State Events
+    onMessageLoaderShow,
     onBottomMessageShow,
     onBottomMessageHide,
   };

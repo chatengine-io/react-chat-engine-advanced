@@ -70,8 +70,8 @@ export const MessageList: React.FC<Props> = (props: Props) => {
     >
       {props.hasMoreMessages && (
         <RenderTrigger
-          onShow={props.onTopMessageShow}
-          onHide={props.onTopMessageHide}
+          onShow={props.onMessageLoaderShow}
+          onHide={props.onMessageLoaderHide}
           children={
             <Spinner
               style={{

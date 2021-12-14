@@ -19,6 +19,7 @@ const App: React.FC = () => {
     messages,
     // State
     hasMoreChats,
+    hasMoreMessages,
     // Simple Data Events
     onNewChat,
     onEditChat,
@@ -31,6 +32,7 @@ const App: React.FC = () => {
     onChatFormSubmit,
     onChatCardClick,
     onChatLoaderVisible,
+    onMessageLoaderShow,
     onMessageSend,
     onInvitePersonClick,
     onRemovePersonClick,
@@ -64,6 +66,7 @@ const App: React.FC = () => {
         peopleToInvite={peopleToInvite}
         // State
         hasMoreChats={hasMoreChats}
+        hasMoreMessages={hasMoreMessages}
         // Hooks
         onChatFormSubmit={onChatFormSubmit}
         onChatCardClick={onChatCardClick}
@@ -72,8 +75,7 @@ const App: React.FC = () => {
         onInvitePersonClick={onInvitePersonClick}
         onRemovePersonClick={onRemovePersonClick}
         onDeleteChatClick={onDeleteChatClick}
-        onTopMessageShow={() => console.log('top message show')}
-        onTopMessageHide={() => console.log('top message hide')}
+        onMessageLoaderShow={onMessageLoaderShow}
         onBottomMessageShow={onBottomMessageShow}
         onBottomMessageHide={onBottomMessageHide}
         style={{ height: '90vh' }}
