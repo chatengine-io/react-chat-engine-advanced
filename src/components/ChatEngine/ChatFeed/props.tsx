@@ -18,6 +18,7 @@ export interface Props extends ChatFeedStyles {
   hasMoreMessages?: boolean;
   // Hooks
   onTopMessageShow?: () => void;
+  onTopMessageHide?: () => void;
   onBottomMessageShow?: () => void;
   onBottomMessageHide?: () => void;
   onMessageSend?: (message: MessageProps) => void;

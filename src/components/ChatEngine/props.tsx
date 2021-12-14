@@ -34,6 +34,7 @@ export interface Props extends ChatEngineStyles {
   onChatFormSubmit?: (title: string) => void;
   onChatLoaderVisible?: () => void;
   onTopMessageShow?: () => void;
+  onTopMessageHide?: () => void;
   onBottomMessageShow?: () => void;
   onBottomMessageHide?: () => void;
   onMessageSend?: (message: MessageProps) => void;

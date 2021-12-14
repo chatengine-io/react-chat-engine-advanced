@@ -72,6 +72,8 @@ const App: React.FC = () => {
         onInvitePersonClick={onInvitePersonClick}
         onRemovePersonClick={onRemovePersonClick}
         onDeleteChatClick={onDeleteChatClick}
+        onTopMessageShow={() => console.log('top message show')}
+        onTopMessageHide={() => console.log('top message hide')}
         onBottomMessageShow={onBottomMessageShow}
         onBottomMessageHide={onBottomMessageHide}
         style={{ height: '90vh' }}

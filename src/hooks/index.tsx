@@ -54,11 +54,14 @@ export const useChatEngine = (
 
   // State
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
-  const [isAtChatFeedBottom, setIsAtChatFeedBottom] = useState<boolean>(false);
+  const [hasMoreMessages, setHasMoreMessages] = useState<boolean>(false);
+  const [isChatFeedAtBottom, setIsChatFeedAtBottom] = useState<boolean>(false);
 
-  // Subscribe to Chat Count
+  // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
+  const messageCountRef = useRef<number>(0);
   chatCountRef.current = chats.length;
+  messageCountRef.current = messages.length;
 
   useEffect(() => {
     const chat = chats.find((chat) => chat.id === activeChatId);
@@ -69,7 +72,7 @@ export const useChatEngine = (
       activeChatId &&
       chat?.last_message.id && // If there is a message
       chat.last_message.id !== chatPerson?.last_read &&
-      isAtChatFeedBottom
+      isChatFeedAtBottom
     ) {
       readMessage(
         projectId,
@@ -80,7 +83,7 @@ export const useChatEngine = (
         () => {}
       );
     }
-  }, [chats, activeChatId, isAtChatFeedBottom]);
+  }, [chats, activeChatId, isChatFeedAtBottom]);
 
   const onGetChats = (chats: ChatProps[] = []) => {
     setHasMoreChats(chats.length >= chatCountRef.current + chatCountIterator);
@@ -112,6 +115,9 @@ export const useChatEngine = (
   };
 
   const onGetMessages = (chatId: number, messages: MessageProps[]) => {
+    setHasMoreMessages(
+      messages.length >= messageCountRef.current + messageCountIterator
+    );
     void chatId;
     setMessages(messages);
   };
@@ -124,7 +130,7 @@ export const useChatEngine = (
       const newMessages = otherMessages.concat(newMessage);
       const sortedMessages = sortMessages(newMessages);
       setMessages(sortedMessages);
-      if (isAtChatFeedBottom) {
+      if (isChatFeedAtBottom) {
         animateScroll.scrollToBottom({
           duration: 333,
           containerId: `ce-message-list-${activeChatId}`,
@@ -257,11 +263,11 @@ export const useChatEngine = (
   };
 
   const onBottomMessageShow = () => {
-    setIsAtChatFeedBottom(true);
+    setIsChatFeedAtBottom(true);
   };
 
   const onBottomMessageHide = () => {
-    setIsAtChatFeedBottom(false);
+    setIsChatFeedAtBottom(false);
   };
 
   return {
@@ -277,8 +283,10 @@ export const useChatEngine = (
     // State
     hasMoreChats,
     setHasMoreChats,
-    isAtChatFeedBottom,
-    setIsAtChatFeedBottom,
+    hasMoreMessages,
+    setHasMoreMessages,
+    isChatFeedAtBottom,
+    setIsChatFeedAtBottom,
     // Simple Data Events
     onGetChats,
     onNewChat,
