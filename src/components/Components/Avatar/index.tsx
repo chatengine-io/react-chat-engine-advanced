@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { stringToColor } from '../../util/colorMapping';
 
@@ -7,20 +7,23 @@ import { Props } from './props';
 import { styles } from './styles';
 
 export const Avatar = (props: Props) => {
-  const { username = '', avatarUrl } = props;
+  // Save Copy of URL to avoid flickering
+  const [localAvatar, setLocalAvatar] = useState<string>('');
+  const { username = '', avatarUrl = '' } = props;
 
   const text = username ? username.substring(0, 2).toUpperCase() : '';
   const color = stringToColor(username);
 
-  const isString = (avatarUrl: string | null | undefined) => {
-    return typeof avatarUrl === 'string';
-  };
+  useEffect(() => {
+    const newAvatar = avatarUrl !== null ? avatarUrl : '';
+    if (newAvatar.split('?')[0] !== localAvatar.split('?')[0]) {
+      setLocalAvatar(newAvatar);
+    }
+  }, []);
 
   const avatarUrlStyle = {
-    backgroundColor: isString(avatarUrl) ? '#FFFFFF' : color,
-    backgroundImage: isString(avatarUrl) && `url(${avatarUrl})`,
-    // height: `${isString(avatarUrl) ? '44px' : 'auto'}`,
-    padding: `${isString(avatarUrl) ? '0px' : 'auto'}`,
+    backgroundColor: localAvatar.length > 0 ? '#FFFFFF' : color,
+    backgroundImage: localAvatar.length > 0 && `url(${localAvatar})`,
   } as React.CSSProperties;
 
   return (
@@ -33,7 +36,7 @@ export const Avatar = (props: Props) => {
         ...props.style,
       }}
     >
-      {!avatarUrl && text}
+      {localAvatar.length === 0 && text}
 
       <div
         className="ce-avatar-status"

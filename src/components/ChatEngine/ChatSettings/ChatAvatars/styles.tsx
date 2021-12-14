@@ -1,17 +1,13 @@
+export interface AvatarsStyle {
+  avatarOne?: React.CSSProperties;
+  avatarTwo?: React.CSSProperties;
+  avatarThree?: React.CSSProperties;
+}
 export interface ChatAvatarsStyle {
   style?: React.CSSProperties;
-  oneAvatarStyle?: {
-    avatarOne: React.CSSProperties;
-  };
-  twoAvatarsStyle?: {
-    avatarOne: React.CSSProperties;
-    avatarTwo: React.CSSProperties;
-  };
-  threeAvatarsStyle?: {
-    avatarOne: React.CSSProperties;
-    avatarTwo: React.CSSProperties;
-    avatarThree: React.CSSProperties;
-  };
+  oneAvatarStyle?: AvatarsStyle;
+  twoAvatarsStyle?: AvatarsStyle;
+  threeAvatarsStyle?: AvatarsStyle;
 }
 
 export const styles: ChatAvatarsStyle = {
