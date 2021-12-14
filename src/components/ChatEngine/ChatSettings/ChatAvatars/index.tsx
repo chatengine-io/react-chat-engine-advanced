@@ -1,99 +1,80 @@
 import React from 'react';
 
 import { Props } from './props';
-import { styles } from './styles';
+import { styles, ChatAvatarsStyle, AvatarsStyle } from './styles';
 
 import { Avatar } from '../../../Components/Avatar';
 import { PersonProps } from '../../../../interfaces';
 
 export const ChatAvatars: React.FC<Props> = (props: Props) => {
-  const {
-    users = [],
-    oneAvatarStyle = { avatarOne: {} },
-    twoAvatarsStyle = { avatarOne: {}, avatarTwo: {} },
-    threeAvatarsStyle = { avatarOne: {}, avatarTwo: {}, avatarThree: {} },
-  } = props;
+  const { users = [] } = props;
 
-  const topPeople = users.slice(0, 3);
-  const otherPerson = users.find(
-    (person) => person.username !== props.myUsername
-  );
-
-  const renderAvatars = (
+  const getStyle = (
     people: PersonProps[],
-    avatarStyles: React.CSSProperties[]
-  ) => {
-    if (people.length != avatarStyles.length) {
-      return <div />;
+    styles: ChatAvatarsStyle
+  ): AvatarsStyle => {
+    if (people.length === 1) {
+      return styles.oneAvatarStyle ? styles.oneAvatarStyle : {};
+    } else if (people.length === 2) {
+      return styles.twoAvatarsStyle ? styles.twoAvatarsStyle : {};
+    } else {
+      return styles.threeAvatarsStyle ? styles.threeAvatarsStyle : {};
     }
-
-    return (
-      <div style={{ ...styles.style, ...props.style }}>
-        {people.map((person, i) => {
-          return (
-            <Avatar
-              key={`avatar_${i}`}
-              style={avatarStyles[i]}
-              username={person.username}
-              avatarUrl={person.avatar ? person.avatar : undefined}
-            />
-          );
-        })}
-      </div>
-    );
   };
 
-  const renderOnePerson = (people: PersonProps[]) => {
-    return renderAvatars(people, [
-      { ...styles.oneAvatarStyle?.avatarOne, ...oneAvatarStyle.avatarOne },
-    ]);
+  const getPeopleToRender = (people: PersonProps[]): PersonProps[] => {
+    if (props.isDirectChat) {
+      const otherPerson = users.find(
+        (person) => person.username !== props.myUsername
+      );
+      return otherPerson ? [otherPerson] : [];
+    }
+    return people.slice(0, 3);
   };
 
-  const renderTwoPeople = (people: PersonProps[]) => {
-    const avatarStyles = [
-      { ...styles.twoAvatarsStyle?.avatarOne, ...twoAvatarsStyle.avatarOne },
-      { ...styles.twoAvatarsStyle?.avatarTwo, ...twoAvatarsStyle.avatarTwo },
-    ];
+  const topPeople = getPeopleToRender(users);
+  const style = getStyle(users, styles);
+  const propsStyle = getStyle(users, props);
 
-    return renderAvatars(people, avatarStyles);
-  };
-
-  const renderThreePeople = (people: PersonProps[]) => {
-    const avatarStyles = [
-      {
-        ...styles.threeAvatarsStyle?.avatarOne,
-        ...threeAvatarsStyle.avatarOne,
-      },
-      {
-        ...styles.threeAvatarsStyle?.avatarTwo,
-        ...threeAvatarsStyle.avatarTwo,
-      },
-      {
-        ...styles.threeAvatarsStyle?.avatarThree,
-        ...threeAvatarsStyle.avatarThree,
-      },
-    ];
-
-    return renderAvatars(people, avatarStyles);
-  };
+  console.log('topPeople[0]', topPeople[0]);
+  console.log('topPeople[1]', topPeople[1]);
+  console.log('topPeople[2]', topPeople[2]);
+  console.log(topPeople[0] ? topPeople[0].avatar : undefined);
 
   return (
-    <div className="ce-chat-settings-container">
-      <div className="ce-chat-avatars-row">
-        {topPeople.length === 1 && renderOnePerson(topPeople)}
+    <div
+      className="ce-chat-avatars"
+      style={{ ...styles.style, ...props.style }}
+    >
+      <Avatar
+        username={topPeople[0] ? topPeople[0].username : undefined}
+        avatarUrl={topPeople[0] ? topPeople[0].avatar : undefined}
+        style={{
+          ...style.avatarOne,
+          ...{ display: topPeople[0] ? 'inherit' : 'none' },
+          ...propsStyle.avatarOne,
+        }}
+      />
 
-        {props.isDirectChat && otherPerson && renderOnePerson([otherPerson])}
+      <Avatar
+        username={topPeople[1] ? topPeople[1].username : undefined}
+        avatarUrl={topPeople[1] ? topPeople[1].avatar : undefined}
+        style={{
+          ...style.avatarTwo,
+          ...{ display: topPeople[1] ? 'inherit' : 'none' },
+          ...propsStyle.avatarTwo,
+        }}
+      />
 
-        {!props.isDirectChat &&
-          otherPerson &&
-          topPeople.length === 2 &&
-          renderTwoPeople(topPeople)}
-
-        {!props.isDirectChat &&
-          otherPerson &&
-          topPeople.length === 3 &&
-          renderThreePeople(topPeople)}
-      </div>
+      <Avatar
+        username={topPeople[2] ? topPeople[2].username : undefined}
+        avatarUrl={topPeople[2] ? topPeople[2].avatar : undefined}
+        style={{
+          ...style.avatarThree,
+          ...{ display: topPeople[2] ? 'inherit' : 'none' },
+          ...propsStyle.avatarThree,
+        }}
+      />
     </div>
   );
 };

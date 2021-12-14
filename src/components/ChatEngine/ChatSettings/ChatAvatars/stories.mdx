@@ -2,13 +2,7 @@ import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
 import { ChatAvatars } from '.';
 import { Props } from './props';
-import {
-  onePersonChat,
-  chatWithReads as twoPersonChat,
-  threePersonChat,
-  directMessageChat,
-  adam as currentUser,
-} from '../../../util/mocks';
+import { adam, bob, cam } from '../../../util/mocks';
 
 <Meta
   title="ChatEngine/ChatSettings/Chat Avatars"
@@ -30,7 +24,7 @@ The `ChatAvatars` component appears at the top of the Settings window.
 
 This is used to display the Avatars of the users in the chat.
 
-Two arguments are required, the list of users in the chat, `users: PersonProps[]`, and the current user, `currentUser: PersonProps`.
+Two arguments are required, the list of users in the chat, `users: PersonProps[]`, and the current user's username, `myUsername`.
 
 Optionally set `isDirectChat = true` if the chat is a direct message. Otherwise this defaults to `false` and assumes a group chat.
 
@@ -39,7 +33,7 @@ Optionally set `isDirectChat = true` if the chat is a direct message. Otherwise 
 <Story
   name="Default"
   args={{
-    users: directMessageChat.people,
+    users: [adam, bob, cam],
   }}
 >
   {Template.bind({})}
@@ -55,8 +49,8 @@ For direct message chats, set `isDirectChat` to `true` and only the other person
   <Story
     name="Is Direct Chat"
     args={{
-      users: directMessageChat.people,
-      myUsername: currentUser.username,
+      users: [adam, bob],
+      myUsername: adam.username,
       isDirectChat: true,
     }}
   >
@@ -72,8 +66,8 @@ For groups chats containing one person, only their avatar will display.
   <Story
     name="One Person"
     args={{
-      users: onePersonChat.people,
-      myUsername: currentUser.username,
+      users: [adam],
+      myUsername: adam.username,
     }}
   >
     {Template.bind({})}
@@ -88,8 +82,8 @@ For two person group chats, both avatars will display.
   <Story
     name="Two People"
     args={{
-      users: twoPersonChat.people,
-      myUsername: currentUser.username,
+      users: [adam, bob],
+      myUsername: adam.username,
     }}
   >
     {Template.bind({})}
@@ -104,8 +98,8 @@ For group chats with three or more people, the first three users' avatars will d
   <Story
     name="Three People"
     args={{
-      users: threePersonChat.people,
-      myUsername: currentUser.username,
+      users: [adam, bob, cam],
+      myUsername: adam.username,
     }}
   >
     {Template.bind({})}
@@ -120,8 +114,8 @@ For group chats with three or more people, the first three users' avatars will d
   <Story
     name="Custom Styles"
     args={{
-      users: threePersonChat.people,
-      myUsername: currentUser.username,
+      users: [adam, bob, cam],
+      myUsername: adam.username,
       style: { border: '2px solid orange' },
       threeAvatarsStyle: {
         avatarOne: { border: '2px solid red' },
