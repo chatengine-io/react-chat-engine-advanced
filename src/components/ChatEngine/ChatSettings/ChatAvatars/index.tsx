@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 import { Props } from './props';
 import { styles, ChatAvatarsStyle, AvatarsStyle } from './styles';
@@ -7,15 +7,7 @@ import { Avatar } from '../../../Components/Avatar';
 import { PersonProps } from '../../../../interfaces';
 
 export const ChatAvatars: React.FC<Props> = (props: Props) => {
-  const didMountRef = useRef(false);
   const { users = [] } = props;
-
-  useEffect(() => {
-    if (!didMountRef.current) {
-      didMountRef.current = true;
-      console.log('avatars mounted');
-    }
-  }, []);
 
   const getStyle = (
     people: PersonProps[],
