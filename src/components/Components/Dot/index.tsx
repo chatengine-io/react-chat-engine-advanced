@@ -14,7 +14,7 @@ export const Dot = (props: Props) => {
     if (newAvatar.split('?')[0] !== localAvatar.split('?')[0]) {
       setLocalAvatar(newAvatar);
     }
-  }, []);
+  });
 
   return (
     <div

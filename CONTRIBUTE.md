@@ -143,7 +143,7 @@ An example of this is the ChatEngine component props:
   onChatFormSubmit = () => {},
   onChatCardClick = () => {},
   onChatLoaderVisible = () => {},
-  onTopMessageShow = () => {},
+  onMessageLoaderShow = () => {},
   onBottomMessageShow = () => {},
   onMessageSend = () => {},
   // Style

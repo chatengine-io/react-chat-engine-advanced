@@ -13,7 +13,6 @@ import {
   getMessages,
   newMessage,
   readMessage,
-  getChatsAndMessages,
 } from '../actions';
 
 import { animateScroll } from 'react-scroll';
@@ -54,11 +53,14 @@ export const useChatEngine = (
 
   // State
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
-  const [isAtChatFeedBottom, setIsAtChatFeedBottom] = useState<boolean>(false);
+  const [hasMoreMessages, setHasMoreMessages] = useState<boolean>(false);
+  const [isChatFeedAtBottom, setIsChatFeedAtBottom] = useState<boolean>(false);
 
-  // Subscribe to Chat Count
+  // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
   chatCountRef.current = chats.length;
+  const messageCountRef = useRef<number>(0);
+  messageCountRef.current = messages.length;
 
   useEffect(() => {
     const chat = chats.find((chat) => chat.id === activeChatId);
@@ -69,7 +71,7 @@ export const useChatEngine = (
       activeChatId &&
       chat?.last_message.id && // If there is a message
       chat.last_message.id !== chatPerson?.last_read &&
-      isAtChatFeedBottom
+      isChatFeedAtBottom
     ) {
       readMessage(
         projectId,
@@ -80,7 +82,7 @@ export const useChatEngine = (
         () => {}
       );
     }
-  }, [chats, activeChatId, isAtChatFeedBottom]);
+  }, [chats, activeChatId, isChatFeedAtBottom]);
 
   const onGetChats = (chats: ChatProps[] = []) => {
     setHasMoreChats(chats.length >= chatCountRef.current + chatCountIterator);
@@ -112,6 +114,9 @@ export const useChatEngine = (
   };
 
   const onGetMessages = (chatId: number, messages: MessageProps[]) => {
+    setHasMoreMessages(
+      messages.length >= messageCountRef.current + messageCountIterator
+    );
     void chatId;
     setMessages(messages);
   };
@@ -124,7 +129,7 @@ export const useChatEngine = (
       const newMessages = otherMessages.concat(newMessage);
       const sortedMessages = sortMessages(newMessages);
       setMessages(sortedMessages);
-      if (isAtChatFeedBottom) {
+      if (isChatFeedAtBottom) {
         animateScroll.scrollToBottom({
           duration: 333,
           containerId: `ce-message-list-${activeChatId}`,
@@ -154,16 +159,26 @@ export const useChatEngine = (
   };
 
   const onConnect = () => {
-    getChatsAndMessages(
+    const now = new Date()
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+
+    getChatsBefore(
       projectId,
       myUsername,
       mySecret,
-      undefined,
+      now,
       chatCountRef.current > 0 ? chatCountRef.current : chatCountIterator,
-      messages.length > 0 ? messages.length : messageCountIterator,
-      onGetChats,
-      onChatCardClick,
-      onGetMessages
+      (chats) => {
+        onGetChats(chats);
+
+        let currentChat = activeChatId;
+        if (!activeChatId && chats.length > 0) {
+          currentChat = chats[0].id;
+        }
+        currentChat && onChatCardClick(currentChat);
+      }
     );
   };
 
@@ -257,11 +272,41 @@ export const useChatEngine = (
   };
 
   const onBottomMessageShow = () => {
-    setIsAtChatFeedBottom(true);
+    setIsChatFeedAtBottom(true);
   };
 
   const onBottomMessageHide = () => {
-    setIsAtChatFeedBottom(false);
+    setIsChatFeedAtBottom(false);
+  };
+
+  const onMessageLoaderShow = () => {
+    const scrollContainerId = `ce-message-list-${activeChatId}`;
+    const messageListId = `ce-message-list-content-${activeChatId}`;
+
+    const currentElement = document.getElementById(messageListId);
+    let currentHeight = currentElement ? currentElement.clientHeight : 0;
+
+    activeChatId &&
+      getMessages(
+        projectId,
+        myUsername,
+        mySecret,
+        activeChatId,
+        messageCountRef.current + messageCountIterator,
+        (chatId, messages) => {
+          onGetMessages(chatId, messages);
+
+          setTimeout(() => {
+            const element = document.getElementById(messageListId);
+            if (element) {
+              animateScroll.scrollTo(element.clientHeight - currentHeight, {
+                duration: 333,
+                containerId: scrollContainerId,
+              });
+            }
+          }, 1000);
+        }
+      );
   };
 
   return {
@@ -277,8 +322,10 @@ export const useChatEngine = (
     // State
     hasMoreChats,
     setHasMoreChats,
-    isAtChatFeedBottom,
-    setIsAtChatFeedBottom,
+    hasMoreMessages,
+    setHasMoreMessages,
+    isChatFeedAtBottom,
+    setIsChatFeedAtBottom,
     // Simple Data Events
     onGetChats,
     onNewChat,
@@ -298,6 +345,7 @@ export const useChatEngine = (
     onRemovePersonClick,
     onDeleteChatClick,
     // State Events
+    onMessageLoaderShow,
     onBottomMessageShow,
     onBottomMessageHide,
   };

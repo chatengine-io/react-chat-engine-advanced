@@ -36,11 +36,6 @@ export const ChatAvatars: React.FC<Props> = (props: Props) => {
   const style = getStyle(users, styles);
   const propsStyle = getStyle(users, props);
 
-  console.log('topPeople[0]', topPeople[0]);
-  console.log('topPeople[1]', topPeople[1]);
-  console.log('topPeople[2]', topPeople[2]);
-  console.log(topPeople[0] ? topPeople[0].avatar : undefined);
-
   return (
     <div
       className="ce-chat-avatars"

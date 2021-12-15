@@ -11,8 +11,8 @@ export interface Props extends MessageListStyles {
   // State
   hasMoreMessages?: boolean;
   // Hooks
-  onTopMessageShow?: () => void;
-  onTopMessageHide?: () => void;
+  onMessageLoaderShow?: () => void;
+  onMessageLoaderHide?: () => void;
   onBottomMessageShow?: () => void;
   onBottomMessageHide?: () => void;
   // Render Functions

@@ -9,8 +9,8 @@ import { messages, directMessageChat } from '../../../util/mocks';
   component={MessageList}
   argTypes={{
     hasMoreMessages: { table: { category: 'state' } },
-    onTopMessageShow: { table: { category: 'hooks' } },
-    onTopMessageHide: { table: { category: 'hooks' } },
+    onMessageLoaderShow: { table: { category: 'hooks' } },
+    onMessageLoaderHide: { table: { category: 'hooks' } },
     onBottomMessageShow: { table: { category: 'hooks' } },
     onBottomMessageHide: { table: { category: 'hooks' } },
     renderMessageList: { table: { category: 'render functions' } },
@@ -133,7 +133,7 @@ This will put a `<Spinner/>` component at the top of the chat feed which is used
 
 When the top and bottom message become visible, you can trigger custom functions.
 
-Use the `onTopMessageShow`/`onTopMessageHide` and `onBottomMessageShow`/`onBottomMessageHide` functions to trigger functions accordingly.
+Use the `onMessageLoaderShow`/`onMessageLoaderHide` and `onBottomMessageShow`/`onBottomMessageHide` functions to trigger functions accordingly.
 
 It's commonly used to know when you need to load more messages, or mark a chat's messages as "all read".
 
@@ -144,8 +144,8 @@ Check the console log for this example.
     name="Render Triggers"
     args={{
       messages: messages,
-      onTopMessageShow: () => console.log('Top message showing'),
-      onTopMessageHide: () => console.log('Top message hidden'),
+      onMessageLoaderShow: () => console.log('Top message showing'),
+      onMessageLoaderHide: () => console.log('Top message hidden'),
       onBottomMessageShow: () => console.log('Bottom message showing'),
       onBottomMessageHide: () => console.log('Bottom message hidden'),
       style: {

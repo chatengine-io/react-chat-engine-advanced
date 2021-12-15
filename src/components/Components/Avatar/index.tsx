@@ -19,7 +19,7 @@ export const Avatar = (props: Props) => {
     if (newAvatar.split('?')[0] !== localAvatar.split('?')[0]) {
       setLocalAvatar(newAvatar);
     }
-  }, []);
+  });
 
   const avatarUrlStyle = {
     backgroundColor: localAvatar.length > 0 ? '#FFFFFF' : color,

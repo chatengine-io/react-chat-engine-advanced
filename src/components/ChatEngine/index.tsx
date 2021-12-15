@@ -51,7 +51,8 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
           myUsername={props.myUsername}
           isLoading={props.isChatFeedLoading}
           hasMoreMessages={props.hasMoreMessages}
-          onTopMessageShow={props.onTopMessageShow}
+          onMessageLoaderShow={props.onMessageLoaderShow}
+          onMessageLoaderHide={props.onMessageLoaderHide}
           onBottomMessageShow={props.onBottomMessageShow}
           onBottomMessageHide={props.onBottomMessageHide}
           onMessageSend={props.onMessageSend}
