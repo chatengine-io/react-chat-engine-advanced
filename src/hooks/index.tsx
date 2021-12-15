@@ -55,7 +55,6 @@ export const useChatEngine = (
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
   const [hasMoreMessages, setHasMoreMessages] = useState<boolean>(false);
   const [isChatFeedAtBottom, setIsChatFeedAtBottom] = useState<boolean>(false);
-  const [isChatFeedAtTop, setIsChatFeedAtTop] = useState<boolean>(false);
 
   // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
@@ -325,8 +324,6 @@ export const useChatEngine = (
     setHasMoreChats,
     hasMoreMessages,
     setHasMoreMessages,
-    isChatFeedAtTop,
-    setIsChatFeedAtTop,
     isChatFeedAtBottom,
     setIsChatFeedAtBottom,
     // Simple Data Events
