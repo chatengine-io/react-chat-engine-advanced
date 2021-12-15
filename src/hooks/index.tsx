@@ -18,7 +18,7 @@ import {
 import { animateScroll } from 'react-scroll';
 
 const chatCountIterator = 20;
-const messageCountIterator = 20;
+const messageCountIterator = 50;
 
 export const sortChats = (chats: ChatProps[]) => {
   return chats.sort((a: ChatProps, b: ChatProps) => {
