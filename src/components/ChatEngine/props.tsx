@@ -32,12 +32,12 @@ export interface Props extends ChatEngineStyles {
   // Hooks
   onChatCardClick?: (chatId: number) => void;
   onChatFormSubmit?: (title: string) => void;
-  onChatLoaderVisible?: () => void;
+  onChatLoaderShow?: () => void;
   onMessageLoaderShow?: () => void;
   onMessageLoaderHide?: () => void;
   onBottomMessageShow?: () => void;
   onBottomMessageHide?: () => void;
-  onMessageSend?: (message: MessageProps) => void;
+  onMessageFormSubmit?: (message: MessageProps) => void;
   onInvitePersonClick?: (person: PersonProps) => void;
   onRemovePersonClick?: (person: PersonProps) => void;
   onDeleteChatClick?: (chat: ChatProps) => void;

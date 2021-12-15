@@ -31,8 +31,8 @@ const App: React.FC = () => {
     onConnect,
     onChatFormSubmit,
     onChatCardClick,
-    onChatLoaderVisible,
-    onMessageSend,
+    onChatLoaderShow,
+    onMessageFormSubmit,
     onInvitePersonClick,
     onRemovePersonClick,
     onDeleteChatClick,
@@ -70,8 +70,8 @@ const App: React.FC = () => {
         // Hooks
         onChatFormSubmit={onChatFormSubmit}
         onChatCardClick={onChatCardClick}
-        onChatLoaderVisible={onChatLoaderVisible}
-        onMessageSend={onMessageSend}
+        onChatLoaderShow={onChatLoaderShow}
+        onMessageFormSubmit={onMessageFormSubmit}
         onInvitePersonClick={onInvitePersonClick}
         onRemovePersonClick={onRemovePersonClick}
         onDeleteChatClick={onDeleteChatClick}

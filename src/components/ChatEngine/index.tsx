@@ -32,7 +32,7 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
           hasMoreChats={props.hasMoreChats}
           onChatFormSubmit={props.onChatFormSubmit}
           onChatCardClick={props.onChatCardClick}
-          onChatLoaderVisible={props.onChatLoaderVisible}
+          onChatLoaderShow={props.onChatLoaderShow}
           renderChatList={props.renderChatList}
           renderChatForm={props.renderChatForm}
           renderChatCard={props.renderChatCard}
@@ -55,7 +55,7 @@ export const ChatEngine: React.FC<Props> = (props: Props) => {
           onMessageLoaderHide={props.onMessageLoaderHide}
           onBottomMessageShow={props.onBottomMessageShow}
           onBottomMessageHide={props.onBottomMessageHide}
-          onMessageSend={props.onMessageSend}
+          onMessageFormSubmit={props.onMessageFormSubmit}
           renderChatFeed={props.renderChatFeed}
           renderChatHeader={props.renderChatHeader}
           renderMessageList={props.renderMessageList}

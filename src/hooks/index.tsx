@@ -214,7 +214,7 @@ export const useChatEngine = (
     );
   };
 
-  const onChatLoaderVisible = () => {
+  const onChatLoaderShow = () => {
     const now = new Date()
       .toISOString()
       .replace('T', ' ')
@@ -229,7 +229,7 @@ export const useChatEngine = (
     );
   };
 
-  const onMessageSend = (message: MessageProps) => {
+  const onMessageFormSubmit = (message: MessageProps) => {
     const newMessages = messages?.concat(message);
     setMessages(newMessages);
 
@@ -339,8 +339,8 @@ export const useChatEngine = (
     onConnect,
     onChatFormSubmit,
     onChatCardClick,
-    onChatLoaderVisible,
-    onMessageSend,
+    onChatLoaderShow,
+    onMessageFormSubmit,
     onInvitePersonClick,
     onRemovePersonClick,
     onDeleteChatClick,
