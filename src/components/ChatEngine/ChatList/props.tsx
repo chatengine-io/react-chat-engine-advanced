@@ -18,7 +18,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement>, ChatListStyles {
   // Hooks
   onChatCardClick?: (chatId: number) => void;
   onChatFormSubmit?: (title: string) => void;
-  onChatLoaderVisible?: () => void;
+  onChatLoaderShow?: () => void;
   // Render Functions
   renderChatList?: (props: Props) => React.FC<Props>;
   renderChatForm?: (props: ChatFormProps) => React.FC<ChatFormProps>;

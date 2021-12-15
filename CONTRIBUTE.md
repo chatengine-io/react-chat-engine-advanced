@@ -115,7 +115,8 @@ Right now there is a props heirarchy for the order you put prop types in:
 
 - These are functions that trigger when event happens to the component.
 - Usually following the `<on><Component><Event>` naming convention
-- Examples: `onComponentClick`, `onFormSubmit`, `onComponentIsVisible`
+- The `<Event>` should be a verb like Click, Show, Hide, Send, Change, Submit
+- Examples: `onComponentClick`, `onFormSubmit`, `onComponentShow`
 
 `Styles`
 
@@ -142,10 +143,10 @@ An example of this is the ChatEngine component props:
   // Hooks
   onChatFormSubmit = () => {},
   onChatCardClick = () => {},
-  onChatLoaderVisible = () => {},
+  onChatLoaderShow = () => {},
   onMessageLoaderShow = () => {},
   onBottomMessageShow = () => {},
-  onMessageSend = () => {},
+  onMessageFormSubmit = () => {},
   // Style
   chatEngineStyle = {},
   chatListColumnStyle = {},
