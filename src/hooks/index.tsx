@@ -59,8 +59,8 @@ export const useChatEngine = (
 
   // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
-  const messageCountRef = useRef<number>(0);
   chatCountRef.current = chats.length;
+  const messageCountRef = useRef<number>(0);
   messageCountRef.current = messages.length;
 
   useEffect(() => {
@@ -281,6 +281,12 @@ export const useChatEngine = (
   };
 
   const onMessageLoaderShow = () => {
+    const scrollContainerId = `ce-message-list-${activeChatId}`;
+    const messageListId = `ce-message-list-content-${activeChatId}`;
+
+    const currentElement = document.getElementById(messageListId);
+    let currentHeight = currentElement ? currentElement.clientHeight : 0;
+
     activeChatId &&
       getMessages(
         projectId,
@@ -288,7 +294,19 @@ export const useChatEngine = (
         mySecret,
         activeChatId,
         messageCountRef.current + messageCountIterator,
-        onGetMessages
+        (chatId, messages) => {
+          onGetMessages(chatId, messages);
+
+          setTimeout(() => {
+            const element = document.getElementById(messageListId);
+            if (element) {
+              animateScroll.scrollTo(element.clientHeight - currentHeight, {
+                duration: 333,
+                containerId: scrollContainerId,
+              });
+            }
+          }, 1000);
+        }
       );
   };
 

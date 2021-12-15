@@ -32,12 +32,12 @@ const App: React.FC = () => {
     onChatFormSubmit,
     onChatCardClick,
     onChatLoaderVisible,
-    onMessageLoaderShow,
     onMessageSend,
     onInvitePersonClick,
     onRemovePersonClick,
     onDeleteChatClick,
     // State Events
+    onMessageLoaderShow,
     onBottomMessageShow,
     onBottomMessageHide,
   } = useChatEngine(projectId, myUsername, mySecret);
