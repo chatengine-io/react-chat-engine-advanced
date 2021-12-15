@@ -63,30 +63,37 @@ export const MessageList: React.FC<Props> = (props: Props) => {
   }
 
   return (
+    // Used for scrolling
     <div
       className="ce-message-list"
-      id={`ce-message-list-${props.chat ? props.chat.id : 0}`}
+      id={`ce-message-list-${props.chat?.id}`}
       style={{ ...styles.style, ...props.style }}
     >
-      {props.hasMoreMessages && (
-        <RenderTrigger
-          onShow={props.onMessageLoaderShow}
-          onHide={props.onMessageLoaderHide}
-          children={
-            <Spinner
-              style={{
-                position: 'relative',
-                left: 'calc(50% - 0.625em)',
-                width: '1.25em',
-                height: '1.25em',
-                font: 'red',
-              }}
-            />
-          }
-        />
-      )}
+      {/* used for finding Feed Height */}
+      <div
+        className="ce-message-list-content"
+        id={`ce-message-list-content-${props.chat?.id}`}
+      >
+        {props.hasMoreMessages && (
+          <RenderTrigger
+            onShow={props.onMessageLoaderShow}
+            onHide={props.onMessageLoaderHide}
+            children={
+              <Spinner
+                style={{
+                  position: 'relative',
+                  left: 'calc(50% - 0.625em)',
+                  width: '1.25em',
+                  height: '1.25em',
+                  font: 'red',
+                }}
+              />
+            }
+          />
+        )}
 
-      {renderMessages(keys)}
+        {renderMessages(keys)}
+      </div>
     </div>
   );
 };

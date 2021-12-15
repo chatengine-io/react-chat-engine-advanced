@@ -280,7 +280,6 @@ export const useChatEngine = (
     setIsChatFeedAtBottom(false);
   };
 
-  // Why do we need to export this logic?
   const onMessageLoaderShow = () => {
     activeChatId &&
       getMessages(
@@ -289,14 +288,7 @@ export const useChatEngine = (
         mySecret,
         activeChatId,
         messageCountRef.current + messageCountIterator,
-        (chatId, messages) => {
-          onGetMessages(chatId, messages);
-          console.log('do scrolling stuff');
-          // animateScroll.scrollToBottom({
-          //   duration: 0,
-          //   containerId: `ce-message-list-${activeChatId}`,
-          // });
-        }
+        onGetMessages
       );
   };
 
