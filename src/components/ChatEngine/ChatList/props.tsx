@@ -10,7 +10,7 @@ import { Props as ChatCardProps } from './ChatCard/props';
 export interface Props extends HTMLAttributes<HTMLDivElement>, ChatListStyles {
   // Data
   chats: ChatProps[];
-  activeChatKey?: number;
+  activeChatId?: number;
   myUsername?: string;
   // State
   isLoading?: boolean;
