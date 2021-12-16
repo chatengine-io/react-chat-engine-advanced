@@ -131,7 +131,7 @@ An example of this is the ChatEngine component props:
 {
   // Data
   chats = {},
-  activeChatKey = -1,
+  activeChatId = -1,
   messages = {},
   myUsername,
   // State

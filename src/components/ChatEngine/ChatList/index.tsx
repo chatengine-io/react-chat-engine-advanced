@@ -38,7 +38,7 @@ const getDescription = (chat: ChatProps): string => {
 };
 
 export const ChatList: React.FC<Props> = (props: Props) => {
-  const { activeChatKey = -1 } = props;
+  const { activeChatId = -1 } = props;
 
   const renderChats = (chats: Array<ChatProps>) => {
     return chats.map((chat, index) => {
@@ -63,7 +63,7 @@ export const ChatList: React.FC<Props> = (props: Props) => {
           title={title}
           description={getDescription(chat)}
           timeStamp={timeStamp}
-          isActive={activeChatKey === chat.id}
+          isActive={activeChatId === chat.id}
           hasNotification={hasNotification}
           onClick={() =>
             props.onChatCardClick && props.onChatCardClick(chat.id)

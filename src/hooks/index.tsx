@@ -310,6 +310,10 @@ export const useChatEngine = (
   };
 
   return {
+    // Auth
+    projectId,
+    myUsername,
+    mySecret,
     // Data
     chats,
     setChats,

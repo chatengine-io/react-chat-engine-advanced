@@ -41,7 +41,7 @@ It stacks the `<ChatForm />`, `<ChatCard />` and `<ChatsLoader />` components in
 
 ## Active Chat
 
-You can specify the active chat with `activeChatKey` and the corresponding ChatCard will be active.
+You can specify the active chat with `activeChatId` and the corresponding ChatCard will be active.
 
 <Story
   name="Active Chat"
@@ -52,7 +52,7 @@ You can specify the active chat with `activeChatKey` and the corresponding ChatC
       maxHeight: '330px',
     },
     chats: chats,
-    activeChatKey: 201,
+    activeChatId: 201,
   }}
 >
   {Template.bind({})}

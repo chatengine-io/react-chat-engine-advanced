@@ -9,11 +9,11 @@ type GetChatsAndMessages = (
   projectId: string,
   myUsername: string,
   mySecret: string,
-  activeChatKey: number | undefined,
+  activeChatId: number | undefined,
   chatCount: number,
   messageCount: number,
   onGetChats: (chats: ChatProps[]) => void,
-  onGetActiveChat: (activeChatKey: number) => void,
+  onGetActiveChat: (activeChatId: number) => void,
   onGetMessages: (chatId: number, chats: MessageProps[]) => void
 ) => void;
 
@@ -21,7 +21,7 @@ export const getChatsAndMessages: GetChatsAndMessages = (
   projectId,
   myUsername,
   mySecret,
-  activeChatKey,
+  activeChatId,
   chatCount,
   messageCount,
   onGetChats,
@@ -38,8 +38,8 @@ export const getChatsAndMessages: GetChatsAndMessages = (
     onGetChats(chats);
 
     // Get active chat
-    let currentChat = activeChatKey;
-    if (!activeChatKey && chats.length > 0) {
+    let currentChat = activeChatId;
+    if (!activeChatId && chats.length > 0) {
       onGetActiveChat(chats[0].id);
       currentChat = chats[0].id;
     }

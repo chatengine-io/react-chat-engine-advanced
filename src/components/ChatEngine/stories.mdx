@@ -1,12 +1,12 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
-import { ChatEngine } from '.';
+import { ChatEngineWindow } from '.';
 import { Props } from './props';
 
 import { adam, chats, messages } from '../util/mocks';
 
 <Meta
   title="ChatEngine"
-  component={ChatEngine}
+  component={ChatEngineWindow}
   argTypes={{
     isChatListLoading: { table: { category: 'state' } },
     isChatFeedLoading: { table: { category: 'state' } },
@@ -43,7 +43,7 @@ import { adam, chats, messages } from '../util/mocks';
   }}
 />
 
-export const Template = (args) => <ChatEngine {...args} />;
+export const Template = (args) => <ChatEngineWindow {...args} />;
 
 # Chat Engine
 
@@ -54,7 +54,7 @@ export const Template = (args) => <ChatEngine {...args} />;
   args={{
     myUsername: adam.myUsername,
     chats: chats,
-    activeChatKey: 201,
+    activeChatId: 201,
     messages: messages,
     style: {
       height: '550px',
@@ -100,7 +100,7 @@ You can see the `<Spinner/>` in the Chat List and Chat Feed components.
     myUsername: adam.myUsername,
     chats: chats,
     messages: messages,
-    activeChatKey: 201,
+    activeChatId: 201,
     hasMoreChats: true,
     hasMoreMessages: true,
     style: {
@@ -122,7 +122,7 @@ You can trigger code on significant event with the `on*` props.
     myUsername: adam.myUsername,
     chats: chats,
     messages: messages,
-    activeChatKey: 201,
+    activeChatId: 201,
     hasMoreChats: true,
     hasMoreMessages: true,
     onChatFormSubmit: () => console.log('onChatFormSubmit'),
@@ -177,7 +177,7 @@ You can customize the look and feel with the `*Style` props.
     myUsername: adam.myUsername,
     chats: chats,
     messages: messages,
-    activeChatKey: 201,
+    activeChatId: 201,
     style: {
       height: '550px',
       border: '2px solid red',

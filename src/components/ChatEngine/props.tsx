@@ -20,7 +20,7 @@ export interface Props extends ChatEngineStyles {
   // Data
   myUsername: string;
   chats?: ChatProps[];
-  activeChatKey?: number;
+  activeChatId?: number;
   messages?: MessageProps[];
   peopleToInvite?: PersonProps[];
   // State
