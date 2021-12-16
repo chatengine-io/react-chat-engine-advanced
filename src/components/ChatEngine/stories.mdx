@@ -1,12 +1,12 @@
 import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
-import { ChatEngine } from '.';
+import { ChatEngineWindow } from '.';
 import { Props } from './props';
 
 import { adam, chats, messages } from '../util/mocks';
 
 <Meta
   title="ChatEngine"
-  component={ChatEngine}
+  component={ChatEngineWindow}
   argTypes={{
     isChatListLoading: { table: { category: 'state' } },
     isChatFeedLoading: { table: { category: 'state' } },
@@ -43,7 +43,7 @@ import { adam, chats, messages } from '../util/mocks';
   }}
 />
 
-export const Template = (args) => <ChatEngine {...args} />;
+export const Template = (args) => <ChatEngineWindow {...args} />;
 
 # Chat Engine
 

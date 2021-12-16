@@ -11,7 +11,7 @@ import { setConfiguration } from 'react-grid-system';
 
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
-export const ChatEngine: React.FC<Props> = (props: Props) => {
+export const ChatEngineWindow: React.FC<Props> = (props: Props) => {
   const { chats = [], activeChatId = -1, messages = [] } = props;
 
   const chat = chats.find((chat) => chat.id === activeChatId);

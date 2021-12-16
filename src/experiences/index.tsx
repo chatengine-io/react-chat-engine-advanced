@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useChatEngine } from '../hooks';
-import { ChatEngine } from '../components';
+import { ChatEngineWindow } from '../components';
 import { Props as ChatEngineProps } from '../components/ChatEngine/props';
 import { Socket } from '../sockets';
 
@@ -15,14 +15,14 @@ const defaultStyle = {
   height: '100vh',
 };
 
-export const ChatEngineExperience: React.FC<Props> = (props: Props) => {
+export const ChatEngine: React.FC<Props> = (props: Props) => {
   const { projectId, myUsername, mySecret } = props;
   const state = useChatEngine(projectId, myUsername, mySecret);
 
   return (
     <div>
       <Socket {...state} />
-      <ChatEngine
+      <ChatEngineWindow
         {...state}
         {...props}
         style={{ ...defaultStyle, ...props.style }}
