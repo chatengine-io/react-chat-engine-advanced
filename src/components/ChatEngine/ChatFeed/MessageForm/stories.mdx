@@ -32,7 +32,6 @@ This message form is for making and sending Messages.
 <Story
   name="Default"
   args={{
-    myUsername: '',
     style: {
       maxWidth: '600px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -52,7 +51,6 @@ You can render you own code instead of this component with the `render*` functio
   <Story
     name="Render Function"
     args={{
-      myUsername: '',
       style: {
         maxWidth: '600px',
         border: '2px solid red',
@@ -78,7 +76,6 @@ export const StyleTemplate = (args) => <MessageForm {...args} />;
   <Story
     name="Custom Style"
     args={{
-      myUsername: '',
       style: {
         maxWidth: '600px',
         border: '2px solid red',
