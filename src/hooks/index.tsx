@@ -79,6 +79,7 @@ export const useChatEngine = (
       isChatFeedAtBottom
     ) {
       readMessage(
+        host,
         projectId,
         myUsername,
         mySecret,
@@ -197,7 +198,7 @@ export const useChatEngine = (
   };
 
   const onChatFormSubmit = (title: string) => {
-    newChat(projectId, myUsername, mySecret, title, (chat) => {
+    newChat(host, projectId, myUsername, mySecret, title, (chat) => {
       onNewChat(chat);
       onChatCardClick(chat.id);
     });
@@ -207,6 +208,7 @@ export const useChatEngine = (
     setActiveChatId(activeChatId);
 
     getMessages(
+      host,
       projectId,
       myUsername,
       mySecret,
@@ -222,6 +224,7 @@ export const useChatEngine = (
     );
 
     getPeopleToInvite(
+      host,
       projectId,
       myUsername,
       mySecret,
@@ -252,6 +255,7 @@ export const useChatEngine = (
     setMessages(newMessages);
 
     newMessage(
+      host,
       projectId,
       myUsername,
       mySecret,
@@ -264,6 +268,7 @@ export const useChatEngine = (
   const onInvitePersonClick = (person: PersonProps) => {
     activeChatId &&
       invitePerson(
+        host,
         projectId,
         myUsername,
         mySecret,
@@ -276,6 +281,7 @@ export const useChatEngine = (
   const onRemovePersonClick = (person: PersonProps) => {
     activeChatId &&
       removePerson(
+        host,
         projectId,
         myUsername,
         mySecret,
@@ -286,7 +292,7 @@ export const useChatEngine = (
   };
 
   const onDeleteChatClick = (chat: ChatProps) => {
-    deleteChat(projectId, myUsername, mySecret, chat.id, onDeleteChat);
+    deleteChat(host, projectId, myUsername, mySecret, chat.id, onDeleteChat);
   };
 
   const onBottomMessageShow = () => {
@@ -306,6 +312,7 @@ export const useChatEngine = (
 
     activeChatId &&
       getMessages(
+        host,
         projectId,
         myUsername,
         mySecret,

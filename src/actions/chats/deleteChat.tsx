@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ChatProps } from '../../interfaces';
 
 type DeleteChat = (
+  host: string,
   projectId: string,
   myUsername: string,
   mySecret: string,
@@ -11,6 +12,7 @@ type DeleteChat = (
 ) => void;
 
 export const deleteChat: DeleteChat = (
+  host,
   projectId,
   myUsername,
   mySecret,
@@ -18,7 +20,7 @@ export const deleteChat: DeleteChat = (
   callback
 ) => {
   axios
-    .delete(`http://127.0.0.1:8000/chats/${chatId}/`, {
+    .delete(`${host}/chats/${chatId}/`, {
       headers: {
         'Public-Key': projectId,
         'User-Name': myUsername,

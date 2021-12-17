@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ChatProps } from '../../interfaces';
 
 type InvitePerson = (
+  host: string,
   projectId: string,
   myUsername: string,
   mySecret: string,
@@ -12,6 +13,7 @@ type InvitePerson = (
 ) => void;
 
 export const invitePerson: InvitePerson = (
+  host,
   projectId,
   myUsername,
   mySecret,
@@ -21,7 +23,7 @@ export const invitePerson: InvitePerson = (
 ) => {
   axios
     .post(
-      `http://127.0.0.1:8000/chats/${chatId}/people/`,
+      `${host}/chats/${chatId}/people/`,
       { username },
       {
         headers: {

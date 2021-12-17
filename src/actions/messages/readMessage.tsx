@@ -2,6 +2,7 @@ import axios from 'axios';
 import { ChatProps } from '../..';
 
 type ReadMessages = (
+  host: string,
   projectId: string,
   myUsername: string,
   mySecret: string,
@@ -11,6 +12,7 @@ type ReadMessages = (
 ) => void;
 
 export const readMessage: ReadMessages = (
+  host,
   projectId,
   myUsername,
   mySecret,
@@ -20,7 +22,7 @@ export const readMessage: ReadMessages = (
 ) => {
   axios
     .patch(
-      `http://127.0.0.1:8000/chats/${chatId}/people/`,
+      `${host}/chats/${chatId}/people/`,
       { last_read: messageId },
       {
         headers: {
