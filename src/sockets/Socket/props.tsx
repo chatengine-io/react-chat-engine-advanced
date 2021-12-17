@@ -1,4 +1,4 @@
-import { ChatProps, MessageProps, PersonProps } from '../interfaces';
+import { ChatProps, MessageProps, PersonProps } from '../../interfaces';
 
 export interface Props {
   projectId?: string;
