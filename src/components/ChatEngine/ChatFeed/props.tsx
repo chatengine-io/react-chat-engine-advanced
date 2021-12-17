@@ -11,7 +11,7 @@ import { Props as MessageFormProps } from './MessageForm/props';
 export interface Props extends ChatFeedStyles {
   // Data
   messages: MessageProps[];
-  myUsername: string;
+  myUsername?: string;
   chat?: ChatProps;
   // State
   isLoading?: boolean;

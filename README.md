@@ -39,11 +39,11 @@ Add serverless chat to your React app in 3 minutes.
 
 1. Register then create a **project** and **user** at [chatengine.io](https://chatengine.io)
 
-2. Collect the **Project ID** / **Username** / **User Secret**
+2. Collect the **Project ID** / **myUsername** / **User Secret**
 
 3. Install `yarn add react-chat-engine`
 
-4. Import the `ChatEngine` component and pass in `projectId`, `userName`, and `userSecret` props
+4. Import the `ChatEngine` component and pass in `projectId`, `myUsername`, and `mySecret` props
 
 5. Voila! You're done
 
@@ -57,9 +57,9 @@ import { ChatEngine } from 'react-chat-engine';
 export function App() {
   return (
     <ChatEngine
-      projectId={'b75e5bd5-cd84-404c-b820-06feff8c98c0'}
-      userName={'john_smith'}
-      userSecret={'secret_1234'}
+      projectId="b75e5bd5-cd84-404c-b820-06feff8c98c0"
+      myUsername="john_smith"
+      mySecret="secret_1234"
     />
   );
 }
@@ -67,9 +67,9 @@ export function App() {
 
 ## Props
 
-- **`projectId`** _(UUID REQUIRED)_ - Public API key for your [chatengine.io](https://chatengine.io) project
-- **`userName`** _(String REQUIRED)_ - Username of a person in this project
-- **`userSecret`** _(String REQUIRED)_ - Set a secret for this person and use it to authenticate.
+- **`projectId`** _(String REQUIRED)_ - Public API key for your [chatengine.io](https://chatengine.io) project
+- **`myUsername`** _(String REQUIRED)_ - myUsername of a person in this project
+- **`mySecret`** _(String REQUIRED)_ - Set a secret for this person and use it to authenticate.
 - **`onConnect`** (Function) - Callback when the connection/authentication is complete
 - **`onFailAuth`** (Function) - Callback when the connection/authentication fails
 - **`onGetChats`** _(Function)_ Callback when the person fetches their chats array
