@@ -9,6 +9,7 @@ const mySecret = 'pass1234';
 const App: React.FC = () => {
   return (
     <ChatEngine
+      isDevelopment
       projectId={projectId}
       myUsername={myUsername}
       mySecret={mySecret}

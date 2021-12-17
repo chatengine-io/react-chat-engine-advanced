@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ChatProps } from '../../interfaces';
 
 type RemovePerson = (
+  host: string,
   projectId: string,
   myUsername: string,
   mySecret: string,
@@ -12,6 +13,7 @@ type RemovePerson = (
 ) => void;
 
 export const removePerson: RemovePerson = (
+  host,
   projectId,
   myUsername,
   mySecret,
@@ -21,7 +23,7 @@ export const removePerson: RemovePerson = (
 ) => {
   axios
     .put(
-      `http://127.0.0.1:8000/chats/${chatId}/people/`,
+      `${host}/chats/${chatId}/people/`,
       { username },
       {
         headers: {

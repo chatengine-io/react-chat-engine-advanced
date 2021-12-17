@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ChatProps } from '../../interfaces';
 
 type NewChat = (
+  host: string,
   projectId: string,
   myUsername: string,
   mySecret: string,
@@ -12,6 +13,7 @@ type NewChat = (
 ) => void;
 
 export const newChat: NewChat = (
+  host,
   projectId,
   myUsername,
   mySecret,
@@ -22,7 +24,7 @@ export const newChat: NewChat = (
 
   axios
     .post(
-      `http://127.0.0.1:8000/chats/`,
+      `${host}/chats/`,
       { title },
       {
         headers: {

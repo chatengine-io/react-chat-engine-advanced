@@ -3,6 +3,7 @@ import { MessageProps } from '../../interfaces';
 import axios from 'axios';
 
 type GetMessages = (
+  host: string,
   projectId: string,
   myUsername: string,
   mySecret: string,
@@ -12,6 +13,7 @@ type GetMessages = (
 ) => void;
 
 export const getMessages: GetMessages = (
+  host,
   projectId,
   myUsername,
   mySecret,
@@ -20,16 +22,13 @@ export const getMessages: GetMessages = (
   callback
 ) => {
   axios
-    .get(
-      `http://127.0.0.1:8000/chats/${chatId}/messages/latest/${messageCount}/`,
-      {
-        headers: {
-          'Public-Key': projectId,
-          'User-Name': myUsername,
-          'User-Secret': mySecret,
-        },
-      }
-    )
+    .get(`${host}/chats/${chatId}/messages/latest/${messageCount}/`, {
+      headers: {
+        'Public-Key': projectId,
+        'User-Name': myUsername,
+        'User-Secret': mySecret,
+      },
+    })
     .then((response) => {
       // props.onGetMessages && props.onGetMessages(chatId, response.data)
       callback(chatId, response.data);

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { MessageProps } from '../../interfaces';
 
 type NewMessage = (
+  host: string,
   projectId: string,
   myUsername: string,
   mySecret: string,
@@ -13,6 +14,7 @@ type NewMessage = (
 ) => void;
 
 export const newMessage: NewMessage = (
+  host,
   projectId,
   myUsername,
   mySecret,
@@ -38,7 +40,7 @@ export const newMessage: NewMessage = (
   formdata.append('custom_json', JSON.stringify({}));
 
   axios
-    .post(`http://127.0.0.1:8000/chats/${chatId}/messages/`, formdata, {
+    .post(`${host}/chats/${chatId}/messages/`, formdata, {
       headers: {
         'Public-Key': projectId,
         'User-Name': myUsername,

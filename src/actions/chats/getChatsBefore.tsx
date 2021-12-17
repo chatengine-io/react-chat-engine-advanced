@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ChatProps } from '../../interfaces';
 
 type GetChatsBefore = (
+  host: string,
   projectId: string,
   myUsername: string,
   mySecret: string,
@@ -13,6 +14,7 @@ type GetChatsBefore = (
 ) => void;
 
 export const getChatsBefore: GetChatsBefore = (
+  host,
   projectId,
   myUsername,
   mySecret,
@@ -22,7 +24,7 @@ export const getChatsBefore: GetChatsBefore = (
 ) => {
   axios
     .put(
-      `http://127.0.0.1:8000/chats/latest/${chatCount}/`,
+      `${host}/chats/latest/${chatCount}/`,
       { before },
       {
         headers: {

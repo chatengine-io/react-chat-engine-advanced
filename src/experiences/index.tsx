@@ -12,8 +12,10 @@ const defaultStyle = {
 export const ChatEngine: React.FC<ChatEngineProps> = (
   props: ChatEngineProps
 ) => {
-  const { projectId, myUsername, mySecret } = sanitizeProps(props);
-  const state = useChatEngine(projectId, myUsername, mySecret);
+  const { projectId, myUsername, mySecret, isDevelopment } = sanitizeProps(
+    props
+  );
+  const state = useChatEngine(projectId, myUsername, mySecret, isDevelopment);
 
   return (
     <div>

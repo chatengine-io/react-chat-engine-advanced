@@ -3,6 +3,7 @@ import axios from 'axios';
 import { PersonProps } from '../../interfaces';
 
 type GetPeopleToInvite = (
+  host: string,
   projectId: string,
   myUsername: string,
   mySecret: string,
@@ -11,6 +12,7 @@ type GetPeopleToInvite = (
 ) => void;
 
 export const getPeopleToInvite: GetPeopleToInvite = (
+  host,
   projectId,
   myUsername,
   mySecret,
@@ -18,7 +20,7 @@ export const getPeopleToInvite: GetPeopleToInvite = (
   callback
 ) => {
   axios
-    .get(`http://127.0.0.1:8000/chats/${chatId}/others/`, {
+    .get(`${host}/chats/${chatId}/others/`, {
       headers: {
         'Public-Key': projectId,
         'User-Name': myUsername,
