@@ -10,12 +10,14 @@ interface NewProps extends ChatEngineWindowProps {
   projectId: string;
   myUsername: string;
   mySecret: string;
+  isDevelopment?: boolean;
 }
 
 interface OldProps extends ChatEngineWindowProps {
   projectID: string;
   userName: string;
   userSecret: string;
+  development?: boolean;
 }
 
 export type ChatEngineProps = NewProps | OldProps;
@@ -34,6 +36,7 @@ export const sanitizeProps = (props: ChatEngineProps): NewProps => {
       projectId: props.projectID,
       myUsername: props.userName,
       mySecret: props.userSecret,
+      isDevelopment: props.development,
     } as NewProps;
   }
 };

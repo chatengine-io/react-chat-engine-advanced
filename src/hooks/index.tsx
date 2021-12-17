@@ -4,6 +4,7 @@ import { ChatProps, MessageProps, PersonProps } from '../interfaces';
 import { getDateTime } from '../components/util/dateTime';
 
 import {
+  getHost,
   getChatsBefore,
   newChat,
   deleteChat,
@@ -43,8 +44,11 @@ export const sortMessages = (messages: MessageProps[]) => {
 export const useChatEngine = (
   projectId: string,
   myUsername: string,
-  mySecret: string
+  mySecret: string,
+  isDevelopment?: boolean
 ) => {
+  const host = getHost(isDevelopment);
+
   // Data
   const [activeChatId, setActiveChatId] = useState<number | undefined>();
   const [chats, setChats] = useState<ChatProps[]>([]);
@@ -67,6 +71,7 @@ export const useChatEngine = (
     const chatPerson = chat?.people.find(
       (chatPerson) => chatPerson.person.username === myUsername
     );
+
     if (
       activeChatId &&
       chat?.last_message.id && // If there is a message
@@ -86,12 +91,15 @@ export const useChatEngine = (
 
   const onGetChats = (chats: ChatProps[] = []) => {
     setHasMoreChats(chats.length >= chatCountRef.current + chatCountIterator);
+
     const sortedChats = sortChats(chats);
+
     setChats(sortedChats);
   };
 
   const onNewChat = (chat: ChatProps) => {
     const newChats = [chat].concat(chats ? chats : []);
+
     setChats(newChats);
   };
 
@@ -101,6 +109,7 @@ export const useChatEngine = (
       : [];
     const newChats = [newChat].concat(otherChats);
     const sortedChats = sortChats(newChats);
+
     setChats(sortedChats);
   };
 
@@ -108,7 +117,9 @@ export const useChatEngine = (
     const newChats = chats
       ? chats.filter((chat) => chat.id !== oldChat.id)
       : [];
+
     setChats(newChats);
+
     if (newChats.length > 0 && activeChatId === oldChat.id)
       onChatCardClick(newChats[0].id);
   };
@@ -117,8 +128,9 @@ export const useChatEngine = (
     setHasMoreMessages(
       messages.length >= messageCountRef.current + messageCountIterator
     );
-    void chatId;
     setMessages(messages);
+
+    void chatId;
   };
 
   const onNewMessage = (chatId: number, newMessage: MessageProps) => {
@@ -128,6 +140,7 @@ export const useChatEngine = (
         : [];
       const newMessages = otherMessages.concat(newMessage);
       const sortedMessages = sortMessages(newMessages);
+
       setMessages(sortedMessages);
       if (isChatFeedAtBottom) {
         animateScroll.scrollToBottom({
@@ -165,6 +178,7 @@ export const useChatEngine = (
       .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
 
     getChatsBefore(
+      host,
       projectId,
       myUsername,
       mySecret,
@@ -191,6 +205,7 @@ export const useChatEngine = (
 
   const onChatCardClick = (activeChatId: number) => {
     setActiveChatId(activeChatId);
+
     getMessages(
       projectId,
       myUsername,
@@ -205,6 +220,7 @@ export const useChatEngine = (
         });
       }
     );
+
     getPeopleToInvite(
       projectId,
       myUsername,
@@ -219,7 +235,9 @@ export const useChatEngine = (
       .toISOString()
       .replace('T', ' ')
       .replace('Z', `0000+00:00`);
+
     getChatsBefore(
+      host,
       projectId,
       myUsername,
       mySecret,
