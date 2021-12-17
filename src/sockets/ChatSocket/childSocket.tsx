@@ -15,6 +15,8 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
   const [now, setNow] = useState(Date.now());
   const [shouldPongBy, setShouldPongBy] = useState(Date.now() + minLag);
 
+  const { projectId, chatId, chatAccessKey } = props;
+
   useEffect(() => {
     if (now > shouldPongBy) {
       props.onRefresh && props.onRefresh();
@@ -47,6 +49,16 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
 
     if (eventJSON.action === 'pong') {
       setShouldPongBy(Date.now() + minLag);
+    } else if (eventJSON.action === 'login_error') {
+      console.log(
+        `Your chat auth credentials were not correct: \n
+                Project ID: ${projectId} \n
+                Chat ID: ${chatId} \n
+                Chat Access Key: ${chatAccessKey}\n
+                Double check these credentials to make sure they're correct.\n
+                If all three are correct, try resetting the username and secret in the Online Dashboard or Private API.`
+      );
+      props.onAuthFail && props.onAuthFail();
     } else if (
       eventJSON.action === 'edit_chat' ||
       eventJSON.action === 'add_person' ||
@@ -69,8 +81,6 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
       props.onIsTyping && props.onIsTyping(id, person);
     }
   };
-
-  const { projectId, chatId, chatAccessKey } = props;
 
   return (
     <WebSocket

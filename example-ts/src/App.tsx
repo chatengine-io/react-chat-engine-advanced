@@ -13,6 +13,7 @@ const App: React.FC = () => {
       projectId={projectId}
       myUsername={myUsername}
       mySecret={mySecret}
+      onAuthFail={() => console.log('urggg')}
     />
   );
 };

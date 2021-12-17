@@ -4,16 +4,20 @@ export * from './chatPerson';
 export * from './message';
 export * from './person';
 
-import { Props as ChatEngineWindowProps } from '../components/ChatEngine/props';
+import { Props as ComponentProps } from '../components/ChatEngine/props';
 
-interface NewProps extends ChatEngineWindowProps {
+interface ExperienceProps {
+  onAuthFail?: () => void;
+}
+
+interface NewProps extends ComponentProps, ExperienceProps {
   projectId: string;
   myUsername: string;
   mySecret: string;
   isDevelopment?: boolean;
 }
 
-interface OldProps extends ChatEngineWindowProps {
+interface OldProps extends ComponentProps, ExperienceProps {
   projectID: string;
   userName: string;
   userSecret: string;

@@ -197,6 +197,8 @@ export const useChatEngine = (
     );
   };
 
+  const onAuthFail = () => {};
+
   const onChatFormSubmit = (title: string) => {
     newChat(host, projectId, myUsername, mySecret, title, (chat) => {
       onNewChat(chat);
@@ -366,6 +368,7 @@ export const useChatEngine = (
     onDeleteMessage,
     // Larger Data Events
     onConnect,
+    onAuthFail,
     onChatFormSubmit,
     onChatCardClick,
     onChatLoaderShow,

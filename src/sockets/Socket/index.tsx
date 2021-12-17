@@ -10,7 +10,8 @@ const getSessionToken = (
   projectId = '',
   myUsername = '',
   mySecret = '',
-  callback: (token: string) => void
+  callback: (token: string) => void,
+  error: () => void
 ) => {
   axios
     .get(`http://127.0.0.1:8000/users/me/session/`, {
@@ -23,9 +24,7 @@ const getSessionToken = (
     .then((response) => {
       callback(response.data.token);
     })
-    .catch((error) => {
-      console.log('Get Session Error', error);
-    });
+    .catch(() => error());
 };
 
 export const Socket: React.FC<Props> = (props: Props) => {
@@ -40,7 +39,18 @@ export const Socket: React.FC<Props> = (props: Props) => {
         props.projectId,
         props.myUsername,
         props.mySecret,
-        (token) => setToken(token)
+        (token) => setToken(token),
+        () => {
+          console.log(
+            `Your login credentials were not correct: \n
+              Project ID: ${props.projectId} \n
+              Username: ${props.myUsername} \n
+              Secret: ${props.mySecret}\n
+              Double check these credentials to make sure they're correct.\n
+              If all three are correct, try resetting the username and secret in the Online Dashboard or Private API.`
+          );
+          props.onAuthFail && props.onAuthFail();
+        }
       );
     }
   }, []);
