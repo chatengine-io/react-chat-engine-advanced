@@ -6,6 +6,7 @@ export interface Props {
   mySecret?: string;
   sessionToken?: string;
   onConnect?: () => void;
+  onAuthFail?: () => void;
   onError?: () => void;
   onClose?: () => void;
   onRefresh?: () => void;

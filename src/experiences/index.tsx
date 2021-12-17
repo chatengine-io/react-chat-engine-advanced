@@ -19,7 +19,7 @@ export const ChatEngine: React.FC<ChatEngineProps> = (
 
   return (
     <div>
-      <Socket {...state} />
+      <Socket {...state} {...props} />
       <ChatEngineWindow
         {...state}
         {...props}

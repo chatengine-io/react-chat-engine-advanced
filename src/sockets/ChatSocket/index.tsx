@@ -21,6 +21,7 @@ export const Socket: React.FC<Props> = (props: Props) => {
       chatAccessKey={props.chatAccessKey}
       onRefresh={reRender}
       onConnect={props.onConnect}
+      onAuthFail={props.onAuthFail}
       onError={props.onError}
       onClose={props.onClose}
       onEditChat={props.onEditChat}
