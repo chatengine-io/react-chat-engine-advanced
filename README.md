@@ -1,181 +1,85 @@
-# TSDX React w/ Storybook User Guide
+<p align="center" >
+    <p align="center" >
+        <a href="https://chatengine.io/">
+            <img    
+                alt="react-chat-engine" 
+                style='max-height: 333px; max-width: 100%;'
+                src="https://chat-engine-assets.s3.amazonaws.com/react-chat-engine.gif" 
+            />
+        </a>
+    </p>
+</p>
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+## Chat Engine
 
-> This TSDX setup is meant for developing React component libraries (not apps!) that can be published to NPM. If you’re looking to build a React-based app, you should use `create-react-app`, `razzle`, `nextjs`, `gatsby`, or `react-static`.
+Chat Engine is a devevloper friendly Chat UI Kit.
 
-> If you’re new to TypeScript and React, checkout [this handy cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet/)
+Setup a free plan at [chatengine.io](https://chatengine.io)
 
-## Commands
+## Features
 
-TSDX scaffolds your new library inside `/src`, and also sets up a [Parcel-based](https://parceljs.org) playground for it inside `/example`.
+- Typescript (since 2.0.0)
+- Sign Up / Authentication
+- Setup chats
+- Send messages
+- Send files and photos
+- Subscribe to Chats via Sockets
+- Invite / Remove chat members
+- Endless Chat scrolling
+- Endless Message scrolling
 
-The recommended workflow is to run TSDX in one terminal:
+## Installation
 
-```bash
-npm start # or yarn start
-```
+- Using [npm](https://www.npmjs.com/#getting-started): `npm install react-chat-engine --save`
+- Using [Yarn](https://yarnpkg.com/): `yarn add react-chat-engine`
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+## Quick Start
 
-Then run either Storybook or the example playground:
+Add serverless chat to your React app in 3 minutes.
 
-### Storybook
+1. Register then create a **project** and **user** at [chatengine.io](https://chatengine.io)
 
-Run inside another terminal:
+2. Collect the **Project ID** / **Username** / **User Secret**
 
-```bash
-yarn storybook
-```
+3. Install `yarn add react-chat-engine`
 
-This loads the stories from `./stories`.
+4. Import the `ChatEngine` component and pass in `projectId`, `userName`, and `userSecret` props
 
-> NOTE: Stories should reference the components as if using the library, similar to the example playground. This means importing from the root project directory. This has been aliased in the tsconfig and the storybook webpack config as a helper.
+5. Voila! You're done
 
-### Example
+Example implementation ⬇️
 
-Then run the example inside another:
+```jsx
+import React from 'react';
 
-```bash
-cd example
-npm i # or yarn to install dependencies
-npm start # or yarn start
-```
+import { ChatEngine } from 'react-chat-engine';
 
-The default example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure TSDX is running in watch mode like we recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
-
-To do a one-off build, use `npm run build` or `yarn build`.
-
-To run tests, use `npm test` or `yarn test`.
-
-## Configuration
-
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
-
-### Jest
-
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-### Bundle analysis
-
-Calculates the real cost of your library using [size-limit](https://github.com/ai/size-limit) with `npm run size` and visulize it with `npm run analyze`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/example
-  index.html
-  index.tsx       # test your component here in a demo app
-  package.json
-  tsconfig.json
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-/stories
-  Thing.stories.tsx # EDIT THIS
-/.storybook
-  main.js
-  preview.js
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
-```
-
-#### React Testing Library
-
-We do not set up `react-testing-library` for you yet, we welcome contributions and documentation on this.
-
-### Rollup
-
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
-
-### TypeScript
-
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
-
-## Continuous Integration
-
-### GitHub Actions
-
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [size-limit](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
+export function App() {
+  return (
+    <ChatEngine
+      projectId={'b75e5bd5-cd84-404c-b820-06feff8c98c0'}
+      userName={'john_smith'}
+      userSecret={'secret_1234'}
+    />
+  );
 }
 ```
 
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
+## Props
 
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Deploying the Example Playground
-
-The Playground is just a simple [Parcel](https://parceljs.org) app, you can deploy it anywhere you would normally deploy that. Here are some guidelines for **manually** deploying with the Netlify CLI (`npm i -g netlify-cli`):
-
-```bash
-cd example # if not already in the example folder
-npm run build # builds to dist
-netlify deploy # deploy the dist folder
-```
-
-Alternatively, if you already have a git repo connected, you can set up continuous deployment with Netlify:
-
-```bash
-netlify init
-# build command: yarn build && cd example && yarn && yarn build
-# directory to deploy: example/dist
-# pick yes for netlify.toml
-```
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
-
-## Usage with Lerna
-
-When creating a new package with TSDX within a project set up with Lerna, you might encounter a `Cannot resolve dependency` error when trying to run the `example` project. To fix that you will need to make changes to the `package.json` file _inside the `example` directory_.
-
-The problem is that due to the nature of how dependencies are installed in Lerna projects, the aliases in the example project's `package.json` might not point to the right place, as those dependencies might have been installed in the root of your Lerna project.
-
-Change the `alias` to point to where those packages are actually installed. This depends on the directory structure of your Lerna project, so the actual path might be different from the diff below.
-
-```diff
-   "alias": {
--    "react": "../node_modules/react",
--    "react-dom": "../node_modules/react-dom"
-+    "react": "../../../node_modules/react",
-+    "react-dom": "../../../node_modules/react-dom"
-   },
-```
-
-An alternative to fixing this problem would be to remove aliases altogether and define the dependencies referenced as aliases as dev dependencies instead. [However, that might cause other problems.](https://github.com/palmerhq/tsdx/issues/64)
+- **`projectId`** _(UUID REQUIRED)_ - Public API key for your [chatengine.io](https://chatengine.io) project
+- **`userName`** _(String REQUIRED)_ - Username of a person in this project
+- **`userSecret`** _(String REQUIRED)_ - Set a secret for this person and use it to authenticate.
+- **`onConnect`** (Function) - Callback when the connection/authentication is complete
+- **`onFailAuth`** (Function) - Callback when the connection/authentication fails
+- **`onGetChats`** _(Function)_ Callback when the person fetches their chats array
+- **`onNewChat`** _(Function)_ - Callback when the person creates a new chat
+- **`onEditChat`** _(Function)_ - Callback when the person edits a chat title
+- **`onDeleteChat`** _(Function)_ - Callback when the person deletes one of their chats (must the chat's admin)
+- **`onAddPerson`** _(Function)_ - Callback when a person is added to a chat
+- **`onRemovePerson`** _(Function)_ - Callback when a person is removed/deleted from a chat
+- **`onGetMessages`** _(Function)_ - Callback when the person gets a chat's messages
+- **`onNewMessage`** _(Function)_ - Callback when a person posts a new message in one of the chats
+- **`onEditMessage`** _(Function)_ - Callback when a person edits a new message in one of the chats
+- **`onDeleteMessage`** _(Function)_ - Callback when a person deletes a new message in one of the chats
+- **`hideUI`** _(Boolean)_ - Hides all UI components for a custom implementation (Warning: Advanced)
