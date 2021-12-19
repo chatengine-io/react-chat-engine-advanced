@@ -28,6 +28,7 @@ export const ChatEngineWindow: React.FC<Props> = (props: Props) => {
           chats={chats}
           activeChatId={activeChatId}
           myUsername={props.myUsername}
+          timezoneOffset={props.timezoneOffset}
           isLoading={props.isChatListLoading}
           hasMoreChats={props.hasMoreChats}
           onChatFormSubmit={props.onChatFormSubmit}
