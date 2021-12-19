@@ -5,19 +5,20 @@ export * from './message';
 export * from './person';
 
 import { Props as ComponentProps } from '../components/ChatEngine/props';
+import { Props as SocketProps } from '../sockets/Socket/props';
 
 interface ExperienceProps {
   onAuthFail?: () => void;
 }
 
-interface NewProps extends ComponentProps, ExperienceProps {
+interface NewProps extends ComponentProps, ExperienceProps, SocketProps {
   projectId: string;
   myUsername: string;
   mySecret: string;
   isDevelopment?: boolean;
 }
 
-interface OldProps extends ComponentProps, ExperienceProps {
+interface OldProps extends ComponentProps, ExperienceProps, SocketProps {
   projectID: string;
   userName: string;
   userSecret: string;

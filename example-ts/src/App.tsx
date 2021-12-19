@@ -13,7 +13,25 @@ const App: React.FC = () => {
       projectId={projectId}
       myUsername={myUsername}
       mySecret={mySecret}
-      onAuthFail={() => console.log('urggg')}
+      onConnect={() => console.log('onConnect')}
+      onAuthFail={() => console.log('onAuthFail')}
+      onNewChat={() => console.log('onNewChat')}
+      onEditChat={() => console.log('onEditChat')}
+      onDeleteChat={() => console.log('onDeleteChat')}
+      onNewMessage={() => console.log('onNewMessage')}
+      onEditMessage={() => console.log('onEditMessage')}
+      onDeleteMessage={() => console.log('onDeleteMessage')}
+      onChatCardClick={() => console.log('onChatCardClick')}
+      onChatFormSubmit={() => console.log('onChatFormSubmit')}
+      onChatLoaderShow={() => console.log('onChatLoaderShow')}
+      onMessageLoaderShow={() => console.log('onMessageLoaderShow')}
+      onMessageLoaderHide={() => console.log('onMessageLoaderHide')}
+      onBottomMessageShow={() => console.log('onBottomMessageShow')}
+      onBottomMessageHide={() => console.log('onBottomMessageHide')}
+      onMessageFormSubmit={() => console.log('onMessageFormSubmit')}
+      onInvitePersonClick={() => console.log('onInvitePersonClick')}
+      onRemovePersonClick={() => console.log('onRemovePersonClick')}
+      onDeleteChatClick={() => console.log('onDeleteChatClick')}
     />
   );
 };

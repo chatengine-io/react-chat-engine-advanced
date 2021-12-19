@@ -336,6 +336,8 @@ export const useChatEngine = (
       );
   };
 
+  const onMessageLoaderHide = () => {};
+
   return {
     // Auth
     projectId,
@@ -378,6 +380,7 @@ export const useChatEngine = (
     onDeleteChatClick,
     // State Events
     onMessageLoaderShow,
+    onMessageLoaderHide,
     onBottomMessageShow,
     onBottomMessageHide,
   };
