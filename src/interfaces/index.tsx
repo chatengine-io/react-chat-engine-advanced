@@ -15,6 +15,7 @@ interface NewProps extends ComponentProps, ExperienceProps {
   myUsername: string;
   mySecret: string;
   isDevelopment?: boolean;
+  timezoneOffset?: number;
 }
 
 interface OldProps extends ComponentProps, ExperienceProps {
@@ -22,6 +23,7 @@ interface OldProps extends ComponentProps, ExperienceProps {
   userName: string;
   userSecret: string;
   development?: boolean;
+  offset?: number;
 }
 
 export type ChatEngineProps = NewProps | OldProps;
@@ -41,6 +43,7 @@ export const sanitizeProps = (props: ChatEngineProps): NewProps => {
       myUsername: props.userName,
       mySecret: props.userSecret,
       isDevelopment: props.development,
+      timezoneOffset: props.offset,
     } as NewProps;
   }
 };

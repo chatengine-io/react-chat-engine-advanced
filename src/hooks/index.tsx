@@ -26,7 +26,7 @@ export const sortChats = (chats: ChatProps[]) => {
     const aDate =
       a.last_message && a.last_message.created
         ? getDateTime(a.last_message.created, 0)
-        : getDateTime(a.created, 0);
+        : getDateTime(a.created, 0); // No offset needed, times are relative
     const bDate =
       b.last_message && b.last_message.created
         ? getDateTime(b.last_message.created, 0)

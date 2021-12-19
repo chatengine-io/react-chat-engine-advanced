@@ -13,6 +13,7 @@ export interface Props extends ChatFeedStyles {
   messages: MessageProps[];
   myUsername?: string;
   chat?: ChatProps;
+  timezoneOffset?: number;
   // State
   isLoading?: boolean;
   hasMoreMessages?: boolean;

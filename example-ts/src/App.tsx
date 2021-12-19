@@ -10,6 +10,7 @@ const App: React.FC = () => {
   return (
     <ChatEngine
       isDevelopment
+      timezoneOffset={-8}
       projectId={projectId}
       myUsername={myUsername}
       mySecret={mySecret}
