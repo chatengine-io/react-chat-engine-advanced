@@ -28,6 +28,7 @@ export const ChatEngineWindow: React.FC<Props> = (props: Props) => {
           chats={chats}
           activeChatId={activeChatId}
           myUsername={props.myUsername}
+          timezoneOffset={props.timezoneOffset}
           isLoading={props.isChatListLoading}
           hasMoreChats={props.hasMoreChats}
           onChatFormSubmit={props.onChatFormSubmit}
@@ -49,6 +50,7 @@ export const ChatEngineWindow: React.FC<Props> = (props: Props) => {
           chat={chat}
           messages={messages}
           myUsername={props.myUsername}
+          timezoneOffset={props.timezoneOffset}
           isLoading={props.isChatFeedLoading}
           hasMoreMessages={props.hasMoreMessages}
           onMessageLoaderShow={props.onMessageLoaderShow}

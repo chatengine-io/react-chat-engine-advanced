@@ -199,7 +199,9 @@ export const Message: React.FC<Props> = (props: Props) => {
                 ...props.timeTagStyle,
               }}
             >
-              {formatTime(getDateTime(message.created, 0) as Date)}
+              {formatTime(
+                getDateTime(message.created, props.timezoneOffset) as Date
+              )}
             </span>
           )}
 
@@ -227,7 +229,9 @@ export const Message: React.FC<Props> = (props: Props) => {
                 ...props.timeTagStyle,
               }}
             >
-              {formatTime(getDateTime(message.created, 0) as Date)}
+              {formatTime(
+                getDateTime(message.created, props.timezoneOffset) as Date
+              )}
             </span>
           )}
 

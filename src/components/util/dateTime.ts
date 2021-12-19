@@ -1,6 +1,5 @@
-export const getDateTime = (date: string, offset = 0) => {
+export const getDateTime = (date: string, timezoneOffset: number = 0) => {
   date = date.replace(/ /g, 'T');
-  offset = offset ? offset : 0;
 
   const year = date.substr(0, 4);
   const month = date.substr(5, 2);
@@ -10,7 +9,7 @@ export const getDateTime = (date: string, offset = 0) => {
   const second = date.substr(17, 2);
 
   var d = new Date(`${year}-${month}-${day}T${hour}:${minute}:${second}`);
-  d.setHours(d.getHours() + offset);
+  d.setHours(d.getHours() + timezoneOffset);
   return d;
 };
 

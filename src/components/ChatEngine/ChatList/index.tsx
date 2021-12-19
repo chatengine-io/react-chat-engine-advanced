@@ -52,11 +52,12 @@ export const ChatList: React.FC<Props> = (props: Props) => {
         : chat.is_direct_chat && otherPerson
         ? otherPerson.person.username
         : chat.title;
-      const timeStamp = getDateTime(chat.created).toString().substr(4, 6);
+      const timeStamp = getDateTime(chat.created, props.timezoneOffset)
+        .toString()
+        .substr(4, 6);
       const hasNotification = props.myUsername
         ? !readLastMessage(props.myUsername, chat)
         : false;
-
       return (
         <ChatCard
           key={`chat_${index}`}
