@@ -47,6 +47,7 @@ export const MessageList: React.FC<Props> = (props: Props) => {
             message={message}
             lastMessage={messagesObject[lastKey]}
             nextMessage={messagesObject[nextKey]}
+            timezoneOffset={props.timezoneOffset}
             isMyMessage={isMyMessage}
             isSending={!message.id}
             showDateTime={showDateTime}

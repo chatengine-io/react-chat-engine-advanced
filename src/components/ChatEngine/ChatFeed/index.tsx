@@ -70,6 +70,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
         chat={chat}
         messages={props.messages}
         myUsername={props.myUsername}
+        timezoneOffset={props.timezoneOffset}
         hasMoreMessages={props.hasMoreMessages}
         onMessageLoaderShow={props.onMessageLoaderShow}
         onMessageLoaderHide={props.onMessageLoaderHide}

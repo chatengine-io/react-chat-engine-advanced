@@ -8,6 +8,7 @@ export interface Props extends MessageStyle {
   message: MessageProps;
   nextMessage?: MessageProps | null;
   chat?: ChatProps | null;
+  timezoneOffset?: number;
   // State
   isSending?: boolean;
   isMyMessage?: boolean;
