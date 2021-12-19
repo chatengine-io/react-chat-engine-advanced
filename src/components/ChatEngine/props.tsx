@@ -23,6 +23,7 @@ export interface Props extends ChatEngineStyles {
   activeChatId?: number;
   messages?: MessageProps[];
   peopleToInvite?: PersonProps[];
+  timezoneOffset?: number;
   // State
   isChatListLoading?: boolean;
   isChatFeedLoading?: boolean;

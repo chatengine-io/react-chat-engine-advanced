@@ -13,13 +13,16 @@ import { getDateTime, formatDateTime } from '../../util/dateTime';
 import { Spinner } from '../../Components/Spinner';
 import { ChatProps } from '../../../interfaces';
 
-const getDescription = (chat: ChatProps | undefined) => {
+const getDescription = (
+  chat: ChatProps | undefined,
+  timezoneOffset: number = 0
+) => {
   if (
     chat &&
     chat.last_message.created &&
     chat.last_message.created.length > 0
   ) {
-    const dateTime = getDateTime(chat.last_message.created, 0);
+    const dateTime = getDateTime(chat.last_message.created, timezoneOffset);
     const formattedDateTime = formatDateTime(dateTime);
     return `Active ${formattedDateTime}`;
   } else {
@@ -51,7 +54,11 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
     <div className="ch-chat-feed" style={{ ...styles.style, ...props.style }}>
       <ChatHeader
         title={title}
-        description={props.isLoading ? 'Loading...' : getDescription(chat)}
+        description={
+          props.isLoading
+            ? 'Loading...'
+            : getDescription(chat, props.timezoneOffset)
+        }
         renderChatHeader={props.renderChatHeader}
         style={{
           ...styles.chatHeaderStyle,
@@ -63,6 +70,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
         chat={chat}
         messages={props.messages}
         myUsername={props.myUsername}
+        timezoneOffset={props.timezoneOffset}
         hasMoreMessages={props.hasMoreMessages}
         onMessageLoaderShow={props.onMessageLoaderShow}
         onMessageLoaderHide={props.onMessageLoaderHide}

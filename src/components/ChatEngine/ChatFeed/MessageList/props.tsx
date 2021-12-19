@@ -8,6 +8,7 @@ export interface Props extends MessageListStyles {
   messages: MessageProps[];
   chat?: ChatProps;
   myUsername?: string;
+  timezoneOffset?: number;
   // State
   hasMoreMessages?: boolean;
   // Hooks
