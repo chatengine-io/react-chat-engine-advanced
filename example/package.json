@@ -1,0 +1,42 @@
+{
+  "name": "react-chat-engine-example",
+  "homepage": ".",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
+    "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
+    "test": "nightwatch -c tests/tests_conf/nightwatch.conf.js",
+    "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject",
+    "deploy": "node ../node_modules/react-scripts/bin/react-scripts.js build && aws s3 cp --recursive ./build s3://support.chatengine.io"
+  },
+  "dependencies": {
+    "history": "^5.0.0",
+    "react": "link:../node_modules/react",
+    "react-chat-engine-components": "link:..",
+    "react-dom": "link:../node_modules/react-dom",
+    "react-grid-system": "^7.1.2",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "link:../node_modules/react-scripts",
+    "redux": "^4.0.5",
+    "redux-form": "^8.3.7",
+    "redux-persist": "^6.0.0",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "chromedriver": "95.0.0",
+    "nightwatch": "^1.6.3"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

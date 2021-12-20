@@ -10,6 +10,10 @@ export * from './people/getPeopleToInvite';
 export * from './people/invitePerson';
 export * from './people/removePerson';
 
+export { getOrCreateChat } from './deprecated/getOrCreateChat';
+export { sendMessage } from './deprecated/sendMessage';
+export { isTyping } from './deprecated/isTyping';
+
 export const getHost = (isDevelopment?: boolean): string => {
   if (isDevelopment) {
     return 'http://127.0.0.1:8000';
