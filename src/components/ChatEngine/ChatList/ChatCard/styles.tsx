@@ -12,9 +12,8 @@ export interface ChatCardStyle {
 export const styles: ChatCardStyle = {
   style: {
     position: 'relative',
-    height: '64px',
+    height: '76px',
     borderRadius: '12px',
-    paddingBottom: '12px',
     cursor: 'pointer',
     transition: 'all .44s ease',
     WebkitTransition: 'all .44s ease',

@@ -60,12 +60,14 @@ const HomePage = (props) => {
   }
 
   return (
-    <div style={{ position: 'absolute', top: '0px', width: '100%' }}>
-      <div style={{ height: '20px' }}>
-        <button id="home-page-logout-button" onClick={() => props.logout()}>
-          Logout!
-        </button>
-      </div>
+    <div>
+      <button
+        style={{ position: 'absolute', right: '4px', top: '4px' }}
+        id="home-page-logout-button"
+        onClick={() => props.logout()}
+      >
+        Logout!
+      </button>
 
       <ChatEngineWrapper>
         <ChatEngine

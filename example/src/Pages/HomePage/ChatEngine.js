@@ -37,10 +37,11 @@ const ChatEngineApp = (props) => {
 
   return (
     <ChatEngine
-      {...props.accounts}
       height={props.height}
       offset={-7}
       projectID={props.projectID}
+      userName={props.accounts.userName}
+      userSecret={props.accounts.userSecret}
       development={props.development}
       // You want the extra args for outside components
       // renderChatList={(chatAppState) => <ChatList {...chatAppState} />}
