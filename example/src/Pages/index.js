@@ -9,7 +9,6 @@ import UserSocketFeedPage from './UserSocketFeedPage';
 import ChatSocketPage from './ChatSocketPage';
 import DirectChatsPage from './DirectChatsPage';
 import ChatTutorial from './ChatTutorial';
-import SupportEngine from './SupportEngine';
 import HomePage from './HomePage';
 
 class RootPage extends Component {
@@ -21,7 +20,6 @@ class RootPage extends Component {
           <Route path="/chat_socket" component={ChatSocketPage} />
           <Route path="/direct" component={DirectChatsPage} />
           <Route path="/tutorial" component={ChatTutorial} />
-          <Route path="/se" component={SupportEngine} />
           <Route path="/:id" component={HomePage} />
           <Route path="/" component={HomePage} />
         </Switch>

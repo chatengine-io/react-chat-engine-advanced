@@ -6,24 +6,16 @@ import { login, logout } from '../../Actions/Accounts';
 
 import { ROOT_URL, DEVELOPMENT, PROJECT_ID } from '../../consts';
 
-import { ChatEngineWrapper } from 'react-chat-engine';
-
 import ChatEngine from './ChatEngine';
 
 const HomePage = (props) => {
   const [loading, setLoading] = useState(false);
   const [userName, setUserName] = useState('');
   const [userSecret, setUserSecret] = useState('');
-  const { id } = props.match.params;
 
   function submit() {
     setLoading(true);
-    console.log({
-      rootUrl: ROOT_URL,
-      projectID: PROJECT_ID,
-      userName,
-      userSecret,
-    });
+
     props.login(
       { rootUrl: ROOT_URL, projectID: PROJECT_ID, userName, userSecret },
       () => setLoading(false),
@@ -69,14 +61,11 @@ const HomePage = (props) => {
         Logout
       </button>
 
-      <ChatEngineWrapper>
-        <ChatEngine
-          height={'calc(100vh - 20px)'}
-          development={DEVELOPMENT}
-          id={parseInt(id)}
-          projectID={PROJECT_ID}
-        />
-      </ChatEngineWrapper>
+      <ChatEngine
+        height={'calc(100vh - 20px)'}
+        development={DEVELOPMENT}
+        projectID={PROJECT_ID}
+      />
     </div>
   );
 };

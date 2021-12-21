@@ -1,31 +1,33 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-import _ from 'lodash';
-
-import { ChatEngine, ChatEngineContext } from 'react-chat-engine';
+import { ChatEngineWindow, Socket, useChatEngine } from 'react-chat-engine';
 
 const ChatEngineApp = (props) => {
-  const { chats, messages, setActiveChat } = useContext(ChatEngineContext);
-  const [hasSetLink, setLink] = useState(false);
-
-  useEffect(() => {
-    const { id } = props;
-    if (id && chats && chats[id] && !_.isEmpty(messages) && !hasSetLink) {
-      setActiveChat(id);
-      setLink(true);
-    }
-  }, [chats, messages, props, setActiveChat, hasSetLink, setLink]);
+  const state = useChatEngine(
+    props.projectID,
+    props.accounts.userName,
+    props.accounts.userSecret,
+    props.development
+  );
 
   return (
-    <ChatEngine
-      height={props.height}
-      offset={-7}
-      projectID={props.projectID}
-      userName={props.accounts.userName}
-      userSecret={props.accounts.userSecret}
-      development={props.development}
-    />
+    <div>
+      <Socket
+        projectId={props.projectID}
+        myUsername={props.userName}
+        mySecret={props.userSecret}
+        isDevelopment={props.development}
+        {...state}
+      />
+
+      <ChatEngineWindow
+        myUsername={props.userName}
+        timezoneOffset={-7}
+        {...state}
+        style={{ height: props.height }}
+      />
+    </div>
   );
 };
 

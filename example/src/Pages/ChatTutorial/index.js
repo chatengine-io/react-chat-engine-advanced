@@ -1,29 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import { ChatEngine } from 'react-chat-engine';
-
-import ChatFeed from './ChatFeed';
+import { Socket, ChatEngineWindow, useChatEngine } from 'react-chat-engine';
 
 // import './App.css';
 
 const userNames = ['Alice', 'Bob', 'Wendy', 'Zack'];
 const userName = userNames[Math.floor(Math.random() * userNames.length)];
+const projectId = '52147d0e-0f43-4ea7-916f-1820a16bf1d7';
+const userSecret = 'pass1234';
 
-export default class App extends Component {
-  render() {
-    return (
-      <ChatEngine
-        height="100vh"
-        projectID="52147d0e-0f43-4ea7-916f-1820a16bf1d7"
-        userName={userName}
-        userSecret="pass1234"
-        renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
-        onNewMessage={() =>
-          new Audio(
-            'https://chat-engine-assets.s3.amazonaws.com/click.mp3'
-          ).play()
-        }
+const App = () => {
+  const state = useChatEngine(projectId, userName, userSecret);
+
+  return (
+    <div>
+      <Socket
+        projectId={projectId}
+        myUsername={userName}
+        mySecret={userSecret}
+        {...state}
       />
-    );
-  }
-}
+
+      <ChatEngineWindow
+        style={{ height: '100vh' }}
+        myUsername={userName}
+        {...state}
+        renderChatFeed={() => <div>yo</div>}
+      />
+    </div>
+  );
+};
+
+export default App;
