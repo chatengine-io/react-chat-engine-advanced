@@ -1,21 +1,37 @@
 import React, { useState } from 'react';
 
-import { ChatEngine, getOrCreateChat } from 'react-chat-engine';
+import {
+  Socket,
+  ChatEngineWindow,
+  getOrCreateChat,
+  useChatEngine,
+} from 'react-chat-engine';
 
 import { DEVELOPMENT, PROJECT_ID, USER_NAME, USER_SECRET } from '../../consts';
 
 const DirectChatPage = () => {
   const [username, setUsername] = useState('');
+  const state = useChatEngine(PROJECT_ID, USER_NAME, USER_SECRET, DEVELOPMENT);
 
   function createDirectChat(creds) {
+    const headers = {
+      'Public-Key': PROJECT_ID,
+      'User-Name': USER_NAME,
+      'User-Secret': USER_SECRET,
+    };
+
     getOrCreateChat(
-      creds,
+      'http://127.0.0.1:8000',
+      headers,
       { is_direct_chat: true, usernames: [username] },
-      () => setUsername('')
+      (chat) => {
+        setUsername('');
+        state.onChatCardClick(chat.id);
+      }
     );
   }
 
-  function renderChatForm(creds) {
+  function renderChatForm() {
     return (
       <div>
         <input
@@ -24,7 +40,7 @@ const DirectChatPage = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <button id="new-dc-user-btn" onClick={() => createDirectChat(creds)}>
+        <button id="new-dc-user-btn" onClick={() => createDirectChat({})}>
           Create
         </button>
       </div>
@@ -32,14 +48,22 @@ const DirectChatPage = () => {
   }
 
   return (
-    <ChatEngine
-      height="100vh"
-      development={DEVELOPMENT}
-      userName={USER_NAME}
-      userSecret={USER_SECRET}
-      projectID={PROJECT_ID}
-      renderNewChatForm={(creds) => renderChatForm(creds)}
-    />
+    <div>
+      <Socket
+        projectId={PROJECT_ID}
+        myUsername={USER_NAME}
+        mySecret={USER_SECRET}
+        isDevelopment={DEVELOPMENT}
+        {...state}
+      />
+
+      <ChatEngineWindow
+        style={{ height: '100vh' }}
+        myUsername={USER_NAME}
+        renderChatForm={() => renderChatForm()}
+        {...state}
+      />
+    </div>
   );
 };
 

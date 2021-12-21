@@ -66,7 +66,7 @@ const HomePage = (props) => {
         id="home-page-logout-button"
         onClick={() => props.logout()}
       >
-        Logout!
+        Logout
       </button>
 
       <ChatEngineWrapper>

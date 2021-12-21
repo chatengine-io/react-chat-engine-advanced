@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios, { AxiosRequestHeaders } from 'axios';
 import { ChatProps } from '../../interfaces';
-import { Auth, getApiUrl, getHeaders } from './interfaces';
+import { Auth } from './interfaces';
 
 interface NewChat {
   is_direct_chat?: boolean;
@@ -8,13 +8,14 @@ interface NewChat {
 }
 
 export const getOrCreateChat = (
-  props: Auth,
+  host: string = 'https://api.chatengine.io',
+  headers: Auth,
   data: NewChat,
   callback: (chat: ChatProps) => void
 ) => {
   axios
-    .put(`${getApiUrl(props)}/chats/`, data, {
-      headers: getHeaders(props),
+    .put(`${host}/chats/`, data, {
+      headers: (headers as Object) as AxiosRequestHeaders,
     })
 
     .then((response) => {

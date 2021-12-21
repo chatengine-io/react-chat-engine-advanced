@@ -3,25 +3,7 @@ import { connect } from 'react-redux';
 
 import _ from 'lodash';
 
-import {
-  ChatEngine,
-  ChatEngineContext,
-  // ChatList,
-  // ChatCard,
-  // NewChatForm,
-  // ChatFeed,
-  // ChatHeader,
-  // IceBreaker,
-  // MessageBubble,
-  // IsTyping,
-  // NewMessageForm,
-  // ConnectionBar,
-  // ScrollDownBar,
-  // ChatSettings,
-  // PeopleSettings,
-  // PhotosSettings,
-  // OptionsSettings,
-} from 'react-chat-engine';
+import { ChatEngine, ChatEngineContext } from 'react-chat-engine';
 
 const ChatEngineApp = (props) => {
   const { chats, messages, setActiveChat } = useContext(ChatEngineContext);
@@ -43,33 +25,6 @@ const ChatEngineApp = (props) => {
       userName={props.accounts.userName}
       userSecret={props.accounts.userSecret}
       development={props.development}
-      // You want the extra args for outside components
-      // renderChatList={(chatAppState) => <ChatList {...chatAppState} />}
-      // renderChatCard={(chat, index) => (
-      //   <ChatCard key={`card_${index}`} chat={chat} />
-      // )}
-      // renderNewChatForm={(creds) => <NewChatForm creds={creds} />}
-      // renderChatFeed={(chatAppState) => <ChatFeed {...chatAppState} />}
-      // renderChatHeader={(chat) => <ChatHeader />}
-      // renderIceBreaker={(chat) => <IceBreaker />}
-      // renderMessageBubble={(creds, chat, lastMessage, message, nextMessage) => (
-      //   <MessageBubble
-      //     lastMessage={lastMessage}
-      //     message={message}
-      //     nextMessage={nextMessage}
-      //     chat={chat}
-      //   />
-      // )}
-      // renderIsTyping={(typers) => <IsTyping />}
-      // renderConnectionBar={(chat) => <ConnectionBar renderDelay={3000} />}
-      // renderScrollDownBar={(chat, userName, isBottomVisible) => (
-      //   <ScrollDownBar chat={chat} userName={userName} />
-      // )}
-      // renderNewMessageForm={(creds, chatID) => <NewMessageForm />}
-      // renderChatSettings={(chatAppState) => <ChatSettings {...chatAppState} />}
-      // renderPeopleSettings={(creds, chat) => <PeopleSettings />}
-      // renderPhotosSettings={(chat) => <PhotosSettings />}
-      // renderOptionsSettings={(creds, chat) => <OptionsSettings />}
     />
   );
 };
