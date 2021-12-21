@@ -68,6 +68,7 @@ export const Socket: React.FC<Props> = (props: Props) => {
       myUsername={props.myUsername}
       mySecret={props.mySecret}
       sessionToken={sessionToken}
+      isDevelopment={props.isDevelopment}
       onRefresh={reRender}
       onConnect={props.onConnect}
       onError={props.onError}

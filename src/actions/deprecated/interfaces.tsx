@@ -18,19 +18,19 @@ interface UserAuth extends Conn {
 
 export type Auth = ChatAuth | UserAuth;
 
-interface ChatHeaders extends AxiosRequestHeaders {
+export interface ChatHeaders extends AxiosRequestHeaders {
   'Public-Key': string;
   'Chat-ID': string;
   'Access-Key': string;
 }
 
-interface UserHeaders extends AxiosRequestHeaders {
+export interface UserHeaders extends AxiosRequestHeaders {
   'Public-Key': string;
   'User-Name': string;
   'User-Secret': string;
 }
 
-type Headers = UserHeaders | ChatHeaders;
+export type Headers = UserHeaders | ChatHeaders;
 
 let isChatAuth = (p: any): p is ChatAuth => !!p.chatID;
 

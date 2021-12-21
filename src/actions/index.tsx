@@ -21,3 +21,25 @@ export const getHost = (isDevelopment?: boolean): string => {
     return 'https://api.chatengine.io';
   }
 };
+
+import { Headers } from './deprecated/interfaces';
+
+export const getHeaders = (
+  projectId: string,
+  usernameOrChatId: string | number,
+  secretOrAccessKey: string
+): Headers => {
+  if (typeof usernameOrChatId === 'number' && secretOrAccessKey === 'ca-') {
+    return {
+      'Public-Key': projectId,
+      'Chat-ID': usernameOrChatId.toString(),
+      'Access-Key': secretOrAccessKey,
+    };
+  } else {
+    return {
+      'Public-Key': projectId,
+      'User-Name': usernameOrChatId.toString(),
+      'User-Secret': secretOrAccessKey,
+    };
+  }
+};

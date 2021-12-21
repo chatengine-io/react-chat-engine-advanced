@@ -82,9 +82,13 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
     }
   };
 
+  const host = props.isDevelopment
+    ? 'ws://127.0.0.1:8000'
+    : 'wss://api.chatengine.io';
+
   return (
     <WebSocket
-      url={`ws://127.0.0.1:8000/chat/?projectID=${projectId}&chatID=${chatId}&accessKey=${chatAccessKey}`}
+      url={`${host}/chat/?projectID=${projectId}&chatID=${chatId}&accessKey=${chatAccessKey}`}
       reconnect={true}
       reconnectIntervalInMilliSeconds={3000}
       childRef={(ref: WebSocket) => (socketRef = ref)}

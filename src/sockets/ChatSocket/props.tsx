@@ -4,6 +4,7 @@ export interface Props {
   projectId?: string;
   chatId?: number | string;
   chatAccessKey?: string;
+  isDevelopment?: boolean;
   onConnect?: () => void;
   onAuthFail?: () => void;
   onError?: () => void;
