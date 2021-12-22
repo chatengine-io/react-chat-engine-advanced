@@ -18,13 +18,37 @@ const ChatEngineApp = (props) => {
         myUsername={props.userName}
         mySecret={props.userSecret}
         isDevelopment={props.development}
-        {...state}
+        // Socket Hooks
+        onNewChat={state.onNewChat}
+        onEditChat={state.onEditChat}
+        onDeleteChat={state.onDeleteChat}
+        onNewMessage={state.onNewMessage}
+        onEditMessage={state.onEditMessage}
+        onDeleteMessage={state.onDeleteMessage}
+        onIsTyping={state.onIsTyping}
       />
 
       <ChatEngineWindow
         myUsername={props.userName}
         timezoneOffset={-7}
-        {...state}
+        chats={state.chats}
+        activeChatId={state.activeChatId}
+        messages={state.messages}
+        // State
+        hasMoreChats={state.hasMoreChats}
+        hasMoreMessages={state.hasMoreMessages}
+        // Component Hooks
+        onChatFormSubmit={state.onChatFormSubmit}
+        onChatCardClick={state.onChatCardClick}
+        onChatLoaderShow={state.onChatLoaderShow}
+        onMessageLoaderShow={state.onMessageLoaderShow}
+        onMessageLoaderHide={state.onMessageLoaderHide}
+        onBottomMessageShow={state.onBottomMessageShow}
+        onBottomMessageHide={state.onBottomMessageHide}
+        onMessageFormSubmit={state.onMessageFormSubmit}
+        onInvitePersonClick={state.onInvitePersonClick}
+        onRemovePersonClick={state.onRemovePersonClick}
+        onDeleteChatClick={state.onDeleteChatClick}
         style={{ height: props.height }}
       />
     </div>
