@@ -4,7 +4,7 @@ import { Props } from './props';
 
 import { ChildSocket } from './childSocket';
 
-export const Socket: React.FC<Props> = (props: Props) => {
+export const ChatSocket: React.FC<Props> = (props: Props) => {
   const [isHidden, setIsHidden] = useState(false);
 
   function reRender() {
@@ -19,6 +19,7 @@ export const Socket: React.FC<Props> = (props: Props) => {
       projectId={props.projectId}
       chatId={props.chatId}
       chatAccessKey={props.chatAccessKey}
+      isDevelopment={props.isDevelopment}
       onRefresh={reRender}
       onConnect={props.onConnect}
       onAuthFail={props.onAuthFail}

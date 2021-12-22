@@ -7,6 +7,7 @@ import { ChildSocket } from './childSocket';
 import axios from 'axios';
 
 const getSessionToken = (
+  host = 'https://api.chatengine.io',
   projectId = '',
   myUsername = '',
   mySecret = '',
@@ -14,7 +15,7 @@ const getSessionToken = (
   error: () => void
 ) => {
   axios
-    .get(`http://127.0.0.1:8000/users/me/session/`, {
+    .get(`${host}/users/me/session/`, {
       headers: {
         'Public-Key': projectId,
         'User-Name': myUsername,
@@ -35,7 +36,13 @@ export const Socket: React.FC<Props> = (props: Props) => {
   useEffect(() => {
     if (!didMountRef.current) {
       didMountRef.current = true;
+
+      const host = props.isDevelopment
+        ? 'http://127.0.0.1:8000'
+        : 'https://api.chatengine.io';
+
       getSessionToken(
+        host,
         props.projectId,
         props.myUsername,
         props.mySecret,
@@ -68,6 +75,7 @@ export const Socket: React.FC<Props> = (props: Props) => {
       myUsername={props.myUsername}
       mySecret={props.mySecret}
       sessionToken={sessionToken}
+      isDevelopment={props.isDevelopment}
       onRefresh={reRender}
       onConnect={props.onConnect}
       onError={props.onError}

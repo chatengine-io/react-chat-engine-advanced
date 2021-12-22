@@ -84,7 +84,7 @@ export const myStyles: MessageStyle = {
   },
   attachmentsStyle: {
     display: 'auto',
-    paddingLeft: '48px',
+    marginLeft: '48px',
     width: 'calc(100% - 48px)',
   },
   bodyStyle: {

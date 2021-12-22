@@ -65,6 +65,7 @@ export const useChatEngine = (
   chatCountRef.current = chats.length;
   const messageCountRef = useRef<number>(0);
   messageCountRef.current = messages.length;
+  const chat = chats.find((chat) => chat.id === activeChatId);
 
   useEffect(() => {
     const chat = chats.find((chat) => chat.id === activeChatId);
@@ -349,6 +350,7 @@ export const useChatEngine = (
     messages,
     setMessages,
     activeChatId,
+    chat,
     setActiveChatId,
     peopleToInvite,
     setPeopleToInvite,
@@ -374,14 +376,13 @@ export const useChatEngine = (
     onChatFormSubmit,
     onChatCardClick,
     onChatLoaderShow,
-    onMessageFormSubmit,
-    onInvitePersonClick,
-    onRemovePersonClick,
-    onDeleteChatClick,
-    // State Events
     onMessageLoaderShow,
     onMessageLoaderHide,
     onBottomMessageShow,
     onBottomMessageHide,
+    onMessageFormSubmit,
+    onInvitePersonClick,
+    onRemovePersonClick,
+    onDeleteChatClick,
   };
 };

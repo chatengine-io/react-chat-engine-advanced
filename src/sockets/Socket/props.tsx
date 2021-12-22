@@ -5,6 +5,7 @@ export interface Props {
   myUsername?: string;
   mySecret?: string;
   sessionToken?: string;
+  isDevelopment?: boolean;
   onConnect?: () => void;
   onAuthFail?: () => void;
   onError?: () => void;
