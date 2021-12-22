@@ -15,10 +15,12 @@ const ChatEngineApp = (props) => {
     <div>
       <Socket
         projectId={props.projectID}
-        myUsername={props.userName}
-        mySecret={props.userSecret}
+        myUsername={props.accounts.userName}
+        mySecret={props.accounts.userSecret}
         isDevelopment={props.development}
         // Socket Hooks
+        onConnect={state.onConnect}
+        onAuthFail={state.onAuthFail}
         onNewChat={state.onNewChat}
         onEditChat={state.onEditChat}
         onDeleteChat={state.onDeleteChat}
@@ -29,7 +31,7 @@ const ChatEngineApp = (props) => {
       />
 
       <ChatEngineWindow
-        myUsername={props.userName}
+        myUsername={props.accounts.userName}
         timezoneOffset={-7}
         chats={state.chats}
         activeChatId={state.activeChatId}

@@ -54,14 +54,40 @@ const DirectChatPage = () => {
         myUsername={USER_NAME}
         mySecret={USER_SECRET}
         isDevelopment={DEVELOPMENT}
-        {...state}
+        // Socket Hooks
+        onConnect={state.onConnect}
+        onAuthFail={state.onAuthFail}
+        onNewChat={state.onNewChat}
+        onEditChat={state.onEditChat}
+        onDeleteChat={state.onDeleteChat}
+        onNewMessage={state.onNewMessage}
+        onEditMessage={state.onEditMessage}
+        onDeleteMessage={state.onDeleteMessage}
+        onIsTyping={state.onIsTyping}
       />
 
       <ChatEngineWindow
-        style={{ height: '100vh' }}
+        // Chat Data
         myUsername={USER_NAME}
+        chats={state.chats}
+        activeChatId={state.activeChatId}
+        messages={state.messages}
+        // Component Hooks
+        onChatFormSubmit={state.onChatFormSubmit}
+        onChatCardClick={state.onChatCardClick}
+        onChatLoaderShow={state.onChatLoaderShow}
+        onMessageLoaderShow={state.onMessageLoaderShow}
+        onMessageLoaderHide={state.onMessageLoaderHide}
+        onBottomMessageShow={state.onBottomMessageShow}
+        onBottomMessageHide={state.onBottomMessageHide}
+        onMessageFormSubmit={state.onMessageFormSubmit}
+        onInvitePersonClick={state.onInvitePersonClick}
+        onRemovePersonClick={state.onRemovePersonClick}
+        onDeleteChatClick={state.onDeleteChatClick}
+        // Render Functions
         renderChatForm={() => renderChatForm()}
-        {...state}
+        // Style
+        style={{ height: '100vh' }}
       />
     </div>
   );
