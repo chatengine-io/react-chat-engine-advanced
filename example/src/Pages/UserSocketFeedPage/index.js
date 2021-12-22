@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  ChatEngineWrapper,
   Socket,
   ChatFeed,
   useChatEngine,
@@ -48,33 +47,31 @@ const UserSocketPage = () => {
   return (
     <Row>
       <Col xs={12} sm={6} md={4} style={{ height: '600px' }}>
-        <ChatEngineWrapper>
-          <Socket
-            projectId={PROJECT_ID}
-            myUsername={USER_NAME}
-            mySecret={USER_SECRET}
-            isDevelopment={DEVELOPMENT}
-            onConnect={onConnect}
-            onNewChat={state.onNewChat}
-            onEditChat={state.onEditChat}
-            onDeleteChat={state.onDeleteChat}
-            onNewMessage={state.onNewMessage}
-            onEditMessage={state.onEditMessage}
-            onDeleteMessage={state.onDeleteMessage}
-          />
+        <Socket
+          projectId={PROJECT_ID}
+          myUsername={USER_NAME}
+          mySecret={USER_SECRET}
+          isDevelopment={DEVELOPMENT}
+          onConnect={onConnect}
+          onNewChat={state.onNewChat}
+          onEditChat={state.onEditChat}
+          onDeleteChat={state.onDeleteChat}
+          onNewMessage={state.onNewMessage}
+          onEditMessage={state.onEditMessage}
+          onDeleteMessage={state.onDeleteMessage}
+        />
 
-          <ChatFeed
-            messages={state.messages}
-            chat={chat}
-            myUsername={USER_NAME}
-            hasMoreMessages={state.hasMoreMessages}
-            onMessageLoaderShow={state.onMessageLoaderShow}
-            onMessageLoaderHide={state.onMessageLoaderHide}
-            onBottomMessageHide={state.onBottomMessageHide}
-            onBottomMessageShow={state.onBottomMessageShow}
-            onMessageFormSubmit={state.onMessageFormSubmit}
-          />
-        </ChatEngineWrapper>
+        <ChatFeed
+          messages={state.messages}
+          chat={chat}
+          myUsername={USER_NAME}
+          hasMoreMessages={state.hasMoreMessages}
+          onMessageLoaderShow={state.onMessageLoaderShow}
+          onMessageLoaderHide={state.onMessageLoaderHide}
+          onBottomMessageHide={state.onBottomMessageHide}
+          onBottomMessageShow={state.onBottomMessageShow}
+          onMessageFormSubmit={state.onMessageFormSubmit}
+        />
       </Col>
     </Row>
   );
