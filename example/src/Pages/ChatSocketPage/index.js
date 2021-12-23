@@ -4,7 +4,7 @@ import {
   ChatSocket,
   ChatFeed,
   ChatList,
-  useChatEngineUserHooks,
+  useChatEngineChatHooks,
 } from 'react-chat-engine';
 
 import {
@@ -22,9 +22,9 @@ setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 const HomePage = () => {
   const senderUsername = 'Abel Smith';
 
-  const { onConnect } = useChatEngineUserHooks(
+  const state = useChatEngineChatHooks(
     PROJECT_ID,
-    senderUsername,
+    CHAT_ID,
     CHAT_ACCESS_KEY,
     DEVELOPMENT
   );
@@ -39,10 +39,14 @@ const HomePage = () => {
           chatId={CHAT_ID}
           chatAccessKey={CHAT_ACCESS_KEY}
           isDevelopment={DEVELOPMENT}
-          onConnect={onConnect}
+          onConnect={state.onConnect}
         />
 
-        <ChatFeed myUsername={senderUsername} messages={[]} isLoading={true} />
+        <ChatFeed
+          myUsername={senderUsername}
+          messages={state.messages}
+          chat={state.chat}
+        />
       </Col>
 
       <Col xs={12} sm={6} md={4} style={{ height: '95vh', marginTop: '2.5vh' }}>
