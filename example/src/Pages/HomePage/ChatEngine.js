@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { ChatEngineWindow, Socket, useChatEngine } from 'react-chat-engine';
+import { ChatEngineWindow, UserSocket, useChatEngine } from 'react-chat-engine';
 
 const ChatEngineApp = (props) => {
   const state = useChatEngine(
@@ -13,7 +13,7 @@ const ChatEngineApp = (props) => {
 
   return (
     <div>
-      <Socket
+      <UserSocket
         projectId={props.projectID}
         myUsername={props.accounts.userName}
         mySecret={props.accounts.userSecret}

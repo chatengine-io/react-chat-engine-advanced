@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  Socket,
+  UserSocket,
   ChatFeed,
   useChatEngine,
   getChatsBefore,
@@ -48,7 +48,7 @@ const UserSocketPage = () => {
   return (
     <Row>
       <Col xs={12} sm={6} md={4} style={{ height: '600px' }}>
-        <Socket
+        <UserSocket
           projectId={PROJECT_ID}
           myUsername={USER_NAME}
           mySecret={USER_SECRET}

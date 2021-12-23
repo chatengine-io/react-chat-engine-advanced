@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Socket, ChatEngineWindow, useChatEngine } from 'react-chat-engine';
+import { UserSocket, ChatEngineWindow, useChatEngine } from 'react-chat-engine';
 
 // import './App.css';
 
@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <div>
-      <Socket
+      <UserSocket
         projectId={projectId}
         myUsername={userName}
         mySecret={userSecret}

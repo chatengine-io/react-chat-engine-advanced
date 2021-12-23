@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import {
-  Socket,
+  UserSocket,
   ChatEngineWindow,
   getOrCreateChat,
   useChatEngine,
@@ -49,7 +49,7 @@ const DirectChatPage = () => {
 
   return (
     <div>
-      <Socket
+      <UserSocket
         projectId={PROJECT_ID}
         myUsername={USER_NAME}
         mySecret={USER_SECRET}

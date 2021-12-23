@@ -28,7 +28,7 @@ const getSessionToken = (
     .catch(() => error());
 };
 
-export const Socket: React.FC<Props> = (props: Props) => {
+export const UserSocket: React.FC<Props> = (props: Props) => {
   const didMountRef = useRef(false);
   const [isHidden, setIsHidden] = useState(false);
   const [sessionToken, setToken] = useState<string | undefined>(undefined);
