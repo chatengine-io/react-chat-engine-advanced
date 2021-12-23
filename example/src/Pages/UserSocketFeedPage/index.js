@@ -3,7 +3,7 @@ import React from 'react';
 import {
   UserSocket,
   ChatFeed,
-  useChatEngine,
+  useChatEngineUserHooks,
   getChatsBefore,
 } from 'react-chat-engine';
 
@@ -21,7 +21,12 @@ import { setConfiguration } from 'react-grid-system';
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
 const UserSocketPage = () => {
-  const state = useChatEngine(PROJECT_ID, USER_NAME, USER_SECRET, DEVELOPMENT);
+  const state = useChatEngineUserHooks(
+    PROJECT_ID,
+    USER_NAME,
+    USER_SECRET,
+    DEVELOPMENT
+  );
 
   const chat = state.chats.find((chat) => chat.id === CHAT_ID);
 

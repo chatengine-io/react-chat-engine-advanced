@@ -4,7 +4,7 @@ import {
   ChatSocket,
   ChatFeed,
   ChatList,
-  useChatEngine,
+  useChatEngineUserHooks,
 } from 'react-chat-engine';
 
 import {
@@ -22,7 +22,7 @@ setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 const HomePage = () => {
   const senderUsername = 'Abel Smith';
 
-  const { onConnect } = useChatEngine(
+  const { onConnect } = useChatEngineUserHooks(
     PROJECT_ID,
     senderUsername,
     CHAT_ACCESS_KEY,

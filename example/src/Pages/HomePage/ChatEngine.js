@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { ChatEngineWindow, UserSocket, useChatEngine } from 'react-chat-engine';
+import {
+  ChatEngineWindow,
+  UserSocket,
+  useChatEngineUserHooks,
+} from 'react-chat-engine';
 
 const ChatEngineApp = (props) => {
-  const state = useChatEngine(
+  const state = useChatEngineUserHooks(
     props.projectID,
     props.accounts.userName,
     props.accounts.userSecret,

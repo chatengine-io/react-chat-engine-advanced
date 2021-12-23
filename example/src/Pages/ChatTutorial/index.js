@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { UserSocket, ChatEngineWindow, useChatEngine } from 'react-chat-engine';
+import {
+  UserSocket,
+  ChatEngineWindow,
+  useChatEngineUserHooks,
+} from 'react-chat-engine';
 
 // import './App.css';
 
@@ -10,7 +14,7 @@ const projectId = '52147d0e-0f43-4ea7-916f-1820a16bf1d7';
 const userSecret = 'pass1234';
 
 const App = () => {
-  const state = useChatEngine(projectId, userName, userSecret);
+  const state = useChatEngineUserHooks(projectId, userName, userSecret);
 
   return (
     <div>
