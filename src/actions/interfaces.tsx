@@ -18,21 +18,17 @@ interface UserAuth extends Conn {
 
 export type Auth = ChatAuth | UserAuth;
 
-export interface ChatHeaders extends AxiosRequestHeaders {
+export interface ChatAuthHeaders extends AxiosRequestHeaders {
   'Public-Key': string;
   'Chat-ID': string;
   'Access-Key': string;
 }
 
-export interface UserHeaders extends AxiosRequestHeaders {
+export interface UserAuthHeaders extends AxiosRequestHeaders {
   'Public-Key': string;
   'User-Name': string;
   'User-Secret': string;
 }
-
-export type Headers = UserHeaders | ChatHeaders;
-
-let isChatAuth = (p: any): p is ChatAuth => !!p.chatID;
 
 let isDevelopment = (p: any): p is Auth => !!p.chatID;
 
@@ -41,21 +37,5 @@ export const getApiUrl = (props: Auth): string => {
     return 'http://127.0.0.1:8000';
   } else {
     return 'https://api.chatengine.io';
-  }
-};
-
-export const getHeaders = (props: Auth): Headers => {
-  if (isChatAuth(props)) {
-    return {
-      'Public-Key': props.projectID,
-      'Chat-ID': props.chatID,
-      'Access-Key': props.chatAccessKey,
-    };
-  } else {
-    return {
-      'Public-Key': props.projectID,
-      'User-Name': props.userName,
-      'User-Secret': props.userSecret,
-    };
   }
 };

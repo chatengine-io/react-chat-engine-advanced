@@ -1,12 +1,11 @@
 import axios from 'axios';
 
 import { ChatProps } from '../../interfaces';
+import { UserAuthHeaders } from '../interfaces';
 
 type InvitePerson = (
   host: string,
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
+  headers: UserAuthHeaders,
   chatId: number,
   username: string,
   callback: (chat: ChatProps) => void
@@ -14,25 +13,13 @@ type InvitePerson = (
 
 export const invitePerson: InvitePerson = (
   host,
-  projectId,
-  myUsername,
-  mySecret,
+  headers,
   chatId,
   username,
   callback
 ) => {
   axios
-    .post(
-      `${host}/chats/${chatId}/people/`,
-      { username },
-      {
-        headers: {
-          'Public-Key': projectId,
-          'User-Name': myUsername,
-          'User-Secret': mySecret,
-        },
-      }
-    )
+    .post(`${host}/chats/${chatId}/people/`, { username }, { headers })
 
     .then((response) => {
       callback && callback(response.data);

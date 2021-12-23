@@ -1,31 +1,19 @@
 import axios from 'axios';
 
+import { UserAuthHeaders } from '../interfaces';
 import { ChatProps } from '../../interfaces';
 
 type DeleteChat = (
   host: string,
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
-  chatId: number,
+  headers: UserAuthHeaders,
+  chatId: number | string,
   callback: (chat: ChatProps) => void
 ) => void;
 
-export const deleteChat: DeleteChat = (
-  host,
-  projectId,
-  myUsername,
-  mySecret,
-  chatId,
-  callback
-) => {
+export const deleteChat: DeleteChat = (host, headers, chatId, callback) => {
   axios
     .delete(`${host}/chats/${chatId}/`, {
-      headers: {
-        'Public-Key': projectId,
-        'User-Name': myUsername,
-        'User-Secret': mySecret,
-      },
+      headers,
     })
 
     .then((response) => {

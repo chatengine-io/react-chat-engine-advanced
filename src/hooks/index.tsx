@@ -17,6 +17,7 @@ import {
 } from '../actions';
 
 import { animateScroll } from 'react-scroll';
+import { UserAuthHeaders } from '../actions/interfaces';
 
 const chatCountIterator = 20;
 const messageCountIterator = 50;
@@ -48,6 +49,11 @@ export const useChatEngine = (
   isDevelopment?: boolean
 ) => {
   const host = getHost(isDevelopment);
+  const headers: UserAuthHeaders = {
+    'Public-Key': projectId,
+    'User-Name': myUsername,
+    'User-Secret': mySecret,
+  };
 
   // Data
   const [activeChatId, setActiveChatId] = useState<number | undefined>();
@@ -79,15 +85,7 @@ export const useChatEngine = (
       chat.last_message.id !== chatPerson?.last_read &&
       isChatFeedAtBottom
     ) {
-      readMessage(
-        host,
-        projectId,
-        myUsername,
-        mySecret,
-        activeChatId,
-        chat.last_message.id,
-        () => {}
-      );
+      readMessage(host, headers, activeChatId, chat.last_message.id, () => {});
     }
   }, [chats, activeChatId, isChatFeedAtBottom]);
 
@@ -181,9 +179,7 @@ export const useChatEngine = (
 
     getChatsBefore(
       host,
-      projectId,
-      myUsername,
-      mySecret,
+      headers,
       now,
       chatCountRef.current > 0 ? chatCountRef.current : chatCountIterator,
       (chats) => {
@@ -201,7 +197,7 @@ export const useChatEngine = (
   const onAuthFail = () => {};
 
   const onChatFormSubmit = (title: string) => {
-    newChat(host, projectId, myUsername, mySecret, title, (chat) => {
+    newChat(host, headers, title, (chat) => {
       onNewChat(chat);
       onChatCardClick(chat.id);
     });
@@ -212,9 +208,7 @@ export const useChatEngine = (
 
     getMessages(
       host,
-      projectId,
-      myUsername,
-      mySecret,
+      headers,
       activeChatId,
       messageCountIterator,
       (chatId, messages) => {
@@ -226,14 +220,7 @@ export const useChatEngine = (
       }
     );
 
-    getPeopleToInvite(
-      host,
-      projectId,
-      myUsername,
-      mySecret,
-      activeChatId,
-      setPeopleToInvite
-    );
+    getPeopleToInvite(host, headers, activeChatId, setPeopleToInvite);
   };
 
   const onChatLoaderShow = () => {
@@ -244,9 +231,7 @@ export const useChatEngine = (
 
     getChatsBefore(
       host,
-      projectId,
-      myUsername,
-      mySecret,
+      headers,
       now,
       chatCountRef.current + chatCountIterator,
       onGetChats
@@ -257,45 +242,25 @@ export const useChatEngine = (
     const newMessages = messages?.concat(message);
     setMessages(newMessages);
 
-    newMessage(
-      host,
-      projectId,
-      myUsername,
-      mySecret,
-      activeChatId,
-      message,
-      () => {}
-    );
+    newMessage(host, headers, activeChatId, message, () => {});
   };
 
   const onInvitePersonClick = (person: PersonProps) => {
     activeChatId &&
-      invitePerson(
-        host,
-        projectId,
-        myUsername,
-        mySecret,
-        activeChatId,
-        person.username,
-        () => onChatCardClick(activeChatId)
+      invitePerson(host, headers, activeChatId, person.username, () =>
+        onChatCardClick(activeChatId)
       );
   };
 
   const onRemovePersonClick = (person: PersonProps) => {
     activeChatId &&
-      removePerson(
-        host,
-        projectId,
-        myUsername,
-        mySecret,
-        activeChatId,
-        person.username,
-        () => onChatCardClick(activeChatId)
+      removePerson(host, headers, activeChatId, person.username, () =>
+        onChatCardClick(activeChatId)
       );
   };
 
   const onDeleteChatClick = (chat: ChatProps) => {
-    deleteChat(host, projectId, myUsername, mySecret, chat.id, onDeleteChat);
+    deleteChat(host, headers, chat.id, onDeleteChat);
   };
 
   const onBottomMessageShow = () => {
@@ -316,9 +281,7 @@ export const useChatEngine = (
     activeChatId &&
       getMessages(
         host,
-        projectId,
-        myUsername,
-        mySecret,
+        headers,
         activeChatId,
         messageCountRef.current + messageCountIterator,
         (chatId, messages) => {

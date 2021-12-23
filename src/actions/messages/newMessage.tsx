@@ -2,12 +2,11 @@ import _ from 'lodash';
 import axios from 'axios';
 
 import { MessageProps } from '../../interfaces';
+import { ChatAuthHeaders, UserAuthHeaders } from '../interfaces';
 
 type NewMessage = (
   host: string,
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
+  headers: UserAuthHeaders | ChatAuthHeaders,
   chatId: number | undefined,
   message: MessageProps,
   callback: (message: MessageProps) => void
@@ -15,9 +14,7 @@ type NewMessage = (
 
 export const newMessage: NewMessage = (
   host,
-  projectId,
-  myUsername,
-  mySecret,
+  headers,
   chatId,
   message,
   callback
@@ -40,13 +37,7 @@ export const newMessage: NewMessage = (
   formdata.append('custom_json', JSON.stringify({}));
 
   axios
-    .post(`${host}/chats/${chatId}/messages/`, formdata, {
-      headers: {
-        'Public-Key': projectId,
-        'User-Name': myUsername,
-        'User-Secret': mySecret,
-      },
-    })
+    .post(`${host}/chats/${chatId}/messages/`, formdata, { headers })
 
     .then((response) => {
       callback && callback(response.data);
