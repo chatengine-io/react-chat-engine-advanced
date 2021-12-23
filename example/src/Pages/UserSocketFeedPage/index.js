@@ -1,10 +1,9 @@
 import React from 'react';
 
 import {
-  ChatEngineWrapper,
-  Socket,
+  UserSocket,
   ChatFeed,
-  useChatEngine,
+  useChatEngineUserHooks,
   getChatsBefore,
 } from 'react-chat-engine';
 
@@ -22,7 +21,13 @@ import { setConfiguration } from 'react-grid-system';
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
 const UserSocketPage = () => {
-  const state = useChatEngine(PROJECT_ID, USER_NAME, USER_SECRET, DEVELOPMENT);
+  const state = useChatEngineUserHooks(
+    PROJECT_ID,
+    USER_NAME,
+    USER_SECRET,
+    DEVELOPMENT
+  );
+
   const chat = state.chats.find((chat) => chat.id === CHAT_ID);
 
   const onConnect = () => {
@@ -48,33 +53,34 @@ const UserSocketPage = () => {
   return (
     <Row>
       <Col xs={12} sm={6} md={4} style={{ height: '600px' }}>
-        <ChatEngineWrapper>
-          <Socket
-            projectId={PROJECT_ID}
-            myUsername={USER_NAME}
-            mySecret={USER_SECRET}
-            isDevelopment={DEVELOPMENT}
-            onConnect={onConnect}
-            onNewChat={state.onNewChat}
-            onEditChat={state.onEditChat}
-            onDeleteChat={state.onDeleteChat}
-            onNewMessage={state.onNewMessage}
-            onEditMessage={state.onEditMessage}
-            onDeleteMessage={state.onDeleteMessage}
-          />
+        <UserSocket
+          projectId={PROJECT_ID}
+          myUsername={USER_NAME}
+          mySecret={USER_SECRET}
+          isDevelopment={DEVELOPMENT}
+          onConnect={onConnect}
+          onNewChat={state.onNewChat}
+          onEditChat={state.onEditChat}
+          onDeleteChat={state.onDeleteChat}
+          onNewMessage={state.onNewMessage}
+          onEditMessage={state.onEditMessage}
+          onDeleteMessage={state.onDeleteMessage}
+        />
 
-          <ChatFeed
-            messages={state.messages}
-            chat={chat}
-            myUsername={USER_NAME}
-            hasMoreMessages={state.hasMoreMessages}
-            onMessageLoaderShow={state.onMessageLoaderShow}
-            onMessageLoaderHide={state.onMessageLoaderHide}
-            onBottomMessageHide={state.onBottomMessageHide}
-            onBottomMessageShow={state.onBottomMessageShow}
-            onMessageFormSubmit={state.onMessageFormSubmit}
-          />
-        </ChatEngineWrapper>
+        <ChatFeed
+          // Chat Data
+          chat={chat}
+          messages={state.messages}
+          myUsername={state.myUsername}
+          // State
+          hasMoreMessages={state.hasMoreMessages}
+          // Component Hooks
+          onMessageLoaderShow={state.onMessageLoaderShow}
+          onMessageLoaderHide={state.onMessageLoaderHide}
+          onBottomMessageHide={state.onBottomMessageHide}
+          onBottomMessageShow={state.onBottomMessageShow}
+          onMessageFormSubmit={state.onMessageFormSubmit}
+        />
       </Col>
     </Row>
   );

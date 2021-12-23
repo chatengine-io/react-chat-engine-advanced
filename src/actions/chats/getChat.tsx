@@ -1,18 +1,18 @@
 import axios from 'axios';
 
-import { UserAuthHeaders } from '../interfaces';
+import { ChatAuthHeaders, UserAuthHeaders } from '../interfaces';
 import { ChatProps } from '../../interfaces';
 
-type DeleteChat = (
+type GetChat = (
   host: string,
-  headers: UserAuthHeaders,
+  headers: UserAuthHeaders | ChatAuthHeaders,
   chatId: number | string,
   callback: (chat: ChatProps) => void
 ) => void;
 
-export const deleteChat: DeleteChat = (host, headers, chatId, callback) => {
+export const getChat: GetChat = (host, headers, chatId, callback) => {
   axios
-    .delete(`${host}/chats/${chatId}/`, {
+    .get(`${host}/chats/${chatId}/`, {
       headers,
     })
 
@@ -21,6 +21,6 @@ export const deleteChat: DeleteChat = (host, headers, chatId, callback) => {
     })
 
     .catch((error) => {
-      console.log('Delete Chat Error', error);
+      console.log('Get Chat Error', error);
     });
 };

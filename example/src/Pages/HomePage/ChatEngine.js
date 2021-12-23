@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { ChatEngineWindow, Socket, useChatEngine } from 'react-chat-engine';
+import {
+  ChatEngineWindow,
+  UserSocket,
+  useChatEngineUserHooks,
+} from 'react-chat-engine';
 
 const ChatEngineApp = (props) => {
-  const state = useChatEngine(
+  const state = useChatEngineUserHooks(
     props.projectID,
     props.accounts.userName,
     props.accounts.userSecret,
@@ -13,18 +17,44 @@ const ChatEngineApp = (props) => {
 
   return (
     <div>
-      <Socket
+      <UserSocket
         projectId={props.projectID}
-        myUsername={props.userName}
-        mySecret={props.userSecret}
+        myUsername={props.accounts.userName}
+        mySecret={props.accounts.userSecret}
         isDevelopment={props.development}
-        {...state}
+        // Socket Hooks
+        onConnect={state.onConnect}
+        onAuthFail={state.onAuthFail}
+        onNewChat={state.onNewChat}
+        onEditChat={state.onEditChat}
+        onDeleteChat={state.onDeleteChat}
+        onNewMessage={state.onNewMessage}
+        onEditMessage={state.onEditMessage}
+        onDeleteMessage={state.onDeleteMessage}
+        onIsTyping={state.onIsTyping}
       />
 
       <ChatEngineWindow
-        myUsername={props.userName}
         timezoneOffset={-7}
-        {...state}
+        myUsername={state.myUsername}
+        chats={state.chats}
+        activeChatId={state.activeChatId}
+        messages={state.messages}
+        // State
+        hasMoreChats={state.hasMoreChats}
+        hasMoreMessages={state.hasMoreMessages}
+        // Component Hooks
+        onChatFormSubmit={state.onChatFormSubmit}
+        onChatCardClick={state.onChatCardClick}
+        onChatLoaderShow={state.onChatLoaderShow}
+        onMessageLoaderShow={state.onMessageLoaderShow}
+        onMessageLoaderHide={state.onMessageLoaderHide}
+        onBottomMessageShow={state.onBottomMessageShow}
+        onBottomMessageHide={state.onBottomMessageHide}
+        onMessageFormSubmit={state.onMessageFormSubmit}
+        onInvitePersonClick={state.onInvitePersonClick}
+        onRemovePersonClick={state.onRemovePersonClick}
+        onDeleteChatClick={state.onDeleteChatClick}
         style={{ height: props.height }}
       />
     </div>

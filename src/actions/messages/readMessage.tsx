@@ -1,11 +1,10 @@
 import axios from 'axios';
-import { ChatProps } from '../..';
+import { ChatProps } from '../../interfaces';
+import { UserAuthHeaders } from '../interfaces';
 
 type ReadMessages = (
   host: string,
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
+  headers: UserAuthHeaders,
   chatId: number,
   messageCount: number,
   callback: (chat: ChatProps) => void
@@ -13,9 +12,7 @@ type ReadMessages = (
 
 export const readMessage: ReadMessages = (
   host,
-  projectId,
-  myUsername,
-  mySecret,
+  headers,
   chatId,
   messageId,
   callback
@@ -24,13 +21,7 @@ export const readMessage: ReadMessages = (
     .patch(
       `${host}/chats/${chatId}/people/`,
       { last_read: messageId },
-      {
-        headers: {
-          'Public-Key': projectId,
-          'User-Name': myUsername,
-          'User-Secret': mySecret,
-        },
-      }
+      { headers }
     )
 
     .then((response) => {

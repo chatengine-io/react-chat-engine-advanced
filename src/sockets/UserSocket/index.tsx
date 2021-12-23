@@ -5,30 +5,21 @@ import { Props } from './props';
 import { ChildSocket } from './childSocket';
 
 import axios from 'axios';
+import { UserAuthHeaders } from '../../actions/interfaces';
 
 const getSessionToken = (
   host = 'https://api.chatengine.io',
-  projectId = '',
-  myUsername = '',
-  mySecret = '',
+  headers: UserAuthHeaders,
   callback: (token: string) => void,
   error: () => void
 ) => {
   axios
-    .get(`${host}/users/me/session/`, {
-      headers: {
-        'Public-Key': projectId,
-        'User-Name': myUsername,
-        'User-Secret': mySecret,
-      },
-    })
-    .then((response) => {
-      callback(response.data.token);
-    })
+    .get(`${host}/users/me/session/`, { headers })
+    .then((response) => callback(response.data.token))
     .catch(() => error());
 };
 
-export const Socket: React.FC<Props> = (props: Props) => {
+export const UserSocket: React.FC<Props> = (props: Props) => {
   const didMountRef = useRef(false);
   const [isHidden, setIsHidden] = useState(false);
   const [sessionToken, setToken] = useState<string | undefined>(undefined);
@@ -40,12 +31,15 @@ export const Socket: React.FC<Props> = (props: Props) => {
       const host = props.isDevelopment
         ? 'http://127.0.0.1:8000'
         : 'https://api.chatengine.io';
+      const headers: UserAuthHeaders = {
+        'Public-Key': props.projectId,
+        'User-Name': props.myUsername,
+        'User-Secret': props.mySecret,
+      };
 
       getSessionToken(
         host,
-        props.projectId,
-        props.myUsername,
-        props.mySecret,
+        headers,
         (token) => setToken(token),
         () => {
           console.log(

@@ -2,38 +2,20 @@ import _ from 'lodash';
 import axios from 'axios';
 
 import { ChatProps } from '../../interfaces';
+import { UserAuthHeaders } from '../interfaces';
 
 type NewChat = (
   host: string,
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
+  headers: UserAuthHeaders,
   title: string | undefined,
   callback: (chat: ChatProps) => void
 ) => void;
 
-export const newChat: NewChat = (
-  host,
-  projectId,
-  myUsername,
-  mySecret,
-  title,
-  callback
-) => {
+export const newChat: NewChat = (host, headers, title, callback) => {
   if (!title) return;
 
   axios
-    .post(
-      `${host}/chats/`,
-      { title },
-      {
-        headers: {
-          'Public-Key': projectId,
-          'User-Name': myUsername,
-          'User-Secret': mySecret,
-        },
-      }
-    )
+    .post(`${host}/chats/`, { title }, { headers })
 
     .then((response) => {
       callback && callback(response.data);

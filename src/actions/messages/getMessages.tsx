@@ -1,12 +1,11 @@
 import { MessageProps } from '../../interfaces';
+import { UserAuthHeaders, ChatAuthHeaders } from '../interfaces';
 
 import axios from 'axios';
 
 type GetMessages = (
   host: string,
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
+  headers: UserAuthHeaders | ChatAuthHeaders,
   chatId: number,
   messageCount: number,
   callback: (chatId: number, messages: MessageProps[]) => void
@@ -14,20 +13,14 @@ type GetMessages = (
 
 export const getMessages: GetMessages = (
   host,
-  projectId,
-  myUsername,
-  mySecret,
+  headers,
   chatId,
   messageCount,
   callback
 ) => {
   axios
     .get(`${host}/chats/${chatId}/messages/latest/${messageCount}/`, {
-      headers: {
-        'Public-Key': projectId,
-        'User-Name': myUsername,
-        'User-Secret': mySecret,
-      },
+      headers,
     })
     .then((response) => {
       // props.onGetMessages && props.onGetMessages(chatId, response.data)

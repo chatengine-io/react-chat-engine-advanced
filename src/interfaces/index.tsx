@@ -5,46 +5,19 @@ export * from './message';
 export * from './person';
 
 import { Props as ComponentProps } from '../components/ChatEngine/props';
-import { Props as SocketProps } from '../sockets/Socket/props';
+import { Props as SocketProps } from '../sockets/UserSocket/props';
 
 interface ExperienceProps {
   onAuthFail?: () => void;
 }
 
-interface NewProps extends ComponentProps, ExperienceProps, SocketProps {
+export interface ChatEngineProps
+  extends ComponentProps,
+    ExperienceProps,
+    SocketProps {
   projectId: string;
   myUsername: string;
   mySecret: string;
   isDevelopment?: boolean;
   timezoneOffset?: number;
 }
-
-interface OldProps extends ComponentProps, ExperienceProps, SocketProps {
-  projectID: string;
-  userName: string;
-  userSecret: string;
-  development?: boolean;
-  offset?: number;
-}
-
-export type ChatEngineProps = NewProps | OldProps;
-
-let isNewAuth = (p: any): p is NewProps => !!p.projectId;
-
-/**
- * TODO: This might not be a good name
- * This will make sure old Auth props are converted to new ones.
- * */
-export const sanitizeProps = (props: ChatEngineProps): NewProps => {
-  if (isNewAuth(props)) {
-    return props;
-  } else {
-    return {
-      projectId: props.projectID,
-      myUsername: props.userName,
-      mySecret: props.userSecret,
-      isDevelopment: props.development,
-      timezoneOffset: props.offset,
-    } as NewProps;
-  }
-};

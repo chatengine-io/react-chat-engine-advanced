@@ -1,13 +1,12 @@
 import _ from 'lodash';
 import axios from 'axios';
 
+import { UserAuthHeaders } from '../interfaces';
 import { ChatProps } from '../../interfaces';
 
 type GetChatsBefore = (
   host: string,
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
+  headers: UserAuthHeaders,
   before: string,
   chatCount: number,
   callback: (chats: Array<ChatProps>) => void
@@ -15,25 +14,13 @@ type GetChatsBefore = (
 
 export const getChatsBefore: GetChatsBefore = (
   host,
-  projectId,
-  myUsername,
-  mySecret,
+  headers,
   before,
   chatCount,
   callback
 ) => {
   axios
-    .put(
-      `${host}/chats/latest/${chatCount}/`,
-      { before },
-      {
-        headers: {
-          'Public-Key': projectId,
-          'User-Name': myUsername,
-          'User-Secret': mySecret,
-        },
-      }
-    )
+    .put(`${host}/chats/latest/${chatCount}/`, { before }, { headers })
     .then((response) => {
       // props.onGetChats && props.onGetChats(response.data);
       callback(response.data);

@@ -1,12 +1,11 @@
 import axios from 'axios';
 
 import { ChatProps } from '../../interfaces';
+import { UserAuthHeaders } from '../interfaces';
 
 type RemovePerson = (
   host: string,
-  projectId: string,
-  myUsername: string,
-  mySecret: string,
+  headers: UserAuthHeaders,
   chatId: number,
   username: string,
   callback: (chat: ChatProps) => void
@@ -14,25 +13,13 @@ type RemovePerson = (
 
 export const removePerson: RemovePerson = (
   host,
-  projectId,
-  myUsername,
-  mySecret,
+  headers,
   chatId,
   username,
   callback
 ) => {
   axios
-    .put(
-      `${host}/chats/${chatId}/people/`,
-      { username },
-      {
-        headers: {
-          'Public-Key': projectId,
-          'User-Name': myUsername,
-          'User-Secret': mySecret,
-        },
-      }
-    )
+    .put(`${host}/chats/${chatId}/people/`, { username }, { headers })
 
     .then((response) => {
       callback && callback(response.data);
