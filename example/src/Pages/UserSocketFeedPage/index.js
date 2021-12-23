@@ -22,6 +22,7 @@ setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
 const UserSocketPage = () => {
   const state = useChatEngine(PROJECT_ID, USER_NAME, USER_SECRET, DEVELOPMENT);
+
   const chat = state.chats.find((chat) => chat.id === CHAT_ID);
 
   const onConnect = () => {
@@ -62,10 +63,13 @@ const UserSocketPage = () => {
         />
 
         <ChatFeed
-          messages={state.messages}
+          // Chat Data
           chat={chat}
-          myUsername={USER_NAME}
+          messages={state.messages}
+          myUsername={state.myUsername}
+          // State
           hasMoreMessages={state.hasMoreMessages}
+          // Component Hooks
           onMessageLoaderShow={state.onMessageLoaderShow}
           onMessageLoaderHide={state.onMessageLoaderHide}
           onBottomMessageHide={state.onBottomMessageHide}

@@ -31,8 +31,8 @@ const ChatEngineApp = (props) => {
       />
 
       <ChatEngineWindow
-        myUsername={props.accounts.userName}
         timezoneOffset={-7}
+        myUsername={state.myUsername}
         chats={state.chats}
         activeChatId={state.activeChatId}
         messages={state.messages}

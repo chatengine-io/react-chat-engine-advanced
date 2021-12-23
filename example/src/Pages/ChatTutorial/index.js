@@ -32,7 +32,7 @@ const App = () => {
 
       <ChatEngineWindow
         // Chat Data
-        myUsername={userName}
+        myUsername={state.myUsername}
         chats={state.chats}
         activeChatId={state.activeChatId}
         messages={state.messages}

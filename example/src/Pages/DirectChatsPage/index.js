@@ -68,7 +68,7 @@ const DirectChatPage = () => {
 
       <ChatEngineWindow
         // Chat Data
-        myUsername={USER_NAME}
+        myUsername={state.myUsername}
         chats={state.chats}
         activeChatId={state.activeChatId}
         messages={state.messages}
