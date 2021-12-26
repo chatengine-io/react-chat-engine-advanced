@@ -304,11 +304,6 @@ export const useChatEngineUserHooks = (
 
   return {
     // Auth
-    auth: {
-      projectId,
-      myUsername,
-      mySecret,
-    },
     socketHooks: {
       onConnect,
       onAuthFail,
@@ -320,6 +315,11 @@ export const useChatEngineUserHooks = (
       onNewMessage,
       onEditMessage,
       onDeleteMessage,
+    },
+    chatAuth: {
+      projectId,
+      myUsername,
+      mySecret,
     },
     chatData: {
       chats,
