@@ -2,13 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import {
-  ChatEngineWindow,
+  ChatEngine,
   UserSocket,
   useChatEngineUserHooks,
 } from 'react-chat-engine';
 
 const ChatEngineApp = (props) => {
-  const state = useChatEngineUserHooks(
+  const {
+    socketHooks,
+    chatData,
+    chatState,
+    chatHooks,
+  } = useChatEngineUserHooks(
     props.projectID,
     props.accounts.userName,
     props.accounts.userSecret,
@@ -23,38 +28,38 @@ const ChatEngineApp = (props) => {
         mySecret={props.accounts.userSecret}
         isDevelopment={props.development}
         // Socket Hooks
-        onConnect={state.onConnect}
-        onAuthFail={state.onAuthFail}
-        onNewChat={state.onNewChat}
-        onEditChat={state.onEditChat}
-        onDeleteChat={state.onDeleteChat}
-        onNewMessage={state.onNewMessage}
-        onEditMessage={state.onEditMessage}
-        onDeleteMessage={state.onDeleteMessage}
-        onIsTyping={state.onIsTyping}
+        onConnect={socketHooks.onConnect}
+        onAuthFail={socketHooks.onAuthFail}
+        onNewChat={socketHooks.onNewChat}
+        onEditChat={socketHooks.onEditChat}
+        onDeleteChat={socketHooks.onDeleteChat}
+        onNewMessage={socketHooks.onNewMessage}
+        onEditMessage={socketHooks.onEditMessage}
+        onDeleteMessage={socketHooks.onDeleteMessage}
+        onIsTyping={socketHooks.onIsTyping}
       />
 
-      <ChatEngineWindow
+      <ChatEngine
         timezoneOffset={-7}
-        myUsername={state.myUsername}
-        chats={state.chats}
-        activeChatId={state.activeChatId}
-        messages={state.messages}
+        myUsername={props.accounts.myUsername}
+        chats={chatData.chats}
+        activeChatId={chatData.activeChatId}
+        messages={chatData.messages}
         // State
-        hasMoreChats={state.hasMoreChats}
-        hasMoreMessages={state.hasMoreMessages}
+        hasMoreChats={chatState.hasMoreChats}
+        hasMoreMessages={chatState.hasMoreMessages}
         // Component Hooks
-        onChatFormSubmit={state.onChatFormSubmit}
-        onChatCardClick={state.onChatCardClick}
-        onChatLoaderShow={state.onChatLoaderShow}
-        onMessageLoaderShow={state.onMessageLoaderShow}
-        onMessageLoaderHide={state.onMessageLoaderHide}
-        onBottomMessageShow={state.onBottomMessageShow}
-        onBottomMessageHide={state.onBottomMessageHide}
-        onMessageFormSubmit={state.onMessageFormSubmit}
-        onInvitePersonClick={state.onInvitePersonClick}
-        onRemovePersonClick={state.onRemovePersonClick}
-        onDeleteChatClick={state.onDeleteChatClick}
+        onChatFormSubmit={chatHooks.onChatFormSubmit}
+        onChatCardClick={chatHooks.onChatCardClick}
+        onChatLoaderShow={chatHooks.onChatLoaderShow}
+        onMessageLoaderShow={chatHooks.onMessageLoaderShow}
+        onMessageLoaderHide={chatHooks.onMessageLoaderHide}
+        onBottomMessageShow={chatHooks.onBottomMessageShow}
+        onBottomMessageHide={chatHooks.onBottomMessageHide}
+        onMessageFormSubmit={chatHooks.onMessageFormSubmit}
+        onInvitePersonClick={chatHooks.onInvitePersonClick}
+        onRemovePersonClick={chatHooks.onRemovePersonClick}
+        onDeleteChatClick={chatHooks.onDeleteChatClick}
         style={{ height: props.height }}
       />
     </div>

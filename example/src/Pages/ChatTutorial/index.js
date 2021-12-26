@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   UserSocket,
-  ChatEngineWindow,
+  ChatEngine,
   useChatEngineUserHooks,
 } from 'react-chat-engine';
 
@@ -34,7 +34,7 @@ const App = () => {
         onIsTyping={state.onIsTyping}
       />
 
-      <ChatEngineWindow
+      <ChatEngine
         // Chat Data
         myUsername={state.myUsername}
         chats={state.chats}
