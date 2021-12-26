@@ -42,7 +42,7 @@ export const sortMessages = (messages: MessageProps[]) => {
   });
 };
 
-export const useChatEngineUserHooks = (
+export const useUserHooks = (
   projectId: string,
   myUsername: string,
   mySecret: string,

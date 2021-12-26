@@ -1,2 +1,2 @@
-export { useChatEngineUserHooks } from './useChatEngineUserHooks';
-export { useChatEngineChatHooks } from './useChatEngineChatHooks';
+export { useUserHooks } from './useUserHooks';
+export { useChatHooks } from './useChatHooks';

@@ -30,7 +30,7 @@ export const sortMessages = (messages: MessageProps[]) => {
   });
 };
 
-export const useChatEngineChatHooks = (
+export const useChatHooks = (
   projectId: string,
   chatId: string,
   chatAccessKey: string,

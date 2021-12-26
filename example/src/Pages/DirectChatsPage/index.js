@@ -4,19 +4,14 @@ import {
   UserSocket,
   ChatEngine,
   getOrCreateChat,
-  useChatEngineUserHooks,
+  useUserHooks,
 } from 'react-chat-engine';
 
 import { DEVELOPMENT, PROJECT_ID, USER_NAME, USER_SECRET } from '../../consts';
 
 const DirectChatPage = () => {
   const [username, setUsername] = useState('');
-  const state = useChatEngineUserHooks(
-    PROJECT_ID,
-    USER_NAME,
-    USER_SECRET,
-    DEVELOPMENT
-  );
+  const state = useUserHooks(PROJECT_ID, USER_NAME, USER_SECRET, DEVELOPMENT);
 
   function createDirectChat(creds) {
     const headers = {
