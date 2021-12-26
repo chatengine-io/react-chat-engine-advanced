@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import {
   UserSocket,
-  ChatEngineWindow,
+  ChatEngine,
   getOrCreateChat,
   useChatEngineUserHooks,
 } from 'react-chat-engine';
@@ -71,7 +71,7 @@ const DirectChatPage = () => {
         onIsTyping={state.onIsTyping}
       />
 
-      <ChatEngineWindow
+      <ChatEngine
         // Chat Data
         myUsername={state.myUsername}
         chats={state.chats}

@@ -45,7 +45,6 @@ export const useChatEngineChatHooks = (
 
   // Data
   const [activeChatId, setActiveChatId] = useState<number | undefined>();
-  const [chats, setChats] = useState<ChatProps[]>([]);
   const [chat, setChat] = useState<ChatProps | undefined>();
   const [messages, setMessages] = useState<MessageProps[]>([]);
   const [peopleToInvite, setPeopleToInvite] = useState<PersonProps[]>([]);
@@ -57,35 +56,17 @@ export const useChatEngineChatHooks = (
 
   // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
-  chatCountRef.current = chats.length;
+  chatCountRef.current = chat ? 1 : 0;
   const messageCountRef = useRef<number>(0);
   messageCountRef.current = messages.length;
 
-  const onNewChat = (chat: ChatProps) => {
-    const newChats = [chat].concat(chats ? chats : []);
-
-    setChats(newChats);
+  const onEditChat = (chat: ChatProps) => {
+    setChat(chat);
   };
 
-  const onEditChat = (newChat: ChatProps) => {
-    const otherChats = chats
-      ? chats.filter((chat) => chat.id !== newChat.id)
-      : [];
-    const newChats = [newChat].concat(otherChats);
-    const sortedChats = sortChats(newChats);
-
-    setChats(sortedChats);
-  };
-
-  const onDeleteChat = (oldChat: ChatProps) => {
-    const newChats = chats
-      ? chats.filter((chat) => chat.id !== oldChat.id)
-      : [];
-
-    setChats(newChats);
-
-    if (newChats.length > 0 && activeChatId === oldChat.id)
-      onChatCardClick(newChats[0].id);
+  const onDeleteChat = () => {
+    setChat(undefined);
+    setActiveChatId(undefined);
   };
 
   const onGetMessages = (chatId: number, messages: MessageProps[]) => {
@@ -209,43 +190,42 @@ export const useChatEngineChatHooks = (
   const onMessageLoaderHide = () => {};
 
   return {
-    // Auth
-    projectId,
-    chatId,
-    chatAccessKey,
-    // Data
-    chats,
-    setChats,
-    messages,
-    setMessages,
-    activeChatId,
-    chat,
-    setActiveChatId,
-    peopleToInvite,
-    setPeopleToInvite,
-    // State
-    hasMoreChats,
-    setHasMoreChats,
-    hasMoreMessages,
-    setHasMoreMessages,
-    isChatFeedAtBottom,
-    setIsChatFeedAtBottom,
-    // Socket Hooks
-    onNewChat,
-    onEditChat,
-    onDeleteChat,
-    onGetMessages,
-    onNewMessage,
-    onEditMessage,
-    onDeleteMessage,
-    // Component Hooks
-    onConnect,
-    onAuthFail,
-    onChatCardClick,
-    onMessageLoaderShow,
-    onMessageLoaderHide,
-    onBottomMessageShow,
-    onBottomMessageHide,
-    onMessageFormSubmit,
+    // TODO: Should be an interface
+    socketHooks: {
+      onConnect,
+      onAuthFail,
+      onEditChat,
+      onDeleteChat,
+      onGetMessages,
+      onNewMessage,
+      onEditMessage,
+      onDeleteMessage,
+    },
+    chatAuth: { projectId, chatId, chatAccessKey },
+    chatData: {
+      activeChatId,
+      setActiveChatId,
+      chat,
+      messages,
+      setMessages,
+      peopleToInvite,
+      setPeopleToInvite,
+    },
+    chatState: {
+      hasMoreChats,
+      setHasMoreChats,
+      hasMoreMessages,
+      setHasMoreMessages,
+      isChatFeedAtBottom,
+      setIsChatFeedAtBottom,
+    },
+    chatHooks: {
+      onChatCardClick,
+      onMessageLoaderShow,
+      onMessageLoaderHide,
+      onBottomMessageShow,
+      onBottomMessageHide,
+      onMessageFormSubmit,
+    },
   };
 };

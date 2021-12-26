@@ -1,6 +1,6 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { ChatEngineWindow as Thing } from '.';
+import { ChatEngine as Thing } from '.';
 
 import 'intersection-observer';
 

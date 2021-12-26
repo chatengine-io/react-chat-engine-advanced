@@ -39,13 +39,14 @@ const HomePage = () => {
           chatId={CHAT_ID}
           chatAccessKey={CHAT_ACCESS_KEY}
           isDevelopment={DEVELOPMENT}
-          onConnect={state.onConnect}
+          {...state.socketHooks}
         />
 
         <ChatFeed
           myUsername={senderUsername}
-          messages={state.messages}
-          chat={state.chat}
+          {...state.chatData}
+          {...state.chatState}
+          {...state.chatHooks}
         />
       </Col>
 
