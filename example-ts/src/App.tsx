@@ -11,7 +11,7 @@ const myUsername = 'Adam_La_Morre';
 const mySecret = 'pass1234';
 
 const App: React.FC = () => {
-  const { socketHooks, chatData, chatState, chatHooks } = useUserHooks(
+  const { socketHooks, chatData, chatState, componentHooks } = useUserHooks(
     projectId,
     myUsername,
     mySecret,
@@ -31,7 +31,7 @@ const App: React.FC = () => {
         timezoneOffset={1}
         {...chatData}
         {...chatState}
-        {...chatHooks}
+        {...componentHooks}
       />
     </div>
   );

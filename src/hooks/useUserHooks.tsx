@@ -316,7 +316,7 @@ export const useUserHooks = (
       onEditMessage,
       onDeleteMessage,
     },
-    chatAuth: {
+    userAuth: {
       projectId,
       myUsername,
       mySecret,
@@ -340,7 +340,7 @@ export const useUserHooks = (
       isChatFeedAtBottom,
       setIsChatFeedAtBottom,
     },
-    chatHooks: {
+    componentHooks: {
       onChatFormSubmit,
       onChatCardClick,
       onChatLoaderShow,

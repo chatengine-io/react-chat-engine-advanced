@@ -219,7 +219,7 @@ export const useChatHooks = (
       isChatFeedAtBottom,
       setIsChatFeedAtBottom,
     },
-    chatHooks: {
+    componentHooks: {
       onChatCardClick,
       onMessageLoaderShow,
       onMessageLoaderHide,

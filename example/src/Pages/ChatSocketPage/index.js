@@ -41,7 +41,7 @@ const HomePage = () => {
           myUsername={senderUsername}
           {...state.chatData}
           {...state.chatState}
-          {...state.chatHooks}
+          {...state.componentHooks}
         />
       </Col>
 

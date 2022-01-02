@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { ChatEngine, UserSocket, useUserHooks } from 'react-chat-engine';
 
 const ChatEngineApp = (props) => {
-  const { socketHooks, chatData, chatState, chatHooks } = useUserHooks(
+  const { socketHooks, chatData, chatState, componentHooks } = useUserHooks(
     props.projectID,
     props.accounts.userName,
     props.accounts.userSecret,
@@ -32,25 +32,25 @@ const ChatEngineApp = (props) => {
 
       <ChatEngine
         timezoneOffset={-7}
-        myUsername={props.accounts.myUsername}
         chats={chatData.chats}
-        activeChatId={chatData.activeChatId}
         messages={chatData.messages}
         // State
+        activeChatId={chatData.activeChatId}
+        myUsername={props.accounts.userName}
         hasMoreChats={chatState.hasMoreChats}
         hasMoreMessages={chatState.hasMoreMessages}
         // Component Hooks
-        onChatFormSubmit={chatHooks.onChatFormSubmit}
-        onChatCardClick={chatHooks.onChatCardClick}
-        onChatLoaderShow={chatHooks.onChatLoaderShow}
-        onMessageLoaderShow={chatHooks.onMessageLoaderShow}
-        onMessageLoaderHide={chatHooks.onMessageLoaderHide}
-        onBottomMessageShow={chatHooks.onBottomMessageShow}
-        onBottomMessageHide={chatHooks.onBottomMessageHide}
-        onMessageFormSubmit={chatHooks.onMessageFormSubmit}
-        onInvitePersonClick={chatHooks.onInvitePersonClick}
-        onRemovePersonClick={chatHooks.onRemovePersonClick}
-        onDeleteChatClick={chatHooks.onDeleteChatClick}
+        onChatFormSubmit={componentHooks.onChatFormSubmit}
+        onChatCardClick={componentHooks.onChatCardClick}
+        onChatLoaderShow={componentHooks.onChatLoaderShow}
+        onMessageLoaderShow={componentHooks.onMessageLoaderShow}
+        onMessageLoaderHide={componentHooks.onMessageLoaderHide}
+        onBottomMessageShow={componentHooks.onBottomMessageShow}
+        onBottomMessageHide={componentHooks.onBottomMessageHide}
+        onMessageFormSubmit={componentHooks.onMessageFormSubmit}
+        onInvitePersonClick={componentHooks.onInvitePersonClick}
+        onRemovePersonClick={componentHooks.onRemovePersonClick}
+        onDeleteChatClick={componentHooks.onDeleteChatClick}
         style={{ height: props.height }}
       />
     </div>
