@@ -190,42 +190,40 @@ export const useChatHooks = (
   const onMessageLoaderHide = () => {};
 
   return {
-    // TODO: Should be an interface
-    socketHooks: {
-      onConnect,
-      onAuthFail,
-      onEditChat,
-      onDeleteChat,
-      onGetMessages,
-      onNewMessage,
-      onEditMessage,
-      onDeleteMessage,
-    },
-    chatAuth: { projectId, chatId, chatAccessKey },
-    chatData: {
-      activeChatId,
-      setActiveChatId,
-      chat,
-      messages,
-      setMessages,
-      peopleToInvite,
-      setPeopleToInvite,
-    },
-    chatState: {
-      hasMoreChats,
-      setHasMoreChats,
-      hasMoreMessages,
-      setHasMoreMessages,
-      isChatFeedAtBottom,
-      setIsChatFeedAtBottom,
-    },
-    componentHooks: {
-      onChatCardClick,
-      onMessageLoaderShow,
-      onMessageLoaderHide,
-      onBottomMessageShow,
-      onBottomMessageHide,
-      onMessageFormSubmit,
-    },
+    // Socket Hooks
+    onConnect,
+    onAuthFail,
+    onEditChat,
+    onDeleteChat,
+    onGetMessages,
+    onNewMessage,
+    onEditMessage,
+    onDeleteMessage,
+    // Auth Data
+    projectId,
+    chatId,
+    chatAccessKey,
+    // Chat Data
+    activeChatId,
+    setActiveChatId,
+    chat,
+    messages,
+    setMessages,
+    peopleToInvite,
+    setPeopleToInvite,
+    // Chat State
+    hasMoreChats,
+    setHasMoreChats,
+    hasMoreMessages,
+    setHasMoreMessages,
+    isChatFeedAtBottom,
+    setIsChatFeedAtBottom,
+    // Component Hooks
+    onChatCardClick,
+    onMessageLoaderShow,
+    onMessageLoaderHide,
+    onBottomMessageShow,
+    onBottomMessageHide,
+    onMessageFormSubmit,
   };
 };
