@@ -8,6 +8,16 @@ import { chats } from '../../util/mocks';
   title="ChatWindow/ChatList"
   component={ChatList}
   argTypes={{
+    activeChatId: { table: { category: 'state' } },
+    myUsername: { table: { category: 'state' } },
+    hasMoreChats: { table: { category: 'state' } },
+    isLoading: { table: { category: 'state' } },
+    onChatCardClick: { table: { category: 'hooks' } },
+    onChatFormSubmit: { table: { category: 'hooks' } },
+    onChatLoaderShow: { table: { category: 'hooks' } },
+    renderChatList: { table: { category: 'render functions' } },
+    renderChatForm: { table: { category: 'render functions' } },
+    renderChatCard: { table: { category: 'render functions' } },
     style: { table: { category: 'styles' } },
     loadingMoreChatsStyle: { table: { category: 'styles' } },
   }}

@@ -8,6 +8,7 @@ import { onePersonChat, messages } from '../../util/mocks';
   title="ChatWindow/ChatFeed"
   component={ChatFeed}
   argTypes={{
+    myUsername: { table: { category: 'state' } },
     isLoading: { table: { category: 'state' } },
     hasMoreMessages: { table: { category: 'state' } },
     onMessageLoaderShow: { table: { category: 'hooks' } },
