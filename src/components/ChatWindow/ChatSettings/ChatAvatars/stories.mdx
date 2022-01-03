@@ -1,0 +1,129 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { ChatAvatars } from '.';
+import { Props } from './props';
+import { adam, bob, cam } from '../../../util/mocks';
+
+<Meta
+  title="ChatWindow/ChatSettings/Chat Avatars"
+  component={ChatAvatars}
+  argTypes={{
+    isDirectChat: { table: { category: 'state' } },
+    style: { table: { category: 'styles' } },
+    oneAvatarStyle: { table: { category: 'styles' } },
+    twoAvatarsStyle: { table: { category: 'styles' } },
+    threeAvatarsStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <ChatAvatars {...args} />;
+
+# Chat Avatars
+
+The `ChatAvatars` component appears at the top of the Settings window.
+
+This is used to display the Avatars of the users in the chat.
+
+Two arguments are required, the list of users in the chat, `users: PersonProps[]`, and the current user's username, `myUsername`.
+
+Optionally set `isDirectChat = true` if the chat is a direct message. Otherwise this defaults to `false` and assumes a group chat.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    users: [adam, bob, cam],
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Is Direct Chat
+
+For direct message chats, set `isDirectChat` to `true` and only the other person's avatar will display.
+
+<Canvas>
+  <Story
+    name="Is Direct Chat"
+    args={{
+      users: [adam, bob],
+      myUsername: adam.username,
+      isDirectChat: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## One Person Chat
+
+For groups chats containing one person, only their avatar will display.
+
+<Canvas>
+  <Story
+    name="One Person"
+    args={{
+      users: [adam],
+      myUsername: adam.username,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Two Person Chat
+
+For two person group chats, both avatars will display.
+
+<Canvas>
+  <Story
+    name="Two People"
+    args={{
+      users: [adam, bob],
+      myUsername: adam.username,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Three or more Person Chat
+
+For group chats with three or more people, the first three users' avatars will display.
+
+<Canvas>
+  <Story
+    name="Three People"
+    args={{
+      users: [adam, bob, cam],
+      myUsername: adam.username,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Styles
+
+For group chats with three or more people, the first three users' avatars will display.
+
+<Canvas>
+  <Story
+    name="Custom Styles"
+    args={{
+      users: [adam, bob, cam],
+      myUsername: adam.username,
+      style: { border: '2px solid orange' },
+      threeAvatarsStyle: {
+        avatarOne: { border: '2px solid red' },
+        avatarTwo: { border: '2px solid blue' },
+        avatarThree: { border: '2px solid green' },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

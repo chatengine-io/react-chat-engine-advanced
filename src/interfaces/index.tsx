@@ -4,7 +4,7 @@ export * from './chatPerson';
 export * from './message';
 export * from './person';
 
-import { Props as ComponentProps } from '../components/ChatEngine/props';
+import { Props as ComponentProps } from '../components/ChatWindow/props';
 import { Props as SocketProps } from '../sockets/UserSocket/props';
 
 interface ExperienceProps {

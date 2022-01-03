@@ -43,24 +43,30 @@ Add serverless chat to your React app in 3 minutes.
 
 3. Install `yarn add react-chat-engine`
 
-4. Import the `ChatEngine` component and pass in `projectId`, `myUsername`, and `mySecret` props
+4. Import the `ChatWindow`, `UserSocket`, and `useUserHooks`
 
-5. Voila! You're done
+5. Declare `const props = useUserHooks(projectId, myUsername, mySecret);` and pass the returning `props` object into `ChatWindow` and `UserSocket`.
+
+6. Voila! You're done
 
 Example implementation ⬇️
 
 ```jsx
 import React from 'react';
 
-import { ChatEngine } from 'react-chat-engine';
+import { ChatEngine, UserSocket, useUserHooks } from 'react-chat-engine';
 
 export function App() {
+  const chatProps = useUserHooks(
+    'b75e5bd5-cd84-404c-b820-06feff8c98c0',
+    'john_smith',
+    'secret_1234'
+  );
   return (
-    <ChatEngine
-      projectId="b75e5bd5-cd84-404c-b820-06feff8c98c0"
-      myUsername="john_smith"
-      mySecret="secret_1234"
-    />
+    <>
+      <ChatWindow {...chatProps} />
+      <UserSocket {...chatProps} />
+    </>
   );
 }
 ```

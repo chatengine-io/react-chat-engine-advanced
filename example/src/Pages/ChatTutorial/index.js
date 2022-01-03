@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { UserSocket, ChatEngine, useUserHooks } from 'react-chat-engine';
+import { UserSocket, ChatWindow, useUserHooks } from 'react-chat-engine';
 
 // import './App.css';
 
@@ -16,7 +16,7 @@ const App = () => {
     <div>
       <UserSocket {...state} />
 
-      <ChatEngine
+      <ChatWindow
         {...state}
         renderChatFeed={() => <div>yo</div>}
         style={{ height: '100vh' }}
