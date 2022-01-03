@@ -1,4 +1,4 @@
-import { ChatProps, MessageProps } from '../../../interfaces';
+import { ChatObject, MessageObject } from '../../../interfaces';
 
 import { ChatFeedStyles } from './styles';
 
@@ -10,9 +10,9 @@ import { Props as MessageFormProps } from './MessageForm/props';
 
 export interface Props extends ChatFeedStyles {
   // Data
-  messages: MessageProps[];
+  messages: MessageObject[];
   myUsername?: string;
-  chat?: ChatProps;
+  chat?: ChatObject;
   timezoneOffset?: number;
   // State
   isLoading?: boolean;
@@ -22,7 +22,7 @@ export interface Props extends ChatFeedStyles {
   onMessageLoaderHide?: () => void;
   onBottomMessageShow?: () => void;
   onBottomMessageHide?: () => void;
-  onMessageFormSubmit?: (message: MessageProps) => void;
+  onMessageFormSubmit?: (message: MessageObject) => void;
   // Render Functions
   renderChatFeed?: (props: Props) => React.FC<Props>;
   renderChatHeader?: (props: ChatHeaderProps) => React.FC<ChatHeaderProps>;

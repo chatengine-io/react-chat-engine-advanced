@@ -1,6 +1,6 @@
 import { MessageFormStyles } from './styles';
 
-import { MessageProps } from '../../../../interfaces';
+import { MessageObject } from '../../../../interfaces';
 
 export interface Props extends MessageFormStyles {
   // Data
@@ -9,7 +9,7 @@ export interface Props extends MessageFormStyles {
   myUsername?: string;
   // Hooks
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onSubmit?: (message: MessageProps) => void;
+  onSubmit?: (message: MessageObject) => void;
   // Render Functions
   renderMessageForm?: (props: Props) => React.FC<Props>;
 }

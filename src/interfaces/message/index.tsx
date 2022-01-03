@@ -1,12 +1,12 @@
-import { AttachmentProps } from '../attachment';
-import { PersonProps } from '../person';
+import { AttachmentObject } from '../attachment';
+import { PersonObject } from '../person';
 
-export interface MessageProps {
+export interface MessageObject {
   id?: number;
   text: string | null;
   sender_username: string;
   created: string;
-  attachments: Array<AttachmentProps>;
+  attachments: Array<AttachmentObject>;
   custom_json: object | string;
-  sender?: PersonProps; // Empty messages have no sender
+  sender?: PersonObject; // Empty messages have no sender
 }

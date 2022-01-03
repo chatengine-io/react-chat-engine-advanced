@@ -1,7 +1,7 @@
-import { PersonProps } from '../person';
+import { PersonObject } from '../person';
 
-export interface ChatPersonProps {
-  person: PersonProps;
+export interface ChatPersonObject {
+  person: PersonObject;
   chat_updated: string | null;
   last_read: number | null;
 }

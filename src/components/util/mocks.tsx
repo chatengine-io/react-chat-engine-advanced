@@ -1,11 +1,11 @@
 import {
-  AttachmentProps,
-  ChatProps,
-  MessageProps,
-  PersonProps,
+  AttachmentObject,
+  ChatObject,
+  MessageObject,
+  PersonObject,
 } from '../../interfaces';
 
-export const adam: PersonProps = {
+export const adam: PersonObject = {
   username: 'adam_lamorre',
   first_name: 'Adam',
   last_name: 'La Morre',
@@ -15,7 +15,7 @@ export const adam: PersonProps = {
   is_online: true,
 };
 
-export const bob: PersonProps = {
+export const bob: PersonObject = {
   username: 'bob_baker',
   first_name: 'Bob',
   last_name: 'Baker',
@@ -24,7 +24,7 @@ export const bob: PersonProps = {
   is_online: true,
 };
 
-export const cam: PersonProps = {
+export const cam: PersonObject = {
   username: 'cam_newton',
   first_name: 'Cam',
   last_name: 'Newton',
@@ -34,27 +34,27 @@ export const cam: PersonProps = {
   is_online: true,
 };
 
-export const imageAttachment: AttachmentProps = {
+export const imageAttachment: AttachmentObject = {
   id: 10,
   file:
     'https://chat-engine-assets.s3.amazonaws.com/tutorials/nextjs-chat-tutorial/thumb.png',
   created: '2021-08-03T00:16:52.633778Z',
 };
 
-export const fileAttachment: AttachmentProps = {
+export const fileAttachment: AttachmentObject = {
   id: 11,
   file: 'https://chat-engine-assets.s3.amazonaws.com/click.mp3',
   created: '2021-08-03T00:16:59.633778Z',
 };
 
-export const imageAttachment2: AttachmentProps = {
+export const imageAttachment2: AttachmentObject = {
   id: 12,
   file: 'https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png',
   created: '2021-08-03T00:16:59.633778Z',
 };
 
 const message1001Created = '2021-07-14 01:01:00.000000+00:00';
-export const message1001: MessageProps = {
+export const message1001: MessageObject = {
   id: 1001,
   created: message1001Created,
   attachments: [],
@@ -65,7 +65,7 @@ export const message1001: MessageProps = {
 };
 
 const message1002Created = '2021-07-14 01:02:00.000000+00:00';
-export const messageByBob1002: MessageProps = {
+export const messageByBob1002: MessageObject = {
   id: 1002,
   created: message1002Created,
   attachments: [],
@@ -76,7 +76,7 @@ export const messageByBob1002: MessageProps = {
 };
 
 const message1003Created = '2021-07-14 01:03:00.000000+00:00';
-export const messageTwoByBob1003: MessageProps = {
+export const messageTwoByBob1003: MessageObject = {
   id: 1003,
   created: message1003Created,
   attachments: [],
@@ -87,7 +87,7 @@ export const messageTwoByBob1003: MessageProps = {
 };
 
 const message1004Created = '2021-07-14 01:04:00.000000+00:00';
-export const messagePlusAttachments1004: MessageProps = {
+export const messagePlusAttachments1004: MessageObject = {
   id: 1004,
   created: message1004Created,
   attachments: [imageAttachment, fileAttachment],
@@ -97,7 +97,7 @@ export const messagePlusAttachments1004: MessageProps = {
   sender: adam,
 };
 
-export const onePersonChat: ChatProps = {
+export const onePersonChat: ChatObject = {
   id: 201,
   title: 'First Chat ☝️',
   is_direct_chat: false,
@@ -115,7 +115,7 @@ export const onePersonChat: ChatProps = {
   admin: adam,
 };
 
-export const chatWithReads: ChatProps = {
+export const chatWithReads: ChatObject = {
   id: 201,
   title: 'First Chat ☝️',
   is_direct_chat: false,
@@ -138,7 +138,7 @@ export const chatWithReads: ChatProps = {
   admin: adam,
 };
 
-export const threePersonChat: ChatProps = {
+export const threePersonChat: ChatObject = {
   id: 207,
   title: 'Friends!',
   is_direct_chat: false,
@@ -171,7 +171,7 @@ export const threePersonChat: ChatProps = {
   admin: adam,
 };
 
-export const directMessageChat: ChatProps = {
+export const directMessageChat: ChatObject = {
   id: 203,
   title: 'Direct Message w/ Adam',
   is_direct_chat: true,
@@ -200,14 +200,14 @@ export const directMessageChat: ChatProps = {
   admin: adam,
 };
 
-export const messages: MessageProps[] = [
+export const messages: MessageObject[] = [
   message1001,
   messageByBob1002,
   messageTwoByBob1003,
   messagePlusAttachments1004,
 ];
 
-export const chats: ChatProps[] = [
+export const chats: ChatObject[] = [
   {
     id: 201,
     title: 'First Chat ☝️',

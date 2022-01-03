@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ChatProps } from '../../interfaces';
+import { ChatObject } from '../../interfaces';
 import { UserAuthHeaders } from '../interfaces';
 
 type RemovePerson = (
@@ -8,7 +8,7 @@ type RemovePerson = (
   headers: UserAuthHeaders,
   chatId: number,
   username: string,
-  callback: (chat: ChatProps) => void
+  callback: (chat: ChatObject) => void
 ) => void;
 
 export const removePerson: RemovePerson = (

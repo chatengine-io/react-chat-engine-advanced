@@ -1,13 +1,13 @@
-import { MessageProps, ChatProps } from '../../../../../interfaces';
+import { MessageObject, ChatObject } from '../../../../../interfaces';
 
 import { MessageStyle } from './styles';
 
 export interface Props extends MessageStyle {
   // Data
-  lastMessage?: MessageProps | null;
-  message: MessageProps;
-  nextMessage?: MessageProps | null;
-  chat?: ChatProps | null;
+  lastMessage?: MessageObject | null;
+  message: MessageObject;
+  nextMessage?: MessageObject | null;
+  chat?: ChatObject | null;
   timezoneOffset?: number;
   // State
   isSending?: boolean;

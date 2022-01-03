@@ -11,10 +11,10 @@ import { WelcomeGif } from './WelcomeGif';
 import { getDateTime, formatDateTime } from '../../util/dateTime';
 
 import { Spinner } from '../../Components/Spinner';
-import { ChatProps } from '../../../interfaces';
+import { ChatObject } from '../../../interfaces';
 
 const getDescription = (
-  chat: ChatProps | undefined,
+  chat: ChatObject | undefined,
   timezoneOffset: number = 0
 ) => {
   if (!chat) {

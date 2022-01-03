@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 import { UserAuthHeaders } from '../interfaces';
-import { ChatProps } from '../../interfaces';
+import { ChatObject } from '../../interfaces';
 
 type DeleteChat = (
   host: string,
   headers: UserAuthHeaders,
   chatId: number | string,
-  callback: (chat: ChatProps) => void
+  callback: (chat: ChatObject) => void
 ) => void;
 
 export const deleteChat: DeleteChat = (host, headers, chatId, callback) => {

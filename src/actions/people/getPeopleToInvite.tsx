@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-import { PersonProps } from '../../interfaces';
+import { PersonObject } from '../../interfaces';
 import { UserAuthHeaders } from '../interfaces';
 
 type GetPeopleToInvite = (
   host: string,
   headers: UserAuthHeaders,
   chatId: number,
-  callback: (peopleToInvite: PersonProps[]) => void
+  callback: (peopleToInvite: PersonObject[]) => void
 ) => void;
 
 export const getPeopleToInvite: GetPeopleToInvite = (

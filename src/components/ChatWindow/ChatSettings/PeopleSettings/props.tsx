@@ -1,15 +1,15 @@
 import { PeopleSettingsStyles } from './styles';
 
-import { ChatProps, PersonProps } from '../../../../interfaces';
+import { ChatObject, PersonObject } from '../../../../interfaces';
 
 export interface Props extends PeopleSettingsStyles {
-  chat?: ChatProps;
-  peopleToInvite?: Array<PersonProps>;
+  chat?: ChatObject;
+  peopleToInvite?: Array<PersonObject>;
   // State
   canDelete?: boolean;
   // Hooks
-  onInvitePersonClick?: (person: PersonProps) => void;
-  onRemovePersonClick?: (person: PersonProps) => void;
+  onInvitePersonClick?: (person: PersonObject) => void;
+  onRemovePersonClick?: (person: PersonObject) => void;
   // Render Functions
   renderPeopleSettings?: (props: Props) => React.FC<Props>;
 }

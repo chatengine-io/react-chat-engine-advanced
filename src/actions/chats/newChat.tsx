@@ -1,14 +1,14 @@
 import _ from 'lodash';
 import axios from 'axios';
 
-import { ChatProps } from '../../interfaces';
+import { ChatObject } from '../../interfaces';
 import { UserAuthHeaders } from '../interfaces';
 
 type NewChat = (
   host: string,
   headers: UserAuthHeaders,
   title: string | undefined,
-  callback: (chat: ChatProps) => void
+  callback: (chat: ChatObject) => void
 ) => void;
 
 export const newChat: NewChat = (host, headers, title, callback) => {

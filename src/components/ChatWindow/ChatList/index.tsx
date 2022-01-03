@@ -8,12 +8,12 @@ import { ChatCard } from './ChatCard';
 
 import { RenderTrigger } from '../../Components/RenderTrigger';
 
-import { ChatProps } from '../../../interfaces';
+import { ChatObject } from '../../../interfaces';
 import { getDateTime } from '../../util/dateTime';
 
 import { Spinner } from '../../Components/Spinner';
 
-const readLastMessage = (myUsername: string, chat: ChatProps) => {
+const readLastMessage = (myUsername: string, chat: ChatObject) => {
   return chat.people.some(
     (chatPerson) =>
       chatPerson.person.username === myUsername &&
@@ -27,7 +27,7 @@ const renderLoading = () => {
   });
 };
 
-const getDescription = (chat: ChatProps): string => {
+const getDescription = (chat: ChatObject): string => {
   if (!chat.last_message.id) {
     return 'Say hello!';
   }
@@ -40,7 +40,7 @@ const getDescription = (chat: ChatProps): string => {
 export const ChatList: React.FC<Props> = (props: Props) => {
   const { activeChatId = -1 } = props;
 
-  const renderChats = (chats: Array<ChatProps>) => {
+  const renderChats = (chats: Array<ChatObject>) => {
     return chats.map((chat, index) => {
       const otherPerson =
         chat &&
