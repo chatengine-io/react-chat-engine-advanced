@@ -17,8 +17,9 @@ const getDescription = (
   chat: ChatProps | undefined,
   timezoneOffset: number = 0
 ) => {
-  if (
-    chat &&
+  if (!chat) {
+    return '⬅️ ⬅️ ⬅️';
+  } else if (
     chat.last_message.created &&
     chat.last_message.created.length > 0
   ) {
@@ -37,14 +38,15 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
     chat &&
     chat.people.find((person) => person.person.username !== props.myUsername);
 
-  const title =
-    !chat || props.isLoading ? (
-      <Spinner />
-    ) : chat.is_direct_chat && otherPerson ? (
-      otherPerson.person.username
-    ) : (
-      chat.title
-    );
+  const title = props.isLoading ? (
+    <Spinner />
+  ) : !chat ? (
+    'Create a chat!'
+  ) : chat.is_direct_chat && otherPerson ? (
+    otherPerson.person.username
+  ) : (
+    chat.title
+  );
 
   if (props.renderChatFeed) {
     return <>{props.renderChatFeed(props)}</>;

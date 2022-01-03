@@ -203,6 +203,7 @@ export const useChatHooks = (
     projectId,
     chatId,
     chatAccessKey,
+    isDevelopment,
     // Chat Data
     activeChatId,
     setActiveChatId,

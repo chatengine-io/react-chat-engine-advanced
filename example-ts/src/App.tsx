@@ -11,12 +11,7 @@ const myUsername = 'Adam_La_Morre';
 const mySecret = 'pass1234';
 
 const App: React.FC = () => {
-  const { socketHooks, chatData, chatState, componentHooks } = useUserHooks(
-    projectId,
-    myUsername,
-    mySecret,
-    true
-  );
+  const state = useUserHooks(projectId, myUsername, mySecret, true);
   return (
     <div>
       <UserSocket
@@ -24,15 +19,9 @@ const App: React.FC = () => {
         myUsername={myUsername}
         mySecret={mySecret}
         isDevelopment={true}
-        {...socketHooks}
+        {...state}
       />
-      <ChatEngine
-        myUsername={myUsername}
-        timezoneOffset={1}
-        {...chatData}
-        {...chatState}
-        {...componentHooks}
-      />
+      <ChatEngine myUsername={myUsername} timezoneOffset={1} {...state} />
     </div>
   );
 };
