@@ -1,4 +1,4 @@
-import { ChatProps, MessageProps, PersonProps } from '../../interfaces';
+import { ChatObject, MessageObject, PersonObject } from '../../interfaces';
 import { ChatEngineStyles } from './styles';
 
 import { Props as ChatListProps } from './ChatList/props';
@@ -19,10 +19,10 @@ import { Props as OptionsSettingsProps } from './ChatSettings/OptionsSettings/pr
 export interface Props extends ChatEngineStyles {
   // Data
   myUsername?: string;
-  chats?: ChatProps[];
+  chats?: ChatObject[];
   activeChatId?: number;
-  messages?: MessageProps[];
-  peopleToInvite?: PersonProps[];
+  messages?: MessageObject[];
+  peopleToInvite?: PersonObject[];
   timezoneOffset?: number;
   // State
   isChatListLoading?: boolean;
@@ -38,10 +38,10 @@ export interface Props extends ChatEngineStyles {
   onMessageLoaderHide?: () => void;
   onBottomMessageShow?: () => void;
   onBottomMessageHide?: () => void;
-  onMessageFormSubmit?: (message: MessageProps) => void;
-  onInvitePersonClick?: (person: PersonProps) => void;
-  onRemovePersonClick?: (person: PersonProps) => void;
-  onDeleteChatClick?: (chat: ChatProps) => void;
+  onMessageFormSubmit?: (message: MessageObject) => void;
+  onInvitePersonClick?: (person: PersonObject) => void;
+  onRemovePersonClick?: (person: PersonObject) => void;
+  onDeleteChatClick?: (chat: ChatObject) => void;
   // Render Functions
   renderChatList?: (props: ChatListProps) => React.FC<ChatListProps>;
   renderChatForm?: (props: ChatFromProps) => React.FC<ChatFromProps>;

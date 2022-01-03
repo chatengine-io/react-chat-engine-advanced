@@ -1,4 +1,4 @@
-export interface AttachmentProps {
+export interface AttachmentObject {
   id: number;
   file: string;
   blob?: File;

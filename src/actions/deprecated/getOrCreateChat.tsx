@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ChatProps } from '../../interfaces';
+import { ChatObject } from '../../interfaces';
 import { UserAuthHeaders } from '../interfaces';
 
 interface NewChat {
@@ -11,7 +11,7 @@ export const getOrCreateChat = (
   host: string = 'https://api.chatengine.io',
   headers: UserAuthHeaders,
   data: NewChat,
-  callback: (chat: ChatProps) => void
+  callback: (chat: ChatObject) => void
 ) => {
   axios
     .put(`${host}/chats/`, data, {

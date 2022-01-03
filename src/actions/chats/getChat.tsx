@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 import { ChatAuthHeaders, UserAuthHeaders } from '../interfaces';
-import { ChatProps } from '../../interfaces';
+import { ChatObject } from '../../interfaces';
 
 type GetChat = (
   host: string,
   headers: UserAuthHeaders | ChatAuthHeaders,
   chatId: number | string,
-  callback: (chat: ChatProps) => void
+  callback: (chat: ChatObject) => void
 ) => void;
 
 export const getChat: GetChat = (host, headers, chatId, callback) => {

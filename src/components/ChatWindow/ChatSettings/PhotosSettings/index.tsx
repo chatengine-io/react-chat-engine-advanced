@@ -5,12 +5,12 @@ import { styles } from './styles';
 
 import { Image } from '../../../Components/Image';
 import { Dropdown } from '../../../Components/Dropdown';
-import { AttachmentProps } from '../../../../interfaces';
+import { AttachmentObject } from '../../../../interfaces';
 import { isImage, getFileName } from '../../../util/file';
 
 export const PhotosSettings: React.FC<Props> = (props: Props) => {
   const { chat = { attachments: [] } } = props;
-  const renderImages = (attachments: Array<AttachmentProps>) => {
+  const renderImages = (attachments: Array<AttachmentObject>) => {
     return attachments.map((attachment, index) => {
       const fileName = getFileName(attachment.file);
       if (isImage(fileName)) {

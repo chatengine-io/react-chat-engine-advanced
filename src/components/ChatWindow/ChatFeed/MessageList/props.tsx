@@ -1,12 +1,12 @@
-import { ChatProps, MessageProps } from '../../../../interfaces';
+import { ChatObject, MessageObject } from '../../../../interfaces';
 
 import { MessageListStyles } from './styles';
 
 import { Props as MessageBubbleProps } from './Message/props';
 export interface Props extends MessageListStyles {
   // Data
-  messages: MessageProps[];
-  chat?: ChatProps;
+  messages: MessageObject[];
+  chat?: ChatObject;
   myUsername?: string;
   timezoneOffset?: number;
   // State

@@ -1,4 +1,4 @@
-import { ChatProps, MessageProps, PersonProps } from '../../interfaces';
+import { ChatObject, MessageObject, PersonObject } from '../../interfaces';
 
 export interface Props {
   projectId?: string;
@@ -10,10 +10,10 @@ export interface Props {
   onError?: () => void;
   onClose?: () => void;
   onRefresh?: () => void;
-  onEditChat?: (chat: ChatProps) => void;
-  onDeleteChat?: (chat: ChatProps) => void;
-  onNewMessage?: (chatId: number, message: MessageProps) => void;
-  onEditMessage?: (chatId: number, message: MessageProps) => void;
-  onDeleteMessage?: (chatId: number, message: MessageProps) => void;
-  onIsTyping?: (chatId: number, person: PersonProps) => void;
+  onEditChat?: (chat: ChatObject) => void;
+  onDeleteChat?: (chat: ChatObject) => void;
+  onNewMessage?: (chatId: number, message: MessageObject) => void;
+  onEditMessage?: (chatId: number, message: MessageObject) => void;
+  onDeleteMessage?: (chatId: number, message: MessageObject) => void;
+  onIsTyping?: (chatId: number, person: PersonObject) => void;
 }

@@ -1,9 +1,9 @@
-import { PersonProps } from '../../../../interfaces';
+import { PersonObject } from '../../../../interfaces';
 
 import { ChatAvatarsStyle } from './styles';
 
 export interface Props extends ChatAvatarsStyle {
-  users?: PersonProps[];
+  users?: PersonObject[];
   myUsername?: string;
   isDirectChat?: boolean;
 }

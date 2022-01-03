@@ -1,15 +1,15 @@
 import _ from 'lodash';
 import axios from 'axios';
 
-import { MessageProps } from '../../interfaces';
+import { MessageObject } from '../../interfaces';
 import { ChatAuthHeaders, UserAuthHeaders } from '../interfaces';
 
 type NewMessage = (
   host: string,
   headers: UserAuthHeaders | ChatAuthHeaders,
   chatId: number | undefined,
-  message: MessageProps,
-  callback: (message: MessageProps) => void
+  message: MessageObject,
+  callback: (message: MessageObject) => void
 ) => void;
 
 export const newMessage: NewMessage = (

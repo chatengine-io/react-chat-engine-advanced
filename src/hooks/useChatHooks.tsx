@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 
-import { ChatProps, MessageProps, PersonProps } from '../interfaces';
+import { ChatObject, MessageObject, PersonObject } from '../interfaces';
 import { getDateTime } from '../components/util/dateTime';
 
 import { getHost, getChat, getMessages, newMessage } from '../actions';
@@ -10,8 +10,8 @@ import { ChatAuthHeaders } from '../actions/interfaces';
 
 const messageCountIterator = 50;
 
-export const sortChats = (chats: ChatProps[]) => {
-  return chats.sort((a: ChatProps, b: ChatProps) => {
+export const sortChats = (chats: ChatObject[]) => {
+  return chats.sort((a: ChatObject, b: ChatObject) => {
     const aDate =
       a.last_message && a.last_message.created
         ? getDateTime(a.last_message.created)
@@ -24,8 +24,8 @@ export const sortChats = (chats: ChatProps[]) => {
   });
 };
 
-export const sortMessages = (messages: MessageProps[]) => {
-  return messages.sort((a: MessageProps, b: MessageProps) => {
+export const sortMessages = (messages: MessageObject[]) => {
+  return messages.sort((a: MessageObject, b: MessageObject) => {
     return new Date(b.created).getTime() - new Date(a.created).getTime();
   });
 };
@@ -45,9 +45,9 @@ export const useChatHooks = (
 
   // Data
   const [activeChatId, setActiveChatId] = useState<number | undefined>();
-  const [chat, setChat] = useState<ChatProps | undefined>();
-  const [messages, setMessages] = useState<MessageProps[]>([]);
-  const [peopleToInvite, setPeopleToInvite] = useState<PersonProps[]>([]);
+  const [chat, setChat] = useState<ChatObject | undefined>();
+  const [messages, setMessages] = useState<MessageObject[]>([]);
+  const [peopleToInvite, setPeopleToInvite] = useState<PersonObject[]>([]);
 
   // State
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
@@ -60,7 +60,7 @@ export const useChatHooks = (
   const messageCountRef = useRef<number>(0);
   messageCountRef.current = messages.length;
 
-  const onEditChat = (chat: ChatProps) => {
+  const onEditChat = (chat: ChatObject) => {
     setChat(chat);
   };
 
@@ -69,7 +69,7 @@ export const useChatHooks = (
     setActiveChatId(undefined);
   };
 
-  const onGetMessages = (chatId: number, messages: MessageProps[]) => {
+  const onGetMessages = (chatId: number, messages: MessageObject[]) => {
     setHasMoreMessages(
       messages.length >= messageCountRef.current + messageCountIterator
     );
@@ -78,7 +78,7 @@ export const useChatHooks = (
     void chatId;
   };
 
-  const onNewMessage = (chatId: number, newMessage: MessageProps) => {
+  const onNewMessage = (chatId: number, newMessage: MessageObject) => {
     if (activeChatId === chatId) {
       const otherMessages = messages
         ? messages.filter((message) => message.created !== newMessage.created)
@@ -96,7 +96,7 @@ export const useChatHooks = (
     }
   };
 
-  const onEditMessage = (chatId: number, newMessage: MessageProps) => {
+  const onEditMessage = (chatId: number, newMessage: MessageObject) => {
     if (chatId === activeChatId) {
       const otherMessages = messages
         ? messages.filter((message) => message.id !== newMessage.id)
@@ -107,7 +107,7 @@ export const useChatHooks = (
     }
   };
 
-  const onDeleteMessage = (chatId: number, oldMessage: MessageProps) => {
+  const onDeleteMessage = (chatId: number, oldMessage: MessageObject) => {
     if (chatId === activeChatId) {
       const newMessages = messages
         ? messages.filter((message) => message.id !== oldMessage.id)
@@ -143,7 +143,7 @@ export const useChatHooks = (
     );
   };
 
-  const onMessageFormSubmit = (message: MessageProps) => {
+  const onMessageFormSubmit = (message: MessageObject) => {
     const newMessages = messages?.concat(message);
     setMessages(newMessages);
 

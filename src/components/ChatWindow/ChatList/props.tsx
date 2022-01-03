@@ -2,14 +2,14 @@ import { HTMLAttributes } from 'react';
 
 import { ChatListStyles } from './styles';
 
-import { ChatProps } from '../../../interfaces';
+import { ChatObject } from '../../../interfaces';
 
 import { Props as ChatFormProps } from './ChatForm/props';
 import { Props as ChatCardProps } from './ChatCard/props';
 
 export interface Props extends HTMLAttributes<HTMLDivElement>, ChatListStyles {
   // Data
-  chats: ChatProps[];
+  chats: ChatObject[];
   activeChatId?: number;
   myUsername?: string;
   timezoneOffset?: number;

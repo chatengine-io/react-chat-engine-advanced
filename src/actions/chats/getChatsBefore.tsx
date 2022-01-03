@@ -2,14 +2,14 @@ import _ from 'lodash';
 import axios from 'axios';
 
 import { UserAuthHeaders } from '../interfaces';
-import { ChatProps } from '../../interfaces';
+import { ChatObject } from '../../interfaces';
 
 type GetChatsBefore = (
   host: string,
   headers: UserAuthHeaders,
   before: string,
   chatCount: number,
-  callback: (chats: Array<ChatProps>) => void
+  callback: (chats: Array<ChatObject>) => void
 ) => void;
 
 export const getChatsBefore: GetChatsBefore = (

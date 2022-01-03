@@ -8,12 +8,12 @@ import { Autocomplete } from '../../../Components/Autocomplete';
 import { Button } from '../../../Components/Button';
 import { Dropdown } from '../../../Components/Dropdown';
 
-import { PersonProps, ChatPersonProps } from '../../../../interfaces';
+import { PersonObject, ChatPersonObject } from '../../../../interfaces';
 
 export const PeopleSettings: React.FC<Props> = (props: Props) => {
   const { chat = { people: [] }, peopleToInvite = [] } = props;
 
-  const renderChatPeople = (chatPeople: Array<ChatPersonProps>) => {
+  const renderChatPeople = (chatPeople: Array<ChatPersonObject>) => {
     return chatPeople.map((chatPerson, index) => {
       const { person } = chatPerson;
 
@@ -64,7 +64,7 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
   };
 
   const renderChatPeopleOption = (option: object) => {
-    const person = option as PersonProps;
+    const person = option as PersonObject;
     const { onInvitePersonClick } = props;
     return (
       <div

@@ -4,13 +4,13 @@ import { Props } from './props';
 import { styles, ChatAvatarsStyle, AvatarsStyle } from './styles';
 
 import { Avatar } from '../../../Components/Avatar';
-import { PersonProps } from '../../../../interfaces';
+import { PersonObject } from '../../../../interfaces';
 
 export const ChatAvatars: React.FC<Props> = (props: Props) => {
   const { users = [] } = props;
 
   const getStyle = (
-    people: PersonProps[],
+    people: PersonObject[],
     styles: ChatAvatarsStyle
   ): AvatarsStyle => {
     if (people.length === 1) {
@@ -22,7 +22,7 @@ export const ChatAvatars: React.FC<Props> = (props: Props) => {
     }
   };
 
-  const getPeopleToRender = (people: PersonProps[]): PersonProps[] => {
+  const getPeopleToRender = (people: PersonObject[]): PersonObject[] => {
     if (props.isDirectChat) {
       const otherPerson = users.find(
         (person) => person.username !== props.myUsername

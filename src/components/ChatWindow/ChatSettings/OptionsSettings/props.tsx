@@ -1,11 +1,11 @@
 import { OptionsSettingsStyles } from './styles';
 
-import { ChatProps } from '../../../../interfaces';
+import { ChatObject } from '../../../../interfaces';
 
 export interface Props extends OptionsSettingsStyles {
-  chat?: ChatProps;
+  chat?: ChatObject;
   // Hooks
-  onDeleteChatClick?: (chat: ChatProps) => void;
+  onDeleteChatClick?: (chat: ChatObject) => void;
   // Render Functions
   renderOptionsSettings?: (props: Props) => React.FC<Props>;
 }

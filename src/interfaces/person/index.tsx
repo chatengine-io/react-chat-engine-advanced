@@ -1,4 +1,4 @@
-export interface PersonProps {
+export interface PersonObject {
   username: string;
   first_name: string | null;
   last_name: string | null;

@@ -1,8 +1,8 @@
 import { PhotosSettingsStyles } from './styles';
 
-import { ChatProps } from '../../../../interfaces';
+import { ChatObject } from '../../../../interfaces';
 
 export interface Props extends PhotosSettingsStyles {
-  chat?: ChatProps;
+  chat?: ChatObject;
   renderPhotosSettings?: (props: Props) => React.FC<Props>;
 }

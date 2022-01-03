@@ -1,4 +1,4 @@
-import { MessageProps } from '../../interfaces';
+import { MessageObject } from '../../interfaces';
 import { UserAuthHeaders, ChatAuthHeaders } from '../interfaces';
 
 import axios from 'axios';
@@ -8,7 +8,7 @@ type GetMessages = (
   headers: UserAuthHeaders | ChatAuthHeaders,
   chatId: number,
   messageCount: number,
-  callback: (chatId: number, messages: MessageProps[]) => void
+  callback: (chatId: number, messages: MessageObject[]) => void
 ) => void;
 
 export const getMessages: GetMessages = (

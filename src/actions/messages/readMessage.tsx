@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ChatProps } from '../../interfaces';
+import { ChatObject } from '../../interfaces';
 import { UserAuthHeaders } from '../interfaces';
 
 type ReadMessages = (
@@ -7,7 +7,7 @@ type ReadMessages = (
   headers: UserAuthHeaders,
   chatId: number,
   messageCount: number,
-  callback: (chat: ChatProps) => void
+  callback: (chat: ChatObject) => void
 ) => void;
 
 export const readMessage: ReadMessages = (
