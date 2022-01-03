@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { ChatEngine, UserSocket, useUserHooks } from 'react-chat-engine';
+import { ChatWindow, UserSocket, useUserHooks } from 'react-chat-engine';
 
-const ChatEngineApp = (props) => {
+const ChatWindowApp = (props) => {
   const chatProps = useUserHooks(
     props.projectID,
     props.accounts.userName,
@@ -30,7 +30,7 @@ const ChatEngineApp = (props) => {
         onIsTyping={chatProps.onIsTyping}
       />
 
-      <ChatEngine
+      <ChatWindow
         timezoneOffset={-7}
         chats={chatProps.chats}
         messages={chatProps.messages}
@@ -61,4 +61,4 @@ function mapStateToProps(state) {
   return { accounts: state.accounts };
 }
 
-export default connect(mapStateToProps, {})(ChatEngineApp);
+export default connect(mapStateToProps, {})(ChatWindowApp);

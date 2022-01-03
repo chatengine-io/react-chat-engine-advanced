@@ -1,19 +1,19 @@
-export * from './ChatEngine';
+export * from './ChatWindow';
 
-export * from './ChatEngine/ChatList';
-export * from './ChatEngine/ChatList/ChatForm';
-export * from './ChatEngine/ChatList/ChatCard';
+export * from './ChatWindow/ChatList';
+export * from './ChatWindow/ChatList/ChatForm';
+export * from './ChatWindow/ChatList/ChatCard';
 
-export * from './ChatEngine/ChatFeed';
-export * from './ChatEngine/ChatFeed/ChatHeader';
-export * from './ChatEngine/ChatFeed/MessageList';
-export * from './ChatEngine/ChatFeed/MessageForm';
+export * from './ChatWindow/ChatFeed';
+export * from './ChatWindow/ChatFeed/ChatHeader';
+export * from './ChatWindow/ChatFeed/MessageList';
+export * from './ChatWindow/ChatFeed/MessageForm';
 
-export * from './ChatEngine/ChatSettings';
-export * from './ChatEngine/ChatSettings/ChatAvatars';
-export * from './ChatEngine/ChatSettings/PeopleSettings';
-export * from './ChatEngine/ChatSettings/PhotosSettings';
-export * from './ChatEngine/ChatSettings/OptionsSettings';
+export * from './ChatWindow/ChatSettings';
+export * from './ChatWindow/ChatSettings/ChatAvatars';
+export * from './ChatWindow/ChatSettings/PeopleSettings';
+export * from './ChatWindow/ChatSettings/PhotosSettings';
+export * from './ChatWindow/ChatSettings/OptionsSettings';
 
 export * from './Components/Avatar';
 export * from './Components/Autocomplete';
