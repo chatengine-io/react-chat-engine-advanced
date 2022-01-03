@@ -50,10 +50,10 @@ const DirectChatPage = () => {
   return (
     <div>
       <UserSocket
-        projectId={PROJECT_ID}
-        myUsername={USER_NAME}
-        mySecret={USER_SECRET}
-        isDevelopment={DEVELOPMENT}
+        projectId={state.projectId}
+        myUsername={state.myUsername}
+        mySecret={state.mySecret}
+        isDevelopment={state.isDevelopment}
         // Socket Hooks
         onConnect={state.onConnect}
         onAuthFail={state.onAuthFail}

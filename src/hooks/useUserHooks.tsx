@@ -315,10 +315,10 @@ export const useUserHooks = (
     onEditMessage,
     onDeleteMessage,
     // Auth Data
-
     projectId,
     myUsername,
     mySecret,
+    isDevelopment,
     // Chat Data
     chats,
     setChats,

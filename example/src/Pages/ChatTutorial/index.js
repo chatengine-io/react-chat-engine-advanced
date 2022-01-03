@@ -14,43 +14,11 @@ const App = () => {
 
   return (
     <div>
-      <UserSocket
-        projectId={projectId}
-        myUsername={userName}
-        mySecret={userSecret}
-        // Socket Hooks
-        onConnect={state.onConnect}
-        onAuthFail={state.onAuthFail}
-        onNewChat={state.onNewChat}
-        onEditChat={state.onEditChat}
-        onDeleteChat={state.onDeleteChat}
-        onNewMessage={state.onNewMessage}
-        onEditMessage={state.onEditMessage}
-        onDeleteMessage={state.onDeleteMessage}
-        onIsTyping={state.onIsTyping}
-      />
+      <UserSocket {...state} />
 
       <ChatEngine
-        // Chat Data
-        myUsername={state.myUsername}
-        chats={state.chats}
-        activeChatId={state.activeChatId}
-        messages={state.messages}
-        // Event Hooks
-        onChatFormSubmit={state.onChatFormSubmit}
-        onChatCardClick={state.onChatCardClick}
-        onChatLoaderShow={state.onChatLoaderShow}
-        onMessageLoaderShow={state.onMessageLoaderShow}
-        onMessageLoaderHide={state.onMessageLoaderHide}
-        onBottomMessageShow={state.onBottomMessageShow}
-        onBottomMessageHide={state.onBottomMessageHide}
-        onMessageFormSubmit={state.onMessageFormSubmit}
-        onInvitePersonClick={state.onInvitePersonClick}
-        onRemovePersonClick={state.onRemovePersonClick}
-        onDeleteChatClick={state.onDeleteChatClick}
-        // Render Functions
+        {...state}
         renderChatFeed={() => <div>yo</div>}
-        // Style
         style={{ height: '100vh' }}
       />
     </div>

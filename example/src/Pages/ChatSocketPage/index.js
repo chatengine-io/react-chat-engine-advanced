@@ -29,20 +29,8 @@ const HomePage = () => {
       <Col xs={0} sm={0} md={4} />
 
       <Col xs={12} sm={6} md={4} style={{ height: '95vh', marginTop: '2.5vh' }}>
-        <ChatSocket
-          projectId={PROJECT_ID}
-          chatId={CHAT_ID}
-          chatAccessKey={CHAT_ACCESS_KEY}
-          isDevelopment={DEVELOPMENT}
-          {...state.socketHooks}
-        />
-
-        <ChatFeed
-          myUsername={senderUsername}
-          {...state.chatData}
-          {...state.chatState}
-          {...state.componentHooks}
-        />
+        <ChatSocket {...state} />
+        <ChatFeed myUsername={senderUsername} {...state} />
       </Col>
 
       <Col xs={12} sm={6} md={4} style={{ height: '95vh', marginTop: '2.5vh' }}>
