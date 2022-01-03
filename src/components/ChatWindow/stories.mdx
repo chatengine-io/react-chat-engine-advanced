@@ -8,6 +8,8 @@ import { adam, chats, messages } from '../util/mocks';
   title="ChatWindow"
   component={ChatWindow}
   argTypes={{
+    activeChatId: { table: { category: 'state' } },
+    myUsername: { table: { category: 'state' } },
     isChatListLoading: { table: { category: 'state' } },
     isChatFeedLoading: { table: { category: 'state' } },
     isChatSettingsLoading: { table: { category: 'state' } },

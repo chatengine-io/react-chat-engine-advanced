@@ -8,6 +8,7 @@ import { messages, directMessageChat } from '../../../util/mocks';
   title="ChatWindow/ChatFeed/MessageList"
   component={MessageList}
   argTypes={{
+    myUsername: { table: { category: 'state' } },
     hasMoreMessages: { table: { category: 'state' } },
     onMessageLoaderShow: { table: { category: 'hooks' } },
     onMessageLoaderHide: { table: { category: 'hooks' } },
