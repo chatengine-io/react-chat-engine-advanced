@@ -1,2 +1,2 @@
-export { useUserHooks } from './useUserHooks';
+export { useMyChatsLogic } from './useMyChatsLogic';
 export { useSingleChatLogic } from './useSingleChatLogic';

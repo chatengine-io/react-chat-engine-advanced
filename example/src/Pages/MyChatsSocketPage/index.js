@@ -3,7 +3,7 @@ import React from 'react';
 import {
   MyChatsSocket,
   ChatFeed,
-  useUserHooks,
+  useMyChatsLogic,
   getChatsBefore,
 } from 'react-chat-engine';
 
@@ -21,7 +21,7 @@ import { setConfiguration } from 'react-grid-system';
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
 const MyChatsSocketPage = () => {
-  const chatProps = useUserHooks(
+  const chatProps = useMyChatsLogic(
     PROJECT_ID,
     USER_NAME,
     USER_SECRET,

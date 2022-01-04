@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { ChatWindow, MyChatsSocket, useUserHooks } from 'react-chat-engine';
+import { ChatWindow, MyChatsSocket, useMyChatsLogic } from 'react-chat-engine';
 
 const ChatWindowApp = (props) => {
-  const chatProps = useUserHooks(
+  const chatProps = useMyChatsLogic(
     props.projectID,
     props.accounts.userName,
     props.accounts.userSecret,
