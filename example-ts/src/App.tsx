@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  UserSocket,
+  MyChatsSocket,
   ChatWindow,
   useUserHooks,
 } from 'react-chat-engine-components';
@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const state = useUserHooks(projectId, myUsername, mySecret, true);
   return (
     <div>
-      <UserSocket {...state} />
+      <MyChatsSocket {...state} />
       <ChatWindow timezoneOffset={1} {...state} />
     </div>
   );

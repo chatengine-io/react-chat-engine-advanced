@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { UserSocket, ChatWindow, useUserHooks } from 'react-chat-engine';
+import { MyChatsSocket, ChatWindow, useUserHooks } from 'react-chat-engine';
 
 // import './App.css';
 
@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <div>
-      <UserSocket {...state} />
+      <MyChatsSocket {...state} />
 
       <ChatWindow
         {...state}
