@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 
+import axios from 'axios';
+
 import { Props } from './props';
 
 import { ChildSocket } from './childSocket';
 
-import axios from 'axios';
-import { UserAuthHeaders } from '../../actions/interfaces';
+import { UserAuthHeaders } from '../../interfaces';
 
 const getSessionToken = (
   host = 'https://api.chatengine.io',

@@ -1,5 +1,8 @@
-import { MessageObject } from '../../interfaces';
-import { UserAuthHeaders, ChatAuthHeaders } from '../interfaces';
+import {
+  MessageObject,
+  UserAuthHeaders,
+  ChatAuthHeaders,
+} from '../../interfaces';
 
 import axios from 'axios';
 

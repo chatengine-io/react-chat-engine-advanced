@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-import { ChatAuthHeaders, UserAuthHeaders } from '../interfaces';
-import { ChatObject } from '../../interfaces';
+import { ChatObject, ChatAuthHeaders, UserAuthHeaders } from '../../interfaces';
 
 type GetChat = (
   host: string,

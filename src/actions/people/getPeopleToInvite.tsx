@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-import { PersonObject } from '../../interfaces';
-import { UserAuthHeaders } from '../interfaces';
+import { PersonObject, UserAuthHeaders } from '../../interfaces';
 
 type GetPeopleToInvite = (
   host: string,

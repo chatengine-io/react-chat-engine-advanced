@@ -1,10 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 
-import { ChatObject, MessageObject, PersonObject } from '../interfaces';
+import {
+  ChatObject,
+  MessageObject,
+  PersonObject,
+  UserAuthHeaders,
+} from '../interfaces';
 import { getDateTime } from '../components/util/dateTime';
 
 import {
-  getHost,
   getChatsBefore,
   newChat,
   deleteChat,
@@ -17,7 +21,6 @@ import {
 } from '../actions';
 
 import { animateScroll } from 'react-scroll';
-import { UserAuthHeaders } from '../actions/interfaces';
 
 const chatCountIterator = 20;
 const messageCountIterator = 50;
@@ -48,7 +51,9 @@ export const useUserHooks = (
   mySecret: string,
   isDevelopment?: boolean
 ) => {
-  const host = getHost(isDevelopment);
+  const host = isDevelopment
+    ? 'http://127.0.0.1:8000'
+    : 'https://api.chatengine.io';
   const headers: UserAuthHeaders = {
     'Public-Key': projectId,
     'User-Name': myUsername,

@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { ChatObject } from '../../interfaces';
-import { UserAuthHeaders } from '../interfaces';
+import { ChatObject, UserAuthHeaders } from '../../interfaces';
 
 interface NewChat {
   is_direct_chat?: boolean;
