@@ -4,7 +4,7 @@ import {
   SingleChatSocket,
   ChatFeed,
   ChatList,
-  useChatHooks,
+  useSingleChatLogic,
 } from 'react-chat-engine';
 
 import {
@@ -22,7 +22,12 @@ setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 const HomePage = () => {
   const senderUsername = 'Abel Smith';
 
-  const state = useChatHooks(PROJECT_ID, CHAT_ID, CHAT_ACCESS_KEY, DEVELOPMENT);
+  const state = useSingleChatLogic(
+    PROJECT_ID,
+    CHAT_ID,
+    CHAT_ACCESS_KEY,
+    DEVELOPMENT
+  );
 
   return (
     <Row style={{ height: '100vh', backgroundColor: '#bae7ff' }}>
