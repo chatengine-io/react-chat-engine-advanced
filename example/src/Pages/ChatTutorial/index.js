@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { UserSocket, ChatWindow, useUserHooks } from 'react-chat-engine';
+import { MyChatsSocket, ChatWindow, useMyChatsLogic } from 'react-chat-engine';
 
 // import './App.css';
 
@@ -10,11 +10,11 @@ const projectId = '52147d0e-0f43-4ea7-916f-1820a16bf1d7';
 const userSecret = 'pass1234';
 
 const App = () => {
-  const state = useUserHooks(projectId, userName, userSecret);
+  const state = useMyChatsLogic(projectId, userName, userSecret);
 
   return (
     <div>
-      <UserSocket {...state} />
+      <MyChatsSocket {...state} />
 
       <ChatWindow
         {...state}

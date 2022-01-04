@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 
 import {
-  UserSocket,
+  MyChatsSocket,
   ChatWindow,
   getOrCreateChat,
-  useUserHooks,
+  useMyChatsLogic,
 } from 'react-chat-engine';
 
 import { DEVELOPMENT, PROJECT_ID, USER_NAME, USER_SECRET } from '../../consts';
 
 const DirectChatPage = () => {
   const [username, setUsername] = useState('');
-  const state = useUserHooks(PROJECT_ID, USER_NAME, USER_SECRET, DEVELOPMENT);
+  const state = useMyChatsLogic(
+    PROJECT_ID,
+    USER_NAME,
+    USER_SECRET,
+    DEVELOPMENT
+  );
 
   function createDirectChat(creds) {
     const headers = {
@@ -49,7 +54,7 @@ const DirectChatPage = () => {
 
   return (
     <div>
-      <UserSocket
+      <MyChatsSocket
         projectId={state.projectId}
         myUsername={state.myUsername}
         mySecret={state.mySecret}

@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {
-  ChatSocket,
+  SingleChatSocket,
   ChatFeed,
   ChatList,
-  useChatHooks,
+  useSingleChatLogic,
 } from 'react-chat-engine';
 
 import {
@@ -22,14 +22,19 @@ setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 const HomePage = () => {
   const senderUsername = 'Abel Smith';
 
-  const state = useChatHooks(PROJECT_ID, CHAT_ID, CHAT_ACCESS_KEY, DEVELOPMENT);
+  const state = useSingleChatLogic(
+    PROJECT_ID,
+    CHAT_ID,
+    CHAT_ACCESS_KEY,
+    DEVELOPMENT
+  );
 
   return (
     <Row style={{ height: '100vh', backgroundColor: '#bae7ff' }}>
       <Col xs={0} sm={0} md={4} />
 
       <Col xs={12} sm={6} md={4} style={{ height: '95vh', marginTop: '2.5vh' }}>
-        <ChatSocket {...state} />
+        <SingleChatSocket {...state} />
         <ChatFeed myUsername={senderUsername} {...state} />
       </Col>
 

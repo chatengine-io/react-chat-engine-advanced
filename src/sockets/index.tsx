@@ -1,2 +1,2 @@
-export { UserSocket } from './UserSocket';
-export { ChatSocket } from './ChatSocket';
+export { MyChatsSocket } from './MyChatsSocket';
+export { SingleChatSocket } from './SingleChatSocket';

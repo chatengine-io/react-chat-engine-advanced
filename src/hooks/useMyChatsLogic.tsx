@@ -45,7 +45,7 @@ export const sortMessages = (messages: MessageObject[]) => {
   });
 };
 
-export const useUserHooks = (
+export const useMyChatsLogic = (
   projectId: string,
   myUsername: string,
   mySecret: string,
