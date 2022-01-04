@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-import { UserAuthHeaders } from '../interfaces';
-import { ChatObject } from '../../interfaces';
+import { ChatObject, UserAuthHeaders } from '../../interfaces';
 
 type DeleteChat = (
   host: string,

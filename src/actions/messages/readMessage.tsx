@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { ChatObject } from '../../interfaces';
-import { UserAuthHeaders } from '../interfaces';
+import { ChatObject, UserAuthHeaders } from '../../interfaces';
 
 type ReadMessages = (
   host: string,

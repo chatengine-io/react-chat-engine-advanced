@@ -1,8 +1,11 @@
 import _ from 'lodash';
 import axios from 'axios';
 
-import { MessageObject } from '../../interfaces';
-import { ChatAuthHeaders, UserAuthHeaders } from '../interfaces';
+import {
+  MessageObject,
+  ChatAuthHeaders,
+  UserAuthHeaders,
+} from '../../interfaces';
 
 type NewMessage = (
   host: string,

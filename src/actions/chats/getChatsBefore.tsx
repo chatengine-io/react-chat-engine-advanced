@@ -1,8 +1,7 @@
 import _ from 'lodash';
 import axios from 'axios';
 
-import { UserAuthHeaders } from '../interfaces';
-import { ChatObject } from '../../interfaces';
+import { ChatObject, UserAuthHeaders } from '../../interfaces';
 
 type GetChatsBefore = (
   host: string,
