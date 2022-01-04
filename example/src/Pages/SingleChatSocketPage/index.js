@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  ChatSocket,
+  SingleChatSocket,
   ChatFeed,
   ChatList,
   useChatHooks,
@@ -29,7 +29,7 @@ const HomePage = () => {
       <Col xs={0} sm={0} md={4} />
 
       <Col xs={12} sm={6} md={4} style={{ height: '95vh', marginTop: '2.5vh' }}>
-        <ChatSocket {...state} />
+        <SingleChatSocket {...state} />
         <ChatFeed myUsername={senderUsername} {...state} />
       </Col>
 
