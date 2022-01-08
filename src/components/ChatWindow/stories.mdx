@@ -48,7 +48,23 @@ import { adam, chats, messages } from '../util/mocks';
 
 export const Template = (args) => <ChatWindow {...args} />;
 
-# Chat Engine
+# Chat Window
+
+The `<ChatWindow />` component is a multi-chat window, for a User to manage their chats.
+
+The multi-chat window made of three main parts:
+
+- a Chat List column
+- a Chat Feed column
+- a Chat Settings column
+
+The `<ChatList />`, `<ChatFeed />`, and `<ChatSettings />` components are documented in the next sections.
+
+Let's go over how to import, use, and customize this component.
+
+## Import
+
+`import { ChatWindow } from "react-chat-engine-advanced";`
 
 ## Default
 
