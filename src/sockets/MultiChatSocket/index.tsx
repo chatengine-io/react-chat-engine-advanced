@@ -20,7 +20,7 @@ const getSessionToken = (
     .catch(() => error());
 };
 
-export const MyChatsSocket: React.FC<Props> = (props: Props) => {
+export const MultiChatSocket: React.FC<Props> = (props: Props) => {
   const didMountRef = useRef(false);
   const [isHidden, setIsHidden] = useState(false);
   const [sessionToken, setToken] = useState<string | undefined>(undefined);
