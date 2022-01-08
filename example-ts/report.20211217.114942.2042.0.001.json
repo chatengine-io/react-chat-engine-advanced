@@ -8,10 +8,10 @@
     "dumpEventTime": "2021-12-17T11:49:42Z",
     "dumpEventTimeStamp": "1639770582014",
     "processId": 2042,
-    "cwd": "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-components/example-ts",
+    "cwd": "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-advanced/example-ts",
     "commandLine": [
       "/usr/local/bin/node",
-      "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-components/example-ts/node_modules/react-scripts/scripts/start.js"
+      "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-advanced/example-ts/node_modules/react-scripts/scripts/start.js"
     ],
     "nodejsVersion": "v12.14.0",
     "wordSize": 64,
@@ -374,7 +374,7 @@
     "TERM_PROGRAM": "vscode",
     "npm_package_dependencies_react_chat_engine_components": "link:..",
     "NODE": "/usr/local/bin/node",
-    "INIT_CWD": "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-components/example-ts",
+    "INIT_CWD": "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-advanced/example-ts",
     "npm_config_version_git_tag": "true",
     "SHELL": "/bin/zsh",
     "TERM": "xterm-256color",
@@ -396,14 +396,14 @@
     "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x52",
     "npm_package_browserslist_development_2": "last 1 safari version",
     "npm_execpath": "/usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js",
-    "PATH": "/var/folders/j2/l10rc5513_x19x_35092p2540000gn/T/yarn--1639770360899-0.14933022106899108:/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-components/example-ts/node_modules/.bin:/Users/adamlamorre/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/Library/Apple/usr/bin:/Users/adamlamorre/google-cloud-sdk/bin:/Users/adamlamorre/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/3.6/bin",
+    "PATH": "/var/folders/j2/l10rc5513_x19x_35092p2540000gn/T/yarn--1639770360899-0.14933022106899108:/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-advanced/example-ts/node_modules/.bin:/Users/adamlamorre/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/Library/Apple/usr/bin:/Users/adamlamorre/google-cloud-sdk/bin:/Users/adamlamorre/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/3.6/bin",
     "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"start\"],\"original\":[\"start\"]}",
-    "_": "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-components/example-ts/node_modules/.bin/react-scripts",
+    "_": "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-advanced/example-ts/node_modules/.bin/react-scripts",
     "__CFBundleIdentifier": "com.microsoft.VSCode",
     "npm_package_browserslist_production_1": "not dead",
     "npm_package_dependencies_typescript": "^4.1.2",
     "npm_package_dependencies__types_jest": "^26.0.15",
-    "PWD": "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-components/example-ts",
+    "PWD": "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-advanced/example-ts",
     "npm_package_browserslist_production_0": ">0.2%",
     "npm_lifecycle_event": "start",
     "npm_package_browserslist_production_2": "not op_mini all",
@@ -730,9 +730,9 @@
     "/System/Library/PrivateFrameworks/AudioSession.framework/libSessionUtility.dylib",
     "/System/Library/PrivateFrameworks/AudioResourceArbitration.framework/Versions/A/AudioResourceArbitration",
     "/System/Library/Frameworks/CoreData.framework/Versions/A/CoreData",
-    "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-components/example-ts/node_modules/chokidar/node_modules/fsevents/build/Release/fse.node",
-    "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-components/node_modules/bufferutil/prebuilds/darwin-x64+arm64/node.napi.node",
-    "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-components/node_modules/utf-8-validate/prebuilds/darwin-x64+arm64/node.napi.node",
-    "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-components/example-ts/node_modules/fsevents/fsevents.node"
+    "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-advanced/example-ts/node_modules/chokidar/node_modules/fsevents/build/Release/fse.node",
+    "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-advanced/node_modules/bufferutil/prebuilds/darwin-x64+arm64/node.napi.node",
+    "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-advanced/node_modules/utf-8-validate/prebuilds/darwin-x64+arm64/node.napi.node",
+    "/Users/adamlamorre/Work/Adam/ChatEngine/react-chat-engine-advanced/example-ts/node_modules/fsevents/fsevents.node"
   ]
 }

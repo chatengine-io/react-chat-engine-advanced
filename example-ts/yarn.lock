@@ -9133,7 +9133,7 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
-"react-chat-engine-components@link:..":
+"react-chat-engine-advanced@link:..":
   version "0.0.0"
   uid ""
 
