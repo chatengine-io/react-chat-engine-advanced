@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { ChatWindow, MyChatsSocket, useMyChatsLogic } from 'react-chat-engine';
+import {
+  ChatWindow,
+  MultiChatSocket,
+  useMultiChatLogic,
+} from 'react-chat-engine';
 
 const ChatWindowApp = (props) => {
-  const chatProps = useMyChatsLogic(
+  const chatProps = useMultiChatLogic(
     props.projectID,
     props.accounts.userName,
     props.accounts.userSecret,
@@ -13,7 +17,7 @@ const ChatWindowApp = (props) => {
 
   return (
     <div>
-      <MyChatsSocket
+      <MultiChatSocket
         projectId={chatProps.projectId}
         myUsername={chatProps.myUsername}
         mySecret={chatProps.mySecret}

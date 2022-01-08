@@ -45,7 +45,7 @@ export const sortMessages = (messages: MessageObject[]) => {
   });
 };
 
-export const useMyChatsLogic = (
+export const useMultiChatLogic = (
   projectId: string,
   myUsername: string,
   mySecret: string,

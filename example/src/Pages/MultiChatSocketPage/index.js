@@ -1,9 +1,9 @@
 import React from 'react';
 
 import {
-  MyChatsSocket,
+  MultiChatSocket,
   ChatFeed,
-  useMyChatsLogic,
+  useMultiChatLogic,
   getChatsBefore,
 } from 'react-chat-engine';
 
@@ -20,8 +20,8 @@ import { setConfiguration } from 'react-grid-system';
 
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
-const MyChatsSocketPage = () => {
-  const chatProps = useMyChatsLogic(
+const MultiChatSocketPage = () => {
+  const chatProps = useMultiChatLogic(
     PROJECT_ID,
     USER_NAME,
     USER_SECRET,
@@ -51,7 +51,7 @@ const MyChatsSocketPage = () => {
   return (
     <Row>
       <Col xs={12} sm={6} md={4} style={{ height: '600px' }}>
-        <MyChatsSocket
+        <MultiChatSocket
           projectId={chatProps.projectId}
           myUsername={chatProps.myUsername}
           mySecret={chatProps.mySecret}
@@ -81,4 +81,4 @@ const MyChatsSocketPage = () => {
   );
 };
 
-export default MyChatsSocketPage;
+export default MultiChatSocketPage;

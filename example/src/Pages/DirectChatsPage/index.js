@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 
 import {
-  MyChatsSocket,
+  MultiChatSocket,
   ChatWindow,
   getOrCreateChat,
-  useMyChatsLogic,
+  useMultiChatLogic,
 } from 'react-chat-engine';
 
 import { DEVELOPMENT, PROJECT_ID, USER_NAME, USER_SECRET } from '../../consts';
 
 const DirectChatPage = () => {
   const [username, setUsername] = useState('');
-  const state = useMyChatsLogic(
+  const state = useMultiChatLogic(
     PROJECT_ID,
     USER_NAME,
     USER_SECRET,
@@ -54,7 +54,7 @@ const DirectChatPage = () => {
 
   return (
     <div>
-      <MyChatsSocket
+      <MultiChatSocket
         projectId={state.projectId}
         myUsername={state.myUsername}
         mySecret={state.mySecret}
