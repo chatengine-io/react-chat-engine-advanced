@@ -35,7 +35,7 @@ export const MultiChatSocket: React.FC<Props> = (props: Props) => {
       const headers: UserAuthHeaders = {
         'Public-Key': props.projectId,
         'User-Name': props.username,
-        'User-Secret': props.mySecret,
+        'User-Secret': props.secret,
       };
 
       getSessionToken(
@@ -47,7 +47,7 @@ export const MultiChatSocket: React.FC<Props> = (props: Props) => {
             `Your login credentials were not correct: \n
               Project ID: ${props.projectId} \n
               Username: ${props.username} \n
-              Secret: ${props.mySecret}\n
+              Secret: ${props.secret}\n
               Double check these credentials to make sure they're correct.\n
               If all three are correct, try resetting the username and secret in the Online Dashboard or Private API.`
           );
@@ -68,7 +68,7 @@ export const MultiChatSocket: React.FC<Props> = (props: Props) => {
     <ChildSocket
       projectId={props.projectId}
       username={props.username}
-      mySecret={props.mySecret}
+      secret={props.secret}
       sessionToken={sessionToken}
       isDevelopment={props.isDevelopment}
       onRefresh={reRender}

@@ -48,7 +48,7 @@ export const sortMessages = (messages: MessageObject[]) => {
 export const useMultiChatLogic = (
   projectId: string,
   username: string,
-  mySecret: string,
+  secret: string,
   isDevelopment?: boolean
 ) => {
   const host = isDevelopment
@@ -57,7 +57,7 @@ export const useMultiChatLogic = (
   const headers: UserAuthHeaders = {
     'Public-Key': projectId,
     'User-Name': username,
-    'User-Secret': mySecret,
+    'User-Secret': secret,
   };
 
   // Data
@@ -322,7 +322,7 @@ export const useMultiChatLogic = (
     // Auth Data
     projectId,
     username,
-    mySecret,
+    secret,
     isDevelopment,
     // Chat Data
     chats,

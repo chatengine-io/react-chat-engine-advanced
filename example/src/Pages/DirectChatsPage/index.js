@@ -57,7 +57,7 @@ const DirectChatPage = () => {
       <MultiChatSocket
         projectId={state.projectId}
         username={state.username}
-        mySecret={state.mySecret}
+        secret={state.secret}
         isDevelopment={state.isDevelopment}
         // Socket Hooks
         onConnect={state.onConnect}

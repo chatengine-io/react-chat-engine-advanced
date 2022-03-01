@@ -54,7 +54,7 @@ const MultiChatSocketPage = () => {
         <MultiChatSocket
           projectId={chatProps.projectId}
           username={chatProps.username}
-          mySecret={chatProps.mySecret}
+          secret={chatProps.secret}
           isDevelopment={chatProps.isDevelopment}
           onConnect={onConnect}
           onNewChat={chatProps.onNewChat}
