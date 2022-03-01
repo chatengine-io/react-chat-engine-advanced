@@ -2,7 +2,7 @@ import { ChatObject, MessageObject, PersonObject } from '../../interfaces';
 
 export interface Props {
   projectId: string;
-  myUsername: string;
+  username: string;
   mySecret: string;
   sessionToken?: string;
   isDevelopment?: boolean;

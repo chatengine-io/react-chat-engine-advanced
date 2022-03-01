@@ -11,7 +11,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement>, ChatListStyles {
   // Data
   chats: ChatObject[];
   activeChatId?: number;
-  myUsername?: string;
+  username?: string;
   timezoneOffset?: number;
   // State
   isLoading?: boolean;

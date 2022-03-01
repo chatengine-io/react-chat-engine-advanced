@@ -6,7 +6,7 @@ export interface Props extends MessageFormStyles {
   // Data
   value?: string;
   label?: string;
-  myUsername?: string;
+  username?: string;
   // Hooks
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onSubmit?: (message: MessageObject) => void;

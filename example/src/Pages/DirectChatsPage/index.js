@@ -56,7 +56,7 @@ const DirectChatPage = () => {
     <div>
       <MultiChatSocket
         projectId={state.projectId}
-        myUsername={state.myUsername}
+        username={state.username}
         mySecret={state.mySecret}
         isDevelopment={state.isDevelopment}
         // Socket Hooks
@@ -73,7 +73,7 @@ const DirectChatPage = () => {
 
       <ChatWindow
         // Chat Data
-        myUsername={state.myUsername}
+        username={state.username}
         chats={state.chats}
         activeChatId={state.activeChatId}
         messages={state.messages}

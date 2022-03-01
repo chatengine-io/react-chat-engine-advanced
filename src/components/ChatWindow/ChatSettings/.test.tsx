@@ -9,7 +9,7 @@ describe('Thing', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <Thing chat={chatWithReads} myUsername={adam.username} />,
+      <Thing chat={chatWithReads} username={adam.username} />,
       div
     );
     ReactDOM.unmountComponentAtNode(div);

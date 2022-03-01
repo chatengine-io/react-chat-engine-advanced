@@ -30,7 +30,7 @@ export const MessageList: React.FC<Props> = (props: Props) => {
       const thisDate = key !== '' ? date(key) : undefined;
 
       const showDateTime: boolean = !lastDate || lastDate !== thisDate;
-      const isMyMessage: boolean = props.myUsername === message.sender_username;
+      const isMyMessage: boolean = props.username === message.sender_username;
 
       return (
         <div key={`message_${index}`} id={`ce-message-${message.id}`}>

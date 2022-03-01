@@ -34,7 +34,7 @@ export const MultiChatSocket: React.FC<Props> = (props: Props) => {
         : 'https://api.chatengine.io';
       const headers: UserAuthHeaders = {
         'Public-Key': props.projectId,
-        'User-Name': props.myUsername,
+        'User-Name': props.username,
         'User-Secret': props.mySecret,
       };
 
@@ -46,7 +46,7 @@ export const MultiChatSocket: React.FC<Props> = (props: Props) => {
           console.log(
             `Your login credentials were not correct: \n
               Project ID: ${props.projectId} \n
-              Username: ${props.myUsername} \n
+              Username: ${props.username} \n
               Secret: ${props.mySecret}\n
               Double check these credentials to make sure they're correct.\n
               If all three are correct, try resetting the username and secret in the Online Dashboard or Private API.`
@@ -67,7 +67,7 @@ export const MultiChatSocket: React.FC<Props> = (props: Props) => {
   return (
     <ChildSocket
       projectId={props.projectId}
-      myUsername={props.myUsername}
+      username={props.username}
       mySecret={props.mySecret}
       sessionToken={sessionToken}
       isDevelopment={props.isDevelopment}

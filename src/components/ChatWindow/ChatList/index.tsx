@@ -13,10 +13,10 @@ import { getDateTime } from '../../util/dateTime';
 
 import { Spinner } from '../../Components/Spinner';
 
-const readLastMessage = (myUsername: string, chat: ChatObject) => {
+const readLastMessage = (username: string, chat: ChatObject) => {
   return chat.people.some(
     (chatPerson) =>
-      chatPerson.person.username === myUsername &&
+      chatPerson.person.username === username &&
       chatPerson.last_read === chat.last_message.id
   );
 };
@@ -44,9 +44,7 @@ export const ChatList: React.FC<Props> = (props: Props) => {
     return chats.map((chat, index) => {
       const otherPerson =
         chat &&
-        chat.people.find(
-          (person) => person.person.username !== props.myUsername
-        );
+        chat.people.find((person) => person.person.username !== props.username);
       const title = !chat
         ? ''
         : chat.is_direct_chat && otherPerson
@@ -55,8 +53,8 @@ export const ChatList: React.FC<Props> = (props: Props) => {
       const timeStamp = getDateTime(chat.created, props.timezoneOffset)
         .toString()
         .substr(4, 6);
-      const hasNotification = props.myUsername
-        ? !readLastMessage(props.myUsername, chat)
+      const hasNotification = props.username
+        ? !readLastMessage(props.username, chat)
         : false;
       return (
         <ChatCard

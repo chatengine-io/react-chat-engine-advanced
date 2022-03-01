@@ -133,7 +133,7 @@ An example of this is the ChatEngine component props:
   chats = {},
   activeChatId = -1,
   messages = {},
-  myUsername,
+  username,
   // State
   isChatListLoading = false,
   isChatFeedLoading = false,

@@ -56,7 +56,7 @@ export const MessageForm: React.FC<Props> = (props: Props) => {
     const message: MessageObject = {
       attachments: localAttachments,
       text: value,
-      sender_username: props.myUsername ? props.myUsername : '',
+      sender_username: props.username ? props.username : '',
       custom_json: {},
       created,
     };
