@@ -40,7 +40,7 @@ const ChatWindowApp = (props) => {
         messages={chatProps.messages}
         // chatProps
         activeChatId={chatProps.activeChatId}
-        myUsername={chatProps.userName}
+        myUsername={chatProps.myUsername}
         hasMoreChats={chatProps.hasMoreChats}
         hasMoreMessages={chatProps.hasMoreMessages}
         // Component Hooks
