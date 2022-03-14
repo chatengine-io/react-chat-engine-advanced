@@ -322,6 +322,7 @@ export const useMultiChatLogic = (
     // Auth Data
     projectId,
     username,
+    // file deepcode ignore HardcodedNonCryptoSecret: <not a secret>
     secret,
     isDevelopment,
     // Chat Data
