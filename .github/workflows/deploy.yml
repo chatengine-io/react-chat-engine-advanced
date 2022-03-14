@@ -1,0 +1,39 @@
+name: Deploy Support
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install & Build Src
+        run: |
+          yarn install && yarn build
+      - name: Create consts.js
+        run: |
+          echo "export const DEVELOPMENT = false; export const ROOT_URL = 'https://api.chatengine.io/'; export const PROJECT_ID = '8a1f9edb-a05a-4b55-9d6e-ec399a38f5a9'; export const USER_NAME = ''; export const USER_SECRET = ''; export const CHAT_ID = 0; export const CHAT_ACCESS_KEY = '123';" > example/src/consts.js
+      - name: Install & Build Example
+        run: |
+          cd example && yarn install && yarn build
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_S3_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_S3_BUCKET_REIGON }}
+          SOURCE_DIR: 'example/build'
+      - name: Invalidate Cloudfront
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{ secrets.AWS_CDN_ID }}
+          PATHS: '/*'
+          AWS_REGION: 'us-east-1'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_CDN_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_CDN_SECRET_ACCESS_KEY }}
