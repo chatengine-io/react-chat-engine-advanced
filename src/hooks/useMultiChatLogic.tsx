@@ -47,8 +47,8 @@ export const sortMessages = (messages: MessageObject[]) => {
 
 export const useMultiChatLogic = (
   projectId: string,
-  myUsername: string,
-  mySecret: string,
+  username: string,
+  secret: string,
   isDevelopment?: boolean
 ) => {
   const host = isDevelopment
@@ -56,8 +56,8 @@ export const useMultiChatLogic = (
     : 'https://api.chatengine.io';
   const headers: UserAuthHeaders = {
     'Public-Key': projectId,
-    'User-Name': myUsername,
-    'User-Secret': mySecret,
+    'User-Name': username,
+    'User-Secret': secret,
   };
 
   // Data
@@ -81,7 +81,7 @@ export const useMultiChatLogic = (
   useEffect(() => {
     const chat = chats.find((chat) => chat.id === activeChatId);
     const chatPerson = chat?.people.find(
-      (chatPerson) => chatPerson.person.username === myUsername
+      (chatPerson) => chatPerson.person.username === username
     );
 
     if (
@@ -321,8 +321,9 @@ export const useMultiChatLogic = (
     onDeleteMessage,
     // Auth Data
     projectId,
-    myUsername,
-    mySecret,
+    username,
+    // file deepcode ignore HardcodedNonCryptoSecret: <not a secret>
+    secret,
     isDevelopment,
     // Chat Data
     chats,

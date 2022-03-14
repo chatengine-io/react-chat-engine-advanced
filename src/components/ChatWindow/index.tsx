@@ -27,7 +27,7 @@ export const ChatWindow: React.FC<Props> = (props: Props) => {
         <ChatList
           chats={chats}
           activeChatId={activeChatId}
-          myUsername={props.myUsername}
+          username={props.username}
           timezoneOffset={props.timezoneOffset}
           isLoading={props.isChatListLoading}
           hasMoreChats={props.hasMoreChats}
@@ -49,7 +49,7 @@ export const ChatWindow: React.FC<Props> = (props: Props) => {
         <ChatFeed
           chat={chat}
           messages={messages}
-          myUsername={props.myUsername}
+          username={props.username}
           timezoneOffset={props.timezoneOffset}
           isLoading={props.isChatFeedLoading}
           hasMoreMessages={props.hasMoreMessages}
@@ -78,7 +78,7 @@ export const ChatWindow: React.FC<Props> = (props: Props) => {
       >
         <ChatSettings
           chat={chat}
-          myUsername={props.myUsername}
+          username={props.username}
           peopleToInvite={props.peopleToInvite}
           isLoading={props.isChatSettingsLoading}
           onInvitePersonClick={props.onInvitePersonClick}

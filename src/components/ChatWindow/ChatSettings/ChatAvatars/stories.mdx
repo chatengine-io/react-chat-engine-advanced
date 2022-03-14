@@ -8,7 +8,7 @@ import { adam, bob, cam } from '../../../util/mocks';
   title="ChatWindow/ChatSettings/Chat Avatars"
   component={ChatAvatars}
   argTypes={{
-    myUsername: { table: { category: 'state' } },
+    username: { table: { category: 'state' } },
     isDirectChat: { table: { category: 'state' } },
     style: { table: { category: 'styles' } },
     oneAvatarStyle: { table: { category: 'styles' } },
@@ -25,7 +25,7 @@ The `ChatAvatars` component appears at the top of the Settings window.
 
 This is used to display the Avatars of the users in the chat.
 
-Two arguments are required, the list of users in the chat, `users: PersonObject[]`, and the current user's username, `myUsername`.
+Two arguments are required, the list of users in the chat, `users: PersonObject[]`, and the current user's username, `username`.
 
 Optionally set `isDirectChat = true` if the chat is a direct message. Otherwise this defaults to `false` and assumes a group chat.
 
@@ -51,7 +51,7 @@ For direct message chats, set `isDirectChat` to `true` and only the other person
     name="Is Direct Chat"
     args={{
       users: [adam, bob],
-      myUsername: adam.username,
+      username: adam.username,
       isDirectChat: true,
     }}
   >
@@ -68,7 +68,7 @@ For groups chats containing one person, only their avatar will display.
     name="One Person"
     args={{
       users: [adam],
-      myUsername: adam.username,
+      username: adam.username,
     }}
   >
     {Template.bind({})}
@@ -84,7 +84,7 @@ For two person group chats, both avatars will display.
     name="Two People"
     args={{
       users: [adam, bob],
-      myUsername: adam.username,
+      username: adam.username,
     }}
   >
     {Template.bind({})}
@@ -100,7 +100,7 @@ For group chats with three or more people, the first three users' avatars will d
     name="Three People"
     args={{
       users: [adam, bob, cam],
-      myUsername: adam.username,
+      username: adam.username,
     }}
   >
     {Template.bind({})}
@@ -116,7 +116,7 @@ For group chats with three or more people, the first three users' avatars will d
     name="Custom Styles"
     args={{
       users: [adam, bob, cam],
-      myUsername: adam.username,
+      username: adam.username,
       style: { border: '2px solid orange' },
       threeAvatarsStyle: {
         avatarOne: { border: '2px solid red' },

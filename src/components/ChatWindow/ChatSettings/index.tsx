@@ -19,7 +19,7 @@ export const ChatSettings: React.FC<Props> = (props: Props) => {
 
   const otherPerson =
     chat &&
-    chat.people.find((person) => person.person.username !== props.myUsername);
+    chat.people.find((person) => person.person.username !== props.username);
   const title =
     props.isLoading || !chat
       ? ''
@@ -29,7 +29,7 @@ export const ChatSettings: React.FC<Props> = (props: Props) => {
 
   return (
     <div style={{ ...styles.chatSettingsStyle, ...props.chatSettingsStyle }}>
-      <ChatAvatars users={people} myUsername={props.myUsername} />
+      <ChatAvatars users={people} username={props.username} />
 
       <div style={{ ...styles.chatTitleStyle, ...props.chatTitleStyle }}>
         {title}
@@ -38,7 +38,7 @@ export const ChatSettings: React.FC<Props> = (props: Props) => {
       <PeopleSettings
         chat={chat}
         peopleToInvite={props.peopleToInvite}
-        canDelete={chat && props.myUsername === chat.admin.username}
+        canDelete={chat && props.username === chat.admin.username}
         onInvitePersonClick={props.onInvitePersonClick}
         onRemovePersonClick={props.onRemovePersonClick}
         renderPeopleSettings={props.renderPeopleSettings}

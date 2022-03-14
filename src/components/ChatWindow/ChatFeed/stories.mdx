@@ -8,7 +8,7 @@ import { onePersonChat, messages } from '../../util/mocks';
   title="ChatWindow/ChatFeed"
   component={ChatFeed}
   argTypes={{
-    myUsername: { table: { category: 'state' } },
+    username: { table: { category: 'state' } },
     isLoading: { table: { category: 'state' } },
     hasMoreMessages: { table: { category: 'state' } },
     onMessageLoaderShow: { table: { category: 'hooks' } },
@@ -77,13 +77,13 @@ Passing a Chat object into the `chat` prop will allow/set the header values and 
 
 ## My Username
 
-You can use the `myUsername` prop to specify which messages were sent by this user. Then any `message` component with a matching `sender_username` will inherit `isMyMessage={true}`.
+You can use the `username` prop to specify which messages were sent by this user. Then any `message` component with a matching `sender_username` will inherit `isMyMessage={true}`.
 
 <Story
   name="My Username"
   args={{
     chat: onePersonChat,
-    myUsername: 'Adam_La_Morre',
+    username: 'Adam_La_Morre',
     messages: messages,
     style: {
       height: '500px',

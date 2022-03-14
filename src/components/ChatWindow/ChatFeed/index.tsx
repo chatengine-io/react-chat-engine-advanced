@@ -36,7 +36,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
 
   const otherPerson =
     chat &&
-    chat.people.find((person) => person.person.username !== props.myUsername);
+    chat.people.find((person) => person.person.username !== props.username);
 
   const title = props.isLoading ? (
     <Spinner />
@@ -71,7 +71,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
       <MessageList
         chat={chat}
         messages={props.messages}
-        myUsername={props.myUsername}
+        username={props.username}
         timezoneOffset={props.timezoneOffset}
         hasMoreMessages={props.hasMoreMessages}
         onMessageLoaderShow={props.onMessageLoaderShow}
@@ -97,7 +97,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
 
       <MessageForm
         label="Send a message..."
-        myUsername={props.myUsername}
+        username={props.username}
         onSubmit={props.onMessageFormSubmit}
         renderMessageForm={props.renderMessageForm}
         style={{

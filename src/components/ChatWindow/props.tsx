@@ -18,7 +18,7 @@ import { Props as OptionsSettingsProps } from './ChatSettings/OptionsSettings/pr
 
 export interface Props extends ChatEngineStyles {
   // Data
-  myUsername?: string;
+  username?: string;
   chats?: ChatObject[];
   activeChatId?: number;
   messages?: MessageObject[];

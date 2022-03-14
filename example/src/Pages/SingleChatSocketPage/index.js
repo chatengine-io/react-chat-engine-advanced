@@ -35,7 +35,7 @@ const HomePage = () => {
 
       <Col xs={12} sm={6} md={4} style={{ height: '95vh', marginTop: '2.5vh' }}>
         <SingleChatSocket {...state} />
-        <ChatFeed myUsername={senderUsername} {...state} />
+        <ChatFeed username={senderUsername} {...state} />
       </Col>
 
       <Col xs={12} sm={6} md={4} style={{ height: '95vh', marginTop: '2.5vh' }}>

@@ -25,7 +25,7 @@ export const ChatAvatars: React.FC<Props> = (props: Props) => {
   const getPeopleToRender = (people: PersonObject[]): PersonObject[] => {
     if (props.isDirectChat) {
       const otherPerson = users.find(
-        (person) => person.username !== props.myUsername
+        (person) => person.username !== props.username
       );
       return otherPerson ? [otherPerson] : [];
     }

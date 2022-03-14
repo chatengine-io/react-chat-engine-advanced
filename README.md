@@ -39,13 +39,13 @@ Add serverless chat to your React app in 3 minutes.
 
 1. Register then create a **project** and **user** at [chatengine.io](https://chatengine.io)
 
-2. Collect the **Project ID** / **myUsername** / **User Secret**
+2. Collect the **Project ID** / **username** / **User Secret**
 
 3. Install `yarn add react-chat-engine`
 
 4. Import the `ChatWindow`, `MultiChatSocket`, and `useMultiChatLogic`
 
-5. Declare `const props = useMultiChatLogic(projectId, myUsername, mySecret);` and pass the returning `props` object into `ChatWindow` and `MultiChatSocket`.
+5. Declare `const props = useMultiChatLogic(projectId, username, secret);` and pass the returning `props` object into `ChatWindow` and `MultiChatSocket`.
 
 6. Voila! You're done
 
@@ -78,8 +78,8 @@ export function App() {
 ## Props
 
 - **`projectId`** _(String REQUIRED)_ - Public API key for your [chatengine.io](https://chatengine.io) project
-- **`myUsername`** _(String REQUIRED)_ - myUsername of a person in this project
-- **`mySecret`** _(String REQUIRED)_ - Set a secret for this person and use it to authenticate.
+- **`username`** _(String REQUIRED)_ - username of a person in this project
+- **`secret`** _(String REQUIRED)_ - Set a secret for this person and use it to authenticate.
 - **`onConnect`** (Function) - Callback when the connection/authentication is complete
 - **`onFailAuth`** (Function) - Callback when the connection/authentication fails
 - **`onGetChats`** _(Function)_ Callback when the person fetches their chats array

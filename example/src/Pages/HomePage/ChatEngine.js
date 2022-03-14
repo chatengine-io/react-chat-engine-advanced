@@ -19,8 +19,8 @@ const ChatWindowApp = (props) => {
     <div>
       <MultiChatSocket
         projectId={chatProps.projectId}
-        myUsername={chatProps.myUsername}
-        mySecret={chatProps.mySecret}
+        username={chatProps.username}
+        secret={chatProps.secret}
         isDevelopment={chatProps.isDevelopment}
         // Socket Hooks
         onConnect={chatProps.onConnect}
@@ -40,7 +40,7 @@ const ChatWindowApp = (props) => {
         messages={chatProps.messages}
         // chatProps
         activeChatId={chatProps.activeChatId}
-        myUsername={chatProps.userName}
+        username={chatProps.username}
         hasMoreChats={chatProps.hasMoreChats}
         hasMoreMessages={chatProps.hasMoreMessages}
         // Component Hooks

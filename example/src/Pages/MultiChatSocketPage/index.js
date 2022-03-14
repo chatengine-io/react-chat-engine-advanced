@@ -53,8 +53,8 @@ const MultiChatSocketPage = () => {
       <Col xs={12} sm={6} md={4} style={{ height: '600px' }}>
         <MultiChatSocket
           projectId={chatProps.projectId}
-          myUsername={chatProps.myUsername}
-          mySecret={chatProps.mySecret}
+          username={chatProps.username}
+          secret={chatProps.secret}
           isDevelopment={chatProps.isDevelopment}
           onConnect={onConnect}
           onNewChat={chatProps.onNewChat}
@@ -68,7 +68,7 @@ const MultiChatSocketPage = () => {
         <ChatFeed
           chat={chat}
           messages={chatProps.messages}
-          myUsername={chatProps.myUsername}
+          username={chatProps.username}
           hasMoreMessages={chatProps.hasMoreMessages}
           onMessageLoaderShow={chatProps.onMessageLoaderShow}
           onMessageLoaderHide={chatProps.onMessageLoaderHide}

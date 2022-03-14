@@ -9,7 +9,7 @@ import { chats } from '../../util/mocks';
   component={ChatList}
   argTypes={{
     activeChatId: { table: { category: 'state' } },
-    myUsername: { table: { category: 'state' } },
+    username: { table: { category: 'state' } },
     hasMoreChats: { table: { category: 'state' } },
     isLoading: { table: { category: 'state' } },
     onChatCardClick: { table: { category: 'hooks' } },
@@ -70,7 +70,7 @@ You can specify the active chat with `activeChatId` and the corresponding ChatCa
 
 ## My Username
 
-If you set the `myUsername` prop, you can see which chats this User has notifications for.
+If you set the `username` prop, you can see which chats this User has notifications for.
 
 <Story
   name="My Username"
@@ -81,7 +81,7 @@ If you set the `myUsername` prop, you can see which chats this User has notifica
       maxHeight: '330px',
     },
     chats: chats,
-    myUsername: 'adam_lamorre',
+    username: 'adam_lamorre',
   }}
 >
   {Template.bind({})}

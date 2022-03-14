@@ -9,7 +9,7 @@ import { ChatObject, PersonObject } from '../../../interfaces';
 export interface Props extends ChatSettingsStyles {
   chat?: ChatObject;
   peopleToInvite?: Array<PersonObject>;
-  myUsername?: string;
+  username?: string;
   // State
   isLoading?: boolean;
   // Hooks
