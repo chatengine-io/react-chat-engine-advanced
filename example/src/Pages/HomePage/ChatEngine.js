@@ -23,6 +23,7 @@ const ChatWindowApp = (props) => {
         secret={chatProps.secret}
         isDevelopment={chatProps.isDevelopment}
         // Socket Hooks
+        onSocketMount={chatProps.onSocketMount}
         onConnect={chatProps.onConnect}
         onAuthFail={chatProps.onAuthFail}
         onNewChat={chatProps.onNewChat}
@@ -38,6 +39,10 @@ const ChatWindowApp = (props) => {
         timezoneOffset={-7}
         chats={chatProps.chats}
         messages={chatProps.messages}
+        // State
+        isChatListLoading={chatProps.isChatListLoading}
+        isChatFeedLoading={chatProps.isChatFeedLoading}
+        isChatSettingsLoading={chatProps.isChatSettingsLoading}
         // chatProps
         activeChatId={chatProps.activeChatId}
         username={chatProps.username}
