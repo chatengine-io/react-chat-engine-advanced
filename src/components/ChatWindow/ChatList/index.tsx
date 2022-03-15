@@ -20,9 +20,8 @@ const readLastMessage = (username: string, chat: ChatObject) => {
       chatPerson.last_read === chat.last_message.id
   );
 };
-
 const renderLoading = () => {
-  return [...Array(10)].map((_, i) => {
+  return [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => {
     return <ChatCard key={`chat_${i}`} isLoading={true} />;
   });
 };

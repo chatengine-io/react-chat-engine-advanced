@@ -70,6 +70,11 @@ export const useMultiChatLogic = (
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
   const [hasMoreMessages, setHasMoreMessages] = useState<boolean>(false);
   const [isChatFeedAtBottom, setIsChatFeedAtBottom] = useState<boolean>(false);
+  const [isChatListLoading, setIsChatListLoading] = useState<boolean>(true);
+  const [isChatFeedLoading, setIsChatFeedLoading] = useState<boolean>(true);
+  const [isChatSettingsLoading, setIsChatSettingsLoading] = useState<boolean>(
+    true
+  );
 
   // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
@@ -100,6 +105,7 @@ export const useMultiChatLogic = (
     const sortedChats = sortChats(chats);
 
     setChats(sortedChats);
+    setIsChatListLoading(false);
   };
 
   const onNewChat = (chat: ChatObject) => {
@@ -201,7 +207,6 @@ export const useMultiChatLogic = (
   };
 
   const onSocketMount = () => {
-    console.log('socket mounted');
     // Same data as onConnect
     const now = new Date()
       .toISOString()
@@ -236,6 +241,8 @@ export const useMultiChatLogic = (
 
   const onChatCardClick = (activeChatId: number) => {
     setActiveChatId(activeChatId);
+    setIsChatFeedLoading(true);
+    setIsChatSettingsLoading(true);
 
     getMessages(
       host,
@@ -244,6 +251,10 @@ export const useMultiChatLogic = (
       messageCountIterator,
       (chatId, messages) => {
         onGetMessages(chatId, messages);
+
+        setIsChatFeedLoading(false);
+        setIsChatSettingsLoading(false);
+
         animateScroll.scrollToBottom({
           duration: 0,
           containerId: `ce-message-list-${activeChatId}`,
@@ -369,6 +380,12 @@ export const useMultiChatLogic = (
     setHasMoreMessages,
     isChatFeedAtBottom,
     setIsChatFeedAtBottom,
+    isChatListLoading,
+    setIsChatListLoading,
+    isChatFeedLoading,
+    setIsChatFeedLoading,
+    isChatSettingsLoading,
+    setIsChatSettingsLoading,
     // Component Hooks
     onChatFormSubmit,
     onChatCardClick,

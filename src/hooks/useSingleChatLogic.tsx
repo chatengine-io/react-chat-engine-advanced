@@ -55,6 +55,7 @@ export const useSingleChatLogic = (
   const [hasMoreChats, setHasMoreChats] = useState<boolean>(false);
   const [hasMoreMessages, setHasMoreMessages] = useState<boolean>(false);
   const [isChatFeedAtBottom, setIsChatFeedAtBottom] = useState<boolean>(false);
+  const [isChatFeedLoading, setIsChatFeedLoading] = useState<boolean>(true);
 
   // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
@@ -76,7 +77,7 @@ export const useSingleChatLogic = (
       messages.length >= messageCountRef.current + messageCountIterator
     );
     setMessages(messages);
-
+    setIsChatFeedLoading(false);
     void chatId;
   };
 
@@ -231,6 +232,8 @@ export const useSingleChatLogic = (
     setHasMoreMessages,
     isChatFeedAtBottom,
     setIsChatFeedAtBottom,
+    isChatFeedLoading,
+    setIsChatFeedLoading,
     // Component Hooks
     onChatCardClick,
     onMessageLoaderShow,
