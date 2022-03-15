@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { Props } from './props';
 
 import { ChildSocket } from './childSocket';
 
 export const SingleChatSocket: React.FC<Props> = (props: Props) => {
+  const didMountRef = useRef(false);
   const [isHidden, setIsHidden] = useState(false);
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      props.onSocketMount && props.onSocketMount();
+    }
+  }, []);
 
   function reRender() {
     setIsHidden(true);

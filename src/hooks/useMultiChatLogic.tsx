@@ -177,6 +177,32 @@ export const useMultiChatLogic = (
   };
 
   const onConnect = () => {
+    // Same data as onSocketMount
+    const now = new Date()
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+
+    getChatsBefore(
+      host,
+      headers,
+      now,
+      chatCountRef.current > 0 ? chatCountRef.current : chatCountIterator,
+      (chats) => {
+        onGetChats(chats);
+
+        let currentChat = activeChatId;
+        if (!activeChatId && chats.length > 0) {
+          currentChat = chats[0].id;
+        }
+        currentChat && onChatCardClick(currentChat);
+      }
+    );
+  };
+
+  const onSocketMount = () => {
+    console.log('socket mounted');
+    // Same data as onConnect
     const now = new Date()
       .toISOString()
       .replace('T', ' ')
@@ -309,6 +335,7 @@ export const useMultiChatLogic = (
 
   return {
     // Socket Hooks
+    onSocketMount,
     onConnect,
     onAuthFail,
     onGetChats,

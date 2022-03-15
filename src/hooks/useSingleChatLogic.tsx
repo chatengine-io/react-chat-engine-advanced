@@ -119,6 +119,15 @@ export const useSingleChatLogic = (
   };
 
   const onConnect = () => {
+    // Same data as onSocketMount
+    getChat(host, headers, chatId, (chat) => {
+      setChat(chat);
+      onChatCardClick(chat.id);
+    });
+  };
+
+  const onSocketMount = () => {
+    // Same data as onConnect
     getChat(host, headers, chatId, (chat) => {
       setChat(chat);
       onChatCardClick(chat.id);
@@ -193,6 +202,7 @@ export const useSingleChatLogic = (
 
   return {
     // Socket Hooks
+    onSocketMount,
     onConnect,
     onAuthFail,
     onEditChat,
