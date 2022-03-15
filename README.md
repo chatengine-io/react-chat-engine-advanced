@@ -58,7 +58,7 @@ import {
   ChatEngine,
   MultiChatSocket,
   useMultiChatLogic,
-} from 'react-chat-engine';
+} from 'react-chat-engine-advanced';
 
 export function App() {
   const chatProps = useMultiChatLogic(

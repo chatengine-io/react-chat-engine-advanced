@@ -4,7 +4,7 @@ import {
   MultiChatSocket,
   ChatWindow,
   useMultiChatLogic,
-} from 'react-chat-engine';
+} from 'react-chat-engine-advanced';
 
 // import './App.css';
 

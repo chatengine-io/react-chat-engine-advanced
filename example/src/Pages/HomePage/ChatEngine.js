@@ -5,7 +5,7 @@ import {
   ChatWindow,
   MultiChatSocket,
   useMultiChatLogic,
-} from 'react-chat-engine';
+} from 'react-chat-engine-advanced';
 
 const ChatWindowApp = (props) => {
   const chatProps = useMultiChatLogic(

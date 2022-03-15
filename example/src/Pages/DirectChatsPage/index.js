@@ -5,7 +5,7 @@ import {
   ChatWindow,
   getOrCreateChat,
   useMultiChatLogic,
-} from 'react-chat-engine';
+} from 'react-chat-engine-advanced';
 
 import { DEVELOPMENT, PROJECT_ID, USER_NAME, USER_SECRET } from '../../consts';
 

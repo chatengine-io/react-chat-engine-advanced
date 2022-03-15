@@ -5,7 +5,7 @@ import {
   ChatFeed,
   useMultiChatLogic,
   getChatsBefore,
-} from 'react-chat-engine';
+} from 'react-chat-engine-advanced';
 
 import {
   DEVELOPMENT,
