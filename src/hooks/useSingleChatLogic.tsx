@@ -160,6 +160,13 @@ export const useSingleChatLogic = (
     setMessages(newMessages);
 
     newMessage(host, headers, activeChatId, message, () => {});
+
+    setTimeout(() => {
+      animateScroll.scrollToBottom({
+        duration: 333,
+        containerId: `ce-message-list-${activeChatId}`,
+      });
+    }, 100);
   };
 
   const onBottomMessageShow = () => {
