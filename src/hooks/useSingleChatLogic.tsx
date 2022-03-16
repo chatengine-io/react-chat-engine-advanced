@@ -208,6 +208,10 @@ export const useSingleChatLogic = (
 
   const onMessageLoaderHide = () => {};
 
+  const onIsTyping = (id: number, person: PersonObject) => {
+    void id, person;
+  };
+
   return {
     // Socket Hooks
     onSocketMount,
@@ -219,6 +223,7 @@ export const useSingleChatLogic = (
     onNewMessage,
     onEditMessage,
     onDeleteMessage,
+    onIsTyping,
     // Auth Data
     projectId,
     chatId,
