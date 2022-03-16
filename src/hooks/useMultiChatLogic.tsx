@@ -353,6 +353,10 @@ export const useMultiChatLogic = (
 
   const onMessageLoaderHide = () => {};
 
+  const onIsTyping = (id: number, person: PersonObject) => {
+    void id, person;
+  };
+
   return {
     // Socket Hooks
     onSocketMount,
@@ -366,6 +370,7 @@ export const useMultiChatLogic = (
     onNewMessage,
     onEditMessage,
     onDeleteMessage,
+    onIsTyping,
     // Auth Data
     projectId,
     username,
