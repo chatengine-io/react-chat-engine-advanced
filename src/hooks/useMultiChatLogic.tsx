@@ -239,15 +239,17 @@ export const useMultiChatLogic = (
     });
   };
 
-  const onChatCardClick = (activeChatId: number) => {
-    setActiveChatId(activeChatId);
-    setIsChatFeedLoading(true);
-    setIsChatSettingsLoading(true);
+  const onChatCardClick = (newActiveChatId: number) => {
+    if (newActiveChatId !== activeChatId) {
+      setIsChatFeedLoading(true);
+      setIsChatSettingsLoading(true);
+    }
+    setActiveChatId(newActiveChatId);
 
     getMessages(
       host,
       headers,
-      activeChatId,
+      newActiveChatId,
       messageCountIterator,
       (chatId, messages) => {
         onGetMessages(chatId, messages);
@@ -262,7 +264,7 @@ export const useMultiChatLogic = (
       }
     );
 
-    getPeopleToInvite(host, headers, activeChatId, setPeopleToInvite);
+    getPeopleToInvite(host, headers, newActiveChatId, setPeopleToInvite);
   };
 
   const onChatLoaderShow = () => {
