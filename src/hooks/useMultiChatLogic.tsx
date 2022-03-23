@@ -83,6 +83,15 @@ export const useMultiChatLogic = (
   messageCountRef.current = messages.length;
   const chat = chats.find((chat) => chat.id === activeChatId);
 
+  // Fetch data on mount
+  const didMountRef = useRef<boolean>(false);
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      fetchMultiChatData();
+    }
+  }, []);
+
   useEffect(() => {
     const chat = chats.find((chat) => chat.id === activeChatId);
     const chatPerson = chat?.people.find(
@@ -98,6 +107,29 @@ export const useMultiChatLogic = (
       readMessage(host, headers, activeChatId, chat.last_message.id, () => {});
     }
   }, [chats, activeChatId, isChatFeedAtBottom]);
+
+  const fetchMultiChatData = () => {
+    const now = new Date()
+      .toISOString()
+      .replace('T', ' ')
+      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
+
+    getChatsBefore(
+      host,
+      headers,
+      now,
+      chatCountRef.current > 0 ? chatCountRef.current : chatCountIterator,
+      (chats) => {
+        onGetChats(chats);
+
+        let currentChat = activeChatId;
+        if (!activeChatId && chats.length > 0) {
+          currentChat = chats[0].id;
+        }
+        currentChat && onChatCardClick(currentChat);
+      }
+    );
+  };
 
   const onGetChats = (chats: ChatObject[] = []) => {
     setHasMoreChats(chats.length >= chatCountRef.current + chatCountIterator);
@@ -183,51 +215,7 @@ export const useMultiChatLogic = (
   };
 
   const onConnect = () => {
-    // Same data as onSocketMount
-    const now = new Date()
-      .toISOString()
-      .replace('T', ' ')
-      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
-
-    getChatsBefore(
-      host,
-      headers,
-      now,
-      chatCountRef.current > 0 ? chatCountRef.current : chatCountIterator,
-      (chats) => {
-        onGetChats(chats);
-
-        let currentChat = activeChatId;
-        if (!activeChatId && chats.length > 0) {
-          currentChat = chats[0].id;
-        }
-        currentChat && onChatCardClick(currentChat);
-      }
-    );
-  };
-
-  const onSocketMount = () => {
-    // Same data as onConnect
-    const now = new Date()
-      .toISOString()
-      .replace('T', ' ')
-      .replace('Z', `${Math.floor(Math.random() * 1000)}+00:00`);
-
-    getChatsBefore(
-      host,
-      headers,
-      now,
-      chatCountRef.current > 0 ? chatCountRef.current : chatCountIterator,
-      (chats) => {
-        onGetChats(chats);
-
-        let currentChat = activeChatId;
-        if (!activeChatId && chats.length > 0) {
-          currentChat = chats[0].id;
-        }
-        currentChat && onChatCardClick(currentChat);
-      }
-    );
+    fetchMultiChatData();
   };
 
   const onAuthFail = () => {};
@@ -359,7 +347,6 @@ export const useMultiChatLogic = (
 
   return {
     // Socket Hooks
-    onSocketMount,
     onConnect,
     onAuthFail,
     onGetChats,

@@ -29,8 +29,6 @@ export const MultiChatSocket: React.FC<Props> = (props: Props) => {
     if (!didMountRef.current) {
       didMountRef.current = true;
 
-      props.onSocketMount && props.onSocketMount();
-
       const host = props.isDevelopment
         ? 'http://127.0.0.1:8000'
         : 'https://api.chatengine.io';

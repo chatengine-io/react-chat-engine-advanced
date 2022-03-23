@@ -11,7 +11,6 @@ export const SingleChatSocket: React.FC<Props> = (props: Props) => {
   useEffect(() => {
     if (!didMountRef.current) {
       didMountRef.current = true;
-      props.onSocketMount && props.onSocketMount();
     }
   }, []);
 

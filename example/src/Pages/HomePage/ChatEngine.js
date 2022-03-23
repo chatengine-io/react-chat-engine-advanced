@@ -23,7 +23,6 @@ const ChatWindowApp = (props) => {
         secret={chatProps.secret}
         isDevelopment={chatProps.isDevelopment}
         // Socket Hooks
-        onSocketMount={chatProps.onSocketMount}
         onConnect={chatProps.onConnect}
         onAuthFail={chatProps.onAuthFail}
         onNewChat={chatProps.onNewChat}
