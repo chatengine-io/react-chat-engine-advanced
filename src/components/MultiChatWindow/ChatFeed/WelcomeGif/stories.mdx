@@ -1,0 +1,54 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { WelcomeGif } from '.';
+import { Props } from './props';
+
+<Meta
+  title="MultiChatWindow/ChatFeed/WelcomeGif"
+  component={WelcomeGif}
+  argTypes={{
+    renderWelcomeGif: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    gifStyle: { table: { category: 'styles' } },
+    textStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <WelcomeGif {...args} />;
+
+# Welcome
+
+A simple welcome Message and Gif for new chats!
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    style: {
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Custom Style
+
+You can change the look and feel with the `*Style` props.
+
+<Story
+  name="Custom Style"
+  args={{
+    style: {
+      maxWidth: '600px',
+      border: '2px solid red',
+    },
+    gifStyle: { border: '2px solid blue' },
+    textStyle: { border: '2px solid green' },
+  }}
+>
+  {Template.bind({})}
+</Story>

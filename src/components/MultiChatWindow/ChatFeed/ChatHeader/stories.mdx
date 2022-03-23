@@ -1,0 +1,79 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { ChatHeader } from '.';
+
+<Meta
+  title="MultiChatWindow/ChatFeed/ChatHeader"
+  component={ChatHeader}
+  argTypes={{
+    renderChatHeader: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    titleStyle: { table: { category: 'styles' } },
+    subtitleStyle: { table: { category: 'styles' } },
+    mobileOptionStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <ChatHeader {...args} />;
+
+# Chat Header
+
+The Chat Header shows data about the Chat you have opened.
+
+Things such as the chat title, members, and last sent message are present.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    id: 1,
+    title: 'Magic Club',
+    description: 'Where the magic happens...',
+    style: {
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Render Functions
+
+You can replace the component with your own code using the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      title: 'Chat Title',
+      renderChatHeader: (props) => <div>Your code here: {props.title}</div>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Styles"
+    args={{
+      id: 1,
+      title: 'Magic Club',
+      description: 'Where the magic happens...',
+      style: { maxWidth: '600px', border: '3px solid red' },
+      titleStyle: { border: '3px solid blue' },
+      subtitleStyle: { border: '3px solid green' },
+      mobileOptionStyle: { border: '3px solid orange' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import {
-  ChatWindow,
+  MultiChatWindow,
   MultiChatSocket,
   useMultiChatLogic,
 } from 'react-chat-engine-advanced';
 
-const ChatWindowApp = (props) => {
+const MultiChatWindowApp = (props) => {
   const chatProps = useMultiChatLogic(
     props.projectID,
     props.accounts.userName,
@@ -34,7 +34,7 @@ const ChatWindowApp = (props) => {
         onIsTyping={chatProps.onIsTyping}
       />
 
-      <ChatWindow
+      <MultiChatWindow
         timezoneOffset={-7}
         chats={chatProps.chats}
         messages={chatProps.messages}
@@ -69,4 +69,4 @@ function mapStateToProps(state) {
   return { accounts: state.accounts };
 }
 
-export default connect(mapStateToProps, {})(ChatWindowApp);
+export default connect(mapStateToProps, {})(MultiChatWindowApp);

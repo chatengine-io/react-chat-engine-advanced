@@ -1,0 +1,99 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
+
+import { ChatForm } from '.';
+import { Props } from './props';
+
+<Meta
+  title="MultiChatWindow/ChatList/ChatForm"
+  component={ChatForm}
+  argTypes={{
+    onFormSubmit: { table: { category: 'hooks' } },
+    renderChatForm: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    titleStyle: { table: { category: 'styles' } },
+    inputStyle: { table: { category: 'styles' } },
+    buttonStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <ChatForm {...args} />;
+
+# Chat Form
+
+The Chat Form component is the form for creating new Chat rooms.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## On Submit
+
+You can trigger code when the form submits with the `onFormSubmit` prop.
+
+<Canvas>
+  <Story
+    name="On Submit"
+    args={{
+      style: {
+        maxWidth: '400px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+      onFormSubmit: (value) => console.log('Submitted', value),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      renderChatForm: () => (
+        <>
+          Your code here: <input placeholder="Chat Title" />
+        </>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+There are a list of `*Style` props which customize various parts of the component.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      style: {
+        maxWidth: '400px',
+        border: '2px solid red',
+      },
+      titleStyle: { border: '2px solid blue' },
+      inputStyle: { border: '2px solid orange' },
+      buttonStyle: { border: '2px solid green' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

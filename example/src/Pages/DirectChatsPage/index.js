@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import {
   MultiChatSocket,
-  ChatWindow,
+  MultiChatWindow,
   getOrCreateChat,
   useMultiChatLogic,
 } from 'react-chat-engine-advanced';
@@ -71,7 +71,7 @@ const DirectChatPage = () => {
         onIsTyping={state.onIsTyping}
       />
 
-      <ChatWindow
+      <MultiChatWindow
         // Chat Data
         username={state.username}
         chats={state.chats}

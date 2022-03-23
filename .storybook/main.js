@@ -1,6 +1,6 @@
 module.exports = {
   stories: [
-    '../src/components/ChatWindow/stories.mdx', // Default Story
+    '../src/components/MultiChatWindow/stories.mdx', // Default Story
     '../src/components/**/stories.@(ts|tsx|js|jsx|mdx)',
   ],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],

@@ -1,0 +1,64 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { FileOutlined } from '@ant-design/icons';
+
+import { DateTime } from '.';
+import { Props } from './props';
+
+import { fileAttachment } from '../../../../../util/mocks';
+
+<Meta
+  title="MultiChatWindow/ChatFeed/MessageList/Message/DateTime"
+  component={DateTime}
+  argTypes={{
+    style: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <DateTime {...args} />;
+
+# Date Time
+
+The Date Time component is used to show the `created` value of a message in the Chat Feed.
+
+It makes the `created` value easy for people to read and understand.
+
+## Default
+
+<Story name="Default" args={{ created: '2021-09-29T00:30:00.000000Z' }}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Offset
+
+If you live in an other timezone than GMT, you can set an `offset` prop which changes the timezone, by hours, from GMT.
+
+<Canvas>
+  <Story
+    name="Is Loading"
+    args={{ created: '2021-09-29T00:30:00.000000Z', offset: -1 }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+You can use the `*Style` props to customize the look and feel.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      created: '2021-09-29T00:30:00.000000Z',
+      offset: -1,
+      style: {
+        border: '2px solid red',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -1,0 +1,133 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { PeopleSettings } from '.';
+import { Props } from './props';
+
+import { threePersonChat, adam } from '../../../util/mocks';
+
+<Meta
+  title="MultiChatWindow/ChatSettings/PeopleSettings"
+  component={PeopleSettings}
+  argTypes={{
+    canDelete: { table: { category: 'state' } },
+    onPersonAdd: { table: { category: 'hooks' } },
+    onPersonDelete: { table: { category: 'hooks' } },
+    renderPeopleSettings: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    avatarStyle: { table: { category: 'styles' } },
+    usernameStyle: { table: { category: 'styles' } },
+    deleteButtonStyle: { table: { category: 'styles' } },
+    optionStyle: { table: { category: 'styles' } },
+    addMemberStyle: { table: { category: 'styles' } },
+    addMemberInputStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <PeopleSettings {...args} />;
+
+# People Settings
+
+People Settings component shows you the users of a chatroom and the ability to edit the member info.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    chat: threePersonChat,
+    peopleToInvite: [adam],
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Can Delete
+
+You'll see a delete button for users when the `canDelete` props is `true`.
+
+<Canvas>
+  <Story
+    name="Can Delete"
+    args={{
+      chat: threePersonChat,
+      peopleToInvite: [adam],
+      canDelete: true,
+      style: {
+        maxWidth: '400px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Hooks
+
+When a user is added or removed, you can run code with the `onPersonAdd` and `onPersonDelete` hooks.
+
+<Canvas>
+  <Story
+    name="Hooks"
+    args={{
+      chat: threePersonChat,
+      peopleToInvite: [adam],
+      onPersonAdd: (person) => console.log('Add:', person),
+      onPersonDelete: (person) => console.log('Delete:', person),
+      style: {
+        maxWidth: '400px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      chat: threePersonChat,
+      renderPeopleSettings: () => <div>Your code here!</div>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Styles"
+    args={{
+      chat: threePersonChat,
+      peopleToInvite: [adam],
+      canDelete: true,
+      style: {
+        maxWidth: '400px',
+        border: '2px solid red',
+      },
+      avatarStyle: { border: '2px solid blue' },
+      usernameStyle: { border: '2px solid green' },
+      deleteButtonStyle: { border: '2px solid orange' },
+      optionStyle: { border: '2px solid aqua' },
+      addMemberStyle: { border: '2px solid grey' },
+      addMemberInputStyle: { border: '2px solid deeppink' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
