@@ -6,7 +6,6 @@ export interface Props {
   secret: string;
   sessionToken?: string;
   isDevelopment?: boolean;
-  onSocketMount?: () => void;
   onConnect?: () => void;
   onAuthFail?: () => void;
   onError?: () => void;

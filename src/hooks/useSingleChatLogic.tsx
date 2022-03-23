@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { ChatObject, MessageObject, PersonObject } from '../interfaces';
 import { getDateTime } from '../components/util/dateTime';
@@ -63,6 +63,22 @@ export const useSingleChatLogic = (
   const messageCountRef = useRef<number>(0);
   messageCountRef.current = messages.length;
 
+  // Fetch data on mount
+  const didMountRef = useRef<boolean>(false);
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      fetchSingleChatData();
+    }
+  }, []);
+
+  const fetchSingleChatData = () => {
+    getChat(host, headers, chatId, (chat) => {
+      setChat(chat);
+      onChatCardClick(chat.id);
+    });
+  };
+
   const onEditChat = (chat: ChatObject) => {
     setChat(chat);
   };
@@ -120,19 +136,7 @@ export const useSingleChatLogic = (
   };
 
   const onConnect = () => {
-    // Same data as onSocketMount
-    getChat(host, headers, chatId, (chat) => {
-      setChat(chat);
-      onChatCardClick(chat.id);
-    });
-  };
-
-  const onSocketMount = () => {
-    // Same data as onConnect
-    getChat(host, headers, chatId, (chat) => {
-      setChat(chat);
-      onChatCardClick(chat.id);
-    });
+    fetchSingleChatData();
   };
 
   const onAuthFail = () => {};
@@ -214,7 +218,6 @@ export const useSingleChatLogic = (
 
   return {
     // Socket Hooks
-    onSocketMount,
     onConnect,
     onAuthFail,
     onEditChat,
