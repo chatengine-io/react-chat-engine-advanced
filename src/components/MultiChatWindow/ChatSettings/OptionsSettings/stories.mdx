@@ -1,0 +1,96 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { OptionsSettings } from '.';
+import { Props } from './props';
+
+import { threePersonChat, adam } from '../../../util/mocks';
+
+<Meta
+  title="MultiChatWindow/ChatSettings/OptionsSettings"
+  component={OptionsSettings}
+  argTypes={{
+    onDeleteChatClick: { table: { category: 'hooks' } },
+    renderOptionsSettings: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    deleteChatButtonStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <OptionsSettings {...args} />;
+
+# Options Settings
+
+Options Settings render everything you can do to the overall chatroom.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## On Delete Chat
+
+When the user click on Delete Chat button, you can run your code on the `onDeleteChatClick` hook.
+
+<Canvas>
+  <Story
+    name="On Delete Chat"
+    args={{
+      chat: threePersonChat,
+      onDeleteChatClick: (chat) => console.log('Delete chat', chat),
+      style: {
+        maxWidth: '400px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      chat: threePersonChat,
+      renderOptionsSettings: () => <div>Your code here!</div>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Styles"
+    args={{
+      chat: threePersonChat,
+      peopleToInvite: [adam],
+      canDelete: true,
+      style: {
+        maxWidth: '400px',
+        border: '2px solid red',
+      },
+      deleteChatButtonStyle: { border: '2px solid blue' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

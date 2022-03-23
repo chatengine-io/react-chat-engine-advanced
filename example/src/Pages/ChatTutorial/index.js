@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   MultiChatSocket,
-  ChatWindow,
+  MultiChatWindow,
   useMultiChatLogic,
 } from 'react-chat-engine-advanced';
 
@@ -20,7 +20,7 @@ const App = () => {
     <div>
       <MultiChatSocket {...state} />
 
-      <ChatWindow
+      <MultiChatWindow
         {...state}
         renderChatFeed={() => <div>yo</div>}
         style={{ height: '100vh' }}

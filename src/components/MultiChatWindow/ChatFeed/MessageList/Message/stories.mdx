@@ -1,0 +1,190 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
+
+import { Message } from '.';
+import { Props } from './props';
+
+import {
+  message1001,
+  messagePlusAttachments1004,
+  chatWithReads,
+} from '../../../../util/mocks';
+
+<Meta
+  title="MultiChatWindow/ChatFeed/MessageList/Message"
+  component={Message}
+  argTypes={{
+    isMyMessage: { table: { category: 'state' } },
+    isSending: { table: { category: 'state' } },
+    showDateTime: { table: { category: 'state' } },
+    renderMessage: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    dateTimeStyle: { table: { category: 'styles' } },
+    senderUsernameStyle: { table: { category: 'styles' } },
+    attachmentsStyle: { table: { category: 'styles' } },
+    attachmentsImageStyle: { table: { category: 'styles' } },
+    attachmentsFileStyle: { table: { category: 'styles' } },
+    bodyStyle: { table: { category: 'styles' } },
+    timeTagStyle: { table: { category: 'styles' } },
+    bubbleStyle: { table: { category: 'styles' } },
+    readsStyle: { table: { category: 'styles' } },
+    readStyle: { table: { category: 'styles' } },
+    avatarStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <Message {...args} />;
+
+# Message
+
+The message component represents a Message sent by a User.
+
+## Default
+
+<Story name="Default" args={{ message: message1001 }}>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Is My Message
+
+You can set the `isMyMessage` prop to `true` and the message will appear to be sent by you.
+
+This involves changing the style and position of the message.
+
+<Canvas>
+  <Story
+    name="Is My Message"
+    args={{ message: message1001, isMyMessage: true }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Attachments
+
+If the `message` props has files in its `attachments` field, then files and images will be rendered accordingly.
+
+<Canvas>
+  <Story name="With Attachments" args={{ message: messagePlusAttachments1004 }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Show Date Time
+
+You can set the `showDateTime` prop to `true` and the message will appear under the date-time it was created at.
+
+The date-time value pulls from the `message` prop's `created` value.
+
+<Canvas>
+  <Story
+    name="Show Date Time"
+    args={{ message: message1001, showDateTime: true }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Is Sending
+
+You can set the `isSending` prop to `true` and the message will appear to be sending.
+
+This is for messages which have not delivered yet.
+
+This should only be set when `isMyMessage` is `true`. This is because non-delivered messages are only visible to you, inherently.
+
+<Canvas>
+  <Story
+    name="Is Sending"
+    args={{
+      message: messagePlusAttachments1004,
+      isSending: true,
+      isMyMessage: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Between Messages
+
+When you put a message between two others with `lastMessage` and `nextMessage` props, then you get sharper borders on the outside.
+
+<Canvas>
+  <Story
+    name="Between Messages"
+    args={{
+      lastMessage: message1001,
+      message: message1001,
+      nextMessage: message1001,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Read Message
+
+If you pass in the optional `chat` prop and the `people` attribute shows users have read this message, dots will appear accordingly.
+
+<Canvas>
+  <Story
+    name="Read Message"
+    args={{
+      message: message1001,
+      chat: chatWithReads,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Functions
+
+You can replace the message with your own code using our `render*` function props.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      message: message1001,
+      chat: chatWithReads,
+      renderMessage: (props) => (
+        <div>Your Message code here: {props.message.text}</div>
+      ),
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+You can use the `*Style` props, to customize every aspect of a Message component.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      message: messagePlusAttachments1004,
+      chat: chatWithReads,
+      style: { border: '2px solid red' },
+      dateTimeStyle: { border: '2px solid blue' },
+      senderUsernameStyle: { border: '2px solid green' },
+      attachmentsStyle: { border: '2px solid orange' },
+      attachmentsImageStyle: { border: '2px solid gold' },
+      attachmentsFileStyle: { border: '2px solid olive' },
+      attachmentsStyle: { border: '2px solid orange' },
+      bodyStyle: { border: '2px solid yellow' },
+      timeTagStyle: { border: '2px solid brown' },
+      bubbleStyle: { border: '2px solid lime' },
+      readsStyle: { border: '2px solid grey' },
+      readStyle: { border: '2px solid cyan' },
+      avatarStyle: { border: '2px solid deeppink' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

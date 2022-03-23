@@ -1,19 +1,19 @@
-export * from './ChatWindow';
+export * from './MultiChatWindow';
 
-export * from './ChatWindow/ChatList';
-export * from './ChatWindow/ChatList/ChatForm';
-export * from './ChatWindow/ChatList/ChatCard';
+export * from './MultiChatWindow/ChatList';
+export * from './MultiChatWindow/ChatList/ChatForm';
+export * from './MultiChatWindow/ChatList/ChatCard';
 
-export * from './ChatWindow/ChatFeed';
-export * from './ChatWindow/ChatFeed/ChatHeader';
-export * from './ChatWindow/ChatFeed/MessageList';
-export * from './ChatWindow/ChatFeed/MessageForm';
+export * from './MultiChatWindow/ChatFeed';
+export * from './MultiChatWindow/ChatFeed/ChatHeader';
+export * from './MultiChatWindow/ChatFeed/MessageList';
+export * from './MultiChatWindow/ChatFeed/MessageForm';
 
-export * from './ChatWindow/ChatSettings';
-export * from './ChatWindow/ChatSettings/ChatAvatars';
-export * from './ChatWindow/ChatSettings/PeopleSettings';
-export * from './ChatWindow/ChatSettings/PhotosSettings';
-export * from './ChatWindow/ChatSettings/OptionsSettings';
+export * from './MultiChatWindow/ChatSettings';
+export * from './MultiChatWindow/ChatSettings/ChatAvatars';
+export * from './MultiChatWindow/ChatSettings/PeopleSettings';
+export * from './MultiChatWindow/ChatSettings/PhotosSettings';
+export * from './MultiChatWindow/ChatSettings/OptionsSettings';
 
 export * from './Components/Avatar';
 export * from './Components/Autocomplete';

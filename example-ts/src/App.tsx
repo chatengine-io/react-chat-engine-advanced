@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   MultiChatSocket,
-  ChatWindow,
+  MultiChatWindow,
   useMultiChatLogic,
 } from 'react-chat-engine-advanced';
 
@@ -16,7 +16,7 @@ const App: React.FC = () => {
   return (
     <>
       <MultiChatSocket {...chatProps} />
-      <ChatWindow timezoneOffset={1} {...chatProps} />
+      <MultiChatWindow timezoneOffset={1} {...chatProps} />
     </>
   );
 };

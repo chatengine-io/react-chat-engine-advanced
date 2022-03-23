@@ -1,0 +1,215 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { MessageList } from '.';
+
+import { messages, directMessageChat } from '../../../util/mocks';
+
+<Meta
+  title="MultiChatWindow/ChatFeed/MessageList"
+  component={MessageList}
+  argTypes={{
+    username: { table: { category: 'state' } },
+    hasMoreMessages: { table: { category: 'state' } },
+    onMessageLoaderShow: { table: { category: 'hooks' } },
+    onMessageLoaderHide: { table: { category: 'hooks' } },
+    onBottomMessageShow: { table: { category: 'hooks' } },
+    onBottomMessageHide: { table: { category: 'hooks' } },
+    renderMessageList: { table: { category: 'render functions' } },
+    renderMessage: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    messageStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <MessageList {...args} />;
+
+# Message List
+
+The message list component displays all the messages sent into a Chat.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    messages: messages,
+    style: {
+      maxWidth: '500px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## My Username
+
+You can specify your username with `username` prop. Any Message component where `message.sender_username === username` will appear to be sent by you.
+
+This is done by setting the Message component's `isMyMessage` prop to `true`.
+
+<Canvas>
+  <Story
+    name="My Username"
+    args={{
+      messages: messages,
+      username: 'bob_baker',
+      style: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Chat with Reads
+
+You can pass a `chat` prop which will show Chat Members and their read messages.
+
+<Canvas>
+  <Story
+    name="Chat with Reads"
+    args={{
+      messages: messages,
+      username: 'bob_baker',
+      chat: directMessageChat,
+      style: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Date Time
+
+When a message is sent, if the `lastMessage` is `null` or it was created on another day, the `<DateTime/>` component will become visible.
+
+Here is an example of two messages sent on different days, rendering a `<DateTime/>` each.
+
+<Canvas>
+  <Story
+    name="Date Time"
+    args={{
+      messages: messages,
+      style: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Has More Messages
+
+If your Chat room has a longer Message history, you can set `hasMoreMessages` to `true`.
+
+This will put a `<Spinner/>` component at the top of the chat feed which is used to load more messages.
+
+<Canvas>
+  <Story
+    name="Has More Messages"
+    args={{
+      messages: messages,
+      hasMoreMessages: true,
+      style: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Triggers
+
+When the top and bottom message become visible, you can trigger custom functions.
+
+Use the `onMessageLoaderShow`/`onMessageLoaderHide` and `onBottomMessageShow`/`onBottomMessageHide` functions to trigger functions accordingly.
+
+It's commonly used to know when you need to load more messages, or mark a chat's messages as "all read".
+
+Check the console log for this example.
+
+<Canvas>
+  <Story
+    name="Render Triggers"
+    args={{
+      messages: messages,
+      onMessageLoaderShow: () => console.log('Top message showing'),
+      onMessageLoaderHide: () => console.log('Top message hidden'),
+      onBottomMessageShow: () => console.log('Bottom message showing'),
+      onBottomMessageHide: () => console.log('Bottom message hidden'),
+      style: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Functions
+
+You can replace the component with your own code using the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      messages: messages,
+      renderMessageList: () => <>Your code here!</>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+You can use to to replace sub-components too!
+
+<Canvas>
+  <Story
+    name="Render Functions 2"
+    args={{
+      messages: messages,
+      renderMessage: (props) => <>Your Message code: {props.message.text}</>,
+      style: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+You can customize the look and feel with the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      messages: messages,
+      style: {
+        maxWidth: '500px',
+        boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+        border: '2px solid red',
+      },
+      messageStyle: { border: '2px solid blue' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

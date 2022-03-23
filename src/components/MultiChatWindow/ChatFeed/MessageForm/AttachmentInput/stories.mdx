@@ -1,0 +1,48 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { AttachmentInput } from '.';
+import { Props } from './props';
+
+<Meta
+  title="MultiChatWindow/ChatFeed/MessageForm/AttachmentInput"
+  component={AttachmentInput}
+  argTypes={{
+    onSelectFiles: { table: { category: 'hooks' } },
+    style: { table: { category: 'styles' } },
+    iconStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <AttachmentInput {...args} />;
+
+# Attachment Input
+
+Attachment Input is a component which let's you select files in a form.
+
+This is a simple component and currently not interactive in a Storybook context.
+
+## Default
+
+<Story
+  name="Default"
+  args={{ onSelectFiles: (files) => console.log('Attachments', files) }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Custom Style
+
+To customize the look and feel, use the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      style: { border: '2px solid red' },
+      iconStyle: { border: '2px solid blue' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

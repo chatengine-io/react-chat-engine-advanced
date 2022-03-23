@@ -1,0 +1,213 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { ChatFeed } from '.';
+import { Props } from './props';
+
+import { onePersonChat, messages } from '../../util/mocks';
+
+<Meta
+  title="MultiChatWindow/ChatFeed"
+  component={ChatFeed}
+  argTypes={{
+    username: { table: { category: 'state' } },
+    isLoading: { table: { category: 'state' } },
+    hasMoreMessages: { table: { category: 'state' } },
+    onMessageLoaderShow: { table: { category: 'hooks' } },
+    onMessageLoaderHide: { table: { category: 'hooks' } },
+    onBottomMessageShow: { table: { category: 'hooks' } },
+    onBottomMessageHide: { table: { category: 'hooks' } },
+    onMessageFormSubmit: { table: { category: 'hooks' } },
+    renderChatFeed: { table: { category: 'render functions' } },
+    renderChatHeader: { table: { category: 'render functions' } },
+    renderMessageList: { table: { category: 'render functions' } },
+    renderMessage: { table: { category: 'render functions' } },
+    renderWelcomeGif: { table: { category: 'render functions' } },
+    renderMessageForm: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    chatHeaderStyle: { table: { category: 'styles' } },
+    messageListStyle: { table: { category: 'styles' } },
+    messageFormStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <ChatFeed {...args} />;
+
+# Chat Feed
+
+The Chat Feed represents all the activity currently going on within one chat.
+
+It stacks the `<ChatHeader/>`, `<MessageList/>`, and `<MessageForm/>` in an easy, understandable way.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    messages: messages,
+    chat: onePersonChat,
+    style: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Chat
+
+Passing a Chat object into the `chat` prop will allow/set the header values and read-receipts.
+
+<Story
+  name="Chat"
+  args={{
+    chat: onePersonChat,
+    messages: messages,
+    style: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## My Username
+
+You can use the `username` prop to specify which messages were sent by this user. Then any `message` component with a matching `sender_username` will inherit `isMyMessage={true}`.
+
+<Story
+  name="My Username"
+  args={{
+    chat: onePersonChat,
+    username: 'Adam_La_Morre',
+    messages: messages,
+    style: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Is Loading
+
+If the chat is loading initial message, set `isLoading` to `true` for the following style.
+
+<Story
+  name="Is Loading"
+  args={{
+    isLoading: true,
+    messages: {},
+    style: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## New Chat
+
+For a new chat (with no messages) you get this `<WelcomeGif />` component to fill some space!
+
+<Story
+  name="New Chat"
+  args={{
+    chat: onePersonChat,
+    messages: [],
+    style: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Has More Messages
+
+If this Chat room has more Messages, set the `hasMoreMessages` prop to `true`.
+
+This is used to load more messages once at the top of the Chat Feed.
+
+<Story
+  name="Has More Messages"
+  args={{
+    chat: onePersonChat,
+    hasMoreMessages: true,
+    messages: messages,
+    style: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Story
+  name="Render Functions"
+  args={{
+    chat: onePersonChat,
+    messages: messages,
+    renderChatFeed: () => <>Your Chat Feed code here!</>,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+You can render you own code for sub-components within Chat Feed.
+
+<Story
+  name="Render Functions 2"
+  args={{
+    chat: onePersonChat,
+    messages: messages,
+    renderChatHeader: () => <div>Your Chat Header code here!</div>,
+    renderMessageList: () => <div>Your Message List code here!</div>,
+    renderMessageForm: () => <div>Your Message Form code here!</div>,
+    style: {
+      height: '500px',
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Custom Style
+
+You can change the look and feel with the `*Style` props.
+
+<Story
+  name="Custom Style"
+  args={{
+    chat: onePersonChat,
+    messages: messages,
+    style: {
+      height: '500px',
+      maxWidth: '600px',
+      border: '2px solid red',
+    },
+    chatHeaderStyle: { border: '2px solid blue' },
+    messageListStyle: { border: '2px solid green' },
+    messageFormStyle: { border: '2px solid orange' },
+  }}
+>
+  {Template.bind({})}
+</Story>

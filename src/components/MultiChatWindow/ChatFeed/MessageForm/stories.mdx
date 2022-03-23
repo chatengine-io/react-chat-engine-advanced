@@ -1,0 +1,96 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { MessageForm } from '.';
+import { Props } from './props';
+
+<Meta
+  title="MultiChatWindow/ChatFeed/MessageForm"
+  component={MessageForm}
+  argTypes={{
+    username: { table: { category: 'state' } },
+    onChange: { table: { category: 'hooks' } },
+    onSubmit: { table: { category: 'hooks' } },
+    renderMessageForm: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    inputStyle: { table: { category: 'styles' } },
+    sendButtonStyle: { table: { category: 'styles' } },
+    attachmentInputStyle: { table: { category: 'styles' } },
+    attachmentInputIconStyle: { table: { category: 'styles' } },
+    draftAttachmentStyle: { table: { category: 'styles' } },
+    draftAttachmentRemoveStyle: { table: { category: 'styles' } },
+    draftImageStyle: { table: { category: 'styles' } },
+    draftFileStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <MessageForm {...args} />;
+
+# MessageForm
+
+This message form is for making and sending Messages.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    style: {
+      maxWidth: '600px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Render Function
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Function"
+    args={{
+      style: {
+        maxWidth: '600px',
+        border: '2px solid red',
+      },
+      renderMessageForm: () => (
+        <div>
+          Your code here: <input />
+        </div>
+      ),
+    }}
+  >
+    {StyleTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Style
+
+To customize the look and feel, use the `*Style` props.
+
+export const StyleTemplate = (args) => <MessageForm {...args} />;
+
+<Canvas>
+  <Story
+    name="Custom Style"
+    args={{
+      style: {
+        maxWidth: '600px',
+        border: '2px solid red',
+      },
+      inputStyle: { border: '2px solid green' },
+      sendButtonStyle: { border: '2px solid blue' },
+      draftAttachmentStyle: { border: '2px solid orange' },
+      draftAttachmentRemoveStyle: { border: '2px solid purple' },
+      attachmentInputStyle: { border: '2px solid yellow', padding: '6px 8px' },
+      attachmentInputIconStyle: { border: '2px solid black' },
+      draftImageStyle: { border: '2px solid grey' },
+      draftFileStyle: { border: '2px solid pink' },
+    }}
+  >
+    {StyleTemplate.bind({})}
+  </Story>
+</Canvas>

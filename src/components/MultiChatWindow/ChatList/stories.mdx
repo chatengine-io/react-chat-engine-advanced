@@ -1,0 +1,202 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { ChatList } from '.';
+import { Props } from './props';
+
+import { chats } from '../../util/mocks';
+
+<Meta
+  title="MultiChatWindow/ChatList"
+  component={ChatList}
+  argTypes={{
+    activeChatId: { table: { category: 'state' } },
+    username: { table: { category: 'state' } },
+    hasMoreChats: { table: { category: 'state' } },
+    isLoading: { table: { category: 'state' } },
+    onChatCardClick: { table: { category: 'hooks' } },
+    onChatFormSubmit: { table: { category: 'hooks' } },
+    onChatLoaderShow: { table: { category: 'hooks' } },
+    renderChatList: { table: { category: 'render functions' } },
+    renderChatForm: { table: { category: 'render functions' } },
+    renderChatCard: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    loadingMoreChatsStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <ChatList {...args} />;
+
+# Chat List
+
+The Chat List component is for listing all chats relevant to one user.
+
+It stacks the `<ChatForm />`, `<ChatCard />` and `<ChatsLoader />` components in a convenient way.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      maxHeight: '330px',
+    },
+    chats: chats,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Active Chat
+
+You can specify the active chat with `activeChatId` and the corresponding ChatCard will be active.
+
+<Story
+  name="Active Chat"
+  args={{
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      maxHeight: '330px',
+    },
+    chats: chats,
+    activeChatId: 201,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## My Username
+
+If you set the `username` prop, you can see which chats this User has notifications for.
+
+<Story
+  name="My Username"
+  args={{
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      maxHeight: '330px',
+    },
+    chats: chats,
+    username: 'adam_lamorre',
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Is Loading
+
+If the chats are not present yet, you can set `isLoading` to true and the chats will be loading.
+
+<Story
+  name="Is Loading"
+  args={{
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      maxHeight: '330px',
+    },
+    chats: {},
+    isLoading: true,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Has More Chats
+
+If this User has more chats, set `hasMoreChats` prop to `true`. Then there will be a Chat Loader component at the bottom of the list.
+
+<Story
+  name="Has More Chats"
+  args={{
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      maxHeight: '330px',
+    },
+    chats: chats,
+    hasMoreChats: true,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Event Hooks
+
+Use event hooks with the `on*` props.
+
+They let you run you own code when they occur / trigger.
+
+<Story
+  name="Event Hooks"
+  args={{
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      maxHeight: '330px',
+    },
+    chats: chats,
+    hasMoreChats: true,
+    onChatCardClick: (id) => console.log('Chat Click', id),
+    onChatFormSubmit: (data) => console.log('New Chat', data),
+    onChatLoaderShow: (id) => console.log('Load more chats!'),
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Story
+  name="Render Functions"
+  args={{
+    chats: chats,
+    renderChatList: () => <>Your code here!</>,
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+You can render you own code for sub-components within Chat List.
+
+<Story
+  name="Render Functions 2"
+  args={{
+    chats: chats,
+    renderChatForm: (props) => <div>Chat Form: {props.title}</div>,
+    renderChatCard: (props) => <div>Chat Card: {props.title}</div>,
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+      maxHeight: '330px',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+## Custom Styles
+
+Customize the look and feel with the `*Style` props.
+
+<Story
+  name="Custom Styles"
+  args={{
+    chats: chats,
+    hasMoreChats: true,
+    style: {
+      maxWidth: '400px',
+      maxHeight: '330px',
+      border: '1px solid red',
+    },
+    loadingMoreChatsStyle: { border: '1px solid blue' },
+  }}
+>
+  {Template.bind({})}
+</Story>

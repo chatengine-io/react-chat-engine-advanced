@@ -1,0 +1,77 @@
+import { ArgsTable, Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { PhotosSettings } from '.';
+import { Props } from './props';
+
+import { threePersonChat } from '../../../util/mocks';
+
+<Meta
+  title="MultiChatWindow/ChatSettings/PhotosSettings"
+  component={PhotosSettings}
+  argTypes={{
+    renderPhotosSettings: { table: { category: 'render functions' } },
+    style: { table: { category: 'styles' } },
+    imageWrapperStyle: { table: { category: 'styles' } },
+    imageStyle: { table: { category: 'styles' } },
+  }}
+/>
+
+export const Template = (args) => <PhotosSettings {...args} />;
+
+# Photos Settings
+
+Photos Settings component shows you the photos in the chatroom history.
+
+## Default
+
+<Story
+  name="Default"
+  args={{
+    chat: threePersonChat,
+    style: {
+      maxWidth: '400px',
+      boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
+    },
+  }}
+>
+  {Template.bind({})}
+</Story>
+
+<ArgsTable story="Default" />
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      chat: threePersonChat,
+      renderPhotosSettings: () => <div>Your code here!</div>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Custom Styles
+
+You can customize the look and feel with the `*Style` props.
+
+<Canvas>
+  <Story
+    name="Custom Styles"
+    args={{
+      chat: threePersonChat,
+      style: {
+        maxWidth: '400px',
+        border: '2px solid red',
+      },
+      imageWrapperStyle: { border: '2px solid blue', width: 'calc(33% - 4px)' },
+      imagePaddingStyle: { border: '2px solid orange' },
+      imageStyle: { border: '2px solid green' },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
