@@ -28,7 +28,7 @@ export const Avatar = (props: Props) => {
 
   return (
     <div
-      className="ce-avatar"
+      className={`ce-avatar ${props.className}`}
       onClick={props.onClick}
       style={{
         ...styles.style,

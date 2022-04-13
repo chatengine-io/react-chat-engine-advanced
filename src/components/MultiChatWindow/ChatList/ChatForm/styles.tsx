@@ -26,7 +26,7 @@ export const styles: ChatFormStyles = {
   inputStyle: {
     // Position
     position: 'absolute',
-    top: '16px',
+    top: '15px',
     left: '14px',
     // Size
     width: 'calc(100% - 28px)',

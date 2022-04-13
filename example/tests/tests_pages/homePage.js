@@ -5,8 +5,8 @@ module.exports = {
     userSecretInput: '#home-page-password-input',
     loginButton: '#home-page-login-button',
     logoutButton: '#home-page-logout-button',
-    newChatButton: '#new-chat-plus-button',
-    newChatInput: '#ce-new-chat-title-field',
+    newChatButton: '.new-chat-plus-button',
+    newChatInput: '.ce-new-chat-title-field',
     addUserInput: '#ce-add-username-input',
     newMessageInput: '.ql-editor',
     newMessageButton: '#ce-send-message-button',
@@ -16,22 +16,16 @@ module.exports = {
     newDirectChatInput: '#new-dc-user',
     newDirectChatButton: '#new-dc-user-btn',
   },
-  commands: [{
-    assertText(element, expectedText, assertText){
-      return this
-        .getText(element, function(result) {
-          this.assert.equal(
-            result.value,
-            expectedText,
-            assertText
-          );
-        })
+  commands: [
+    {
+      assertText(element, expectedText, assertText) {
+        return this.getText(element, function (result) {
+          this.assert.equal(result.value, expectedText, assertText);
+        });
+      },
+      set(element, value) {
+        return this.click(element).clearValue(element).setValue(element, value);
+      },
     },
-    set(element, value){
-      return this
-        .click(element)
-        .clearValue(element)
-        .setValue(element, value)
-    }
-  }]
-}
+  ],
+};

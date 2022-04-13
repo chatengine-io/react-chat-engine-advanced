@@ -25,7 +25,7 @@ export const Input = (props: Props) => {
   return (
     <input
       autoFocus={props.autoFocus}
-      className="ce-input ce-text-input"
+      className={`ce-input ce-text-input ${props.className}`}
       placeholder={props.label}
       value={typeof props.value === 'string' ? props.value : currentValue}
       onChange={(e) => {

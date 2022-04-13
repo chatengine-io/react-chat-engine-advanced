@@ -7,4 +7,5 @@ export interface Props extends HTMLAttributes<HTMLInputElement>, InputStyles {
   defaultValue?: string | undefined;
   value?: string | undefined;
   autoFocus?: boolean;
+  className?: string;
 }
