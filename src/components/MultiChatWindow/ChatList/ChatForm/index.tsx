@@ -31,7 +31,6 @@ export const ChatForm: React.FC<Props> = (props: Props) => {
         ...styles.style,
         ...props.style,
       }}
-      onBlur={() => setSelected(false)}
     >
       <span
         className="ce-chat-form-title"
@@ -66,6 +65,7 @@ export const ChatForm: React.FC<Props> = (props: Props) => {
             ...props.inputStyle,
           }}
           onChange={onChange}
+          onBlur={() => setSelected(false)}
         />
       </form>
     </div>
