@@ -7,10 +7,13 @@ export const Dropdown: React.FC<Props> = (props: Props) => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
   return (
-    <div style={{ ...styles.style, ...props.style }}>
+    <div
+      id={props.id}
+      className={`ce-dropdown ${props.className}`}
+      style={{ ...styles.style, ...props.style }}
+    >
       <div
-        id={props.id}
-        className={props.className}
+        className="ce-dropdown-label"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={() => setExpanded(!expanded)}
@@ -24,6 +27,7 @@ export const Dropdown: React.FC<Props> = (props: Props) => {
         {props.label}
 
         <svg
+          className="ce-dropdown-icon"
           style={{
             ...styles.iconStyle,
             ...(expanded
@@ -42,6 +46,7 @@ export const Dropdown: React.FC<Props> = (props: Props) => {
       </div>
 
       <div
+        className="ce-dropdown-children"
         style={{
           ...styles.bodyStyle,
           ...(expanded && styles.bodyExpandedStyle),

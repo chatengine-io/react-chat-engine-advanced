@@ -11,7 +11,11 @@ export const OptionsSettings: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <Dropdown label="Options" style={{ ...styles.style, ...props.style }}>
+    <Dropdown
+      id="ce-settings-options-dropdown"
+      label="Options"
+      style={{ ...styles.style, ...props.style }}
+    >
       <Button
         type="danger"
         onClick={() =>
