@@ -31,47 +31,43 @@ export const ChatForm: React.FC<Props> = (props: Props) => {
         ...styles.style,
         ...props.style,
       }}
+      onBlur={() => setSelected(false)}
     >
-      {!selected && (
-        <span
-          style={{
-            ...styles.titleStyle,
-            ...props.titleStyle,
-          }}
-        >
-          My Chats
-        </span>
-      )}
+      <span
+        className="ce-chat-form-title"
+        style={{
+          ...styles.titleStyle,
+          ...props.titleStyle,
+        }}
+      >
+        My Chats
+      </span>
 
-      {!selected && (
-        <Button
-          style={{
-            ...styles.buttonStyle,
-            ...props.buttonStyle,
-          }}
-          id="new-chat-plus-button"
-          onClick={() => setSelected(true)}
-        >
-          +
-        </Button>
-      )}
+      <Button
+        style={{
+          ...styles.buttonStyle,
+          ...props.buttonStyle,
+        }}
+        className="ce-chat-form-button"
+        onClick={() => setSelected(true)}
+      >
+        +
+      </Button>
 
-      {selected && (
-        <form onSubmit={onSubmit}>
-          <Input
-            autoFocus
-            value={value}
-            label="Chat Title"
-            id="ce-new-chat-title-field"
-            onBlur={() => setSelected(false)}
-            style={{
-              ...styles.inputStyle,
-              ...props.inputStyle,
-            }}
-            onChange={onChange}
-          />
-        </form>
-      )}
+      <form className="ce-chat-form-html-form" onSubmit={onSubmit}>
+        <Input
+          autoFocus
+          value={value}
+          label="Chat Title"
+          className="ce-chat-form-input"
+          style={{
+            ...styles.inputStyle,
+            ...{ visibility: selected ? 'visible' : 'hidden' },
+            ...props.inputStyle,
+          }}
+          onChange={onChange}
+        />
+      </form>
     </div>
   );
 };
