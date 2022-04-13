@@ -5,4 +5,5 @@ export interface Props extends AvatarStyles {
   username?: string;
   isOnline?: boolean | undefined;
   onClick?: () => void;
+  className?: string;
 }

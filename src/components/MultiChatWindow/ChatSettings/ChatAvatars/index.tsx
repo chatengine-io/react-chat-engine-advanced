@@ -42,6 +42,7 @@ export const ChatAvatars: React.FC<Props> = (props: Props) => {
       style={{ ...styles.style, ...props.style }}
     >
       <Avatar
+        className="ce-chat-avatar-1"
         username={topPeople[0] ? topPeople[0].username : undefined}
         avatarUrl={topPeople[0] ? topPeople[0].avatar : undefined}
         style={{
@@ -52,6 +53,7 @@ export const ChatAvatars: React.FC<Props> = (props: Props) => {
       />
 
       <Avatar
+        className="ce-chat-avatar-2"
         username={topPeople[1] ? topPeople[1].username : undefined}
         avatarUrl={topPeople[1] ? topPeople[1].avatar : undefined}
         style={{
@@ -62,6 +64,7 @@ export const ChatAvatars: React.FC<Props> = (props: Props) => {
       />
 
       <Avatar
+        className="ce-chat-avatar-3"
         username={topPeople[2] ? topPeople[2].username : undefined}
         avatarUrl={topPeople[2] ? topPeople[2].avatar : undefined}
         style={{
