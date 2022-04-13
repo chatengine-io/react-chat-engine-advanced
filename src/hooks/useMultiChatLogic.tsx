@@ -126,7 +126,10 @@ export const useMultiChatLogic = (
         if (!activeChatId && chats.length > 0) {
           currentChat = chats[0].id;
         }
-        currentChat && onChatCardClick(currentChat);
+
+        currentChat
+          ? onChatCardClick(currentChat)
+          : setIsChatFeedLoading(false);
       }
     );
   };

@@ -82,7 +82,11 @@ export const PeopleSettings: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <Dropdown label="Members" style={{ ...styles.style, ...props.style }}>
+    <Dropdown
+      id="ce-settings-people-dropdown"
+      label="Members"
+      style={{ ...styles.style, ...props.style }}
+    >
       {renderChatPeople(chat.people)}
 
       <Autocomplete
