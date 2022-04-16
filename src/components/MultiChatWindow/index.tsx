@@ -5,9 +5,15 @@ import { styles } from './styles';
 import { ChatList } from './ChatList';
 import { ChatFeed } from './ChatFeed';
 import { ChatSettings } from './ChatSettings';
+import { ChatAvatars } from './ChatSettings/ChatAvatars';
+import { Props as ChatAvatarsProps } from './ChatSettings/ChatAvatars/props';
 import { Button } from '../Components/Button';
 
-import { UnorderedListOutlined, SettingOutlined } from '@ant-design/icons';
+import {
+  UnorderedListOutlined,
+  SettingOutlined,
+  CloseOutlined,
+} from '@ant-design/icons';
 
 import { Row, Col } from 'react-grid-system';
 import { setConfiguration } from 'react-grid-system';
@@ -72,7 +78,24 @@ export const MultiChatWindow: React.FC<Props> = (props: Props) => {
         onRemovePersonClick={props.onRemovePersonClick}
         onDeleteChatClick={props.onDeleteChatClick}
         renderChatSettings={props.renderChatSettings}
-        renderChatAvatars={props.renderChatAvatars}
+        renderChatAvatars={(chatAvatarsProps) =>
+          ((
+            <>
+              <ChatAvatars
+                {...chatAvatarsProps}
+                renderChatAvatars={props.renderChatAvatars}
+              />
+              {isMobile && (
+                <Button
+                  onClick={() => setIsMobileChatSettingsOpen(false)}
+                  style={{ position: 'absolute', top: '12px', right: '12px' }}
+                >
+                  <CloseOutlined />
+                </Button>
+              )}
+            </>
+          ) as unknown) as React.FC<ChatAvatarsProps>
+        }
         renderPeopleSettings={props.renderPeopleSettings}
         renderPhotosSettings={props.renderPhotosSettings}
         renderOptionsSettings={props.renderOptionsSettings}

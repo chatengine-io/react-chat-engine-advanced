@@ -7,7 +7,7 @@ export interface ChatSettingsStyles {
 }
 
 export const styles: ChatSettingsStyles = {
-  style: { backgroundColor: 'white', width: '100%' },
+  style: { backgroundColor: 'white', width: '100%', height: '100%' },
   chatTitleStyle: {
     width: '100%',
     textAlign: 'center',
