@@ -14,6 +14,7 @@ import { threePersonChat, adam as currentUser, bob } from '../../util/mocks';
     onRemovePersonClick: { table: { category: 'hooks' } },
     onDeleteChatClick: { table: { category: 'hooks' } },
     renderChatSettings: { table: { category: 'render functions' } },
+    renderChatAvatars: { table: { category: 'render functions' } },
     renderPeopleSettings: { table: { category: 'render functions' } },
     renderPhotosSettings: { table: { category: 'render functions' } },
     renderOptionsSettings: { table: { category: 'render functions' } },
@@ -86,6 +87,7 @@ You can render you own code instead of this component with the `render*` functio
     name="Render Functions 2"
     args={{
       chat: threePersonChat,
+      renderChatAvatars: () => <div>Your Avatars code here!</div>,
       renderPeopleSettings: () => <div>Your People code here!</div>,
       renderPhotosSettings: () => <div>Your Photos code here!</div>,
       renderOptionsSettings: () => <div>Your Options code here!</div>,

@@ -10,6 +10,7 @@ import { adam, bob, cam } from '../../../util/mocks';
   argTypes={{
     username: { table: { category: 'state' } },
     isDirectChat: { table: { category: 'state' } },
+    renderChatAvatars: { table: { category: 'render functions' } },
     style: { table: { category: 'styles' } },
     oneAvatarStyle: { table: { category: 'styles' } },
     twoAvatarsStyle: { table: { category: 'styles' } },
@@ -101,6 +102,23 @@ For group chats with three or more people, the first three users' avatars will d
     args={{
       users: [adam, bob, cam],
       username: adam.username,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Functions
+
+You can render you own code instead of this component with the `render*` functions.
+
+<Canvas>
+  <Story
+    name="Render Functions"
+    args={{
+      users: [adam, bob, cam],
+      username: adam.username,
+      renderChatAvatars: () => <>Your Chat Avatars code here!</>,
     }}
   >
     {Template.bind({})}

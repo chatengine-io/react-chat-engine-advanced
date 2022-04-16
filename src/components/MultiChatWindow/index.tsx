@@ -72,6 +72,7 @@ export const MultiChatWindow: React.FC<Props> = (props: Props) => {
         onRemovePersonClick={props.onRemovePersonClick}
         onDeleteChatClick={props.onDeleteChatClick}
         renderChatSettings={props.renderChatSettings}
+        renderChatAvatars={props.renderChatAvatars}
         renderPeopleSettings={props.renderPeopleSettings}
         renderPhotosSettings={props.renderPhotosSettings}
         renderOptionsSettings={props.renderOptionsSettings}
