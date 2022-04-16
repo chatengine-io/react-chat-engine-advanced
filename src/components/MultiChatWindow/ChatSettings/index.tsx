@@ -28,7 +28,10 @@ export const ChatSettings: React.FC<Props> = (props: Props) => {
       : chat.title;
 
   return (
-    <div style={{ ...styles.style, ...props.style }}>
+    <div
+      className="ce-chat-settings"
+      style={{ ...styles.style, ...props.style }}
+    >
       <ChatAvatars
         users={people}
         username={props.username}
