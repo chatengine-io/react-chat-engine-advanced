@@ -17,7 +17,7 @@ import { threePersonChat, adam as currentUser, bob } from '../../util/mocks';
     renderPeopleSettings: { table: { category: 'render functions' } },
     renderPhotosSettings: { table: { category: 'render functions' } },
     renderOptionsSettings: { table: { category: 'render functions' } },
-    chatSettingsStyle: { table: { category: 'styles' } },
+    style: { table: { category: 'styles' } },
     chatTitleStyle: { table: { category: 'styles' } },
     peopleSettingsStyle: { table: { category: 'styles' } },
     photosSettingsStyle: { table: { category: 'styles' } },
@@ -39,7 +39,7 @@ The `<ChatSettings />` component represent aspects fo the `chat` object which yo
     chat: threePersonChat,
     peopleToInvite: [bob],
     username: currentUser.username,
-    chatSettingsStyle: {
+    style: {
       maxWidth: '400px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
     },
@@ -104,10 +104,7 @@ You can customize the look and feel with the `*Style` props.
     name="Custom Styles"
     args={{
       chat: threePersonChat,
-      chatSettingsStyle: {
-        maxWidth: '400px',
-        border: '2px solid red',
-      },
+      style: { maxWidth: '400px', border: '2px solid red' },
       chatTitleStyle: { border: '2px solid blue' },
       peopleSettingsStyle: { border: '2px solid green' },
       photosSettingsStyle: { border: '2px solid orange' },

@@ -75,8 +75,7 @@ export const MultiChatWindow: React.FC<Props> = (props: Props) => {
         renderPeopleSettings={props.renderPeopleSettings}
         renderPhotosSettings={props.renderPhotosSettings}
         renderOptionsSettings={props.renderOptionsSettings}
-        // TODO: this should be renamed
-        chatSettingsStyle={{
+        style={{
           position: isMobile ? 'absolute' : 'inherit',
           zIndex: isMobile ? 1 : 'inherit',
         }}

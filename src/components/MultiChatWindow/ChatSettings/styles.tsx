@@ -1,5 +1,5 @@
 export interface ChatSettingsStyles {
-  chatSettingsStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
   chatTitleStyle?: React.CSSProperties;
   peopleSettingsStyle?: React.CSSProperties;
   photosSettingsStyle?: React.CSSProperties;
@@ -7,7 +7,7 @@ export interface ChatSettingsStyles {
 }
 
 export const styles: ChatSettingsStyles = {
-  chatSettingsStyle: { backgroundColor: 'white', width: '100%' },
+  style: { backgroundColor: 'white', width: '100%' },
   chatTitleStyle: {
     width: '100%',
     textAlign: 'center',
