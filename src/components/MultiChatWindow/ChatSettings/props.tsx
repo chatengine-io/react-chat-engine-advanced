@@ -1,5 +1,6 @@
 import { ChatSettingsStyles } from './styles';
 
+import { Props as ChatAvatarsProps } from './ChatAvatars/props';
 import { Props as PeopleSettingsProps } from './PeopleSettings/props';
 import { Props as PhotosSettingsProps } from './PhotosSettings/props';
 import { Props as OptionsSettingsProps } from './OptionsSettings/props';
@@ -18,6 +19,7 @@ export interface Props extends ChatSettingsStyles {
   onRemovePersonClick?: (person: PersonObject) => void;
   // Render Functions
   renderChatSettings?: (props: Props) => React.FC<Props>;
+  renderChatAvatars?: (props: ChatAvatarsProps) => React.FC<ChatAvatarsProps>;
   renderPeopleSettings?: (
     props: PeopleSettingsProps
   ) => React.FC<PeopleSettingsProps>;

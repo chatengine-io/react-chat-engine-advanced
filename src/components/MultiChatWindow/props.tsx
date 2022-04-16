@@ -12,6 +12,7 @@ import { Props as MessageBubbleProps } from './ChatFeed/MessageList/Message/prop
 import { Props as MessageFormProps } from './ChatFeed/MessageForm/props';
 import { Props as WelcomeGifProps } from './ChatFeed/WelcomeGif/props';
 import { Props as ChatSettingsProps } from './ChatSettings/props';
+import { Props as ChatAvatarsProps } from './ChatSettings/ChatAvatars/props';
 import { Props as PeopleSettingsProps } from './ChatSettings/PeopleSettings/props';
 import { Props as PhotosSettingsProps } from './ChatSettings/PhotosSettings/props';
 import { Props as OptionsSettingsProps } from './ChatSettings/OptionsSettings/props';
@@ -55,6 +56,9 @@ export interface Props extends ChatEngineStyles {
   renderChatSettings?: (
     props: ChatSettingsProps
   ) => React.FC<ChatSettingsProps>;
+  renderChatAvatars?: (
+    props: ChatAvatarsProps
+  ) => React.FC<PeopleSettingsProps>;
   renderPeopleSettings?: (
     props: PeopleSettingsProps
   ) => React.FC<PeopleSettingsProps>;

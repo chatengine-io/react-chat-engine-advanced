@@ -36,6 +36,10 @@ export const ChatAvatars: React.FC<Props> = (props: Props) => {
   const style = getStyle(users, styles);
   const propsStyle = getStyle(users, props);
 
+  if (props.renderChatAvatars) {
+    return <>{props.renderChatAvatars(props)}</>;
+  }
+
   return (
     <div
       className="ce-chat-avatars"
