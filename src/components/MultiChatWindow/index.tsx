@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Props } from './props';
 import { styles } from './styles';
 
 import { ChatList } from './ChatList';
 import { ChatFeed } from './ChatFeed';
 import { ChatSettings } from './ChatSettings';
+import { Button } from '../Components/Button';
+
+import { UnorderedListOutlined, SettingOutlined } from '@ant-design/icons';
 
 import { Row, Col } from 'react-grid-system';
 import { setConfiguration } from 'react-grid-system';
@@ -14,7 +17,72 @@ setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 export const MultiChatWindow: React.FC<Props> = (props: Props) => {
   const { chats = [], activeChatId = -1, messages = [] } = props;
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 575);
+  const [isMobileChatListOpen, setIsMobileChatListOpen] = useState(false);
+  const [isMobileChatSettingsOpen, setIsMobileChatSettingsOpen] = useState(
+    false
+  );
+
   const chat = chats.find((chat) => chat.id === activeChatId);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth < 575);
+    }
+    window.addEventListener('resize', handleResize);
+  });
+
+  const renderChatList = () => {
+    return (
+      <ChatList
+        chats={chats}
+        activeChatId={activeChatId}
+        username={props.username}
+        timezoneOffset={props.timezoneOffset}
+        isLoading={props.isChatListLoading}
+        hasMoreChats={props.hasMoreChats}
+        onChatFormSubmit={(title) => {
+          props.onChatFormSubmit && props.onChatFormSubmit(title);
+          setIsMobileChatListOpen(false);
+        }}
+        onChatCardClick={(chatId) => {
+          props.onChatCardClick && props.onChatCardClick(chatId);
+          setIsMobileChatListOpen(false);
+        }}
+        onChatLoaderShow={props.onChatLoaderShow}
+        renderChatList={props.renderChatList}
+        renderChatForm={props.renderChatForm}
+        renderChatCard={props.renderChatCard}
+        style={{
+          position: isMobile ? 'absolute' : 'inherit',
+          zIndex: isMobile ? 1 : 'inherit',
+        }}
+      />
+    );
+  };
+
+  const renderChatSettings = () => {
+    return (
+      <ChatSettings
+        chat={chat}
+        username={props.username}
+        peopleToInvite={props.peopleToInvite}
+        isLoading={props.isChatSettingsLoading}
+        onInvitePersonClick={props.onInvitePersonClick}
+        onRemovePersonClick={props.onRemovePersonClick}
+        onDeleteChatClick={props.onDeleteChatClick}
+        renderChatSettings={props.renderChatSettings}
+        renderPeopleSettings={props.renderPeopleSettings}
+        renderPhotosSettings={props.renderPhotosSettings}
+        renderOptionsSettings={props.renderOptionsSettings}
+        // TODO: this should be renamed
+        chatSettingsStyle={{
+          position: isMobile ? 'absolute' : 'inherit',
+          zIndex: isMobile ? 1 : 'inherit',
+        }}
+      />
+    );
+  };
 
   return (
     <Row className="ce-chat-engine" style={{ ...styles.style, ...props.style }}>
@@ -24,20 +92,7 @@ export const MultiChatWindow: React.FC<Props> = (props: Props) => {
         className="ce-chat-list-column"
         style={{ ...styles.chatListColumnStyle, ...props.chatListColumnStyle }}
       >
-        <ChatList
-          chats={chats}
-          activeChatId={activeChatId}
-          username={props.username}
-          timezoneOffset={props.timezoneOffset}
-          isLoading={props.isChatListLoading}
-          hasMoreChats={props.hasMoreChats}
-          onChatFormSubmit={props.onChatFormSubmit}
-          onChatCardClick={props.onChatCardClick}
-          onChatLoaderShow={props.onChatLoaderShow}
-          renderChatList={props.renderChatList}
-          renderChatForm={props.renderChatForm}
-          renderChatCard={props.renderChatCard}
-        />
+        {renderChatList()}
       </Col>
 
       <Col
@@ -76,20 +131,32 @@ export const MultiChatWindow: React.FC<Props> = (props: Props) => {
           ...props.chatSettingsColumnStyle,
         }}
       >
-        <ChatSettings
-          chat={chat}
-          username={props.username}
-          peopleToInvite={props.peopleToInvite}
-          isLoading={props.isChatSettingsLoading}
-          onInvitePersonClick={props.onInvitePersonClick}
-          onRemovePersonClick={props.onRemovePersonClick}
-          onDeleteChatClick={props.onDeleteChatClick}
-          renderChatSettings={props.renderChatSettings}
-          renderPeopleSettings={props.renderPeopleSettings}
-          renderPhotosSettings={props.renderPhotosSettings}
-          renderOptionsSettings={props.renderOptionsSettings}
-        />
+        {renderChatSettings()}
       </Col>
+
+      <Button
+        onClick={() => setIsMobileChatListOpen(true)}
+        style={{
+          ...styles.chatListMobileButtonStyle,
+          ...{ display: isMobile ? 'inherit' : 'none' },
+          ...props.chatListMobileButtonStyle,
+        }}
+      >
+        <UnorderedListOutlined />
+      </Button>
+      {isMobile && isMobileChatListOpen && renderChatList()}
+
+      <Button
+        onClick={() => setIsMobileChatSettingsOpen(true)}
+        style={{
+          ...styles.chatSettingsMobileButtonStyle,
+          ...{ display: isMobile ? 'inherit' : 'none' },
+          ...props.chatSettingsMobileButtonStyle,
+        }}
+      >
+        <SettingOutlined />
+      </Button>
+      {isMobile && isMobileChatSettingsOpen && renderChatSettings()}
     </Row>
   );
 };
