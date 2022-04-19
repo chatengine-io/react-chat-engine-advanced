@@ -2,6 +2,7 @@ export interface ChatCardStyle {
   style?: React.CSSProperties;
   hoveredStyle?: React.CSSProperties;
   activeStyle?: React.CSSProperties;
+  avatarStyle?: React.CSSProperties;
   titleStyle?: React.CSSProperties;
   notificationStyle?: React.CSSProperties;
   subtitleStyle?: React.CSSProperties;
@@ -27,13 +28,14 @@ export const styles: ChatCardStyle = {
     backgroundColor: '#d9d9d9',
     border: '0px solid white',
   },
+  avatarStyle: { position: 'absolute', top: '16px', left: '12px' },
   titleStyle: {
     // Position
     position: 'absolute',
     top: '12px',
-    left: '12px',
+    left: '68px',
     // Size
-    width: 'calc(100% - 12px - 32px)',
+    width: 'calc(100% - 68px - 32px)',
     // Font
     fontWeight: 500,
     whiteSpace: 'nowrap',
@@ -56,9 +58,9 @@ export const styles: ChatCardStyle = {
     // Position
     position: 'absolute',
     bottom: '12px',
-    left: '12px',
+    left: '68px',
     // Size
-    width: '70%',
+    width: 'calc(70% - 68px)',
     // Style
     color: 'rgba(153, 153, 153, 1)',
     fontSize: '14px',

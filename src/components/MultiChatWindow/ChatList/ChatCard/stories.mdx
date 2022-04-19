@@ -16,6 +16,7 @@ import { Props } from './props';
     style: { table: { category: 'styles' } },
     hoveredStyle: { table: { category: 'styles' } },
     activeStyle: { table: { category: 'styles' } },
+    avatarStyle: { table: { category: 'styles' } },
     titleStyle: { table: { category: 'styles' } },
     notificationStyle: { table: { category: 'styles' } },
     subtitleStyle: { table: { category: 'styles' } },
@@ -38,6 +39,7 @@ The Chat Card component represents a Chat room to click on.
     title: 'Chat Card',
     description: 'This is where the magic happens',
     timeStamp: '4:24 PM',
+    avatarUsername: 'Adam',
     style: {
       maxWidth: '400px',
       boxShadow: '0px 0px 3px 6px rgba(0, 0, 0, 0.1)',
@@ -57,6 +59,7 @@ You can see a notification dot if `hasNotification` is `true`.
   <Story
     name="Has Notification"
     args={{
+      avatarUsername: 'Adam',
       title: 'Notification Card',
       description: 'Alert alert!!!',
       timeStamp: 'Tues',
@@ -79,6 +82,7 @@ By default, the Chat Card component appears darker when `isActive` is `true`.
   <Story
     name="Is Active"
     args={{
+      avatarUsername: 'Adam',
       title: 'Active Chat Card',
       description: 'You are in this chat now...',
       timeStamp: '12:59 PM',
@@ -100,6 +104,7 @@ You can see data has not appeared yet if `isLoading` is `true`.
   <Story
     name="Is Loading"
     args={{
+      avatarUsername: 'Adam',
       title: 'Notification Card',
       description: 'Alert alert!!!',
       timeStamp: 'Tues',
@@ -122,6 +127,7 @@ You can render you own code instead of this component with the `render*` functio
   <Story
     name="Render Functions"
     args={{
+      avatarUsername: 'Adam',
       title: 'Notification Card',
       description: 'Alert alert!!!',
       timeStamp: 'Tues',
@@ -150,6 +156,7 @@ There are a list of `*Style` props which customize various parts of the componen
       },
       hoveredStyle: { border: '2px solid lime' },
       activeStyle: { border: '2px solid pink' },
+      avatarStyle: { border: '2px solid grey' },
       titleStyle: { border: '2px solid blue' },
       notificationStyle: { border: '2px solid deeppink' },
       subtitleStyle: { border: '2px solid green' },

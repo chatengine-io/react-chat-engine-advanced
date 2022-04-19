@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+import { Avatar } from '../../../Components/Avatar';
+
+import { stringToColor } from '../../../util/colorMapping';
+
 import { Props } from './props';
 import { styles } from './styles';
 
@@ -43,6 +47,20 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
         ${hovered && 'ce-hovered-chat-card'}
       `}
     >
+      <Avatar
+        username={props.avatarUsername}
+        avatarUrl={props.avatarUrl}
+        style={{
+          ...styles.avatarStyle,
+          ...{
+            backgroundColor: props.isLoading
+              ? '#e2e2e2'
+              : stringToColor(props.avatarUsername),
+          },
+          ...props.avatarStyle,
+        }}
+      />
+
       <div
         className="ce-chat-card-title"
         style={{

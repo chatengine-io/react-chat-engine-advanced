@@ -55,6 +55,7 @@ export const ChatList: React.FC<Props> = (props: Props) => {
       const hasNotification = props.username
         ? !readLastMessage(props.username, chat)
         : false;
+
       return (
         <ChatCard
           key={`chat_${index}`}
@@ -65,6 +66,12 @@ export const ChatList: React.FC<Props> = (props: Props) => {
           hasNotification={hasNotification}
           onClick={() =>
             props.onChatCardClick && props.onChatCardClick(chat.id)
+          }
+          avatarUsername={chat.last_message.sender?.username}
+          avatarUrl={
+            chat.last_message.sender
+              ? chat.last_message.sender.avatar
+              : 'https://chat-engine-assets.s3.amazonaws.com/empty-chat-thumb.png'
           }
           renderChatCard={props.renderChatCard}
         />
