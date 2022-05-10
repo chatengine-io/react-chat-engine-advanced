@@ -49,11 +49,9 @@ export const useMultiChatLogic = (
   projectId: string,
   username: string,
   secret: string,
-  isDevelopment?: boolean
+  httpUrl?: string
 ) => {
-  const host = isDevelopment
-    ? 'http://127.0.0.1:8000'
-    : 'https://api.chatengine.io';
+  const host = httpUrl ? httpUrl : 'https://api.chatengine.io';
   const headers: UserAuthHeaders = {
     'Public-Key': projectId,
     'User-Name': username,
@@ -366,7 +364,8 @@ export const useMultiChatLogic = (
     username,
     // file deepcode ignore HardcodedNonCryptoSecret: <not a secret>
     secret,
-    isDevelopment,
+    httpUrl,
+    wsUrl: httpUrl && httpUrl.replace('http', 'ws'),
     // Chat Data
     chats,
     setChats,

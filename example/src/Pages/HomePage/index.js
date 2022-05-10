@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import { login, logout } from '../../Actions/Accounts';
 
-import { ROOT_URL, DEVELOPMENT, PROJECT_ID } from '../../consts';
+import { HTTP_URL, PROJECT_ID } from '../../consts';
 
 import ChatEngine from './ChatEngine';
 
@@ -17,7 +17,7 @@ const HomePage = (props) => {
     setLoading(true);
 
     props.login(
-      { rootUrl: ROOT_URL, projectID: PROJECT_ID, userName, userSecret },
+      { rootUrl: HTTP_URL, projectID: PROJECT_ID, userName, userSecret },
       () => setLoading(false),
       (error) => console.log(error)
     );
@@ -61,11 +61,7 @@ const HomePage = (props) => {
         Logout
       </button>
 
-      <ChatEngine
-        height={'calc(100vh - 20px)'}
-        development={DEVELOPMENT}
-        projectID={PROJECT_ID}
-      />
+      <ChatEngine />
     </div>
   );
 };

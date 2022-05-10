@@ -9,7 +9,7 @@ import { ChildSocket } from './childSocket';
 import { UserAuthHeaders } from '../../interfaces';
 
 const getSessionToken = (
-  host = 'https://api.chatengine.io',
+  host: string,
   headers: UserAuthHeaders,
   callback: (token: string) => void,
   error: () => void
@@ -29,9 +29,7 @@ export const MultiChatSocket: React.FC<Props> = (props: Props) => {
     if (!didMountRef.current) {
       didMountRef.current = true;
 
-      const host = props.isDevelopment
-        ? 'http://127.0.0.1:8000'
-        : 'https://api.chatengine.io';
+      const host = props.httpUrl ? props.httpUrl : 'https://api.chatengine.io';
       const headers: UserAuthHeaders = {
         'Public-Key': props.projectId,
         'User-Name': props.username,
@@ -70,7 +68,7 @@ export const MultiChatSocket: React.FC<Props> = (props: Props) => {
       username={props.username}
       secret={props.secret}
       sessionToken={sessionToken}
-      isDevelopment={props.isDevelopment}
+      wsUrl={props.wsUrl}
       onRefresh={reRender}
       onConnect={props.onConnect}
       onError={props.onError}

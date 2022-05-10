@@ -34,11 +34,9 @@ export const useSingleChatLogic = (
   projectId: string,
   chatId: string,
   chatAccessKey: string,
-  isDevelopment?: boolean
+  httpUrl?: string
 ) => {
-  const host = isDevelopment
-    ? 'http://127.0.0.1:8000'
-    : 'https://api.chatengine.io';
+  const host = httpUrl ? httpUrl : 'https://api.chatengine.io';
   const headers: ChatAuthHeaders = {
     'Public-Key': projectId,
     'Chat-ID': chatId,
@@ -231,7 +229,8 @@ export const useSingleChatLogic = (
     projectId,
     chatId,
     chatAccessKey,
-    isDevelopment,
+    httpUrl,
+    wsUrl: httpUrl && httpUrl.replace('http', 'ws'),
     // Chat Data
     activeChatId,
     setActiveChatId,
