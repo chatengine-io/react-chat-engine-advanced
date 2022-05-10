@@ -26,7 +26,7 @@ export const SingleChatSocket: React.FC<Props> = (props: Props) => {
       projectId={props.projectId}
       chatId={props.chatId}
       chatAccessKey={props.chatAccessKey}
-      isDevelopment={props.isDevelopment}
+      wsUrl={props.wsUrl}
       onRefresh={reRender}
       onConnect={props.onConnect}
       onAuthFail={props.onAuthFail}

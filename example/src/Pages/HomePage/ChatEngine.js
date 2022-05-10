@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { PROJECT_ID, HTTP_URL, WS_URL } from '../../consts';
+
 import {
   MultiChatWindow,
   MultiChatSocket,
@@ -9,10 +11,10 @@ import {
 
 const MultiChatWindowApp = (props) => {
   const chatProps = useMultiChatLogic(
-    props.projectID,
+    PROJECT_ID,
     props.accounts.userName,
     props.accounts.userSecret,
-    props.development
+    HTTP_URL
   );
 
   return (
@@ -21,7 +23,8 @@ const MultiChatWindowApp = (props) => {
         projectId={chatProps.projectId}
         username={chatProps.username}
         secret={chatProps.secret}
-        isDevelopment={chatProps.isDevelopment}
+        httpUrl={chatProps.httpUrl}
+        wsUrl={WS_URL}
         // Socket Hooks
         onConnect={chatProps.onConnect}
         onAuthFail={chatProps.onAuthFail}
@@ -59,7 +62,7 @@ const MultiChatWindowApp = (props) => {
         onInvitePersonClick={chatProps.onInvitePersonClick}
         onRemovePersonClick={chatProps.onRemovePersonClick}
         onDeleteChatClick={chatProps.onDeleteChatClick}
-        style={{ height: props.height }}
+        style={{ height: 'calc(100vh - 20px)' }}
       />
     </div>
   );

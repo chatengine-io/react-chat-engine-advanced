@@ -7,16 +7,11 @@ import {
   useMultiChatLogic,
 } from 'react-chat-engine-advanced';
 
-import { DEVELOPMENT, PROJECT_ID, USER_NAME, USER_SECRET } from '../../consts';
+import { PROJECT_ID, USER_NAME, USER_SECRET, HTTP_URL } from '../../consts';
 
 const DirectChatPage = () => {
   const [username, setUsername] = useState('');
-  const state = useMultiChatLogic(
-    PROJECT_ID,
-    USER_NAME,
-    USER_SECRET,
-    DEVELOPMENT
-  );
+  const state = useMultiChatLogic(PROJECT_ID, USER_NAME, USER_SECRET, HTTP_URL);
 
   function createDirectChat(creds) {
     const headers = {
@@ -58,7 +53,8 @@ const DirectChatPage = () => {
         projectId={state.projectId}
         username={state.username}
         secret={state.secret}
-        isDevelopment={state.isDevelopment}
+        // Todo: not right...
+        wsUrl={state.isDevelopment && 'ws://127.0.0.1:8000'}
         // Socket Hooks
         onConnect={state.onConnect}
         onAuthFail={state.onAuthFail}

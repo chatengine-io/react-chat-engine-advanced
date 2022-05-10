@@ -76,13 +76,11 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
 
   if (!sessionToken) return <div />;
 
-  const host = props.isDevelopment
-    ? 'ws://127.0.0.1:8000'
-    : 'wss://api.chatengine.io';
+  const wsUrl = props.wsUrl ? props.wsUrl : 'wss://api.chatengine.io';
 
   return (
     <WebSocket
-      url={`${host}/person_v4/?session_token=${sessionToken}`}
+      url={`${wsUrl}/person_v4/?session_token=${sessionToken}`}
       reconnect={true}
       reconnectIntervalInMilliSeconds={3000}
       childRef={(ref: WebSocket) => (socketRef = ref)}

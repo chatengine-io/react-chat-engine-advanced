@@ -5,7 +5,8 @@ export interface Props {
   username: string;
   secret: string;
   sessionToken?: string;
-  isDevelopment?: boolean;
+  httpUrl?: string;
+  wsUrl?: string;
   onConnect?: () => void;
   onAuthFail?: () => void;
   onError?: () => void;
