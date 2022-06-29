@@ -6,5 +6,5 @@ export interface Props extends ChatAvatarsStyle {
   users?: PersonObject[];
   username?: string;
   isDirectChat?: boolean;
-  renderChatAvatars?: (props: Props) => React.FC<Props>;
+  renderChatAvatars?: (props: Props) => JSX.Element | Element | React.FC<Props>;
 }

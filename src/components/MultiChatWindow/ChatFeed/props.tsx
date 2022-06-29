@@ -24,10 +24,20 @@ export interface Props extends ChatFeedStyles {
   onBottomMessageHide?: () => void;
   onMessageFormSubmit?: (message: MessageObject) => void;
   // Render Functions
-  renderChatFeed?: (props: Props) => React.FC<Props>;
-  renderChatHeader?: (props: ChatHeaderProps) => React.FC<ChatHeaderProps>;
-  renderMessageList?: (props: MessageListProps) => React.FC<MessageListProps>;
-  renderMessage?: (props: MessageBubbleProps) => React.FC<MessageBubbleProps>;
-  renderWelcomeGif?: (props: WelcomeGifProps) => React.FC<WelcomeGifProps>;
-  renderMessageForm?: (props: MessageFormProps) => React.FC<MessageFormProps>;
+  renderChatFeed?: (props: Props) => JSX.Element | Element | React.FC<Props>;
+  renderChatHeader?: (
+    props: ChatHeaderProps
+  ) => JSX.Element | Element | React.FC<ChatHeaderProps>;
+  renderMessageList?: (
+    props: MessageListProps
+  ) => JSX.Element | Element | React.FC<MessageListProps>;
+  renderMessage?: (
+    props: MessageBubbleProps
+  ) => JSX.Element | Element | React.FC<MessageBubbleProps>;
+  renderWelcomeGif?: (
+    props: WelcomeGifProps
+  ) => JSX.Element | Element | React.FC<WelcomeGifProps>;
+  renderMessageForm?: (
+    props: MessageFormProps
+  ) => JSX.Element | Element | React.FC<MessageFormProps>;
 }

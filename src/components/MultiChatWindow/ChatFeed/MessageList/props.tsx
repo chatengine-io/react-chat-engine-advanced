@@ -17,6 +17,8 @@ export interface Props extends MessageListStyles {
   onBottomMessageShow?: () => void;
   onBottomMessageHide?: () => void;
   // Render Functions
-  renderMessageList?: (props: Props) => React.FC<Props>;
-  renderMessage?: (props: MessageBubbleProps) => React.FC<MessageBubbleProps>;
+  renderMessageList?: (props: Props) => JSX.Element | Element | React.FC<Props>;
+  renderMessage?: (
+    props: MessageBubbleProps
+  ) => JSX.Element | Element | React.FC<MessageBubbleProps>;
 }

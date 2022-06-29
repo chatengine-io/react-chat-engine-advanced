@@ -18,15 +18,19 @@ export interface Props extends ChatSettingsStyles {
   onInvitePersonClick?: (person: PersonObject) => void;
   onRemovePersonClick?: (person: PersonObject) => void;
   // Render Functions
-  renderChatSettings?: (props: Props) => React.FC<Props>;
-  renderChatAvatars?: (props: ChatAvatarsProps) => React.FC<ChatAvatarsProps>;
+  renderChatSettings?: (
+    props: Props
+  ) => JSX.Element | Element | React.FC<Props>;
+  renderChatAvatars?: (
+    props: ChatAvatarsProps
+  ) => JSX.Element | Element | React.FC<ChatAvatarsProps>;
   renderPeopleSettings?: (
     props: PeopleSettingsProps
-  ) => React.FC<PeopleSettingsProps>;
+  ) => JSX.Element | Element | React.FC<PeopleSettingsProps>;
   renderPhotosSettings?: (
     props: PhotosSettingsProps
-  ) => React.FC<PhotosSettingsProps>;
+  ) => JSX.Element | Element | React.FC<PhotosSettingsProps>;
   renderOptionsSettings?: (
     props: OptionsSettingsProps
-  ) => React.FC<OptionsSettingsProps>;
+  ) => JSX.Element | Element | React.FC<OptionsSettingsProps>;
 }
