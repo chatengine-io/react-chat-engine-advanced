@@ -15,5 +15,5 @@ export interface Props extends HTMLAttributes<HTMLDivElement>, ChatCardStyle {
   // Hooks
   onClick?: () => void;
   // Render Functions
-  renderChatCard?: (props: Props) => React.FC<Props>;
+  renderChatCard?: (props: Props) => JSX.Element | Element | React.FC<Props>;
 }

@@ -14,5 +14,5 @@ export interface Props extends MessageStyle {
   isMyMessage?: boolean;
   showDateTime?: boolean;
   // Render Functions
-  renderMessage?: (props: Props) => React.FC<Props>;
+  renderMessage?: (props: Props) => JSX.Element | Element | React.FC<Props>;
 }

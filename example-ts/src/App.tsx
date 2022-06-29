@@ -11,12 +11,17 @@ const username = 'Adam_La_Morre';
 const secret = 'pass1234';
 
 const App: React.FC = () => {
-  const chatProps = useMultiChatLogic(projectId, username, secret, true);
+  const chatProps = useMultiChatLogic(projectId, username, secret);
 
   return (
     <>
       <MultiChatSocket {...chatProps} />
-      <MultiChatWindow timezoneOffset={1} {...chatProps} />
+      <MultiChatWindow
+        timezoneOffset={1}
+        {...chatProps}
+        renderChatForm={(props: any) => <></>}
+        style={{ height: '100vh' }}
+      />
     </>
   );
 };

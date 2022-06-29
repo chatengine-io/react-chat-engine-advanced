@@ -7,5 +7,5 @@ export interface Props extends ChatHeaderStyles {
   title?: string | ReactNode;
   description?: string;
   // Render Function
-  renderChatHeader?: (props: Props) => React.FC<Props>;
+  renderChatHeader?: (props: Props) => JSX.Element | Element | React.FC<Props>;
 }

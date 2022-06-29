@@ -44,28 +44,46 @@ export interface Props extends ChatEngineStyles {
   onRemovePersonClick?: (person: PersonObject) => void;
   onDeleteChatClick?: (chat: ChatObject) => void;
   // Render Functions
-  renderChatList?: (props: ChatListProps) => React.FC<ChatListProps>;
-  renderChatForm?: (props: ChatFromProps) => React.FC<ChatFromProps>;
-  renderChatCard?: (props: ChatCardProps) => React.FC<ChatCardProps>;
-  renderChatFeed?: (props: ChatFeedProps) => React.FC<ChatFeedProps>;
-  renderChatHeader?: (props: ChatHeaderProps) => React.FC<ChatHeaderProps>;
-  renderMessageList?: (props: MessageListProps) => React.FC<MessageListProps>;
-  renderMessage?: (props: MessageBubbleProps) => React.FC<MessageBubbleProps>;
-  renderWelcomeGif?: (props: WelcomeGifProps) => React.FC<WelcomeGifProps>;
-  renderMessageForm?: (props: MessageFormProps) => React.FC<MessageFormProps>;
+  renderChatList?: (
+    props: ChatListProps
+  ) => JSX.Element | Element | React.FC<ChatListProps>;
+  renderChatForm?: (
+    props: ChatFromProps
+  ) => JSX.Element | Element | React.FC<ChatFromProps>;
+  renderChatCard?: (
+    props: ChatCardProps
+  ) => JSX.Element | Element | React.FC<ChatCardProps>;
+  renderChatFeed?: (
+    props: ChatFeedProps
+  ) => JSX.Element | Element | React.FC<ChatFeedProps>;
+  renderChatHeader?: (
+    props: ChatHeaderProps
+  ) => JSX.Element | Element | React.FC<ChatHeaderProps>;
+  renderMessageList?: (
+    props: MessageListProps
+  ) => JSX.Element | Element | React.FC<MessageListProps>;
+  renderMessage?: (
+    props: MessageBubbleProps
+  ) => JSX.Element | Element | React.FC<MessageBubbleProps>;
+  renderWelcomeGif?: (
+    props: WelcomeGifProps
+  ) => JSX.Element | Element | React.FC<WelcomeGifProps>;
+  renderMessageForm?: (
+    props: MessageFormProps
+  ) => JSX.Element | Element | React.FC<MessageFormProps>;
   renderChatSettings?: (
     props: ChatSettingsProps
-  ) => React.FC<ChatSettingsProps>;
+  ) => JSX.Element | Element | React.FC<ChatSettingsProps>;
   renderChatAvatars?: (
     props: ChatAvatarsProps
-  ) => React.FC<PeopleSettingsProps>;
+  ) => JSX.Element | Element | React.FC<PeopleSettingsProps>;
   renderPeopleSettings?: (
     props: PeopleSettingsProps
-  ) => React.FC<PeopleSettingsProps>;
+  ) => JSX.Element | Element | React.FC<PeopleSettingsProps>;
   renderPhotosSettings?: (
     props: PhotosSettingsProps
-  ) => React.FC<PhotosSettingsProps>;
+  ) => JSX.Element | Element | React.FC<PhotosSettingsProps>;
   renderOptionsSettings?: (
     props: OptionsSettingsProps
-  ) => React.FC<OptionsSettingsProps>;
+  ) => JSX.Element | Element | React.FC<OptionsSettingsProps>;
 }

@@ -11,5 +11,7 @@ export interface Props extends PeopleSettingsStyles {
   onInvitePersonClick?: (person: PersonObject) => void;
   onRemovePersonClick?: (person: PersonObject) => void;
   // Render Functions
-  renderPeopleSettings?: (props: Props) => React.FC<Props>;
+  renderPeopleSettings?: (
+    props: Props
+  ) => JSX.Element | Element | React.FC<Props>;
 }

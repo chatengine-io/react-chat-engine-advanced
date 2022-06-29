@@ -7,5 +7,7 @@ export interface Props extends OptionsSettingsStyles {
   // Hooks
   onDeleteChatClick?: (chat: ChatObject) => void;
   // Render Functions
-  renderOptionsSettings?: (props: Props) => React.FC<Props>;
+  renderOptionsSettings?: (
+    props: Props
+  ) => JSX.Element | Element | React.FC<Props>;
 }

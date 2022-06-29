@@ -6,5 +6,5 @@ export interface Props extends HTMLAttributes<HTMLFormElement>, ChatFormStyles {
   // Hooks
   onFormSubmit?: (value: string) => void;
   // Render Functions
-  renderChatForm?: (props: Props) => React.FC<Props>;
+  renderChatForm?: (props: Props) => JSX.Element | Element | React.FC<Props>;
 }
