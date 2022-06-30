@@ -2,7 +2,7 @@ import { PeopleSettingsStyles } from './styles';
 
 import { ChatObject, PersonObject } from '../../../../interfaces';
 
-export interface Props extends PeopleSettingsStyles {
+export interface PeopleSettingsProps extends PeopleSettingsStyles {
   chat?: ChatObject;
   peopleToInvite?: Array<PersonObject>;
   // State
@@ -12,6 +12,6 @@ export interface Props extends PeopleSettingsStyles {
   onRemovePersonClick?: (person: PersonObject) => void;
   // Render Functions
   renderPeopleSettings?: (
-    props: Props
-  ) => JSX.Element | Element | React.FC<Props>;
+    props: PeopleSettingsProps
+  ) => JSX.Element | Element | React.FC<PeopleSettingsProps>;
 }

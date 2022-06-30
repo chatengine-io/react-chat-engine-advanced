@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Props } from './props';
+import { MessageListProps } from './props';
 import { styles } from './styles';
 
 import { Message } from './Message';
@@ -10,7 +10,9 @@ import { Spinner } from '../../../Components/Spinner';
 
 import _ from 'lodash';
 
-export const MessageList: React.FC<Props> = (props: Props) => {
+export const MessageList: React.FC<MessageListProps> = (
+  props: MessageListProps
+) => {
   const { messages = [] } = props;
 
   const messagesObject = _.mapKeys(messages, 'created');

@@ -4,10 +4,12 @@ import { ChatListStyles } from './styles';
 
 import { ChatObject } from '../../../interfaces';
 
-import { Props as ChatFormProps } from './ChatForm/props';
-import { Props as ChatCardProps } from './ChatCard/props';
+import { ChatFormProps } from './ChatForm/props';
+import { ChatCardProps } from './ChatCard/props';
 
-export interface Props extends HTMLAttributes<HTMLDivElement>, ChatListStyles {
+export interface ChatListProps
+  extends HTMLAttributes<HTMLDivElement>,
+    ChatListStyles {
   // Data
   chats: ChatObject[];
   activeChatId?: number;
@@ -21,7 +23,9 @@ export interface Props extends HTMLAttributes<HTMLDivElement>, ChatListStyles {
   onChatFormSubmit?: (title: string) => void;
   onChatLoaderShow?: () => void;
   // Render Functions
-  renderChatList?: (props: Props) => JSX.Element | Element | React.FC<Props>;
+  renderChatList?: (
+    props: ChatListProps
+  ) => JSX.Element | Element | React.FC<ChatListProps>;
   renderChatForm?: (
     props: ChatFormProps
   ) => JSX.Element | Element | React.FC<ChatFormProps>;

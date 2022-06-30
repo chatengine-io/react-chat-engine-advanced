@@ -4,10 +4,10 @@ import { Avatar } from '../../../Components/Avatar';
 
 import { stringToColor } from '../../../util/colorMapping';
 
-import { Props } from './props';
+import { ChatCardProps } from './props';
 import { styles } from './styles';
 
-export const ChatCard: React.FC<Props> = (props: Props) => {
+export const ChatCard: React.FC<ChatCardProps> = (props: ChatCardProps) => {
   const { title = '', description = '', timeStamp = '' } = props;
 
   const [hovered, setHovered] = useState<boolean>(false);

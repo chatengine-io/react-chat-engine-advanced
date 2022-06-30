@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { Props } from './props';
+import { ChatAvatarsProps } from './props';
 import { styles, ChatAvatarsStyle, AvatarsStyle } from './styles';
 
 import { Avatar } from '../../../Components/Avatar';
 import { PersonObject } from '../../../../interfaces';
 
-export const ChatAvatars: React.FC<Props> = (props: Props) => {
+export const ChatAvatars: React.FC<ChatAvatarsProps> = (
+  props: ChatAvatarsProps
+) => {
   const { users = [] } = props;
 
   const getStyle = (

@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { Props } from './props';
+import { ChatHeaderProps } from './props';
 import { styles } from './styles';
 
 import { Row, Col, setConfiguration } from 'react-grid-system';
 
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
-export const ChatHeader: React.FC<Props> = (props: Props) => {
+export const ChatHeader: React.FC<ChatHeaderProps> = (
+  props: ChatHeaderProps
+) => {
   const { id = '', title = '', description = '' } = props;
 
   if (props.renderChatHeader) {

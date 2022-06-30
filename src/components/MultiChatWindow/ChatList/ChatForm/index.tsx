@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import { Props } from './props';
+import { ChatFormProps } from './props';
 import { styles } from './styles';
 
 import { Button } from '../../../Components/Button';
 import { Input } from '../../../Components/Input';
 
-export const ChatForm: React.FC<Props> = (props: Props) => {
+export const ChatForm: React.FC<ChatFormProps> = (props: ChatFormProps) => {
   const [selected, setSelected] = useState<boolean>(false);
   const [value, setValue] = useState<string>('');
 

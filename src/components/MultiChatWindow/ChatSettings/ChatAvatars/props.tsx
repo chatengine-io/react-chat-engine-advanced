@@ -2,9 +2,11 @@ import { PersonObject } from '../../../../interfaces';
 
 import { ChatAvatarsStyle } from './styles';
 
-export interface Props extends ChatAvatarsStyle {
+export interface ChatAvatarsProps extends ChatAvatarsStyle {
   users?: PersonObject[];
   username?: string;
   isDirectChat?: boolean;
-  renderChatAvatars?: (props: Props) => JSX.Element | Element | React.FC<Props>;
+  renderChatAvatars?: (
+    props: ChatAvatarsProps
+  ) => JSX.Element | Element | React.FC<ChatAvatarsProps>;
 }

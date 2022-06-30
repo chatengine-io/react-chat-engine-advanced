@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Props } from './props';
+import { ChatListProps } from './props';
 import { styles } from './styles';
 
 import { ChatForm } from './ChatForm';
@@ -36,7 +36,7 @@ const getDescription = (chat: ChatObject): string => {
   return chat.last_message.text;
 };
 
-export const ChatList: React.FC<Props> = (props: Props) => {
+export const ChatList: React.FC<ChatListProps> = (props: ChatListProps) => {
   const { activeChatId = -1 } = props;
 
   const renderChats = (chats: Array<ChatObject>) => {

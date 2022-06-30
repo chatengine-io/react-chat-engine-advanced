@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Props } from './props';
+
+import { MultiChatWindowProps } from './props';
 import { styles } from './styles';
 
 import { ChatList } from './ChatList';
 import { ChatFeed } from './ChatFeed';
 import { ChatSettings } from './ChatSettings';
 import { ChatAvatars } from './ChatSettings/ChatAvatars';
-import { Props as ChatAvatarsProps } from './ChatSettings/ChatAvatars/props';
+import { ChatAvatarsProps } from './ChatSettings/ChatAvatars/props';
 import { Button } from '../Components/Button';
 
 import {
@@ -20,7 +21,9 @@ import { setConfiguration } from 'react-grid-system';
 
 setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 
-export const MultiChatWindow: React.FC<Props> = (props: Props) => {
+export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
+  props: MultiChatWindowProps
+) => {
   const { chats = [], activeChatId = -1, messages = [] } = props;
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 575);

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Props } from './props';
+import { DateTimeProps } from './props';
 import { styles } from './styles';
 
 import { formatDateTime, getDateTime } from '../../../../../util/dateTime';
 
-export const DateTime: React.FC<Props> = (props: Props) => {
+export const DateTime: React.FC<DateTimeProps> = (props: DateTimeProps) => {
   const { offset = 0 } = props;
 
   return (

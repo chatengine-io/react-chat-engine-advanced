@@ -2,13 +2,13 @@ import { ChatObject, MessageObject } from '../../../interfaces';
 
 import { ChatFeedStyles } from './styles';
 
-import { Props as ChatHeaderProps } from './ChatHeader/props';
-import { Props as MessageListProps } from './MessageList/props';
-import { Props as MessageBubbleProps } from './MessageList/Message/props';
-import { Props as WelcomeGifProps } from './WelcomeGif/props';
-import { Props as MessageFormProps } from './MessageForm/props';
+import { ChatHeaderProps } from './ChatHeader/props';
+import { MessageListProps } from './MessageList/props';
+import { MessageProps } from './MessageList/Message/props';
+import { WelcomeGifProps } from './WelcomeGif/props';
+import { MessageFormProps } from './MessageForm/props';
 
-export interface Props extends ChatFeedStyles {
+export interface ChatFeedProps extends ChatFeedStyles {
   // Data
   messages: MessageObject[];
   username?: string;
@@ -24,7 +24,9 @@ export interface Props extends ChatFeedStyles {
   onBottomMessageHide?: () => void;
   onMessageFormSubmit?: (message: MessageObject) => void;
   // Render Functions
-  renderChatFeed?: (props: Props) => JSX.Element | Element | React.FC<Props>;
+  renderChatFeed?: (
+    props: ChatFeedProps
+  ) => JSX.Element | Element | React.FC<ChatFeedProps>;
   renderChatHeader?: (
     props: ChatHeaderProps
   ) => JSX.Element | Element | React.FC<ChatHeaderProps>;
@@ -32,8 +34,8 @@ export interface Props extends ChatFeedStyles {
     props: MessageListProps
   ) => JSX.Element | Element | React.FC<MessageListProps>;
   renderMessage?: (
-    props: MessageBubbleProps
-  ) => JSX.Element | Element | React.FC<MessageBubbleProps>;
+    props: MessageProps
+  ) => JSX.Element | Element | React.FC<MessageProps>;
   renderWelcomeGif?: (
     props: WelcomeGifProps
   ) => JSX.Element | Element | React.FC<WelcomeGifProps>;

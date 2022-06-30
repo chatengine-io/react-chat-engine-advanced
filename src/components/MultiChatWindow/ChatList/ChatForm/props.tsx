@@ -2,9 +2,13 @@ import { HTMLAttributes } from 'react';
 
 import { ChatFormStyles } from './styles';
 
-export interface Props extends HTMLAttributes<HTMLFormElement>, ChatFormStyles {
+export interface ChatFormProps
+  extends HTMLAttributes<HTMLFormElement>,
+    ChatFormStyles {
   // Hooks
   onFormSubmit?: (value: string) => void;
   // Render Functions
-  renderChatForm?: (props: Props) => JSX.Element | Element | React.FC<Props>;
+  renderChatForm?: (
+    props: ChatFormProps
+  ) => JSX.Element | Element | React.FC<ChatFormProps>;
 }

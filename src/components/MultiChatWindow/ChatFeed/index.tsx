@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Props } from './props';
+import { ChatFeedProps } from './props';
 import { styles } from './styles';
 
 import { ChatHeader } from './ChatHeader';
@@ -31,7 +31,7 @@ const getDescription = (
   }
 };
 
-export const ChatFeed: React.FC<Props> = (props: Props) => {
+export const ChatFeed: React.FC<ChatFeedProps> = (props: ChatFeedProps) => {
   const { chat } = props;
 
   const otherPerson =

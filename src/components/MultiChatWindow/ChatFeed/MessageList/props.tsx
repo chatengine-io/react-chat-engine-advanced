@@ -2,8 +2,8 @@ import { ChatObject, MessageObject } from '../../../../interfaces';
 
 import { MessageListStyles } from './styles';
 
-import { Props as MessageBubbleProps } from './Message/props';
-export interface Props extends MessageListStyles {
+import { MessageProps } from './Message/props';
+export interface MessageListProps extends MessageListStyles {
   // Data
   messages: MessageObject[];
   chat?: ChatObject;
@@ -17,8 +17,10 @@ export interface Props extends MessageListStyles {
   onBottomMessageShow?: () => void;
   onBottomMessageHide?: () => void;
   // Render Functions
-  renderMessageList?: (props: Props) => JSX.Element | Element | React.FC<Props>;
+  renderMessageList?: (
+    props: MessageListProps
+  ) => JSX.Element | Element | React.FC<MessageListProps>;
   renderMessage?: (
-    props: MessageBubbleProps
-  ) => JSX.Element | Element | React.FC<MessageBubbleProps>;
+    props: MessageProps
+  ) => JSX.Element | Element | React.FC<MessageProps>;
 }

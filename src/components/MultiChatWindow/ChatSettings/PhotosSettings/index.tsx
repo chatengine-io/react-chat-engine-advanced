@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Props } from './props';
+import { PhotosSettingsProps } from './props';
 import { styles } from './styles';
 
 import { Image } from '../../../Components/Image';
@@ -8,7 +8,9 @@ import { Dropdown } from '../../../Components/Dropdown';
 import { AttachmentObject } from '../../../../interfaces';
 import { isImage, getFileName } from '../../../util/file';
 
-export const PhotosSettings: React.FC<Props> = (props: Props) => {
+export const PhotosSettings: React.FC<PhotosSettingsProps> = (
+  props: PhotosSettingsProps
+) => {
   const { chat = { attachments: [] } } = props;
   const renderImages = (attachments: Array<AttachmentObject>) => {
     return attachments.map((attachment, index) => {

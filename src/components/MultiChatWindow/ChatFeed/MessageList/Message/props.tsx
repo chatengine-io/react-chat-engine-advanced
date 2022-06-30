@@ -2,7 +2,7 @@ import { MessageObject, ChatObject } from '../../../../../interfaces';
 
 import { MessageStyle } from './styles';
 
-export interface Props extends MessageStyle {
+export interface MessageProps extends MessageStyle {
   // Data
   lastMessage?: MessageObject | null;
   message: MessageObject;
@@ -14,5 +14,7 @@ export interface Props extends MessageStyle {
   isMyMessage?: boolean;
   showDateTime?: boolean;
   // Render Functions
-  renderMessage?: (props: Props) => JSX.Element | Element | React.FC<Props>;
+  renderMessage?: (
+    props: MessageProps
+  ) => JSX.Element | Element | React.FC<MessageProps>;
 }
