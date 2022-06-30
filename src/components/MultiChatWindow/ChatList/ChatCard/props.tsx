@@ -1,7 +1,9 @@
 import { HTMLAttributes } from 'react';
 
 import { ChatCardStyle } from './styles';
-export interface Props extends HTMLAttributes<HTMLDivElement>, ChatCardStyle {
+export interface ChatCardProps
+  extends HTMLAttributes<HTMLDivElement>,
+    ChatCardStyle {
   // Data
   title?: string;
   description?: string;
@@ -15,5 +17,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement>, ChatCardStyle {
   // Hooks
   onClick?: () => void;
   // Render Functions
-  renderChatCard?: (props: Props) => JSX.Element | Element | React.FC<Props>;
+  renderChatCard?: (
+    props: ChatCardProps
+  ) => JSX.Element | Element | React.FC<ChatCardProps>;
 }

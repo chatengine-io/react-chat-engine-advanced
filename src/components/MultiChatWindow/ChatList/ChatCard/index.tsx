@@ -4,10 +4,10 @@ import { Avatar } from '../../../Components/Avatar';
 
 import { stringToColor } from '../../../util/colorMapping';
 
-import { Props } from './props';
+import { ChatCardProps } from './props';
 import { styles } from './styles';
 
-export const ChatCard: React.FC<Props> = (props: Props) => {
+export const ChatCard: React.FC<ChatCardProps> = (props: ChatCardProps) => {
   const { title = '', description = '', timeStamp = '' } = props;
 
   const [hovered, setHovered] = useState<boolean>(false);
@@ -50,6 +50,7 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
       <Avatar
         username={props.avatarUsername}
         avatarUrl={props.avatarUrl}
+        className="ce-chat-card-avatar"
         style={{
           ...styles.avatarStyle,
           ...{
@@ -92,6 +93,7 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
         }}
       >
         <div
+          className="ce-chat-card-subtitle-html"
           dangerouslySetInnerHTML={{
             __html: props.isLoading ? '.' : description,
           }}

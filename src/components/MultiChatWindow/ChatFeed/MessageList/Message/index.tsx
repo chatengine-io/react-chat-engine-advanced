@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Props } from './props';
+import { MessageProps } from './props';
 import { myStyles, theirStyles } from './styles';
 
 import { Dot } from '../../../../Components/Dot';
@@ -14,7 +14,7 @@ import { Image } from '../../../../Components/Image';
 import { isImage, getFileName } from '../../../../util/file';
 import { formatTime, getDateTime } from '../../../../util/dateTime';
 
-export const Message: React.FC<Props> = (props: Props) => {
+export const Message: React.FC<MessageProps> = (props: MessageProps) => {
   const {
     lastMessage = null,
     message,

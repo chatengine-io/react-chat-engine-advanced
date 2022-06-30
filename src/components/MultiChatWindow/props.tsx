@@ -1,23 +1,23 @@
 import { ChatObject, MessageObject, PersonObject } from '../../interfaces';
 import { ChatEngineStyles } from './styles';
 
-import { Props as ChatListProps } from './ChatList/props';
-import { Props as ChatFromProps } from './ChatList/ChatForm/props';
-import { Props as ChatCardProps } from './ChatList/ChatCard/props';
+import { ChatListProps } from './ChatList/props';
+import { ChatFormProps } from './ChatList/ChatForm/props';
+import { ChatCardProps } from './ChatList/ChatCard/props';
 
-import { Props as ChatFeedProps } from './ChatFeed/props';
-import { Props as ChatHeaderProps } from './ChatFeed/ChatHeader/props';
-import { Props as MessageListProps } from './ChatFeed/MessageList/props';
-import { Props as MessageBubbleProps } from './ChatFeed/MessageList/Message/props';
-import { Props as MessageFormProps } from './ChatFeed/MessageForm/props';
-import { Props as WelcomeGifProps } from './ChatFeed/WelcomeGif/props';
-import { Props as ChatSettingsProps } from './ChatSettings/props';
-import { Props as ChatAvatarsProps } from './ChatSettings/ChatAvatars/props';
-import { Props as PeopleSettingsProps } from './ChatSettings/PeopleSettings/props';
-import { Props as PhotosSettingsProps } from './ChatSettings/PhotosSettings/props';
-import { Props as OptionsSettingsProps } from './ChatSettings/OptionsSettings/props';
+import { ChatFeedProps } from './ChatFeed/props';
+import { ChatHeaderProps } from './ChatFeed/ChatHeader/props';
+import { MessageListProps } from './ChatFeed/MessageList/props';
+import { MessageProps } from './ChatFeed/MessageList/Message/props';
+import { MessageFormProps } from './ChatFeed/MessageForm/props';
+import { WelcomeGifProps } from './ChatFeed/WelcomeGif/props';
+import { ChatSettingsProps } from './ChatSettings/props';
+import { ChatAvatarsProps } from './ChatSettings/ChatAvatars/props';
+import { PeopleSettingsProps } from './ChatSettings/PeopleSettings/props';
+import { PhotosSettingsProps } from './ChatSettings/PhotosSettings/props';
+import { OptionsSettingsProps } from './ChatSettings/OptionsSettings/props';
 
-export interface Props extends ChatEngineStyles {
+export interface MultiChatWindowProps extends ChatEngineStyles {
   // Data
   username?: string;
   chats?: ChatObject[];
@@ -48,8 +48,8 @@ export interface Props extends ChatEngineStyles {
     props: ChatListProps
   ) => JSX.Element | Element | React.FC<ChatListProps>;
   renderChatForm?: (
-    props: ChatFromProps
-  ) => JSX.Element | Element | React.FC<ChatFromProps>;
+    props: ChatFormProps
+  ) => JSX.Element | Element | React.FC<ChatFormProps>;
   renderChatCard?: (
     props: ChatCardProps
   ) => JSX.Element | Element | React.FC<ChatCardProps>;
@@ -63,8 +63,8 @@ export interface Props extends ChatEngineStyles {
     props: MessageListProps
   ) => JSX.Element | Element | React.FC<MessageListProps>;
   renderMessage?: (
-    props: MessageBubbleProps
-  ) => JSX.Element | Element | React.FC<MessageBubbleProps>;
+    props: MessageProps
+  ) => JSX.Element | Element | React.FC<MessageProps>;
   renderWelcomeGif?: (
     props: WelcomeGifProps
   ) => JSX.Element | Element | React.FC<WelcomeGifProps>;

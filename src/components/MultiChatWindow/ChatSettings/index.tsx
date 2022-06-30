@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Props } from './props';
+import { ChatSettingsProps } from './props';
 import { styles } from './styles';
 
 import { ChatAvatars } from './ChatAvatars';
@@ -8,7 +8,9 @@ import { PeopleSettings } from './PeopleSettings';
 import { PhotosSettings } from './PhotosSettings';
 import { OptionsSettings } from './OptionsSettings';
 
-export const ChatSettings: React.FC<Props> = (props: Props) => {
+export const ChatSettings: React.FC<ChatSettingsProps> = (
+  props: ChatSettingsProps
+) => {
   const { chat } = props;
 
   if (props.renderChatSettings) {

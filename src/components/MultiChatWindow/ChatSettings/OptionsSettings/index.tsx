@@ -1,11 +1,14 @@
 import React from 'react';
-import { Props } from './props';
+
+import { OptionsSettingsProps } from './props';
 import { styles } from './styles';
 
 import { Button } from '../../../Components/Button';
 import { Dropdown } from '../../../Components/Dropdown';
 
-export const OptionsSettings: React.FC<Props> = (props: Props) => {
+export const OptionsSettings: React.FC<OptionsSettingsProps> = (
+  props: OptionsSettingsProps
+) => {
   if (props.renderOptionsSettings) {
     return <>{props.renderOptionsSettings(props)}</>;
   }

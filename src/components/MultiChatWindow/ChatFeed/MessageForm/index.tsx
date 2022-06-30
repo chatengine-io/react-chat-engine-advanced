@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Props } from './props';
+import { MessageFormProps } from './props';
 import { styles } from './styles';
 
 import { AttachmentInput } from './AttachmentInput';
@@ -11,7 +11,9 @@ import { Image } from '../../../Components/Image';
 import { isImage } from '../../../util/file';
 import { MessageObject, AttachmentObject } from '../../../../interfaces';
 
-export const MessageForm: React.FC<Props> = (props: Props) => {
+export const MessageForm: React.FC<MessageFormProps> = (
+  props: MessageFormProps
+) => {
   const { label = '' } = props;
 
   const [iter, setIter] = useState(0); // Forces attachments update

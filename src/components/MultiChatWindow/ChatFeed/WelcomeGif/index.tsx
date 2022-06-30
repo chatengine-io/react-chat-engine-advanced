@@ -1,8 +1,10 @@
 import React from 'react';
-import { Props } from './props';
+import { WelcomeGifProps } from './props';
 import { styles } from './styles';
 
-export const WelcomeGif: React.FC<Props> = (props: Props) => {
+export const WelcomeGif: React.FC<WelcomeGifProps> = (
+  props: WelcomeGifProps
+) => {
   if (props.renderWelcomeGif) {
     return <>{props.renderWelcomeGif(props)}</>;
   }

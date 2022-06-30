@@ -1,5 +1,7 @@
 import { WelcomeGifStyles } from './styles';
 
-export interface Props extends WelcomeGifStyles {
-  renderWelcomeGif?: (props: Props) => JSX.Element | Element | React.FC<Props>;
+export interface WelcomeGifProps extends WelcomeGifStyles {
+  renderWelcomeGif?: (
+    props: WelcomeGifProps
+  ) => JSX.Element | Element | React.FC<WelcomeGifProps>;
 }

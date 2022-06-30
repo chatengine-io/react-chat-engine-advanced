@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Props } from './props';
+import { PeopleSettingsProps } from './props';
 import { styles } from './styles';
 
 import { Avatar } from '../../../Components/Avatar';
@@ -10,7 +10,9 @@ import { Dropdown } from '../../../Components/Dropdown';
 
 import { PersonObject, ChatPersonObject } from '../../../../interfaces';
 
-export const PeopleSettings: React.FC<Props> = (props: Props) => {
+export const PeopleSettings: React.FC<PeopleSettingsProps> = (
+  props: PeopleSettingsProps
+) => {
   const { chat = { people: [] }, peopleToInvite = [] } = props;
 
   const renderChatPeople = (chatPeople: Array<ChatPersonObject>) => {
