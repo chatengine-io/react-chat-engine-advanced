@@ -50,6 +50,7 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
       <Avatar
         username={props.avatarUsername}
         avatarUrl={props.avatarUrl}
+        className="ce-chat-card-avatar"
         style={{
           ...styles.avatarStyle,
           ...{
@@ -92,6 +93,7 @@ export const ChatCard: React.FC<Props> = (props: Props) => {
         }}
       >
         <div
+          className="ce-chat-card-subtitle-html"
           dangerouslySetInnerHTML={{
             __html: props.isLoading ? '.' : description,
           }}

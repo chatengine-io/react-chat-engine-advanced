@@ -53,7 +53,7 @@ export const ChatFeed: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <div className="ch-chat-feed" style={{ ...styles.style, ...props.style }}>
+    <div className="ce-chat-feed" style={{ ...styles.style, ...props.style }}>
       <ChatHeader
         title={title}
         description={
