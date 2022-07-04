@@ -63,7 +63,9 @@ export const ChatCard: React.FC<ChatCardProps> = (props: ChatCardProps) => {
       />
 
       <div
-        className="ce-chat-card-title"
+        className={`ce-chat-card-title ${
+          props.isLoading && 'ce-chat-card-title-loading ce-chat-card-loading'
+        }`}
         style={{
           ...styles.titleStyle,
           ...loadingBarStyle,
@@ -75,7 +77,9 @@ export const ChatCard: React.FC<ChatCardProps> = (props: ChatCardProps) => {
       </div>
 
       <div
-        className="ce-chat-card-unread"
+        className={`ce-chat-card-unread ${
+          props.isLoading && 'ce-chat-card-unread-loading ce-chat-card-loading'
+        }`}
         style={{
           ...styles.notificationStyle,
           ...hasNotificationStyle,
@@ -85,7 +89,10 @@ export const ChatCard: React.FC<ChatCardProps> = (props: ChatCardProps) => {
       />
 
       <div
-        className="ce-chat-card-subtitle"
+        className={`ce-chat-card-subtitle ${
+          props.isLoading &&
+          'ce-chat-card-subtitle-loading ce-chat-card-loading'
+        }`}
         style={{
           ...styles.subtitleStyle,
           ...loadingBarStyle,
@@ -93,7 +100,10 @@ export const ChatCard: React.FC<ChatCardProps> = (props: ChatCardProps) => {
         }}
       >
         <div
-          className="ce-chat-card-subtitle-html"
+          className={`ce-chat-card-subtitle-html ${
+            props.isLoading &&
+            'ce-chat-card-subtitle-html-loading ce-chat-card-loading'
+          }`}
           dangerouslySetInnerHTML={{
             __html: props.isLoading ? '.' : description,
           }}
@@ -102,7 +112,10 @@ export const ChatCard: React.FC<ChatCardProps> = (props: ChatCardProps) => {
       </div>
 
       <div
-        className="ce-chat-card-time-stamp"
+        className={`ce-chat-card-time-stamp ${
+          props.isLoading &&
+          'ce-chat-card-time-stamp-loading ce-chat-card-loading'
+        }`}
         style={{
           ...styles.timeStampStyle,
           ...loadingBarStyle,

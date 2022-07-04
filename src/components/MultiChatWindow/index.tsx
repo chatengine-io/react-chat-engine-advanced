@@ -162,6 +162,7 @@ export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
 
       <Button
         onClick={() => setIsMobileChatListOpen(true)}
+        className="ce-mobile-chat-list-button"
         style={{
           ...styles.chatListMobileButtonStyle,
           ...{ display: isMobile ? 'inherit' : 'none' },
@@ -174,6 +175,7 @@ export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
 
       <Button
         onClick={() => setIsMobileChatSettingsOpen(true)}
+        className="ce-mobile-chat-settings-button"
         style={{
           ...styles.chatSettingsMobileButtonStyle,
           ...{ display: isMobile ? 'inherit' : 'none' },
