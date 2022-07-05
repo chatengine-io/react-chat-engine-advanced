@@ -76,6 +76,7 @@ export const Message: React.FC<MessageProps> = (props: MessageProps) => {
               ...styles.attachmentsImageStyle,
               ...props.attachmentsImageStyle,
             }}
+            className="ce-message-image"
           />
         );
       } else if (!renderImage && !isImage(fileName)) {
@@ -91,6 +92,7 @@ export const Message: React.FC<MessageProps> = (props: MessageProps) => {
               ...styles.attachmentsFileStyle,
               ...props.attachmentsFileStyle,
             }}
+            className="ce-message-file"
           />
         );
       } else {

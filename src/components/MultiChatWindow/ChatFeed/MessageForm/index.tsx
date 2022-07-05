@@ -107,6 +107,7 @@ export const MessageForm: React.FC<MessageFormProps> = (
             <Image
               url={url}
               style={{ ...styles.draftImageStyle, ...props.draftImageStyle }}
+              className="ce-draft-image"
             />
           )}
 
@@ -115,6 +116,7 @@ export const MessageForm: React.FC<MessageFormProps> = (
               url={url}
               fileName={`📄 ${attachment.name}`}
               style={{ ...styles.draftFileStyle, ...props.draftFileStyle }}
+              className="ce-draft-file"
             />
           )}
 

@@ -25,6 +25,7 @@ export const Image: React.FC<Props> = (props: Props) => {
         // Props + State
         ...(isHovered ? props.hoveredStyle : {}),
       }}
+      className={`ce-image ${props.className}`}
     />
   );
 };

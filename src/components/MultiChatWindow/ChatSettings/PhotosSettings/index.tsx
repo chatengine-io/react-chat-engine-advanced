@@ -30,6 +30,7 @@ export const PhotosSettings: React.FC<PhotosSettingsProps> = (
 
             <Image
               key={`attachment_${index}`}
+              className="ce-settings-image"
               url={attachment.file !== null ? attachment.file : undefined}
               style={{ ...styles.imageStyle, ...props.imageStyle }}
             />

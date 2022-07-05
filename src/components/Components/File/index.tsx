@@ -28,6 +28,7 @@ export const File: React.FC<Props> = (props: Props) => {
         // Props + State
         ...(isHovered ? props.hoveredStyle : {}),
       }}
+      className={`ce-file ${props.className}`}
     >
       {props.fileName ? props.fileName : `📄 ${urlOrLoading(props.url)}`}
     </div>
