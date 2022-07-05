@@ -59,7 +59,7 @@ export const ChatList: React.FC<ChatListProps> = (props: ChatListProps) => {
       return (
         <ChatCard
           key={`chat_${index}`}
-          chatId={chat.id}
+          chat={chat}
           title={title}
           description={getDescription(chat)}
           timeStamp={timeStamp}

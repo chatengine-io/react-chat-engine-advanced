@@ -1,16 +1,17 @@
 import { HTMLAttributes } from 'react';
+import { ChatObject } from '../../../../interfaces';
 
 import { ChatCardStyle } from './styles';
 export interface ChatCardProps
   extends HTMLAttributes<HTMLDivElement>,
     ChatCardStyle {
   // Data
-  chatId?: number;
   title?: string;
   description?: string;
   timeStamp?: string;
   avatarUsername?: string;
   avatarUrl?: string | null | undefined;
+  chat?: ChatObject;
   // State
   hasNotification?: boolean;
   isActive?: boolean;
