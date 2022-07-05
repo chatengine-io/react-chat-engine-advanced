@@ -5,6 +5,7 @@ export interface ChatCardProps
   extends HTMLAttributes<HTMLDivElement>,
     ChatCardStyle {
   // Data
+  chatId?: number;
   title?: string;
   description?: string;
   timeStamp?: string;
