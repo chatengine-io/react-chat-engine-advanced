@@ -8,6 +8,7 @@ import {
 export const adam: PersonObject = {
   username: 'adam_lamorre',
   email: null,
+  secret: 'Pass1234!',
   first_name: 'Adam',
   last_name: 'La Morre',
   avatar:
@@ -18,6 +19,7 @@ export const adam: PersonObject = {
 
 export const bob: PersonObject = {
   username: 'bob_baker',
+  secret: 'Pass1234!',
   email: null,
   first_name: 'Bob',
   last_name: 'Baker',
@@ -28,6 +30,7 @@ export const bob: PersonObject = {
 
 export const cam: PersonObject = {
   username: 'cam_newton',
+  secret: 'Pass1234!',
   email: null,
   first_name: 'Cam',
   last_name: 'Newton',
