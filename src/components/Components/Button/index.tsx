@@ -23,7 +23,7 @@ export const Button = (props: Props) => {
   return (
     <button
       onClick={props.onClick}
-      className={`ce-${type}-button`}
+      className={`ce-${type}-button ${props.className}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
