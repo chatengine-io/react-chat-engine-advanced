@@ -7,6 +7,7 @@ import {
 
 export const adam: PersonObject = {
   username: 'adam_lamorre',
+  email: null,
   first_name: 'Adam',
   last_name: 'La Morre',
   avatar:
@@ -17,6 +18,7 @@ export const adam: PersonObject = {
 
 export const bob: PersonObject = {
   username: 'bob_baker',
+  email: null,
   first_name: 'Bob',
   last_name: 'Baker',
   avatar: null,
@@ -26,6 +28,7 @@ export const bob: PersonObject = {
 
 export const cam: PersonObject = {
   username: 'cam_newton',
+  email: null,
   first_name: 'Cam',
   last_name: 'Newton',
   avatar:
