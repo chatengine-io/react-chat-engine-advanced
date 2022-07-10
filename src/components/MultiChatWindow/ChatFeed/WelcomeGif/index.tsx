@@ -9,15 +9,21 @@ export const WelcomeGif: React.FC<WelcomeGifProps> = (
     return <>{props.renderWelcomeGif(props)}</>;
   }
   return (
-    <div style={{ ...styles.style, ...props.style }}>
+    <div
+      className="ce-ice-breaker-wrapper"
+      style={{ ...styles.style, ...props.style }}
+    >
       <img
-        id="ce-ice-breaker-gif"
+        className="ce-ice-breaker-gif"
         style={{ ...styles.gifStyle, ...props.gifStyle }}
         src="https://chat-engine-assets.s3.amazonaws.com/welcome_gifs/peace.gif"
         alt="chat-engine-ice-breaker"
       />
 
-      <div style={{ ...styles.textStyle, ...props.textStyle }}>
+      <div
+        className="ce-ice-breaker-text"
+        style={{ ...styles.textStyle, ...props.textStyle }}
+      >
         No messages here yet...
       </div>
     </div>
