@@ -45,6 +45,8 @@ const MultiChatWindowApp = (props) => {
         isChatListLoading={chatProps.isChatListLoading}
         isChatFeedLoading={chatProps.isChatFeedLoading}
         isChatSettingsLoading={chatProps.isChatSettingsLoading}
+        isMobileChatListOpen={chatProps.isMobileChatListOpen}
+        isMobileChatSettingsOpen={chatProps.isMobileChatSettingsOpen}
         // chatProps
         activeChatId={chatProps.activeChatId}
         username={chatProps.username}
@@ -62,6 +64,11 @@ const MultiChatWindowApp = (props) => {
         onInvitePersonClick={chatProps.onInvitePersonClick}
         onRemovePersonClick={chatProps.onRemovePersonClick}
         onDeleteChatClick={chatProps.onDeleteChatClick}
+        onMobileChatListClick={chatProps.onMobileChatListClick}
+        onMobileChatSettingsClick={chatProps.onMobileChatSettingsClick}
+        onCloseMobileChatSettingsClick={
+          chatProps.onCloseMobileChatSettingsClick
+        }
         style={{ height: 'calc(100vh - 20px)' }}
       />
     </div>

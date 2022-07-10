@@ -25,13 +25,7 @@ export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
   props: MultiChatWindowProps
 ) => {
   const { chats = [], activeChatId = -1, messages = [] } = props;
-
   const [isMobile, setIsMobile] = useState(window.innerWidth < 575);
-  const [isMobileChatListOpen, setIsMobileChatListOpen] = useState(false);
-  const [isMobileChatSettingsOpen, setIsMobileChatSettingsOpen] = useState(
-    false
-  );
-
   const chat = chats.find((chat) => chat.id === activeChatId);
 
   useEffect(() => {
@@ -50,14 +44,8 @@ export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
         timezoneOffset={props.timezoneOffset}
         isLoading={props.isChatListLoading}
         hasMoreChats={props.hasMoreChats}
-        onChatFormSubmit={(title) => {
-          props.onChatFormSubmit && props.onChatFormSubmit(title);
-          setIsMobileChatListOpen(false);
-        }}
-        onChatCardClick={(chatId) => {
-          props.onChatCardClick && props.onChatCardClick(chatId);
-          setIsMobileChatListOpen(false);
-        }}
+        onChatFormSubmit={props.onChatFormSubmit}
+        onChatCardClick={props.onChatCardClick}
         onChatLoaderShow={props.onChatLoaderShow}
         renderChatList={props.renderChatList}
         renderChatForm={props.renderChatForm}
@@ -90,7 +78,7 @@ export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
               />
               {isMobile && (
                 <Button
-                  onClick={() => setIsMobileChatSettingsOpen(false)}
+                  onClick={props.onCloseMobileChatSettingsClick}
                   style={{ position: 'absolute', top: '12px', right: '12px' }}
                 >
                   <CloseOutlined />
@@ -161,7 +149,7 @@ export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
       </Col>
 
       <Button
-        onClick={() => setIsMobileChatListOpen(true)}
+        onClick={props.onMobileChatListClick}
         className="ce-mobile-chat-list-button"
         style={{
           ...styles.chatListMobileButtonStyle,
@@ -171,10 +159,11 @@ export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
       >
         <UnorderedListOutlined />
       </Button>
-      {isMobile && isMobileChatListOpen && renderChatList()}
+
+      {isMobile && props.isMobileChatListOpen && renderChatList()}
 
       <Button
-        onClick={() => setIsMobileChatSettingsOpen(true)}
+        onClick={props.onMobileChatSettingsClick}
         className="ce-mobile-chat-settings-button"
         style={{
           ...styles.chatSettingsMobileButtonStyle,
@@ -184,7 +173,8 @@ export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
       >
         <SettingOutlined />
       </Button>
-      {isMobile && isMobileChatSettingsOpen && renderChatSettings()}
+
+      {isMobile && props.isMobileChatSettingsOpen && renderChatSettings()}
     </Row>
   );
 };

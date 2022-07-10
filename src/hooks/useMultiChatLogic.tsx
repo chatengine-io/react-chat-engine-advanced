@@ -73,6 +73,13 @@ export const useMultiChatLogic = (
   const [isChatSettingsLoading, setIsChatSettingsLoading] = useState<boolean>(
     true
   );
+  const [isMobileChatListOpen, setIsMobileChatListOpen] = useState<boolean>(
+    false
+  );
+  const [
+    isMobileChatSettingsOpen,
+    setIsMobileChatSettingsOpen,
+  ] = useState<boolean>(false);
 
   // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
@@ -233,7 +240,9 @@ export const useMultiChatLogic = (
       setIsChatFeedLoading(true);
       setIsChatSettingsLoading(true);
     }
+
     setActiveChatId(newActiveChatId);
+    setIsMobileChatListOpen(false);
 
     getMessages(
       host,
@@ -346,6 +355,16 @@ export const useMultiChatLogic = (
     void id, person;
   };
 
+  const onMobileChatListClick = () => {
+    setIsMobileChatListOpen(true);
+  };
+  const onMobileChatSettingsClick = () => {
+    setIsMobileChatSettingsOpen(true);
+  };
+  const onCloseMobileChatSettingsClick = () => {
+    setIsMobileChatSettingsOpen(false);
+  };
+
   return {
     // Socket Hooks
     onConnect,
@@ -389,6 +408,10 @@ export const useMultiChatLogic = (
     setIsChatFeedLoading,
     isChatSettingsLoading,
     setIsChatSettingsLoading,
+    isMobileChatListOpen,
+    setIsMobileChatListOpen,
+    isMobileChatSettingsOpen,
+    setIsMobileChatSettingsOpen,
     // Component Hooks
     onChatFormSubmit,
     onChatCardClick,
@@ -401,5 +424,8 @@ export const useMultiChatLogic = (
     onInvitePersonClick,
     onRemovePersonClick,
     onDeleteChatClick,
+    onMobileChatListClick,
+    onMobileChatSettingsClick,
+    onCloseMobileChatSettingsClick,
   };
 };

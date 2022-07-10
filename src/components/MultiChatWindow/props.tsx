@@ -31,6 +31,8 @@ export interface MultiChatWindowProps extends ChatEngineStyles {
   isChatSettingsLoading?: boolean;
   hasMoreChats?: boolean;
   hasMoreMessages?: boolean;
+  isMobileChatListOpen?: boolean;
+  isMobileChatSettingsOpen?: boolean;
   // Hooks
   onChatCardClick?: (chatId: number) => void;
   onChatFormSubmit?: (title: string) => void;
@@ -43,6 +45,9 @@ export interface MultiChatWindowProps extends ChatEngineStyles {
   onInvitePersonClick?: (person: PersonObject) => void;
   onRemovePersonClick?: (person: PersonObject) => void;
   onDeleteChatClick?: (chat: ChatObject) => void;
+  onMobileChatListClick?: () => void;
+  onMobileChatSettingsClick?: () => void;
+  onCloseMobileChatSettingsClick?: () => void;
   // Render Functions
   renderChatList?: (
     props: ChatListProps
