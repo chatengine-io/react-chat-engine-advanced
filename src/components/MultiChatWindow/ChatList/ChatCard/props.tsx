@@ -22,4 +22,7 @@ export interface ChatCardProps
   renderChatCard?: (
     props: ChatCardProps
   ) => JSX.Element | Element | React.FC<ChatCardProps>;
+  renderAvatar?: (
+    props: ChatCardProps
+  ) => JSX.Element | Element | React.FC<ChatCardProps>;
 }

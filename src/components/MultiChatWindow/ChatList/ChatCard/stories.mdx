@@ -12,6 +12,7 @@ import { Props } from './props';
     isActive: { table: { category: 'state' } },
     isLoading: { table: { category: 'state' } },
     onClick: { table: { category: 'hooks' } },
+    renderAvatar: { table: { category: 'render functions' } },
     renderChatCard: { table: { category: 'render functions' } },
     style: { table: { category: 'styles' } },
     hoveredStyle: { table: { category: 'styles' } },
@@ -132,6 +133,25 @@ You can render you own code instead of this component with the `render*` functio
       description: 'Alert alert!!!',
       timeStamp: 'Tues',
       renderChatCard: (props) => <>Your code here: {props.title}</>,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Render Avatar
+
+Another example to replace the avatar.
+
+<Canvas>
+  <Story
+    name="Render Avatar"
+    args={{
+      avatarUsername: 'Adam',
+      title: 'Notification Card',
+      description: 'Alert alert!!!',
+      timeStamp: 'Tues',
+      renderAvatar: (props) => <>yo</>,
     }}
   >
     {Template.bind({})}

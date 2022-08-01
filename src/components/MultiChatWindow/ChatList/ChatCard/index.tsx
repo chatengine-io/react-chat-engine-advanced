@@ -47,20 +47,24 @@ export const ChatCard: React.FC<ChatCardProps> = (props: ChatCardProps) => {
         ${hovered && 'ce-hovered-chat-card'}
       `}
     >
-      <Avatar
-        username={props.avatarUsername}
-        avatarUrl={props.avatarUrl}
-        className="ce-chat-card-avatar"
-        style={{
-          ...styles.avatarStyle,
-          ...{
-            backgroundColor: props.isLoading
-              ? '#e2e2e2'
-              : stringToColor(props.avatarUsername),
-          },
-          ...props.avatarStyle,
-        }}
-      />
+      {props.renderAvatar ? (
+        props.renderAvatar(props)
+      ) : (
+        <Avatar
+          username={props.avatarUsername}
+          avatarUrl={props.avatarUrl}
+          className="ce-chat-card-avatar"
+          style={{
+            ...styles.avatarStyle,
+            ...{
+              backgroundColor: props.isLoading
+                ? '#e2e2e2'
+                : stringToColor(props.avatarUsername),
+            },
+            ...props.avatarStyle,
+          }}
+        />
+      )}
 
       <div
         className={`ce-chat-card-title ${
