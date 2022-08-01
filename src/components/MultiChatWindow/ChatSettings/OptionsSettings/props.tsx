@@ -5,7 +5,7 @@ import { ChatObject } from '../../../../interfaces';
 export interface OptionsSettingsProps extends OptionsSettingsStyles {
   chat?: ChatObject;
   // Hooks
-  onDeleteChatClick?: (chat: ChatObject) => void;
+  onDeleteChatClick?: (chat: ChatObject) => Promise<void>;
   // Render Functions
   renderOptionsSettings?: (
     props: OptionsSettingsProps

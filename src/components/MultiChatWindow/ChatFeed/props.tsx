@@ -18,11 +18,11 @@ export interface ChatFeedProps extends ChatFeedStyles {
   isLoading?: boolean;
   hasMoreMessages?: boolean;
   // Hooks
-  onMessageLoaderShow?: () => void;
-  onMessageLoaderHide?: () => void;
-  onBottomMessageShow?: () => void;
-  onBottomMessageHide?: () => void;
-  onMessageFormSubmit?: (message: MessageObject) => void;
+  onMessageLoaderShow?: () => Promise<void>;
+  onMessageLoaderHide?: () => Promise<void>;
+  onBottomMessageShow?: () => Promise<void>;
+  onBottomMessageHide?: () => Promise<void>;
+  onMessageFormSubmit?: (message: MessageObject) => Promise<void>;
   // Render Functions
   renderChatFeed?: (
     props: ChatFeedProps

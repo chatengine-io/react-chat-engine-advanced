@@ -14,9 +14,9 @@ export interface ChatSettingsProps extends ChatSettingsStyles {
   // State
   isLoading?: boolean;
   // Hooks
-  onDeleteChatClick?: (chat: ChatObject) => void;
-  onInvitePersonClick?: (person: PersonObject) => void;
-  onRemovePersonClick?: (person: PersonObject) => void;
+  onDeleteChatClick?: (chat: ChatObject) => Promise<void>;
+  onInvitePersonClick?: (person: PersonObject) => Promise<void>;
+  onRemovePersonClick?: (person: PersonObject) => Promise<void>;
   // Render Functions
   renderChatSettings?: (
     props: ChatSettingsProps

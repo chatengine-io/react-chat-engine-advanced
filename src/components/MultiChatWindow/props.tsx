@@ -35,19 +35,19 @@ export interface MultiChatWindowProps extends ChatEngineStyles {
   isMobileChatSettingsOpen?: boolean;
   // Hooks
   onChatCardClick?: (chatId: number) => Promise<void>;
-  onChatFormSubmit?: (title: string) => void;
-  onChatLoaderShow?: () => void;
-  onMessageLoaderShow?: () => void;
-  onMessageLoaderHide?: () => void;
-  onBottomMessageShow?: () => void;
-  onBottomMessageHide?: () => void;
-  onMessageFormSubmit?: (message: MessageObject) => void;
-  onInvitePersonClick?: (person: PersonObject) => void;
-  onRemovePersonClick?: (person: PersonObject) => void;
-  onDeleteChatClick?: (chat: ChatObject) => void;
-  onMobileChatListClick?: () => void;
-  onMobileChatSettingsClick?: () => void;
-  onCloseMobileChatSettingsClick?: () => void;
+  onChatFormSubmit?: (title: string) => Promise<void>;
+  onChatLoaderShow?: () => Promise<void>;
+  onMessageLoaderShow?: () => Promise<void>;
+  onMessageLoaderHide?: () => Promise<void>;
+  onBottomMessageShow?: () => Promise<void>;
+  onBottomMessageHide?: () => Promise<void>;
+  onMessageFormSubmit?: (message: MessageObject) => Promise<void>;
+  onInvitePersonClick?: (person: PersonObject) => Promise<void>;
+  onRemovePersonClick?: (person: PersonObject) => Promise<void>;
+  onDeleteChatClick?: (chat: ChatObject) => Promise<void>;
+  onMobileChatListClick?: () => Promise<void>;
+  onMobileChatSettingsClick?: () => Promise<void>;
+  onCloseMobileChatSettingsClick?: () => Promise<void>;
   // Render Functions
   renderChatList?: (
     props: ChatListProps
