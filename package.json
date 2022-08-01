@@ -44,7 +44,7 @@
   "size-limit": [
     {
       "path": "dist/react-chat-engine-advanced.cjs.production.min.js",
-      "limit": "100 KB"
+      "limit": "350 KB"
     },
     {
       "path": "dist/react-chat-engine-advanced.esm.js",
