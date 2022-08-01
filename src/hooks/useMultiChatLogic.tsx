@@ -133,6 +133,7 @@ export const useMultiChatLogic = (
           : setIsChatFeedLoading(false);
       }
     );
+    return;
   }
 
   async function onGetChats(chats: ChatObject[] = []) {
@@ -142,12 +143,14 @@ export const useMultiChatLogic = (
 
     setChats(sortedChats);
     setIsChatListLoading(false);
+    return;
   }
 
   async function onNewChat(chat: ChatObject) {
     const newChats = [chat].concat(chats ? chats : []);
 
     setChats(newChats);
+    return;
   }
 
   async function onEditChat(newChat: ChatObject) {
@@ -158,6 +161,7 @@ export const useMultiChatLogic = (
     const sortedChats = sortChats(newChats);
 
     setChats(sortedChats);
+    return;
   }
 
   async function onDeleteChat(oldChat: ChatObject) {
@@ -169,6 +173,7 @@ export const useMultiChatLogic = (
 
     if (newChats.length > 0 && activeChatId === oldChat.id)
       onChatCardClick(newChats[0].id);
+    return;
   }
 
   async function onGetMessages(chatId: number, messages: MessageObject[]) {
@@ -178,6 +183,7 @@ export const useMultiChatLogic = (
     setMessages(messages);
 
     void chatId;
+    return;
   }
 
   async function onNewMessage(chatId: number, newMessage: MessageObject) {
@@ -196,6 +202,7 @@ export const useMultiChatLogic = (
         });
       }
     }
+    return;
   }
 
   async function onEditMessage(chatId: number, newMessage: MessageObject) {
@@ -207,6 +214,7 @@ export const useMultiChatLogic = (
       const sortedMessages = sortMessages(newMessages);
       setMessages(sortedMessages);
     }
+    return;
   }
 
   async function onDeleteMessage(chatId: number, oldMessage: MessageObject) {
@@ -216,10 +224,12 @@ export const useMultiChatLogic = (
         : [];
       setMessages(newMessages);
     }
+    return;
   }
 
   async function onConnect() {
     fetchMultiChatData();
+    return;
   }
 
   async function onAuthFail() {}
@@ -229,6 +239,7 @@ export const useMultiChatLogic = (
       onNewChat(chat);
       onChatCardClick(chat.id);
     });
+    return;
   }
 
   async function onChatCardClick(newActiveChatId: number) {
@@ -259,6 +270,7 @@ export const useMultiChatLogic = (
     );
 
     getPeopleToInvite(host, headers, newActiveChatId, setPeopleToInvite);
+    return;
   }
 
   async function onChatLoaderShow() {
@@ -274,6 +286,7 @@ export const useMultiChatLogic = (
       chatCountRef.current + chatCountIterator,
       onGetChats
     );
+    return;
   }
 
   async function onMessageFormSubmit(message: MessageObject) {
@@ -288,6 +301,7 @@ export const useMultiChatLogic = (
         containerId: `ce-message-list-${activeChatId}`,
       });
     }, 100);
+    return;
   }
 
   async function onInvitePersonClick(person: PersonObject) {
@@ -302,18 +316,22 @@ export const useMultiChatLogic = (
       removePerson(host, headers, activeChatId, person.username, () =>
         onChatCardClick(activeChatId)
       );
+    return;
   }
 
   async function onDeleteChatClick(chat: ChatObject) {
     deleteChat(host, headers, chat.id, onDeleteChat);
+    return;
   }
 
   async function onBottomMessageShow() {
     setIsChatFeedAtBottom(true);
+    return;
   }
 
   async function onBottomMessageHide() {
     setIsChatFeedAtBottom(false);
+    return;
   }
 
   async function onMessageLoaderShow() {
@@ -343,24 +361,31 @@ export const useMultiChatLogic = (
           }, 1000);
         }
       );
+    return;
   }
 
-  async function onMessageLoaderHide() {}
+  async function onMessageLoaderHide() {
+    return;
+  }
 
   async function onIsTyping(id: number, person: PersonObject) {
     void id, person;
+    return;
   }
 
   async function onMobileChatListClick() {
     setIsMobileChatListOpen(true);
+    return;
   }
 
   async function onMobileChatSettingsClick() {
     setIsMobileChatSettingsOpen(true);
+    return;
   }
 
   async function onCloseMobileChatSettingsClick() {
     setIsMobileChatSettingsOpen(false);
+    return;
   }
 
   return {
