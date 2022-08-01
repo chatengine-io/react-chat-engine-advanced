@@ -70,16 +70,12 @@ export const useMultiChatLogic = (
   const [isChatFeedAtBottom, setIsChatFeedAtBottom] = useState<boolean>(false);
   const [isChatListLoading, setIsChatListLoading] = useState<boolean>(true);
   const [isChatFeedLoading, setIsChatFeedLoading] = useState<boolean>(true);
-  const [isChatSettingsLoading, setIsChatSettingsLoading] = useState<boolean>(
-    true
-  );
-  const [isMobileChatListOpen, setIsMobileChatListOpen] = useState<boolean>(
-    false
-  );
-  const [
-    isMobileChatSettingsOpen,
-    setIsMobileChatSettingsOpen,
-  ] = useState<boolean>(false);
+  const [isChatSettingsLoading, setIsChatSettingsLoading] =
+    useState<boolean>(true);
+  const [isMobileChatListOpen, setIsMobileChatListOpen] =
+    useState<boolean>(false);
+  const [isMobileChatSettingsOpen, setIsMobileChatSettingsOpen] =
+    useState<boolean>(false);
 
   // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
@@ -235,7 +231,7 @@ export const useMultiChatLogic = (
     });
   };
 
-  const onChatCardClick = (newActiveChatId: number) => {
+  async function onChatCardClick(newActiveChatId: number) {
     if (newActiveChatId !== activeChatId) {
       setIsChatFeedLoading(true);
       setIsChatSettingsLoading(true);
@@ -263,7 +259,7 @@ export const useMultiChatLogic = (
     );
 
     getPeopleToInvite(host, headers, newActiveChatId, setPeopleToInvite);
-  };
+  }
 
   const onChatLoaderShow = () => {
     const now = new Date()

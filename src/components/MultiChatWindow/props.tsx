@@ -34,7 +34,7 @@ export interface MultiChatWindowProps extends ChatEngineStyles {
   isMobileChatListOpen?: boolean;
   isMobileChatSettingsOpen?: boolean;
   // Hooks
-  onChatCardClick?: (chatId: number) => void;
+  onChatCardClick?: (chatId: number) => Promise<void>;
   onChatFormSubmit?: (title: string) => void;
   onChatLoaderShow?: () => void;
   onMessageLoaderShow?: () => void;
