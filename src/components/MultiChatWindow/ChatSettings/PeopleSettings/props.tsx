@@ -8,8 +8,8 @@ export interface PeopleSettingsProps extends PeopleSettingsStyles {
   // State
   canDelete?: boolean;
   // Hooks
-  onInvitePersonClick?: (person: PersonObject) => void;
-  onRemovePersonClick?: (person: PersonObject) => void;
+  onInvitePersonClick?: (person: PersonObject) => Promise<void>;
+  onRemovePersonClick?: (person: PersonObject) => Promise<void>;
   // Render Functions
   renderPeopleSettings?: (
     props: PeopleSettingsProps

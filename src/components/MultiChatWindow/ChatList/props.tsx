@@ -19,9 +19,9 @@ export interface ChatListProps
   isLoading?: boolean;
   hasMoreChats?: boolean;
   // Hooks
-  onChatCardClick?: (chatId: number) => void;
-  onChatFormSubmit?: (title: string) => void;
-  onChatLoaderShow?: () => void;
+  onChatCardClick?: (chatId: number) => Promise<void>;
+  onChatFormSubmit?: (title: string) => Promise<void>;
+  onChatLoaderShow?: () => Promise<void>;
   // Render Functions
   renderChatList?: (
     props: ChatListProps

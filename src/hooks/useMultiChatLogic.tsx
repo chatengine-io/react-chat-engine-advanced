@@ -70,16 +70,12 @@ export const useMultiChatLogic = (
   const [isChatFeedAtBottom, setIsChatFeedAtBottom] = useState<boolean>(false);
   const [isChatListLoading, setIsChatListLoading] = useState<boolean>(true);
   const [isChatFeedLoading, setIsChatFeedLoading] = useState<boolean>(true);
-  const [isChatSettingsLoading, setIsChatSettingsLoading] = useState<boolean>(
-    true
-  );
-  const [isMobileChatListOpen, setIsMobileChatListOpen] = useState<boolean>(
-    false
-  );
-  const [
-    isMobileChatSettingsOpen,
-    setIsMobileChatSettingsOpen,
-  ] = useState<boolean>(false);
+  const [isChatSettingsLoading, setIsChatSettingsLoading] =
+    useState<boolean>(true);
+  const [isMobileChatListOpen, setIsMobileChatListOpen] =
+    useState<boolean>(false);
+  const [isMobileChatSettingsOpen, setIsMobileChatSettingsOpen] =
+    useState<boolean>(false);
 
   // Subscribe to Chat & Message Count
   const chatCountRef = useRef<number>(0);
@@ -113,7 +109,7 @@ export const useMultiChatLogic = (
     }
   }, [chats, activeChatId, isChatFeedAtBottom]);
 
-  const fetchMultiChatData = () => {
+  async function fetchMultiChatData() {
     const now = new Date()
       .toISOString()
       .replace('T', ' ')
@@ -137,24 +133,24 @@ export const useMultiChatLogic = (
           : setIsChatFeedLoading(false);
       }
     );
-  };
+  }
 
-  const onGetChats = (chats: ChatObject[] = []) => {
+  async function onGetChats(chats: ChatObject[] = []) {
     setHasMoreChats(chats.length >= chatCountRef.current + chatCountIterator);
 
     const sortedChats = sortChats(chats);
 
     setChats(sortedChats);
     setIsChatListLoading(false);
-  };
+  }
 
-  const onNewChat = (chat: ChatObject) => {
+  async function onNewChat(chat: ChatObject) {
     const newChats = [chat].concat(chats ? chats : []);
 
     setChats(newChats);
-  };
+  }
 
-  const onEditChat = (newChat: ChatObject) => {
+  async function onEditChat(newChat: ChatObject) {
     const otherChats = chats
       ? chats.filter((chat) => chat.id !== newChat.id)
       : [];
@@ -162,9 +158,9 @@ export const useMultiChatLogic = (
     const sortedChats = sortChats(newChats);
 
     setChats(sortedChats);
-  };
+  }
 
-  const onDeleteChat = (oldChat: ChatObject) => {
+  async function onDeleteChat(oldChat: ChatObject) {
     const newChats = chats
       ? chats.filter((chat) => chat.id !== oldChat.id)
       : [];
@@ -173,18 +169,18 @@ export const useMultiChatLogic = (
 
     if (newChats.length > 0 && activeChatId === oldChat.id)
       onChatCardClick(newChats[0].id);
-  };
+  }
 
-  const onGetMessages = (chatId: number, messages: MessageObject[]) => {
+  async function onGetMessages(chatId: number, messages: MessageObject[]) {
     setHasMoreMessages(
       messages.length >= messageCountRef.current + messageCountIterator
     );
     setMessages(messages);
 
     void chatId;
-  };
+  }
 
-  const onNewMessage = (chatId: number, newMessage: MessageObject) => {
+  async function onNewMessage(chatId: number, newMessage: MessageObject) {
     if (activeChatId === chatId) {
       const otherMessages = messages
         ? messages.filter((message) => message.created !== newMessage.created)
@@ -200,9 +196,9 @@ export const useMultiChatLogic = (
         });
       }
     }
-  };
+  }
 
-  const onEditMessage = (chatId: number, newMessage: MessageObject) => {
+  async function onEditMessage(chatId: number, newMessage: MessageObject) {
     if (chatId === activeChatId) {
       const otherMessages = messages
         ? messages.filter((message) => message.id !== newMessage.id)
@@ -211,31 +207,31 @@ export const useMultiChatLogic = (
       const sortedMessages = sortMessages(newMessages);
       setMessages(sortedMessages);
     }
-  };
+  }
 
-  const onDeleteMessage = (chatId: number, oldMessage: MessageObject) => {
+  async function onDeleteMessage(chatId: number, oldMessage: MessageObject) {
     if (chatId === activeChatId) {
       const newMessages = messages
         ? messages.filter((message) => message.id !== oldMessage.id)
         : [];
       setMessages(newMessages);
     }
-  };
+  }
 
-  const onConnect = () => {
+  async function onConnect() {
     fetchMultiChatData();
-  };
+  }
 
-  const onAuthFail = () => {};
+  async function onAuthFail() {}
 
-  const onChatFormSubmit = (title: string) => {
+  async function onChatFormSubmit(title: string) {
     newChat(host, headers, title, (chat) => {
       onNewChat(chat);
       onChatCardClick(chat.id);
     });
-  };
+  }
 
-  const onChatCardClick = (newActiveChatId: number) => {
+  async function onChatCardClick(newActiveChatId: number) {
     if (newActiveChatId !== activeChatId) {
       setIsChatFeedLoading(true);
       setIsChatSettingsLoading(true);
@@ -263,9 +259,9 @@ export const useMultiChatLogic = (
     );
 
     getPeopleToInvite(host, headers, newActiveChatId, setPeopleToInvite);
-  };
+  }
 
-  const onChatLoaderShow = () => {
+  async function onChatLoaderShow() {
     const now = new Date()
       .toISOString()
       .replace('T', ' ')
@@ -278,9 +274,9 @@ export const useMultiChatLogic = (
       chatCountRef.current + chatCountIterator,
       onGetChats
     );
-  };
+  }
 
-  const onMessageFormSubmit = (message: MessageObject) => {
+  async function onMessageFormSubmit(message: MessageObject) {
     const newMessages = messages?.concat(message);
     setMessages(newMessages);
 
@@ -292,35 +288,35 @@ export const useMultiChatLogic = (
         containerId: `ce-message-list-${activeChatId}`,
       });
     }, 100);
-  };
+  }
 
-  const onInvitePersonClick = (person: PersonObject) => {
+  async function onInvitePersonClick(person: PersonObject) {
     activeChatId &&
       invitePerson(host, headers, activeChatId, person.username, () =>
         onChatCardClick(activeChatId)
       );
-  };
+  }
 
-  const onRemovePersonClick = (person: PersonObject) => {
+  async function onRemovePersonClick(person: PersonObject) {
     activeChatId &&
       removePerson(host, headers, activeChatId, person.username, () =>
         onChatCardClick(activeChatId)
       );
-  };
+  }
 
-  const onDeleteChatClick = (chat: ChatObject) => {
+  async function onDeleteChatClick(chat: ChatObject) {
     deleteChat(host, headers, chat.id, onDeleteChat);
-  };
+  }
 
-  const onBottomMessageShow = () => {
+  async function onBottomMessageShow() {
     setIsChatFeedAtBottom(true);
-  };
+  }
 
-  const onBottomMessageHide = () => {
+  async function onBottomMessageHide() {
     setIsChatFeedAtBottom(false);
-  };
+  }
 
-  const onMessageLoaderShow = () => {
+  async function onMessageLoaderShow() {
     const scrollContainerId = `ce-message-list-${activeChatId}`;
     const messageListId = `ce-message-list-content-${activeChatId}`;
 
@@ -347,23 +343,25 @@ export const useMultiChatLogic = (
           }, 1000);
         }
       );
-  };
+  }
 
-  const onMessageLoaderHide = () => {};
+  async function onMessageLoaderHide() {}
 
-  const onIsTyping = (id: number, person: PersonObject) => {
+  async function onIsTyping(id: number, person: PersonObject) {
     void id, person;
-  };
+  }
 
-  const onMobileChatListClick = () => {
+  async function onMobileChatListClick() {
     setIsMobileChatListOpen(true);
-  };
-  const onMobileChatSettingsClick = () => {
+  }
+
+  async function onMobileChatSettingsClick() {
     setIsMobileChatSettingsOpen(true);
-  };
-  const onCloseMobileChatSettingsClick = () => {
+  }
+
+  async function onCloseMobileChatSettingsClick() {
     setIsMobileChatSettingsOpen(false);
-  };
+  }
 
   return {
     // Socket Hooks

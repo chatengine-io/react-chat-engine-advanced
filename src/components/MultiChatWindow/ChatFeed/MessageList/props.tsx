@@ -12,10 +12,10 @@ export interface MessageListProps extends MessageListStyles {
   // State
   hasMoreMessages?: boolean;
   // Hooks
-  onMessageLoaderShow?: () => void;
-  onMessageLoaderHide?: () => void;
-  onBottomMessageShow?: () => void;
-  onBottomMessageHide?: () => void;
+  onMessageLoaderShow?: () => Promise<void>;
+  onMessageLoaderHide?: () => Promise<void>;
+  onBottomMessageShow?: () => Promise<void>;
+  onBottomMessageHide?: () => Promise<void>;
   // Render Functions
   renderMessageList?: (
     props: MessageListProps

@@ -70,32 +70,32 @@ export const useSingleChatLogic = (
     }
   }, []);
 
-  const fetchSingleChatData = () => {
+  async function fetchSingleChatData() {
     getChat(host, headers, chatId, (chat) => {
       setChat(chat);
       onChatCardClick(chat.id);
     });
-  };
+  }
 
-  const onEditChat = (chat: ChatObject) => {
+  async function onEditChat(chat: ChatObject) {
     setChat(chat);
-  };
+  }
 
-  const onDeleteChat = () => {
+  async function onDeleteChat() {
     setChat(undefined);
     setActiveChatId(undefined);
-  };
+  }
 
-  const onGetMessages = (chatId: number, messages: MessageObject[]) => {
+  async function onGetMessages(chatId: number, messages: MessageObject[]) {
     setHasMoreMessages(
       messages.length >= messageCountRef.current + messageCountIterator
     );
     setMessages(messages);
     setIsChatFeedLoading(false);
     void chatId;
-  };
+  }
 
-  const onNewMessage = (chatId: number, newMessage: MessageObject) => {
+  async function onNewMessage(chatId: number, newMessage: MessageObject) {
     if (activeChatId === chatId) {
       const otherMessages = messages
         ? messages.filter((message) => message.created !== newMessage.created)
@@ -111,9 +111,9 @@ export const useSingleChatLogic = (
         });
       }
     }
-  };
+  }
 
-  const onEditMessage = (chatId: number, newMessage: MessageObject) => {
+  async function onEditMessage(chatId: number, newMessage: MessageObject) {
     if (chatId === activeChatId) {
       const otherMessages = messages
         ? messages.filter((message) => message.id !== newMessage.id)
@@ -122,24 +122,24 @@ export const useSingleChatLogic = (
       const sortedMessages = sortMessages(newMessages);
       setMessages(sortedMessages);
     }
-  };
+  }
 
-  const onDeleteMessage = (chatId: number, oldMessage: MessageObject) => {
+  async function onDeleteMessage(chatId: number, oldMessage: MessageObject) {
     if (chatId === activeChatId) {
       const newMessages = messages
         ? messages.filter((message) => message.id !== oldMessage.id)
         : [];
       setMessages(newMessages);
     }
-  };
+  }
 
-  const onConnect = () => {
+  async function onConnect() {
     fetchSingleChatData();
-  };
+  }
 
-  const onAuthFail = () => {};
+  async function onAuthFail() {}
 
-  const onChatCardClick = (activeChatId: number) => {
+  async function onChatCardClick(activeChatId: number) {
     setActiveChatId(activeChatId);
 
     getMessages(
@@ -155,9 +155,9 @@ export const useSingleChatLogic = (
         });
       }
     );
-  };
+  }
 
-  const onMessageFormSubmit = (message: MessageObject) => {
+  async function onMessageFormSubmit(message: MessageObject) {
     const newMessages = messages?.concat(message);
     setMessages(newMessages);
 
@@ -169,17 +169,17 @@ export const useSingleChatLogic = (
         containerId: `ce-message-list-${activeChatId}`,
       });
     }, 100);
-  };
+  }
 
-  const onBottomMessageShow = () => {
+  async function onBottomMessageShow() {
     setIsChatFeedAtBottom(true);
-  };
+  }
 
-  const onBottomMessageHide = () => {
+  async function onBottomMessageHide() {
     setIsChatFeedAtBottom(false);
-  };
+  }
 
-  const onMessageLoaderShow = () => {
+  async function onMessageLoaderShow() {
     const scrollContainerId = `ce-message-list-${activeChatId}`;
     const messageListId = `ce-message-list-content-${activeChatId}`;
 
@@ -206,13 +206,13 @@ export const useSingleChatLogic = (
           }, 1000);
         }
       );
-  };
+  }
 
-  const onMessageLoaderHide = () => {};
+  async function onMessageLoaderHide() {}
 
-  const onIsTyping = (id: number, person: PersonObject) => {
+  async function onIsTyping(id: number, person: PersonObject) {
     void id, person;
-  };
+  }
 
   return {
     // Socket Hooks

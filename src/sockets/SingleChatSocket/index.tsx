@@ -14,7 +14,7 @@ export const SingleChatSocket: React.FC<Props> = (props: Props) => {
     }
   }, []);
 
-  function reRender() {
+  async function reRender() {
     setIsHidden(true);
     setTimeout(() => setIsHidden(false), 100);
   }
