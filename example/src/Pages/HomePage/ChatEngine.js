@@ -7,7 +7,6 @@ import {
   MultiChatWindow,
   MultiChatSocket,
   useMultiChatLogic,
-  ChatCard,
 } from 'react-chat-engine-advanced';
 
 const MultiChatWindowApp = (props) => {
@@ -71,13 +70,6 @@ const MultiChatWindowApp = (props) => {
           chatProps.onCloseMobileChatSettingsClick
         }
         style={{ height: 'calc(100vh - 20px)' }}
-        renderChatCard={(props) => (
-          <ChatCard
-            {...props}
-            renderAvatar={() => <>ok</>}
-            renderChatCard={undefined}
-          />
-        )}
       />
     </div>
   );
