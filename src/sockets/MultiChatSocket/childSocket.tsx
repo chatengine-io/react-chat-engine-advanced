@@ -4,42 +4,43 @@ import { Props } from './props';
 
 import { WebSocket } from 'nextjs-websocket';
 
-let socketRef: WebSocket = undefined;
-let pingIntervalId: NodeJS.Timer;
-let timeIntervalId: NodeJS.Timer;
+// let socketRef: WebSocket = undefined;
+// let pingIntervalId: NodeJS.Timer;
+// let timeIntervalId: NodeJS.Timer;
 
-const pingInterval = 4000;
+// const pingInterval = 4000;
 const minLag = 15 * 1000;
 
 export const ChildSocket: React.FC<Props> = (props: Props) => {
   const { sessionToken } = props;
 
-  const [now, setNow] = useState(Date.now());
-  const [shouldPongBy, setShouldPongBy] = useState(Date.now() + minLag);
+  // const [now, setNow] = useState(Date.now());
+  // const [shouldPongBy, setShouldPongBy] = useState(Date.now() + minLag);
 
-  useEffect(() => {
-    if (now > shouldPongBy) {
-      props.onRefresh && props.onRefresh();
-      setShouldPongBy(Date.now() + minLag);
-    }
-  }, [now, shouldPongBy]);
+  // useEffect(() => {
+  //   if (now > shouldPongBy) {
+  //     props.onRefresh && props.onRefresh();
+  //     setShouldPongBy(Date.now() + minLag);
+  //   }
+  // }, [now, shouldPongBy]);
 
-  useEffect(() => {
-    return () => {
-      clearInterval(pingIntervalId);
-      clearInterval(timeIntervalId);
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     clearInterval(pingIntervalId);
+  //     clearInterval(timeIntervalId);
+  //   };
+  // }, []);
 
   const onConnect = () => {
-    pingIntervalId = setInterval(() => {
-      try {
-        socketRef.sendMessage(JSON.stringify('ping'));
-      } catch (e) {
-        console.log('Ping error', e);
-      }
-    }, pingInterval);
-    timeIntervalId = setInterval(() => setNow(Date.now()), 1000);
+    console.log('here');
+    // pingIntervalId = setInterval(() => {
+    //   try {
+    //     socketRef.sendMessage(JSON.stringify('ping'));
+    //   } catch (e) {
+    //     console.log('Ping error', e);
+    //   }
+    // }, pingInterval);
+    // timeIntervalId = setInterval(() => setNow(Date.now()), 1000);
 
     props.onConnect && props.onConnect();
   };
@@ -48,7 +49,7 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
     const eventJSON = JSON.parse(event);
 
     if (eventJSON.action === 'pong') {
-      setShouldPongBy(Date.now() + minLag);
+      // setShouldPongBy(Date.now() + minLag);
     } else if (eventJSON.action === 'new_chat') {
       props.onNewChat && props.onNewChat(eventJSON.data);
     } else if (
@@ -83,7 +84,7 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
       url={`${wsUrl}/person_v4/?session_token=${sessionToken}`}
       reconnect={true}
       reconnectIntervalInMilliSeconds={3000}
-      childRef={(ref: WebSocket) => (socketRef = ref)}
+      // childRef={(ref: WebSocket) => (socketRef = ref)}
       onOpen={onConnect}
       onError={props.onError}
       onMessage={onMessage}
