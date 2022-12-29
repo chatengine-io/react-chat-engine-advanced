@@ -24,6 +24,8 @@ setConfiguration({ maxScreenClass: 'xl', gutterWidth: 0 });
 export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
   props: MultiChatWindowProps
 ) => {
+  if (typeof window == 'undefined') return <div />;
+
   const { chats = [], activeChatId = -1, messages = [] } = props;
   const [isMobile, setIsMobile] = useState(window.innerWidth < 575);
   const chat = chats.find((chat) => chat.id === activeChatId);
@@ -70,7 +72,7 @@ export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
         onDeleteChatClick={props.onDeleteChatClick}
         renderChatSettings={props.renderChatSettings}
         renderChatAvatars={(chatAvatarsProps) =>
-          ((
+          (
             <>
               <ChatAvatars
                 {...chatAvatarsProps}
@@ -85,7 +87,7 @@ export const MultiChatWindow: React.FC<MultiChatWindowProps> = (
                 </Button>
               )}
             </>
-          ) as unknown) as React.FC<ChatAvatarsProps>
+          ) as unknown as React.FC<ChatAvatarsProps>
         }
         renderPeopleSettings={props.renderPeopleSettings}
         renderPhotosSettings={props.renderPhotosSettings}

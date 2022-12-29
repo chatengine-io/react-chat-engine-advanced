@@ -14,7 +14,7 @@ export const Image: React.FC<Props> = (props: Props) => {
       onMouseLeave={() => setIsHovered(false)}
       src={url ? url : loadingUrl}
       alt={url ? url : loadingUrl}
-      onClick={() => url && window.open(url)}
+      onClick={() => url && typeof window !== 'undefined' && window.open(url)}
       style={{
         // Default
         ...styles.style,
