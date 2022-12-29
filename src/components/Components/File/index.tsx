@@ -16,7 +16,9 @@ export const File: React.FC<Props> = (props: Props) => {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => props.url && window.open(props.url)}
+      onClick={() =>
+        props.url && typeof window !== 'undefined' && window.open(props.url)
+      }
       style={{
         // Default
         ...styles.style,
