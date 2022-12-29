@@ -21,6 +21,7 @@ import {
 } from '../actions';
 
 import { animateScroll } from 'react-scroll';
+import { scrollToBottom } from './shared';
 
 const chatCountIterator = 20;
 const messageCountIterator = 50;
@@ -196,10 +197,7 @@ export const useMultiChatLogic = (
 
       setMessages(sortedMessages);
       if (isChatFeedAtBottom) {
-        animateScroll.scrollToBottom({
-          duration: 333,
-          containerId: `ce-message-list-${activeChatId}`,
-        });
+        scrollToBottom(333, `ce-message-list-${activeChatId}`);
       }
     }
     return;
@@ -258,14 +256,9 @@ export const useMultiChatLogic = (
       messageCountIterator,
       (chatId, messages) => {
         onGetMessages(chatId, messages);
-
         setIsChatFeedLoading(false);
         setIsChatSettingsLoading(false);
-
-        animateScroll.scrollToBottom({
-          duration: 0,
-          containerId: `ce-message-list-${activeChatId}`,
-        });
+        scrollToBottom(0, `ce-message-list-${activeChatId}`);
       }
     );
 
@@ -296,10 +289,7 @@ export const useMultiChatLogic = (
     newMessage(host, headers, activeChatId, message, () => {});
 
     setTimeout(() => {
-      animateScroll.scrollToBottom({
-        duration: 333,
-        containerId: `ce-message-list-${activeChatId}`,
-      });
+      scrollToBottom(333, `ce-message-list-${activeChatId}`);
     }, 100);
     return;
   }

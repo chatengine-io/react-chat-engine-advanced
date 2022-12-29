@@ -6,6 +6,7 @@ import { getDateTime } from '../components/util/dateTime';
 import { getChat, getMessages, newMessage } from '../actions';
 
 import { animateScroll } from 'react-scroll';
+import { scrollToBottom } from './shared';
 import { ChatAuthHeaders } from '../interfaces';
 
 const messageCountIterator = 50;
@@ -105,10 +106,7 @@ export const useSingleChatLogic = (
 
       setMessages(sortedMessages);
       if (isChatFeedAtBottom) {
-        animateScroll.scrollToBottom({
-          duration: 333,
-          containerId: `ce-message-list-${activeChatId}`,
-        });
+        scrollToBottom(333, `ce-message-list-${activeChatId}`);
       }
     }
   }
@@ -149,10 +147,7 @@ export const useSingleChatLogic = (
       messageCountIterator,
       (chatId, messages) => {
         onGetMessages(chatId, messages);
-        animateScroll.scrollToBottom({
-          duration: 0,
-          containerId: `ce-message-list-${activeChatId}`,
-        });
+        scrollToBottom(0, `ce-message-list-${activeChatId}`);
       }
     );
   }
@@ -164,10 +159,7 @@ export const useSingleChatLogic = (
     newMessage(host, headers, activeChatId, message, () => {});
 
     setTimeout(() => {
-      animateScroll.scrollToBottom({
-        duration: 333,
-        containerId: `ce-message-list-${activeChatId}`,
-      });
+      scrollToBottom(333, `ce-message-list-${activeChatId}`);
     }, 100);
   }
 
