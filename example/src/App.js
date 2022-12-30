@@ -2,7 +2,7 @@ import React from 'react';
 
 import RootPage from './Pages';
 
-import thunk from "redux-thunk";
+import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import rootReducer from './Reducers';
 import { Provider } from 'react-redux';
@@ -17,13 +17,10 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const createStoreWithMiddleware = applyMiddleware(promise, thunk)(createStore);
 export const store = createStoreWithMiddleware(persistedReducer);
-const persistor = persistStore(
-  store,
-  {},
-  () => {}
-);
+const persistor = persistStore(store, {}, () => {});
 
 function App() {
+  console.log(React.version);
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
