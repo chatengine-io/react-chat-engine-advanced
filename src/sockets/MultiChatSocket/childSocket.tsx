@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Props } from './props';
 
-import { WebSocketNext } from 'nextjs-websocket';
+import { WebSocket } from 'nextjs-websocket';
 
 export const ChildSocket: React.FC<Props> = (props: Props) => {
   const { sessionToken } = props;
@@ -39,7 +39,7 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
   const wsUrl = props.wsUrl ? props.wsUrl : 'wss://api.chatengine.io';
 
   return (
-    <WebSocketNext
+    <WebSocket
       url={`${wsUrl}/person_v4/?session_token=${sessionToken}`}
       reconnect={true}
       reconnectIntervalInMilliSeconds={3000}
