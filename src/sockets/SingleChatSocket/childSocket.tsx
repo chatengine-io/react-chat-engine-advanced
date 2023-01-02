@@ -1,45 +1,45 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { Props } from './props';
 
-import { WebSocket } from 'nextjs-websocket';
+import { WebSocketNext } from 'nextjs-websocket';
 
-let socketRef: WebSocket = undefined;
-let pingIntervalId: NodeJS.Timer;
-let timeIntervalId: NodeJS.Timer;
+// let socketRef: WebSocket = undefined;
+// let pingIntervalId: NodeJS.Timer;
+// let timeIntervalId: NodeJS.Timer;
 
-const pingInterval = 4000;
-const minLag = 15 * 1000;
+// const pingInterval = 4000;
+// const minLag = 15 * 1000;
 
 export const ChildSocket: React.FC<Props> = (props: Props) => {
-  const [now, setNow] = useState(Date.now());
-  const [shouldPongBy, setShouldPongBy] = useState(Date.now() + minLag);
+  // const [now, setNow] = useState(Date.now());
+  // const [shouldPongBy, setShouldPongBy] = useState(Date.now() + minLag);
 
   const { projectId, chatId, chatAccessKey } = props;
 
-  useEffect(() => {
-    if (now > shouldPongBy) {
-      props.onRefresh && props.onRefresh();
-      setShouldPongBy(Date.now() + minLag);
-    }
-  }, [now, shouldPongBy]);
+  // useEffect(() => {
+  //   if (now > shouldPongBy) {
+  //     props.onRefresh && props.onRefresh();
+  //     setShouldPongBy(Date.now() + minLag);
+  //   }
+  // }, [now, shouldPongBy]);
 
-  useEffect(() => {
-    return () => {
-      clearInterval(pingIntervalId);
-      clearInterval(timeIntervalId);
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     clearInterval(pingIntervalId);
+  //     clearInterval(timeIntervalId);
+  //   };
+  // }, []);
 
   const onConnect = () => {
-    pingIntervalId = setInterval(() => {
-      try {
-        socketRef.sendMessage(JSON.stringify('ping'));
-      } catch (e) {
-        console.log('Ping error', e);
-      }
-    }, pingInterval);
-    timeIntervalId = setInterval(() => setNow(Date.now()), 1000);
+    // pingIntervalId = setInterval(() => {
+    //   try {
+    //     socketRef.sendMessage(JSON.stringify('ping'));
+    //   } catch (e) {
+    //     console.log('Ping error', e);
+    //   }
+    // }, pingInterval);
+    // timeIntervalId = setInterval(() => setNow(Date.now()), 1000);
 
     props.onConnect && props.onConnect();
   };
@@ -48,7 +48,7 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
     const eventJSON = JSON.parse(event);
 
     if (eventJSON.action === 'pong') {
-      setShouldPongBy(Date.now() + minLag);
+      // setShouldPongBy(Date.now() + minLag);
     } else if (eventJSON.action === 'login_error') {
       console.log(
         `Your chat auth credentials were not correct: \n
@@ -85,11 +85,11 @@ export const ChildSocket: React.FC<Props> = (props: Props) => {
   const wsUrl = props.wsUrl ? props.wsUrl : 'wss://api.chatengine.io';
 
   return (
-    <WebSocket
+    <WebSocketNext
       url={`${wsUrl}/chat/?projectID=${projectId}&chatID=${chatId}&accessKey=${chatAccessKey}`}
       reconnect={true}
       reconnectIntervalInMilliSeconds={3000}
-      childRef={(ref: WebSocket) => (socketRef = ref)}
+      // childRef={(ref: WebSocket) => (socketRef = ref)}
       onOpen={onConnect}
       onError={props.onError}
       onMessage={onMessage}
