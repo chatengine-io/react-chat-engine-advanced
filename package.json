@@ -1,5 +1,5 @@
 {
-  "version": "0.1.28",
+  "version": "0.1.29",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -81,7 +81,7 @@
     "axios": "^0.24.0",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
-    "nextjs-websocket": "^1.0.8",
+    "nextjs-websocket": "^1.0.11",
     "react-grid-system": "^7.3.2",
     "react-scroll": "^1.8.4"
   }

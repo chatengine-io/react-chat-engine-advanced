@@ -1,5 +1,5 @@
 declare module 'nextjs-websocket' {
-    import { WebSocket } from 'nextjs-websocket';
-  
-    export { WebSocket }
-  }
+  import { WebSocket, WebSocketNext } from 'nextjs-websocket';
+
+  export { WebSocket, WebSocketNext };
+}
